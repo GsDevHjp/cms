@@ -1,1 +1,42 @@
-<p>institute-login works!</p>
+<div id="wrapper">
+    <div id="header">
+        <h1>CMS</h1>
+        <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item class="action_btn" routerLink="/masteradmin">Master Admin</button>
+            <button mat-menu-item class="action_btn" routerLink="/admin">Admin</button>
+            <button mat-menu-item class="action_btn" routerLink="/student">Student</button>
+        </mat-menu>
+    </div>
+    <div id="main_area">
+        <mat-card class="example-card">
+            <mat-card-header>
+                Master Login
+            </mat-card-header>
+            <img src="assets/login.png" alt="login">
+            <mat-card-content>
+                <mat-icon class="icon_1">account_circle</mat-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Name">
+                </mat-form-field>
+                <mat-icon class="icon_2">lock</mat-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-card-content>
+            <button mat-button class="action_login" mat-raised-button color="primary"
+                routerLink="/institutehome">Login</button>
+            <p>Forgot Password</p>
+        </mat-card>
+    </div>
+    <div id="footer">
+        <span>Developed By :- Green Soft</span>
+        <span class="green_soft">Version 0.01</span>
+    </div>
+</div>
