@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./institute-login.component.css']
 })
 export class InstituteLoginComponent implements OnInit {
+  hide = true;
 
   constructor() { }
 

@@ -1,1 +1,146 @@
-<p>institute-sidebar works!</p>
+<div class="sidebar">
+    <div class="top_head">
+        <span class="title_text"> Master Admin </span>
+    </div>
+    <div class="menu">
+        <div [ngClass]="'menu_item'">
+            <!----------------------------------------------- Dashboard ------------------------------------------------>
+
+            <button mat-button class="menu-button" [routerLink]="['dashboard']">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </button>
+
+            <!----------------------------------------------- Manage Enquiry ------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['enquiry-details']">
+                <mat-icon>transfer_within_a_station</mat-icon>
+                <span>Enquiry</span>
+            </button>
+
+            <!----------------------------------------------- Manage Student -------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['student-details']">
+                <mat-icon>library_books</mat-icon>
+                <span>Student</span>
+            </button>
+
+            <!----------------------------------------------- Manage Admission ------------------------------------------>
+
+            <button mat-button class="menu-button" [routerLink]="['admission']">
+                <mat-icon>airline_seat_recline_normal</mat-icon>
+                <span>Admission</span>
+            </button>
+
+            <!----------------------------------------------- Manage Course --------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['manage-course']">
+                <mat-icon>school</mat-icon>
+                <span>Course</span>
+            </button>
+
+            <!----------------------------------------------- Manage Batch ---------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['manage-batch']">
+                <mat-icon>local_library</mat-icon>
+                <span>Batch</span>
+            </button>
+
+            <!----------------------------------------------- Manage Staff ---------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['manage-staff']">
+                <mat-icon>wc</mat-icon>
+                <span>Staff</span>
+            </button>
+
+            <!----------------------------------------------- Manage Fee ------------------------------------------------>
+
+            <button mat-button class="menu-button" [routerLink]="['manage-fee']">
+                <mat-icon>track_changes</mat-icon>
+                <span>Fee</span>
+            </button>
+
+            <!----------------------------------------------- Dues ------------------------------------------------>
+
+            <button mat-button class="menu-button" [routerLink]="['dues']">
+                <mat-icon>redeem</mat-icon>
+                <span>Dues</span>
+            </button>
+
+            <!----------------------------------------------- Staff Salary ---------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['staff-salary']">
+                <mat-icon>accessible</mat-icon>
+                <span>Staff Salary</span>
+            </button>
+
+            <!----------------------------------------------- Manage Expencess ------------------------------------------->
+
+            <button mat-button class="menu-button" [routerLink]="['manage-expencess']">
+                <mat-icon>account_balance_wallet</mat-icon>
+                <span>Expencess</span>
+            </button>
+
+            <!-- --------------------------------------------- Report ------------------------------------------------->
+
+            <div>
+                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                    <mat-icon>file_copy</mat-icon>
+                    <span>Report</span>
+                    <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+                </button>
+
+                <!----------------------------------------------- Student Report --------------------------------------------------->
+
+                <div id="dropdown_report">
+                    <button mat-button class="menu-button" routerLink="./student-report">
+                        <mat-icon>report</mat-icon>
+                        <span>Student Report</span>
+                    </button>
+
+                    <!----------------------------------------------- Admission Report --------------------------------------------------->
+
+                    <button mat-button class="menu-button" routerLink="./admission-report">
+                        <mat-icon>bug_report</mat-icon>
+                        <span>Admission Report</span>
+                    </button>
+
+                    <!----------------------------------------------- Fee Report --------------------------------------------------->
+
+                    <button mat-button class="menu-button" routerLink="./fee-report">
+                        <mat-icon>feedback</mat-icon>
+                        <span>Fee Report</span>
+                    </button>
+
+                </div>
+
+                <!--------------------------------------------- Settings ------------------------------------------------->
+
+                <div>
+                    <button mat-button class="menu-button" (click)="setting_dropdown()" [routerLink]="['/#']">
+                        <mat-icon>settings</mat-icon>
+                        <span>Settings</span>
+                        <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                        <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
+                    </button>
+
+                    <!----------------------------------------------- Change Password --------------------------------------------------->
+
+                    <div id="dropdown_setting">
+                        <button mat-button class="menu-button" [routerLink]="['/#']">
+                            <mat-icon>password</mat-icon>
+                            <span>Change Password</span>
+                        </button>
+
+                        <!----------------------------------------------- Logout --------------------------------------------------->
+
+                        <button mat-button class="menu-button" [routerLink]="['/masteradmin']">
+                            <mat-icon>logout</mat-icon>
+                            <span>Logout</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <!---------------------------------------------------- Slidebare End --------------------------------------------------------->
