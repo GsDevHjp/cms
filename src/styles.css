@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-menu-content:not(:empty){
+    background-color: #1d1f23;
+    width: 150px;
+}
+
+.mat-menu-panel{
+    margin-top: 15px;
+}
