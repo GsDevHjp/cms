@@ -1,0 +1,16 @@
+<div id="wrapper">
+    <div id="header">
+      <h1>CMS</h1>
+      <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="action_btn" [routerLink]="['adminlogin']">Admin</button>
+        <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']">Institute</button>
+        <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']">Student</button>
+      </mat-menu>
+    </div>
+    <div id="design">Wel Come To Green Soft</div>
+    <div id="footer">
+      <span>Developed By :- Green Soft</span>
+      <span class="green_soft">Version 0.01</span>
+    </div>
+  </div>
