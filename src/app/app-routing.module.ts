@@ -28,6 +28,7 @@ const routes: Routes = [
   {path:'institutehome', component:InstituteHomeComponent,
     children:[
       {path:'',component:InstituteDashboardComponent},
+      {path:'dashboard',component:InstituteDashboardComponent},
     ]
   },
 

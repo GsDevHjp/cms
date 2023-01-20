@@ -2,6 +2,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::-webkit-scrollbar{
+    width:5px;
+    background-color:#525458;
+}
 
 .mat-menu-content:not(:empty){
     background-color: #1d1f23;
