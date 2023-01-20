@@ -3,15 +3,15 @@
         <h1>CMS</h1>
         <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item class="action_btn" routerLink="/masteradmin">Master Admin</button>
-            <button mat-menu-item class="action_btn" routerLink="/admin">Admin</button>
-            <button mat-menu-item class="action_btn" routerLink="/student">Student</button>
+            <button mat-menu-item class="action_btn" routerLink="/adminlogin">Admin</button>
+            <button mat-menu-item class="action_btn" routerLink="/institutelogin">Institute</button>
+            <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
         </mat-menu>
     </div>
     <div id="main_area">
         <mat-card class="example-card">
             <mat-card-header>
-                Master Login
+                Institute Login
             </mat-card-header>
             <img src="assets/login.png" alt="login">
             <mat-card-content>
