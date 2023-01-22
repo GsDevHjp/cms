@@ -1,0 +1,46 @@
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+  }
+  
+  .material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+  }
+  
+  mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+  }
+  
+  table tr td {
+    justify-items: center;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  
+  
+  .submit {
+    margin-left: 31%;
+  }
+  
+  button {
+    margin-left: 7px;
+  }

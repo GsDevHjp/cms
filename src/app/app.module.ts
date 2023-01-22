@@ -51,6 +51,13 @@ import { QuizeComponent } from './student/quize/quize.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
 import { ResultComponent } from './student/result/result.component';
 import { QueryComponent } from './student/query/query.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
 
 @NgModule({
   declarations: [
@@ -107,7 +114,11 @@ import { QueryComponent } from './student/query/query.component';
     MatInputModule,
     MatCardModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    ReactiveFormsModule,
 
     
   ],

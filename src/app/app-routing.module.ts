@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CourseComponent } from './institute/course/course.component';
 import { InstituteDashboardComponent } from './institute/institute-dashboard/institute-dashboard.component';
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
     children:[
       {path:'',component:InstituteDashboardComponent},
       {path:'dashboard',component:InstituteDashboardComponent},
+      {path: 'course' ,component:CourseComponent},
     ]
   },
 
@@ -49,9 +51,6 @@ const routes: Routes = [
       {path:'quize', component:QuizeComponent},
     ]
   }
-  
-
-  
 
 ];
 
