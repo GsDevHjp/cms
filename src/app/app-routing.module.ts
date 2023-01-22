@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { InstituteComponent } from './admin/institute/institute.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
 import { BatchComponent } from './institute/batch/batch.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
     children:[
       {path:'', component:AdminDashboardComponent},
       {path:'dashboard', component:AdminDashboardComponent},
+      {path:'institute', component:InstituteComponent},
       
     ]
   },
