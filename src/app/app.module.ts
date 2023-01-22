@@ -55,6 +55,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -119,6 +121,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatSelectModule,
 
     
   ],

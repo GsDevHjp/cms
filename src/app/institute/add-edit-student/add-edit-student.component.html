@@ -1,1 +1,111 @@
-<p>add-edit-student works!</p>
+<div id="wrapper">
+    <mat-toolbar>
+        <span class="example-spacer">{{heading_act}}</span>
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+    </mat-toolbar>
+
+    <form [formGroup]="student_form">
+        <div id="main_area">
+            <div class="box">
+
+                <table class="example-full-width" cellspacing="0">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="std_name">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Father Name</mat-label>
+                        <input matInput formControlName="father_name">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Father Occupation</mat-label>
+                        <input matInput formControlName="father_occupation">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Mobile</mat-label>
+                        <input type="number" matInput formControlName="mobile">
+                    </mat-form-field>
+
+                </table>
+            </div>
+
+            <div class="box">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Aadhar</mat-label>
+                    <input type="number" matInput formControlName="std_aadhar_no">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>E-mail</mat-label>
+                    <input type="email" matInput formControlName="std_email">
+                </mat-form-field>
+
+                <table class="example-full-width" cellspacing="0">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>DOB</mat-label>
+                        <input type="date" matInput formControlName="std_dob">
+                    </mat-form-field>
+
+                    <div class="gender">
+                        <mat-label>Gender : </mat-label>&nbsp;
+                        <input type="radio" name="gen" value="male">
+                        <mat-label>Male</mat-label> &nbsp;
+                        <input type="radio" name="gen" value="Female">
+                        <mat-label>Female</mat-label>
+                    </div>
+
+                </table>
+            </div>
+            <div class="box">
+                <mat-form-field appearance="fill">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="std_state">
+                        <mat-option value="Panjab">Panjab</mat-option>
+                        <mat-option value="Hariyana">Hariyana</mat-option>
+                        <mat-option value="Bihar">Bihar</mat-option>
+                        <mat-option value="Up">Up</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>District</mat-label>
+                    <mat-select formControlName="std_district">
+                        <mat-option value="Muzaffarpur">Muzaffarpur</mat-option>
+                        <mat-option value="Samastipur">Samastipur</mat-option>
+                        <mat-option value="Patna">Patna</mat-option>
+                        <mat-option value="Vaishali">Vaishali</mat-option>
+                        <mat-option value="Saran">Saran</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <table class="example-full-width" cellspacing="0">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Date</mat-label>
+                        <input type="date" matInput formControlName formControlName="enq_date">
+                    </mat-form-field>
+                </table>
+
+                <table class="photo" cellspacing="0">
+                    <mat-label class="student_kb">student photo</mat-label>
+                    <input type="file" name="std_photo" class="upload"
+                        formControlName="std_image">
+                </table>
+            </div>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+        </mat-form-field>
+
+    </form>
+
+    <div class="submit">
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="primary"
+            [disabled]="!student_form.valid">{{ActionBtn}}</button>
+    </div>
+</div>
