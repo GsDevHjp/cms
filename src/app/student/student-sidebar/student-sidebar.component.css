@@ -1,0 +1,77 @@
+.top_head {
+    width: 100%;
+    height: 59px;
+    z-index: 2;
+    background-color: #1d1f23;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    position: sticky;
+    top: 0px;
+}
+
+.title_text {
+    color: whitesmoke;
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    margin-left: 55px;
+}
+
+.menu-button {
+    width: 100%;
+    font-size: 16px;
+    color: whitesmoke;
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-bottom: 0.2px solid #525458;
+    transition: 0.5s;
+}
+.menu-button:hover {
+    padding-left: 25px;
+}
+
+.menu-button span {
+    margin-left: 10px;
+}
+.menu-button:hover{
+    background-color: #525458;
+}
+ .menu-button:focus{
+    background-color: #35373d;
+}
+
+#dropdown_setting {
+    display: none;
+}
+
+#dropdown_report {
+    display: none ;
+}
+
+/* ===========================================media Query================================================== */
+
+@media(max-width:420px) {
+
+    img {
+        width: 50px;
+        height: 40px;
+    }
+
+    .title_text {
+        font-size: 15px;
+        margin-left:35px;
+    }
+
+    .menu-button {
+        font-size: 13px;
+        color: whitesmoke;
+    }
+
+    .menu-button span {
+        margin-left: 5px;
+    }
+
+    .menu-button mat-icon {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+}
