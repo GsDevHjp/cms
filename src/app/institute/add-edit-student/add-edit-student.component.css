@@ -1,0 +1,112 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+  }
+  
+  .material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+  }
+  
+  mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+  }
+  
+  .box {
+    width: 200px;
+    height: 100%;
+    margin-left: 10px;
+    float: left;
+  }
+  
+  .box:last-child {
+    margin-right: 10px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .gender {
+    width: 100%;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #757272;
+    padding: 12px 10px 18px;
+  }
+  
+  .gender:hover {
+    border-bottom: 1px solid black;
+  }
+  
+  textarea {
+    height: 17px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .photo {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #757272;
+    background-color: whitesmoke;
+  }
+  
+  .student_kb {
+    margin-left: 10px;
+  }
+  
+  .upload {
+    width: 80%;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  
+  .submit {
+    margin-left: 39%;
+  }
+  
+  button {
+    margin-left: 5px;
+  }
+  
+  @media(min-width:920px)and (max-width:1199px) {}
+  
+  @media(min-width:768px)and (max-width:919px) {}
+  
+  @media(min-width:420px)and (max-width:768px) {}
+  
+  @media(max-width:420px) {
+    #wrapper{
+      border: 5px solid red;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #main_area {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .box {
+      width: 140px;
+      justify-content: center;
+    }
+  
+    .gender {
+      font-size: 8px;
+    }
+  
+    .submit {
+      margin-left: 20%;
+    }
+  }

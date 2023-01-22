@@ -1,1 +1,83 @@
-<p>add-edit-batch works!</p>
+<!-- --------------------------------------------- Enquiry Form Start Here ----------------------------------------------------->
+<mat-toolbar>
+    <span class="example-spacer">Add Batch</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="batch_form">
+
+    <!-- ---------------------------------------- Batch Name ---------------------------------------------------------->
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="batch_name">
+    </mat-form-field>
+
+    <!-- ---------------------------------------- Batch Select ---------------------------------------------------------->
+
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Course</mat-label>
+        <mat-select formControlName="batch_select">
+            <mat-option value="C Programming">C Programming</mat-option>
+            <mat-option value="Computer Architecture">Computer Architecture</mat-option>
+            <mat-option value="Computer Fundamental">Computer Fundamental</mat-option>
+            <mat-option value="HTML">HTML</mat-option>
+            <mat-option value="CSS">CSS</mat-option>
+            <mat-option value="JavaScript">JavaScript</mat-option>
+            <mat-option value="Data Stucture">Data Stucture</mat-option>
+            <mat-option value="Java">Java</mat-option>
+            <mat-option value="JQuery">JQuery</mat-option>
+            <mat-option value="SAD">SAD</mat-option>
+            <mat-option value="SE">SE</mat-option>
+            <mat-option value="Python">Python</mat-option>
+            <mat-option value="AI">AI</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+
+    <!-- ---------------------------------------------Start Batch----------------------------------------------------->
+
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Start Batch</mat-label>
+        <mat-select formControlName="start_batch">
+            <mat-option value="Yet to start">Yet to start</mat-option>
+            <mat-option value="Running">Running</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+            <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- ---------------------------------------------Date----------------------------------------------------->
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput formControlName="batch_date">
+    </mat-form-field>
+    <br>
+
+    <!-- ---------------------------------------- Arrival Time ---------------------------------------------------------->
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Arrival</mat-label>
+        <input type="time" matInput formControlName="batch_form">
+    </mat-form-field>
+
+    <!-- ---------------------------------------------Departure----------------------------------------------------->
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Departure</mat-label>
+        <input type="time" matInput formControlName="batch_to">
+    </mat-form-field>
+
+    <!-- ---------------------------------------------Admin Id Fk----------------------------------------------------->
+
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+</form>
+
+<!-- ---------------------------------------- Submit And Reset Button Start Here ---------------------------------------------------------->
+
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" (click)="batch_btn()"
+        [disabled]="!batch_form.valid">{{actionBtn}}</button>
+</div>
