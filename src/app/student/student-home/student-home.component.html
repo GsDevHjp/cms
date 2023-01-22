@@ -1,1 +1,24 @@
-<p>student-home works!</p>
+<div ngxUiLoaderBlurred (blur)="7"></div>
+<mat-sidenav-container class="wrapper">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <app-student-sidebar></app-student-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <div class="toolbar">
+                <mat-toolbar>
+                    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                    <div class="user">
+                        <span class="login">Login As: Saddam Husain{{name}}</span>
+                        <mat-icon class="user-icon">account_circle</mat-icon>
+                        <mat-menu #menu="matMenu" class="myMenu">
+                        </mat-menu>
+                    </div>
+                </mat-toolbar>
+            </div>
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

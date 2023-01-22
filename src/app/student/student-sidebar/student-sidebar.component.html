@@ -1,1 +1,80 @@
-<p>student-sidebar works!</p>
+<div class="sidebar">
+    <div class="top_head">
+        <span class="title_text">Student</span>
+    </div>
+    <div class="menu">
+        <div [ngClass]="'menu_item'">
+
+            <button mat-button class="menu-button" [routerLink]="['dashboard']">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </button>
+
+            
+            <button mat-button class="menu-button" [routerLink]="['course']">
+                <mat-icon>school</mat-icon>
+                <span>Course</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['batch']">
+                <mat-icon>local_library</mat-icon>
+                <span>Batch</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['take-addmission']">
+                <mat-icon>airline_seat_recline_normal</mat-icon>
+                <span> Tack Admission</span>
+            </button>
+
+            <button mat-button class="menu-button" routerLink="/fee-report">
+                <mat-icon>feedback</mat-icon>
+                <span>Fee Paid</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['dues']">
+                <mat-icon>redeem</mat-icon>
+                <span>Dues</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['query']">
+                <mat-icon>accessible</mat-icon>
+                <span>Query</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['online-test']">
+                <mat-icon>wc</mat-icon>
+                <span>Online test</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['result']">
+                <mat-icon>account_balance_wallet</mat-icon>
+                <span>Reult</span>
+            </button>
+            
+            <button mat-button class="menu-button" [routerLink]="['quize']">
+                <mat-icon>redeem</mat-icon>
+                <span>Quize</span>
+            </button>
+
+                <div>
+                    <button mat-button class="menu-button" (click)="setting_dropdown()" [routerLink]="['/#']">
+                        <mat-icon>settings</mat-icon>
+                        <span>Settings</span>
+                        <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                        <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
+                    </button>
+
+                    <div id="dropdown_setting">
+                        <button mat-button class="menu-button" [routerLink]="['/#']">
+                            <mat-icon>password</mat-icon>
+                            <span>Change Password</span>
+                        </button>
+
+                        <button mat-button class="menu-button" [routerLink]="['/studentlogin']">
+                            <mat-icon>logout</mat-icon>
+                            <span>Logout</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>

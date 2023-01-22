@@ -8,9 +8,14 @@ import { CourseComponent } from './institute/course/course.component';
 import { InstituteDashboardComponent } from './institute/institute-dashboard/institute-dashboard.component';
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
+import { OnlineTestComponent } from './student/online-test/online-test.component';
+import { QueryComponent } from './student/query/query.component';
+import { QuizeComponent } from './student/quize/quize.component';
+import { ResultComponent } from './student/result/result.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
 import { StudentLoginComponent } from './student/student-login/student-login.component';
+import { TakeAddmissionComponent } from './student/take-addmission/take-addmission.component';
 
 const routes: Routes = [
   {path:'',component:HomepageComponent},
@@ -38,6 +43,12 @@ const routes: Routes = [
   {path:'studenthome',component:StudentHomeComponent,
     children:[
       {path:'',component:StudentDashboardComponent},
+      {path:'dashboard',component:StudentDashboardComponent},
+      {path:'result', component:ResultComponent},
+      {path:'online-test', component:OnlineTestComponent},
+      {path:'query', component:QueryComponent},
+      {path:'take-addmission', component:TakeAddmissionComponent},
+      {path:'quize', component:QuizeComponent},
     ]
   }
 
