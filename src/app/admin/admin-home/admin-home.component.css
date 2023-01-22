@@ -1,0 +1,77 @@
+mat-sidenav {
+    background-color: #1d1f23;
+    height: 100%;
+    width: 250px;
+}
+
+mat-sidenav-content {
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+.main {
+    padding: 61px 2px 2px 2px;
+}
+
+mat-toolbar {
+    background-color: #1d1f23;
+    justify-content: space-between;
+    height: 59px;
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+
+}
+
+mat-icon {
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.login {
+    font-size: 15px;
+    color: whitesmoke;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: fixed;
+    right: 45px;
+    top: 16px;
+}
+
+.user-icon {
+    position: fixed;
+    right: 16px;
+    top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a button {
+    color: whitesmoke;
+    text-align: center;
+}
+
+@media(min-width:420px)and (max-width:768px) {
+    .login {
+        display: none;
+    }
+
+    .main {
+        padding:60px 2px 2px 2px;
+    }
+}
+
+@media(max-width:420px) {
+    mat-sidenav {
+        width: 170px;
+    }
+
+    .login{
+        display: none;
+    }
+}
