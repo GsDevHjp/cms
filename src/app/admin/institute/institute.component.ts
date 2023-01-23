@@ -8,13 +8,19 @@ import { AddEditInstituteComponent } from '../add-edit-institute/add-edit-instit
 export interface UserData {
   institute_id: number;
   institute_name: string;
-  institute_mobile: number;
+  institute_owner: string;
+  institute_whatsapp: number;
+  institute_email: string;
   institute_address: string;
+  institute_logo: string;
+  institute_identity: string;
 }
 
 const UserData: UserData[] = [
-  {institute_id: 1, institute_name: 'Gs Learning', institute_mobile: 9153637175, institute_address: 'Hajipur'},
-  {institute_id: 2, institute_name: 'Rn Learning', institute_mobile: 9153537178, institute_address: 'Hajipur'},
+  {institute_id: 1, institute_name: 'Gs Learning',institute_owner:'Rohit Kumar', institute_whatsapp:9153637175, institute_email:'gs@gmail.com',institute_address:'hajipur',institute_identity:'aaddhar',institute_logo:'img.jpg',},
+  {institute_id: 1, institute_name: 'Gs Learning',institute_owner:'Rohit Kumar', institute_whatsapp:9153637175, institute_email:'gs@gmail.com',institute_address:'hajipur',institute_identity:'aaddhar',institute_logo:'img.jpg',},
+  {institute_id: 1, institute_name: 'Gs Learning',institute_owner:'Rohit Kumar', institute_whatsapp:9153637175, institute_email:'gs@gmail.com',institute_address:'hajipur',institute_identity:'aaddhar',institute_logo:'img.jpg',},
+  {institute_id: 1, institute_name: 'Gs Learning',institute_owner:'Rohit Kumar', institute_whatsapp:9153637175, institute_email:'gs@gmail.com',institute_address:'hajipur',institute_identity:'aaddhar',institute_logo:'img.jpg',},
 ];
 
 @Component({
@@ -25,7 +31,7 @@ const UserData: UserData[] = [
 
 
 export class InstituteComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_mobile', 'institute_address','action'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner','institute_whatsapp','institute_email','institute_address','institute_identity','institute_logo','action'];
   dataSource!: MatTableDataSource<UserData>;
   
   // displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_mobile', 'institute_address','action'];

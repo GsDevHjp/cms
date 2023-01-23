@@ -56,6 +56,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { InsCourseComponent } from './admin/ins-course/ins-course.component';
+import { ViewportComponent } from './admin/viewport/viewport.component';
+import { InsbatchComponent } from './admin/insbatch/insbatch.component';
+import { InsstudentComponent } from './admin/insstudent/insstudent.component';
+import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 
 
 
@@ -102,7 +107,12 @@ import {MatSelectModule} from '@angular/material/select';
     QuizeComponent,
     OnlineTestComponent,
     ResultComponent,
-    QueryComponent
+    QueryComponent,
+    InsCourseComponent,
+    ViewportComponent,
+    InsbatchComponent,
+    InsstudentComponent,
+    InsadmissionComponent,
   ],
   imports: [
     BrowserModule,
