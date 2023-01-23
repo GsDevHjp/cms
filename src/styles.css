@@ -1,17 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-::-webkit-scrollbar{
-    width:5px;
-    background-color:#525458;
+html,
+body {
+    height: 100%;
 }
 
-.mat-menu-content:not(:empty){
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    cursor: default;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #525458;
+}
+
+.mat-menu-content:not(:empty) {
     background-color: #1d1f23;
     width: 150px;
 }
 
-.mat-menu-panel{
+.mat-menu-panel {
     margin-top: 15px;
 }

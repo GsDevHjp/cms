@@ -1,1 +1,123 @@
-<p>add-edit-institute works!</p>
+<div class="add_head">
+    <span>Add Institute</span>
+    <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<form [formGroup]="InstForm">
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="institute_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput formControlName="institute_owner">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Whatsapp Number</mat-label>
+            <input matInput type="number" formControlName="institute_whatsapp"
+                onkeypress="return this.value.length < 10;"
+                oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
+        </mat-form-field>
+          
+        <mat-form-field appearance="fill" class="margin_top">
+            <mat-label>password</mat-label>
+            <input type="password" [type]="hide ?'password' : 'text'" matInput formControlName="institute_password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </div>
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select disableRipple formControlName="institute_country">
+                <mat-option value="1">India</mat-option>
+                <mat-option value="2">Nepal</mat-option>
+                <mat-option value="3">Srilanka</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select disableRipple formControlName="institute_state">
+                <mat-option value="1">Bihar</mat-option>
+                <mat-option value="2">Jharkhand</mat-option>
+                <mat-option value="3">Utter Pardesh</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>District</mat-label>
+            <mat-select disableRipple formControlName="institute_distt">
+                <mat-option value="1">Vaisahli</mat-option>
+                <mat-option value="2">Chhapra</mat-option>
+                <mat-option value="3">Muzaffarpur</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="margin_top">
+            <mat-label>Address</mat-label>
+            <textarea matInput rows="4" cols="44" id="address" formControlName="institute_address"></textarea>
+        </mat-form-field>
+
+    </div>
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>Account Number</mat-label>
+            <input matInput type="number" formControlName="institute_account_number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>IFSC</mat-label>
+            <input matInput ype="number" formControlName="account_ifsc_number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Account Holder</mat-label>
+            <input matInput formControlName="account_holder_name">
+        </mat-form-field>
+
+        <label for="inst_img">
+            Institute logo
+            <input type="file" id="inst_img" (change)="OnUpload($event)" formControlName="institute_photo">
+        </label>
+    </div>
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>GST</mat-label>
+            <input matInput formControlName="account_gst_number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Document type</mat-label>
+            <mat-select disableRipple formControlName="institute_document">
+                <mat-option value="1">Aadhar</mat-option>
+                <mat-option value="2">Pan Card</mat-option>
+                <mat-option value="3">Driving Licence</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Document Number</mat-label>
+            <input matInput formControlName="document_number">
+        </mat-form-field>
+
+
+        <label for="inst_img">
+            Document Image
+            <input type="file" id="inst_img" (change)="OnUpload($event)" formControlName="document_photo">
+        </label>
+    </div>
+
+</form>
+<span class="btn_box">
+    <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
+
+    <button class="add_btn" mat-raised-button color="primary" (click)="addInst()">Submit</button>
+</span>

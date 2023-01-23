@@ -9,9 +9,6 @@
     box-sizing: border-box;
   }
   
-  .course_text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
   
   #add_course{
     cursor: pointer;
@@ -44,7 +41,6 @@
   th {
     background-color: #1d1f23;
     color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   .pointer {
@@ -52,18 +48,16 @@
   }
   
   tr:nth-child(even) {
-    background-color: whitesmoke;
+    background-color: rgb(200, 200, 200);
     height: 40px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   tr:nth-child(odd) {
     height: 40px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   tr:hover {
-    background-color: #1d1f23;
+    background-color: #494949;
     color: aliceblue;
     cursor: pointer;
   }

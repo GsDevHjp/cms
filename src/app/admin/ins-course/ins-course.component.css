@@ -9,6 +9,9 @@
     box-sizing: border-box;
   }
   
+  .course_text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
   
   #add_course{
     cursor: pointer;
@@ -41,31 +44,38 @@
   th {
     background-color: #1d1f23;
     color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
-  .pointer {
-    cursor: pointer;
-  }
+
   
   tr:nth-child(even) {
-    background-color: rgb(200, 200, 200);
+    background-color: whitesmoke;
     height: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   tr:nth-child(odd) {
     height: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   
   tr:hover {
-    background-color: #494949;
+    background-color: #1d1f23;
     color: aliceblue;
-    cursor: pointer;
   }
   
   .mat-row:hover>.mat-cell {
     color: white
   }
   
+  button{
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0px 2px black;
+  }
+ 
   /* /////////////////////////////////////////////////Media Quary Starting Here//////////////////////////////////////////////// */
   @media(min-width:420px) and (max-width:1080px) {
     .mat-elevation-z8 {
