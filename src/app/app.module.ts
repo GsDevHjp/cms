@@ -133,9 +133,7 @@ import { ReceivedformComponent } from './admin/receivedform/receivedform.compone
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSelectModule,
-
-    
+    MatSelectModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]
