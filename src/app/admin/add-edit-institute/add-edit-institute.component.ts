@@ -32,7 +32,6 @@ export class AddEditInstituteComponent implements OnInit {
       account_ifsc_number: [''],
       account_holder_name: [''],
       institute_photo: [''],
-      account_gst_number:[''],
       institute_document:[''],
       document_number:[''],
       document_photo:[''],
