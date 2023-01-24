@@ -10,17 +10,14 @@ export interface UserData {
   institute_owner: string;
   institute_whatsapp: number;
   institute_email: string;
+  institute_date: string;
   institute_address: string;
   institute_payment: number;
-  institute_logo: string;
-  institute_identity: string;
+  institute_description: string;
 }
 
 const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_payment:20000,institute_logo: 'img.jpg', },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_payment:20000,institute_logo: 'img.jpg', },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_payment:20000,institute_logo: 'img.jpg', },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_payment:20000,institute_logo: 'img.jpg', },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com',institute_date:'25/02/2023', institute_address: 'hajipur',institute_payment:20000,institute_description:'payment successfully' },
 ];
 
 @Component({
@@ -29,7 +26,7 @@ const UserData: UserData[] = [
   styleUrls: ['./admin-paymet-recived.component.css']
 })
 export class AdminPaymetRecivedComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_address', 'institute_identity','institute_payment', 'institute_logo'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email','institute_date', 'institute_address','institute_payment','institute_description'];
   dataSource!: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

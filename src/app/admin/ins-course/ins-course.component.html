@@ -1,6 +1,5 @@
 <div class="head">
   <span>Institute Course</span>
-  <mat-icon id="add_course" (click)="add_Institute()">add_circle</mat-icon>
 </div>
 <div class="count_area">
   <span class="notice_text">Total : 10</span>
@@ -38,9 +37,9 @@
     </ng-container>
 
   
-    <ng-container matColumnDef="institute_course">
+    <ng-container matColumnDef="total_course">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Course</th>
-      <td mat-cell *matCellDef="let row"style="cursor: pointer;" [routerLink]="['course']"><button>{{row.institute_course}}</button></td>
+      <td mat-cell *matCellDef="let row"style="cursor: pointer;"><a [routerLink]="['course']">{{row.total_course}}</a></td>
     </ng-container>
 
 

@@ -1,6 +1,5 @@
 <div class="head">
     <span>Institute Admission</span>
-    <mat-icon id="add_course">add_circle</mat-icon>
   </div>
   <div class="count_area">
     <span class="notice_text">Total : 10</span>
@@ -36,11 +35,21 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
         <td mat-cell *matCellDef="let row"> {{row.institute_email}} </td>
       </ng-container>
+
+     <ng-container matColumnDef="institute_state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_state}} </td>
+      </ng-container>
+
+     <ng-container matColumnDef="institute_district">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_district}} </td>
+      </ng-container>
   
     
-      <ng-container matColumnDef="institute_course">
+      <ng-container matColumnDef="total_admission">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Admission</th>
-        <td mat-cell *matCellDef="let row"style="cursor: pointer;" [routerLink]="['admission']"><button>{{row.institute_course}}</button></td>
+        <td mat-cell *matCellDef="let row"style="cursor: pointer;"><a [routerLink]="['admission']">{{row.total_admission}}</a></td>
       </ng-container>
   
   
