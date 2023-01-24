@@ -1,1 +1,102 @@
-<p>add-edit-take-addmission works!</p>
+<div class="add_head">
+    <span>Addmission</span>
+    <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<form [formGroup]="InstForm">
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>Student Name</mat-label>
+            <input matInput formControlName="std_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Father Name</mat-label>
+            <input matInput formControlName="Father_name">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Father Occuption</mat-label>
+            <input matInput formControlName="Father_occuption">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput type="number" formControlName="Mobile">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Aadhar</mat-label>
+            <input type="password" matInput formControlName="Aadhar">
+        </mat-form-field>
+
+
+    </div>
+    <div class="add_box">
+             <div class="gender">
+            <h1>Gender</h1>
+            Male: <input type="radio" name="maile" class="check">
+            Female: <input type="radio" name="maile" class="check">
+        
+       </div>
+
+       <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label >DOB</mat-label>
+        <input type="date" matInput formControlName="course_date" style="color: #495057;">
+    </mat-form-field>
+
+      
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+
+        <input matInput formControlName="Father_name">
+    </mat-form-field>
+        
+
+    <div class="address">
+        <mat-form-field appearance="fill">
+            <mat-label >Address</mat-label>
+            <textarea name="msg" id="msg"  rows="5" cols="30"></textarea>
+            <input matInput formControlName="Father_name">
+        </mat-form-field>
+    </div>
+
+    </div>
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select disableRipple formControlName="state">
+                <mat-option value="1">Bihar</mat-option>
+                <mat-option value="2">Jharkhand</mat-option>
+                <mat-option value="3">Utter Pardesh</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Distric</mat-label>
+            <mat-select disableRipple formControlName="state">
+                <mat-option value="1">sonepur</mat-option>
+                <mat-option value="2">saran</mat-option>
+                <mat-option value="3">chapra</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="course_date" style="color: #595d62;">
+        </mat-form-field>
+
+       
+    </div>
+
+
+</form>
+<span class="btn_box">
+    <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
+
+    <button class="add_btn" mat-raised-button color="primary" (click)="addstd()"
+        [disabled]="!InstForm.valid">Submit</button>
+</span>
