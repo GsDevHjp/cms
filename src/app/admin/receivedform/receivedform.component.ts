@@ -4,11 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-add-edit-institute',
-  templateUrl: './add-edit-institute.component.html',
-  styleUrls: ['./add-edit-institute.component.css']
+  selector: 'app-receivedform',
+  templateUrl: './receivedform.component.html',
+  styleUrls: ['./receivedform.component.css']
 })
-export class AddEditInstituteComponent implements OnInit {
+export class ReceivedformComponent implements OnInit {
   admin = 1;
   InstForm !: FormGroup;
   hide = true;
@@ -23,18 +23,9 @@ export class AddEditInstituteComponent implements OnInit {
       institute_owner: ['', Validators.required],
       institute_whatsapp: ['', Validators.required],
       institute_email: ['', Validators.required],
-      institute_password: ['', Validators.required],
-      institute_country: [''],
-      institute_state: [''],
-      institute_distt: [''],
-      institute_address: [''],
-      institute_account_number: [''],
-      account_ifsc_number: [''],
-      account_holder_name: [''],
-      institute_photo: [''],
-      institute_document:[''],
-      document_number:[''],
-      document_photo:[''],
+      institute_date: ['', Validators.required],
+      institute_dues: ['', Validators.required],
+      institute_payment: ['', Validators.required],
     })
 
   }

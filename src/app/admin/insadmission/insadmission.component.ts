@@ -10,20 +10,15 @@ export interface UserData {
   institute_owner: string;
   institute_whatsapp: number
   institute_email: string
-  institute_course: number
+  institute_state: string
+  institute_district: string
+  total_admission:number
 }
 
 const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 10 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 150 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 220 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 80 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 60 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com', institute_course: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com',institute_state:'Bihar',institute_district:'Vaishali', total_admission: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com',institute_state:'Bihar',institute_district:'Vaishali', total_admission: 80 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit', institute_whatsapp: 9153634848, institute_email: 'rohit@gmail.com',institute_state:'Bihar',institute_district:'Vaishali', total_admission: 250 },
 ];
 @Component({
   selector: 'app-insadmission',
@@ -32,7 +27,7 @@ const UserData: UserData[] = [
 })
 export class InsadmissionComponent implements OnInit {
 
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_course',];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_state','institute_district','total_admission'];
   dataSource!: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

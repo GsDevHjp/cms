@@ -1,0 +1,64 @@
+<div class="add_head">
+    <span>Payment</span>
+    <button mat-mini-fab id="close_btn" mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<form [formGroup]="InstForm">
+    <div class="add_box">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="institute_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput formControlName="institute_owner">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Whatsapp Number</mat-label>
+            <input matInput type="number" formControlName="institute_whatsapp"
+                onkeypress="return this.value.length < 10;"
+                oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="institute_email">
+        </mat-form-field>
+
+    </div>
+    <div class="add_box">
+      
+        <mat-form-field appearance="fill">
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="institute_date">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Dues</mat-label>
+            <input matInput type="number" formControlName="institute_dues">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Received</mat-label>
+            <input matInput type="number" formControlName="institute_payment">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="payment_description">
+        </mat-form-field>
+
+
+    </div>
+
+
+</form>
+<span class="btn_box">
+    <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
+
+    <button class="add_btn" mat-raised-button color="primary" (click)="addInst()"
+        [disabled]="!InstForm.valid">Submit</button>
+</span>

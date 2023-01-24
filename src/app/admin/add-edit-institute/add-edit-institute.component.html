@@ -1,6 +1,6 @@
 <div class="add_head">
-    <span>Add Institute</span>
-    <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
+    <span>Institute Ragistration </span>
+    <button mat-mini-fab id="close_btn" mat-dialog-close>
         <mat-icon>close</mat-icon>
     </button>
 </div>
@@ -22,8 +22,15 @@
                 onkeypress="return this.value.length < 10;"
                 oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }">
         </mat-form-field>
-          
+
         <mat-form-field appearance="fill" class="margin_top">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="institute_email">
+        </mat-form-field>
+
+    </div>
+    <div class="add_box">
+        <mat-form-field appearance="fill">
             <mat-label>password</mat-label>
             <input type="password" [type]="hide ?'password' : 'text'" matInput formControlName="institute_password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -32,8 +39,6 @@
             </button>
         </mat-form-field>
 
-    </div>
-    <div class="add_box">
         <mat-form-field appearance="fill">
             <mat-label>Country</mat-label>
             <mat-select disableRipple formControlName="institute_country">
@@ -52,7 +57,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="margin_top">
             <mat-label>District</mat-label>
             <mat-select disableRipple formControlName="institute_distt">
                 <mat-option value="1">Vaisahli</mat-option>
@@ -61,10 +66,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="margin_top">
-            <mat-label>Address</mat-label>
-            <textarea matInput rows="4" cols="44" id="address" formControlName="institute_address"></textarea>
-        </mat-form-field>
+
 
     </div>
     <div class="add_box">
@@ -89,9 +91,11 @@
         </label>
     </div>
     <div class="add_box">
+
+
         <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="institute_email">
+            <mat-label>Address</mat-label>
+            <textarea matInput rows="4" cols="44" id="address" formControlName="institute_address"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -119,5 +123,6 @@
 <span class="btn_box">
     <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
 
-    <button class="add_btn" mat-raised-button color="primary" (click)="addInst()">Submit</button>
+    <button class="add_btn" mat-raised-button color="primary" (click)="addInst()"
+        [disabled]="!InstForm.valid">Submit</button>
 </span>

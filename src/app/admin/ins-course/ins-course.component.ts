@@ -11,13 +11,13 @@ export interface UserData {
   institute_owner: string;
   institute_whatsapp: number
   institute_email: string
-  institute_course: number
+  total_course: number
 }
 
 const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
 ];
 
 @Component({
@@ -26,7 +26,7 @@ const UserData: UserData[] = [
   styleUrls: ['./ins-course.component.css']
 })
 export class InsCourseComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_course',];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','total_course',];
   dataSource!: MatTableDataSource<UserData>;
 
 

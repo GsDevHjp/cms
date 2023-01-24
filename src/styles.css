@@ -58,7 +58,7 @@ body {
     border-bottom: 1px solid #1d1f23;
     outline: none;
     padding: 5px;
-    background-color: whitesmoke;
+    background-color: rgb(184, 81, 81);
     position: relative;
     top: -2px;
 }
