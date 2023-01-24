@@ -16,17 +16,19 @@
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father Name</mat-label>
-                        <input matInput formControlName="father_name">
+                        <input matInput formControlName="std_father_name">
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father Occupation</mat-label>
-                        <input matInput formControlName="father_occupation">
+                        <input matInput formControlName="std_father_occupation">
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Mobile</mat-label>
-                        <input type="number" matInput formControlName="mobile">
+                        <input formControlName="std_mobile" matInput type="number"
+                        onkeypress=" return this.value.length < 10"
+                        oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
                     </mat-form-field>
 
                 </table>
@@ -51,7 +53,7 @@
 
                     <div class="gender">
                         <mat-label>Gender : </mat-label>&nbsp;
-                        <input type="radio" name="gen" value="male">
+                        <input type="radio" name="gen" value="male" checked>
                         <mat-label>Male</mat-label> &nbsp;
                         <input type="radio" name="gen" value="Female">
                         <mat-label>Female</mat-label>
@@ -84,7 +86,7 @@
                 <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Date</mat-label>
-                        <input type="date" matInput formControlName formControlName="enq_date">
+                        <input type="date" matInput formControlName formControlName="std_date">
                     </mat-form-field>
                 </table>
 
@@ -96,9 +98,9 @@
             </div>
         </div>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" id="address">
             <mat-label>Address</mat-label>
-            <textarea matInput formControlName="address"></textarea>
+            <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
 
     </form>

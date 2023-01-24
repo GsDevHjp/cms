@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 export interface Userdata {
   id: number;
-  std_id: number;
+  std_id: string;
   std_name: string;
   std_mobile: number;
   course: string;
@@ -16,15 +16,11 @@ export interface Userdata {
 }
 
 const Userdata: Userdata[] = [
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id: 2, std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  
+  {id: 1, std_id:'GS2301202301' , std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
+  {id: 1, std_id:'GS2301202302' , std_name: 'Akhilesh Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
+  {id: 1, std_id:'GS2301202303' , std_name: 'Ayush Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
+  {id: 1, std_id:'GS2301202304' , std_name: 'Prince Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
+ 
 ];
 @Component({
   selector: 'app-admission',
@@ -35,7 +31,7 @@ const Userdata: Userdata[] = [
 export class AdmissionComponent implements OnInit {
   displayedColumns: string[] = ['id', 'std_id', 'std_name', 'std_mobile','course','batch','date','status', 'action'];
   dataSource = new MatTableDataSource(Userdata);
-  std_count: string="0"
+  count_admission:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;

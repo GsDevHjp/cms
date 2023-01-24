@@ -7,7 +7,7 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditBatchComponent } from '../add-edit-batch/add-edit-batch.component';
 export interface Userdata {
   id: number;
-  std_email:string;
+  std_email: string;
   batch_name: string;
   mobile: number;
   batch_select: string;
@@ -17,16 +17,9 @@ export interface Userdata {
 }
 
 const Userdata: Userdata[] = [
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  {id: 1, std_email:'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select:'BCA',batch_to:'00:08 PM',batch_date:'20-02-2023',batch_form:'00:07 AM'},
-  
+  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
+  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Ayush Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
+  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
 ];
 @Component({
   selector: 'app-batch',
@@ -36,12 +29,12 @@ const Userdata: Userdata[] = [
 export class BatchComponent implements OnInit {
   displayedColumns: string[] = ['batch_id', 'batch_name', 'batch_select', 'batch_date', 'batch_form', 'batch_to', 'action'];
   dataSource = new MatTableDataSource(Userdata);
-  manage_count: any;
+  count_batch:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
 
-  constructor( 
+  constructor(
     private dailog: MatDialog,
     private router: Router
   ) {

@@ -12,7 +12,7 @@ export class AddEditCourseComponent implements OnInit {
   course_form!: FormGroup;
   admin = 1;
   upload: any;
-  actionBtn: string = 'Submit'
+  actionBtn: string = 'Add'
 
   constructor(
     private fb: FormBuilder,
@@ -26,12 +26,12 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form = this.fb.group({
       course_id: [''],
       course_name: ['', Validators.required],
-      admission_fee: ['', Validators.required],
-      course_duration: ['', Validators.required],
-      half_fee: ['', Validators.required],
+      course_fee_half: [''],
+      course_fee: ['', Validators.required],
       course_monthly: ['', Validators.required],
-      course_date: ['', Validators.required],
-      total_fee: ['', Validators.required],
+      course_duration: ['', Validators.required],
+      course_date: [''],
+      course_total_fee: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));

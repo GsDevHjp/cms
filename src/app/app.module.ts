@@ -64,9 +64,6 @@ import { InsadmissionComponent } from './admin/insadmission/insadmission.compone
 import { ReceivedformComponent } from './admin/receivedform/receivedform.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

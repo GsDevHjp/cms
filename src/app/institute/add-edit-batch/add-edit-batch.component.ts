@@ -13,7 +13,7 @@ export class AddEditBatchComponent implements OnInit {
   batch_form!: FormGroup;
   admin = 1;
   upload: any;
-  actionBtn: string = 'Submit'
+  actionBtn: string = 'Add'
 
 
   constructor(
@@ -31,10 +31,10 @@ export class AddEditBatchComponent implements OnInit {
       batch_id: [''],
       batch_name: ['', Validators.required],
       batch_select: ['', Validators.required],
-      start_batch: ['', Validators.required],
-      batch_date: ['', Validators.required],
-      batch_form: ['', Validators.required],
-      batch_to: ['', Validators.required],
+      batch_start: ['', Validators.required],
+      batch_date: [''],
+      batch_arrival: ['', Validators.required],
+      batch_departure: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.batch_form.controls['batch_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -46,10 +46,10 @@ export class AddEditBatchComponent implements OnInit {
       this.batch_form.controls['batch_id'].setValue(this.edit_batch.batch_id);
       this.batch_form.controls['batch_name'].setValue(this.edit_batch.batch_name);
       this.batch_form.controls['batch_select'].setValue(this.edit_batch.batch_select);
-      this.batch_form.controls['start_batch'].setValue(this.edit_batch.start_batch);
+      this.batch_form.controls['batch_start'].setValue(this.edit_batch.batch_start);
       this.batch_form.controls['batch_date'].setValue(this.edit_batch.batch_date);
-      this.batch_form.controls['batch_form'].setValue(this.edit_batch.batch_form);
-      this.batch_form.controls['batch_to'].setValue(this.edit_batch.batch_to);
+      this.batch_form.controls['batch_arrival'].setValue(this.edit_batch.batch_arrival);
+      this.batch_form.controls['batch_departure'].setValue(this.edit_batch.batch_departure);
       this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
     }
   }
