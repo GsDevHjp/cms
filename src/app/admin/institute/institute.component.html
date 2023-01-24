@@ -60,8 +60,8 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight" ></tr>
 
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
