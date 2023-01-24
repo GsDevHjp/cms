@@ -37,12 +37,6 @@ body {
     box-sizing: border-box;
 }
 
-
-#add_course {
-    cursor: pointer;
-    font-size: 22px;
-}
-
 .count_area {
     height: 40px;
     width: 100%;
@@ -53,7 +47,7 @@ body {
     color: #1d1f23;
 }
 
-.search_box {
+#search_box {
     border: none;
     border-bottom: 1px solid #1d1f23;
     outline: none;

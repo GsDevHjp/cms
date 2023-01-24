@@ -3,78 +3,46 @@
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
-<form [formGroup]="course_form"> 
+<form [formGroup]="course_form">
 
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Course</mat-label>
-                    <input matInput formControlName="course_name">
-                </mat-form-field>
-            </td>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="course_name">
+        </mat-form-field>
 
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Half Fee</mat-label>
-                    <input type="text" matInput formControlName="admission_fee">
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Half Fee</mat-label>
+            <input type="text" matInput formControlName="course_fee_half">
+        </mat-form-field><br>
 
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Admission Fee</mat-label>
-                    <input type="text" matInput formControlName="course_duration">
-                </mat-form-field>
-            </td>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Course Fee</mat-label>
+            <input type="text" matInput formControlName="course_fee">
+        </mat-form-field>
 
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Monthly</mat-label>
-                    <input type="text" matInput formControlName="half_fee">
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Monthly</mat-label>
+            <input type="text" matInput formControlName="course_monthly">
+        </mat-form-field><br>
 
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Duration</mat-label>
-                    <input type="text" matInput formControlName="course_monthly">
-                </mat-form-field>
-            </td>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Duration</mat-label>
+            <input type="text" matInput formControlName="course_duration">
+        </mat-form-field>
 
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Date</mat-label>
-                    <input type="date" matInput formControlName="course_date">
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="course_date">
+        </mat-form-field><br>
 
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Total Fee</mat-label>
-                    <input type="text" matInput formControlName="total_fee">
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
+        <mat-form-field class="example-full-width" id="total" appearance="fill">
+            <mat-label>Total Fee</mat-label>
+            <input type="text" matInput formControlName="course_total_fee">
+        </mat-form-field>
 
-    <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
 </form>
 
 <div class="submit">
-    <button mat-raised-button color="warn" >Reset</button>
-    <button mat-raised-button color="primary" 
-    [disabled]="!course_form.valid">{{actionBtn}}</button>
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" [disabled]="!course_form.valid">{{actionBtn}}</button>
 </div>

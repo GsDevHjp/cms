@@ -19,11 +19,6 @@ export interface Userdata {
 const Userdata: Userdata[] = [
   {id: 1, std_email:'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
   {id: 1, std_email: 'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
-  {id: 1, std_email: 'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
-  {id: 1, std_email: 'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
-  {id: 1, std_email: 'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
-  {id: 1, std_email: 'abc@gmail.com', std_name: 'Amarjeet Kumar', mobile: 9856232154, std_state:'Bihar',std_district:'Vaishali',enq_date:'20-02-2023',std_aadhar_no:986532125478},
-  
 ];
 @Component({
   selector: 'app-student',
@@ -32,9 +27,9 @@ const Userdata: Userdata[] = [
 })
 export class StudentComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'std_name', 'mobile', 'std_aadhar_no', 'std_email', 'std_state', 'std_district', 'enq_date', 'std_photo', 'action'];
+  displayedColumns: string[] = ['id', 'std_name', 'mobile', 'std_aadhar_no', 'std_email', 'enq_date', 'std_photo', 'action'];
   dataSource = new MatTableDataSource(Userdata);
-  std_count: string='0'
+  count_student:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;

@@ -38,7 +38,7 @@
 
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Start Batch</mat-label>
-        <mat-select formControlName="start_batch">
+        <mat-select formControlName="batch_start">
             <mat-option value="Yet to start">Yet to start</mat-option>
             <mat-option value="Running">Running</mat-option>
             <mat-option value="Completed">Completed</mat-option>
@@ -58,14 +58,14 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Arrival</mat-label>
-        <input type="time" matInput formControlName="batch_form">
+        <input type="time" matInput formControlName="batch_arrival">
     </mat-form-field>
 
     <!-- ---------------------------------------------Departure----------------------------------------------------->
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Departure</mat-label>
-        <input type="time" matInput formControlName="batch_to">
+        <input type="time" matInput formControlName="batch_departure">
     </mat-form-field>
 
     <!-- ---------------------------------------------Admin Id Fk----------------------------------------------------->

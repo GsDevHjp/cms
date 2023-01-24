@@ -63,9 +63,6 @@ import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

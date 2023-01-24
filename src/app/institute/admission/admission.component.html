@@ -4,9 +4,9 @@
   <span class="admission_text">Admission Details</span>
 </div>
 <div class="count_area">
-  <span class="notice_text">Total : {{std_count}}</span>
+  <span class="notice_text">Total : {{count_admission}}</span>
   <div class="search">
-    <input type="text" placeholder="Search" class="search_box" matInput (keyup)="applyFilter($event)" #input>
+    <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
   </div>
 </div>
 
@@ -74,12 +74,12 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon class="std_cursor">check_box</mat-icon>
+        <mat-icon style="cursor: pointer;">check_box</mat-icon>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>

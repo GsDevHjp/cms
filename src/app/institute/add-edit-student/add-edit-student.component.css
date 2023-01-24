@@ -45,7 +45,10 @@
   .gender:hover {
     border-bottom: 1px solid black;
   }
-  
+  #address{
+    width: 97%;
+    margin-left: 1.5%;
+  }
   textarea {
     height: 17px;
   }
@@ -56,7 +59,7 @@
   
   .photo {
     width: 100%;
-    height: 50px;
+    height: 51px;
     border-bottom: 1px solid #757272;
     background-color: whitesmoke;
   }
@@ -66,13 +69,12 @@
   }
   
   .upload {
-    width: 80%;
-    margin-top: 5px;
+    font-size: 9.5px;
     margin-left: 10px;
   }
   
   .submit {
-    margin-left: 39%;
+    margin-left: 40%;
   }
   
   button {
