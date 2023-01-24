@@ -131,9 +131,7 @@ import { InsadmissionComponent } from './admin/insadmission/insadmission.compone
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSelectModule,
-
-    
+    MatSelectModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]
