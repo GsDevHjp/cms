@@ -10,13 +10,13 @@ export interface UserData {
   institute_owner: string;
   institute_whatsapp: number
   institute_email: string
-  institute_course: number
+  institute_address: string
+  total_student: number
 }
 
 const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com',institute_address:'Hajipur,Bihar',total_student: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com',institute_address:'Hajipur,Bihar',total_student: 50 },
 ];
 @Component({
   selector: 'app-insstudent',
@@ -25,7 +25,7 @@ const UserData: UserData[] = [
 })
 export class InsstudentComponent implements OnInit {
 
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_course',];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_address','total_student',];
   dataSource!: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

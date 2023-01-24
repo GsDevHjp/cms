@@ -61,6 +61,7 @@ import { ViewportComponent } from './admin/viewport/viewport.component';
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
 import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
+import { ReceivedformComponent } from './admin/receivedform/receivedform.component';
 
 
 @NgModule({
@@ -110,6 +111,7 @@ import { InsadmissionComponent } from './admin/insadmission/insadmission.compone
     InsbatchComponent,
     InsstudentComponent,
     InsadmissionComponent,
+    ReceivedformComponent,
   ],
   imports: [
     BrowserModule,
