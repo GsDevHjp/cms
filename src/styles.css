@@ -1,17 +1,136 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-::-webkit-scrollbar{
-    width:5px;
-    background-color:#525458;
+html,
+body {
+    height: 100%;
 }
 
-.mat-menu-content:not(:empty){
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    cursor: default;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #525458;
+}
+
+.mat-menu-content:not(:empty) {
     background-color: #1d1f23;
     width: 150px;
 }
 
-.mat-menu-panel{
+.mat-menu-panel {
     margin-top: 15px;
+}
+
+/* for table  */
+.head {
+    height: 40px;
+    width: 100%;
+    background-color: #1d1f23;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.count_area {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #1d1f23;
+}
+
+#search_box {
+    border: none;
+    border-bottom: 1px solid #1d1f23;
+    outline: none;
+    padding: 5px;
+    background-color: rgb(184, 81, 81);
+    position: relative;
+    top: -2px;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    color: aliceblue;
+    background-color: #1d1f23;
+}
+
+
+tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+    height: 40px;
+}
+
+tr:nth-child(odd) {
+    height: 40px;
+}
+
+tr:hover {
+    background-color: #494949;
+    color: aliceblue;
+}
+
+.mat-row:hover>.mat-cell {
+    color: white
+}
+#tbl_hight {
+    height: 40px;
+}
+
+/* /////////////////////////////////////////////////Media Quary Starting Here//////////////////////////////////////////////// */
+@media(min-width:420px) and (max-width:1080px) {
+    .mat-elevation-z8 {
+        overflow-x: auto;
+    }
+
+    .course_text {
+        font-size: 14px;
+    }
+
+    .count_area .notice_text {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 14px;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
+}
+
+@media (max-width:420px) {
+    .mat-elevation-z8 {
+        overflow-x: auto;
+    }
+
+    .course_text {
+        font-size: 10px;
+    }
+
+    .count_area .notice_text {
+        font-size: 10px;
+    }
+
+    td {
+        font-size: 11px;
+    }
+
+    mat-paginator {
+        position: absolute;
+        width: 100%;
+    }
 }

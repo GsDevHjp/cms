@@ -1,0 +1,66 @@
+<div class="head">
+    <span>Institute Admission</span>
+  </div>
+  <div class="count_area">
+    <span class="notice_text">Total : 10</span>
+    <div class="search">
+      <input type="text" placeholder="Search" class="search_box" matInput (keyup)="applyFilter($event)" #input>
+    </div>
+  </div>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="institute_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="institute_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Institute</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_name}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="institute_owner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner Name</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_owner}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="institute_whatsapp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Whatsapp</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_whatsapp}} </td>
+      </ng-container>
+  
+     <ng-container matColumnDef="institute_email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_email}} </td>
+      </ng-container>
+
+     <ng-container matColumnDef="institute_state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_state}} </td>
+      </ng-container>
+
+     <ng-container matColumnDef="institute_district">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
+        <td mat-cell *matCellDef="let row"> {{row.institute_district}} </td>
+      </ng-container>
+  
+    
+      <ng-container matColumnDef="total_admission">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Admission</th>
+        <td mat-cell *matCellDef="let row"style="cursor: pointer;"><a [routerLink]="['admission']">{{row.total_admission}}</a></td>
+      </ng-container>
+  
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
+  
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>

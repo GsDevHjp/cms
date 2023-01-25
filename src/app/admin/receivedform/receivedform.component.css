@@ -1,0 +1,160 @@
+::ng-deep .mat-dialog-container {
+    width: 500px;
+    background-color: rgb(244, 246, 247);
+}
+
+
+.add_head {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.add_head span {
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d1f23;
+}
+
+#close_btn {
+    width: 30px;
+    height: 30px;
+    background-color: #1d1f23;
+}
+
+#close_btn mat-icon {
+    position: relative;
+    bottom: 6px;
+}
+
+.add_box {
+    width: calc(100% - 51.6%);
+    margin-left: 6px;
+    height: auto;
+    float: left;
+}
+
+
+.mat-form-field {
+    width: 100%;
+}
+
+mat-form-field mat-icon {
+    color: rgb(244, 246, 247);
+}
+
+::placeholder {
+    color: #1d1f23;
+}
+
+.mat-input-element {
+    color: #1d1f23;
+}
+
+#inst_img {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    height: 52px;
+    border-radius: 4px 4px 0px 0px;
+    margin-top: 0px;
+    line-height: 26px;
+    margin-bottom: 19px;
+    background: #eaeced;
+    border-bottom: 1px solid grey;
+}
+
+#inst_img:hover {
+    border-bottom: 2px solid rgb(20, 20, 23);
+
+}
+
+textarea {
+    height: 15px;
+}
+
+.margin_top {
+    margin-top: 21px;
+}
+
+.btn_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add_btn {
+    margin-top: 28px;
+    width: 16%;
+}
+
+.reset_btn {
+    margin-right: 14px;
+    margin-top: 28px;
+    width: 16%;
+}
+
+@media (min-width:520px) and (max-width:968px) {
+    ::ng-deep .mat-dialog-container {
+        height: 380px;
+        overflow: auto;
+    }
+
+    .add_box {
+        width: calc(100% - 51.5%);
+    }
+
+    .margin_top {
+        margin-top: 0px;
+    }
+
+    .add_btn {
+        width: 16%;
+    }
+
+    .reset_btn {
+        width: 16%;
+    }
+}
+
+@media (min-width:420px) and (max-width:520px) {
+    ::ng-deep .mat-dialog-container {
+        height: 380px;
+        overflow: auto;
+    }
+
+    .add_box {
+        width: 100%;
+    }
+
+    .add_btn {
+        width: 26%;
+    }
+
+    .reset_btn {
+        width: 26%;
+    }
+
+}
+
+@media screen and (max-width:420px) {
+    ::ng-deep .mat-dialog-container {
+        height: 380px;
+        overflow: auto;
+    }
+
+    .add_box {
+        width: 100%;
+    }
+
+    .add_btn {
+        width: 26%;
+    }
+
+    .reset_btn {
+        width: 26%;
+    }
+}

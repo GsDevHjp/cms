@@ -88,7 +88,7 @@ mat-form-field mat-label {
 
 .icon_2 {
     position: relative;
-    top: 70px;
+    top: 67px;
     right: 4px;
 }
 
@@ -103,8 +103,13 @@ p {
     color: white;
     font-size: 20px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 15px;
+    cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.new_account {
+    font-size: 12px;
 }
 
 #footer {
@@ -162,6 +167,7 @@ span {
         width: 50px;
         margin-left: 120px;
     }
+
     .icon_1 {
         top: 40px;
         right: 11px;
@@ -174,6 +180,12 @@ span {
 
     p {
         font-size: 15px;
+    }
+
+    .new_account {
+        font-size: 10px;
+        position: relative;
+        bottom: 10px;
     }
 
     .action_login {

@@ -1,1 +1,60 @@
-<p>add-edit-payment-recived works!</p>
+<mat-toolbar>
+    <span class="example-spacer">Payment Received</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="enquiry_form">
+    <div id="main_area">
+        <div class="box">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="std_name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="mobile" matInput type="number" onkeypress=" return this.value.length < 10"
+                    oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Monthly</mat-label>
+                <mat-select formControlName="fee_month">
+                    <mat-option value="January">January</mat-option>
+                    <mat-option value="Febuary">Febuary</mat-option>
+                    <mat-option value="March">March</mat-option>
+                    <mat-option value="April">April</mat-option>
+                    <mat-option value="May">May</mat-option>
+                    <mat-option value="June">June</mat-option>
+                    <mat-option value="July">July</mat-option>
+                    <mat-option value="August">August</mat-option>
+                    <mat-option value="September">September</mat-option>
+                    <mat-option value="October">October</mat-option>
+                    <mat-option value="November">November</mat-option>
+                    <mat-option value="December">December</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="box">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input type="number" matInput formControlName="mobile">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date</mat-label>
+                <input type="date" matInput formControlName="enq_date">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="mobile">
+            </mat-form-field>
+
+        </div>
+    </div>
+</form>
+
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary">{{actionBtn}}</button>
+</div>

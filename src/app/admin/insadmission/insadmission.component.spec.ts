@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StdDuesComponent } from './std-dues.component';
+import { InsadmissionComponent } from './insadmission.component';
 
-describe('StdDuesComponent', () => {
-  let component: StdDuesComponent;
-  let fixture: ComponentFixture<StdDuesComponent>;
+describe('InsadmissionComponent', () => {
+  let component: InsadmissionComponent;
+  let fixture: ComponentFixture<InsadmissionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StdDuesComponent ]
+      declarations: [ InsadmissionComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StdDuesComponent);
+    fixture = TestBed.createComponent(InsadmissionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

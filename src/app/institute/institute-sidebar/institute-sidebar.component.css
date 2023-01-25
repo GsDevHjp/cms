@@ -11,9 +11,10 @@
 .title_text {
     color: whitesmoke;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
     position: relative;
     top: 20px;
-    margin-left: 55px;
 }
 
 .menu-button {
