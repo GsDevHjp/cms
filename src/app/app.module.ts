@@ -55,6 +55,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
 
 
 
@@ -100,7 +103,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     QuizeComponent,
     OnlineTestComponent,
     ResultComponent,
-    QueryComponent
+    QueryComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -119,6 +123,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatCheckboxModule
 
     
   ],
