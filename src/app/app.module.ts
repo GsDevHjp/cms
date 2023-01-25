@@ -55,6 +55,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
@@ -62,7 +63,6 @@ import { InsbatchComponent } from './admin/insbatch/insbatch.component';
 import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 import { ReceivedformComponent } from './admin/receivedform/receivedform.component';
-
 
 @NgModule({
   declarations: [
@@ -130,6 +130,7 @@ import { ReceivedformComponent } from './admin/receivedform/receivedform.compone
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     MatSelectModule,    
   ],
   providers: [],

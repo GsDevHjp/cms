@@ -1,0 +1,252 @@
+#wrapper{
+    width: 100%;
+    height: calc(100% - 65px);
+}
+#header{
+    width: 100%;
+    height: 90px;
+    list-style: none;
+} 
+#header .logo1 #text{
+    border-bottom:2px solid;
+    margin-left: 10px;
+
+}
+#header .logo1 i{
+    font-size: 25px;
+    margin-left: 10px;
+
+    
+}
+#header-logo-right{
+    width: 69%;
+    height: 100%;
+    float: right;
+}
+#header .logo1{
+    width: calc(100% - 70%);
+    height: 100%;
+    float: left;
+    font-family: 'Segoe UI', Tahoma,  Verdana, sans-serif;
+    font-size: 19px;
+    line-height: 90px;
+
+}
+#header .logo{
+    width:199px;
+    height: 100%;
+    float: right;
+    margin-right: 2px;
+    text-align: center;
+}
+
+#header .logo .mini{
+    width: 62px;
+    height: 65%;
+    justify-content: center;
+    line-height: 60px;
+    border: 2px solid gray;
+    color: rgb(63, 63, 223);
+    float: left;
+    margin: 8px 79px;
+    border-radius: 100%;
+    font-size: 22px;
+} 
+
+#header .logo .mini1{
+    width: 62px;
+    height: 65%;
+    justify-content: center;
+    line-height: 60px;
+    border: 2px solid gray;
+   color: red;
+    float: left;
+    margin: 8px 79px;
+    border-radius: 100%;
+    font-size: 22px;
+} 
+
+#header .logo .mini2{
+    width: 62px;
+    height: 65%;
+    justify-content: center;
+    line-height: 60px;
+    border: 2px solid gray;
+    color: #b8f133;
+    float: left;
+    margin: 7px 91px 30px 77px;
+    border-radius: 100%;
+    font-size: 22px;
+} 
+
+#laptopicon{
+    z-index:3; 
+    font-size: 38px; 
+    margin-right: 19px;
+    position: relative;
+
+    margin-top: 10px;
+
+}
+#qus1{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+    height: 300px;
+}
+.qus2{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 29px;
+    color: white;
+}
+.qus3{
+    margin-left: 10px;
+    margin-top: -29px;
+    line-height: 31px;
+}
+
+#content{
+    width: 100%;
+    height:calc(100% - 90px);
+}
+#left{
+    width:70%;
+    height:100%;
+
+    float: left;
+
+}
+#content #left #text{
+    width: 95%;
+    height: 50px;
+    border-bottom:2px solid;
+    margin-left: 10px;
+}
+
+#content #left input{
+    margin-left: 20px;
+    margin-left: 30px;
+}
+#content #left th{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+#right{
+    width: 30%;
+    height:100%;
+    background-color:#e6f2ff;
+    float: right;
+}
+#content #right #text{
+    width: 93%;
+    height: 50px;
+    border-bottom:2px solid;
+    margin-left: 10px;
+}
+
+#content #right #text i{
+    font-size: 25px;
+    line-height: 50px;
+}
+#content #right .box{
+    margin-left: 10px;
+}
+#colermanaga{
+    width: 100%;
+    height: 40px;
+    line-height: 39px;
+}
+.threecoler{
+    width: 20px;
+    height: 20px;
+    line-height: 50px;
+    margin: 10px 10px;
+    background-color: rgb(13, 8, 2);
+    margin-left: 11.5px;
+    float: left;
+    
+}
+
+.example-section {
+    margin: 16px 16px;
+  }
+
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 22px;
+    
+ 
+  }
+  button{
+    margin: 2px;
+    margin-left: 9px;
+    
+  }
+  .mat-raised-button {
+    min-width: none;
+    width: 20px;
+    display: war-flexbox;
+    margin-top: 9px;
+  }
+  .pausbuttom{
+    width: 94%;
+    height: 50px;
+    font-size: 19px;
+    color: white;
+    background-color:#ff3333;
+    border: none;
+    
+  }
+  .finishbuttom{
+    width: 94%;
+    height: 50px;
+    font-size: 19px;
+    margin-top: 10px;
+    color: white;
+    background-color:#00b33c;
+    border: none;
+  }
+
+  .mat-checkbox-inner-container{
+    background-color: rgb(81, 12, 12);
+  }
+
+  #bottam-icon{
+    width: calc(100% - 34%);
+    height: 50px;
+    border-top:2px solid gray;
+    position: absolute;
+    bottom: 0px;
+    margin-left: 10px;
+    margin-top: 8px;
+  }
+  #bottam-icon .mat-raised-button{
+    width: 91px;
+    height: 34px;
+    margin-top: 7px;
+    color:white;
+    background-color:#4da6ff;
+    
+
+  }
+
+  #bottam-icon .mat-raised-button .Preview{
+    width: 91px;
+    height: 29px;
+    line-height: 30px;
+    background-color: #8080ff;
+    
+
+  }
+  @media screen {
+    
+  }
+
+  
+  
