@@ -55,6 +55,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
@@ -77,7 +78,6 @@ import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edi
 import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
-
 
 @NgModule({
   declarations: [
@@ -160,6 +160,7 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     MatSelectModule,    
   ],
   providers: [],
