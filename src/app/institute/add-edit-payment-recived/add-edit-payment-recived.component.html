@@ -3,23 +3,51 @@
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
-<form [formGroup]="enquiry_form">
-    <div id="main_area">
-        <div class="box">
+<form [formGroup]="payment_form">
+   
             <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Name</mat-label>
-                <input matInput formControlName="std_name">
+                <mat-label>Student Name</mat-label>
+                <mat-select formControlName="std_id">
+                    <mat-option *ngFor="let std of student_data"
+                        [value]="std.std_id">{{std.std_name}}</mat-option>
+                </mat-select>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Mobile</mat-label>
-                <input formControlName="mobile" matInput type="number" onkeypress=" return this.value.length < 10"
+                <input formControlName="std_mobile" matInput type="number" onkeypress=" return this.value.length < 10"
                     oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="std_address"></textarea>
             </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Course</mat-label>
+                <mat-select formControlName="course_id">
+                    <mat-option *ngFor="let course of student_data"
+                        [value]="course.course_id">{{course.course_name}}</mat-option>
+                </mat-select>
+              </mat-form-field><br>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Batch</mat-label>
+                <mat-select formControlName="batch_id">
+                    <mat-option *ngFor="let batch of student_data"
+                        [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input type="number" matInput formControlName="payment_amount">
+              </mat-form-field><br>
 
             <mat-form-field appearance="fill">
                 <mat-label>Monthly</mat-label>
-                <mat-select formControlName="fee_month">
+                <mat-select formControlName="payment_month">
                     <mat-option value="January">January</mat-option>
                     <mat-option value="Febuary">Febuary</mat-option>
                     <mat-option value="March">March</mat-option>
@@ -34,24 +62,17 @@
                     <mat-option value="December">December</mat-option>
                 </mat-select>
             </mat-form-field>
-        </div>
-        <div class="box">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Amount</mat-label>
-                <input type="number" matInput formControlName="mobile">
-            </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Date</mat-label>
-                <input type="date" matInput formControlName="enq_date">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Description</mat-label>
-                <input matInput formControlName="mobile">
-            </mat-form-field>
+                <input type="date" matInput formControlName="payment_date">
+            </mat-form-field><br>
 
-        </div>
-    </div>
+            <mat-form-field class="example-full-width" appearance="fill" id="description">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="payment_description">
+            </mat-form-field>
+  
 </form>
 
 <div class="submit">

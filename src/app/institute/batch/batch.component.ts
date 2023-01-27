@@ -7,19 +7,20 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditBatchComponent } from '../add-edit-batch/add-edit-batch.component';
 export interface Userdata {
   id: number;
-  std_email: string;
   batch_name: string;
   mobile: number;
   batch_select: string;
   batch_to: string;
   batch_date: string;
   batch_form: string;
+  batch_total_std :number;
+  batch_status:string;
 }
 
 const Userdata: Userdata[] = [
-  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
-  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Ayush Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
-  { id: 1, std_email: 'abc@gmail.com', batch_name: 'Amarjeet Kumar', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' },
+  { id: 1, batch_name: 'Ayush', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' ,batch_total_std:200,batch_status:'Success'},
+  { id: 1, batch_name: 'Munna', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' ,batch_total_std:500,batch_status:'Pending'},
+  { id: 1, batch_name: 'Ayush', mobile: 9856232154, batch_select: 'BCA', batch_to: '00:08 PM', batch_date: '20-02-2023', batch_form: '00:07 AM' ,batch_total_std:100,batch_status:'Success'},
 ];
 @Component({
   selector: 'app-batch',
@@ -27,7 +28,7 @@ const Userdata: Userdata[] = [
   styleUrls: ['./batch.component.css']
 })
 export class BatchComponent implements OnInit {
-  displayedColumns: string[] = ['batch_id', 'batch_name', 'batch_select', 'batch_date', 'batch_form', 'batch_to', 'action'];
+  displayedColumns: string[] = ['batch_id', 'batch_name', 'batch_select', 'batch_date', 'batch_form', 'batch_to','batch_total_std', 'batch_status','action'];
   dataSource = new MatTableDataSource(Userdata);
   count_batch:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -8,25 +8,19 @@ import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-
 
 export interface Userdata {
   payment_id: number;
-  std_mobile: number;
   std_name: string;
-  half_fee: number;
-  payment_monthly: string;
+  std_mobile: number;
+  payment_course: string;
+  payment_batch: string;
   payment_date: string;
-  payment_amount: string;
+  payment_received_amount:number;
   payment_description: string;
 }
 
 const Userdata: Userdata[] = [
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
-  { payment_id: 0, std_mobile: 9865231245, std_name: 'Munna', half_fee: 750, payment_monthly: 'March', payment_date: '20-02-2023', payment_amount: 'Male', payment_description: 'hjp' },
- 
+ { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', payment_course:'MCA', payment_batch: 'HTML', payment_date: '20-02-2023', payment_received_amount: 480, payment_description: 'hjp' },
+ { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', payment_course:'MCA', payment_batch: 'HTML', payment_date: '20-02-2023', payment_received_amount: 480, payment_description: 'hjp' },
+ { payment_id: 0, std_mobile: 9865231245, std_name: 'Ayush', payment_course:'MCA', payment_batch: 'HTML', payment_date: '20-02-2023', payment_received_amount: 480, payment_description: 'hjp' },
 ];
 @Component({
   selector: 'app-payment-received',
@@ -35,12 +29,13 @@ const Userdata: Userdata[] = [
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_name', 'std_mobile', 'payment_monthly', 'payment_amount', 'payment_description', 'payment_date', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_name', 'std_mobile', 'payment_course', 'payment_batch','payment_received_amount', 'payment_description','payment_image', 'payment_date', 'action'];
   dataSource = new MatTableDataSource(Userdata);
   count_payment: number =0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
+  imgUrl:string = 'http://localhost/cms/src/assets/';
 
   constructor(
     private dailog: MatDialog,
