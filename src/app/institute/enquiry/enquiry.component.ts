@@ -9,20 +9,23 @@ import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-ad
 
 export interface Userdata {
   enq_id: number;
-  mobile: number;
-  std_name: string;
-  father_name:string;
+  enq_mobile: number;
+  enq_name: string;
+  enq_father_name:string;
   half_fee: number;
-  course: string;
+  course_id: string;
   enq_date: string;
   gender:string;
-  address:string;
+  enq_address:string;
 }
 
 const Userdata: Userdata[] = [
-  {enq_id: 1, mobile: 9865231245, std_name: 'Munna', father_name:'Kumar', half_fee:750,course:'MCA',enq_date:'20-02-2023',gender:'Male',address:'hjp'},
-  {enq_id: 1, mobile: 9865231245, std_name: 'Munna', father_name:'Kumar', half_fee:750,course:'MCA',enq_date:'20-02-2023',gender:'Male',address:'hjp'},
-  {enq_id: 1, mobile: 9865231245, std_name: 'Munna', father_name:'Kumar', half_fee:750,course:'MCA',enq_date:'20-02-2023',gender:'Male',address:'hjp'},
+  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
+  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
+  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
+  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
+  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
+  
 ];
 @Component({
   selector: 'app-enquiry',
@@ -30,7 +33,7 @@ const Userdata: Userdata[] = [
   styleUrls: ['./enquiry.component.css']
 })
 export class EnquiryComponent implements OnInit {
-  displayedColumns: string[] = ['enq_id', 'std_name', 'father_name', 'mobile', 'course', 'gender', 'address', 'enq_date', 'action'];
+  displayedColumns: string[] = ['enq_id', 'enq_name', 'enq_father_name', 'enq_mobile', 'course_id', 'gender', 'enq_address', 'enq_date', 'action'];
   dataSource = new MatTableDataSource(Userdata);
   count_enquiry: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -26,7 +26,7 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form = this.fb.group({
       course_id: [''],
       course_name: ['', Validators.required],
-      course_fee_half: [''],
+      course_half_fee: [''],
       course_fee: ['', Validators.required],
       course_monthly: ['', Validators.required],
       course_duration: ['', Validators.required],
@@ -36,5 +36,16 @@ export class AddEditCourseComponent implements OnInit {
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
 
+    if (this.edit_course) {
+      this.actionBtn = "Update";
+      this.course_form.controls['course_id'].setValue(this.edit_course.course_id);
+      this.course_form.controls['course_name'].setValue(this.edit_course.course_name);
+      this.course_form.controls['course_half_fee'].setValue(this.edit_course.course_half_fee);
+      this.course_form.controls['course_fee'].setValue(this.edit_course.course_fee);
+      this.course_form.controls['course_monthly'].setValue(this.edit_course.course_monthly);
+      this.course_form.controls['course_duration'].setValue(this.edit_course.course_duration);
+      this.course_form.controls['course_total_fee'].setValue(this.edit_course.course_total_fee);
+      this.course_form.controls['admin_id_fk'].setValue(this.edit_course.admin_id_fk);
+    }
   }
 }

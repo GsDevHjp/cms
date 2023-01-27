@@ -14,7 +14,7 @@ export class AddEditBatchComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-
+  course_data:any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +30,7 @@ export class AddEditBatchComponent implements OnInit {
     this.batch_form = this.fb.group({
       batch_id: [''],
       batch_name: ['', Validators.required],
-      batch_select: ['', Validators.required],
+      course_id: ['', Validators.required],
       batch_start: ['', Validators.required],
       batch_date: [''],
       batch_arrival: ['', Validators.required],
@@ -39,13 +39,11 @@ export class AddEditBatchComponent implements OnInit {
     })
     this.batch_form.controls['batch_date'].setValue(new Date().toISOString().slice(0, 10));
 
-    /////////////////////////////////////////////////// For The Edit Course Data ////////////////////////////////////////////////////////////////
-
     if (this.edit_batch) {
       this.actionBtn = "Update";
       this.batch_form.controls['batch_id'].setValue(this.edit_batch.batch_id);
       this.batch_form.controls['batch_name'].setValue(this.edit_batch.batch_name);
-      this.batch_form.controls['batch_select'].setValue(this.edit_batch.batch_select);
+      this.batch_form.controls['course_id'].setValue(this.edit_batch.course_id);
       this.batch_form.controls['batch_start'].setValue(this.edit_batch.batch_start);
       this.batch_form.controls['batch_date'].setValue(this.edit_batch.batch_date);
       this.batch_form.controls['batch_arrival'].setValue(this.edit_batch.batch_arrival);

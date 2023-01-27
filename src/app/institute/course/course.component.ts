@@ -8,20 +8,20 @@ import { AddEditCourseComponent } from '../add-edit-course/add-edit-course.compo
 
 export interface Userdata {
   course_id: number;
-  admission_fee: number;
+  course_fee: number;
   course_name: string;
   course_duration: number;
-  half_fee: number;
+  course_half_fee: number;
   course_monthly: number
   course_date: string;
-  total_fee: number;
+  course_total_fee: number;
 }
 
 const Userdata: Userdata[] = [
-  { course_id: 1, admission_fee: 9865, course_name: 'MCA', course_duration: 6, half_fee: 750, course_monthly: 6, course_date: '20-02-2023', total_fee: 56 },
-  { course_id: 1, admission_fee: 2569, course_name: 'BCA', course_duration: 9, half_fee: 750, course_monthly: 6, course_date: '20-02-2023', total_fee: 56 },
-  { course_id: 1, admission_fee: 2895, course_name: 'MCA', course_duration: 6, half_fee: 750, course_monthly: 6, course_date: '20-02-2023', total_fee: 56 },
-  { course_id: 1, admission_fee: 2785, course_name: 'MCA', course_duration: 6, half_fee: 750, course_monthly: 6, course_date: '20-02-2023', total_fee: 56 },
+  { course_id: 1, course_fee: 9865, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5586 },
+  { course_id: 1, course_fee: 2569, course_name: 'BCA', course_duration: 9, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5786 },
+  { course_id: 1, course_fee: 2895, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5986 },
+  { course_id: 1, course_fee: 2785, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 2556 },
 ];
 @Component({
   selector: 'app-course',
@@ -29,7 +29,7 @@ const Userdata: Userdata[] = [
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  displayedColumns: string[] = ['course_id', 'course_name', 'admission_fee', 'course_duration', 'half_fee', 'course_monthly', 'total_fee', 'course_date', 'action'];
+  displayedColumns: string[] = ['course_id', 'course_name', 'course_half_fee', 'course_fee', 'course_monthly', 'course_duration', 'course_date', 'course_total_fee', 'action'];
   dataSource = new MatTableDataSource(Userdata);
   count_course: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

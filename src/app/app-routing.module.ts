@@ -18,6 +18,14 @@ import { AdmissionComponent } from './institute/admission/admission.component';
 import { BatchComponent } from './institute/batch/batch.component';
 import { CourseComponent } from './institute/course/course.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
+import { InstBookComponent } from './institute/inst-book/inst-book.component';
+import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
+import { InstNotesComponent } from './institute/inst-notes/inst-notes.component';
+import { InstNotificationComponent } from './institute/inst-notification/inst-notification.component';
+import { InstQueryComponent } from './institute/inst-query/inst-query.component';
+import { InstQuestionBankComponent } from './institute/inst-question-bank/inst-question-bank.component';
+import { InstQuizComponent } from './institute/inst-quiz/inst-quiz.component';
+import { InstSyllabusComponent } from './institute/inst-syllabus/inst-syllabus.component';
 import { InstituteDashboardComponent } from './institute/institute-dashboard/institute-dashboard.component';
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
@@ -92,6 +100,13 @@ const routes: Routes = [
       { path: 'enquiry', component: EnquiryComponent },
       { path: 'paymentreceived', component: PaymentReceivedComponent },
       { path: 'dues', component: StdDuesComponent },
+      { path: 'instquiz', component: InstQuizComponent },
+      { path: 'instquery', component: InstQueryComponent },
+      { path: 'instnotification', component: InstNotificationComponent },
+      { path: 'instbook', component: InstBookComponent },
+      { path: 'instnotes', component: InstNotesComponent },
+      { path: 'instsyllabus', component: InstSyllabusComponent },
+      { path: 'instquestionbank', component: InstQuestionBankComponent },
     ]
   },
 

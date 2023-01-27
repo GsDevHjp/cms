@@ -10,30 +10,32 @@ import { Router,   } from '@angular/router';
 })
 export class AddEditPaymentRecivedComponent implements OnInit {
   disableSelect = new FormControl(false);
-  enquiry_form!: FormGroup;
+  payment_form!: FormGroup;
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
+  student_data: any;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public editenq: any,
-
   ) {  }
 
   ngOnInit(): void {
-    this.enquiry_form = this.fb.group({
-      enq_id: [''],
+    this.payment_form = this.fb.group({
+      std_id: [''],
       std_name: ['', Validators.required],
-      father_name: ['', Validators.required],
-      mobile: ['', Validators.required],
-      course: ['', Validators.required],
-      enq_date: ['', Validators.required],
-      // gender: ['', Validators.required],
-      address: ['', Validators.required],
+      std_mobile: ['', Validators.required],
+      std_address: ['', Validators.required],
+      course_id: ['', Validators.required],
+      batch_id: ['', Validators.required],
+      payment_amount: ['', Validators.required],
+      payment_month: ['', Validators.required],
+      payment_date: ['', Validators.required],
+      payment_description: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
-
+    this.payment_form.controls['payment_date'].setValue(new Date().toISOString().slice(0, 10));
   }
 }

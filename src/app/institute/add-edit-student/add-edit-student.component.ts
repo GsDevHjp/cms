@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-student',
@@ -16,9 +15,8 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private matref: MatDialogRef<AddEditStudentComponent>,
-    @Inject(MAT_DIALOG_DATA) public edit_std: any,
+    @Inject(MAT_DIALOG_DATA) public edit_std: any
 
   ) { }
   ngOnInit(): void {
@@ -40,5 +38,22 @@ export class AddEditStudentComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
     this.student_form.controls['std_date'].setValue(new Date().toISOString().slice(0, 10));
+
+    if (this.edit_std) {
+      this.ActionBtn = "Update";
+      this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
+      this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
+      this.student_form.controls['std_father_occupation'].setValue(this.edit_std.std_father_occupation);
+      this.student_form.controls['std_mobile'].setValue(this.edit_std.std_mobile);
+      this.student_form.controls['std_aadhar_no'].setValue(this.edit_std.std_aadhar_no);
+      this.student_form.controls['std_email'].setValue(this.edit_std.std_email);
+      this.student_form.controls['std_dob'].setValue(this.edit_std.std_dob);
+      this.student_form.controls['gender'].setValue(this.edit_std.gender);
+      this.student_form.controls['std_state'].setValue(this.edit_std.std_state);
+      this.student_form.controls['std_district'].setValue(this.edit_std.std_district);
+      this.student_form.controls['std_image'].setValue(this.edit_std.std_image);
+      this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
+      this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
+    }
   }
 }

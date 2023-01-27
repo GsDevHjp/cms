@@ -1,0 +1,46 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Question</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="batch_form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Question</mat-label>
+        <input matInput formControlName="quiz_question">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Option A</mat-label>
+        <input matInput formControlName="quiz_option_a">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Option B</mat-label>
+        <input matInput formControlName="quiz_option_b">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Option C</mat-label>
+        <input matInput formControlName="quiz_option_c">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Option D</mat-label>
+        <input matInput formControlName="quiz_option_d">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Answer</mat-label>
+        <input matInput formControlName="quiz_answer">
+    </mat-form-field><br>
+
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+</form>
+
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" (click)="batch_btn()"
+        [disabled]="!batch_form.valid">{{actionBtn}}</button>
+</div>
