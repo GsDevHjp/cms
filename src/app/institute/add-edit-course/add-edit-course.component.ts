@@ -17,12 +17,10 @@ export class AddEditCourseComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private ManageService:ManageService,
+    private service:ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
-  ) {
-    
-  }
+  ) {  }
 
   ngOnInit(): void {
     this.course_form = this.fb.group({
@@ -52,5 +50,40 @@ export class AddEditCourseComponent implements OnInit {
   }
   onAdd(){
     console.log(this.course_form.value)
+    if (!this.edit_course) {
+      if (this.course_form.valid) {
+        this.service.post_course(this.course_form.value).subscribe(
+          (result: any) => {
+            console.log(result)
+            this.matref.close();
+            this.course_form.reset();
+           alert('form successfully...')
+
+          },
+          (error: any) => {
+            console.log(error)
+            alert('data not insert')
+          }
+        )
+      }
+    }
+    else {
+      this.updateCourse()
+    }
+  }
+
+  updateCourse() {
+    this.service.put_course(this.course_form.value).subscribe({
+      next: (res) => {
+        console.log(res)
+        this.matref.close();
+       alert('data update successfully')
+
+      },
+      error: () => {
+        alert('data not update')
+      }
+
+    })
   }
 }
