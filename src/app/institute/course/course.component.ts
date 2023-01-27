@@ -23,15 +23,16 @@ export class CourseComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private sevivece:ManageService
+    private service:ManageService
   ) {  }
 
   ngOnInit(): void { 
-    this.sevivece.get_course().subscribe(
+    this.service.get_course().subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
+        this.count_course = res.data.length
       }
     )
   }
@@ -46,6 +47,21 @@ export class CourseComponent implements OnInit {
     this.dailog.open(AddEditCourseComponent, {
       data: row,
     });
+  }
+  course_delete(row: any) {
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('course_id', row.course_id);
+      this.service.course_delete(deldata).subscribe(
+        (res: any) => {
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+
   }
 
   applyFilter(event: Event) {
