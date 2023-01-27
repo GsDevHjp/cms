@@ -79,7 +79,6 @@ import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edi
 import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -165,7 +164,7 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     MatSlideToggleModule,
     MatCheckboxModule,
     MatSelectModule,    
-
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ManageService } from 'src/app/manage.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AddEditInstituteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editstd: any,
     private matref: MatDialogRef<AddEditInstituteComponent>,
     private FromBuilder: FormBuilder,
-
+    private manageservice :ManageService
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +66,15 @@ export class AddEditInstituteComponent implements OnInit {
     if (!this.editstd) {
       if (this.InstForm.valid) {
         console.log(this.InstForm.value)
-
+        // this.manageservice.Instpost(formdata).subscribe(
+        //   (result: any) => {
+        //     console.log(result)
+        //     alert("data  insert")
+        //   },
+        //   (error: any) => {
+        //     alert("Data not inster")
+        //   }
+        // )
       }
     }
   }
