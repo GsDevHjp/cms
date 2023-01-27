@@ -54,7 +54,7 @@ mat-form-field mat-icon {
     color: #1d1f23;
 }
 
-#inst_img {
+#inst_img, #doct_img {
     width: 100%;
     padding: 10px;
     cursor: pointer;

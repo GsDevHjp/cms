@@ -16,15 +16,15 @@ import { StudentDashboardComponent } from './student/student-dashboard/student-d
 import { StudentSidebarComponent } from './student/student-sidebar/student-sidebar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CourseComponent } from './institute/course/course.component';
 import { AddEditCourseComponent } from './institute/add-edit-course/add-edit-course.component';
 import { BatchComponent } from './institute/batch/batch.component';
@@ -55,13 +55,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
 import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 import { ReceivedformComponent } from './admin/receivedform/receivedform.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -133,7 +134,8 @@ import { ReceivedformComponent } from './admin/receivedform/receivedform.compone
     MatPaginatorModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSelectModule,    
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

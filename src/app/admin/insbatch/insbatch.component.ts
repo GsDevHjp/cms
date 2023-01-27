@@ -12,10 +12,11 @@ export interface UserData {
   institute_email: string
   institute_course: string
   total_batch: number
+  status:string
 }
 
 const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course:'maths',total_batch: 20 },
+  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', institute_course:'maths',total_batch: 20,status:'on' },
 ];
 
 @Component({
@@ -24,7 +25,7 @@ const UserData: UserData[] = [
   styleUrls: ['./insbatch.component.css']
 })
 export class InsbatchComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_course','total_batch'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_course','total_batch','status'];
   dataSource!: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

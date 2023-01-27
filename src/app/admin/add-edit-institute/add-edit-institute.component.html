@@ -59,7 +59,7 @@
 
         <mat-form-field appearance="fill" class="margin_top">
             <mat-label>District</mat-label>
-            <mat-select disableRipple formControlName="institute_distt">
+            <mat-select disableRipple formControlName="institute_dist">
                 <mat-option value="1">Vaisahli</mat-option>
                 <mat-option value="2">Chhapra</mat-option>
                 <mat-option value="3">Muzaffarpur</mat-option>
@@ -87,7 +87,7 @@
 
         <label for="inst_img">
             Institute logo
-            <input type="file" id="inst_img" (change)="OnUpload($event)" formControlName="institute_photo">
+            <input type="file" id="inst_img" (change)="OnInstUpload($event)" formControlName="institute_photo">
         </label>
     </div>
     <div class="add_box">
@@ -113,10 +113,13 @@
         </mat-form-field>
 
 
-        <label for="inst_img">
+        <label for="doct_img">
             Document Image
-            <input type="file" id="inst_img" (change)="OnUpload($event)" formControlName="document_photo">
+            <input type="file" id="doct_img" (change)="OnDoctUpload($event)" formControlName="document_photo">
         </label>
+
+        <input type="number"  readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
     </div>
 
 </form>
