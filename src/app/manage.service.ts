@@ -7,10 +7,9 @@ import { Injectable } from '@angular/core';
 export class ManageService {
 
   constructor(
-    
-
     private http: HttpClient
   ) { }
+  
   baseUrl: string ='https://greensoft.net.in/gscms/api/';
 
   get_course() {
