@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-add-edit-course',
@@ -16,6 +17,7 @@ export class AddEditCourseComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private ManageService:ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
   ) {
@@ -47,5 +49,8 @@ export class AddEditCourseComponent implements OnInit {
       this.course_form.controls['course_total_fee'].setValue(this.edit_course.course_total_fee);
       this.course_form.controls['admin_id_fk'].setValue(this.edit_course.admin_id_fk);
     }
+  }
+  onAdd(){
+    console.log(this.course_form.value)
   }
 }
