@@ -165,9 +165,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
+    MatSelectModule,   
     MatSelectModule,  
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
