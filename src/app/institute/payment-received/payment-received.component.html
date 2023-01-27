@@ -30,19 +30,29 @@
         <td mat-cell *matCellDef="let row"> {{row.std_mobile}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="payment_monthly">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly </th>
-        <td mat-cell *matCellDef="let row"> {{row.payment_monthly}} </td>
+      <ng-container matColumnDef="payment_course">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
+        <td mat-cell *matCellDef="let row"> {{row.payment_course}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="payment_amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
-        <td mat-cell *matCellDef="let row"> {{row.payment_amount}} </td>
+      <ng-container matColumnDef="payment_batch">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Batch </th>
+        <td mat-cell *matCellDef="let row"> {{row.payment_batch}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="payment_received_amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rec'd Amount </th>
+        <td mat-cell *matCellDef="let row"> {{row.payment_received_amount}} </td>
       </ng-container>
 
       <ng-container matColumnDef="payment_description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
         <td mat-cell *matCellDef="let row"> {{row.payment_description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="payment_image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+        <td mat-cell *matCellDef="let row"><img src="assets\login.png" width="40px" height="40px"></td>
       </ng-container>
 
       <ng-container matColumnDef="payment_date">

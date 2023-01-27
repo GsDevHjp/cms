@@ -13,13 +13,13 @@ export interface Userdata {
   batch: string;
   date: string;
   status: string;
+  std_roll:number;
 }
 
 const Userdata: Userdata[] = [
-  {id: 1, std_id:'GS2301202301' , std_name: 'Amarjeet Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id:'GS2301202302' , std_name: 'Akhilesh Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id:'GS2301202303' , std_name: 'Ayush Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
-  {id: 1, std_id:'GS2301202304' , std_name: 'Prince Kumar', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Null'},
+  {id: 1, std_id:'GS2301202301' , std_name: 'Amarjeet', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Success', std_roll:130},
+  {id: 1, std_id:'GS2301202302' , std_name: 'Sonu Kumar', std_mobile: 9856232154, course:'12th',batch:' HTML',date:'08-09-2022',status:'Pending', std_roll:130},
+  {id: 1, std_id:'GS2301202303' , std_name: 'Akhilesh', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Success', std_roll:130},
  
 ];
 @Component({
@@ -29,7 +29,7 @@ const Userdata: Userdata[] = [
 })
 
 export class AdmissionComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'std_id', 'std_name', 'std_mobile','course','batch','date','status', 'action'];
+  displayedColumns: string[] = ['id', 'std_id', 'std_name','std_roll', 'std_mobile','course','batch','date','status', 'action'];
   dataSource = new MatTableDataSource(Userdata);
   count_admission:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

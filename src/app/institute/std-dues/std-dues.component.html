@@ -19,6 +19,11 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+        <td mat-cell *matCellDef="let row"><img src="assets\main_back.jpeg" width="40px" height="40px"></td>
+      </ng-container>
+
       <ng-container matColumnDef="std_name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
           <td mat-cell *matCellDef="let row"> {{row.std_name}}</td>
@@ -42,11 +47,6 @@
       <ng-container matColumnDef="current_dues">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Dues </th>
           <td mat-cell *matCellDef="let row"> {{row.current_dues}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-          <td mat-cell *matCellDef="let row"> {{row.date}} </td>
       </ng-container>
 
       <ng-container matColumnDef="action">

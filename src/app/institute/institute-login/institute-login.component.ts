@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddEditInstituteComponent } from 'src/app/admin/add-edit-institute/add-edit-institute.component';
-
+import { AddEditRegistrationComponent } from '../add-edit-registration/add-edit-registration.component';
 @Component({
   selector: 'app-institute-login',
   templateUrl: './institute-login.component.html',
@@ -19,7 +18,7 @@ export class InstituteLoginComponent implements OnInit {
   }
 
   new_account(): any {
-    this.dailog.open(AddEditInstituteComponent, {
+    this.dailog.open(AddEditRegistrationComponent, {
       disableClose: true
     })
   }

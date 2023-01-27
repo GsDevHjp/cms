@@ -26,11 +26,9 @@
         <div class="box">
             <mat-form-field appearance="fill">
                 <mat-label>Course</mat-label>
-                <mat-select formControlName="enq_course">
-                    <mat-option value="DCA">DCA</mat-option>
-                    <mat-option value="Adca">ADCA</mat-option>
-                    <mat-option value="BCA">BCA</mat-option>
-                    <mat-option value="MCA">MCA</mat-option>
+                <mat-select formControlName="course_id">
+                    <mat-option *ngFor="let course of course_data"
+                        [value]="course.course_id">{{course.course_name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
