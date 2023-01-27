@@ -43,9 +43,12 @@
   }
   
   .gender:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid black;
   }
-  
+  #address{
+    width: 97%;
+    margin-left: 1.5%;
+  }
   textarea {
     height: 17px;
   }
@@ -56,7 +59,7 @@
   
   .photo {
     width: 100%;
-    height: 50px;
+    height: 51px;
     border-bottom: 1px solid #757272;
     background-color: whitesmoke;
   }
@@ -66,13 +69,12 @@
   }
   
   .upload {
-    width: 80%;
-    margin-top: 5px;
+    font-size: 9.5px;
     margin-left: 10px;
   }
   
   .submit {
-    margin-left: 39%;
+    margin-left: 40%;
   }
   
   button {
@@ -81,31 +83,28 @@
   
   @media(min-width:920px)and (max-width:1199px) {}
   
-  @media(min-width:768px)and (max-width:919px) {}
+  @media(min-width:768px)and (max-width:860px) {
+    .box {
+      height:auto;
+      width: 100%;
+      justify-content: center;
+    }
+  }
   
-  @media(min-width:420px)and (max-width:768px) {}
+  @media(min-width:420px)and (max-width:768px) {
+    .box {
+      height:auto;
+      width: 100%;
+      justify-content: center;
+    } 
+  }
   
   @media(max-width:420px) {
-    #wrapper{
-      border: 5px solid red;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    #main_area {
-      display: flex;
-      justify-content: center;
-    }
-  
     .box {
-      width: 140px;
+      height:auto;
+      width: 100%;
       justify-content: center;
-    }
-  
-    .gender {
-      font-size: 8px;
-    }
-  
+    } 
     .submit {
       margin-left: 20%;
     }

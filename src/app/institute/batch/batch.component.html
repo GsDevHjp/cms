@@ -1,50 +1,38 @@
-<!----------------------------------------------- Batch Table Start Here ------------------------------------------------------------>
 
 <div class="head">
     <span class="batch_text">Batch Details</span>
     <mat-icon id="add_batch" (click)="add_batch()">add_circle</mat-icon>
   </div>
   <div class="count_area">
-    <span class="notice_text">Total : {{manage_count}}</span>
+    <span class="notice_text">Total : {{count_batch}}</span>
     <div class="search">
-      <input type="text" placeholder="Search" class="search_box" matInput (keyup)="applyFilter($event)" #input>
+      <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
     </div>
   </div>
   
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-   
-  
-      <!----------------------------------------------- S.N. ----------------------------------------------------------->
-  
   
       <ng-container matColumnDef="batch_id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
         <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-      </ng-container>
-  
-      <!----------------------------------------------- Batch Name ---------------------------------------------------->
-  
+      </ng-container> 
   
       <ng-container matColumnDef="batch_name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_name}}</td>
       </ng-container>
   
-      <!----------------------------------------------- Select Course ----------------------------------------------------->
       <ng-container matColumnDef="batch_select">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_select}}</td>
       </ng-container>
-  
-      <!----------------------------------------------- Batch Date ----------------------------------------------------------->
-  
+    
       <ng-container matColumnDef="batch_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>BST Date </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_date}}</td>
       </ng-container>
   
-      <!----------------------------------------------- Batch Time ----------------------------------------------------->
       <ng-container matColumnDef="batch_form">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrival</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_form}}</td>
@@ -55,19 +43,26 @@
         <td mat-cell *matCellDef="let row"> {{row.batch_to}}</td>
       </ng-container>
   
-  
-      <!----------------------------------------------- Action --------------------------------------------------------->
-  
+      <ng-container matColumnDef="batch_total_std">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Student</th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_total_std}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="batch_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_status}}</td>
+      </ng-container>
+   
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
         <td mat-cell *matCellDef="let row">
           <mat-icon (click)="batch_edit(row)" style="cursor: pointer;">edit</mat-icon>
-          <mat-icon>delete</mat-icon>
+          <mat-icon style="cursor: pointer;">delete</mat-icon>
         </td>
       </ng-container>
   
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
   
       <!-- Row shown when there is no matching data. -->
   

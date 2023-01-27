@@ -8,7 +8,8 @@
             <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
         </mat-menu>
     </div>
-    <div id="main_area">
+    <div id="main">
+
         <mat-card class="example-card">
             <mat-card-header>
                 Institute Login
@@ -33,10 +34,14 @@
             <button mat-button class="action_login" mat-raised-button color="primary"
                 routerLink="/institutehome">Login</button>
             <p>Forgot Password</p>
+            <p class="new_account" (click)="new_account()">Create new Account</p>
+
         </mat-card>
+
+
     </div>
     <div id="footer">
-        <span>Developed By :- Green Soft</span>
-        <span class="green_soft">Version 0.01</span>
+        <span>Developed By Green Soft</span>
+        <span>Version 1.0</span>
     </div>
 </div>

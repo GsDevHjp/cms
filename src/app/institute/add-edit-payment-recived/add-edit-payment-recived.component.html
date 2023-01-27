@@ -1,1 +1,81 @@
-<p>add-edit-payment-recived works!</p>
+<mat-toolbar>
+    <span class="example-spacer">Payment Received</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="payment_form">
+   
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Student Name</mat-label>
+                <mat-select formControlName="std_id">
+                    <mat-option *ngFor="let std of student_data"
+                        [value]="std.std_id">{{std.std_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="std_mobile" matInput type="number" onkeypress=" return this.value.length < 10"
+                    oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="std_address"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Course</mat-label>
+                <mat-select formControlName="course_id">
+                    <mat-option *ngFor="let course of student_data"
+                        [value]="course.course_id">{{course.course_name}}</mat-option>
+                </mat-select>
+              </mat-form-field><br>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Batch</mat-label>
+                <mat-select formControlName="batch_id">
+                    <mat-option *ngFor="let batch of student_data"
+                        [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Amount</mat-label>
+                <input type="number" matInput formControlName="payment_amount">
+              </mat-form-field><br>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Monthly</mat-label>
+                <mat-select formControlName="payment_month">
+                    <mat-option value="January">January</mat-option>
+                    <mat-option value="Febuary">Febuary</mat-option>
+                    <mat-option value="March">March</mat-option>
+                    <mat-option value="April">April</mat-option>
+                    <mat-option value="May">May</mat-option>
+                    <mat-option value="June">June</mat-option>
+                    <mat-option value="July">July</mat-option>
+                    <mat-option value="August">August</mat-option>
+                    <mat-option value="September">September</mat-option>
+                    <mat-option value="October">October</mat-option>
+                    <mat-option value="November">November</mat-option>
+                    <mat-option value="December">December</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date</mat-label>
+                <input type="date" matInput formControlName="payment_date">
+            </mat-form-field><br>
+
+            <mat-form-field class="example-full-width" appearance="fill" id="description">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="payment_description">
+            </mat-form-field>
+  
+</form>
+
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary">{{actionBtn}}</button>
+</div>

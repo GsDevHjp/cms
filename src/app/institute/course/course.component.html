@@ -4,9 +4,9 @@
   <mat-icon id="add_course" (click)="add_course()">add_circle</mat-icon>
 </div>
 <div class="count_area">
-  <span class="notice_text">Total : {{course_count}}</span>
+  <span class="notice_text">Total : {{count_course}}</span>
   <div class="search">
-    <input type="text" placeholder="Search" class="search_box" matInput (keyup)="applyFilter($event)" #input>
+    <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
   </div>
 </div>
 
@@ -23,19 +23,14 @@
       <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="admission_fee">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Admission Fee</th>
-      <td mat-cell *matCellDef="let row"> {{row.admission_fee}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="course_duration">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
-      <td mat-cell *matCellDef="let row"> {{row.course_duration}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="half_fee">
+    <ng-container matColumnDef="course_half_fee">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Half Fee </th>
-      <td mat-cell *matCellDef="let row"> {{row.half_fee}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.course_half_fee}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Fee</th>
+      <td mat-cell *matCellDef="let row"> {{row.course_fee}} </td>
     </ng-container>
 
     <ng-container matColumnDef="course_monthly">
@@ -43,9 +38,9 @@
       <td mat-cell *matCellDef="let row"> {{row.course_monthly}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="total_fee">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fee </th>
-      <td mat-cell *matCellDef="let row"> {{row.total_fee}} </td>
+    <ng-container matColumnDef="course_duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_duration}} </td>
     </ng-container>
 
     <ng-container matColumnDef="course_date">
@@ -53,15 +48,20 @@
       <td mat-cell *matCellDef="let row"> {{row.course_date}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="course_total_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fee </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_total_fee}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon style="cursor: pointer;">edit</mat-icon>
+        <mat-icon style="cursor: pointer;" (click)="course_edit(row)">edit</mat-icon>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
 
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>

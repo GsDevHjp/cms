@@ -1,0 +1,108 @@
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+  }
+  
+  .material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+  }
+  
+  mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+  }
+  
+  .box {
+    width: 200px;
+    height: 100%;
+    margin-left: 10px;
+    float: left;
+  }
+  
+  .box:last-child {
+    margin-right: 10px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  .adr{
+    width: 95.2%;
+    margin-left: 2%;
+  }
+  textarea {
+    height: 17px;
+  }
+  
+  .gender {
+    width: 100%;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #757272;
+    padding: 12px 10px 19px;
+  }
+  
+  .gender:hover {
+    border-bottom: 1px solid black;
+  }
+  
+  .submit {
+    margin-left: 31.5%;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  
+  
+  @media(min-width:920px)and (max-width:1199px) {}
+  
+  @media(min-width:768px)and (max-width:919px) {}
+  
+  @media(min-width:420px)and (max-width:768px) {
+    #main_area {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .box {
+      width: 155px;
+    }
+  
+    .gender {
+      font-size: 10.5px;
+    }
+  
+    .submit {
+      margin-left: 28%;
+    }
+  }
+  
+  @media(max-width:420px) {
+    #main_area {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .box {
+      width: 140px;
+    }
+  
+    .gender {
+      font-size: 8px;
+    }
+  
+    .submit {
+      margin-left: 20%;
+    }
+  }

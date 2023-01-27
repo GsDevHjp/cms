@@ -1,1 +1,59 @@
-<p>add-edit-enquiry works!</p>
+<mat-toolbar>
+    <span class="example-spacer">Add Enquiry</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="enquiry_form">
+    <div id="main_area">
+        <div class="box">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="enq_name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Father Name</mat-label>
+                <input matInput formControlName="enq_father_name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="enq_mobile" matInput type="number" onkeypress=" return this.value.length < 10"
+                    oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+            </mat-form-field>
+        </div>
+
+        <div class="box">
+            <mat-form-field appearance="fill">
+                <mat-label>Course</mat-label>
+                <mat-select formControlName="course_id">
+                    <mat-option *ngFor="let course of course_data"
+                        [value]="course.course_id">{{course.course_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date</mat-label>
+                <input type="date" matInput formControlName="enq_date">
+            </mat-form-field>
+
+            <div class="gender">
+                Gender :
+                <input type="radio" checked="" name="gen" value="male" checked> Male
+                <input type="radio" name="gen" value="female"> Female
+            </div>
+        </div>
+    </div>
+    <mat-form-field appearance="fill" class="adr">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="enq_address"></textarea>
+    </mat-form-field>
+
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+    <input type="number" formControlName="enq_id" readonly hidden>
+</form>
+
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" [disabled]="!enquiry_form.valid">{{actionBtn}}</button>
+</div>

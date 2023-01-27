@@ -56,6 +56,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
@@ -63,10 +64,21 @@ import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 import { ReceivedformComponent } from './admin/receivedform/receivedform.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
-
-
-
+import { InstQuizComponent } from './institute/inst-quiz/inst-quiz.component';
+import { AddEditInstQuizComponent } from './institute/add-edit-inst-quiz/add-edit-inst-quiz.component';
+import { InstQueryComponent } from './institute/inst-query/inst-query.component';
+import { InstNotificationComponent } from './institute/inst-notification/inst-notification.component';
+import { AddEditInstNotificationComponent } from './institute/add-edit-inst-notification/add-edit-inst-notification.component';
+import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
+import { InstBookComponent } from './institute/inst-book/inst-book.component';
+import { InstNotesComponent } from './institute/inst-notes/inst-notes.component';
+import { InstSyllabusComponent } from './institute/inst-syllabus/inst-syllabus.component';
+import { InstQuestionBankComponent } from './institute/inst-question-bank/inst-question-bank.component';
+import { AddEditInstQuestionBankComponent } from './institute/add-edit-inst-question-bank/add-edit-inst-question-bank.component';
+import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edit-inst-book.component';
+import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
+import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
+import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +128,21 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     InsstudentComponent,
     InsadmissionComponent,
     ReceivedformComponent,
+    InstQuizComponent,
+    AddEditInstQuizComponent,
+    InstQueryComponent,
+    InstNotificationComponent,
+    AddEditInstNotificationComponent,
+    InstChangePasswordComponent,
+    InstBookComponent,
+    InstNotesComponent,
+    InstSyllabusComponent,
+    InstQuestionBankComponent,
+    AddEditInstQuestionBankComponent,
+    AddEditInstBookComponent,
+    AddEditInstNotesComponent,
+    AddEditInstSyllabusComponent,
+    AddEditRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,7 +162,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatDialogModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatSelectModule,    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
