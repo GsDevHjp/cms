@@ -79,6 +79,7 @@ import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edi
 import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,6 +143,7 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     AddEditInstNotesComponent,
     AddEditInstSyllabusComponent,
     AddEditRegistrationComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -163,8 +165,9 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
-    MatSelectModule,    
-    
+    MatSelectModule,   
+    MatSelectModule,  
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
