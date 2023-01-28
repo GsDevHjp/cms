@@ -79,6 +79,11 @@ import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edi
 import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
+import { StdRegComponent } from './student/std-reg/std-reg.component';
+import { StdQueryComponent } from './student/std-query/std-query.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -145,7 +150,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddEditInstNotesComponent,
     AddEditInstSyllabusComponent,
     AddEditRegistrationComponent,
-    
+    StdRegComponent,
+    StdQueryComponent,
+    StdChnangePwdComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -167,6 +175,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
+    MatSelectModule, 
+    MatRadioModule,   
     MatSelectModule,   
     MatSelectModule,  
     HttpClientModule, FontAwesomeModule,
