@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router, } from '@angular/router';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-add-edit-batch',
@@ -19,6 +20,7 @@ export class AddEditBatchComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private service:ManageService,
     private matref: MatDialogRef<AddEditBatchComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_batch: any
   ) {
@@ -27,14 +29,20 @@ export class AddEditBatchComponent implements OnInit {
     };
   }
   ngOnInit(): void {
+    this.service.get_course().subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
+
     this.batch_form = this.fb.group({
       batch_id: [''],
       batch_name: ['', Validators.required],
-      course_id: ['', Validators.required],
-      batch_start: ['', Validators.required],
-      batch_date: [''],
-      batch_arrival: ['', Validators.required],
+      batch_status: ['', Validators.required],
+      batch_date: ['', Validators.required],
+      batch_arrival: ['',Validators.required],
       batch_departure: ['', Validators.required],
+      course_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.batch_form.controls['batch_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -43,15 +51,46 @@ export class AddEditBatchComponent implements OnInit {
       this.actionBtn = "Update";
       this.batch_form.controls['batch_id'].setValue(this.edit_batch.batch_id);
       this.batch_form.controls['batch_name'].setValue(this.edit_batch.batch_name);
-      this.batch_form.controls['course_id'].setValue(this.edit_batch.course_id);
-      this.batch_form.controls['batch_start'].setValue(this.edit_batch.batch_start);
+      this.batch_form.controls['batch_status'].setValue(this.edit_batch.batch_status);
       this.batch_form.controls['batch_date'].setValue(this.edit_batch.batch_date);
       this.batch_form.controls['batch_arrival'].setValue(this.edit_batch.batch_arrival);
       this.batch_form.controls['batch_departure'].setValue(this.edit_batch.batch_departure);
+      this.batch_form.controls['course_id_fk'].setValue(this.edit_batch.course_id_fk);
       this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
     }
   }
   batch_btn() {
-
+    console.log(this.batch_form.value)
+    if (!this.edit_batch) {
+      if (this.batch_form.valid) {
+    this.service.post_batch(this.batch_form.value).subscribe(
+      (res:any)=>{
+        console.log(res)
+        alert('form successfully...')
+      },
+      (error:any)=>{
+        console.log(error)
+        alert('data not insert')
+      }
+    )
   }
+}
+else {
+  this.updatebatch()
+}
+}
+
+updatebatch() {
+  this.service.put_batch(this.batch_form.value).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.matref.close();
+      alert('data update successfully');
+    },
+    error: (error: any) => {
+      console.log(error);
+      alert('data not update...');
+    },
+  });
+}
 }

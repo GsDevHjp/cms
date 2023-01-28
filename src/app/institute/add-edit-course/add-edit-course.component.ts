@@ -27,11 +27,12 @@ export class AddEditCourseComponent implements OnInit {
       course_id: [''],
       course_name: ['', Validators.required],
       course_half_fee: [''],
-      course_fee: ['', Validators.required],
+      course_admission_fee: ['', Validators.required],
       course_monthly: ['', Validators.required],
       course_duration: ['', Validators.required],
       course_date: [''],
       course_total_fee: ['', Validators.required],
+      course_quater_fee: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -85,5 +86,9 @@ export class AddEditCourseComponent implements OnInit {
       }
 
     })
+  }
+  total_clc(){
+    this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
+    this.course_form.controls['course_quater_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
   }
 }

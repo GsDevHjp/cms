@@ -52,6 +52,20 @@ export class BatchComponent implements OnInit {
       data: row,
     });
   }
+  batch_delete(row: any) {
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('batch_id', row.batch_id);
+      this.service.batch_delete(deldata).subscribe(
+        (res: any) => {
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

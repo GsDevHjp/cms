@@ -80,6 +80,8 @@ import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-e
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -167,7 +169,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatSelectModule,   
     MatSelectModule,  
-    HttpClientModule,
+    HttpClientModule, FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

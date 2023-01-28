@@ -11,47 +11,41 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Half Fee</mat-label>
-            <input type="number" matInput formControlName="course_half_fee">
+            <mat-label>Quater Fee</mat-label>
+            <input type="number" matInput formControlName="course_quater_fee">
         </mat-form-field><br>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Course Fee</mat-label>
-            <input type="number" matInput formControlName="course_fee">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Monthly</mat-label>
-            <mat-select formControlName="course_monthly">
-                <mat-option value="January">January</mat-option>
-                <mat-option value="Febuary">Febuary</mat-option>
-                <mat-option value="March">March</mat-option>
-                <mat-option value="April">April</mat-option>
-                <mat-option value="May">May</mat-option>
-                <mat-option value="June">June</mat-option>
-                <mat-option value="July">July</mat-option>
-                <mat-option value="August">August</mat-option>
-                <mat-option value="September">September</mat-option>
-                <mat-option value="October">October</mat-option>
-                <mat-option value="November">November</mat-option>
-                <mat-option value="December">December</mat-option>
-            </mat-select>
-        </mat-form-field><br>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Duration</mat-label>
-            <input type="text" matInput formControlName="course_duration">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Date</mat-label>
-            <input type="date" matInput formControlName="course_date">
-        </mat-form-field><br>
-
-        <mat-form-field class="example-full-width" id="total" appearance="fill">
+        <mat-form-field class="example-full-width" appearance="fill" (keyup)="total_clc()">
             <mat-label>Total Fee</mat-label>
             <input type="text" matInput formControlName="course_total_fee">
         </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Admission Fee</mat-label>
+            <input type="number" matInput formControlName="course_admission_fee">
+        </mat-form-field><br>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Half Fee</mat-label>
+            <input type="number" matInput formControlName="course_half_fee">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Duration(Month)</mat-label>
+            <input type="number" matInput formControlName="course_duration">
+        </mat-form-field><br>
+
+        <mat-form-field class="example-full-width" appearance="fill" hidden>
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="course_date" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" id="total">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="" >
+        </mat-form-field><br>
+
+       
         <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
 
 
