@@ -14,7 +14,8 @@ import { ManageService } from 'src/app/manage.service';
 
 
 export class InstituteComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity', 'institute_logo', 'action'];
+  imageUrl: string = 'assets/'
+  displayedColumns: string[] = ['inst_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity', 'institute_logo', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -22,20 +23,20 @@ export class InstituteComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
-    private manageservice:ManageService
+    private manageservice: ManageService
   ) {
 
   }
 
   ngOnInit(): void {
-    //  this.manageservice.institute_view().subscribe(
-    //   (instdata: any) => {
-    //     console.log(instdata)
-    //     this.dataSource = new MatTableDataSource(instdata.data);
-    //     this.dataSource.sort = this.sort;
-    //     this.dataSource.paginator = this.paginator;
-    //   }
-    // )
+    this.manageservice.institute_view().subscribe(
+      (instdata: any) => {
+        console.log(instdata)
+        this.dataSource = new MatTableDataSource(instdata.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      }
+    )
   }
 
   add_Institute() {
@@ -53,10 +54,28 @@ export class InstituteComponent implements OnInit {
     }
   }
 
-  edit_inst() {
+  edit_inst(row: any) {
     this.dailog.open(AddEditInstituteComponent, {
-      disableClose: true
+      data: row
     });
   }
+
+  deleteinst(row: any) {
+    if (confirm("Are You Sure To Delete")) {
+      const deletedata = new FormData();
+      deletedata.append('inst_id', row.inst_id);
+      this.manageservice.delete_inst(deletedata).subscribe(
+        (res: any) => {
+          alert('data delete successfully')
+        }
+      )
+
+    }
+    else {
+      alert('data not delete')
+    }
+
+  }
+
 
 }

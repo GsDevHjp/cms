@@ -56,7 +56,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
@@ -81,11 +81,9 @@ import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
 import { StdRegComponent } from './student/std-reg/std-reg.component';
 import { StdQueryComponent } from './student/std-query/std-query.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
-
 import { HttpClientModule } from '@angular/common/http';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -175,11 +173,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
-    MatSelectModule, 
-    MatRadioModule,   
-    MatSelectModule,   
-    MatSelectModule,  
-    HttpClientModule, FontAwesomeModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSelectModule,
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
