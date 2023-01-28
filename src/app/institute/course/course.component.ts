@@ -1,28 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditCourseComponent } from '../add-edit-course/add-edit-course.component';
+import { ManageService } from 'src/app/manage.service';
 
-export interface Userdata {
-  course_id: number;
-  course_fee: number;
-  course_name: string;
-  course_duration: number;
-  course_half_fee: number;
-  course_monthly: number
-  course_date: string;
-  course_total_fee: number;
-}
-
-const Userdata: Userdata[] = [
-  { course_id: 1, course_fee: 9865, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5586 },
-  { course_id: 1, course_fee: 2569, course_name: 'BCA', course_duration: 9, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5786 },
-  { course_id: 1, course_fee: 2895, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 5986 },
-  { course_id: 1, course_fee: 2785, course_name: 'MCA', course_duration: 6, course_half_fee: 750, course_monthly: 6, course_date: '20-02-2023', course_total_fee: 2556 },
-];
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -30,7 +14,7 @@ const Userdata: Userdata[] = [
 })
 export class CourseComponent implements OnInit {
   displayedColumns: string[] = ['course_id', 'course_name', 'course_half_fee', 'course_fee', 'course_monthly', 'course_duration', 'course_date', 'course_total_fee', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
+  dataSource = new MatTableDataSource();
   count_course: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -38,14 +22,20 @@ export class CourseComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
-  }
+    private router: Router,
+    private service:ManageService
+  ) {  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.service.get_course().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.count_course = res.data.length
+      }
+    )
+  }
 
   add_course() {
     this.dailog.open(AddEditCourseComponent, {
@@ -57,6 +47,21 @@ export class CourseComponent implements OnInit {
     this.dailog.open(AddEditCourseComponent, {
       data: row,
     });
+  }
+  course_delete(row: any) {
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('course_id', row.course_id);
+      this.service.course_delete(deldata).subscribe(
+        (res: any) => {
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+
   }
 
   applyFilter(event: Event) {

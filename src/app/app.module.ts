@@ -84,8 +84,7 @@ import { StdQueryComponent } from './student/std-query/std-query.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
 
-
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -152,6 +151,7 @@ import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pw
     StdRegComponent,
     StdQueryComponent,
     StdChnangePwdComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -175,7 +175,9 @@ import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pw
     MatCheckboxModule,
     MatSelectModule, 
     MatRadioModule,   
-
+    MatSelectModule,   
+    MatSelectModule,  
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

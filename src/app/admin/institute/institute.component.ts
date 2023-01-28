@@ -4,25 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditInstituteComponent } from '../add-edit-institute/add-edit-institute.component';
+import { ManageService } from 'src/app/manage.service';
 
-export interface UserData {
-  institute_id: number;
-  institute_name: string;
-  institute_owner: string;
-  institute_whatsapp: number;
-  institute_email: string;
-  institute_password: string;
-  institute_address: string;
-  institute_logo: string;
-  institute_identity: string;
-}
-
-const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_password: 'Rohit@123', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_logo: 'img.jpg', },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_password: 'Rohit@123', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_logo: 'img.jpg', },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit Kumar', institute_whatsapp: 9153637175, institute_email: 'gs@gmail.com', institute_password: 'Rohit@123', institute_address: 'hajipur', institute_identity: 'aaddhar', institute_logo: 'img.jpg', },
-
-]
 @Component({
   selector: 'app-institute',
   templateUrl: './institute.component.html',
@@ -32,20 +15,27 @@ const UserData: UserData[] = [
 
 export class InstituteComponent implements OnInit {
   displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity', 'institute_logo', 'action'];
-  dataSource!: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<any>;
 
-  // displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_mobile', 'institute_address','action'];
-  // dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private dailog: MatDialog,
+    private manageservice:ManageService
   ) {
-    this.dataSource = new MatTableDataSource(UserData);
+
   }
 
   ngOnInit(): void {
+    //  this.manageservice.institute_view().subscribe(
+    //   (instdata: any) => {
+    //     console.log(instdata)
+    //     this.dataSource = new MatTableDataSource(instdata.data);
+    //     this.dataSource.sort = this.sort;
+    //     this.dataSource.paginator = this.paginator;
+    //   }
+    // )
   }
 
   add_Institute() {
