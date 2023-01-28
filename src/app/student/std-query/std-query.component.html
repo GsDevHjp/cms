@@ -1,0 +1,24 @@
+<div class="add_head">
+    <span>Query</span>
+    <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<form [formGroup]="InstForm">
+  
+
+
+       <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label >Massage</mat-label>
+        <input type="Massage" matInput formControlName="course_date" style="color: #495057;">
+    </mat-form-field>
+        
+
+
+</form>
+<span class="btn_box">
+    <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
+
+    <button class="add_btn" mat-raised-button color="primary" (click)="addstd()"
+        [disabled]="!InstForm.valid">Submit</button>
+</span>
