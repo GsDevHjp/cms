@@ -94,7 +94,7 @@ export class AddEditInstituteComponent implements OnInit {
     if (!this.editinst) {
       if (this.InstForm.valid) {
         console.log(this.InstForm.value)
-        this.manageservice.instpost(formdata).subscribe(
+        this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
             console.log(result)
             alert("data  insert")
@@ -134,7 +134,7 @@ export class AddEditInstituteComponent implements OnInit {
     updatedata.append('inst_doct_number', this.InstForm.get('inst_doct_number')?.value)
     updatedata.append('inst_doct_img', this.InstForm.get('inst_doct_img')?.value)
     updatedata.append('admin_id_fk', this.InstForm.get('admin_id_fk')?.value)
-    this.manageservice.putinst(updatedata).subscribe({
+    this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
         alert('data update successfully')
