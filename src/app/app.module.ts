@@ -79,6 +79,12 @@ import { AddEditInstBookComponent } from './institute/add-edit-inst-book/add-edi
 import { AddEditInstNotesComponent } from './institute/add-edit-inst-notes/add-edit-inst-notes.component';
 import { AddEditInstSyllabusComponent } from './institute/add-edit-inst-syllabus/add-edit-inst-syllabus.component';
 import { AddEditRegistrationComponent } from './institute/add-edit-registration/add-edit-registration.component';
+import { StdRegComponent } from './student/std-reg/std-reg.component';
+import { StdQueryComponent } from './student/std-query/std-query.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
+
+
 
 @NgModule({
   declarations: [
@@ -143,6 +149,9 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     AddEditInstNotesComponent,
     AddEditInstSyllabusComponent,
     AddEditRegistrationComponent,
+    StdRegComponent,
+    StdQueryComponent,
+    StdChnangePwdComponent,
   ],
   imports: [
     BrowserModule,
@@ -164,7 +173,8 @@ import { AddEditRegistrationComponent } from './institute/add-edit-registration/
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
-    MatSelectModule,    
+    MatSelectModule, 
+    MatRadioModule,   
 
   ],
   providers: [],
