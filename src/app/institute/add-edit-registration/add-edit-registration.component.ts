@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./add-edit-registration.component.css']
 })
 export class AddEditRegistrationComponent implements OnInit {
-  registration_form!: FormGroup;
+registration_form!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +20,7 @@ export class AddEditRegistrationComponent implements OnInit {
     }
     )
     this.registration_form.controls['admin_registration_date'].setValue(new Date().toISOString().slice(0, 10));
-
+  
   }
 
 }

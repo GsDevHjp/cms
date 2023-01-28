@@ -30,14 +30,13 @@
                         onkeypress=" return this.value.length < 10"
                         oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
                     </mat-form-field>
-
                 </table>
             </div>
 
             <div class="box">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Aadhar</mat-label>
-                    <input type="number" matInput formControlName="std_aadhar_no">
+                    <input type="number" matInput formControlName="std_aadhar">
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -53,9 +52,9 @@
 
                     <div class="gender">
                         <mat-label>Gender : </mat-label>&nbsp;
-                        <input type="radio" name="gen" value="male" checked>
+                        <input type="radio" name="gen" value="male" checked formControlName="std_gender">
                         <mat-label>Male</mat-label> &nbsp;
-                        <input type="radio" name="gen" value="Female">
+                        <input type="radio" name="gen" value="Female" formControlName="std_gender">
                         <mat-label>Female</mat-label>
                     </div>
 
@@ -92,8 +91,8 @@
 
                 <table class="photo" cellspacing="0">
                     <mat-label class="student_kb">student photo</mat-label>
-                    <input type="file" name="std_photo" class="upload"
-                        formControlName="std_image">
+                    <input type="file" name="std_photo" class="upload" (change)="OnUpload($event)"
+                        formControlName="std_img">
                 </table>
             </div>
         </div>
@@ -102,12 +101,12 @@
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary"
-            [disabled]="!student_form.valid">{{ActionBtn}}</button>
+        <button mat-raised-button color="primary" (click)="student_btn()">{{ActionBtn}}</button>
     </div>
 </div>
