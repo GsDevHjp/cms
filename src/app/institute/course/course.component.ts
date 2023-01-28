@@ -54,6 +54,7 @@ export class CourseComponent implements OnInit {
       deldata.append('course_id', row.course_id);
       this.service.course_delete(deldata).subscribe(
         (res: any) => {
+          console.log(res)
           alert('data delate sucessfully')
         }
       )
@@ -61,7 +62,6 @@ export class CourseComponent implements OnInit {
     else {
       alert('cancle')
     }
-
   }
 
   applyFilter(event: Event) {

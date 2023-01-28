@@ -85,6 +85,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -177,7 +179,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatRadioModule,   
     MatSelectModule,   
     MatSelectModule,  
-    HttpClientModule,
+    HttpClientModule, FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
