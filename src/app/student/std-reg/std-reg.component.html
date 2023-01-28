@@ -1,0 +1,46 @@
+<mat-toolbar>
+    <span class="example-spacer">Student Registration</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<form [formGroup]="registration_form">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Institute</mat-label>
+        <mat-select disableRipple >
+            <mat-option value="1">B</mat-option>
+            <mat-option value="2">c</mat-option>
+            <mat-option value="3">D</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Address</mat-label>
+        <input type="text" matInput>
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>WhatsApp No</mat-label>
+        <input type="number" matInput>
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput>
+    </mat-form-field><br>
+
+</form>
+
+<div class="register">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary">Register</button>
+</div>

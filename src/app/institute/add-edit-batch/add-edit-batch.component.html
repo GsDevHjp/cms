@@ -12,7 +12,7 @@
 
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Course</mat-label>
-        <mat-select formControlName="course_id">
+        <mat-select formControlName="course_id_fk">
             <mat-option *ngFor="let course of course_data"
                 [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
@@ -20,7 +20,7 @@
 
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Start Batch</mat-label>
-        <mat-select formControlName="batch_start">
+        <mat-select formControlName="batch_status">
             <mat-option value="Yet to start">Yet to start</mat-option>
             <mat-option value="Running">Running</mat-option>
             <mat-option value="Completed">Completed</mat-option>
@@ -50,6 +50,5 @@
 
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="batch_btn()"
-        [disabled]="!batch_form.valid">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="batch_btn()">{{actionBtn}}</button>
 </div>
