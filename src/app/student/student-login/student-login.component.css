@@ -121,7 +121,9 @@ p {
 
 .new_account {
     font-size: 12px;
+    cursor: pointer;
 }
+
 
 span {
     margin-left: 10px;

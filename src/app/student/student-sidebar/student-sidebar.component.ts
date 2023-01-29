@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-student-sidebar',
   templateUrl: './student-sidebar.component.html',
@@ -11,7 +12,10 @@ export class StudentSidebarComponent implements OnInit {
   action_icon2: boolean = true
   action_icon3: boolean = false
   action_icon4: boolean = true
-  constructor() { }
+  constructor(
+    private dailog: MatDialog,
+
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +45,11 @@ export class StudentSidebarComponent implements OnInit {
       this.action_icon3 = false
       this.action_icon4 = true
     }
+  }
+  changepassword(){
+    this.dailog.open(StdChnangePwdComponent,{
+      disableClose: true
+    });
   }
 
 }
