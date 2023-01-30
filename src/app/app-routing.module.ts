@@ -36,6 +36,7 @@ import { OnlineTestComponent } from './student/online-test/online-test.component
 import { QueryComponent } from './student/query/query.component';
 import { QuizeComponent } from './student/quize/quize.component';
 import { ResultComponent } from './student/result/result.component';
+import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
 import { StdRegComponent } from './student/std-reg/std-reg.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
@@ -113,21 +114,25 @@ const routes: Routes = [
   },
 
   { path: 'studentlogin', component: StudentLoginComponent,
-  children: [
-    
-
-  ]
 },
   {
     path: 'studenthome', component: StudentHomeComponent,
     children: [
       { path: '', component: StudentDashboardComponent },
+      { path: 'paymentreceived', component: PaymentReceivedComponent },
+      { path: 'course', component: CourseComponent },
+      { path: 'batch', component: BatchComponent },
       { path: 'dashboard', component: StudentDashboardComponent },
+      { path: 'dues', component: StdDuesComponent },
       { path: 'result', component: ResultComponent },
       { path: 'online-test', component: OnlineTestComponent },
       { path: 'query', component: QueryComponent },
       { path: 'take-addmission', component: TakeAddmissionComponent },
       { path: 'quize', component: QuizeComponent },
+      { path: 'instbook', component: InstBookComponent },
+      { path: 'instnotes', component: InstNotesComponent },
+      { path: 'instsyllabus', component: InstSyllabusComponent },
+      { path: 'instquestionbank', component: InstQuestionBankComponent },
 
 
     ]
