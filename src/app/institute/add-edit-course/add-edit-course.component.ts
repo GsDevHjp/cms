@@ -29,6 +29,7 @@ export class AddEditCourseComponent implements OnInit {
       course_total_fee: [''],
       course_half_fee: ['', Validators.required],
       course_quarter_fee: ['', Validators.required],
+      course_monthly_fee: ['', Validators.required],
       course_admission_fee: ['', Validators.required],
       course_duration: [''],
       course_description: ['', Validators.required],
@@ -44,6 +45,7 @@ export class AddEditCourseComponent implements OnInit {
       this.course_form.controls['course_total_fee'].setValue(this.edit_course.course_total_fee);
       this.course_form.controls['course_half_fee'].setValue(this.edit_course.course_half_fee);
       this.course_form.controls['course_quarter_fee'].setValue(this.edit_course.course_quarter_fee);
+      this.course_form.controls['course_monthly_fee'].setValue(this.edit_course.course_monthly_fee);
       this.course_form.controls['course_admission_fee'].setValue(this.edit_course.course_admission_fee);
       this.course_form.controls['course_duration'].setValue(this.edit_course.course_duration);
       this.course_form.controls['course_description'].setValue(this.edit_course.course_description);

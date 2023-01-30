@@ -44,7 +44,15 @@ export class ManageService {
   put_student(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
-
+  get_student_single_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_student_single_data.php', data);
+  }
+  get_course_single_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_course_single_data.php', data);
+  }
+  post_fee(data: any) {
+    return this.http.post<any>(this.baseUrl + 'fee_post.php', data);
+  }
   get_enquiry(){
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }

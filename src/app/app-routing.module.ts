@@ -36,8 +36,6 @@ import { OnlineTestComponent } from './student/online-test/online-test.component
 import { QueryComponent } from './student/query/query.component';
 import { QuizeComponent } from './student/quize/quize.component';
 import { ResultComponent } from './student/result/result.component';
-import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
-import { StdRegComponent } from './student/std-reg/std-reg.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
 import { StudentLoginComponent } from './student/student-login/student-login.component';
