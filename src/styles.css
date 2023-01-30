@@ -56,6 +56,12 @@ body {
     position: relative;
     top: -2px;
 }
+#search_box:hover{
+    border-bottom: 2px solid #1d1f23;
+}
+#search_box:hover::placeholder{
+    color:#1d1f23;
+}
 
 table {
     width: 100%;

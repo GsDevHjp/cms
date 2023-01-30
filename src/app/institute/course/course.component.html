@@ -23,19 +23,29 @@
       <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="course_total_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fee </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_total_fee | currency:'INR':true}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="course_half_fee">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Half Fee </th>
       <td mat-cell *matCellDef="let row"> {{row.course_half_fee | currency:'INR':true}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="course_fee">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Admission Fee</th>
-      <td mat-cell *matCellDef="let row"> {{row.course_fee | currency:'INR':true}} </td>
+    <ng-container matColumnDef="course_quarter_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Quarter fee </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_quarter_fee | currency:'INR':true}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="course_monthly">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly </th>
-      <td mat-cell *matCellDef="let row"> {{row.course_monthly}} </td>
+    <ng-container matColumnDef="course_monthly_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Monthly fee </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_monthly_fee | currency:'INR':true}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_admission_fee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Admission Fee</th>
+      <td mat-cell *matCellDef="let row"> {{row.course_admission_fee | currency:'INR':true}} </td>
     </ng-container>
 
     <ng-container matColumnDef="course_duration">
@@ -43,14 +53,14 @@
       <td mat-cell *matCellDef="let row"> {{row.course_duration}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="course_description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let row"> {{row.course_description}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="course_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
       <td mat-cell *matCellDef="let row"> {{row.course_date}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="course_total_fee">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Fee </th>
-      <td mat-cell *matCellDef="let row"> {{row.course_total_fee | currency:'INR':true}} </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -65,7 +75,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+      <td class="mat-cell" colspan="10" style="color:silver;">No record found"{{input.value}}"</td>
     </tr>
   </table>
 

@@ -26,7 +26,7 @@
         <div class="box">
             <mat-form-field appearance="fill">
                 <mat-label>Course</mat-label>
-                <mat-select formControlName="course_id">
+                <mat-select formControlName="course_id_fk">
                     <mat-option *ngFor="let course of course_data"
                         [value]="course.course_id">{{course.course_name}}</mat-option>
                 </mat-select>
@@ -38,9 +38,11 @@
             </mat-form-field>
 
             <div class="gender">
-                Gender :
-                <input type="radio" checked="" name="gen" value="male" checked> Male
-                <input type="radio" name="gen" value="female"> Female
+                <mat-label>Gender : </mat-label>&nbsp;
+                <input type="radio" name="gen" value="male" checked formControlName="enq_gender">
+                <mat-label>Male</mat-label> &nbsp;
+                <input type="radio" name="gen" value="Female" formControlName="enq_gender">
+                <mat-label>Female</mat-label>
             </div>
         </div>
     </div>
@@ -50,10 +52,9 @@
     </mat-form-field>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-    <input type="number" formControlName="enq_id" readonly hidden>
 </form>
 
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" [disabled]="!enquiry_form.valid">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="enquiry_btn()">{{actionBtn}}</button>
 </div>

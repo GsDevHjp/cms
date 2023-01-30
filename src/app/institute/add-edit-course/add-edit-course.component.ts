@@ -26,13 +26,13 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form = this.fb.group({
       course_id: [''],
       course_name: ['', Validators.required],
-      course_half_fee: [''],
+      course_total_fee: [''],
+      course_half_fee: ['', Validators.required],
+      course_quarter_fee: ['', Validators.required],
       course_admission_fee: ['', Validators.required],
-      course_monthly: ['', Validators.required],
-      course_duration: ['', Validators.required],
-      course_date: [''],
-      course_total_fee: ['', Validators.required],
-      course_quater_fee: ['', Validators.required],
+      course_duration: [''],
+      course_description: ['', Validators.required],
+      course_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -41,11 +41,12 @@ export class AddEditCourseComponent implements OnInit {
       this.actionBtn = "Update";
       this.course_form.controls['course_id'].setValue(this.edit_course.course_id);
       this.course_form.controls['course_name'].setValue(this.edit_course.course_name);
-      this.course_form.controls['course_half_fee'].setValue(this.edit_course.course_half_fee);
-      this.course_form.controls['course_fee'].setValue(this.edit_course.course_fee);
-      this.course_form.controls['course_monthly'].setValue(this.edit_course.course_monthly);
-      this.course_form.controls['course_duration'].setValue(this.edit_course.course_duration);
       this.course_form.controls['course_total_fee'].setValue(this.edit_course.course_total_fee);
+      this.course_form.controls['course_half_fee'].setValue(this.edit_course.course_half_fee);
+      this.course_form.controls['course_quarter_fee'].setValue(this.edit_course.course_quarter_fee);
+      this.course_form.controls['course_admission_fee'].setValue(this.edit_course.course_admission_fee);
+      this.course_form.controls['course_duration'].setValue(this.edit_course.course_duration);
+      this.course_form.controls['course_description'].setValue(this.edit_course.course_description);
       this.course_form.controls['admin_id_fk'].setValue(this.edit_course.admin_id_fk);
     }
   }
@@ -89,6 +90,6 @@ export class AddEditCourseComponent implements OnInit {
   }
   total_clc(){
     this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
-    this.course_form.controls['course_quater_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
+    this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 3)
   }
 }

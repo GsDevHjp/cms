@@ -49,13 +49,12 @@
     background-color: whitesmoke;
     margin-bottom: 20px;
     border-bottom: 1px solid #757272;
-    padding: 12px 10px 19px;
+    padding: 12px 10px 18px;
   }
   
   .gender:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid black;
   }
-  
   .submit {
     margin-left: 31.5%;
   }

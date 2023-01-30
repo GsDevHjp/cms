@@ -11,8 +11,8 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Quater Fee</mat-label>
-            <input type="number" matInput formControlName="course_quater_fee">
+            <mat-label>Quarter fee</mat-label>
+            <input type="number" matInput formControlName="course_quarter_fee" readonly>
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill" (keyup)="total_clc()">
@@ -27,7 +27,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Half Fee</mat-label>
-            <input type="number" matInput formControlName="course_half_fee">
+            <input type="number" matInput formControlName="course_half_fee" readonly>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -42,7 +42,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill" id="total">
             <mat-label>Description</mat-label>
-            <input type="text" matInput formControlName="" >
+            <input type="text" matInput formControlName="course_description">
         </mat-form-field><br>
 
        
