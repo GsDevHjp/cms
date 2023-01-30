@@ -44,7 +44,7 @@
 
     <ng-container matColumnDef="std_photo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
-      <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.std_image}}" width="40px" height="40px"></td>
+      <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.std_img}}" width="40px" height="40px"></td>
     </ng-container>
 
     <ng-container matColumnDef="std_date">
@@ -57,7 +57,9 @@
       <td mat-cell *matCellDef="let row">
         <mat-icon class="action_icon" (click)="edit_student(row)">edit</mat-icon>
         <mat-icon class="action_icon" (click)="edit_student(row)">visibility</mat-icon>
-        <mat-icon class="action_icon">payment</mat-icon>
+       <div class="icon_box">
+        <span>pay</span>
+       </div>
       </td>
     </ng-container>
 

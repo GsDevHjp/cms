@@ -45,16 +45,16 @@
     
         <!----------------------------------------------- Course ------------------------------------------------------->
     
-        <ng-container matColumnDef="course_id">
+        <ng-container matColumnDef="course_id_fk">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
-          <td mat-cell *matCellDef="let row"> {{row.course_id}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.course_id_fk}} </td>
         </ng-container>
     
         <!----------------------------------------------- Gender ------------------------------------------------------->
     
-        <ng-container matColumnDef="gender">
+        <ng-container matColumnDef="enq_gender">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-          <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.enq_gender}} </td>
         </ng-container>
     
         <!----------------------------------------------- Address -------------------------------------------------------->

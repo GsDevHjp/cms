@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { ThemePalette } from '@angular/material/core';
 
 export interface Userdata {
   id: number;
@@ -32,6 +33,7 @@ export class AdmissionComponent implements OnInit {
   displayedColumns: string[] = ['id', 'std_id', 'std_name','std_roll', 'std_mobile','course','batch','date','status', 'action'];
   dataSource = new MatTableDataSource(Userdata);
   count_admission:number=0;
+  color: ThemePalette='primary'
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;

@@ -12,7 +12,7 @@ import { ManageService } from 'src/app/manage.service';
 export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
-  admin = 1;
+  admin = 1; 
   upload: any;
   actionBtn: string = 'Add'
   course_data:any;

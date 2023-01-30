@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
 
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -19,7 +18,7 @@ export class StudentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl:string = 'http://localhost/cms/src/assets/';
+  imgUrl :string = 'assets/';
   
   constructor(
     private dailog: MatDialog,

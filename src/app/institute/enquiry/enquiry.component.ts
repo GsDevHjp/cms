@@ -6,35 +6,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditEnquiryComponent } from '../add-edit-enquiry/add-edit-enquiry.component';
 import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
+import { ManageService } from 'src/app/manage.service';
 
-export interface Userdata {
-  enq_id: number;
-  enq_mobile: number;
-  enq_name: string;
-  enq_father_name:string;
-  half_fee: number;
-  course_id: string;
-  enq_date: string;
-  gender:string;
-  enq_address:string;
-}
-
-const Userdata: Userdata[] = [
-  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
-  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
-  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
-  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
-  {enq_id: 1, enq_mobile: 9865231245, enq_name: 'Sohan Kumar', enq_father_name:'Mohan Singh', half_fee:750,course_id:'MCA',enq_date:'20-02-2023',gender:'Male',enq_address:'hjp'},
-  
-];
 @Component({
   selector: 'app-enquiry',
   templateUrl: './enquiry.component.html',
   styleUrls: ['./enquiry.component.css']
 })
 export class EnquiryComponent implements OnInit {
-  displayedColumns: string[] = ['enq_id', 'enq_name', 'enq_father_name', 'enq_mobile', 'course_id', 'gender', 'enq_address', 'enq_date', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
+  displayedColumns: string[] = ['enq_id', 'enq_name', 'enq_father_name', 'enq_mobile', 'course_id_fk', 'enq_gender', 'enq_address', 'enq_date', 'action'];
+  dataSource = new MatTableDataSource();
   count_enquiry: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -42,7 +23,8 @@ export class EnquiryComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private router: Router,
+    private service:ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -50,6 +32,14 @@ export class EnquiryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.get_enquiry().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.count_enquiry = res.data.length
+      }
+    )
    
   }
 

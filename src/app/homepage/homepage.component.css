@@ -40,7 +40,7 @@ h1 {
     height: calc(100% - 105px);
 }
 
-.large_text {
+#main .welcome_text {
     color: whitesmoke;
     font-size: 4rem;
 }
@@ -58,3 +58,19 @@ h1 {
 span {
     margin: 0px 10px;
 }
+
+@media(min-width:920px)and (max-width:1199px) {}
+  
+  @media(min-width:768px)and (max-width:860px) { }
+  
+  @media(min-width:420px)and (max-width:768px) {
+    #main .welcome_text {
+        font-size: 2.5rem;
+    }
+  }
+  
+  @media(max-width:420px) {
+    #main .welcome_text {
+        font-size: 1.5rem;
+    }
+  }
