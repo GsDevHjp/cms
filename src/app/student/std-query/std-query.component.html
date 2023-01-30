@@ -1,24 +1,25 @@
 <div class="add_head">
-    <span>Query</span>
+    <span>{{instupdate}}</span>
     <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
         <mat-icon>close</mat-icon>
     </button>
 </div>
-<form [formGroup]="InstForm">
-  
+<form [formGroup]="Std_Query_Form">
 
-
-       <mat-form-field class="example-full-width" appearance="fill" >
-        <mat-label >Massage</mat-label>
-        <input type="Massage" matInput formControlName="course_date" style="color: #495057;">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Massage</mat-label>
+        <input matInput formControlName="std_query">
     </mat-form-field>
-        
 
+    <input type="number" readonly [ngModel]="std_id" formControlName="std_id_fk" hidden>
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+    <input type="number" readonly formControlName="query_id" hidden>
 
 </form>
 <span class="btn_box">
-    <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
+    <button class="reset_btn" mat-raised-button color="warn">Reset</button>
 
-    <button class="add_btn" mat-raised-button color="primary" (click)="addstd()"
-        [disabled]="!InstForm.valid">Submit</button>
+    <button class="add_btn" mat-raised-button color="primary" (click)="addquery()"
+        [disabled]="!Std_Query_Form.valid">{{actionBtn}}
+    </button>
 </span>
