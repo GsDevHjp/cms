@@ -4,21 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditInstituteComponent } from '../add-edit-institute/add-edit-institute.component';
+import { ManageService } from 'src/app/manage.service';
 
-export interface UserData {
-  institute_id: number;
-  institute_name: string;
-  institute_owner: string;
-  institute_whatsapp: number
-  institute_email: string
-  total_course: number
-}
 
-const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com', total_course: 20 },
-];
 
 @Component({
   selector: 'app-ins-course',
@@ -27,21 +15,29 @@ const UserData: UserData[] = [
 })
 export class InsCourseComponent implements OnInit {
   displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','total_course',];
-  dataSource!: MatTableDataSource<UserData>;
-
-
-  // displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_mobile', 'institute_address','action'];
-  // dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource();
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  course_count:any
+  total_course_count: any;
   constructor(
     private dailog: MatDialog,
+    private manageservice: ManageService
   ) {
-    this.dataSource = new MatTableDataSource(UserData);
   }
 
   ngOnInit(): void {
+    this.manageservice.institute_view().subscribe(
+      (instdata: any) => {
+        console.log(instdata)
+        this.dataSource = new MatTableDataSource(instdata.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.course_count = instdata.data.length
+      }
+    )
+ 
   }
 
   add_Institute() {

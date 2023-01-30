@@ -26,9 +26,9 @@
                 <span> Tack Admission</span>
             </button>
 
-            <button mat-button class="menu-button" routerLink="/fee-report">
-                <mat-icon>feedback</mat-icon>
-                <span>Fee Paid</span>
+            <button mat-button class="menu-button" [routerLink]="['paymentreceived']">
+                <mat-icon>payment</mat-icon>
+                <span>Fee-paid</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['dues']">
@@ -55,6 +55,39 @@
                 <mat-icon>redeem</mat-icon>
                 <span>Quize</span>
             </button>
+            <div>
+                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                    <mat-icon>list_alt</mat-icon>
+                    <span>Studey Material</span>
+                    <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+                </button>
+
+
+                <div id="dropdown_report">
+                    <button mat-button class="menu-button" [routerLink]="['instbook']">
+                        <mat-icon>book</mat-icon>
+                        <span>Book</span>
+                    </button>
+
+                    <button mat-button class="menu-button" [routerLink]="['instnotes']">
+                        <mat-icon>notes</mat-icon>
+                        <span>Notes</span>
+                    </button>
+
+                    <button mat-button class="menu-button" [routerLink]="['instsyllabus']">
+                        <mat-icon>style</mat-icon>
+                        <span>Syllabus</span>
+                    </button>
+
+                    <button mat-button class="menu-button" [routerLink]="['instquestionbank']">
+                        <mat-icon>question_answer</mat-icon>
+                        <span>Question Bank</span>
+                    </button>
+
+                </div>
+
+            <div>
 
                 <div>
                     <button mat-button class="menu-button" (click)="setting_dropdown()" [routerLink]="['/#']">
@@ -65,7 +98,7 @@
                     </button>
 
                     <div id="dropdown_setting">
-                        <button mat-button class="menu-button" [routerLink]="['/#']">
+                        <button mat-button class="menu-button" (click)="changepassword()">
                             <mat-icon>password</mat-icon>
                             <span>Change Password</span>
                         </button>
@@ -74,7 +107,10 @@
                             <mat-icon>logout</mat-icon>
                             <span>Logout</span>
                         </button>
+                        
 
                     </div>
                 </div>
             </div>
+           
+               

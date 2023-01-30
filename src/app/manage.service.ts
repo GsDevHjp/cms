@@ -44,6 +44,7 @@ export class ManageService {
   put_student(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
+
   get_enquiry(){
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }
@@ -64,5 +65,8 @@ export class ManageService {
   }
   put_inst(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_update.php', data);
+  }
+  inst_self_reg(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_self_reg.php', data);
   }
 }

@@ -137,11 +137,11 @@ export class AddEditInstituteComponent implements OnInit {
     this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
-        alert('data update successfully')
+        alert('Institute Added Successfully')
       },
       error: (error: any) => {
         console.log(error)
-        alert('data not update')
+        alert('Institute Not Insert..')
       }
 
     })

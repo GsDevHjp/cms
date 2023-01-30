@@ -1,1 +1,26 @@
-<p>std-chnange-pwd works!</p>
+<mat-toolbar>
+    <span class="example-spacer">Change Password</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="batch_form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Odl Password</mat-label>
+        <input matInput formControlName="quiz_question">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>New Password</mat-label>
+        <input matInput formControlName="quiz_option_a">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="quiz_option_a">
+    </mat-form-field>
+</form>
+
+<div class="submit">
+    <button mat-raised-button color="primary">Save</button>
+</div>

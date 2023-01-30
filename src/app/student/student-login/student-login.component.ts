@@ -10,14 +10,16 @@ import { StdRegComponent } from '../std-reg/std-reg.component';
 export class StudentLoginComponent implements OnInit {
 hide=true
   constructor(
-    private dilog:MatDialog
+    private dailog:MatDialog
   ) { }
 
   ngOnInit(): void {
   }
 
-  openDialog(){
-    this.dilog.open(StdRegComponent)
-  }
 
+  new_account(): any {
+    this.dailog.open(StdRegComponent, {
+      disableClose: true
+    })
+  }
 }
