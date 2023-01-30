@@ -4,7 +4,7 @@
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
 
-    <form [formGroup]="payment_form">
+    <form [formGroup]="fee_form">
         <div id="main_area">
             <div class="box">
 
@@ -16,7 +16,7 @@
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Student Name</mat-label>
-                        <mat-select formControlName="student_id_fk" (valueChange)="get_student($event)">
+                        <mat-select formControlName="student_id_fk" (valueChange)="get_student_single_data($event)">
                             <mat-option *ngFor="let std of student_data"
                                 [value]="std.std_id">{{std.std_name}}</mat-option>
                         </mat-select>
@@ -24,23 +24,23 @@
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father</mat-label>
-                        <input matInput formControlName="std_father_name">
+                        <input matInput formControlName="std_father_name" readonly>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Mobile</mat-label>
-                        <input matInput type="number" formControlName="std_mobile"
+                        <input matInput type="number" formControlName="std_mobile" readonly
                         onkeypress=" return this.value.length < 10"
                         oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
                     </mat-form-field>
                 </table>
                 <mat-form-field appearance="fill">
                     <mat-label>Address</mat-label>
-                    <textarea matInput formControlName="std_aadhar"></textarea>
+                    <textarea matInput formControlName="std_address" readonly></textarea>
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Course</mat-label>
-                    <mat-select formControlName="course_id_fk">
+                    <mat-select formControlName="course_id_fk" (valueChange)="get_course_single_data($event)">
                         <mat-option *ngFor="let course of course_data"
                             [value]="course.course_id">{{course.course_name}}</mat-option>
                     </mat-select>
@@ -51,78 +51,83 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Batch</mat-label>
-                    <input type="text" matInput formControlName="batch_id_fk">
+                    <mat-select formControlName="batch_id_fk">
+                        <mat-option *ngFor="let batch of batch_data"
+                            [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
-                <table class="example-full-width" cellspacing="0">
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Total Fee</mat-label>
-                        <input type="number" matInput formControlName="course_total_fee">
+                        <input type="number" matInput formControlName="course_total_fee" readonly>
                     </mat-form-field>
-                </table>
-                <table class="example-full-width" cellspacing="0">
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Half Fee</mat-label>
-                        <input type="number" matInput formControlName="course_half_fee">
+                        <input type="number" matInput formControlName="course_half_fee" readonly>
                     </mat-form-field>
-                </table>
-                <table class="example-full-width" cellspacing="0">
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Quarter Fee</mat-label>
-                        <input type="number" matInput formControlName="course_quarter_fee">
+                        <input type="number" matInput formControlName="course_quarter_fee" readonly>
                     </mat-form-field>
-                </table>
-                <table class="example-full-width" cellspacing="0">
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Monthly Fee</mat-label>
-                        <input type="number" matInput formControlName="course_monthly_fee">
+                        <input type="number" matInput formControlName="course_monthly_fee" readonly>
                     </mat-form-field>
-                </table>
-                <table class="example-full-width" cellspacing="0">
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Admission Fee</mat-label>
-                        <input type="number" matInput formControlName="course_admission_fee">
+                        <input type="number" matInput formControlName="course_admission_fee" readonly>
                     </mat-form-field>
-                </table>
             </div>
             <div class="box">
                 <div class="user_image">
-                    <img src="assets/amarjeet.jpeg" alt="user image" width="100%" height="100%">
+                    <img src={{imgUrl}} alt="user image" width="100%" height="100%" formControlName="std_img">
                 </div><br>
                 <mat-form-field appearance="fill">
                     <mat-label>Fee Type</mat-label>
                     <mat-select formControlName="fee_type">
-                        <mat-option value="Panjab">Admission Fee</mat-option>
-                        <mat-option value="Panjab">Course Fee</mat-option>
-                        <mat-option value="Hariyana">Batch Fee</mat-option>
-                        <mat-option value="Bihar">Monthly Fee</mat-option>
-                        <mat-option value="Bihar">Test Fee</mat-option>
-                        <mat-option value="Up">Advance Fee</mat-option>
+                        <mat-option value="Admission Fee">Admission Fee</mat-option>
+                        <mat-option value="Tuition Fee">Tuition Fee</mat-option>
+                        <mat-option value="Course Fee">Course Fee</mat-option>
+                        <mat-option value="Batch Fee">Batch Fee</mat-option>
+                        <mat-option value="Monthly Fee">Monthly Fee</mat-option>
+                        <mat-option value="Test Fee">Test Fee</mat-option>
+                        <mat-option value="Advance Fee">Advance Fee</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Monthly</mat-label>
                     <mat-select formControlName="fee_monthly">
-                        <mat-option value="Panjab">Admission Fee</mat-option>
-                        <mat-option value="Panjab">Course Fee</mat-option>
-                        <mat-option value="Hariyana">Batch Fee</mat-option>
-                        <mat-option value="Bihar">Monthly Fee</mat-option>
-                        <mat-option value="Bihar">Test Fee</mat-option>
-                        <mat-option value="Up">Advance Fee</mat-option>
+                        <mat-option value="January">January</mat-option>
+                        <mat-option value="February">February</mat-option>
+                        <mat-option value="March">March</mat-option>
+                        <mat-option value="April">April</mat-option>
+                        <mat-option value="May">May</mat-option>
+                        <mat-option value="June">June</mat-option>
+                        <mat-option value="July">July</mat-option>
+                        <mat-option value="August">August</mat-option>
+                        <mat-option value="September">September</mat-option>
+                        <mat-option value="October">October</mat-option>
+                        <mat-option value="November">November</mat-option>
+                        <mat-option value="December">December</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Payment Mode</mat-label>
                     <mat-select formControlName="fee_mode">
-                        <mat-option value="Case">Offline</mat-option>
-                        <mat-option value="Debit cards">Online</mat-option>
+                        <mat-option value="Online">Online</mat-option>
+                        <mat-option value="Offline">Offline</mat-option>
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field appearance="fill" id="description">
+                <mat-form-field appearance="fill">
                     <mat-label>Amount</mat-label>
-                    <input matInput formControlName="fee_amount">
+                    <input type="number" matInput formControlName="fee_amount">
                 </mat-form-field>
 
                 <table class="example-full-width" cellspacing="0" hidden>
@@ -135,13 +140,15 @@
         </div>
         <mat-form-field appearance="fill" id="description">
             <mat-label>Description</mat-label>
-            <input matInput formControlName="fee_desceiption">
+            <input matInput formControlName="fee_description">
         </mat-form-field>
+
+        <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
 
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary">Add</button>
+        <button mat-raised-button color="primary" (click)="fee_btn()">Add</button>
     </div>
 </div>
