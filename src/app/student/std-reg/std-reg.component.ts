@@ -18,17 +18,27 @@ export class StdRegComponent implements OnInit {
 
   ngOnInit(): void {
     this.std_regist_from = this.FormBuilder.group({
-      inst_name_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required],
       std_name: ['', Validators.required],
       std_whatsapp_no: ['', Validators.required],
       std_email: ['', Validators.required],
       std_address: ['', Validators.required],
       std_password: ['', Validators.required],
+      std_regist_date: [new Date().toISOString().slice(0, 10)],
       admin_id_fk: ['', Validators.required],
     })
   }
   std_regist() {
     console.log(this.std_regist_from.value)
- 
+    this.manageservice.std_self_reg(this.std_regist_from.value).subscribe(
+      (result: any) => {
+        console.log(result)
+        alert("Registration Successfully..")
+      },
+      (error: any) => {
+        console.log(error)
+        alert("Unsuccessfull Registration")
+      }
+    )
   }
 }

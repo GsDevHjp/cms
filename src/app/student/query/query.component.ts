@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { StdQueryComponent } from '../std-query/std-query.component';
+import { ManageService } from 'src/app/manage.service';
 
 
 
@@ -15,28 +16,63 @@ import { StdQueryComponent } from '../std-query/std-query.component';
 })
 export class QueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'Massage', 'date', 'action'];
+  displayedColumns: string[] = ['query_id', 'std_query','std_query_ans', 'std_query_date', 'action'];
   dataSource = new MatTableDataSource();
-  course_count: any;
+  query_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   constructor(
     private dailog: MatDialog,
-    private router: Router
-  ) { 
+    private router: Router,
+    private manageservice: ManageService
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
   }
 
   ngOnInit(): void {
+    this.manageservice.query_view().subscribe(
+      (instdata: any) => {
+        console.log(instdata)
+        this.dataSource = new MatTableDataSource(instdata.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.query_count = instdata.data.length
+      }
+    )
   }
-    add_course() {
+  add_course() {
     this.dailog.open(StdQueryComponent, {
       disableClose: true
     });
   }
+
+  editmsg(row: any) {
+    this.dailog.open(StdQueryComponent, {
+      data: row
+    })
+  }
+
+  deleteQuery(row: any) {
+    if (confirm("Are You Sure To Delete")) {
+      const deletedata = new FormData();
+      deletedata.append('query_id', row.query_id);
+      console.log(row.query_id)
+      this.manageservice.delete_query(deletedata).subscribe(
+        (res: any) => {
+          alert('data delete successfully')
+        }
+      )
+
+    }
+    else {
+      alert('data not delete')
+    }
+
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
