@@ -9,8 +9,7 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  // baseUrl: string ='https://greensoft.net.in/gscms/api/';
-  baseUrl: string = 'http://localhost/cmsapi/';
+  baseUrl: string ='https://greensoft.net.in/gscms/api/';
 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -46,7 +45,16 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
 
-  get_enquiry() {
+  get_student_single_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_student_single_data.php', data);
+  }
+  get_course_single_data(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_course_single_data.php', data);
+  }
+  post_fee(data: any) {
+    return this.http.post<any>(this.baseUrl + 'fee_post.php', data);
+  }
+  get_enquiry(){
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }
   post_enquiry(data: any) {
