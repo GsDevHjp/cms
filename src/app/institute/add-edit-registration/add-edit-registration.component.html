@@ -2,40 +2,43 @@
     <span class="example-spacer">Registration</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
-<form [formGroup]="registration_form">
+<form [formGroup]="inst_regist_from">
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Institute Name</mat-label>
-        <input matInput>
+        <input matInput formControlName="inst_name">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Owner Name</mat-label>
-        <input type="text" matInput>
+        <input matInput formControlName="inst_owner_name">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>WhatsApp No</mat-label>
-        <input type="number" matInput>
+        <input type="number"  matInput formControlName="inst_whatsapp_no">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>E-mail</mat-label>
-        <input type="email" matInput>
+        <input type="email" matInput formControlName="inst_email">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Password</mat-label>
-        <input type="password" matInput>
+        <input type="password" matInput formControlName="inst_password">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Address</mat-label>
-        <textarea matInput></textarea>
-        </mat-form-field><br>
+        <textarea matInput formControlName="inst_address"></textarea>
+    </mat-form-field><br>
+    
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
 </form>
 
 <div class="register">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary">Register</button>
+    <button mat-raised-button color="primary" (click)="inst_regist()" [disabled]="!inst_regist_from.valid">Register</button>
 </div>

@@ -20,6 +20,7 @@ export class InstituteComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  inst_count: any;
 
   constructor(
     private dailog: MatDialog,
@@ -35,6 +36,7 @@ export class InstituteComponent implements OnInit {
         this.dataSource = new MatTableDataSource(instdata.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.inst_count = instdata.data.length
       }
     )
   }

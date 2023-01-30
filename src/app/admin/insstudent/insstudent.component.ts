@@ -3,21 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { ManageService } from 'src/app/manage.service';
 
-export interface UserData {
-  institute_id: number;
-  institute_name: string;
-  institute_owner: string;
-  institute_whatsapp: number
-  institute_email: string
-  institute_address: string
-  total_student: number
-}
 
-const UserData: UserData[] = [
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com',institute_address:'Hajipur,Bihar',total_student: 20 },
-  { institute_id: 1, institute_name: 'Gs Learning', institute_owner: 'Rohit',institute_whatsapp:9153634848,institute_email:'rohit@gmail.com',institute_address:'Hajipur,Bihar',total_student: 50 },
-];
 @Component({
   selector: 'app-insstudent',
   templateUrl: './insstudent.component.html',
@@ -26,17 +14,26 @@ const UserData: UserData[] = [
 export class InsstudentComponent implements OnInit {
 
   displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_address','total_student',];
-  dataSource!: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  std_count:any
   constructor(
     private dailog: MatDialog,
+    private manageservice:ManageService
   ) {
-    this.dataSource = new MatTableDataSource(UserData);
   }
 
   ngOnInit(): void {
+    this.manageservice.institute_view().subscribe(
+      (instdata: any) => {
+        console.log(instdata)
+        this.dataSource = new MatTableDataSource(instdata.data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.std_count = instdata.data.length
+      }
+    )
   }
 
 

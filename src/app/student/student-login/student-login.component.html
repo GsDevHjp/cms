@@ -4,8 +4,8 @@
         <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item class="action_btn" routerLink="/adminlogin">Admin</button>
-      <button mat-menu-item class="action_btn" routerLink="/institutelogin">Institute</button>
-      <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
+            <button mat-menu-item class="action_btn" routerLink="/institutelogin">Institute</button>
+            <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
         </mat-menu>
     </div>
     <div id="main_area">
@@ -32,13 +32,15 @@
             </mat-card-content>
             <button mat-button class="action_login" mat-raised-button color="primary"
                 routerLink="/studenthome">Login</button>
-            <p>Forgot Password</p>
-           
-            <p class="new_account" (click)="openDialog()">Create new Account</p>
+            <div class="info_box">
+                <p class="new_account" (click)="new_account()">Create new Account</p>
+                <p>Forgot Password ?</p>
+            </div>
+
 
 
         </mat-card>
-        
+
     </div>
     <div id="footer">
         <span>Developed By :- Green Soft</span>

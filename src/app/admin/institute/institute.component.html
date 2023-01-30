@@ -3,9 +3,9 @@
   <mat-icon id="add_course" (click)="add_Institute()">add_circle</mat-icon>
 </div>
 <div class="count_area">
-  <span class="notice_text">Total : 10</span>
+  <span class="notice_text">Total : {{inst_count}}</span>
   <div class="search">
-    <input type="text" placeholder="Search" class="search_box" matInput (keyup)="applyFilter($event)" #input>
+    <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
   </div>
 </div>
 

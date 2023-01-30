@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-add-edit-registration',
@@ -7,20 +8,42 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./add-edit-registration.component.css']
 })
 export class AddEditRegistrationComponent implements OnInit {
-registration_form!: FormGroup;
-
+  inst_regist_from!: FormGroup;
+  admin = 1;
   constructor(
-    private fb: FormBuilder,
-
+    private FormBuilder: FormBuilder,
+    private manageservice: ManageService
   ) { }
 
   ngOnInit(): void {
-    this.registration_form = this.fb.group({
-      admin_registration_date: ['', Validators.required],
-    }
-    )
-    this.registration_form.controls['admin_registration_date'].setValue(new Date().toISOString().slice(0, 10));
-  
+    this.inst_regist_from = this.FormBuilder.group({
+      inst_name: ['', Validators.required],
+      inst_owner_name: ['', Validators.required],
+      inst_whatsapp_no: ['', Validators.required],
+      inst_email: ['', Validators.required],
+      inst_password: ['', Validators.required],
+      inst_address: ['', Validators.required],
+      admin_id_fk: ['', Validators.required],
+      inst_regist_date: [new Date().toISOString().slice(0, 10)],
+    })
+
   }
 
+  inst_regist() {
+    console.log(this.inst_regist_from.value)
+    this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
+
+      (result: any) => {
+        console.log(result)
+        alert("Registration Successfully..")
+      },
+      (error: any) => {
+        console.log(error)
+        alert("Unsuccessfull Registration")
+      }
+    )
+  }
 }
+
+
+

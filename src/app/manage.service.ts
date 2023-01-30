@@ -54,6 +54,8 @@ export class ManageService {
   }
   get_student() {
     return this.http.get<[]>(this.baseUrl + 'std_view.php');
-
+  }
+  inst_self_reg(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_self_reg.php', data);
   }
 }

@@ -84,14 +84,14 @@ mat-form-field mat-label {
 
 .icon_1 {
     position: relative;
-    top: 25px;
+    top: 20px;
     right: 4px;
 
 }
 
 .icon_2 {
     position: relative;
-    top: 70px;
+    top: 60px;
     right: 4px;
 }
 
@@ -101,11 +101,16 @@ mat-form-field mat-label {
     margin-left: 110px;
     border-radius: 5px;
 }
-
+.info_box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 p {
     color: white;
-    font-size: 20px;
+    font-size: 12px;
     text-align: center;
+    display: inline;
     margin-top: 15px;
     cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -129,3 +134,4 @@ p {
 span {
     margin: 0px 10px;
 }
+
