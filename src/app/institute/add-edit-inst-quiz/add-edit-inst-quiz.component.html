@@ -3,7 +3,7 @@
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
-<form [formGroup]="batch_form">
+<form [formGroup]="quiz_form">
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Question</mat-label>
@@ -41,6 +41,6 @@
 
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="batch_btn()"
-        [disabled]="!batch_form.valid">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="quiz_btn()"
+        [disabled]="!quiz_form.valid">{{actionBtn}}</button>
 </div>

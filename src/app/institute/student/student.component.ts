@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
+import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 
 @Component({
   selector: 'app-student',
@@ -39,6 +40,11 @@ export class StudentComponent implements OnInit {
 
   add_student(): any {
     this.dailog.open(AddEditStudentComponent, {
+      disableClose: true
+    });
+  }
+  fee_pay(): any {
+    this.dailog.open(AddEditPaymentRecivedComponent, {
       disableClose: true
     });
   }

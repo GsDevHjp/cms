@@ -34,9 +34,9 @@ mat-toolbar {
   width: 100%;
 }
 .user_image{
-  width: 198px; 
   height: 121px;
-  border: 1px solid #757272;
+  /* border: 1px dotted #757272; */
+  padding: 0px 30px 0px 30px;
 }
 #description{
   width: 97.3%;

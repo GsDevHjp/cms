@@ -1,18 +1,18 @@
 <mat-toolbar>
-    <span class="example-spacer">Add Question</span>
+    <span class="example-spacer">Add Notification</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
-<form [formGroup]="batch_form">
+<form [formGroup]="notification_form">
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Notification</mat-label>
-        <input matInput formControlName="quiz_question">
+        <input matInput formControlName="notification">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput formControlName="quiz_option_a">
+        <input matInput formControlName="description">
     </mat-form-field>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
@@ -22,5 +22,5 @@
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
     <button mat-raised-button color="primary" (click)="batch_btn()"
-        [disabled]="!batch_form.valid">{{actionBtn}}</button>
+        [disabled]="!notification_form.valid">{{actionBtn}}</button>
 </div>

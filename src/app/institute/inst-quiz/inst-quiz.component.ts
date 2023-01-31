@@ -5,21 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditInstQuizComponent } from '../add-edit-inst-quiz/add-edit-inst-quiz.component';
-export interface Userdata {
-  quiz_question: string;
-  quiz_option_a: string;
-  quiz_option_b: string;
-  quiz_option_c: string;
-  quiz_option_d: string
-  quiz_answer: string;
-}
-
-const Userdata: Userdata[] = [
- {quiz_question:'How Are You', quiz_option_a: 'Good', quiz_option_b:'Sad', quiz_option_c:'Happy', quiz_option_d: 'None Of These', quiz_answer: 'Good'},
- {quiz_question:'How Are You', quiz_option_a: 'Good', quiz_option_b:'Sad', quiz_option_c:'Happy', quiz_option_d: 'None Of These', quiz_answer: 'Good'},
- {quiz_question:'How Are You', quiz_option_a: 'Good', quiz_option_b:'Sad', quiz_option_c:'Happy', quiz_option_d: 'None Of These', quiz_answer: 'Good'},
- {quiz_question:'How Are You', quiz_option_a: 'Good', quiz_option_b:'Sad', quiz_option_c:'Happy', quiz_option_d: 'None Of These', quiz_answer: 'Good'},
-];
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-inst-quiz',
@@ -30,22 +16,32 @@ const Userdata: Userdata[] = [
 export class InstQuizComponent implements OnInit {
 
   displayedColumns: string[] = ['quiz_id', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
-  count_course: number = 0;
+  dataSource = new MatTableDataSource();
+  count_quiz: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private router: Router,
+    private service:ManageService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.service.get_quiz().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.count_quiz = res.data.length
+      }
+    )
+  }
 
   add_course() {
     this.dailog.open(AddEditInstQuizComponent, {

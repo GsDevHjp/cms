@@ -52,8 +52,10 @@
       <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <mat-icon style="cursor: pointer;">payment</mat-icon>
-
+            <div class="icon_box">
+              <span>pay</span>
+             </div>
+             <mat-icon class="action_icon">delete</mat-icon>
           </td>
       </ng-container>
 

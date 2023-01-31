@@ -10,6 +10,8 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string ='https://greensoft.net.in/gscms/api/';
+  
+// for course module 
 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -23,6 +25,8 @@ export class ManageService {
   course_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'course_delete.php', data);
   }
+  // for batch module 
+
   get_batch() {
     return this.http.get<[]>(this.baseUrl + 'batch_view.php');
   }
@@ -35,6 +39,8 @@ export class ManageService {
   batch_delete(data: any){
     return this.http.post<any>(this.baseUrl + 'batch_delete.php', data);
   }
+  // for student module 
+
   get_student() {
     return this.http.get<[]>(this.baseUrl + 'std_view.php');
   }
@@ -44,15 +50,22 @@ export class ManageService {
   put_student(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
-  get_student_single_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_student_single_data.php', data);
+  // for fee module component payment recive
+
+  get_fee(){
+    return this.http.get<[]>(this.baseUrl + 'fee_view.php')
   }
-  get_course_single_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_course_single_data.php', data);
+  get_student_by_std_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_student_by_std_id.php', data);
+  }
+  get_course_by_course_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
   }
   post_fee(data: any) {
     return this.http.post<any>(this.baseUrl + 'fee_post.php', data);
   }
+  // for enquiry module 
+
   get_enquiry(){
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }
@@ -62,6 +75,19 @@ export class ManageService {
   put_enquiry(data: any){
     return this.http.put<any>(this.baseUrl + 'enquiry_update.php', data)
   }
+// for quiz module 
+
+  get_quiz(){
+    return this.http.get<[]>(this.baseUrl + 'quiz_view.php');
+  }
+  post_quiz(data: any){
+    return this.http.post<any>(this.baseUrl + 'quiz_insert.php', data)
+  }
+  put_quiz(data: any) {
+    return this.http.put<any>(this.baseUrl + 'quiz_update.php', data)
+  }
+// for institute module 
+
   institute_view() {
     return this.http.get<[]>(this.baseUrl + 'institute_view.php');
   }
