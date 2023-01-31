@@ -5,24 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ThemePalette } from '@angular/material/core';
 
-export interface Userdata {
-  id: number;
-  std_id: string;
-  std_name: string;
-  std_mobile: number;
-  course: string;
-  batch: string;
-  date: string;
-  status: string;
-  std_roll:number;
-}
-
-const Userdata: Userdata[] = [
-  {id: 1, std_id:'GS2301202301' , std_name: 'Amarjeet', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Success', std_roll:130},
-  {id: 1, std_id:'GS2301202302' , std_name: 'Sonu Kumar', std_mobile: 9856232154, course:'12th',batch:' HTML',date:'08-09-2022',status:'Pending', std_roll:130},
-  {id: 1, std_id:'GS2301202303' , std_name: 'Akhilesh', std_mobile: 9856232154, course:'MCA',batch:'Python',date:'20-02-2023',status:'Success', std_roll:130},
- 
-];
 @Component({
   selector: 'app-admission',
   templateUrl: './admission.component.html',
@@ -31,7 +13,7 @@ const Userdata: Userdata[] = [
 
 export class AdmissionComponent implements OnInit {
   displayedColumns: string[] = ['id', 'std_id', 'std_name','std_roll', 'std_mobile','course','batch','date','status', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
+  dataSource = new MatTableDataSource();
   count_admission:number=0;
   color: ThemePalette='primary'
   @ViewChild(MatPaginator) paginator!: MatPaginator;

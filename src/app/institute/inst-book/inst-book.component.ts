@@ -5,38 +5,25 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditInstBookComponent } from '../add-edit-inst-book/add-edit-inst-book.component';
-export interface Userdata {
-  book_id: number;
-  course_id: string;
-  book_title: string;
-  book_image: string;
-  book_description: string;
-}
+import { ManageService } from 'src/app/manage.service';
 
-const Userdata: Userdata[] = [
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-];
 @Component({
   selector: 'app-inst-book',
   templateUrl: './inst-book.component.html',
   styleUrls: ['./inst-book.component.css']
 })
 export class InstBookComponent implements OnInit {
-  displayedColumns: string[] = ['book_id', 'course_id', 'book_title', 'book_image', 'book_description', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
-  count_batch:number=0;
+  displayedColumns: string[] = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_img', 'inst_book_description', 'action'];
+  dataSource = new MatTableDataSource();
+  count_inst_book:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private router: Router,
+    private service:ManageService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -44,6 +31,15 @@ export class InstBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.get_inst_book_view().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_inst_book = res.data.length
+      }
+    )
   }
 
   add_batch(): any {

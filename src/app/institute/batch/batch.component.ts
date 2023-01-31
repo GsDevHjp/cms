@@ -59,6 +59,16 @@ export class BatchComponent implements OnInit {
       )
     }
 
+    this.service.get_batch().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_batch = res.data.length
+      }
+    )
+
   }
 
   add_batch(): any {

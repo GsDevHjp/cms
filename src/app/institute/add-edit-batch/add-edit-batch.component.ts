@@ -42,6 +42,7 @@ export class AddEditBatchComponent implements OnInit {
       batch_date: ['', Validators.required],
       batch_arrival: ['',Validators.required],
       batch_departure: ['', Validators.required],
+      institute_id_fk: ['', Validators.required],
       course_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })

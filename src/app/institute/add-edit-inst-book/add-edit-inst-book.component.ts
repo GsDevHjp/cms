@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-add-edit-inst-book',
@@ -11,7 +12,7 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 export class AddEditInstBookComponent implements OnInit {
 
   disableSelect = new FormControl(false);
-  batch_form!: FormGroup;
+  inst_book_form!: FormGroup;
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
@@ -21,6 +22,7 @@ export class AddEditInstBookComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private service:ManageService,
     private matref: MatDialogRef<AddEditInstBookComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_batch: any
   ) {
@@ -29,24 +31,85 @@ export class AddEditInstBookComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-    this.batch_form = this.fb.group({
-      course_id: ['', Validators.required],
-      book_title: ['', Validators.required],
-      book_image: ['', Validators.required],
-      book_description: ['', Validators.required],
+    this.service.get_course().subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
+    this.inst_book_form = this.fb.group({
+      inst_book_id: ['',],
+      inst_book_title: ['', Validators.required],
+      inst_book_img: ['', Validators.required],
+      inst_book_description: ['', Validators.required],
+      course_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
     if (this.edit_batch) {
       this.actionBtn = "Update";
-      this.batch_form.controls['course_id'].setValue(this.edit_batch.course_id);
-      this.batch_form.controls['book_title'].setValue(this.edit_batch.book_title);
-      this.batch_form.controls['book_image'].setValue(this.edit_batch.book_image);
-      this.batch_form.controls['book_description'].setValue(this.edit_batch.book_description);
-      this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
+      this.inst_book_form.controls['inst_book_id'].setValue(this.edit_batch.inst_book_id);
+      this.inst_book_form.controls['inst_book_title'].setValue(this.edit_batch.inst_book_title);
+      this.inst_book_form.controls['inst_book_img'].setValue(this.edit_batch.inst_book_img);
+      this.inst_book_form.controls['inst_book_description'].setValue(this.edit_batch.inst_book_description);
+      this.inst_book_form.controls['course_id_fk'].setValue(this.edit_batch.course_id);
+      this.inst_book_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
     }
   }
-  batch_btn() {
-
+  inst_book_btn() {
+    console.log(this.inst_book_form.value)
+    const formdata = new FormData();
+    formdata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
+    formdata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
+    formdata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
+    formdata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
+    formdata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
+    if (!this.edit_batch) {
+      if (this.inst_book_form.valid) {
+        this.service.post_student(formdata).subscribe(
+          (result: any) => {
+            console.log(result)
+            this.matref.close();
+            this.inst_book_form.reset();
+           alert('form successfully...')
+          },
+          (error: any) => {
+            console.log(error)
+           alert('data not insert')
+          }
+        )
+      }
+    }
+    else {
+      this.updateInstBook()
+    }
+  }
+  updateInstBook() {
+      console.log(this.inst_book_form.value)
+      const updatedata = new FormData();
+      updatedata.append('inst_book_id', this.inst_book_form.get('inst_book_id')?.value);
+      updatedata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
+      updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
+      updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
+      updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
+      updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
+      this.service.put_inst_book(updatedata).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.matref.close();
+          this.inst_book_form.reset();
+          alert('update successfully...')
+        },
+        (error: any) => {
+          console.log(error)
+          alert('data not update')
+        }
+      )
+    }
+ 
+  OnUpload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.inst_book_form.get('inst_book_img')?.setValue(file)
+    }
   }
 }

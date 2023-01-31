@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -19,15 +18,10 @@ export class AddEditInstQuizComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private service:ManageService,
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    };
-  }
+  ) { }
   ngOnInit(): void {
     this.quiz_form = this.fb.group({
       quiz_id: ['',],
