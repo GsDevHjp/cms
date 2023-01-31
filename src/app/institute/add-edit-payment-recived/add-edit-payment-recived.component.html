@@ -11,7 +11,7 @@
                 <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Student Id</mat-label>
-                        <input matInput formControlName="institute_id_fk">
+                        <input matInput type="number" formControlName="std_id" readonly>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
@@ -149,6 +149,6 @@
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary" (click)="fee_btn()">Add</button>
+        <button mat-raised-button color="primary"  [disabled]="!fee_form.valid" (click)="fee_btn()">Add</button>
     </div>
 </div>

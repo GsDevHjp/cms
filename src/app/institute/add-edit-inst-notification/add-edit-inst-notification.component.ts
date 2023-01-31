@@ -10,7 +10,7 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 })
 export class AddEditInstNotificationComponent implements OnInit {
   disableSelect = new FormControl(false);
-  batch_form!: FormGroup;
+  notification_form!: FormGroup;
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
@@ -20,32 +20,24 @@ export class AddEditInstNotificationComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private matref: MatDialogRef<AddEditInstNotificationComponent>,
-    @Inject(MAT_DIALOG_DATA) public edit_batch: any
+    @Inject(MAT_DIALOG_DATA) public edit_notification: any
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
   }
   ngOnInit(): void {
-    this.batch_form = this.fb.group({
-      quiz_question: ['', Validators.required],
-      quiz_option_a: ['', Validators.required],
-      quiz_option_b: ['', Validators.required],
-      quiz_option_c: ['', Validators.required],
-      quiz_option_d: ['', Validators.required],
-      quiz_answer: ['', Validators.required],
+    this.notification_form = this.fb.group({
+      notification: ['', Validators.required],
+      description: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
-    if (this.edit_batch) {
+    if (this.edit_notification) {
       this.actionBtn = "Update";
-      this.batch_form.controls['quiz_question'].setValue(this.edit_batch.quiz_question);
-      this.batch_form.controls['quiz_option_a'].setValue(this.edit_batch.quiz_option_a);
-      this.batch_form.controls['quiz_option_b'].setValue(this.edit_batch.quiz_option_b);
-      this.batch_form.controls['quiz_option_c'].setValue(this.edit_batch.quiz_option_c);
-      this.batch_form.controls['quiz_option_d'].setValue(this.edit_batch.quiz_option_d);
-      this.batch_form.controls['quiz_answer'].setValue(this.edit_batch.quiz_answer);
-      this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
+      this.notification_form.controls['notification'].setValue(this.edit_notification.notification);
+      this.notification_form.controls['description'].setValue(this.edit_notification.description);
+      this.notification_form.controls['admin_id_fk'].setValue(this.edit_notification.admin_id_fk);
     }
   }
   batch_btn() {

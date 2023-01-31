@@ -20,10 +20,11 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   batch_data:any;
   student_single_data:any;
   course_single_data:any;
-  imgUrl :string = 'assets/';
+  imgUrl:string = 'http://localhost/cms/src/assets/';
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
+    private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
     @Inject(MAT_DIALOG_DATA) public editenq: any,
   ) {  }
 
@@ -44,8 +45,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       }
     )
     this.fee_form = this.fb.group({
-      std_id: [''],
-      institute_id_fk: [''],
+      std_id:['',],
       student_id_fk: ['', Validators.required],
       std_father_name: [''],
       std_mobile: [''],
@@ -56,7 +56,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       course_quarter_fee: [''],
       course_monthly_fee: [''],
       course_admission_fee: [''],
-      fee_type: [''],
+      fee_type: ['', Validators.required],
       fee_monthly: ['', Validators.required],
       fee_mode: ['', Validators.required],
       fee_amount: ['', Validators.required],
@@ -71,7 +71,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   get_student_single_data(event:any){
     const formdata = new FormData();
     formdata.append('std_id', event)
-    this.service.get_student_single_data(formdata).subscribe(
+    this.service.get_student_by_std_id(formdata).subscribe(
       (res: any) => {
         console.log(res.data)
         this.student_single_data = res.data
@@ -80,14 +80,15 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['std_mobile'].setValue(this.student_single_data.std_mobile);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'assets/'+ this.student_single_data.std_img
+        this.imgUrl = 'assets/'+ this.student_single_data.std_img;
+        
       }
     )
 }
 get_course_single_data(event:any){
     const coursedata = new FormData();
     coursedata.append('course_id', event)
-    this.service.get_course_single_data(coursedata).subscribe(
+    this.service.get_course_by_course_id(coursedata).subscribe(
       (res: any) => {
         console.log(res.data)
         this.course_single_data = res.data
@@ -113,15 +114,22 @@ fee_btn(){
   formadd.append('fee_date', this.fee_form.get('fee_date')?.value)
   formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
   formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
+  if(this.fee_form.valid){
   this.service.post_fee(formadd).subscribe(
     (res:any)=>{
       console.log(res)
+      this.matref.close();
       alert('form successfully...')
     },
+    
     (error:any)=>{
       console.log(error)
       alert('data not insert')
     }
   )
+}
+else{
+  alert('please fill up the form')
+}
 }
 }

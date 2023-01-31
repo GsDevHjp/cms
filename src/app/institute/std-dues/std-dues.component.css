@@ -1,0 +1,18 @@
+.icon_box{
+    width: 40px;
+    height: 40px;
+    float: left;
+    text-align: center;
+}
+.icon_box span{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 35px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+.action_icon{
+    cursor: pointer;
+    float: left;
+    margin-top: 6px;
+}

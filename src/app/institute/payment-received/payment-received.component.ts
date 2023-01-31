@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-payment-received',
@@ -13,7 +14,7 @@ import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_name', 'std_mobile', 'payment_course', 'payment_batch','payment_received_amount', 'payment_description','payment_image', 'payment_date', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_mobile', 'payment_course', 'payment_batch','fee_amount', 'fee_description','payment_image', 'fee_date', 'action'];
   dataSource = new MatTableDataSource();
   count_payment: number =0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,14 +24,25 @@ export class PaymentReceivedComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private router: Router,
+    private service:ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.get_fee().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_payment = res.data.length
+      }
+    )
+  }
 
   add_payment() {
     this.dailog.open(AddEditPaymentRecivedComponent, {
