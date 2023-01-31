@@ -38,6 +38,7 @@ export class InstQuizComponent implements OnInit {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.count_quiz = res.data.length
       }
     )
@@ -53,6 +54,22 @@ export class InstQuizComponent implements OnInit {
     this.dailog.open(AddEditInstQuizComponent, {
       data: row,
     });
+  }
+  course_delete(row:any){
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('quiz_id', row.quiz_id);
+      this.service.quiz_delete(deldata).subscribe(
+        (res: any) => {
+          console.log(res)
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+  
   }
 
   applyFilter(event: Event) {

@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  displayedColumns: string[] = ['course_id', 'course_name', 'course_total_fee', 'course_half_fee', 'course_quarter_fee','course_monthly_fee', 'course_admission_fee', 'course_duration', 'course_description','course_date', 'action'];
+  displayedColumns: string[] = ['course_id', 'course_name','institute_id', 'course_total_fee', 'course_half_fee', 'course_quarter_fee','course_monthly_fee', 'course_admission_fee', 'course_duration', 'course_description','course_date', 'action'];
   dataSource = new MatTableDataSource();
   count_course: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,6 +32,7 @@ export class CourseComponent implements OnInit {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.count_course = res.data.length
       }
     )

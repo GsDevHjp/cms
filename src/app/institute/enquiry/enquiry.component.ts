@@ -37,6 +37,7 @@ export class EnquiryComponent implements OnInit {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.count_enquiry = res.data.length
       }
     )

@@ -5,20 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditInstNotificationComponent } from '../add-edit-inst-notification/add-edit-inst-notification.component';
-export interface Userdata {
-  notification: string;
-  description: string;
-}
-
-const Userdata: Userdata[] = [
- { notification: 'Ayush', description:'8956322145', },
- { notification: 'Ayush', description:'8956322145', },
- { notification: 'Ayush', description:'8956322145', },
- { notification: 'Ayush', description:'8956322145', },
- { notification: 'Ayush', description:'8956322145', },
- { notification: 'Ayush', description:'8956322145', },
- 
-];
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-inst-notification',
@@ -28,17 +15,27 @@ const Userdata: Userdata[] = [
 export class InstNotificationComponent implements OnInit {
 
   displayedColumns: string[] = ['quiz_id', 'notification', 'description', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
+  dataSource = new MatTableDataSource();
   count_notification: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private service:ManageService,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.service.get_notification().subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_notification = res.data.length
+      }
+    )
+   }
 
   add_notification() {
     this.dailog.open(AddEditInstNotificationComponent, {
@@ -50,6 +47,22 @@ export class InstNotificationComponent implements OnInit {
     this.dailog.open(AddEditInstNotificationComponent, {
       data: row,
     });
+  }
+  notification_delete(row:any){
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('notification_id', row.notification_id);
+      this.service.notification_delete(deldata).subscribe(
+        (res: any) => {
+          console.log(res)
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+  
   }
 
   applyFilter(event: Event) {

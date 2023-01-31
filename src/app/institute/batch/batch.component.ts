@@ -36,6 +36,7 @@ export class BatchComponent implements OnInit {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.count_batch = res.data.length
       }
     )
