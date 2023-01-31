@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,14 +14,15 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class InsstudentComponent implements OnInit {
 
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_address','total_student',];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_address', 'total_student',];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  std_count:any
+  std_count: any
   constructor(
     private dailog: MatDialog,
-    private manageservice:ManageService
+    private manageservice: ManageService,
+    private router: Router
   ) {
   }
 
@@ -36,6 +38,9 @@ export class InsstudentComponent implements OnInit {
     )
   }
 
+  get_student(row: any) {
+    this.router.navigate(['/adminhome/insstudent/student'],row.inst_id)
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -45,6 +50,6 @@ export class InsstudentComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
- 
+
 }
 

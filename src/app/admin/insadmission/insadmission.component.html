@@ -49,7 +49,9 @@
     
       <ng-container matColumnDef="total_admission">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Admission</th>
-        <td mat-cell *matCellDef="let row"style="cursor: pointer;"><a [routerLink]="['admission']">{{row.total_admission}}</a></td>
+        <td mat-cell *matCellDef="let row"style="cursor: pointer;">
+          <mat-icon [routerLink]="['admission']">visibility</mat-icon>
+        </td>
       </ng-container>
   
   

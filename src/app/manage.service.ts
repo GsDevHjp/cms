@@ -9,9 +9,9 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string ='https://greensoft.net.in/gscms/api/';
+  baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
-// for course module 
+  // for course module 
 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -24,6 +24,9 @@ export class ManageService {
   }
   course_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'course_delete.php', data);
+  }
+  get_course_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_course_by_inst_id.php', data);
   }
   // for batch module 
 
@@ -39,6 +42,12 @@ export class ManageService {
   batch_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'batch_delete.php', data);
   }
+  get_batch_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_batch_by_inst_id.php', data);
+  }
+  get_batch_by_course_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_batch_by_course_id.php', data);
+  }
   // for student module 
 
   get_student() {
@@ -53,10 +62,12 @@ export class ManageService {
   std_self_reg(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_self_reg.php', data);
   }
-  
+  get_student_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_student_by_inst_id.php', data);
+  }
   // for fee module component payment recive
 
-  get_fee(){
+  get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
   }
   get_student_by_std_id(data: any) {
@@ -70,7 +81,7 @@ export class ManageService {
   }
   // for enquiry module 
 
-  get_enquiry(){
+  get_enquiry() {
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }
   post_enquiry(data: any) {
@@ -79,18 +90,18 @@ export class ManageService {
   put_enquiry(data: any) {
     return this.http.put<any>(this.baseUrl + 'enquiry_update.php', data)
   }
-// for quiz module 
+  // for quiz module 
 
-  get_quiz(){
+  get_quiz() {
     return this.http.get<[]>(this.baseUrl + 'quiz_view.php');
   }
-  post_quiz(data: any){
+  post_quiz(data: any) {
     return this.http.post<any>(this.baseUrl + 'quiz_insert.php', data)
   }
   put_quiz(data: any) {
     return this.http.put<any>(this.baseUrl + 'quiz_update.php', data)
   }
-// for institute module 
+  // for institute module 
 
   institute_view() {
     return this.http.get<[]>(this.baseUrl + 'institute_view.php');
@@ -108,7 +119,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'inst_self_reg.php', data);
   }
   // for query module 
-  
+
   std_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_query.php', data);
   }

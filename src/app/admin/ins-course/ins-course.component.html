@@ -31,15 +31,17 @@
       <td mat-cell *matCellDef="let row"> {{row.inst_whatsapp_no}} </td>
     </ng-container>
 
-   <ng-container matColumnDef="institute_email">
+    <ng-container matColumnDef="institute_email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
       <td mat-cell *matCellDef="let row"> {{row.inst_email}} </td>
     </ng-container>
 
-  
+
     <ng-container matColumnDef="total_course">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Course</th>
-      <td mat-cell *matCellDef="let row"style="cursor: pointer;"><a [routerLink]="['course']">{{row.total_course}}</a></td>
+      <td mat-cell *matCellDef="let row" style="cursor: pointer;">
+        <mat-icon  (click)="get_course(row)">visibility</mat-icon>
+      </td>
     </ng-container>
 
 
