@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-edit-take-addmission.component';
+import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-edit-student.component';
 
 @Component({
   selector: 'app-take-addmission',
@@ -12,16 +13,17 @@ import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-
   styleUrls: ['./take-addmission.component.css']
 })
 export class TakeAddmissionComponent implements OnInit {
-  displayedColumns: string[] = ['addmission_id','std_name', 'std_mobile', 'std_address', 'std_email', 'admission_date', 'add_monthly', 'total_fee', 'action'];
+  displayedColumns: string[] = ['addmission_id', 'std_name', 'std_mobile', 'std_address', 'std_email', 'admission_date', 'add_monthly', 'total_fee', 'action'];
   dataSource = new MatTableDataSource();
   course_count: any;
+  status: number = 1
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   constructor(
     private dailog: MatDialog,
     private router: Router
-  ) { 
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -29,10 +31,16 @@ export class TakeAddmissionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-    add_course() {
-    this.dailog.open(AddEditTakeAddmissionComponent, {
-      disableClose: true
-    });
+  take_addmission() {
+    if (this.status == 0) {
+      this.dailog.open(AddEditStudentComponent)
+    }
+    else {
+      this.dailog.open(AddEditTakeAddmissionComponent, {
+        disableClose: true
+      });
+    }
+
   }
 
   applyFilter(event: Event) {

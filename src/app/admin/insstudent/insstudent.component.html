@@ -44,8 +44,9 @@
 
     <ng-container matColumnDef="total_student">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Student</th>
-      <td mat-cell *matCellDef="let row" style="cursor: pointer;"><a
-          [routerLink]="['student']">{{row.total_student}}</a></td>
+      <td mat-cell *matCellDef="let row" style="cursor: pointer;">
+        <mat-icon (click)="get_student(row)">visibility</mat-icon>
+      </td>
     </ng-container>
 
 
