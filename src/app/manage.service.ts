@@ -59,9 +59,6 @@ export class ManageService {
   get_fee(){
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
   }
-  get_student_single_data(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_student_single_data.php', data);
-  }
   get_student_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_student_by_std_id.php', data);
   }
