@@ -1,38 +1,47 @@
 <mat-toolbar>
     <span class="example-spacer">Add Question Bank</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
-</mat-toolbar>
-
-<form [formGroup]="batch_form">
-
+  </mat-toolbar>
+  
+  <form [formGroup]="inst_question_bank_form">
+    
+    <div class="box"> 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Course</mat-label>
-        <mat-select formControlName="course_id">
+        <mat-select formControlName="course_id_fk">
             <mat-option *ngFor="let course of course_data"
                 [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
     </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Question Bank Title</mat-label>
-        <input matInput formControlName="book_title">
-    </mat-form-field><br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Image</mat-label>
-        <input matInput formControlName="book_image">
-    </mat-form-field>
-
+  
+    <table class="photo" cellspacing="0">
+        <mat-label class="student_kb">question image</mat-label>
+        <input type="file" name="std_photo" class="upload" (change)="OnUpload($event)"
+            formControlName="inst_question_bank_img">
+    </table>
+    
+    </div>
+    
+    <div class="box">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Question Bank Title</mat-label>
+            <input matInput formControlName="inst_question_bank_title">
+        </mat-form-field>
+  
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput formControlName="book_description">
+        <input matInput formControlName="inst_question_bank_description">
     </mat-form-field>
-
+    </div>
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-
-</form>
-
-<div class="submit">
+  
+    <mat-form-field class="example-full-width" appearance="fill" hidden>
+        <mat-label>Institute Id</mat-label>
+        <input matInput [ngModel]="institute_id" formControlName="institute_id_fk">
+    </mat-form-field>
+  </form>
+  
+  <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="batch_btn()">{{actionBtn}}</button>
-</div>
+    <button mat-raised-button color="primary" (click)="inst_question_bank_btn()">{{actionBtn}}</button>
+  </div>

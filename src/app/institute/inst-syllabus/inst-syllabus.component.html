@@ -1,10 +1,10 @@
 
 <div class="head">
   <span class="batch_text">Syllabus Details</span>
-  <mat-icon id="add_batch" (click)="add_batch()">add_circle</mat-icon>
+  <mat-icon id="add_batch" (click)="add_inst_syllabus()">add_circle</mat-icon>
 </div>
 <div class="count_area">
-  <span class="notice_text">Total : {{count_batch}}</span>
+  <span class="notice_text">Total : {{count_inst_syllabus}}</span>
   <div class="search">
     <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
   </div>
@@ -13,36 +13,42 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="book_id">
+    <ng-container matColumnDef="inst_syllabus_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
       <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
     </ng-container> 
 
-    <ng-container matColumnDef="course_id">
+    <ng-container matColumnDef="course_id_fk">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
-      <td mat-cell *matCellDef="let row"> {{row.course_id}}</td>
+      <td mat-cell *matCellDef="let row"> {{row.course_id_fk}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="book_title">
+    <ng-container matColumnDef="inst_syllabus_title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Syllabus Title</th>
-      <td mat-cell *matCellDef="let row"> {{row.book_title}}</td>
+      <td mat-cell *matCellDef="let row"> {{row.inst_syllabus_title}}</td>
     </ng-container>
   
-    <ng-container matColumnDef="book_image">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
-      <td mat-cell *matCellDef="let row"><img src="assets\main_back.jpeg" width="40px" height="40px"></td>
+    <ng-container matColumnDef="inst_syllabus_img">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Download</th>
+      <td mat-cell *matCellDef="let row"> <a href="{{imgUrl}}{{row.inst_syllabus_img}}"><mat-icon>picture_as_pdf</mat-icon></a>
+      </td>
     </ng-container>
 
-    <ng-container matColumnDef="book_description">
+    <ng-container matColumnDef="inst_syllabus_description">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-      <td mat-cell *matCellDef="let row"> {{row.book_description}}</td>
+      <td mat-cell *matCellDef="let row"> {{row.inst_syllabus_description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="institute_id_fk">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Institute Id</th>
+      <td mat-cell *matCellDef="let row"> {{row.institute_id_fk}}</td>
     </ng-container>
  
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
       <td mat-cell *matCellDef="let row">
         <mat-icon (click)="batch_edit(row)" style="cursor: pointer;">edit</mat-icon>
-        <mat-icon style="cursor: pointer;">delete</mat-icon>
+        <mat-icon style="cursor: pointer;" (click)="inst_syllabus_delete(row)">delete</mat-icon>
       </td>
     </ng-container>
 

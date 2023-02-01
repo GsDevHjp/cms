@@ -18,8 +18,20 @@
         </mat-select>
     </mat-form-field><br>
 
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Arrival</mat-label>
+        <input type="time" matInput formControlName="batch_arrival">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Departure</mat-label>
+        <input type="time" matInput formControlName="batch_departure">
+    </mat-form-field>
+
+    <br>
+
     <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Start Batch</mat-label>
+        <mat-label>Batch Status</mat-label>
         <mat-select formControlName="batch_status">
             <mat-option value="Yet to start">Yet to start</mat-option>
             <mat-option value="Running">Running</mat-option>
@@ -32,16 +44,11 @@
         <mat-label>Date</mat-label>
         <input type="date" matInput formControlName="batch_date">
     </mat-form-field>
-    <br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Arrival</mat-label>
-        <input type="time" matInput formControlName="batch_arrival">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Departure</mat-label>
-        <input type="time" matInput formControlName="batch_departure">
+<br>
+    <mat-form-field class="example-full-width" appearance="fill" id="description">
+        <mat-label>Description</mat-label>
+        <input type="text" matInput formControlName="batch_description">
     </mat-form-field>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>

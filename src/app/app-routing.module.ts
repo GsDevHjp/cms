@@ -98,7 +98,7 @@ const routes: Routes = [
       { path: 'student', component: StudentComponent },
       { path: 'admission', component: AdmissionComponent },
       { path: 'enquiry', component: EnquiryComponent },
-      { path: 'paymentreceived', component: PaymentReceivedComponent },
+      { path: 'fee', component: PaymentReceivedComponent },
       { path: 'dues', component: StdDuesComponent },
       { path: 'instquiz', component: InstQuizComponent },
       { path: 'instquery', component: InstQueryComponent },
