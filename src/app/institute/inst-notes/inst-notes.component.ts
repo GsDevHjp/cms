@@ -56,7 +56,7 @@ export class InstNotesComponent implements OnInit {
   inst_notes_delete(row:any){
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
-      deldata.append('inst_note_id', row.inst_notes_id);
+      deldata.append('inst_notes_id', row.inst_notes_id);
       this.service.inst_notes_delete(deldata).subscribe(
         (res: any) => {
           console.log(res)

@@ -29,8 +29,9 @@
     </ng-container>
   
     <ng-container matColumnDef="inst_notes_img">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
-      <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.inst_notes_img}}" width="40px" height="40px"></td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Download</th>
+      <td mat-cell *matCellDef="let row"> <a href="{{imgUrl}}{{row.inst_notes_img}}"><mat-icon>picture_as_pdf</mat-icon></a>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="inst_notes_description">

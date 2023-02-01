@@ -17,6 +17,9 @@
     position: relative;
     color: whitesmoke;
   }
+  #description{
+    width: 100%;
+  }
   .example-full-width{
     margin-left: 10px;
   }

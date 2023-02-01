@@ -43,6 +43,7 @@ export class AddEditBatchComponent implements OnInit {
       batch_date: ['', Validators.required],
       batch_arrival: ['',Validators.required],
       batch_departure: ['', Validators.required],
+      batch_description: ['', Validators.required],
       course_id_fk: ['', Validators.required],
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
@@ -56,6 +57,7 @@ export class AddEditBatchComponent implements OnInit {
       this.batch_form.controls['batch_status'].setValue(this.edit_batch.batch_status);
       this.batch_form.controls['batch_arrival'].setValue(this.edit_batch.batch_arrival);
       this.batch_form.controls['batch_departure'].setValue(this.edit_batch.batch_departure);
+      this.batch_form.controls['batch_description'].setValue(this.edit_batch.batch_description);
       this.batch_form.controls['course_id_fk'].setValue(this.edit_batch.course_id_fk);
       this.batch_form.controls['institute_id_fk'].setValue(this.edit_batch.institute_id_fk);
       this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);

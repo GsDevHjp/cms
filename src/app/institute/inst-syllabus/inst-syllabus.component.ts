@@ -5,23 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditInstSyllabusComponent } from '../add-edit-inst-syllabus/add-edit-inst-syllabus.component';
-export interface Userdata {
-  book_id: number;
-  course_id: string;
-  book_title: string;
-  book_image: string;
-  book_description: string;
-}
-
-const Userdata: Userdata[] = [
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-  { book_id: 1, course_id: 'BCA', book_title: 'HTML', book_image: '00:08 PM', book_description: 'Green Soft',},
-];
-
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-inst-syllabus',
@@ -29,16 +13,17 @@ const Userdata: Userdata[] = [
   styleUrls: ['./inst-syllabus.component.css']
 })
 export class InstSyllabusComponent implements OnInit {
-  displayedColumns: string[] = ['book_id', 'course_id', 'book_title', 'book_image', 'book_description', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
-  count_batch:number=0;
+  displayedColumns: string[] = ['inst_syllabus_id', 'course_id_fk', 'inst_syllabus_title', 'inst_syllabus_description','institute_id_fk', 'inst_syllabus_img', 'action'];
+  dataSource = new MatTableDataSource();
+  count_inst_syllabus:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  tabledata: any;
+  imgUrl :string = 'assets/';
 
   constructor(
     private dailog: MatDialog,
-    private router: Router
+    private router: Router,
+    private service:ManageService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -46,9 +31,18 @@ export class InstSyllabusComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.get_inst_syllabus().subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_inst_syllabus = res.data.length
+      }
+    )
   }
 
-  add_batch(): any {
+  add_inst_syllabus(): any {
     this.dailog.open(AddEditInstSyllabusComponent, {
       disableClose: true
     });
@@ -59,7 +53,22 @@ export class InstSyllabusComponent implements OnInit {
       data: row,
     });
   }
-
+  inst_syllabus_delete(row:any){
+    if (confirm("Are you sure to delate")) {
+      const deldata = new FormData();
+      deldata.append('inst_syllabus_id', row.inst_syllabus_id);
+      this.service.inst_syllabus_delete(deldata).subscribe(
+        (res: any) => {
+          console.log(res)
+          alert('data delate sucessfully')
+        }
+      )
+    }
+    else {
+      alert('cancle')
+    }
+  
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
