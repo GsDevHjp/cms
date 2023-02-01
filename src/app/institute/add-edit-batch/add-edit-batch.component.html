@@ -10,11 +10,6 @@
         <input matInput formControlName="batch_name">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill" hidden>
-        <mat-label>Institute Id</mat-label>
-        <input matInput formControlName="institute_id_fk">
-    </mat-form-field>
-
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Course</mat-label>
         <mat-select formControlName="course_id_fk">
@@ -51,6 +46,10 @@
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
+    <mat-form-field class="example-full-width" appearance="fill" hidden>
+        <mat-label>Institute Id</mat-label>
+        <input matInput [ngModel]="institute_id" formControlName="institute_id_fk">
+    </mat-form-field>
 </form>
 
 <div class="submit">

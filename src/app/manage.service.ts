@@ -40,7 +40,7 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'batch_update.php', data);
   }
   batch_delete(data: any) {
-    return this.http.post<any>(this.baseUrl + 'batch_delete.php', data);
+    return this.http.post<any>(this.baseUrl + 'batch_update.php', data);
   }
   get_batch_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_inst_id.php', data);
@@ -120,15 +120,31 @@ export class ManageService {
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-  // for institute book module
+  // for inst book module
   post_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_insert.php', data);
   }
   put_inst_book(data: any) {
-    return this.http.put<any>(this.baseUrl + 'inst_book_update.php', data)
+    return this.http.post<any>(this.baseUrl + 'inst_book_update.php', data)
   }
   get_inst_book_view(){
     return this.http.get<[]>(this.baseUrl + 'inst_book_view.php')
+  }
+  inst_book_delete(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_book_delete.php', data);
+  }
+  // for inst notes module
+  get_inst_notes(){
+    return this.http.get<[]>(this.baseUrl + 'inst_notes_view.php');
+  }
+  post_inst_notes(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_notes_insert.php',data);
+  }
+  put_inst_notes(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_notes_update.php',data);
+  }
+  inst_notes_delete(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_notes_delete.php',data);
   }
 // for institute module 
 
