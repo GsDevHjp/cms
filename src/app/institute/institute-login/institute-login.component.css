@@ -108,7 +108,7 @@ mat-form-field mat-label {
 }
 p {
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     display: inline;
     margin-top: 15px;
@@ -117,7 +117,7 @@ p {
 }
 
 .new_account {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 

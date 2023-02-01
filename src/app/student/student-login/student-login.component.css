@@ -1,45 +1,46 @@
 #wrapper {
     width: 100%;
     height: 100vh;
-    position: fixed;
+    background-color: #2C3E50 ;
 }
 
 #header {
     height: 60px;
     width: 100%;
     background-color: #1d1f23;
-    float: left;
     color: #ffff;
+    display: flex;
+    justify-content: space-between;
 }
 
 h1 {
-    font-size: 20px;
-    margin: 10px;
+    margin: 14px 15px;
+    display: inline-block;
 }
 
 .login_head {
-    float: right;
+    margin: 10px; 
+    height: 40px;
     background-color: #5a74ad;
-    margin: -40px 10px 0px;
 }
 
-
-
 .action_btn {
-    color: #ffff;
+    color: #fff;
 }
 
 .action_btn:hover {
     background-color: #5a74ad;
 }
 
-#main_area {
+#main {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: calc(100% - 105px);
     background-image: url('src/assets/main_back.jpeg');
     background-repeat: no-repeat;
-    background-size: 100% 100vh;
-    float: left;
+    background-size: 100%;
 }
 
 .example-card {
@@ -83,14 +84,14 @@ mat-form-field mat-label {
 
 .icon_1 {
     position: relative;
-    top: 25px;
+    top: 20px;
     right: 4px;
 
 }
 
 .icon_2 {
     position: relative;
-    top: 70px;
+    top: 60px;
     right: 4px;
 }
 
@@ -105,15 +106,20 @@ mat-form-field mat-label {
     display: flex;
     justify-content: space-between;
 }
-
 p {
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     display: inline;
-    margin-top: 30px;
+    margin-top: 15px;
+    cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.new_account {
+    font-size: 14px;
+}
+
 
 #footer {
     width: 100%;
@@ -125,78 +131,7 @@ p {
     background-color: #1d1f23;
 }
 
-.new_account {
-    font-size: 12px;
-    cursor: pointer;
-}
-
-
 span {
-    margin-left: 10px;
+    margin: 0px 10px;
 }
 
-.green_soft {
-    float: right;
-    margin: 0px 10px 0px;
-}
-
-
-@media(min-width:920px)and (max-width:1199px) {}
-
-@media(min-width:768px)and (max-width:919px) {}
-
-@media(min-width:420px)and (max-width:767px) {}
-
-@media(max-width:420px) {
-    #header {
-        height: 40px;
-        background-color: blue;
-    }
-
-    #main_area {
-        width: 100%;
-        height: 485px;
-    }
-
-    .example-card {
-        max-width: 300px;
-        height: 350px;
-
-    }
-
-    mat-form-field {
-        margin-top: -5px;
-    }
-
-    mat-card-header {
-        margin-bottom: 10px;
-        margin-left: -10px;
-    }
-
-    img {
-        height: 50px;
-        width: 50px;
-        margin-left: 120px;
-    }
-    .icon_1 {
-        top: 40px;
-        right: 11px;
-    }
-
-    .icon_2 {
-        top: 95px;
-        right: 35px;
-    }
-
-    p {
-        font-size: 15px;
-    }
-
-    .action_login {
-        margin-left: 90px;
-    }
-
-    .login_head {
-        margin: -50px 10px 0px;
-    }
-}

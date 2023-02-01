@@ -10,7 +10,6 @@
                 <span>Dashboard</span>
             </button>
 
-            
             <button mat-button class="menu-button" [routerLink]="['course']">
                 <mat-icon>school</mat-icon>
                 <span>Course</span>
@@ -21,9 +20,9 @@
                 <span>Batch</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['take-addmission']">
+            <button mat-button class="menu-button" [routerLink]="['takeaddmission']">
                 <mat-icon>airline_seat_recline_normal</mat-icon>
-                <span> Tack Admission</span>
+                <span>Take Admission</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['paymentreceived']">
@@ -50,11 +49,12 @@
                 <mat-icon>account_balance_wallet</mat-icon>
                 <span>Reult</span>
             </button>
-            
+
             <button mat-button class="menu-button" [routerLink]="['quize']">
                 <mat-icon>redeem</mat-icon>
                 <span>Quize</span>
             </button>
+
             <div>
                 <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
                     <mat-icon>list_alt</mat-icon>
@@ -87,30 +87,32 @@
 
                 </div>
 
-            <div>
-
                 <div>
-                    <button mat-button class="menu-button" (click)="setting_dropdown()" [routerLink]="['/#']">
-                        <mat-icon>settings</mat-icon>
-                        <span>Settings</span>
-                        <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
-                        <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
-                    </button>
 
-                    <div id="dropdown_setting">
-                        <button mat-button class="menu-button" (click)="changepassword()">
-                            <mat-icon>password</mat-icon>
-                            <span>Change Password</span>
+                    <div>
+                        <button mat-button class="menu-button" (click)="setting_dropdown()" [routerLink]="['/#']">
+                            <mat-icon>settings</mat-icon>
+                            <span>Settings</span>
+                            <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                            <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
                         </button>
 
-                        <button mat-button class="menu-button" [routerLink]="['/studentlogin']">
-                            <mat-icon>logout</mat-icon>
-                            <span>Logout</span>
-                        </button>
-                        
+                        <div id="dropdown_setting">
+                            <button mat-button class="menu-button" (click)="changepassword()">
+                                <mat-icon>password</mat-icon>
+                                <span>Change Password</span>
+                            </button>
 
+                            <button mat-button class="menu-button" [routerLink]="['/studentlogin']">
+                                <mat-icon>logout</mat-icon>
+                                <span>Logout</span>
+                            </button>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-           
-               
+        </div>
+    </div>
+</div>
