@@ -12,7 +12,6 @@ export class ManageService {
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
   // for course module 
-
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
   }
@@ -28,8 +27,8 @@ export class ManageService {
   get_course_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_inst_id.php', data);
   }
-  // for batch module 
 
+  // for batch module 
   get_batch() {
     return this.http.get<[]>(this.baseUrl + 'batch_view.php');
   }
@@ -48,8 +47,8 @@ export class ManageService {
   get_batch_by_course_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_course_id.php', data);
   }
-  // for student module 
 
+  // for student module 
   get_student() {
     return this.http.get<[]>(this.baseUrl + 'std_view.php');
   }
@@ -69,7 +68,6 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'student_login.php', data);
   }
   // for fee module component payment recive
-
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
   }
@@ -104,11 +102,10 @@ export class ManageService {
   put_quiz(data: any) {
     return this.http.put<any>(this.baseUrl + 'quiz_update.php', data)
   }
-  // for institute module 
-
   quiz_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'quiz_delete.php', data);
   }
+
   // for notification module
   post_notification(data: any){
     return this.http.post<any>(this.baseUrl + 'notification_insert.php', data);
@@ -122,6 +119,7 @@ export class ManageService {
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
+
   // for inst book module
   post_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_insert.php', data);
@@ -135,6 +133,7 @@ export class ManageService {
   inst_book_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'inst_book_delete.php', data);
   }
+
   // for inst notes module
   get_inst_notes(){
     return this.http.get<[]>(this.baseUrl + 'inst_notes_view.php');
@@ -147,6 +146,34 @@ export class ManageService {
   }
   inst_notes_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'inst_notes_delete.php',data);
+  }
+
+  // for inst syllabus module
+  get_inst_syllabus(){
+    return this.http.get<[]>(this.baseUrl + 'inst_syllabus_view.php');
+  }
+  post_inst_syllabus(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
+  }
+  put_inst_syllabus(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_syllabus_update.php', data);
+  }
+  inst_syllabus_delete(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
+  }
+
+  // for inst question bank module
+  get_inst_question_bank(){
+    return this.http.get<[]>(this.baseUrl + 'inst_question_bank_view.php');
+  }
+  post_inst_question_bank(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php',data);
+  }
+  put_inst_question_bank(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_update.php',data);
+  }
+  inst_question_bank_delete(data:any){
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_delete.php',data);
   }
 // for institute module 
 

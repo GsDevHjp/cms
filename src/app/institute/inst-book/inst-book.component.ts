@@ -25,6 +25,7 @@ export class InstBookComponent implements OnInit {
     private dailog: MatDialog,
     private router: Router,
     private service:ManageService,
+    
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -54,6 +55,7 @@ export class InstBookComponent implements OnInit {
       data: row,
     });
   }
+  
   inst_book_delete(row:any){
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
