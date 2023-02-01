@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,14 +13,15 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./insbatch.component.css']
 })
 export class InsbatchComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp','institute_email','institute_course','total_batch'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_course', 'total_batch'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  batch_count:any
+  batch_count: any
   constructor(
     private dailog: MatDialog,
-    private manageservice:ManageService
+    private manageservice: ManageService,
+    private route:Router
   ) {
   }
 
@@ -35,6 +37,10 @@ export class InsbatchComponent implements OnInit {
     )
   }
 
+  get_batch(row: any) {
+    console.log(row.inst_id)
+    this.route.navigate(['/adminhome/insbatch/batch'],row.inst_id)
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -44,6 +50,6 @@ export class InsbatchComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
- 
+
 }
 

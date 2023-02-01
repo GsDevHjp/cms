@@ -13,9 +13,10 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./batch.component.css']
 })
 export class BatchComponent implements OnInit {
-  displayedColumns: string[] = ['batch_id', 'batch_name', 'course_id_fk', 'batch_date', 'batch_arrival', 'batch_departure','batch_total_std', 'batch_status','action'];
+  displayedColumns: string[] = ['batch_id', 'batch_name', 'course_id_fk', 'batch_date', 'batch_arrival', 'batch_departure', 'batch_total_std', 'batch_status', 'action'];
   dataSource = new MatTableDataSource();
-  count_batch:number=0;
+  count_batch: number = 0;
+  inst_id:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -23,14 +24,41 @@ export class BatchComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService
+    private service: ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+    const institute_data = this.router.getCurrentNavigation();
+    this.inst_id = institute_data?.extras
   }
 
   ngOnInit(): void {
+    if (this.inst_id > 0) {
+      const instformdata = new FormData()
+      instformdata.append('inst_id', this.inst_id)
+      this.service.get_batch_by_inst_id(instformdata).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.dataSource.data = result.data
+          this.dataSource.sort = this.sort;
+          this.count_batch = result.data.length
+          return
+        }
+      )
+    }
+    else {
+      this.service.get_batch().subscribe(
+        (res: any) => {
+          console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.count_batch = res.data.length
+        }
+      )
+    }
+
     this.service.get_batch().subscribe(
       (res: any) => {
         console.log(res)
@@ -40,6 +68,7 @@ export class BatchComponent implements OnInit {
         this.count_batch = res.data.length
       }
     )
+
   }
 
   add_batch(): any {
