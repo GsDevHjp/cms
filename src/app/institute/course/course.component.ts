@@ -17,6 +17,8 @@ export class CourseComponent implements OnInit {
   dataSource = new MatTableDataSource();
   count_course: number = 0;
   inst_id:any
+  action_btn:boolean = false
+  Course: string ="Course Details"
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -32,6 +34,7 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.inst_id > 0){
+      this.action_btn = true
       const instformdata =  new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_course_by_inst_id(instformdata).subscribe(

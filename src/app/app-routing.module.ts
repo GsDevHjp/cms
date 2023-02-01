@@ -80,7 +80,7 @@ const routes: Routes = [
           { path: 'admission', component: AdmissionComponent },
         ]
       },
-      
+
       { path: 'inspayment', component: AdminPaymetRecivedComponent },
       { path: 'insdues', component: AdminDuesComponent },
       { path: 'terms', component: TAndCComponent }
@@ -107,25 +107,26 @@ const routes: Routes = [
       { path: 'instnotes', component: InstNotesComponent },
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
-      
+
     ]
   },
 
-  { path: 'studentlogin', component: StudentLoginComponent,
-},
+  {
+    path: 'studentlogin', component: StudentLoginComponent,
+  },
   {
     path: 'studenthome', component: StudentHomeComponent,
     children: [
       { path: '', component: StudentDashboardComponent },
-      { path: 'paymentreceived', component: PaymentReceivedComponent },
+      { path: 'dashboard', component: StudentDashboardComponent },
       { path: 'course', component: CourseComponent },
       { path: 'batch', component: BatchComponent },
-      { path: 'dashboard', component: StudentDashboardComponent },
+      { path: 'takeaddmission', component: TakeAddmissionComponent },
+      { path: 'paymentreceived', component: PaymentReceivedComponent },
       { path: 'dues', component: StdDuesComponent },
-      { path: 'result', component: ResultComponent },
-      { path: 'online-test', component: OnlineTestComponent },
       { path: 'query', component: QueryComponent },
-      { path: 'take-addmission', component: TakeAddmissionComponent },
+      { path: 'onlinetest', component: OnlineTestComponent },
+      { path: 'result', component: ResultComponent },
       { path: 'quize', component: QuizeComponent },
       { path: 'instbook', component: InstBookComponent },
       { path: 'instnotes', component: InstNotesComponent },

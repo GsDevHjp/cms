@@ -1,39 +1,51 @@
 <div class="wrapper">
-    <div class="header">
-        <h1>Angular Quiz</h1>
+    <div class="head">
+        <span>Angular Quiz</span>
         <span>03:00</span>
     </div>
+
     <div id="main">
         <div id="ques_viewport">
             <p id="ques_viewport_head">Question 1 of 50:</p>
             <span class="ques_text">
                 <p>Which among the following is not a part of page break option in MS-Word ?</p>
-                <span class="ans_text">
-                      <mat-radio-button id="answer1" name="ans" value="No option is correct"
-                        color="primary"></mat-radio-button>
-                      <label for="answer1">No option is correct</label>
-                </span>
-                <span class="ans_text">
-                      <mat-radio-button type="radio" id="answer2" name="ans" value="Even page"
-                        color="primary"></mat-radio-button>
-                      <label for="answer2">Even page</label>
-                </span>
-                <span class="ans_text">
-                      <mat-radio-button type="radio" id="answer3" name="ans" value="page" color="primary">
-                    </mat-radio-button>
-                      <label for="answer3">Page</label>
-                </span>
-                <span class="ans_text">
-                      <mat-radio-button type="radio" id="answer4" name="ans" value="Text wrapping"
-                        color="primary"></mat-radio-button>
-                      <label for="answer4">Text wrapping</label>
-                </span>
+
+                <mat-card>
+                    <mat-card-content>
+                        <span>No option is correct</span>
+                    </mat-card-content>
+                </mat-card>
+                <br>
+                <mat-card>
+                    <mat-card-content>
+                        <span>Even page</span>
+                    </mat-card-content>
+                </mat-card>
+                <br>
+                <mat-card>
+                    <mat-card-content>
+                        <span>Page</span>
+                    </mat-card-content>
+                </mat-card>
+                <br>
+                <mat-card>
+                    <mat-card-content>
+                        <span>Text wrapping</span>
+                    </mat-card-content>
+                </mat-card>
+                <br>
+                <mat-card>
+                    <mat-card-content>
+                        <textarea readonly class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis ad. Eligendi earum consequuntur vero tempora illum. Commodi aut architecto minima? Reprehenderit, veritatis optio sed dolorum natus voluptatem velit quisquam!</textarea>
+                    </mat-card-content>
+                </mat-card>
+                <br>
             </span>
         </div>
     </div>
     <div class="footer">
-        <button mat-raised-button color="basic">Preview</button>
-        <button mat-raised-button color="basic">Next</button>
+        <button mat-raised-button color="basic">Preview Question</button>
+        <button mat-raised-button color="basic">Next Question</button>
 
     </div>
 </div>

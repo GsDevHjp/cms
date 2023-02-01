@@ -16,7 +16,7 @@ export class TakeAddmissionComponent implements OnInit {
   displayedColumns: string[] = ['addmission_id', 'std_name', 'std_mobile', 'std_address', 'std_email', 'admission_date', 'add_monthly', 'total_fee', 'action'];
   dataSource = new MatTableDataSource();
   course_count: any;
-  status: number = 1
+  status: number = 0
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
