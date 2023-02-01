@@ -21,7 +21,7 @@ export class StudentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl: string = 'assets/';
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
 
   constructor(
     private dailog: MatDialog,
