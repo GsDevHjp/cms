@@ -1,31 +1,57 @@
 .example-spacer {
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    color: #1d1f23;
-    font-size: 18px;
-  }
-  
-  .material-icons {
-    color: #1d1f23;
-    margin-bottom: 20px;
-  }
-  
-  mat-toolbar {
-    height: 30px;
-    padding: 0px;
-    background: none;
-    position: relative;
-    color: whitesmoke;
-  }
-  mat-form-field{
-    margin-left:10px;
-  }
- 
-  .submit {
-    margin-left: 9.6em;
-  }
-  
-  button {
-    margin-left: 10px;
-  }
-  
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: #1d1f23;
+  font-size: 18px;
+}
+
+.material-icons {
+  color: #1d1f23;
+  margin-bottom: 20px;
+}
+
+mat-toolbar {
+  height: 30px;
+  padding: 0px;
+  background: none;
+  position: relative;
+  color: whitesmoke;
+}
+mat-form-field{
+  margin-left:10px;
+}
+.box {
+  width: 200px;
+  height: 100%;
+  margin-left: 10px;
+  float: left;
+}
+
+.box:last-child {
+  margin-right: 10px;
+}
+
+.photo {
+  width: 100%;
+  height: 51px;
+  margin-left: 10px;
+
+  border-bottom: 1px solid #757272;
+  background-color: whitesmoke;
+}
+
+.student_kb {
+  margin-left: 10px;
+}
+
+.upload {
+  font-size: 9.5px;
+  margin-left: 10px;
+}
+.submit {
+  margin-left: 9.5em;
+}
+
+button {
+  margin-left: 10px;
+}

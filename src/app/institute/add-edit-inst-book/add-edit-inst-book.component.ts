@@ -14,6 +14,7 @@ export class AddEditInstBookComponent implements OnInit {
   disableSelect = new FormControl(false);
   inst_book_form!: FormGroup;
   admin = 1;
+  institute_id = 1;
   upload: any;
   actionBtn: string = 'Add'
   course_data:any
@@ -24,7 +25,7 @@ export class AddEditInstBookComponent implements OnInit {
     private router: Router,
     private service:ManageService,
     private matref: MatDialogRef<AddEditInstBookComponent>,
-    @Inject(MAT_DIALOG_DATA) public edit_batch: any
+    @Inject(MAT_DIALOG_DATA) public edit_inst_book: any
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -42,30 +43,34 @@ export class AddEditInstBookComponent implements OnInit {
       inst_book_img: ['', Validators.required],
       inst_book_description: ['', Validators.required],
       course_id_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
-    if (this.edit_batch) {
+    if (this.edit_inst_book) {
       this.actionBtn = "Update";
-      this.inst_book_form.controls['inst_book_id'].setValue(this.edit_batch.inst_book_id);
-      this.inst_book_form.controls['inst_book_title'].setValue(this.edit_batch.inst_book_title);
-      this.inst_book_form.controls['inst_book_img'].setValue(this.edit_batch.inst_book_img);
-      this.inst_book_form.controls['inst_book_description'].setValue(this.edit_batch.inst_book_description);
-      this.inst_book_form.controls['course_id_fk'].setValue(this.edit_batch.course_id);
-      this.inst_book_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
+      this.inst_book_form.controls['inst_book_id'].setValue(this.edit_inst_book.inst_book_id);
+      this.inst_book_form.controls['inst_book_title'].setValue(this.edit_inst_book.inst_book_title);
+      this.inst_book_form.controls['inst_book_img'].setValue(this.edit_inst_book.inst_book_img);
+      this.inst_book_form.controls['inst_book_description'].setValue(this.edit_inst_book.inst_book_description);
+      this.inst_book_form.controls['course_id_fk'].setValue(this.edit_inst_book.course_id_fk);
+      this.inst_book_form.controls['institute_id_fk'].setValue(this.edit_inst_book.institute_id_fk);
+      this.inst_book_form.controls['admin_id_fk'].setValue(this.edit_inst_book.admin_id_fk);
     }
   }
   inst_book_btn() {
     console.log(this.inst_book_form.value)
     const formdata = new FormData();
+    formdata.append('inst_book_id', this.inst_book_form.get('inst_book_id')?.value);
     formdata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
     formdata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
     formdata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
     formdata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
+    formdata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
     formdata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
-    if (!this.edit_batch) {
+    if (!this.edit_inst_book) {
       if (this.inst_book_form.valid) {
-        this.service.post_student(formdata).subscribe(
+        this.service.post_inst_book(formdata).subscribe(
           (result: any) => {
             console.log(result)
             this.matref.close();
@@ -91,19 +96,19 @@ export class AddEditInstBookComponent implements OnInit {
       updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
       updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
       updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
+      updatedata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
       updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
-      this.service.put_inst_book(updatedata).subscribe(
-        (result: any) => {
-          console.log(result)
-          this.matref.close();
-          this.inst_book_form.reset();
-          alert('update successfully...')
-        },
-        (error: any) => {
-          console.log(error)
-          alert('data not update')
-        }
-      )
+     this.service.put_inst_book(updatedata).subscribe({
+      next:(res:any)=>{
+        console.log(res)
+        this.matref.close();
+        alert('update successfully..')
+      },
+      error:(error:any)=>{
+        console.log(error)
+        alert('data not update')
+      }
+     })
     }
  
   OnUpload(event: any) {

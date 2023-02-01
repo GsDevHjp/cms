@@ -13,6 +13,7 @@ export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
   admin = 1; 
+  institute_id= 1;
   upload: any;
   actionBtn: string = 'Add'
   course_data:any;
@@ -42,8 +43,8 @@ export class AddEditBatchComponent implements OnInit {
       batch_date: ['', Validators.required],
       batch_arrival: ['',Validators.required],
       batch_departure: ['', Validators.required],
-      institute_id_fk: ['', Validators.required],
       course_id_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.batch_form.controls['batch_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -53,10 +54,10 @@ export class AddEditBatchComponent implements OnInit {
       this.batch_form.controls['batch_id'].setValue(this.edit_batch.batch_id);
       this.batch_form.controls['batch_name'].setValue(this.edit_batch.batch_name);
       this.batch_form.controls['batch_status'].setValue(this.edit_batch.batch_status);
-      this.batch_form.controls['batch_date'].setValue(this.edit_batch.batch_date);
       this.batch_form.controls['batch_arrival'].setValue(this.edit_batch.batch_arrival);
       this.batch_form.controls['batch_departure'].setValue(this.edit_batch.batch_departure);
       this.batch_form.controls['course_id_fk'].setValue(this.edit_batch.course_id_fk);
+      this.batch_form.controls['institute_id_fk'].setValue(this.edit_batch.institute_id_fk);
       this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
     }
   }
@@ -77,21 +78,23 @@ export class AddEditBatchComponent implements OnInit {
   }
 }
 else {
-  this.updatebatch()
+  this.updateCourse()
 }
 }
 
-updatebatch() {
-  this.service.put_batch(this.batch_form.value).subscribe({
-    next: (res) => {
-      console.log(res);
-      this.matref.close();
-      alert('data update successfully');
-    },
-    error: (error: any) => {
-      console.log(error);
-      alert('data not update...');
-    },
-  });
+updateCourse() {
+this.service.put_batch(this.batch_form.value).subscribe({
+  next: (res) => {
+    console.log(res)
+    this.matref.close();
+   alert('data update successfully')
+
+  },
+  error: (error) => {
+    console.log(error)
+    alert('data not update')
+  }
+
+})
 }
 }
