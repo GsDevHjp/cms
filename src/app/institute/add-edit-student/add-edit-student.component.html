@@ -5,10 +5,7 @@
     </mat-toolbar>
 
     <form [formGroup]="student_form">
-        <div id="main_area">
-            <div class="box">
 
-                <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Name</mat-label>
                         <input matInput formControlName="std_name">
@@ -22,17 +19,14 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father Occupation</mat-label>
                         <input matInput formControlName="std_father_occupation">
-                    </mat-form-field>
+                    </mat-form-field><br>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Mobile</mat-label>
                         <input formControlName="std_mobile" matInput type="number"
                         onkeypress=" return this.value.length < 10">
                     </mat-form-field>
-                </table>
-            </div>
 
-            <div class="box">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Aadhar</mat-label>
                     <input type="number" matInput formControlName="std_aadhar"  onkeypress=" return this.value.length < 14">
@@ -41,26 +35,19 @@
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>E-mail</mat-label>
                     <input type="email" matInput formControlName="std_email">
-                </mat-form-field>
+                </mat-form-field><br>
 
-                <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>DOB</mat-label>
                         <input type="date" matInput formControlName="std_dob">
                     </mat-form-field>
 
-                    <div class="gender">
-                        <mat-label>Gender : </mat-label>&nbsp;
-                        <input type="radio" name="gen" value="male" [checked]="false" formControlName="std_gender">
-                        <mat-label>Male</mat-label> &nbsp;
-                        <input type="radio" name="gen" value="Female" formControlName="std_gender">
-                        <mat-label>Female</mat-label>
-                    </div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Gender : </mat-label>
+                        <input type="text" matInput formControlName="std_gender">
+                    </mat-form-field>
 
-                </table>
-            </div>
-            <div class="box">
-                <mat-form-field appearance="fill">
+                <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>State</mat-label>
                     <mat-select formControlName="std_state">
                         <mat-option value="Panjab">Panjab</mat-option>
@@ -68,9 +55,9 @@
                         <mat-option value="Bihar">Bihar</mat-option>
                         <mat-option value="Up">Up</mat-option>
                     </mat-select>
-                </mat-form-field>
+                </mat-form-field><br>
 
-                <mat-form-field appearance="fill">
+                <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>District</mat-label>
                     <mat-select formControlName="std_district">
                         <mat-option value="Muzaffarpur">Muzaffarpur</mat-option>
@@ -81,20 +68,18 @@
                     </mat-select>
                 </mat-form-field>
 
-                <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Date</mat-label>
-                        <input type="date" matInput formControlName formControlName="std_date">
+                        <input type="date" matInput formControlName="std_date">
                     </mat-form-field>
-                </table>
-
-                <table class="photo" cellspacing="0">
-                    <mat-label class="student_kb">student photo</mat-label>
-                    <input type="file" name="std_photo" class="upload" (change)="OnUpload($event)"
-                        formControlName="std_img">
-                </table>
-            </div>
-        </div>
+                    <div class="user_image">
+                        <mat-label>Image</mat-label>
+                        <input type="file" class="user_file" (change)="onFileChange($event)" accept="image/*" formControlName="">
+                        <div *ngIf="selectedImage"> 
+                            <img [src]="selectedImage"  width="100%" height="100%"/> 
+                           </div>
+                    </div><br>
+                  
 
         <mat-form-field appearance="fill" id="address">
             <mat-label>Address</mat-label>

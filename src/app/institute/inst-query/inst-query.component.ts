@@ -5,20 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditInstQuizComponent } from '../add-edit-inst-quiz/add-edit-inst-quiz.component';
-export interface Userdata {
-  quiz_option_a: string;
-  quiz_option_b: string;
-  quiz_option_c: string;
-  quiz_option_d: string
-}
-
-const Userdata: Userdata[] = [
- {quiz_option_c:'How Are You', quiz_option_a: 'Ayush', quiz_option_b:'8956322145',  quiz_option_d: 'Hajipur', },
- {quiz_option_c:'How Are You', quiz_option_a: 'Munna', quiz_option_b:'7845212356', quiz_option_d: 'Patna', },
- {quiz_option_c:'How Are You', quiz_option_a: 'Rahul', quiz_option_b:'7854212356', quiz_option_d: 'Vaishali', },
- {quiz_option_c:'How Are You', quiz_option_a: 'Sahil', quiz_option_b:'8956234587', quiz_option_d: 'Patna', },
-];
-
 
 @Component({
   selector: 'app-inst-query',
@@ -28,7 +14,7 @@ const Userdata: Userdata[] = [
 export class InstQueryComponent implements OnInit {
 
   displayedColumns: string[] = ['quiz_id', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'action'];
-  dataSource = new MatTableDataSource(Userdata);
+  dataSource = new MatTableDataSource();
   count_course: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

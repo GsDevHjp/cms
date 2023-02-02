@@ -17,6 +17,7 @@ export class BatchComponent implements OnInit {
   dataSource = new MatTableDataSource();
   count_batch: number = 0;
   inst_id:any
+  Ttalstd:number = 0
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
