@@ -16,7 +16,6 @@ export class TakeAddmissionComponent implements OnInit {
   displayedColumns: string[] = ['addmission_id', 'std_name', 'std_mobile', 'std_address', 'std_email', 'admission_date', 'add_monthly', 'total_fee', 'action'];
   dataSource = new MatTableDataSource();
   course_count: any;
-  status: number = 0
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -32,16 +31,12 @@ export class TakeAddmissionComponent implements OnInit {
   ngOnInit(): void {
   }
   take_addmission() {
-    if (this.status == 0) {
-      this.dailog.open(AddEditStudentComponent)
-    }
-    else {
-      this.dailog.open(AddEditTakeAddmissionComponent, {
-        disableClose: true
-      });
-    }
-
+    this.dailog.open(AddEditTakeAddmissionComponent, {
+      disableClose: true
+    });
   }
+
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

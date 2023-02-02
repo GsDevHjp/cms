@@ -16,7 +16,7 @@ import { ManageService } from 'src/app/manage.service';
 
 export class AddEditTakeAddmissionComponent implements OnInit {
   addparty: any;
-
+ admin =1
   onSubmit() {
     throw new Error('Method not implemented.');
   }
@@ -52,7 +52,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
       course_total_fee: ['', Validators.required],
       course_duration: ['', Validators.required],
       course_date: ['', Validators.required],
-
+      admin_id_fk:['',Validators.required]
     }
     )
   }
@@ -75,15 +75,25 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.addmission_form.controls['course_admission_fee'].setValue(this.batch_data[0].course_admission_fee);
         this.addmission_form.controls['course_duration'].setValue(this.batch_data[0].course_duration);
         this.addmission_form.controls['course_total_fee'].setValue(this.batch_data[0].course_total_fee);
-        this.addmission_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
         this.addmission_form.controls['batch_name'].setValue(this.batch_data[0].batch_name);
+        this.addmission_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
       }
     )
   }
 
 
   addstd() {
-
+    console.log(this.addmission_form.value)
+    this.service.std_admission(this.addmission_form.value).subscribe(
+      (result: any) => {
+        console.log(result)
+        alert("Admission Successfully..")
+      },
+      (error: any) => {
+        console.log(error)
+        alert("Admission Unsuccess..")
+      }
+    )
   }
 
 }

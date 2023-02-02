@@ -10,12 +10,13 @@
   line-height: 30px;
   font-size: 18px;
   font-weight: 600;
-  color: rgb(52, 85, 190);
+  color: #1d1f23;
 }
 
 #close_btn {
   width: 30px;
   height: 30px;
+  background-color: #1d1f23;
 }
 
 #close_btn mat-icon {
