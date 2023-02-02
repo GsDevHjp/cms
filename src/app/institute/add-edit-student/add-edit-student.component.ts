@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -144,4 +145,4 @@ onFileChange(event:any) {
   }  
 }
 }
-  
+

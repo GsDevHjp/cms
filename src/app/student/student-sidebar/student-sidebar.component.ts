@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-edit-student.component';
+import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-edit-take-addmission.component';
 @Component({
   selector: 'app-student-sidebar',
   templateUrl: './student-sidebar.component.html',
@@ -12,13 +14,35 @@ export class StudentSidebarComponent implements OnInit {
   action_icon2: boolean = true
   action_icon3: boolean = false
   action_icon4: boolean = true
+  status: any
+  login_deatils:any
+  login:any
   constructor(
     private dailog: MatDialog,
 
   ) { }
 
   ngOnInit(): void {
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.status)
+    this.status = this.login.status
   }
+
+  take_addmission() {
+    if (this.status == 0) {
+      this.dailog.open(AddEditStudentComponent)
+    }
+
+    else {
+      this.dailog.open(AddEditTakeAddmissionComponent, {
+        disableClose: true
+      });
+    }
+
+  }
+
 
   report_dropdown() {
     this.setting = document.getElementById("dropdown_report")
@@ -46,8 +70,8 @@ export class StudentSidebarComponent implements OnInit {
       this.action_icon4 = true
     }
   }
-  changepassword(){
-    this.dailog.open(StdChnangePwdComponent,{
+  changepassword() {
+    this.dailog.open(StdChnangePwdComponent, {
       disableClose: true
     });
   }

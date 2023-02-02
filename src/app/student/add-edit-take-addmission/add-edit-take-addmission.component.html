@@ -9,7 +9,8 @@
     <mat-form-field appearance="fill">
         <mat-label>Course</mat-label>
         <mat-select formControlName="inst_course" (valueChange)="get_course($event)">
-            <mat-option *ngFor="let course of course_data" [value]="course.course_id">{{course.course_name}}</mat-option>
+            <mat-option *ngFor="let course of course_data"
+                [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -41,6 +42,7 @@
         <input type="date" matInput formControlName="course_date">
     </mat-form-field>
 
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
 </form>
 <span class="btn_box">
