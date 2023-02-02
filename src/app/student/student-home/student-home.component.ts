@@ -12,7 +12,10 @@ export class StudentHomeComponent implements OnInit {
   opened:boolean= true
   @ViewChild(MatSidenav)
   sidenav!:MatSidenav;
-
+  url :string = 'assets/';
+  img_url :string = '';
+  login_deatils:any
+  login:any
   constructor(
     private observe:BreakpointObserver
   ) { }
@@ -28,5 +31,13 @@ export class StudentHomeComponent implements OnInit {
         this.sidenav.close();
       }
     })
+
+
+    this.login_deatils = localStorage.getItem('Token')
+      this.login = JSON.parse(this.login_deatils)
+      console.log(this.login.std_name)
+      this.name = this.login.std_name
+      this.img_url = this.login.std_img
+
   }
 }

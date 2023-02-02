@@ -1,7 +1,7 @@
 
 <div class="head">
-  <span class="course_text">Course Details</span>
-  <mat-icon id="add_course" (click)="add_course()">add_circle</mat-icon>
+  <span class="course_text">{{Course}}</span>
+  <mat-icon id="add_course" (click)="add_course()" [hidden]="action_btn">add_circle</mat-icon>
 </div>
 <div class="count_area">
   <span class="notice_text">Total : {{count_course}}</span>

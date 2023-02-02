@@ -18,7 +18,7 @@ export class InstNotesComponent implements OnInit {
   count_inst_notes:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  imgUrl :string = 'assets/';
+  imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
 
   constructor(
     private dailog: MatDialog,
