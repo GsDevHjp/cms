@@ -4,6 +4,14 @@
 </mat-toolbar>
 
 <form [formGroup]="quiz_form">
+    
+    <mat-form-field appearance="fill" class="example-full-width" id="cursedescription">
+        <mat-label>Course</mat-label>
+        <mat-select formControlName="course_id_fk">
+            <mat-option *ngFor="let course of course_data"
+                [value]="course.course_id">{{course.course_name}}</mat-option>
+        </mat-select>
+    </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Question</mat-label>
@@ -34,6 +42,12 @@
         <mat-label>Answer</mat-label>
         <input matInput formControlName="quiz_answer">
     </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill" id="cursedescription">
+        <mat-label>Description</mat-label>
+        <input type="text" matInput formControlName="quiz_description">
+    </mat-form-field>
+
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
