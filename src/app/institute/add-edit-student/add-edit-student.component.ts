@@ -15,6 +15,8 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
+  selectedImage:any;
+
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
@@ -128,11 +130,18 @@ export class AddEditStudentComponent implements OnInit {
       )
     }
  
-    OnUpload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.student_form.get('std_img')?.setValue(file)
-    }
-  }
+onFileChange(event:any) { 
+  const reader = new FileReader();
+  if(event.target.files && event.target.files.length) {
+    const [file] = event.target.files;
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      this.selectedImage = reader.result;
+
+    };
+
+  }  
+}
 }
   
