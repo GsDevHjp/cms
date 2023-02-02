@@ -10,9 +10,19 @@
             <input matInput formControlName="course_name">
         </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Duration</mat-label>
+            <input type="number" matInput formControlName="course_duration">
+        </mat-form-field><br>
+
         <mat-form-field class="example-full-width" appearance="fill" (keyup)="total_clc()">
             <mat-label>Total Fee</mat-label>
-            <input type="text" matInput formControlName="course_total_fee">
+            <input type="number" matInput formControlName="course_total_fee">
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Half Fee</mat-label>
+            <input type="number" matInput formControlName="course_half_fee" readonly>
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -21,28 +31,18 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Half Fee</mat-label>
-            <input type="number" matInput formControlName="course_half_fee" readonly>
-        </mat-form-field><br>
-
-        <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Monthly Fee</mat-label>
-            <input type="number" matInput formControlName="course_monthly_fee">
-        </mat-form-field>
+            <input type="number" matInput formControlName="course_monthly_fee" readonly>
+        </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Admission Fee</mat-label>
             <input type="number" matInput formControlName="course_admission_fee">
-        </mat-form-field><br>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Duration</mat-label>
-            <input type="number" matInput formControlName="course_duration">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Date</mat-label>
-            <input type="date" matInput formControlName="course_date" >
+            <input type="date" matInput formControlName="course_date" readonly>
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill" id="total">

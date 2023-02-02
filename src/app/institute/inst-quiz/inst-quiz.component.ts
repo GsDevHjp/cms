@@ -15,7 +15,7 @@ import { ManageService } from 'src/app/manage.service';
 
 export class InstQuizComponent implements OnInit {
 
-  displayedColumns: string[] = ['quiz_id', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer', 'action'];
+  displayedColumns: string[] = ['quiz_id','course_id_fk', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer','quiz_description', 'action'];
   dataSource = new MatTableDataSource();
   count_quiz: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

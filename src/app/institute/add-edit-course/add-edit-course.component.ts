@@ -92,6 +92,7 @@ export class AddEditCourseComponent implements OnInit {
   }
   total_clc(){
     this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
-    this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 3)
+    this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
+    this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 12)
   }
 }

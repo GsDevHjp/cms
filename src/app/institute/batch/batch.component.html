@@ -20,17 +20,12 @@
   
       <ng-container matColumnDef="course_id_fk">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
-        <td mat-cell *matCellDef="let row"> {{row.course_id_fk}}</td>
+        <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
       </ng-container>
 
       <ng-container matColumnDef="batch_name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_name}}</td>
-      </ng-container>
-    
-      <ng-container matColumnDef="batch_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>BST Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_date}}</td>
       </ng-container>
   
       <ng-container matColumnDef="batch_arrival">
@@ -42,20 +37,25 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Departuar</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_departure}}</td>
       </ng-container>
+
+      <ng-container matColumnDef="batch_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_status}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="batch_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>BST Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_date}}</td>
+      </ng-container>
   
       <ng-container matColumnDef="batch_total_std">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Student</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_total_std}}</td>
+        <td mat-cell *matCellDef="let row">{{Ttalstd}} {{row.batch_total_std}}</td>
       </ng-container>
 
       <ng-container matColumnDef="batch_description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_description}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="batch_status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_status}}</td>
       </ng-container>
    
       <ng-container matColumnDef="action">
@@ -70,7 +70,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
     
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="9" style="color:silver;">No record found "{{input.value}}"</td>
+        <td class="mat-cell" colspan="10" style="color:silver;">No record found "{{input.value}}"</td>
       </tr>
     </table>
   

@@ -5,18 +5,19 @@
 
 <form [formGroup]="batch_form">
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="batch_name">
-    </mat-form-field>
-
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Course</mat-label>
         <mat-select formControlName="course_id_fk">
             <mat-option *ngFor="let course of course_data"
                 [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
-    </mat-form-field><br>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="batch_name">
+    </mat-form-field>
+    <br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Arrival</mat-label>
@@ -31,7 +32,7 @@
     <br>
 
     <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Batch Status</mat-label>
+        <mat-label>Status</mat-label>
         <mat-select formControlName="batch_status">
             <mat-option value="Yet to start">Yet to start</mat-option>
             <mat-option value="Running">Running</mat-option>
@@ -41,8 +42,8 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Date</mat-label>
-        <input type="date" matInput formControlName="batch_date">
+        <mat-label>Status Date</mat-label>
+        <input type="date" matInput formControlName="batch_date" readonly>
     </mat-form-field>
 
 <br>

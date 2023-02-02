@@ -17,8 +17,12 @@
     position: relative;
     color: whitesmoke;
   }
+
   .example-full-width{
     margin-left: 10px;
+  }
+  #cursedescription{
+    width: 97.8%;
   }
   .submit {
     margin-left: 9.6em;
@@ -26,5 +30,19 @@
   
   button {
     margin-left: 10px;
+  }
+  @media(min-width:768px)and (max-width:860px) { }
+  
+  @media(min-width:420px)and (max-width:768px) {
+    .example-full-width {
+      width: 100%;
+      margin-left: 0px;
+    }
+  }
+  @media(max-width:420px) {
+    .example-full-width {
+      width: 100%;
+      margin-left: 0px;
+    }
   }
   

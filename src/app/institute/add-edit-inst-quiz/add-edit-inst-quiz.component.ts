@@ -14,7 +14,7 @@ export class AddEditInstQuizComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-
+  course_data:any
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +23,12 @@ export class AddEditInstQuizComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
   ) { }
   ngOnInit(): void {
+    this.service.get_course().subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
+
     this.quiz_form = this.fb.group({
       quiz_id: ['',],
       quiz_question: ['', Validators.required],
@@ -31,6 +37,8 @@ export class AddEditInstQuizComponent implements OnInit {
       quiz_option_c: ['', Validators.required],
       quiz_option_d: ['', Validators.required],
       quiz_answer: ['', Validators.required],
+      quiz_description: ['', Validators.required],
+      course_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -43,6 +51,8 @@ export class AddEditInstQuizComponent implements OnInit {
       this.quiz_form.controls['quiz_option_c'].setValue(this.edit_quiz.quiz_option_c);
       this.quiz_form.controls['quiz_option_d'].setValue(this.edit_quiz.quiz_option_d);
       this.quiz_form.controls['quiz_answer'].setValue(this.edit_quiz.quiz_answer);
+      this.quiz_form.controls['quiz_description'].setValue(this.edit_quiz.quiz_description);
+      this.quiz_form.controls['course_id_fk'].setValue(this.edit_quiz.course_id_fk);
       this.quiz_form.controls['admin_id_fk'].setValue(this.edit_quiz.admin_id_fk);
     }
   }

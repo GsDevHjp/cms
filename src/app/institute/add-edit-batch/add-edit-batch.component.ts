@@ -70,6 +70,7 @@ export class AddEditBatchComponent implements OnInit {
     this.service.post_batch(this.batch_form.value).subscribe(
       (res:any)=>{
         console.log(res)
+        this.matref.close();
         alert('form successfully...')
       },
       (error:any)=>{
