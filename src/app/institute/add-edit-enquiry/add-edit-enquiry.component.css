@@ -36,9 +36,9 @@
   .mat-form-field {
     width: 100%;
   }
-  .adr{
+  .address{
     width: 95.2%;
-    margin-left: 2%;
+    margin-left: 2.5%;
   }
   textarea {
     height: 17px;
@@ -69,38 +69,29 @@
   @media(min-width:768px)and (max-width:919px) {}
   
   @media(min-width:420px)and (max-width:768px) {
-    #main_area {
-      display: flex;
-      justify-content: center;
-    }
-  
     .box {
-      width: 155px;
+      width: 100%;
+      margin-left: 0px;
     }
-  
-    .gender {
-      font-size: 10.5px;
+    .address{
+      width: 100%;
+      margin-left:0px;
     }
-  
+    
     .submit {
       margin-left: 28%;
     }
   }
   
   @media(max-width:420px) {
-    #main_area {
-      display: flex;
-      justify-content: center;
-    }
-  
     .box {
-      width: 140px;
+      width: 100%;
+      margin-left: 0px;
     }
-  
-    .gender {
-      font-size: 8px;
+    .address{
+      width: 100%;
+      margin-left:0px;
     }
-  
     .submit {
       margin-left: 20%;
     }

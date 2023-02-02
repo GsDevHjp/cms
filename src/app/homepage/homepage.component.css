@@ -37,12 +37,34 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100% - 105px);
+    height: calc(100% - 105px)
 }
 
 #main .welcome_text {
     color: whitesmoke;
-    font-size: 4rem;
+    font-size: 2.8rem;
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: 4px solid #212121;
+	animation: cursor 1s step-start infinite, 
+    text 3s steps(18) alternate infinite;
+}
+
+@keyframes cursor {
+	0%, 100% { 
+    border-color:white; 
+    color: #212121;
+  }
+}
+
+@keyframes text {
+	0% { 
+    width: 0; 
+  }
+	100% { 
+    width: 20ch; 
+    color: red;
+  }
 }
 
 #footer {

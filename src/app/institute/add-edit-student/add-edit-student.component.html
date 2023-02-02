@@ -27,8 +27,7 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Mobile</mat-label>
                         <input formControlName="std_mobile" matInput type="number"
-                        onkeypress=" return this.value.length < 10"
-                        oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+                        onkeypress=" return this.value.length < 10">
                     </mat-form-field>
                 </table>
             </div>
@@ -36,7 +35,7 @@
             <div class="box">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Aadhar</mat-label>
-                    <input type="number" matInput formControlName="std_aadhar">
+                    <input type="number" matInput formControlName="std_aadhar"  onkeypress=" return this.value.length < 14">
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -52,7 +51,7 @@
 
                     <div class="gender">
                         <mat-label>Gender : </mat-label>&nbsp;
-                        <input type="radio" name="gen" value="male" checked formControlName="std_gender">
+                        <input type="radio" name="gen" value="male" [checked]="false" formControlName="std_gender">
                         <mat-label>Male</mat-label> &nbsp;
                         <input type="radio" name="gen" value="Female" formControlName="std_gender">
                         <mat-label>Female</mat-label>
