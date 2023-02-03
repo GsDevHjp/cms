@@ -44,7 +44,6 @@ export class StudentLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.Router.navigate(['/studenthome']);
-            alert("Login Successfully...")
           }
           else {
             alert("Username and Password Not Match..")
