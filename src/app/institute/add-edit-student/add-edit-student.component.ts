@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -16,7 +15,8 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  institute_id:string='2023020201'
+  institute_id:any = 1
+  status:any=1
   selectedImage:any = 'http://localhost/cms/src/assets/user.png';
 
   constructor(
@@ -42,7 +42,6 @@ export class AddEditStudentComponent implements OnInit {
       std_img: [''],
       std_address: ['', Validators.required],
       std_password: ['',Validators.required],
-      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -65,14 +64,11 @@ export class AddEditStudentComponent implements OnInit {
       this.selectedImage = 'assets/'+ this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password); 
-      this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
   }
   student_btn(){
-    console.log(this.student_form.value)
     const formdata = new FormData();
-    formdata.append('std_id', this.student_form.get('std_id')?.value)
     formdata.append('std_name', this.student_form.get('std_name')?.value)
     formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
     formdata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
@@ -87,7 +83,8 @@ export class AddEditStudentComponent implements OnInit {
     formdata.append('std_img', this.student_form.get('std_img')?.value)
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
-    formdata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
+    formdata.append('status', this.status)
+    formdata.append('institute_id_fk', this.institute_id)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     if (!this.edit_std) {
       if (this.student_form.valid) {
@@ -127,8 +124,8 @@ export class AddEditStudentComponent implements OnInit {
       updatedata.append('std_img', this.student_form.get('std_img')?.value)
       updatedata.append('std_address', this.student_form.get('std_address')?.value)
       updatedata.append('std_password', this.student_form.get('std_password')?.value)
-      updatedata.append('status', this.student_form.get('status')?.value)
-      updatedata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
+      updatedata.append('status', this.status)
+      updatedata.append('institute_id_fk', this.institute_id)
       updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
       this.service.put_student(updatedata).subscribe(
         (result: any) => {

@@ -6,11 +6,6 @@
 
     <form [formGroup]="student_form">
 
-                    <mat-form-field class="example-full-width" appearance="fill" hidden>
-                        <mat-label>Name</mat-label>
-                        <input matInput formControlName="institute_id_fk" [ngModel]="institute_id" >
-                    </mat-form-field>
-
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Name</mat-label>
                         <input matInput formControlName="std_name">
@@ -34,7 +29,7 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Aadhar</mat-label>
-                    <input type="number" matInput formControlName="std_aadhar"  onkeypress=" return this.value.length < 14">
+                    <input type="number" matInput formControlName="std_aadhar"  onkeypress=" return this.value.length < 12">
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill">
