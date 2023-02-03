@@ -25,8 +25,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   batch_data: any
   login_deatils: any
   login: any
-  regist_no: any
-  std_id_fk: any
   onSubmit() {
     throw new Error('Method not implemented.');
   }
@@ -75,10 +73,8 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-
+    console.log(this.login)
     this.inst_id_fk = this.login.institute_id_fk
-    this.std_id_fk = this.login.std_id_fk
-    this.regist_no = this.login.std_id
 
     this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
     this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
@@ -114,7 +110,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
   addstd() {
     const formdata = new FormData();
- 
+
     console.log('regist_no' + this.addmission_form.get('regist_no')?.value)
     console.log('roll_no' + this.addmission_form.get('roll_no')?.value)
     console.log('inst_id_fk' + this.addmission_form.get('inst_id_fk')?.value)

@@ -10,7 +10,6 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
-  // baseUrl: string = 'http://localhost/cmsapi/';
 
   // for course module 
   get_course() {

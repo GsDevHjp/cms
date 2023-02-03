@@ -56,6 +56,7 @@ mat-icon {
     float: right;
     margin: 10px 0px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 #admin_logo img {
