@@ -70,6 +70,7 @@ export class ManageService {
   std_admission(data:any){
     return this.http.post<any>(this.baseUrl + 'std_admission.php', data);
   }
+
   // for fee module component payment recive
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
@@ -83,8 +84,8 @@ export class ManageService {
   post_fee(data: any) {
     return this.http.post<any>(this.baseUrl + 'fee_post.php', data);
   }
-  // for enquiry module 
 
+  // for enquiry module 
   get_enquiry() {
     return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
   }
@@ -211,5 +212,8 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
 
+  get_admission(){
+    return this.http.get<[]>(this.baseUrl + 'admission_view.php')
+  }
 
 }

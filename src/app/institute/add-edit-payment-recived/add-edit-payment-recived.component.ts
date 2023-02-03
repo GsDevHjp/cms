@@ -21,6 +21,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   student_single_data:any;
   course_single_data:any;
   imgUrl:string = 'http://localhost/cms/src/assets/user.png';
+  
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
