@@ -25,7 +25,7 @@
 }
 
 .mat-form-field {
-  margin-left: 10px;
+  margin: -4px 5px;
 }
 
 .btn_box {
@@ -35,10 +35,10 @@
 }
 
 .add_btn {
+  height: 39px;
   margin-top: 28px;
   width: 14%;
-  height: 39px;
-  padding: 5px;
+  color: white;
 }
 
 .reset_btn {
