@@ -14,7 +14,7 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_mobile', 'payment_course', 'payment_batch','fee_amount', 'fee_description','payment_image', 'fee_date', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk','fee_amount', 'fee_description','std_img', 'fee_date', 'action'];
   dataSource = new MatTableDataSource();
   count_payment: number =0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
