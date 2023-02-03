@@ -16,7 +16,8 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  selectedImage:any;
+  institute_id:string='2023020201'
+  selectedImage:any = 'http://localhost/cms/src/assets/user.png';
 
   constructor(
     private fb: FormBuilder,
@@ -30,19 +31,21 @@ export class AddEditStudentComponent implements OnInit {
       std_name: ['', Validators.required],
       std_father_name: [''],
       std_father_occupation: [''],
-      std_mobile: ['', Validators.required],
+      std_whatsapp_no: ['', Validators.required],
       std_aadhar: [''],
-      std_email: ['', Validators.required],
+      std_email: ['',Validators.required],
       std_dob: [''],
       std_gender: ['', Validators.required],
       std_state: [''],
       std_district: [''],
-      std_date: [''],
-      std_img: ['', Validators.required],
+      std_regist_date: ['',Validators.required],
+      std_img: [''],
       std_address: ['', Validators.required],
+      std_password: ['',Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
-    this.student_form.controls['std_date'].setValue(new Date().toISOString().slice(0, 10));
+    this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
 
     if (this.edit_std) {
       this.ActionBtn = "Update";
@@ -50,34 +53,41 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
       this.student_form.controls['std_father_occupation'].setValue(this.edit_std.std_father_occupation);
-      this.student_form.controls['std_mobile'].setValue(this.edit_std.std_mobile);
+      this.student_form.controls['std_whatsapp_no'].setValue(this.edit_std.std_whatsapp_no);
       this.student_form.controls['std_aadhar'].setValue(this.edit_std.std_aadhar);
       this.student_form.controls['std_email'].setValue(this.edit_std.std_email);
       this.student_form.controls['std_dob'].setValue(this.edit_std.std_dob);
       this.student_form.controls['std_gender'].setValue(this.edit_std.std_gender);
       this.student_form.controls['std_state'].setValue(this.edit_std.std_state);
       this.student_form.controls['std_district'].setValue(this.edit_std.std_district); 
-      this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
+      this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date); 
+      this.student_form.controls['std_img'].setValue(this.edit_std.std_img); 
+      this.selectedImage = 'assets/'+ this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
+      this.student_form.controls['std_password'].setValue(this.edit_std.std_password); 
+      this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
   }
   student_btn(){
+    console.log(this.student_form.value)
     const formdata = new FormData();
     formdata.append('std_id', this.student_form.get('std_id')?.value)
     formdata.append('std_name', this.student_form.get('std_name')?.value)
     formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
     formdata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
-    formdata.append('std_mobile', this.student_form.get('std_mobile')?.value)
+    formdata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
     formdata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
     formdata.append('std_email', this.student_form.get('std_email')?.value)
     formdata.append('std_dob', this.student_form.get('std_dob')?.value)
     formdata.append('std_gender', this.student_form.get('std_gender')?.value)
     formdata.append('std_state', this.student_form.get('std_state')?.value)
     formdata.append('std_district', this.student_form.get('std_district')?.value)
-    formdata.append('std_date', this.student_form.get('std_date')?.value)
+    formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
     formdata.append('std_img', this.student_form.get('std_img')?.value)
     formdata.append('std_address', this.student_form.get('std_address')?.value)
+    formdata.append('std_password', this.student_form.get('std_password')?.value)
+    formdata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     if (!this.edit_std) {
       if (this.student_form.valid) {
@@ -106,16 +116,19 @@ export class AddEditStudentComponent implements OnInit {
       updatedata.append('std_name', this.student_form.get('std_name')?.value)
       updatedata.append('std_father_name', this.student_form.get('std_father_name')?.value)
       updatedata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
-      updatedata.append('std_mobile', this.student_form.get('std_mobile')?.value)
+      updatedata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
       updatedata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
       updatedata.append('std_email', this.student_form.get('std_email')?.value)
       updatedata.append('std_dob', this.student_form.get('std_dob')?.value)
       updatedata.append('std_gender', this.student_form.get('std_gender')?.value)
       updatedata.append('std_state', this.student_form.get('std_state')?.value)
       updatedata.append('std_district', this.student_form.get('std_district')?.value)
-      updatedata.append('std_date', this.student_form.get('std_date')?.value)
+      updatedata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
       updatedata.append('std_img', this.student_form.get('std_img')?.value)
       updatedata.append('std_address', this.student_form.get('std_address')?.value)
+      updatedata.append('std_password', this.student_form.get('std_password')?.value)
+      updatedata.append('status', this.student_form.get('status')?.value)
+      updatedata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
       updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
       this.service.put_student(updatedata).subscribe(
         (result: any) => {
@@ -130,8 +143,11 @@ export class AddEditStudentComponent implements OnInit {
         }
       )
     }
- 
-onFileChange(event:any) { 
+    OnUpload(event: any) {
+      if (event.target.files) {
+        const file = event.target.files[0];
+        this.student_form.get('std_img')?.setValue(file)
+      }
   const reader = new FileReader();
   if(event.target.files && event.target.files.length) {
     const [file] = event.target.files;
@@ -141,8 +157,9 @@ onFileChange(event:any) {
       this.selectedImage = reader.result;
 
     };
-
+  }
   }  
 }
-}
+      
+    
 

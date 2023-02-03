@@ -24,19 +24,19 @@ mat-form-field{
 .user_image{
   width: 200px;
   height: 122px;
-  border: 1px solid #1d1f23;
   float:right;
 }
 .user_image mat-label{
   margin-left: 10px;
 }
 .user_file{
+  margin-top:15px;
   width: 180px;
   margin-left: 10px;
 }
-img{
+.select_file{
   height: 75px;
-  padding: 0px 50px 0px 50px;
+  padding: 2px 50px 0px 50px;
 
 }
   #address{

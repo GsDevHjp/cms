@@ -25,7 +25,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     private fb: FormBuilder,
     private service:ManageService,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
-    @Inject(MAT_DIALOG_DATA) public editenq: any,
+    @Inject(MAT_DIALOG_DATA) public editfee: any,
   ) {  }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       std_id:['',],
       student_id_fk: ['', Validators.required],
       std_father_name: [''],
-      std_mobile: [''],
+      std_whatsapp_no: [''],
       std_address: [''],
       course_id_fk: ['', Validators.required],
       course_total_fee: [''],
@@ -67,6 +67,28 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
+    if (this.editfee) {
+      this.actionBtn = "Update";
+      this.fee_form.controls['std_id'].setValue(this.editfee.std_id);
+      this.fee_form.controls['student_id_fk'].setValue(this.editfee.student_id_fk);
+      this.fee_form.controls['std_father_name'].setValue(this.editfee.std_father_name);
+      this.fee_form.controls['std_whatsapp_no'].setValue(this.editfee.std_whatsapp_no);
+      this.fee_form.controls['std_address'].setValue(this.editfee.std_address);
+      this.fee_form.controls['course_id_fk'].setValue(this.editfee.course_id_fk);
+      this.fee_form.controls['course_total_fee'].setValue(this.editfee.course_total_fee);
+      this.fee_form.controls['course_half_fee'].setValue(this.editfee.course_half_fee);
+      this.fee_form.controls['course_quarter_fee'].setValue(this.editfee.course_quarter_fee);
+      this.fee_form.controls['course_monthly_fee'].setValue(this.editfee.course_monthly_fee);
+      this.fee_form.controls['course_admission_fee'].setValue(this.editfee.course_admission_fee);
+      this.fee_form.controls['fee_type'].setValue(this.editfee.fee_type);
+      this.fee_form.controls['fee_monthly'].setValue(this.editfee.fee_monthly);
+      this.fee_form.controls['fee_mode'].setValue(this.editfee.fee_mode);
+      this.fee_form.controls['fee_amount'].setValue(this.editfee.fee_amount);
+      this.fee_form.controls['fee_description'].setValue(this.editfee.fee_description);
+      this.fee_form.controls['std_img'].setValue(this.editfee.std_img);
+      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_id_fk);
+      this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
+    }
   }
   get_student_single_data(event:any){
     const formdata = new FormData();
@@ -77,7 +99,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.student_single_data = res.data
         this.fee_form.controls['std_id'].setValue(this.student_single_data.std_id);
         this.fee_form.controls['std_father_name'].setValue(this.student_single_data.std_father_name);
-        this.fee_form.controls['std_mobile'].setValue(this.student_single_data.std_mobile);
+        this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
         this.imgUrl = 'assets/'+ this.student_single_data.std_img;

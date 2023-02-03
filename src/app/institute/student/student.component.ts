@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  displayedColumns: string[] = ['std_id', 'institute_id_fk', 'std_name', 'std_mobile', 'std_aadhar', 'std_email', 'std_date', 'std_photo', 'action'];
+  displayedColumns: string[] = ['std_id', 'institute_id_fk', 'std_name', 'std_whatsapp_no', 'std_aadhar', 'std_email', 'std_regist_date', 'std_photo', 'action'];
   dataSource = new MatTableDataSource();
   count_student: number = 0;
   inst_id: any
