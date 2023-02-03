@@ -9,8 +9,8 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  // baseUrl: string = 'https://greensoft.net.in/gscms/api/';
-  baseUrl: string = 'http://localhost/cmsapi/';
+  baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  // baseUrl: string = 'http://localhost/cmsapi/';
 
   // for course module 
   get_course() {
@@ -196,6 +196,7 @@ export class ManageService {
   inst_self_reg(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_self_reg.php', data);
   }
+
   // for query module 
 
   std_query(data: any) {
@@ -210,4 +211,6 @@ export class ManageService {
   delete_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
+
+
 }
