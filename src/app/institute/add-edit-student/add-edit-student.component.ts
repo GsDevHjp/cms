@@ -15,16 +15,30 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  institute_id:any = 1
-  status:any=1
-  selectedImage:any = 'http://localhost/cms/src/assets/user.png';
+
+  institute_id: string = '2023020201'
+  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
+  url: string = 'assets/';
+  img_url: string = '';
+  login_deatils: any
+  login: any
+  student_id: any
+  student_profile_data: any
+  status: any = 1
+
 
   constructor(
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
-  ) { }
+  ) {
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_name)
+    this.student_id = this.login.std_id
+  }
   ngOnInit(): void {
     this.student_form = this.fb.group({
       std_id: [''],
@@ -33,19 +47,21 @@ export class AddEditStudentComponent implements OnInit {
       std_father_occupation: [''],
       std_whatsapp_no: ['', Validators.required],
       std_aadhar: [''],
-      std_email: ['',Validators.required],
+      std_email: ['', Validators.required],
       std_dob: [''],
       std_gender: ['', Validators.required],
       std_state: [''],
       std_district: [''],
-      std_regist_date: ['',Validators.required],
+      std_regist_date: ['', Validators.required],
       std_img: [''],
       std_address: ['', Validators.required],
-      std_password: ['',Validators.required],
+      std_password: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
-    this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
 
+    this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
+    this.profile_update()
     if (this.edit_std) {
       this.ActionBtn = "Update";
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
@@ -58,16 +74,24 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_dob'].setValue(this.edit_std.std_dob);
       this.student_form.controls['std_gender'].setValue(this.edit_std.std_gender);
       this.student_form.controls['std_state'].setValue(this.edit_std.std_state);
-      this.student_form.controls['std_district'].setValue(this.edit_std.std_district); 
-      this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date); 
-      this.student_form.controls['std_img'].setValue(this.edit_std.std_img); 
-      this.selectedImage = 'assets/'+ this.edit_std.std_img;
+      this.student_form.controls['std_district'].setValue(this.edit_std.std_district);
+      this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
+      this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
+      this.selectedImage = 'assets/' + this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
-      this.student_form.controls['std_password'].setValue(this.edit_std.std_password); 
+      this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
+      this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
+      this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
+
+
+
+
   }
-  student_btn(){
+
+  student_btn() {
+    console.log(this.student_form.value)
     const formdata = new FormData();
     formdata.append('std_name', this.student_form.get('std_name')?.value)
     formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
@@ -93,11 +117,11 @@ export class AddEditStudentComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.student_form.reset();
-           alert('form successfully...')
+            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)
-           alert('data not insert')
+            alert('data not insert')
           }
         )
       }
@@ -105,58 +129,92 @@ export class AddEditStudentComponent implements OnInit {
     else {
       this.updateStudent()
     }
-  }
-    updateStudent() {
-      console.log(this.student_form.value)
-      const updatedata = new FormData();
-      updatedata.append('std_id', this.student_form.get('std_id')?.value)
-      updatedata.append('std_name', this.student_form.get('std_name')?.value)
-      updatedata.append('std_father_name', this.student_form.get('std_father_name')?.value)
-      updatedata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
-      updatedata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
-      updatedata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
-      updatedata.append('std_email', this.student_form.get('std_email')?.value)
-      updatedata.append('std_dob', this.student_form.get('std_dob')?.value)
-      updatedata.append('std_gender', this.student_form.get('std_gender')?.value)
-      updatedata.append('std_state', this.student_form.get('std_state')?.value)
-      updatedata.append('std_district', this.student_form.get('std_district')?.value)
-      updatedata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
-      updatedata.append('std_img', this.student_form.get('std_img')?.value)
-      updatedata.append('std_address', this.student_form.get('std_address')?.value)
-      updatedata.append('std_password', this.student_form.get('std_password')?.value)
-      updatedata.append('status', this.status)
-      updatedata.append('institute_id_fk', this.institute_id)
-      updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
-      this.service.put_student(updatedata).subscribe(
-        (result: any) => {
-          console.log(result)
-          this.matref.close();
-          this.student_form.reset();
-          alert('update successfully...')
-        },
-        (error: any) => {
-          console.log(error)
-          alert('data not update')
-        }
-      )
-    }
-    OnUpload(event: any) {
-      if (event.target.files) {
-        const file = event.target.files[0];
-        this.student_form.get('std_img')?.setValue(file)
+  } updateStudent() {
+    console.log(this.student_form.value)
+    const updatedata = new FormData();
+    updatedata.append('std_id', this.student_form.get('std_id')?.value)
+    updatedata.append('std_name', this.student_form.get('std_name')?.value)
+    updatedata.append('std_father_name', this.student_form.get('std_father_name')?.value)
+    updatedata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
+    updatedata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
+    updatedata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
+    updatedata.append('std_email', this.student_form.get('std_email')?.value)
+    updatedata.append('std_dob', this.student_form.get('std_dob')?.value)
+    updatedata.append('std_gender', this.student_form.get('std_gender')?.value)
+    updatedata.append('std_state', this.student_form.get('std_state')?.value)
+    updatedata.append('std_district', this.student_form.get('std_district')?.value)
+    updatedata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+    updatedata.append('std_img', this.student_form.get('std_img')?.value)
+    updatedata.append('std_address', this.student_form.get('std_address')?.value)
+    updatedata.append('std_password', this.student_form.get('std_password')?.value)
+    updatedata.append('status', this.student_form.get('status')?.value)
+    updatedata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
+    updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
+    this.service.put_student(updatedata).subscribe(
+      (result: any) => {
+        console.log(result)
+        this.matref.close();
+        this.student_form.reset();
+        alert('update successfully...')
+      },
+      (error: any) => {
+        console.log(error)
+        alert('data not update')
       }
-  const reader = new FileReader();
-  if(event.target.files && event.target.files.length) {
-    const [file] = event.target.files;
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      this.selectedImage = reader.result;
-
-    };
+    )
   }
-  }  
+
+
+  OnUpload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.student_form.get('std_img')?.setValue(file)
+    }
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.selectedImage = reader.result;
+
+      };
+    }
+  }
+
+  profile_update() {
+    if (this.student_id > 0) {
+      const formdata = new FormData()
+      formdata.append('std_id', this.student_id)
+      this.service.get_student_by_std_id(formdata).subscribe(
+        (res: any) => {
+          this.student_profile_data = res.data
+          console.log(this.student_profile_data)
+          this.ActionBtn = "Update";
+          this.heading_act = ' Update Profile'
+
+          this.student_form.controls['std_id'].setValue(this.student_profile_data.std_id);
+          this.student_form.controls['std_name'].setValue(this.student_profile_data.std_name);
+          this.student_form.controls['std_father_name'].setValue(this.student_profile_data.std_father_name);
+          this.student_form.controls['std_father_occupation'].setValue(this.student_profile_data.std_father_occupation);
+          this.student_form.controls['std_whatsapp_no'].setValue(this.student_profile_data.std_whatsapp_no);
+          this.student_form.controls['std_aadhar'].setValue(this.student_profile_data.std_aadhar);
+          this.student_form.controls['std_email'].setValue(this.student_profile_data.std_email);
+          this.student_form.controls['std_dob'].setValue(this.student_profile_data.std_dob);
+          this.student_form.controls['std_gender'].setValue(this.student_profile_data.std_gender);
+          this.student_form.controls['std_state'].setValue(this.student_profile_data.std_state);
+          this.student_form.controls['std_district'].setValue(this.student_profile_data.std_district);
+          this.student_form.controls['std_regist_date'].setValue(this.student_profile_data.std_regist_date);
+          this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
+          this.selectedImage = 'assets/' + this.student_profile_data.std_img;
+          this.student_form.controls['std_password'].setValue(this.student_profile_data.std_password);
+          this.student_form.controls['std_address'].setValue(this.student_profile_data.std_address);
+          this.student_form.controls['institute_id_fk'].setValue(this.student_profile_data.institute_id_fk);
+          this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
+        })
+    }
+  }
 }
-      
-    
+
+
 
