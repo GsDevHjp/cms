@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-edit-student.component';
 
 @Component({
   selector: 'app-student-home',
@@ -17,6 +19,7 @@ export class StudentHomeComponent implements OnInit {
   login_deatils:any
   login:any
   constructor(
+    private dailog: MatDialog,
     private observe:BreakpointObserver
   ) { }
 
@@ -39,5 +42,12 @@ export class StudentHomeComponent implements OnInit {
       this.name = this.login.std_name
       this.img_url = this.login.std_img
 
+  }
+
+
+  show_profile() {
+    this.dailog.open(AddEditStudentComponent, {
+      disableClose: true
+    });
   }
 }

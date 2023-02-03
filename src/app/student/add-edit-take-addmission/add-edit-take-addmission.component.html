@@ -7,39 +7,83 @@
 <form [formGroup]="addmission_form">
 
     <mat-form-field appearance="fill">
+        <mat-label>Registration No.</mat-label>
+        <input matInput formControlName="regist_no" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
         <mat-label>Course</mat-label>
-        <mat-select formControlName="inst_course" (valueChange)="get_course($event)">
+        <mat-select formControlName="course_id_fk" (valueChange)="get_course($event)">
             <mat-option *ngFor="let course of course_data"
                 [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-label>Batch Time</mat-label>
-        <mat-select formControlName="batch_name">
-            <mat-option *ngFor="let batch of batch_data" [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-
-    <mat-form-field appearance="fill">
-        <mat-label>Admission Fee</mat-label>
-        <input matInput formControlName="course_admission_fee">
+        <mat-label>Duration</mat-label>
+        <input matInput formControlName="course_duration" readonly>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Course fee</mat-label>
-        <input matInput formControlName="course_total_fee">
+        <input matInput formControlName="course_total_fee" readonly>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-label>Duration</mat-label>
-        <input matInput formControlName="course_duration">
+        <mat-label>Half Fee</mat-label>
+        <input matInput formControlName="course_half_fee" readonly>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-        <mat-label>Date</mat-label>
-        <input type="date" matInput formControlName="course_date">
+        <mat-label>Quarter Fee</mat-label>
+        <input matInput formControlName="course_quarter_fee" readonly>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Monthly Fee</mat-label>
+        <input matInput formControlName="course_monthly_fee" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Admission Fee</mat-label>
+        <input matInput formControlName="course_admission_fee" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Batch</mat-label>
+        <mat-select formControlName="batch_id_fk">
+            <mat-option *ngFor="let batch of batch_data" [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Batch Arrival</mat-label>
+        <input type="time" matInput formControlName="batch_arrival" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Batch Departure</mat-label>
+        <input type="time" matInput formControlName="batch_departure" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Batch Status</mat-label>
+        <input matInput formControlName="batch_status" readonly>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Batch Date</mat-label>
+        <input type="date" matInput formControlName="batch_date" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Roll Number</mat-label>
+        <input matInput formControlName="roll_no">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Admission Date</mat-label>
+        <input type="date" matInput formControlName="admission_date" readonly>
     </mat-form-field>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
@@ -49,5 +93,5 @@
     <button class="reset_btn" mat-raised-button color="warn" type="reset">Reset</button>
 
     <button class="add_btn" mat-raised-button color="primary" (click)="addstd()"
-        [disabled]="!addmission_form.valid">Submit</button>
+        [disabled]="!addmission_form.valid">Submit</button> 
 </span>

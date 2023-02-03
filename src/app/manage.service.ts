@@ -196,6 +196,7 @@ export class ManageService {
   inst_self_reg(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_self_reg.php', data);
   }
+
   // for query module 
 
   std_query(data: any) {
@@ -210,7 +211,9 @@ export class ManageService {
   delete_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
+
   get_admission(){
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }
+
 }

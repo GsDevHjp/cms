@@ -1,6 +1,6 @@
 .wrapper {
     width: 100%;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 74px);
 }
 
 #main {
@@ -27,7 +27,7 @@
     margin-left: 60px;
     margin-right: 20px;
     padding-right: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
     display: block;
 }
 
@@ -51,7 +51,6 @@
     height: 70px;
     resize: none;
     border: none;
-    /* background-color: red; */
 }
 
 .footer {

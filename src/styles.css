@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* for input auto fill background transparent  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000000s ease-in-out 0s;
+}
+/* for input auto fill background transparent  */
 html,
 body {
     height: 100%;
