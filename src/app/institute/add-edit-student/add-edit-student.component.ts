@@ -14,7 +14,7 @@ export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
   upload: any;
   ActionBtn: string = 'Add'
-  heading_act: string = 'Add Student'
+  student_heading: string = 'Add Student'
   admin = 1;
 
   institute_id: string = '2023020201'
