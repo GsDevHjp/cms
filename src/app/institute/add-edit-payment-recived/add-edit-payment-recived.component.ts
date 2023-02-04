@@ -3,34 +3,35 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 
-
 @Component({
   selector: 'app-add-edit-payment-recived',
   templateUrl: './add-edit-payment-recived.component.html',
   styleUrls: ['./add-edit-payment-recived.component.css']
 })
+
 export class AddEditPaymentRecivedComponent implements OnInit {
   disableSelect = new FormControl(false);
   fee_form!: FormGroup;
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
+  fee_heading: string = 'Add Fee'
   student_data: any;
-  course_data : any;
-  batch_data:any;
-  student_single_data:any;
-  course_single_data:any;
-  imgUrl:string = 'http://localhost/cms/src/assets/user.png';
-  
+  course_data: any;
+  batch_data: any;
+  student_single_data: any;
+  course_single_data: any;
+  imgUrl: string = 'http://localhost/cms/src/assets/user.png';
+
   constructor(
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
     @Inject(MAT_DIALOG_DATA) public editfee: any,
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
-       this.service.get_student().subscribe(
+    this.service.get_student().subscribe(
       (std_res: any) => {
         this.student_data = std_res.data
       }
@@ -46,7 +47,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       }
     )
     this.fee_form = this.fb.group({
-      std_id:['',],
+      std_id: ['',],
       student_id_fk: ['', Validators.required],
       std_father_name: [''],
       std_whatsapp_no: [''],
@@ -70,6 +71,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.editfee) {
       this.actionBtn = "Update";
+      this.fee_heading = "Update"
       this.fee_form.controls['std_id'].setValue(this.editfee.std_id);
       this.fee_form.controls['student_id_fk'].setValue(this.editfee.student_id_fk);
       this.fee_form.controls['std_father_name'].setValue(this.editfee.std_father_name);
@@ -87,11 +89,11 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       this.fee_form.controls['fee_amount'].setValue(this.editfee.fee_amount);
       this.fee_form.controls['fee_description'].setValue(this.editfee.fee_description);
       this.fee_form.controls['std_img'].setValue(this.editfee.std_img);
-      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_id_fk);
+      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_id);
       this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
     }
   }
-  get_student_single_data(event:any){
+  get_student_single_data(event: any) {
     const formdata = new FormData();
     formdata.append('std_id', event)
     this.service.get_student_by_std_id(formdata).subscribe(
@@ -103,12 +105,11 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'assets/'+ this.student_single_data.std_img;
-        
+        this.imgUrl = 'assets/' + this.student_single_data.std_img;
       }
     )
-}
-get_course_single_data(event:any){
+  }
+  get_course_single_data(event: any) {
     const coursedata = new FormData();
     coursedata.append('course_id', event)
     this.service.get_course_by_course_id(coursedata).subscribe(
@@ -123,36 +124,33 @@ get_course_single_data(event:any){
         this.fee_form.controls['course_admission_fee'].setValue(this.course_single_data.course_admission_fee);
       }
     )
-}
-fee_btn(){
-  console.log(this.fee_form.value)
-  const formadd = new FormData();
-  formadd.append('student_id_fk', this.fee_form.get('student_id_fk')?.value)
-  formadd.append('course_id_fk', this.fee_form.get('course_id_fk')?.value)
-  formadd.append('fee_type', this.fee_form.get('fee_type')?.value)
-  formadd.append('fee_monthly', this.fee_form.get('fee_monthly')?.value)
-  formadd.append('fee_mode', this.fee_form.get('fee_mode')?.value)
-  formadd.append('fee_amount', this.fee_form.get('fee_amount')?.value)
-  formadd.append('fee_description', this.fee_form.get('fee_description')?.value)
-  formadd.append('fee_date', this.fee_form.get('fee_date')?.value)
-  formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
-  formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
-  if(this.fee_form.valid){
-  this.service.post_fee(formadd).subscribe(
-    (res:any)=>{
-      console.log(res)
-      this.matref.close();
-      alert('form successfully...')
-    },
-    
-    (error:any)=>{
-      console.log(error)
-      alert('data not insert')
+  }
+  fee_btn() {
+    console.log(this.fee_form.value)
+    const formadd = new FormData();
+    formadd.append('student_id_fk', this.fee_form.get('student_id_fk')?.value)
+    formadd.append('course_id_fk', this.fee_form.get('course_id_fk')?.value)
+    formadd.append('fee_type', this.fee_form.get('fee_type')?.value)
+    formadd.append('fee_monthly', this.fee_form.get('fee_monthly')?.value)
+    formadd.append('fee_mode', this.fee_form.get('fee_mode')?.value)
+    formadd.append('fee_amount', this.fee_form.get('fee_amount')?.value)
+    formadd.append('fee_description', this.fee_form.get('fee_description')?.value)
+    formadd.append('fee_date', this.fee_form.get('fee_date')?.value)
+    formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
+    formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
+    if (this.fee_form.valid) {
+      this.service.post_fee(formadd).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.matref.close();
+          alert('form successfully...')
+        },
+
+        (error: any) => {
+          console.log(error)
+          alert('data not insert')
+        }
+      )
     }
-  )
-}
-else{
-  alert('please fill up the form')
-}
-}
+  }
 }

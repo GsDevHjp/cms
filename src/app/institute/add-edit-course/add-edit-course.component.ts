@@ -13,14 +13,15 @@ export class AddEditCourseComponent implements OnInit {
   course_form!: FormGroup;
   admin = 1;
   upload: any;
+  course_heading: string = 'Add Course'
   actionBtn: string = 'Add'
 
   constructor(
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
     this.course_form = this.fb.group({
@@ -34,12 +35,15 @@ export class AddEditCourseComponent implements OnInit {
       course_duration: [''],
       course_description: ['', Validators.required],
       course_date: ['', Validators.required],
-      admin_id_fk: ['', Validators.required]
+      admin_id_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
+    this.course_form.controls['institute_id_fk'].setValue(5);
 
     if (this.edit_course) {
       this.actionBtn = "Update";
+      this.course_heading = "Update Course"
       this.course_form.controls['course_id'].setValue(this.edit_course.course_id);
       this.course_form.controls['course_name'].setValue(this.edit_course.course_name);
       this.course_form.controls['course_total_fee'].setValue(this.edit_course.course_total_fee);
@@ -52,7 +56,7 @@ export class AddEditCourseComponent implements OnInit {
       this.course_form.controls['admin_id_fk'].setValue(this.edit_course.admin_id_fk);
     }
   }
-  onAdd(){
+  onAdd() {
     console.log(this.course_form.value)
     if (!this.edit_course) {
       if (this.course_form.valid) {
@@ -61,7 +65,7 @@ export class AddEditCourseComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.course_form.reset();
-           alert('form successfully...')
+            alert('form successfully...')
 
           },
           (error: any) => {
@@ -81,7 +85,7 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-       alert('data update successfully')
+        alert('data update successfully')
 
       },
       error: () => {
@@ -90,7 +94,7 @@ export class AddEditCourseComponent implements OnInit {
 
     })
   }
-  total_clc(){
+  total_clc() {
     this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
     this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
     this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 12)
