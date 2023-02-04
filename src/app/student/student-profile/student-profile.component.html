@@ -1,6 +1,6 @@
 <div id="wrapper">
     <mat-toolbar>
-        <span class="example-spacer">{{heading_act}}</span>
+        <span class="example-spacer">Update Profile</span>
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
 
@@ -93,12 +93,14 @@
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
+        
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary" (click)="student_btn()">{{ActionBtn}}</button>
+        <button mat-raised-button color="primary" (click)="update_profile()">Update</button>
     </div>
 </div>
+
