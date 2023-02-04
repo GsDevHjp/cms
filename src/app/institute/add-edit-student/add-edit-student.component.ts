@@ -13,9 +13,9 @@ export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
   upload: any;
   ActionBtn: string = 'Add'
-  heading_act: string = 'Add Student'
+  student_heading: string = 'Add Student'
   admin = 1;
-  institute_id:any = 1
+  institute_id:string = "5"
   status:any=1
   selectedImage:any = 'http://localhost/cms/src/assets/user.png';
 
@@ -26,6 +26,7 @@ export class AddEditStudentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) { }
   ngOnInit(): void {
+    
     this.student_form = this.fb.group({
       std_id: [''],
       std_name: ['', Validators.required],
@@ -48,6 +49,7 @@ export class AddEditStudentComponent implements OnInit {
 
     if (this.edit_std) {
       this.ActionBtn = "Update";
+      this.student_heading ="Update Student"
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);

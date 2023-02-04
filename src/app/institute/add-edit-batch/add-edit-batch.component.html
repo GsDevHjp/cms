@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <span class="example-spacer">Add Batch</span>
+    <span class="example-spacer">{{batch_heading}}</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
@@ -46,7 +46,7 @@
         <input type="date" matInput formControlName="batch_date">
     </mat-form-field>
 
-<br>
+    <br>
     <mat-form-field class="example-full-width" appearance="fill" id="description">
         <mat-label>Description</mat-label>
         <input type="text" matInput formControlName="batch_description">

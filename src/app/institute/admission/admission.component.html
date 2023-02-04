@@ -15,16 +15,16 @@
 
     <!----------------------------------------------- S.N. ---------------------------------------------------------->
 
-    <ng-container matColumnDef="adm_id">
+    <ng-container matColumnDef="admission_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
       <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
     </ng-container>
 
     <!----------------------------------------------- Student Id -------------------------------------------------->
 
-    <ng-container matColumnDef="std_name_fk">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Student Id </th>
-      <td mat-cell *matCellDef="let row"> {{row.std_name_fk}}</td>
+    <ng-container matColumnDef="regist_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration No</th>
+      <td mat-cell *matCellDef="let row"> {{row.regist_no}}</td>
     </ng-container>
 
     <!----------------------------------------------- Name ---------------------------------------------------->
@@ -34,9 +34,9 @@
       <td mat-cell *matCellDef="let row"> {{row.std_name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="std_roll">
+    <ng-container matColumnDef="roll_no">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Student Roll</th>
-      <td mat-cell *matCellDef="let row"> {{row.std_roll}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.roll_no}} </td>
     </ng-container>
 
     <!----------------------------------------------- Mobile ---------------------------------------------------->
@@ -48,30 +48,30 @@
     
     <!----------------------------------------------- Course ---------------------------------------------------->
 
-    <ng-container matColumnDef="course">
+    <ng-container matColumnDef="course_id_fk">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
-      <td mat-cell *matCellDef="let row"> {{row.course}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.course_id_fk}} </td>
     </ng-container>
     
     <!----------------------------------------------- Batch ---------------------------------------------------->
 
-    <ng-container matColumnDef="batch">
+    <ng-container matColumnDef="batch_id_fk">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Batch</th>
-      <td mat-cell *matCellDef="let row"> {{row.batch}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.batch_id_fk}} </td>
     </ng-container>
     
     <!----------------------------------------------- Date ---------------------------------------------------->
 
-    <ng-container matColumnDef="adm_date">
+    <ng-container matColumnDef="admission_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-      <td mat-cell *matCellDef="let row"> {{row.adm_date}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.admission_date}} </td>
     </ng-container>
     
     <!----------------------------------------------- Status ---------------------------------------------------->
 
-    <ng-container matColumnDef="status">
+    <ng-container matColumnDef="admission_status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.admission_status}} </td>
     </ng-container>
 
     <!----------------------------------------------- Action ------------------------------------------------------->
