@@ -84,6 +84,7 @@ import { StdQueryComponent } from './student/std-query/std-query.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 
 
 @NgModule({
@@ -152,6 +153,7 @@ import { HttpClientModule } from '@angular/common/http';
     StdRegComponent,
     StdQueryComponent,
     StdChnangePwdComponent,
+    StudentProfileComponent,
 
   ],
   imports: [

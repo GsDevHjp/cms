@@ -1,3 +1,4 @@
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,19 +17,10 @@ export class AddEditStudentComponent implements OnInit {
   student_heading: string = 'Add Student'
   admin = 1;
 
-  institute_id:string = "5"
-  status:any=1
-  selectedImage:any = 'http://localhost/cms/src/assets/user.png';
+  institute_id: string = '2023020201'
+  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
 
-
-  url: string = 'assets/';
-  img_url: string = '';
-  login_deatils: any
-  login: any
-  student_id: any
-  student_profile_data: any
- 
-
+  status: any = 1
 
 
   constructor(
@@ -38,13 +30,8 @@ export class AddEditStudentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
 
-    this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils)
-    console.log(this.login.std_name)
-    this.student_id = this.login.std_id
   }
   ngOnInit(): void {
-    
     this.student_form = this.fb.group({
       std_id: [''],
       std_name: ['', Validators.required],
@@ -66,10 +53,8 @@ export class AddEditStudentComponent implements OnInit {
     })
 
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
-    this.profile_update()
     if (this.edit_std) {
       this.ActionBtn = "Update";
-      this.student_heading ="Update Student"
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
@@ -188,38 +173,5 @@ export class AddEditStudentComponent implements OnInit {
     }
   }
 
-  profile_update() {
-    if (this.student_id > 0) {
-      const formdata = new FormData()
-      formdata.append('std_id', this.student_id)
-      this.service.get_student_by_std_id(formdata).subscribe(
-        (res: any) => {
-          this.student_profile_data = res.data
-          console.log(this.student_profile_data)
-          this.ActionBtn = "Update";
 
-          this.student_form.controls['std_id'].setValue(this.student_profile_data.std_id);
-          this.student_form.controls['std_name'].setValue(this.student_profile_data.std_name);
-          this.student_form.controls['std_father_name'].setValue(this.student_profile_data.std_father_name);
-          this.student_form.controls['std_father_occupation'].setValue(this.student_profile_data.std_father_occupation);
-          this.student_form.controls['std_whatsapp_no'].setValue(this.student_profile_data.std_whatsapp_no);
-          this.student_form.controls['std_aadhar'].setValue(this.student_profile_data.std_aadhar);
-          this.student_form.controls['std_email'].setValue(this.student_profile_data.std_email);
-          this.student_form.controls['std_dob'].setValue(this.student_profile_data.std_dob);
-          this.student_form.controls['std_gender'].setValue(this.student_profile_data.std_gender);
-          this.student_form.controls['std_state'].setValue(this.student_profile_data.std_state);
-          this.student_form.controls['std_district'].setValue(this.student_profile_data.std_district);
-          this.student_form.controls['std_regist_date'].setValue(this.student_profile_data.std_regist_date);
-          this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
-          this.selectedImage = 'assets/' + this.student_profile_data.std_img;
-          this.student_form.controls['std_password'].setValue(this.student_profile_data.std_password);
-          this.student_form.controls['std_address'].setValue(this.student_profile_data.std_address);
-          this.student_form.controls['institute_id_fk'].setValue(this.student_profile_data.institute_id_fk);
-          this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
-        })
-    }
-  }
 }
-
-
-
