@@ -68,7 +68,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'student_login.php', data);
   }
   std_admission(data:any){
-    return this.http.post<any>(this.baseUrl + 'std_admission.php', data);
+    return this.http.post<any>(this.baseUrl + 'student_admission_insert.php', data);
   }
 
   // for fee module component payment recive

@@ -83,7 +83,7 @@
 
         <div class="user_image">
             <div *ngIf="selectedImage">
-                <img [src]="selectedImage" class="select_file" width="100%" height="100%">
+                <img src={{imgurl}} class="select_file" width="100%" height="100%">
             </div>
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
         </div><br>
@@ -100,7 +100,7 @@
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary" (click)="update_profile()">Update</button>
+        <button mat-raised-button color="primary" (click)="update_profile()" [disabled]="!student_form.valid">Update</button>
     </div>
 </div>
 
