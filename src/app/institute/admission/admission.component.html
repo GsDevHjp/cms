@@ -41,23 +41,23 @@
 
     <!----------------------------------------------- Mobile ---------------------------------------------------->
 
-    <ng-container matColumnDef="std_mobile">
+    <ng-container matColumnDef="std_whatsapp_no">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
-      <td mat-cell *matCellDef="let row"> {{row.std_mobile}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.std_whatsapp_no}} </td>
     </ng-container>
     
     <!----------------------------------------------- Course ---------------------------------------------------->
 
     <ng-container matColumnDef="course_id_fk">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
-      <td mat-cell *matCellDef="let row"> {{row.course_id_fk}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.course_name}} </td>
     </ng-container>
     
     <!----------------------------------------------- Batch ---------------------------------------------------->
 
-    <ng-container matColumnDef="batch_id_fk">
+    <ng-container matColumnDef="batch_name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Batch</th>
-      <td mat-cell *matCellDef="let row"> {{row.batch_id_fk}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.batch_name}} </td>
     </ng-container>
     
     <!----------------------------------------------- Date ---------------------------------------------------->
@@ -71,7 +71,7 @@
 
     <ng-container matColumnDef="admission_status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let row"> {{row.admission_status}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.batch_status}} </td>
     </ng-container>
 
     <!----------------------------------------------- Action ------------------------------------------------------->

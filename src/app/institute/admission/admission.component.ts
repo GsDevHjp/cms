@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
 })
 
 export class AdmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name','roll_no', 'std_mobile','course_id_fk','batch_id_fk','admission_date','admission_status', 'action'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name','roll_no', 'std_whatsapp_no','course_id_fk','batch_name','admission_date','admission_status', 'action'];
   dataSource = new MatTableDataSource();
   count_admission:number=0;
   color: ThemePalette='primary'
