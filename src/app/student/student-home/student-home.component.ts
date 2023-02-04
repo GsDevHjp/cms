@@ -11,16 +11,16 @@ import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-
 })
 export class StudentHomeComponent implements OnInit {
   name: any;
-  opened:boolean= true
+  opened: boolean = true
   @ViewChild(MatSidenav)
-  sidenav!:MatSidenav;
-  url :string = 'assets/';
-  img_url :string = '';
-  login_deatils:any
-  login:any
+  sidenav!: MatSidenav;
+  url: string = 'assets/';
+  img_url: string = '';
+  login_deatils: any
+  login: any
   constructor(
     private dailog: MatDialog,
-    private observe:BreakpointObserver
+    private observe: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
@@ -37,10 +37,10 @@ export class StudentHomeComponent implements OnInit {
 
 
     this.login_deatils = localStorage.getItem('Token')
-      this.login = JSON.parse(this.login_deatils)
-      console.log(this.login.std_name)
-      this.name = this.login.std_name
-      this.img_url = this.login.std_img
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_name)
+    this.name = this.login.std_name
+    this.img_url = this.login.std_img
 
   }
 
