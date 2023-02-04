@@ -179,6 +179,7 @@ export class ManageService {
   inst_question_bank_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'inst_question_bank_delete.php',data);
   }
+  
 // for institute module 
 
   institute_view() {
