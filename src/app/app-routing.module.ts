@@ -39,6 +39,7 @@ import { ResultComponent } from './student/result/result.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
 import { StudentLoginComponent } from './student/student-login/student-login.component';
+import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { TakeAddmissionComponent } from './student/take-addmission/take-addmission.component';
 
 const routes: Routes = [
@@ -122,6 +123,7 @@ const routes: Routes = [
       { path: 'course', component: CourseComponent },
       { path: 'batch', component: BatchComponent },
       { path: 'takeaddmission', component: TakeAddmissionComponent },
+      { path: 'studentprofile', component: StudentProfileComponent },
       { path: 'paymentreceived', component: PaymentReceivedComponent },
       { path: 'dues', component: StdDuesComponent },
       { path: 'query', component: QueryComponent },

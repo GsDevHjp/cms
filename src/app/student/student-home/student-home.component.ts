@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
-import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-edit-student.component';
+import { StudentProfileComponent } from '../student-profile/student-profile.component';
 
 @Component({
   selector: 'app-student-home',
@@ -46,7 +46,7 @@ export class StudentHomeComponent implements OnInit {
 
 
   show_profile() {
-    this.dailog.open(AddEditStudentComponent, {
+    this.dailog.open(StudentProfileComponent, {
       disableClose: true
     });
   }
