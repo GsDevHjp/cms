@@ -1,47 +1,49 @@
 .example-spacer {
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    color: #1d1f23;
-    font-size: 18px;
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: #1d1f23;
+  font-size: 18px;
+}
+
+.material-icons {
+  color: #1d1f23;
+  margin-bottom: 20px;
+}
+
+mat-toolbar {
+  height: 30px;
+  padding: 0px;
+  background: none;
+  position: relative;
+  color: whitesmoke;
+}
+
+#description {
+  width: 97.8%;
+}
+
+mat-form-field {
+  margin-left: 10px;
+}
+
+.submit {
+  margin-left: 9.6em;
+}
+
+button {
+  margin-left: 10px;
+}
+
+@media(min-width:420px)and (max-width:768px) {
+  mat-form-field {
+    width: 100%;
+    margin-left: 0px;
   }
-  
-  .material-icons {
-    color: #1d1f23;
-    margin-bottom: 20px;
+}
+
+@media(max-width:420px) {
+  mat-form-field {
+    width: 100%;
+    margin-left: 0px;
   }
-  
-  mat-toolbar {
-    height: 30px;
-    padding: 0px;
-    background: none;
-    position: relative;
-    color: whitesmoke;
-  }
-  #description{
-    width: 97.8%;
-  }
-  mat-form-field{
-    margin-left: 10px;
-  }
-  .submit {
-    margin-left: 9.6em;
-  }
-  
-  button {
-    margin-left: 10px;
-  }
-  
-  @media(min-width:420px)and (max-width:768px) {
-    mat-form-field {
-      width: 100%;
-      margin-left: 0px;
-    } 
-  }
-  
-  @media(max-width:420px) {
-    mat-form-field {
-      width: 100%;
-      margin-left: 0px;
-    } 
-  }
-  
+}

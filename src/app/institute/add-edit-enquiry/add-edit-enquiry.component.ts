@@ -14,11 +14,12 @@ export class AddEditEnquiryComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any;
+  enquiry_heading: string ='Add Enquiry'
+  course_data: any;
 
   constructor(
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditEnquiryComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_enq: any
   ) { }
@@ -42,42 +43,43 @@ export class AddEditEnquiryComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
     this.enquiry_form.controls['enq_date'].setValue(new Date().toISOString().slice(0, 10));
-    if(this.edit_enq){
-      this.actionBtn='update'
-      this.enquiry_form.controls[ 'enq_id'].setValue(this.edit_enq.enq_id)
-      this.enquiry_form.controls[ 'enq_name'].setValue(this.edit_enq.enq_name)
-      this.enquiry_form.controls[ 'enq_father_name'].setValue(this.edit_enq.enq_father_name)
-      this.enquiry_form.controls[ 'enq_mobile'].setValue(this.edit_enq.enq_mobile)
-      this.enquiry_form.controls[ 'enq_gender'].setValue(this.edit_enq.enq_gender)
-      this.enquiry_form.controls[ 'enq_address'].setValue(this.edit_enq.enq_address)
-      this.enquiry_form.controls[ 'course_id_fk'].setValue(this.edit_enq.course_id_fk)
-      this.enquiry_form.controls[ 'admin_id_fk'].setValue(this.edit_enq.admin_id_fk)
+    if (this.edit_enq) {
+      this.actionBtn = 'update'
+      this.enquiry_heading = 'Update Enquiry'
+      this.enquiry_form.controls['enq_id'].setValue(this.edit_enq.enq_id)
+      this.enquiry_form.controls['enq_name'].setValue(this.edit_enq.enq_name)
+      this.enquiry_form.controls['enq_father_name'].setValue(this.edit_enq.enq_father_name)
+      this.enquiry_form.controls['enq_mobile'].setValue(this.edit_enq.enq_mobile)
+      this.enquiry_form.controls['enq_gender'].setValue(this.edit_enq.enq_gender)
+      this.enquiry_form.controls['enq_address'].setValue(this.edit_enq.enq_address)
+      this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id_fk)
+      this.enquiry_form.controls['admin_id_fk'].setValue(this.edit_enq.admin_id_fk)
     }
   }
-  enquiry_btn(){
+  enquiry_btn() {
     console.log(this.enquiry_form.value)
-    if(!this.edit_enq){
-      if(this.enquiry_form.valid){
-    this.service.post_enquiry(this.enquiry_form.value).subscribe(
-      (res:any)=>{
-        console.log(res)
-        this.matref.close();
-        alert('form successfully...')
-      },
-      (error)=>{
-        console.log(error)
-        alert('data not insert')
+    if (!this.edit_enq) {
+      if (this.enquiry_form.valid) {
+        this.service.post_enquiry(this.enquiry_form.value).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.matref.close();
+            alert('form successfully...')
+          },
+          (error) => {
+            console.log(error)
+            alert('data not insert')
+          }
+        )
       }
-    )
+    }
+    else {
+      this.enquiryUpdate()
+    }
   }
-}
-else{
-  this.enquiryUpdate()
-}
-  }
-  enquiryUpdate(){
+  enquiryUpdate() {
     this.service.put_enquiry(this.enquiry_form.value).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res)
         this.matref.close()
         alert('update successfully')

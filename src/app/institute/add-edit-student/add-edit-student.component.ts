@@ -13,18 +13,22 @@ export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
   upload: any;
   ActionBtn: string = 'Add'
-  heading_act: string = 'Add Student'
+  student_heading: string = 'Add Student'
   admin = 1;
 
-  institute_id: string = '2023020201'
-  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
+  institute_id:string = "5"
+  status:any=1
+  selectedImage:any = 'http://localhost/cms/src/assets/user.png';
+
+
   url: string = 'assets/';
   img_url: string = '';
   login_deatils: any
   login: any
   student_id: any
   student_profile_data: any
-  status: any = 1
+ 
+
 
 
   constructor(
@@ -40,6 +44,7 @@ export class AddEditStudentComponent implements OnInit {
     this.student_id = this.login.std_id
   }
   ngOnInit(): void {
+    
     this.student_form = this.fb.group({
       std_id: [''],
       std_name: ['', Validators.required],
@@ -64,6 +69,7 @@ export class AddEditStudentComponent implements OnInit {
     this.profile_update()
     if (this.edit_std) {
       this.ActionBtn = "Update";
+      this.student_heading ="Update Student"
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
@@ -191,7 +197,6 @@ export class AddEditStudentComponent implements OnInit {
           this.student_profile_data = res.data
           console.log(this.student_profile_data)
           this.ActionBtn = "Update";
-          this.heading_act = ' Update Profile'
 
           this.student_form.controls['std_id'].setValue(this.student_profile_data.std_id);
           this.student_form.controls['std_name'].setValue(this.student_profile_data.std_name);
