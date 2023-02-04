@@ -6,38 +6,38 @@
 
     <div id="main">
         <div id="ques_viewport">
-            <p id="ques_viewport_head">Question 1 of 50:</p>
+            <p id="ques_viewport_head">Question {{ques_no}} of {{count_admission}}:</p>
             <span class="ques_text">
-                <p>Which among the following is not a part of page break option in MS-Word ?</p>
+                <p>{{quizQuestion}}</p>
 
                 <mat-card>
                     <mat-card-content>
-                        <span>No option is correct</span>
+                        <span><b>(A)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_a}}</span>
                     </mat-card-content>
                 </mat-card>
                 <br>
                 <mat-card>
                     <mat-card-content>
-                        <span>Even page</span>
+                        <span><b>(B)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_b}}</span>
                     </mat-card-content>
                 </mat-card>
                 <br>
                 <mat-card>
                     <mat-card-content>
-                        <span>Page</span>
+                        <span><b>(C)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_c}}</span>
                     </mat-card-content>
                 </mat-card>
                 <br>
                 <mat-card>
                     <mat-card-content>
-                        <span>Text wrapping</span>
+                        <span><b>(D)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_d}}</span>
                     </mat-card-content>
                 </mat-card>
                 <br>
                 <mat-card>
                     <mat-card-content>
                         <textarea readonly
-                            class="text_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, facilis ad. Eligendi earum consequuntur vero tempora illum. Commodi aut architecto minima? Reprehenderit, veritatis optio sed dolorum natus voluptatem velit quisquam!</textarea>
+                            class="text_info">{{quiz_description}}</textarea>
                     </mat-card-content>
                 </mat-card>
                 <br>
@@ -45,8 +45,8 @@
         </div>
     </div>
     <div class="footer">
-        <button mat-raised-button color="basic">Preview Question</button>
-        <button mat-raised-button color="basic">Next Question</button>
+        <button mat-raised-button color="basic" (click)="previewsQues()">Previews Question</button>
+        <button mat-raised-button color="basic" (click)="nextQues()">Next Question</button>
 
     </div>
 </div>
