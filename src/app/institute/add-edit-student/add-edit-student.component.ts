@@ -15,21 +15,15 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   student_heading: string = 'Add Student'
   admin = 1;
-
-  institute_id:string = "5"
-  status:any=1
-  selectedImage:any = 'http://localhost/cms/src/assets/user.png';
-
-
+  institute_id: string = "5"
+  status: any = 1
+  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   url: string = 'assets/';
   img_url: string = '';
   login_deatils: any
   login: any
   student_id: any
   student_profile_data: any
- 
-
-
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +38,7 @@ export class AddEditStudentComponent implements OnInit {
     this.student_id = this.login.std_id
   }
   ngOnInit(): void {
-    
+
     this.student_form = this.fb.group({
       std_id: [''],
       std_name: ['', Validators.required],
@@ -69,7 +63,7 @@ export class AddEditStudentComponent implements OnInit {
     this.profile_update()
     if (this.edit_std) {
       this.ActionBtn = "Update";
-      this.student_heading ="Update Student"
+      this.student_heading = "Update Student"
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
@@ -90,10 +84,6 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
-
-
-
-
   }
 
   student_btn() {
@@ -170,7 +160,6 @@ export class AddEditStudentComponent implements OnInit {
     )
   }
 
-
   OnUpload(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
@@ -180,10 +169,8 @@ export class AddEditStudentComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-
       reader.onload = () => {
         this.selectedImage = reader.result;
-
       };
     }
   }
@@ -197,7 +184,6 @@ export class AddEditStudentComponent implements OnInit {
           this.student_profile_data = res.data
           console.log(this.student_profile_data)
           this.ActionBtn = "Update";
-
           this.student_form.controls['std_id'].setValue(this.student_profile_data.std_id);
           this.student_form.controls['std_name'].setValue(this.student_profile_data.std_name);
           this.student_form.controls['std_father_name'].setValue(this.student_profile_data.std_father_name);
