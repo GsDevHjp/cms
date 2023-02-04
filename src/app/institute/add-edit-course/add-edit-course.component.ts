@@ -35,9 +35,11 @@ export class AddEditCourseComponent implements OnInit {
       course_duration: [''],
       course_description: ['', Validators.required],
       course_date: ['', Validators.required],
-      admin_id_fk: ['', Validators.required]
+      admin_id_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
+    this.course_form.controls['institute_id_fk'].setValue(5);
 
     if (this.edit_course) {
       this.actionBtn = "Update";
