@@ -1,4 +1,3 @@
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,7 +13,7 @@ export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
   upload: any;
   ActionBtn: string = 'Add'
-  student_heading: string = 'Add Student'
+  heading_act: string = 'Add Student'
   admin = 1;
 
   institute_id: string = '2023020201'
@@ -75,10 +74,6 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
-
-
-
-
   }
 
   student_btn() {
