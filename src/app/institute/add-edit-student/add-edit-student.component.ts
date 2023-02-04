@@ -16,7 +16,7 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   admin = 1;
 
-  institute_id: string = '2023020201'
+  institute_id: string = '5'
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
 
   status: any = 1
