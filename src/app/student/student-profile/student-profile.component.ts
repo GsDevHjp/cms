@@ -13,10 +13,9 @@ export class StudentProfileComponent implements OnInit {
   admin = 1;
   institute_id_fk: string = '5';
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
-  url: string = 'assets/';
-  img_url: string = '';
   login_deatils: any
   login: any
+  imgurl:any
   student_id: any
   student_profile_data: any
   status: any = 1
@@ -29,6 +28,7 @@ export class StudentProfileComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_id)
     this.student_id = this.login.std_id
+    this.imgurl = 'assets/'+this.login.std_img
   }
 
   ngOnInit(): void {
@@ -51,17 +51,16 @@ export class StudentProfileComponent implements OnInit {
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
-    this.profile_update()
+    this.profile_set_data()
   }
-  profile_update() {
-    if (this.student_id > 0) {
+  profile_set_data() {
       const formdata = new FormData()
       formdata.append('std_id', this.student_id)
       this.service.get_student_by_std_id(formdata).subscribe(
         (res: any) => {
           this.student_profile_data = res.data
-          console.log(this.student_profile_data)
-
+          this.student_form.controls['std_password'].setValue(this.student_profile_data.std_password);
+          this.student_form.controls['std_address'].setValue(this.student_profile_data.std_address);
           this.student_form.controls['std_id'].setValue(this.student_profile_data.std_id);
           this.student_form.controls['std_name'].setValue(this.student_profile_data.std_name);
           this.student_form.controls['std_father_name'].setValue(this.student_profile_data.std_father_name);
@@ -75,13 +74,10 @@ export class StudentProfileComponent implements OnInit {
           this.student_form.controls['std_district'].setValue(this.student_profile_data.std_district);
           this.student_form.controls['std_regist_date'].setValue(this.student_profile_data.std_regist_date);
           this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
-          this.selectedImage =  'assets/' + this.student_profile_data.std_img;
-          this.student_form.controls['std_password'].setValue(this.student_profile_data.std_password);
-          this.student_form.controls['std_address'].setValue(this.student_profile_data.std_address);
           this.student_form.controls['institute_id_fk'].setValue(this.student_profile_data.institute_id_fk);
           this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
+    
         })
-    }
   }
 
   update_profile() {
