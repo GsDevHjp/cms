@@ -5,8 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditEnquiryComponent } from '../add-edit-enquiry/add-edit-enquiry.component';
-import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
 import { ManageService } from 'src/app/manage.service';
+import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
 
 @Component({
   selector: 'app-enquiry',
@@ -14,7 +14,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./enquiry.component.css']
 })
 export class EnquiryComponent implements OnInit {
-  displayedColumns: string[] = ['enq_id', 'enq_name', 'enq_father_name', 'enq_mobile', 'course_id_fk', 'enq_gender', 'enq_address', 'enq_date', 'action'];
+  displayedColumns: string[] = ['enq_id', 'std_name', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'std_gender', 'std_address', 'std_regist_date', 'action'];
   dataSource = new MatTableDataSource();
   count_enquiry: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -57,8 +57,9 @@ export class EnquiryComponent implements OnInit {
     });
   }
 
-  admission_form(data:any){
-   this.dailog.open(AddEditTakeAddmissionComponent,{
+  admission_form(row:any){
+   this.dailog.open(AddEditStudentComponent,{
+   data:row,
     disableClose: true,
    })
   }
