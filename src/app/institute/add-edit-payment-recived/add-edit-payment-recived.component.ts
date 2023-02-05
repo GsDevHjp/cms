@@ -10,6 +10,9 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./add-edit-payment-recived.component.css']
 })
 export class AddEditPaymentRecivedComponent implements OnInit {
+  toppings = new FormControl('');
+
+  toppingList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September', 'October', 'November', 'December'];
   disableSelect = new FormControl(false);
   fee_form!: FormGroup;
   admin = 1;
@@ -172,7 +175,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.matref.close();
         alert('update successfully..')
       },
-      error:(error:any)=>{
+      error: (error: any) => {
         console.log(error)
         alert('data not Update')
       }

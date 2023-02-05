@@ -33,25 +33,25 @@ export class AddEditEnquiryComponent implements OnInit {
 
     this.enquiry_form = this.fb.group({
       enq_id: [''],
-      enq_name: ['', Validators.required],
-      enq_father_name: [''],
-      enq_mobile: ['', Validators.required],
+      std_name: ['', Validators.required],
+      std_father_name: [''],
+      std_whatsapp_no: ['', Validators.required],
       course_id_fk: ['', Validators.required],
-      enq_date: [''],
-      enq_gender: ['', Validators.required],
-      enq_address: ['', Validators.required],
+      std_regist_date: [''],
+      std_gender: ['', Validators.required],
+      std_address: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
-    this.enquiry_form.controls['enq_date'].setValue(new Date().toISOString().slice(0, 10));
+    this.enquiry_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.edit_enq) {
       this.actionBtn = 'update'
       this.enquiry_heading = 'Update Enquiry'
       this.enquiry_form.controls['enq_id'].setValue(this.edit_enq.enq_id)
-      this.enquiry_form.controls['enq_name'].setValue(this.edit_enq.enq_name)
-      this.enquiry_form.controls['enq_father_name'].setValue(this.edit_enq.enq_father_name)
-      this.enquiry_form.controls['enq_mobile'].setValue(this.edit_enq.enq_mobile)
-      this.enquiry_form.controls['enq_gender'].setValue(this.edit_enq.enq_gender)
-      this.enquiry_form.controls['enq_address'].setValue(this.edit_enq.enq_address)
+      this.enquiry_form.controls['std_name'].setValue(this.edit_enq.std_name)
+      this.enquiry_form.controls['std_father_name'].setValue(this.edit_enq.std_father_name)
+      this.enquiry_form.controls['std_whatsapp_no'].setValue(this.edit_enq.std_whatsapp_no)
+      this.enquiry_form.controls['std_gender'].setValue(this.edit_enq.std_gender)
+      this.enquiry_form.controls['std_address'].setValue(this.edit_enq.std_address)
       this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id_fk)
       this.enquiry_form.controls['admin_id_fk'].setValue(this.edit_enq.admin_id_fk)
     }

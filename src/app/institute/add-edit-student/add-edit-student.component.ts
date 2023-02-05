@@ -15,7 +15,7 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  institute_id: string = '1'
+  institute_id: string = '5'
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   status: any = 1
   login_deatils:any
@@ -26,14 +26,6 @@ export class AddEditStudentComponent implements OnInit {
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
-    
-    this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils)
-    console.log(this.login.std_id)
-    if(this.login.std_id > 0){
-      
-    }
-    
   }
   ngOnInit(): void {
     this.student_form = this.fb.group({
@@ -57,7 +49,7 @@ export class AddEditStudentComponent implements OnInit {
     })
 
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
-    if (this.edit_std) {
+    if (this.edit_std.std_id > 0) {
       this.ActionBtn = "Update";
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
@@ -78,6 +70,17 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
+    }
+
+    // for enquery to insert 
+    if (this.edit_std) {
+      this.ActionBtn = "Add";
+      this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
+      this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
+      this.student_form.controls['std_whatsapp_no'].setValue(this.edit_std.std_whatsapp_no);
+      this.student_form.controls['std_gender'].setValue(this.edit_std.std_gender);
+      this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
+      this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
   }
 
@@ -101,7 +104,8 @@ export class AddEditStudentComponent implements OnInit {
     formdata.append('status', this.status)
     formdata.append('institute_id_fk', this.institute_id)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
-    if (!this.edit_std) {
+
+    if (!(this.edit_std.std_id < 0)){
       if (this.student_form.valid) {
         this.service.post_student(formdata).subscribe(
           (result: any) => {

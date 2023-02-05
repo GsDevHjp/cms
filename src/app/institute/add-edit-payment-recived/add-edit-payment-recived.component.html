@@ -30,8 +30,8 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Mobile</mat-label>
                         <input matInput type="number" formControlName="std_whatsapp_no" readonly
-                        onkeypress=" return this.value.length < 10"
-                        oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+                            onkeypress=" return this.value.length < 10"
+                            oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
                     </mat-form-field>
                 </table>
                 <mat-form-field appearance="fill">
@@ -57,30 +57,30 @@
                     </mat-select>
                 </mat-form-field>
 
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Total Fee</mat-label>
-                        <input type="number" matInput formControlName="course_total_fee" readonly>
-                    </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Total Fee</mat-label>
+                    <input type="number" matInput formControlName="course_total_fee" readonly>
+                </mat-form-field>
 
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Half Fee</mat-label>
-                        <input type="number" matInput formControlName="course_half_fee" readonly>
-                    </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Half Fee</mat-label>
+                    <input type="number" matInput formControlName="course_half_fee" readonly>
+                </mat-form-field>
 
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Quarter Fee</mat-label>
-                        <input type="number" matInput formControlName="course_quarter_fee" readonly>
-                    </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Quarter Fee</mat-label>
+                    <input type="number" matInput formControlName="course_quarter_fee" readonly>
+                </mat-form-field>
 
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Monthly Fee</mat-label>
-                        <input type="number" matInput formControlName="course_monthly_fee" readonly>
-                    </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Monthly Fee</mat-label>
+                    <input type="number" matInput formControlName="course_monthly_fee" readonly>
+                </mat-form-field>
 
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Admission Fee</mat-label>
-                        <input type="number" matInput formControlName="course_admission_fee" readonly>
-                    </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Admission Fee</mat-label>
+                    <input type="number" matInput formControlName="course_admission_fee" readonly>
+                </mat-form-field>
             </div>
             <div class="box">
                 <div class="user_image">
@@ -101,19 +101,15 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Monthly</mat-label>
-                    <mat-select formControlName="fee_monthly">
-                        <mat-option value="January">January</mat-option>
-                        <mat-option value="February">February</mat-option>
-                        <mat-option value="March">March</mat-option>
-                        <mat-option value="April">April</mat-option>
-                        <mat-option value="May">May</mat-option>
-                        <mat-option value="June">June</mat-option>
-                        <mat-option value="July">July</mat-option>
-                        <mat-option value="August">August</mat-option>
-                        <mat-option value="September">September</mat-option>
-                        <mat-option value="October">October</mat-option>
-                        <mat-option value="November">November</mat-option>
-                        <mat-option value="December">December</mat-option>
+                    <mat-select [formControl]="toppings" multiple>
+                        <mat-select-trigger>
+                            {{toppings.value?.[0] || ''}}
+                            <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                                (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' :
+                                'others'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -149,6 +145,6 @@
 
     <div class="submit">
         <button mat-raised-button color="warn">Reset</button>
-        <button mat-raised-button color="primary"  [disabled]="!fee_form.valid" (click)="fee_btn()">Add</button>
+        <button mat-raised-button color="primary" [disabled]="!fee_form.valid" (click)="fee_btn()">Add</button>
     </div>
 </div>
