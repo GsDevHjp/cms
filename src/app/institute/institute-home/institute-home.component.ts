@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-
 @Component({
   selector: 'app-institute-home',
   templateUrl: './institute-home.component.html',
@@ -9,12 +8,15 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class InstituteHomeComponent implements OnInit {
   name: any;
-  opened:boolean= true
+  opened: boolean = true
   @ViewChild(MatSidenav)
-  sidenav!:MatSidenav;
-
+  sidenav!: MatSidenav;
+  url: string = 'assets/';
+  img_url: string = '';
+  login_deatils: any
+  login: any
   constructor(
-    private observe:BreakpointObserver
+    private observe: BreakpointObserver,
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +30,12 @@ export class InstituteHomeComponent implements OnInit {
         this.sidenav.close();
       }
     })
+
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.name = this.login.inst_name
+    this.img_url = this.login.inst_logo
   }
+
 }
