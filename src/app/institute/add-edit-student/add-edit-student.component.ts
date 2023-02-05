@@ -26,8 +26,7 @@ export class AddEditStudentComponent implements OnInit {
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
-    
-    }
+  }
   ngOnInit(): void {
     this.student_form = this.fb.group({
       std_id: [''],
@@ -125,7 +124,8 @@ export class AddEditStudentComponent implements OnInit {
     else {
       this.updateStudent()
     }
-  } updateStudent() {
+  }
+   updateStudent() {
     console.log(this.student_form.value)
     const updatedata = new FormData();
     updatedata.append('std_id', this.student_form.get('std_id')?.value)
