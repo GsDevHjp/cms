@@ -1,7 +1,14 @@
+/******************** css for home layout start **********************/
+.container-fluid {
+    padding: 0px;
+    cursor: default;
+}
+
+/********************* css for home side navbar layout start ******************/
 mat-sidenav {
-    background-color: #1d1f23;
-    height: 100%;
     width: 250px;
+    height: 100%;
+    background-color: #1d1f23;
 }
 
 mat-sidenav-content {
@@ -9,69 +16,95 @@ mat-sidenav-content {
     background-color: whitesmoke;
 }
 
-.main {
-    padding: 61px 2px 2px 2px;
-}
-
+/********************* css for home side navbar layout end ******************/
+/******************************************** css for header start *****************************************/
 mat-toolbar {
-    background-color: #1d1f23;
     justify-content: space-between;
-    height: 59px;
-    position: fixed;
-    top: 0px;
-    z-index: 10;
-
+    background-color: #1d1f23;
 }
 
 mat-icon {
-    color: whitesmoke;
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
     cursor: pointer;
-}
-
-.login {
-    font-size: 15px;
     color: whitesmoke;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    position: fixed;
-    right: 45px;
-    top: 16px;
 }
 
-.user-icon {
-    position: fixed;
-    right: 16px;
-    top: 20px;
+#dash_header_admin {
+    width: calc(100% - 500px);
+    height: 100%;
 }
 
-table {
+.name_text {
+    width: calc(100% - 80px);
+    height: 100%;
+    display: inline-block;
+}
+
+#dash_header_admin span {
+    line-height: 65px;
+    font-size: 14px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    margin-left: 40px;
+    float: right;
+}
+
+#admin_logo {
+    width: 45px;
+    height: 45px;
+    float: right;
+    margin: 10px 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: red;
+}
+
+#admin_logo img {
     width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
-a {
-    text-decoration: none;
+/******************************************** css for header end *****************************************/
+/******************************************** css for main start *****************************************/
+.main {
+    padding: 2px;
 }
 
-a button {
-    color: whitesmoke;
-    text-align: center;
-}
+/******************************************** css for main end *****************************************/
+/******************** css for home layout end **********************/
 
-@media(min-width:420px)and (max-width:768px) {
-    .login {
+/* Medium devices (landscape tablets, 768px and up) */
+@media(min-width: 768px) and (max-width:991px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media(min-width: 420px) and (max-width:767px) {}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 420px) {
+
+    #dash_header_admin span {
         display: none;
     }
 
-    .main {
-        padding:60px 2px 2px 2px;
+    #admin_logo {
+        margin: 13px 0px;
+        width: 35px;
+        height: 35px;
     }
-}
 
-@media(max-width:420px) {
+    .box {
+        width: 100%;
+        margin: 20px 5px 0px 0px;
+    }
+
     mat-sidenav {
-        width: 170px;
+        width: 155px;
     }
 
-    .login{
-        display: none;
+    mat-icon {
+        width: 105px;
     }
 }

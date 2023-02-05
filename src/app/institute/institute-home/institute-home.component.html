@@ -1,18 +1,19 @@
-<div ngxUiLoaderBlurred (blur)="7"></div>
-<mat-sidenav-container class="wrapper">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+<mat-sidenav-container class="container-fluid">
+    <mat-sidenav #sidebar mode="side" opened>
         <app-institute-sidebar></app-institute-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="content">
             <div class="toolbar">
                 <mat-toolbar>
-                    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-                    <div class="user">
-                        <span class="login">Login As: Saddam Husain{{name}}</span>
-                        <mat-icon class="user-icon">account_circle</mat-icon>
-                        <mat-menu #menu="matMenu" class="myMenu">
-                        </mat-menu>
+                    <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+                    <div id="dash_header_admin">
+                        <div class="name_text">
+                            <span>Login as:&nbsp;&nbsp;{{name}}</span>
+                        </div>
+                        <div id="admin_logo">
+                            <img src={{url}}{{img_url}}>
+                        </div>
                     </div>
                 </mat-toolbar>
             </div>
