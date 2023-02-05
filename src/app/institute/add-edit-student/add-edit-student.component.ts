@@ -18,15 +18,22 @@ export class AddEditStudentComponent implements OnInit {
   institute_id: string = '1'
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   status: any = 1
-
-
+  login_deatils:any
+  login:any
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
-
+    
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_id)
+    if(this.login.std_id > 0){
+      
+    }
+    
   }
   ngOnInit(): void {
     this.student_form = this.fb.group({
@@ -113,7 +120,8 @@ export class AddEditStudentComponent implements OnInit {
     else {
       this.updateStudent()
     }
-  } updateStudent() {
+  }
+   updateStudent() {
     console.log(this.student_form.value)
     const updatedata = new FormData();
     updatedata.append('std_id', this.student_form.get('std_id')?.value)
