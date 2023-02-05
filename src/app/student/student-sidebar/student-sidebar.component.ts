@@ -15,8 +15,8 @@ export class StudentSidebarComponent implements OnInit {
   action_icon3: boolean = false
   action_icon4: boolean = true
   status: any
-  login_deatils:any
-  login:any
+  login_deatils: any
+  login: any
   constructor(
     private dailog: MatDialog,
 

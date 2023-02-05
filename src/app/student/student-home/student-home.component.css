@@ -32,15 +32,16 @@ mat-icon {
 }
 
 #dash_header_admin {
-    width:calc(100% - 500px);
+    width: calc(100% - 500px);
     height: 100%;
 }
 
-.name_text{
+.name_text {
     width: calc(100% - 80px);
     height: 100%;
     display: inline-block;
 }
+
 #dash_header_admin span {
     line-height: 65px;
     font-size: 14px;

@@ -7,13 +7,13 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class QuizeComponent implements OnInit {
   count_admission: number = 0;
-  quizQuestion:any
-  quiz_option_a:any
-  quiz_option_b:any
-  quiz_option_c:any
-  quiz_option_d:any
-  quiz_description:any
-  ques_no: number =1
+  quizQuestion: any
+  quiz_option_a: any
+  quiz_option_b: any
+  quiz_option_c: any
+  quiz_option_d: any
+  quiz_description: any
+  ques_no: number = 1
   constructor(
     private service: ManageService
   ) { }
@@ -29,7 +29,7 @@ export class QuizeComponent implements OnInit {
         this.quiz_description = res.data[0].quiz_description
         this.count_admission = res.data.length
         this.ques_no = res.data[0].quiz_id
-      
+
       }
     )
   }

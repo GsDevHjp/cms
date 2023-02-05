@@ -17,7 +17,7 @@ export class StudentLoginComponent implements OnInit {
     private dailog: MatDialog,
     private FromBuilder: FormBuilder,
     private service: ManageService,
-    private Router:Router
+    private Router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,5 +56,5 @@ export class StudentLoginComponent implements OnInit {
     }
 
   }
- 
+
 }
