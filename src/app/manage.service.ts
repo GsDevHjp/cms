@@ -27,6 +27,7 @@ export class ManageService {
   get_course_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_inst_id.php', data);
   }
+ 
 
   // for batch module 
   get_batch() {
@@ -70,7 +71,10 @@ export class ManageService {
   std_admission(data:any){
     return this.http.post<any>(this.baseUrl + 'student_admission_insert.php', data);
   }
-
+  get_inst_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
+  }
+  
   // for fee module component payment recive
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
