@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-edit-take-addmission.component';
 
 import { ThemePalette } from '@angular/material/core';
@@ -17,10 +17,10 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./take-addmission.component.css']
 })
 export class TakeAddmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name','roll_no', 'std_whatsapp_no','course_name','batch_name','admission_date','batch_status'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'std_whatsapp_no', 'course_name', 'batch_name', 'admission_date', 'batch_status'];
   dataSource = new MatTableDataSource();
-  count_admission:number=0;
-  color: ThemePalette='primary'
+  count_admission: number = 0;
+  color: ThemePalette = 'primary'
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;

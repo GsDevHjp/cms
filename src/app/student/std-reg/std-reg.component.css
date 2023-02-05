@@ -22,9 +22,11 @@ mat-toolbar {
 mat-form-field {
     margin-left: 10px;
 }
-textarea{
+
+textarea {
     height: 17px;
 }
+
 .register {
     margin-left: 8.2em;
 }

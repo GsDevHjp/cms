@@ -16,7 +16,7 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class QueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['query_id', 'std_query','std_query_ans', 'std_query_date', 'action'];
+  displayedColumns: string[] = ['query_id', 'std_query', 'std_query_ans', 'std_query_date', 'action'];
   dataSource = new MatTableDataSource();
   query_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
