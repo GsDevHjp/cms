@@ -12,7 +12,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Duration</mat-label>
-        <input type="number" matInput formControlName="course_duration">
+        <input type="number" matInput formControlName="course_duration" (keyup)="monthly_clc()">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill" (keyup)="total_clc()">
@@ -22,17 +22,17 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Half Fee</mat-label>
-        <input type="number" matInput formControlName="course_half_fee" readonly>
+        <input type="number" matInput formControlName="course_half_fee">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Quarter fee</mat-label>
-        <input type="number" matInput formControlName="course_quarter_fee" readonly>
+        <input type="number" matInput formControlName="course_quarter_fee">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Monthly Fee</mat-label>
-        <input type="number" matInput formControlName="course_monthly_fee" readonly>
+        <input type="number" matInput formControlName="course_monthly_fee">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -42,7 +42,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Date</mat-label>
-        <input type="date" matInput formControlName="course_date" readonly>
+        <input type="date" matInput formControlName="course_date">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width" appearance="fill" id="total">

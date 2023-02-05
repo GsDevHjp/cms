@@ -4,51 +4,48 @@
 </mat-toolbar>
 
 <form [formGroup]="enquiry_form">
-    <div id="main_area">
-        <div class="box">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Name</mat-label>
-                <input matInput formControlName="enq_name">
-            </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Father Name</mat-label>
-                <input matInput formControlName="enq_father_name">
-            </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="std_name">
+    </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Mobile</mat-label>
-                <input formControlName="enq_mobile" matInput type="number" onkeypress=" return this.value.length < 10"
-                    oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
-            </mat-form-field>
-        </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Father Name</mat-label>
+        <input matInput formControlName="std_father_name">
+    </mat-form-field><br>
 
-        <div class="box">
-            <mat-form-field appearance="fill">
-                <mat-label>Course</mat-label>
-                <mat-select formControlName="course_id_fk">
-                    <mat-option *ngFor="let course of course_data"
-                        [value]="course.course_id">{{course.course_name}}</mat-option>
-                </mat-select>
-            </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Mobile</mat-label>
+        <input formControlName="std_whatsapp_no" matInput type="number" onkeypress=" return this.value.length < 10"
+            oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}">
+    </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Date</mat-label>
-                <input type="date" matInput formControlName="enq_date">
-            </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Course</mat-label>
+        <mat-select formControlName="course_id_fk">
+            <mat-option *ngFor="let course of course_data"
+                [value]="course.course_id">{{course.course_name}}</mat-option>
+        </mat-select>
+    </mat-form-field><br>
 
-            <div class="gender">
-                <mat-label>Gender : </mat-label>&nbsp;
-                <input type="radio" name="gen" value="male" checked formControlName="enq_gender">
-                <mat-label>Male</mat-label> &nbsp;
-                <input type="radio" name="gen" value="Female" formControlName="enq_gender">
-                <mat-label>Female</mat-label>
-            </div>
-        </div>
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput formControlName="std_regist_date">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Gender : </mat-label>
+        <mat-select formControlName="std_gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
     <mat-form-field appearance="fill" class="address">
         <mat-label>Address</mat-label>
-        <textarea matInput formControlName="enq_address"></textarea>
+        <textarea matInput formControlName="std_address"></textarea>
     </mat-form-field>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
