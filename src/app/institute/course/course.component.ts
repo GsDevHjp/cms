@@ -33,7 +33,7 @@ export class CourseComponent implements OnInit {
   ) {  
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
-    
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id  = this.login.institute_id_fk
@@ -42,6 +42,7 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     if(this.inst_id > 0){
       this.action_btn = true
+      this.displayedColumns = ['course_id','course_name','course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee','course_monthly_fee', 'course_admission_fee', 'course_description','course_date'];
       const instformdata =  new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_course_by_inst_id(instformdata).subscribe(
