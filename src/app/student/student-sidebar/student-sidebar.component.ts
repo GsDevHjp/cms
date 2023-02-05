@@ -3,6 +3,8 @@ import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.compo
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-edit-student.component';
 import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-edit-take-addmission.component';
+import { ManageService } from 'src/app/manage.service';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-student-sidebar',
   templateUrl: './student-sidebar.component.html',
@@ -15,19 +17,36 @@ export class StudentSidebarComponent implements OnInit {
   action_icon3: boolean = false
   action_icon4: boolean = true
   status: any
+  inst_id:any
   login_deatils: any
   login: any
+  inst_name:any
   constructor(
     private dailog: MatDialog,
+    private service:ManageService
 
   ) { }
 
   ngOnInit(): void {
 
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.status)
     this.status = this.login.status
+    this.inst_id = this.login.institute_id_fk
+
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.inst_id)
+    this.service.get_inst_by_inst_id(fromdata).subscribe(
+      (result: any) => {
+        this.inst_name = result.data.inst_name
+      },
+      (error: any) => {
+        console.log(error)
+      }
+    )
+
   }
 
   take_addmission() {
