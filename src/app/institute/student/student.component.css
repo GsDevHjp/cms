@@ -12,11 +12,8 @@
     float: left;
     margin-left:5px;
     text-align: center;
-}
-.icon_box span{
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 25px;
     cursor: pointer;
-    letter-spacing: 1px;
+}
+.icon_box:hover{
+    background-color:white;
 }

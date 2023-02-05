@@ -82,7 +82,10 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
   }
   post_fee(data: any) {
-    return this.http.post<any>(this.baseUrl + 'fee_post.php', data);
+    return this.http.post<any>(this.baseUrl + 'fee_insert.php', data);
+  }
+  put_fee(data: any) {
+    return this.http.post<any>(this.baseUrl + 'fee_update.php', data);
   }
 
   // for enquiry module 
