@@ -8,7 +8,7 @@
         <div id="ques_viewport">
             <p id="ques_viewport_head">Question {{ques_no}} of {{count_admission}}:</p>
             <span class="ques_text">
-                <p>{{quizQuestion}}</p>
+                <p><b>Q.</b>&nbsp;&nbsp;{{quizQuestion}}</p>
 
                 <mat-card>
                     <mat-card-content>
@@ -34,9 +34,9 @@
                     </mat-card-content>
                 </mat-card>
                 <br>
-                <mat-card>
+                <mat-card class="text_info">
                     <mat-card-content>
-                        <textarea readonly class="text_info">{{quiz_description}}</textarea>
+                        {{quiz_description}}
                     </mat-card-content>
                 </mat-card>
                 <br>

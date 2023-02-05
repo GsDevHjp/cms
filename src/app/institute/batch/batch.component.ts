@@ -13,15 +13,17 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./batch.component.css']
 })
 export class BatchComponent implements OnInit {
-  displayedColumns: string[] = ['batch_id',  'course_id_fk','batch_name', 'batch_arrival', 'batch_departure','batch_status','batch_date', 'batch_total_std','batch_description',  'action'];
+  displayedColumns: string[] = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description', 'action'];
   dataSource = new MatTableDataSource();
   count_batch: number = 0;
-  inst_id:any
-  Ttalstd:number = 0
+  inst_id: any
+  action_btn: boolean = false
+  Ttalstd: number = 0
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-
+  login_deatils: any
+  login: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -33,10 +35,16 @@ export class BatchComponent implements OnInit {
 
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
   }
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
+      this.action_btn = true
+      this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description'];
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_batch_by_inst_id(instformdata).subscribe(

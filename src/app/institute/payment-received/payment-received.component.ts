@@ -14,36 +14,58 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk','fee_amount', 'fee_description','std_img', 'fee_date', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'fee_description', 'std_img', 'fee_date', 'action'];
   dataSource = new MatTableDataSource();
-  count_payment: number =0;
+  count_payment: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl:string = 'http://localhost/cms/src/assets/';
-
+  imgUrl: string = 'http://localhost/cms/src/assets/';
+  action_btn: boolean = false
+  login_deatils: any
+  login: any
+  inst_id: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService
+    private service: ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
   }
+
 
   ngOnInit(): void {
-    this.service.get_fee().subscribe(
-      (res: any) => {
-        console.log(res)
-        this.dataSource.data = res.data
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.count_payment = res.data.length
-      }
-    )
+    if (this.inst_id > 0) {
+      this.service.get_fee().subscribe(
+        (res: any) => {
+          this.action_btn = true
+          this.displayedColumns = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'fee_description', 'std_img', 'fee_date'];
+          console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_payment = res.data.length
+        }
+      )
+    }
+    else {
+      this.service.get_fee().subscribe(
+        (res: any) => {
+          this.action_btn = true
+          console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_payment = res.data.length
+        }
+      )
+    }
   }
-
   add_payment() {
     this.dailog.open(AddEditPaymentRecivedComponent, {
       disableClose: true,
