@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-
-import { AddEditAddmissionComponent } from 'src/app/institute/add-edit-addmission/add-edit-addmission.component';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -37,8 +33,8 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private matref: MatDialogRef<AddEditAddmissionComponent>,
-    private service: ManageService
+    private service: ManageService,
+    private matref:MatDialogRef<AddEditTakeAddmissionComponent>
   ) { }
 
   ngOnInit(): void {
@@ -109,6 +105,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
 
   addstd() {
+
     const formdata = new FormData();
 
     console.log('regist_no' + this.addmission_form.get('regist_no')?.value)
@@ -133,7 +130,11 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
+  
         alert("Admission Successfully..")
+        this.addmission_form.reset();
+        this.matref.close(0)
+       
       },
       (error: any) => {
         console.log(error)

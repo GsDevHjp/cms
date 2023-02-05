@@ -17,13 +17,15 @@ export class CourseComponent implements OnInit {
   dataSource = new MatTableDataSource();
   count_course: number = 0;
   inst_id:any
+  std_id:any
   action_btn:boolean = false
   Course: string ="Course Details"
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   month:string='month'
-
+  login_deatils:any
+  login:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -31,6 +33,10 @@ export class CourseComponent implements OnInit {
   ) {  
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
+    
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id  = this.login.institute_id_fk
   }
 
   ngOnInit(): void {
