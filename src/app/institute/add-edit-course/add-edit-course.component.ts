@@ -15,13 +15,20 @@ export class AddEditCourseComponent implements OnInit {
   upload: any;
   course_heading: string = 'Add Course'
   actionBtn: string = 'Add'
-
+  inst_id:any
+  login_deatils:any
+  login:any
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
-  ) { }
+  ) { 
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+  }
 
   ngOnInit(): void {
     this.course_form = this.fb.group({
@@ -39,7 +46,7 @@ export class AddEditCourseComponent implements OnInit {
       institute_id_fk: ['', Validators.required]
     })
     this.course_form.controls['course_date'].setValue(new Date().toISOString().slice(0, 10));
-    this.course_form.controls['institute_id_fk'].setValue(5);
+    this.course_form.controls['institute_id_fk'].setValue(this.inst_id);
 
     if (this.edit_course) {
       this.actionBtn = "Update";

@@ -15,7 +15,7 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  institute_id: string = '5'
+  institute_id:any
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   status: any = 1
   login_deatils:any
@@ -26,6 +26,9 @@ export class AddEditStudentComponent implements OnInit {
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {
     this.student_form = this.fb.group({

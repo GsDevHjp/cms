@@ -13,12 +13,13 @@ export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
   admin = 1;
-  institute_id = 5;
+  institute_id:any;
   upload: any;
   actionBtn: string = 'Add'
   batch_heading: string = 'Add Batch'
   course_data: any;
-
+  login_deatils:any
+  login:any
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -29,6 +30,9 @@ export class AddEditBatchComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {
     this.service.get_course().subscribe(
