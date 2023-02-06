@@ -17,22 +17,32 @@ export class AddEditInstBookComponent implements OnInit {
   institute_id = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any
-
+  course_data: any
+  login_deatils: any
+  login:any
+  inst_id:any
+  inst_id_for_inst_login:any
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditInstBookComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_inst_book: any
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
   }
   ngOnInit(): void {
-    this.service.get_course().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id",this.inst_id_for_inst_login)
+    this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
       }
@@ -75,11 +85,11 @@ export class AddEditInstBookComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_book_form.reset();
-           alert('form successfully...')
+            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)
-           alert('data not insert')
+            alert('data not insert')
           }
         )
       }
@@ -89,28 +99,28 @@ export class AddEditInstBookComponent implements OnInit {
     }
   }
   updateInstBook() {
-      console.log(this.inst_book_form.value)
-      const updatedata = new FormData();
-      updatedata.append('inst_book_id', this.inst_book_form.get('inst_book_id')?.value);
-      updatedata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
-      updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
-      updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
-      updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
-      updatedata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
-      updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
-     this.service.put_inst_book(updatedata).subscribe({
-      next:(res:any)=>{
+    console.log(this.inst_book_form.value)
+    const updatedata = new FormData();
+    updatedata.append('inst_book_id', this.inst_book_form.get('inst_book_id')?.value);
+    updatedata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
+    updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
+    updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
+    updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
+    updatedata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
+    updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
+    this.service.put_inst_book(updatedata).subscribe({
+      next: (res: any) => {
         console.log(res)
         this.matref.close();
         alert('update successfully..')
       },
-      error:(error:any)=>{
+      error: (error: any) => {
         console.log(error)
         alert('data not update')
       }
-     })
-    }
- 
+    })
+  }
+
   OnUpload(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];
