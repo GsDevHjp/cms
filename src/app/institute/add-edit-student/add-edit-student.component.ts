@@ -108,7 +108,7 @@ export class AddEditStudentComponent implements OnInit {
     formdata.append('institute_id_fk', this.institute_id)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
-    if (!(this.edit_std.std_id < 0)){
+    if (!(this.edit_std.std_id > 0)){
       if (this.student_form.valid) {
         this.service.post_student(formdata).subscribe(
           (result: any) => {
