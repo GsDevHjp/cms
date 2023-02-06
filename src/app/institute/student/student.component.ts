@@ -18,6 +18,7 @@ export class StudentComponent implements OnInit {
   dataSource = new MatTableDataSource();
   count_student: number = 0;
   inst_id: any
+  rowdata= 0
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
@@ -60,6 +61,7 @@ export class StudentComponent implements OnInit {
 
   add_student(): any {
     this.dailog.open(AddEditStudentComponent, {
+      data: this.rowdata,
       disableClose: true
     });
   }

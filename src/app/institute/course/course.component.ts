@@ -26,6 +26,7 @@ export class CourseComponent implements OnInit {
   month:string='month'
   login_deatils:any
   login:any
+  inst_id_for_inst_login:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -37,6 +38,7 @@ export class CourseComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id  = this.login.institute_id_fk
+    this.inst_id_for_inst_login  = this.login.inst_id
   }
 
   ngOnInit(): void {
@@ -56,25 +58,19 @@ export class CourseComponent implements OnInit {
       )
     }
     else{
-      this.service.get_course().subscribe(
+      const instlogin =  new FormData()
+      instlogin.append('inst_id', this.inst_id_for_inst_login)
+      this.service.get_course_by_inst_id(instlogin).subscribe(
         (res: any) => {
           console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.count_course = res.data.length
+          this.dataSource.paginator = this.paginator;
+
         }
       )
     }
-
-    this.service.get_course().subscribe(
-      (res: any) => {
-        console.log(res)
-        this.dataSource.data = res.data
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.count_course = res.data.length
-      }
-    )
   }
 
   add_course() {
