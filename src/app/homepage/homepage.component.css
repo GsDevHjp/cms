@@ -53,6 +53,7 @@ h1 {
     line-height: 45px;
     display: flex;
     justify-content: space-between;
+    background-color: #1d1f23;
 }
 
 span {

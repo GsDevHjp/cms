@@ -11,12 +11,20 @@ export class StdRegComponent implements OnInit {
   hide = true;
   std_regist_from !: FormGroup
   admin = 1;
+  inst_data:any
   constructor(
     private FormBuilder: FormBuilder,
     private manageservice: ManageService
   ) { }
 
   ngOnInit(): void {
+
+    this.manageservice.institute_view().subscribe(
+      (res: any) => {
+        this.inst_data = res.data
+      }
+    )
+
     this.std_regist_from = this.FormBuilder.group({
       institute_id_fk: ['', Validators.required],
       std_name: ['', Validators.required],

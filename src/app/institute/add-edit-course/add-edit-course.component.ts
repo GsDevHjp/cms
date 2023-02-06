@@ -15,15 +15,15 @@ export class AddEditCourseComponent implements OnInit {
   upload: any;
   course_heading: string = 'Add Course'
   actionBtn: string = 'Add'
-  inst_id:any
-  login_deatils:any
-  login:any
+  inst_id: any
+  login_deatils: any
+  login: any
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
-  ) { 
+  ) {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -63,6 +63,7 @@ export class AddEditCourseComponent implements OnInit {
       this.course_form.controls['admin_id_fk'].setValue(this.edit_course.admin_id_fk);
     }
   }
+
   onAdd() {
     console.log(this.course_form.value)
     if (!this.edit_course) {
@@ -105,7 +106,7 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
     this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
   }
-  monthly_clc(){
-    this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) /(this.course_form.get('course_duration')?.value))
+  monthly_clc() {
+    this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / (this.course_form.get('course_duration')?.value))
   }
 }

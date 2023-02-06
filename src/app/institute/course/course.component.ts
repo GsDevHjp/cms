@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router} from '@angular/router';
 import { AddEditCourseComponent } from '../add-edit-course/add-edit-course.component';
 import { ManageService } from 'src/app/manage.service';
 
@@ -13,39 +13,39 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  displayedColumns: string[] = ['course_id','course_name','course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee','course_monthly_fee', 'course_admission_fee', 'course_description','course_date', 'action'];
+  displayedColumns: string[] = ['course_id', 'course_name', 'course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee', 'course_monthly_fee', 'course_admission_fee', 'course_description', 'course_date', 'action'];
   dataSource = new MatTableDataSource();
   count_course: number = 0;
-  inst_id:any
-  std_id:any
-  action_btn:boolean = false
-  Course: string ="Course Details"
+  inst_id: any
+  std_id: any
+  action_btn: boolean = false
+  Course: string = "Course Details"
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  month:string='month'
-  login_deatils:any
-  login:any
-  inst_id_for_inst_login:any
+  month: string = 'month'
+  login_deatils: any
+  login: any
+  inst_id_for_inst_login: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService
-  ) {  
+    private service: ManageService
+  ) {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id  = this.login.institute_id_fk
-    this.inst_id_for_inst_login  = this.login.inst_id
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
   }
 
   ngOnInit(): void {
-    if(this.inst_id > 0){
+    if (this.inst_id > 0) {
       this.action_btn = true
-      this.displayedColumns = ['course_id','course_name','course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee','course_monthly_fee', 'course_admission_fee', 'course_description','course_date'];
-      const instformdata =  new FormData()
+      this.displayedColumns = ['course_id', 'course_name', 'course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee', 'course_monthly_fee', 'course_admission_fee', 'course_description', 'course_date'];
+      const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_course_by_inst_id(instformdata).subscribe(
         (result: any) => {
@@ -57,8 +57,8 @@ export class CourseComponent implements OnInit {
         }
       )
     }
-    else{
-      const instlogin =  new FormData()
+    else {
+      const instlogin = new FormData()
       instlogin.append('inst_id', this.inst_id_for_inst_login)
       this.service.get_course_by_inst_id(instlogin).subscribe(
         (res: any) => {

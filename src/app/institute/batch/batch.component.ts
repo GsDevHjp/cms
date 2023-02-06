@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router} from '@angular/router';
 import { AddEditBatchComponent } from '../add-edit-batch/add-edit-batch.component';
 import { ManageService } from 'src/app/manage.service';
 
@@ -40,7 +40,8 @@ export class BatchComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.institute_id_fk
-    this.inst_id_for_inst_login  = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
+    
   }
 
   ngOnInit(): void {
