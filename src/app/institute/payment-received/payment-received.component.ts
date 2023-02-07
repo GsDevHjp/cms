@@ -56,7 +56,6 @@ export class PaymentReceivedComponent implements OnInit {
     else {
       this.service.get_fee().subscribe(
         (res: any) => {
-          this.action_btn = true
           console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
