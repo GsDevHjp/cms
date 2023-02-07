@@ -88,11 +88,11 @@
                 </div><br>
                 <mat-form-field appearance="fill">
                     <mat-label>Fee Type</mat-label>
-                    <mat-select formControlName="fee_type">
+                    <mat-select formControlName="fee_type" (valueChange)="select_fee_type($event)">
                         <mat-option value="Admission Fee">Admission Fee</mat-option>
-                        <mat-option value="Tuition Fee">Tuition Fee</mat-option>
-                        <mat-option value="Course Fee">Course Fee</mat-option>
-                        <mat-option value="Batch Fee">Batch Fee</mat-option>
+                        <mat-option value="Total Fee">Tution Fee (Total)</mat-option>
+                        <mat-option value="Half Fee"> Tution Fee (Half)</mat-option>
+                        <mat-option value="Quarter Fee">Tution Fee (Quarter)</mat-option>
                         <mat-option value="Monthly Fee">Monthly Fee</mat-option>
                         <mat-option value="Test Fee">Test Fee</mat-option>
                         <mat-option value="Advance Fee">Advance Fee</mat-option>
@@ -101,7 +101,8 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Monthly</mat-label>
-                    <mat-select [formControl]="toppings" multiple>
+                    <mat-select [formControl]="toppings" multiple [disabled]="monthly_act"
+                        formControlName="fee_monthly">
                         <mat-select-trigger>
                             {{toppings.value?.[0] || ''}}
                             <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
@@ -123,7 +124,7 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Amount</mat-label>
-                    <input type="number" matInput formControlName="fee_amount">
+                    <input type="number" matInput formControlName="fee_amount" (click)="setvalue()">
                 </mat-form-field>
 
                 <table class="example-full-width" cellspacing="0" hidden>

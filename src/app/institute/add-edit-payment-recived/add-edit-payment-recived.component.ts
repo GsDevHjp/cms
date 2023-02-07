@@ -12,7 +12,7 @@ import { ManageService } from 'src/app/manage.service';
 export class AddEditPaymentRecivedComponent implements OnInit {
   toppings = new FormControl('');
 
-  toppingList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September', 'October', 'November', 'December'];
+  toppingList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   disableSelect = new FormControl(false);
   fee_form!: FormGroup;
   admin = 1;
@@ -24,6 +24,8 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   batch_data: any;
   student_single_data: any;
   course_single_data: any;
+  monthly_act: boolean = true;
+  setvalue: any;
   imgUrl: string = 'http://localhost/cms/src/assets/user.png';
 
   constructor(
@@ -63,7 +65,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       course_monthly_fee: [''],
       course_admission_fee: [''],
       fee_type: ['', Validators.required],
-      fee_monthly: ['', Validators.required],
+      fee_monthly: [''],
       fee_mode: ['', Validators.required],
       fee_amount: ['', Validators.required],
       fee_description: ['', Validators.required],
@@ -180,5 +182,28 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         alert('data not Update')
       }
     })
+  }
+  select_fee_type(event: any) {
+    console.log(event)
+    if (event == "Monthly Fee") {
+      this.monthly_act = false
+    }
+    else {
+      this.monthly_act = true
+    }
+    if(event == "Total Fee"){
+      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_total_fee')?.value);
+    }
+    if(event == "Half Fee"){
+      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_half_fee')?.value);
+    }
+    if(event == "Quarter Fee"){
+      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
+    }
+
+  }
+  select_admission_fee(event: any) {
+    console.log(event)
+    alert('hello')
   }
 }
