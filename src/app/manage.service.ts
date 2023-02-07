@@ -27,7 +27,6 @@ export class ManageService {
   get_course_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_inst_id.php', data);
   }
- 
 
   // for batch module 
   get_batch() {
