@@ -74,6 +74,9 @@ export class ManageService {
   get_inst_by_inst_id(data:any){
     return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
   }
+  get_admission_id_by_std_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
+  }
   
   // for fee module component payment recive
   get_fee() {
@@ -224,8 +227,11 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
 
+  // for admission 
   get_admission(){
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }
-
+  get_admission_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_admission_by_inst_id.php', data);
+  }
 }
