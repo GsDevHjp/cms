@@ -25,7 +25,8 @@ export class InsCourseComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
-    private route: Router
+    private route: Router,
+    private service:ManageService
   ) {
   }
 
@@ -50,7 +51,17 @@ export class InsCourseComponent implements OnInit {
 
   get_course(row: any) {
     console.log(row.inst_id)
-    this.route.navigate(['/adminhome/inscourse/course'],row.inst_id)
+    const instlogin = new FormData()
+    instlogin.append('inst_id', row.inst_id)
+    this.service.get_course_by_inst_id(instlogin).subscribe(
+      (res: any) => {
+        console.log(res)
+        this.dataSource.data = res.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.route.navigate(['/adminhome/inscourse/course'],row.inst_id)
+      }
+    )
   }
 
 

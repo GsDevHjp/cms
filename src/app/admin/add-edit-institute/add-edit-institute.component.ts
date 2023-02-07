@@ -160,4 +160,9 @@ export class AddEditInstituteComponent implements OnInit {
       this.InstForm.get('inst_doct_img')?.setValue(file)
     }
   }
+
+
+  reset(){
+    this.InstForm.reset()
+  }
 }
