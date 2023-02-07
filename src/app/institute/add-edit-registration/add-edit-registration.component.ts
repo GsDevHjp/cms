@@ -10,6 +10,7 @@ import { ManageService } from 'src/app/manage.service';
 export class AddEditRegistrationComponent implements OnInit {
   inst_regist_from!: FormGroup;
   admin = 1;
+  hide = true;
   constructor(
     private FormBuilder: FormBuilder,
     private manageservice: ManageService
@@ -26,13 +27,11 @@ export class AddEditRegistrationComponent implements OnInit {
       admin_id_fk: ['', Validators.required],
       inst_regist_date: [new Date().toISOString().slice(0, 10)],
     })
-
   }
 
   inst_regist() {
     console.log(this.inst_regist_from.value)
     this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
-
       (result: any) => {
         console.log(result)
         alert("Registration Successfully..")
@@ -42,6 +41,9 @@ export class AddEditRegistrationComponent implements OnInit {
         alert("Unsuccessfull Registration")
       }
     )
+  }
+  form_reset(){
+    this.inst_regist_from.reset()
   }
 }
 
