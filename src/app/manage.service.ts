@@ -140,7 +140,9 @@ export class ManageService {
   inst_book_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'inst_book_delete.php', data);
   }
-
+  get_book_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_book_by_inst_id.php', data);
+  }
   // for inst notes module
   get_inst_notes(){
     return this.http.get<[]>(this.baseUrl + 'inst_notes_view.php');
@@ -153,6 +155,9 @@ export class ManageService {
   }
   inst_notes_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'inst_notes_delete.php',data);
+  }
+  get_notes_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_notes_by_inst_id.php', data);
   }
 
   // for inst syllabus module

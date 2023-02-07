@@ -35,7 +35,9 @@ export class AddEditBatchComponent implements OnInit {
     this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {
-    this.service.get_course().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id", this.institute_id)
+    this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
       }

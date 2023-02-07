@@ -21,6 +21,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   batch_data: any
   login_deatils: any
   login: any
+  inst_id: any
   onSubmit() {
     throw new Error('Method not implemented.');
   }
@@ -34,11 +35,19 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
-    private matref:MatDialogRef<AddEditTakeAddmissionComponent>
-  ) { }
+    private matref: MatDialogRef<AddEditTakeAddmissionComponent>
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_name)
+    this.inst_id = this.login.institute_id_fk
+    console.log(this.login.institute_id_fk)
+  }
 
   ngOnInit(): void {
-    this.service.get_course().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id)
+    this.service.get_course_by_inst_id(formdata).subscribe(
       (res: any) => {
         this.course_data = res.data
       }
@@ -130,11 +139,11 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
-  
+
         alert("Admission Successfully..")
         this.addmission_form.reset();
         this.matref.close(0)
-       
+
       },
       (error: any) => {
         console.log(error)

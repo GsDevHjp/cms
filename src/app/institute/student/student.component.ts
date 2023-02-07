@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,6 +18,10 @@ export class StudentComponent implements OnInit {
   dataSource = new MatTableDataSource();
   count_student: number = 0;
   inst_id: any
+  rowdata= 0
+  login_deatils: any
+  login: any
+  inst_id_for_inst_login:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
@@ -29,6 +33,12 @@ export class StudentComponent implements OnInit {
   ) {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
+    
   }
 
   ngOnInit(): void {
@@ -46,7 +56,9 @@ export class StudentComponent implements OnInit {
       )
     }
     else {
-      this.service.get_student().subscribe(
+      const instlogin = new FormData()
+      instlogin.append('inst_id', this.inst_id_for_inst_login)
+      this.service.get_student_by_inst_id(instlogin).subscribe(
         (res: any) => {
           console.log(res)
           this.dataSource.data = res.data
@@ -60,6 +72,7 @@ export class StudentComponent implements OnInit {
 
   add_student(): any {
     this.dailog.open(AddEditStudentComponent, {
+      data: this.rowdata,
       disableClose: true
     });
   }

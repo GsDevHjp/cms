@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router} from '@angular/router';
 import { AddEditBatchComponent } from '../add-edit-batch/add-edit-batch.component';
 import { ManageService } from 'src/app/manage.service';
 
@@ -24,6 +24,7 @@ export class BatchComponent implements OnInit {
   tabledata: any;
   login_deatils: any
   login: any
+  inst_id_for_inst_login:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -39,6 +40,8 @@ export class BatchComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
+    
   }
 
   ngOnInit(): void {
@@ -58,26 +61,19 @@ export class BatchComponent implements OnInit {
       )
     }
     else {
-      this.service.get_batch().subscribe(
+      const instlogin = new FormData()
+      instlogin.append('inst_id', this.inst_id_for_inst_login)
+      this.service.get_batch_by_inst_id(instlogin).subscribe(
         (res: any) => {
           console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.count_batch = res.data.length
+          this.dataSource.paginator = this.paginator;
+
         }
       )
     }
-
-    this.service.get_batch().subscribe(
-      (res: any) => {
-        console.log(res)
-        this.dataSource.data = res.data
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.count_batch = res.data.length
-      }
-    )
-
   }
 
   add_batch(): any {

@@ -5,6 +5,7 @@ import { AddEditStudentComponent } from 'src/app/institute/add-edit-student/add-
 import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-edit-take-addmission.component';
 import { ManageService } from 'src/app/manage.service';
 import { formatDate } from '@angular/common';
+import { StudentProfileComponent } from '../student-profile/student-profile.component';
 @Component({
   selector: 'app-student-sidebar',
   templateUrl: './student-sidebar.component.html',
@@ -51,7 +52,7 @@ export class StudentSidebarComponent implements OnInit {
 
   take_addmission() {
     if (this.status == 0) {
-      this.dailog.open(AddEditStudentComponent)
+      this.dailog.open(StudentProfileComponent)
     }
 
     else {
