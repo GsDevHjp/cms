@@ -28,7 +28,7 @@ export class AddEditStudentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
     this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils)
+    this.login = JSON.parse(this.login_deatils) 
     this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {

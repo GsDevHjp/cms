@@ -18,6 +18,16 @@ mat-toolbar {
     position: relative;
     color: whitesmoke;
 }
+#password{
+    width: 200px;
+}
+#address{
+    width:98.5%;
+    margin-left: 1.5%;
+  }
+  textarea {
+    height: 17px;
+  }
 
 mat-form-field {
     margin-left: 10px;

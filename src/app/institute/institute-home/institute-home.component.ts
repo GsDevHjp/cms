@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+import { InstituteUpdateProfileComponent } from '../institute-update-profile/institute-update-profile.component';
 @Component({
   selector: 'app-institute-home',
   templateUrl: './institute-home.component.html',
@@ -17,6 +19,7 @@ export class InstituteHomeComponent implements OnInit {
   login: any
   constructor(
     private observe: BreakpointObserver,
+    private dailog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +39,12 @@ export class InstituteHomeComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.name = this.login.inst_name
     this.img_url = this.login.inst_logo
+  }
+  
+  profile_update(){
+    this.dailog.open(InstituteUpdateProfileComponent, {
+      disableClose: true
+    });
   }
 
 }
