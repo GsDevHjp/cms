@@ -40,11 +40,8 @@ export class AddEditRegistrationComponent implements OnInit {
         console.log(result)
         this.matref.close();
         alert("Registration Successfully..")
-      },
-      (error: any) => {
-        console.log(error)
-        alert("Unsuccessfull Registration")
       }
+      
     )
   }
   form_reset(){

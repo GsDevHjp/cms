@@ -37,7 +37,7 @@ export class CourseComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
   }
 
@@ -52,6 +52,7 @@ export class CourseComponent implements OnInit {
           console.log(result)
           this.dataSource.data = result.data
           this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
           this.count_course = result.data.length
           return
         }
