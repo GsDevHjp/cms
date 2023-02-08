@@ -52,6 +52,7 @@ export class CourseComponent implements OnInit {
           console.log(result)
           this.dataSource.data = result.data
           this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
           this.count_course = result.data.length
           return
         }

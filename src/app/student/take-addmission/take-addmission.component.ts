@@ -25,7 +25,10 @@ export class TakeAddmissionComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   paginatorRef: any;
-
+  login_deatils: any
+  login: any
+  inst_id: any
+  std_id_for_std_login: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -34,17 +37,23 @@ export class TakeAddmissionComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.std_id_for_std_login = this.login.std_id
+    console.log(this.login.std)
   }
 
   ngOnInit(): void {
+ 
     this.service.get_admission().subscribe(
       (res: any) => {
-        console.log(res)
+        // console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.count_admission = res.data.length
       }
     )
+
   }
   take_addmission() {
     this.dailog.open(AddEditTakeAddmissionComponent, {
