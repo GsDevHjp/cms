@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ThemePalette } from '@angular/material/core';
 import { ManageService } from 'src/app/manage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admission',
@@ -28,26 +29,47 @@ export class AdmissionComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private service: ManageService,
+    private router: Router
   ) {
+    const institute_data = this.router.getCurrentNavigation();
+    this.inst_id = institute_data?.extras
+    console.log("hdcgsh" + this.inst_id)
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
-    console.log(this.inst_id_for_inst_login)
+    // console.log(this.inst_id_for_inst_login)
   }
 
   ngOnInit(): void {
-    const fromdata = new FormData()
-    fromdata.append("inst_id", this.inst_id_for_inst_login)
-    this.service.get_admission_by_inst_id(fromdata).subscribe(
-      (res: any) => {
-        console.log(res)
-        this.dataSource.data = res.data
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.count_admission = res.data.length
-      }
-    )
+    if (this.inst_id > 0) {
+      const fromdata = new FormData()
+      fromdata.append("inst_id", this.inst_id)
+      this.service.get_admission_by_inst_id(fromdata).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_admission = res.data.length
+          return
+        }
+      )
+    }
+    else {
+      const fromdata = new FormData()
+      fromdata.append("inst_id", this.inst_id_for_inst_login)
+      this.service.get_admission_by_inst_id(fromdata).subscribe(
+        (res: any) => {
+          // console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_admission = res.data.length
+        }
+      )
+    }
   }
 
   applyFilter(event: Event) {

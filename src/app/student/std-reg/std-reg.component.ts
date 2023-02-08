@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class StdRegComponent implements OnInit {
   inst_id_for_regist: any
   constructor(
     private FormBuilder: FormBuilder,
-    private manageservice: ManageService
+    private manageservice: ManageService,
+    private matref: MatDialogRef<StdRegComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -76,13 +78,16 @@ export class StdRegComponent implements OnInit {
 
   }
 
-
+  reset(){
+    this.std_regist_from.reset()
+  }
 
   std_regist() {
     console.log(this.std_regist_from.value)
     this.manageservice.std_self_reg(this.std_regist_from.value).subscribe(
       (result: any) => {
         console.log(result)
+        this.matref.close()
         alert("Registration Successfully..")
       },
       (error: any) => {

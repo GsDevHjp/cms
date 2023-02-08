@@ -60,6 +60,10 @@ span {
     margin: 0px 10px;
 }
 
+a{
+    text-decoration: none;
+    color: whitesmoke;
+}
 @media(min-width:920px)and (max-width:1199px) {}
   
   @media(min-width:768px)and (max-width:860px) { }

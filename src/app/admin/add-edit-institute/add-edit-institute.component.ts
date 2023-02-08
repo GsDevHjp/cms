@@ -14,7 +14,7 @@ export class AddEditInstituteComponent implements OnInit {
   InstForm !: FormGroup;
   hide = true;
   actionBtn: string = 'Submit'
-  instupdate: string = 'Institute Ragistration'
+  instupdate: string = 'Institute Registration'
   constructor(
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<AddEditInstituteComponent>,
@@ -49,7 +49,7 @@ export class AddEditInstituteComponent implements OnInit {
     if (this.editinst) {
       console.log(this.editinst.inst_id)
       this.actionBtn = "Update";
-      this.instupdate = "Update Ragistration";
+      this.instupdate = "Update Registration";
       this.InstForm.controls['inst_id'].setValue(Number(this.editinst.inst_id));
       this.InstForm.controls['inst_name'].setValue(this.editinst.inst_name);
       this.InstForm.controls['inst_owner_name'].setValue(this.editinst.inst_owner_name);
@@ -96,8 +96,10 @@ export class AddEditInstituteComponent implements OnInit {
         console.log(this.InstForm.value)
         this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
-            console.log(result)
             alert("Institute Added Successfully")
+            console.log(result)
+            this.InstForm.reset()
+            this.matref.close()
           },
           (error: any) => {
             console.log(error)
@@ -114,7 +116,7 @@ export class AddEditInstituteComponent implements OnInit {
   updateInst() {
     // console.log(this.InstForm.value)
     const updatedata = new FormData();
-     console.log("inst_name" + this.InstForm.get('inst_name')?.value)
+    console.log("inst_name" + this.InstForm.get('inst_name')?.value)
 
     updatedata.append('inst_id', this.InstForm.get('inst_id')?.value)
     updatedata.append('inst_name', this.InstForm.get('inst_name')?.value)
@@ -138,6 +140,8 @@ export class AddEditInstituteComponent implements OnInit {
       next: (res) => {
         console.log(res)
         alert('Institute Update Successfully')
+        this.InstForm.reset()
+        this.matref.close()
       },
       error: (error: any) => {
         console.log(error)
@@ -159,5 +163,10 @@ export class AddEditInstituteComponent implements OnInit {
       const file = event.target.files[0];
       this.InstForm.get('inst_doct_img')?.setValue(file)
     }
+  }
+
+
+  reset() {
+    this.InstForm.reset()
   }
 }
