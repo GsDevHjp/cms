@@ -11,7 +11,8 @@ import { ManageService } from 'src/app/manage.service';
 export class StudentProfileComponent implements OnInit {
   student_form!: FormGroup;
   admin = 1;
-  institute_id_fk: string = '5';
+  hide=true
+  // institute_id_fk: string = '5';
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   login_deatils: any
   login: any
@@ -22,7 +23,7 @@ export class StudentProfileComponent implements OnInit {
   constructor(
     private service: ManageService,
     private FormBuilder: FormBuilder,
-
+    private matref: MatDialogRef<StudentProfileComponent>
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -99,7 +100,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
     formdata.append('status', this.status)
-    formdata.append('institute_id_fk', this.institute_id_fk)
+    formdata.append('institute_id_fk', this.student_profile_data.institute_id_fk)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
     if (this.student_form.valid) {
@@ -108,6 +109,7 @@ export class StudentProfileComponent implements OnInit {
         (result: any) => {
           console.log(result)
           alert('Profile Update Successfully...')
+          this.matref.close()
         },
         (error: any) => {
           console.log(error)
@@ -115,6 +117,10 @@ export class StudentProfileComponent implements OnInit {
         }
       )
     }
+  }
+
+  reset() {
+    this.student_form.reset()
   }
 
   OnUpload(event: any) {

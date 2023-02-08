@@ -22,7 +22,9 @@ mat-toolbar {
 mat-form-field {
     margin-left: 10px;
 }
-
+#pass_css{
+    width: 200px;
+}
 textarea {
     height: 17px;
 }

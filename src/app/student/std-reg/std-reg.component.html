@@ -31,10 +31,16 @@
         <input type="text" matInput formControlName="std_address">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="example-full-width" appearance="fill" id="pass_css">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="std_password">
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="std_password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
     </mat-form-field>
+
+
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
     <input type="text" readonly  formControlName="std_regist_no" hidden>
@@ -42,7 +48,7 @@
 </form>
 
 <div class="register">
-    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="warn" (click)="reset()">Reset</button>
     <button mat-raised-button color="primary" (click)="std_regist()"
         [disabled]="!std_regist_from.valid">Register</button>
 </div>

@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,14 +14,15 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class InsadmissionComponent implements OnInit {
 
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_state','institute_district','total_admission'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_state', 'institute_district', 'total_admission'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  admission_count:any
+  admission_count: any
   constructor(
     private dailog: MatDialog,
-    private manageservice:ManageService
+    private manageservice: ManageService,
+    private route: Router
   ) {
   }
 
@@ -36,6 +38,10 @@ export class InsadmissionComponent implements OnInit {
     )
   }
 
+  get_admission(row: any) {
+    // console.log(row.inst_id)
+    this.route.navigate(['/adminhome/insadmission/admission'], row.inst_id)
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
