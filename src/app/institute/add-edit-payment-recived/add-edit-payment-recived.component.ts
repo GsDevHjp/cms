@@ -177,7 +177,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.matref.close();
         alert('update successfully..')
       },
-      error: (error: any) => {
+      error: (error: any) => { 
         console.log(error)
         alert('data not Update')
       }

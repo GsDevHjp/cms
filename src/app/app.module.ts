@@ -85,6 +85,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pwd.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
+import { InstituteUpdateProfileComponent } from './institute/institute-update-profile/institute-update-profile.component';
 
 
 @NgModule({
@@ -154,6 +155,7 @@ import { StudentProfileComponent } from './student/student-profile/student-profi
     StdQueryComponent,
     StdChnangePwdComponent,
     StudentProfileComponent,
+    InstituteUpdateProfileComponent,
 
   ],
   imports: [

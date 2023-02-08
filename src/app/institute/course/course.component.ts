@@ -38,7 +38,10 @@ export class CourseComponent implements OnInit {
     console.log("admin" + this.inst_id_for_admin)
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
+
     this.inst_id_for_std = this.login.institute_id_fk
+
+    // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
     console.log("std" + this.inst_id_for_std)
     console.log("inst" + this.inst_id_for_inst_login)

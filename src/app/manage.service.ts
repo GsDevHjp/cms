@@ -95,6 +95,9 @@ export class ManageService {
   put_fee(data: any) {
     return this.http.post<any>(this.baseUrl + 'fee_update.php', data);
   }
+  get_course_by_course_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
+  }
 
   // for enquiry module 
   get_enquiry() {
@@ -203,7 +206,7 @@ export class ManageService {
   inst_post(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_insert.php', data);
   }
-  delete_inst(data: any) {
+  delete_inst(data: any) { 
     return this.http.post<any>(this.baseUrl + 'inst_delete.php', data);
   }
   put_inst(data: any) {

@@ -16,7 +16,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>WhatsApp No</mat-label>
-        <input type="number"  matInput formControlName="inst_whatsapp_no">
+        <input type="number"  matInput formControlName="inst_whatsapp_no" onkeypress=" return this.value.length < 10">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -24,12 +24,20 @@
         <input type="email" matInput formControlName="inst_email">
     </mat-form-field><br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="example-full-width" appearance="fill" id="password">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="inst_password">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
     </mat-form-field>
-
+    
     <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput formControlName="inst_regist_date">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill" id="address">
         <mat-label>Address</mat-label>
         <textarea matInput formControlName="inst_address"></textarea>
     </mat-form-field><br>
@@ -39,6 +47,6 @@
 </form>
 
 <div class="register">
-    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="warn" (click)="form_reset()">Reset</button>
     <button mat-raised-button color="primary" (click)="inst_regist()" [disabled]="!inst_regist_from.valid">Register</button>
 </div>
