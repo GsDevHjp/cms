@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from 'src/app/manage.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-add-edit-registration',
@@ -13,7 +15,8 @@ export class AddEditRegistrationComponent implements OnInit {
   hide = true;
   constructor(
     private FormBuilder: FormBuilder,
-    private manageservice: ManageService
+    private manageservice: ManageService,
+    private matref: MatDialogRef<AddEditRegistrationComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -24,9 +27,10 @@ export class AddEditRegistrationComponent implements OnInit {
       inst_email: ['', Validators.required],
       inst_password: ['', Validators.required],
       inst_address: ['', Validators.required],
+      inst_regist_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
-      inst_regist_date: [new Date().toISOString().slice(0, 10)],
     })
+    this.inst_regist_from.controls['inst_regist_date'].setValue(new Date().toISOString().slice(0, 10));
   }
 
   inst_regist() {
@@ -34,6 +38,7 @@ export class AddEditRegistrationComponent implements OnInit {
     this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
       (result: any) => {
         console.log(result)
+        this.matref.close();
         alert("Registration Successfully..")
       },
       (error: any) => {

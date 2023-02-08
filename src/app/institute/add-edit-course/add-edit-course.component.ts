@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-edit-course',
@@ -20,6 +22,7 @@ export class AddEditCourseComponent implements OnInit {
   login: any
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private service: ManageService,
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
@@ -73,8 +76,8 @@ export class AddEditCourseComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.course_form.reset();
+            this.router.navigate(['/institutehome/course']);   
             alert('form successfully...')
-
           },
           (error: any) => {
             console.log(error)
@@ -93,13 +96,13 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        alert('data update successfully')
+        this.router.navigate(['institutehome/course']);
+        alert('update successfully')
 
       },
       error: () => {
         alert('data not update')
       }
-
     })
   }
   total_clc() {

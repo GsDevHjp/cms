@@ -28,7 +28,7 @@ export class PaymentReceivedComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service: ManageService
+    private service: ManageService 
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;

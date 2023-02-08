@@ -16,7 +16,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>WhatsApp No</mat-label>
-        <input type="number"  matInput formControlName="inst_whatsapp_no">
+        <input type="number"  matInput formControlName="inst_whatsapp_no" onkeypress=" return this.value.length < 10">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -31,8 +31,13 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
     </mat-form-field>
-
+    
     <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput formControlName="inst_regist_date">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill" id="address">
         <mat-label>Address</mat-label>
         <textarea matInput formControlName="inst_address"></textarea>
     </mat-form-field><br>
