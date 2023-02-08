@@ -35,11 +35,8 @@ export class AddEditRegistrationComponent implements OnInit {
       (result: any) => {
         console.log(result)
         alert("Registration Successfully..")
-      },
-      (error: any) => {
-        console.log(error)
-        alert("Unsuccessfull Registration")
       }
+      
     )
   }
   form_reset(){
