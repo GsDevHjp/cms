@@ -32,15 +32,11 @@ export class AddEditRegistrationComponent implements OnInit {
   inst_regist() {
     console.log(this.inst_regist_from.value)
     this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
-
       (result: any) => {
         console.log(result)
         alert("Registration Successfully..")
-      },
-      (error: any) => {
-        console.log(error)
-        alert("Unsuccessfull Registration")
       }
+      
     )
   }
 }
