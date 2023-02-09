@@ -58,7 +58,7 @@ mat-icon {
     margin: 10px 0px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: red;
+    background-color: white;
 }
 
 #admin_logo img {
@@ -67,14 +67,9 @@ mat-icon {
     border-radius: 50%;
 }
 
-/******************************************** css for header end *****************************************/
-/******************************************** css for main start *****************************************/
 .main {
     padding: 2px;
 }
-
-/******************************************** css for main end *****************************************/
-/******************** css for home layout end **********************/
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media(min-width: 768px) and (max-width:991px) {}

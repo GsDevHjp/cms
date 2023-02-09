@@ -19,6 +19,7 @@ export class CourseComponent implements OnInit {
   inst_id_for_admin: any
   inst_id_for_inst_login: any
   inst_id_for_std: any
+  inst_id:any;
   std_id: any
   action_btn: boolean = false
   Course: string = "Course Details"
@@ -33,6 +34,10 @@ export class CourseComponent implements OnInit {
     private router: Router,
     private service: ManageService
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id_for_admin = institute_data?.extras
     console.log("admin" + this.inst_id_for_admin)
@@ -61,8 +66,38 @@ export class CourseComponent implements OnInit {
       this.get_course_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
       this.displayedColumns = ['course_id', 'course_name', 'course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee', 'course_monthly_fee', 'course_admission_fee', 'course_description', 'course_date'];
+
+      const instformdata = new FormData()
+      instformdata.append('inst_id', this.inst_id)
+      this.service.get_course_by_inst_id(instformdata).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.dataSource.data = result.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_course = result.data.length
+          this.router.navigate(['/institutehome/course']);
+          return
+        }
+      )
     }
+    else {
+      const instlogin = new FormData()
+      instlogin.append('inst_id', this.inst_id_for_inst_login)
+      this.service.get_course_by_inst_id(instlogin).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.count_course = res.data.length
+          this.dataSource.paginator = this.paginator;
+          this.router.navigate(['/institutehome/course']);
+        }
+      )
+    }
+
   }
+
 
   get_course_by_inst_id(inst_for_all: any) {
     const instformdata = new FormData()

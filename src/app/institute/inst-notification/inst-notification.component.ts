@@ -19,14 +19,23 @@ export class InstNotificationComponent implements OnInit {
   count_notification: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  login_deatils: any
+  login: any
+  inst_id:any
 
   constructor(
     private dailog: MatDialog,
     private service:ManageService,
-  ) { }
+  ) { 
+    
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
+    // this.inst_id_for_inst_login = this.login.inst_id
+  }
 
   ngOnInit(): void {
-    this.service.get_notification().subscribe(
+    this.service.get_notification_by_inst_id().subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data

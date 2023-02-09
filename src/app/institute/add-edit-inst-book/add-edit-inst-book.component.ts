@@ -112,6 +112,7 @@ export class AddEditInstBookComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
+        this.router.navigate(['/inst-book'])
         alert('update successfully..')
       },
       error: (error: any) => {
