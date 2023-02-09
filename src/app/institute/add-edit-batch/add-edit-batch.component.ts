@@ -79,6 +79,7 @@ export class AddEditBatchComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
+            this.router.navigate(['/institutehome/batch']);   
             alert('form successfully...')
           },
           (error: any) => {
@@ -98,7 +99,8 @@ export class AddEditBatchComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        alert('data update successfully')
+        this.router.navigate(['/institutehome/batch']);   
+        alert('update successfully')
 
       },
       error: (error) => {

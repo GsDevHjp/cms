@@ -4,7 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-add-edit-course',
   templateUrl: './add-edit-course.component.html',
@@ -27,6 +26,9 @@ export class AddEditCourseComponent implements OnInit {
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -96,7 +98,7 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.router.navigate(['institutehome/course']);
+        this.router.navigate(['/institutehome/course']);   
         alert('update successfully')
 
       },

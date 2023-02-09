@@ -32,6 +32,10 @@ export class CourseComponent implements OnInit {
     private router: Router,
     private service: ManageService
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
 
@@ -54,6 +58,7 @@ export class CourseComponent implements OnInit {
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           this.count_course = result.data.length
+          this.router.navigate(['/institutehome/course']);   
           return
         }
       )
@@ -68,7 +73,7 @@ export class CourseComponent implements OnInit {
           this.dataSource.sort = this.sort;
           this.count_course = res.data.length
           this.dataSource.paginator = this.paginator;
-
+          this.router.navigate(['/institutehome/course']);   
         }
       )
     }
