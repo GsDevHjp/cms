@@ -38,6 +38,9 @@ mat-form-field{
   padding: 2px 50px 0px 50px;
 
 }
+#password{
+  width: 200px;
+}
   #address{
     width:65%;
     margin-left: 1.5%;
