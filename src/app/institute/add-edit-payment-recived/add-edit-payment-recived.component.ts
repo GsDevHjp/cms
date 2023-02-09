@@ -70,7 +70,6 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       fee_amount: ['', Validators.required],
       fee_description: ['', Validators.required],
       fee_date: ['', Validators.required],
-      std_img: [''],
       batch_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
@@ -113,14 +112,22 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'assets/' + this.student_single_data.std_img;
-        this.fee_form.controls['course_total_fee'].setValue(this.student_single_data.course_total_fee);
-        this.fee_form.controls['course_half_fee'].setValue(this.student_single_data.course_half_fee);
-        this.fee_form.controls['course_quarter_fee'].setValue(this.student_single_data.course_quarter_fee);
-        this.fee_form.controls['course_monthly_fee'].setValue(this.student_single_data.course_monthly_fee);
-        this.fee_form.controls['course_admission_fee'].setValue(this.student_single_data.course_admission_fee);
-        this.fee_form.controls['batch_id_fk'].setValue(this.student_single_data.batch_id);
-        this.fee_form.controls['course_id_fk'].setValue(this.student_single_data.course_id);
+      this.imgUrl = 'assets/' + this.editfee.std_img;
+      }
+    )
+  }
+  get_course_single_data(event: any){
+    const courseformdata = new FormData();
+    courseformdata.append('course_id', event)
+    this.service.get_course_by_course_id(courseformdata).subscribe(
+      (res:any)=>{
+        console.log(res)
+        this.course_single_data = res.data
+        this.fee_form.controls['course_total_fee'].setValue(this.course_single_data.course_total_fee);
+        this.fee_form.controls['course_half_fee'].setValue(this.course_single_data.course_half_fee);
+        this.fee_form.controls['course_quarter_fee'].setValue(this.course_single_data.course_quarter_fee);
+        this.fee_form.controls['course_monthly_fee'].setValue(this.course_single_data.course_monthly_fee);
+        this.fee_form.controls['course_admission_fee'].setValue(this.course_single_data.course_admission_fee);
       }
     )
   }

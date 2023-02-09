@@ -13,8 +13,8 @@ export class InstituteHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'http://localhost/cms/src/assets/user.png';
-  img_url: string = '';
+  url: string = 'assets/';
+  img_url:string='http://localhost/cms/src/assets/user.png'
   login_deatils: any
   login: any
   constructor(

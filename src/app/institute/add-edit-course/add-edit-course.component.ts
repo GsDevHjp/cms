@@ -39,13 +39,13 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form = this.fb.group({
       course_id: [''],
       course_name: ['', Validators.required],
-      course_total_fee: [''],
+      course_total_fee: ['',Validators.required],
       course_half_fee: ['', Validators.required],
       course_quarter_fee: ['', Validators.required],
       course_monthly_fee: ['', Validators.required],
-      course_admission_fee: ['', Validators.required],
-      course_duration: [''],
-      course_description: ['', Validators.required],
+      course_admission_fee: [''],
+      course_duration: ['',Validators.required],
+      course_description: [''],
       course_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
       institute_id_fk: ['', Validators.required]
@@ -78,8 +78,8 @@ export class AddEditCourseComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.course_form.reset();
+            alert('form successfully...');
             this.router.navigate(['/institutehome/course']);   
-            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)
@@ -98,9 +98,8 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
+        alert('update successfully');
         this.router.navigate(['/institutehome/course']);   
-        alert('update successfully')
-
       },
       error: () => {
         alert('data not update')
@@ -110,8 +109,6 @@ export class AddEditCourseComponent implements OnInit {
   total_clc() {
     this.course_form.controls['course_half_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 2)
     this.course_form.controls['course_quarter_fee'].setValue((this.course_form.get('course_total_fee')?.value) / 4)
-  }
-  monthly_clc() {
     this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / (this.course_form.get('course_duration')?.value))
   }
 }

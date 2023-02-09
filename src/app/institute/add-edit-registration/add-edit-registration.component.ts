@@ -41,10 +41,10 @@ export class AddEditRegistrationComponent implements OnInit {
         this.matref.close();
         alert("Registration Successfully..")
       }
-      
+
     )
   }
-  form_reset(){
+  form_reset() {
     this.inst_regist_from.reset()
   }
 }
