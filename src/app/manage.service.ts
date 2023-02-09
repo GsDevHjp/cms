@@ -131,6 +131,10 @@ export class ManageService {
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
+
+  get_notification_by_inst_id(){
+    return this.http.get<[]>(this.baseUrl + 'get_notification_by_inst_id.php',);
+  }
   get_notification() {
     return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
   }

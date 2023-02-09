@@ -13,7 +13,7 @@ export class InstituteHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'assets/';
+  url: string = 'http://localhost/cms/src/assets/user.png';
   img_url: string = '';
   login_deatils: any
   login: any
@@ -33,7 +33,6 @@ export class InstituteHomeComponent implements OnInit {
         this.sidenav.close();
       }
     })
-
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)

@@ -14,8 +14,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
   hide = true;
   actionBtn: string = 'Update'
   instupdate: string = 'Profile Update'
-  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
-  imgurl:any;
+  imgUrl: string = 'http://localhost/cms/src/assets/user.png';
   institute_profile_data:any
   institute_id:any;
   login_deatils:any;
@@ -30,7 +29,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.inst_id)
     this.institute_id = this.login.inst_id
-    this.imgurl = 'assets/' + this.login.inst_logo
+    this.imgUrl = 'assets/' + this.login.inst_logo
    }
 
   ngOnInit(): void {
@@ -76,9 +75,9 @@ export class InstituteUpdateProfileComponent implements OnInit {
         this.InstForm.controls['account_no'].setValue(this.institute_profile_data.account_no);
         this.InstForm.controls['inst_ifsc'].setValue(this.institute_profile_data.inst_ifsc);
         this.InstForm.controls['account_holder'].setValue(this.institute_profile_data.account_holder);
-        this.InstForm.controls['inst_logo'].setValue(this.institute_profile_data.inst_logo);
         this.InstForm.controls['inst_doct'].setValue(this.institute_profile_data.inst_doct);
         this.InstForm.controls['inst_doct_number'].setValue(this.institute_profile_data.inst_doct_number);
+        this.InstForm.controls['inst_logo'].setValue(this.institute_profile_data.inst_logo);
         this.InstForm.controls['inst_doct_img'].setValue(this.institute_profile_data.inst_doct_img);
       })
   }

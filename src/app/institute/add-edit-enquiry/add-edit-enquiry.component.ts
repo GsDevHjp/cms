@@ -42,7 +42,7 @@ export class AddEditEnquiryComponent implements OnInit {
     )
 
     this.enquiry_form = this.fb.group({
-      enq_id: [''],
+      enq_id: [''], 
       std_name: ['', Validators.required],
       std_father_name: [''],
       std_whatsapp_no: ['', Validators.required],

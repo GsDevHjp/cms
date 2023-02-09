@@ -19,7 +19,6 @@ export class InstBookComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
-
   login_deatils: any
   login: any
   inst_id:any
