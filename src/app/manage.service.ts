@@ -11,6 +11,11 @@ export class ManageService {
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
+  //for admin
+  admin_login(data:any){
+    return this.http.post<[]>(this.baseUrl + 'this.admin_login.php', data)
+  }
+
   // for course module 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -67,16 +72,16 @@ export class ManageService {
   std_login(data: any) {
     return this.http.post<any>(this.baseUrl + 'student_login.php', data);
   }
-  std_admission(data:any){
+  std_admission(data: any) {
     return this.http.post<any>(this.baseUrl + 'student_admission_insert.php', data);
   }
-  get_inst_by_inst_id(data:any){
+  get_inst_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
   }
-  get_admission_id_by_std_id(data:any){
+  get_admission_id_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
   }
-  
+
   // for fee module component payment recive
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
@@ -120,14 +125,18 @@ export class ManageService {
   }
 
   // for notification module
-  post_notification(data: any){
+  post_notification(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_insert.php', data);
   }
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
+
   get_notification_by_inst_id(){
     return this.http.get<[]>(this.baseUrl + 'get_notification_by_inst_id.php',);
+  }
+  get_notification() {
+    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
   }
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
@@ -140,61 +149,61 @@ export class ManageService {
   put_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_update.php', data)
   }
-  get_inst_book_view(){
+  get_inst_book_view() {
     return this.http.get<[]>(this.baseUrl + 'inst_book_view.php')
   }
-  inst_book_delete(data:any){
+  inst_book_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_delete.php', data);
   }
-  get_book_by_inst_id(data:any){
+  get_book_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_book_by_inst_id.php', data);
   }
   // for inst notes module
-  get_inst_notes(){
+  get_inst_notes() {
     return this.http.get<[]>(this.baseUrl + 'inst_notes_view.php');
   }
-  post_inst_notes(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_notes_insert.php',data);
+  post_inst_notes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_notes_insert.php', data);
   }
-  put_inst_notes(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_notes_update.php',data);
+  put_inst_notes(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_notes_update.php', data);
   }
-  inst_notes_delete(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_notes_delete.php',data);
+  inst_notes_delete(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_notes_delete.php', data);
   }
-  get_notes_by_inst_id(data:any){
+  get_notes_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_notes_by_inst_id.php', data);
   }
 
   // for inst syllabus module
-  get_inst_syllabus(){
+  get_inst_syllabus() {
     return this.http.get<[]>(this.baseUrl + 'inst_syllabus_view.php');
   }
-  post_inst_syllabus(data:any){
+  post_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
   }
-  put_inst_syllabus(data:any){
+  put_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_update.php', data);
   }
-  inst_syllabus_delete(data:any){
+  inst_syllabus_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
   }
 
   // for inst question bank module
-  get_inst_question_bank(){
+  get_inst_question_bank() {
     return this.http.get<[]>(this.baseUrl + 'inst_question_bank_view.php');
   }
-  post_inst_question_bank(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php',data);
+  post_inst_question_bank(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php', data);
   }
-  put_inst_question_bank(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_question_bank_update.php',data);
+  put_inst_question_bank(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_update.php', data);
   }
-  inst_question_bank_delete(data:any){
-    return this.http.post<any>(this.baseUrl + 'inst_question_bank_delete.php',data);
+  inst_question_bank_delete(data: any) {
+    return this.http.post<any>(this.baseUrl + 'inst_question_bank_delete.php', data);
   }
-  
-// for institute module 
+
+  // for institute module 
   institute_view() {
     return this.http.get<[]>(this.baseUrl + 'institute_view.php');
   }
@@ -213,6 +222,7 @@ export class ManageService {
   inst_login(data: any) {
     return this.http.post<any>(this.baseUrl + 'institute_login.php', data);
   }
+
   // for query module 
 
   std_query(data: any) {
@@ -229,10 +239,11 @@ export class ManageService {
   }
 
   // for admission 
-  get_admission(){
+  get_admission() {
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }
-  get_admission_by_inst_id(data:any){
+  get_admission_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_admission_by_inst_id.php', data);
   }
+
 }

@@ -58,7 +58,7 @@ mat-icon {
     margin: 10px 0px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: red;
+    background-color: rgb(226, 244, 255);
 }
 
 #admin_logo img {

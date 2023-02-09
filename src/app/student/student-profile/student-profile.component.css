@@ -21,6 +21,9 @@ mat-toolbar {
 mat-form-field {
   margin-left: 10px;
 }
+#pass_css{
+width: 200px;
+}
 
 .user_image {
   width: 200px;

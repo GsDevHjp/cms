@@ -15,24 +15,26 @@
                 Admin Login
             </mat-card-header>
             <img src="assets/login.png" alt="login">
-            <mat-card-content>
-                <mat-icon class="icon_1">account_circle</mat-icon>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Username</mat-label>
-                    <input matInput placeholder="Name">
-                </mat-form-field>
-                <mat-icon class="icon_2">lock</mat-icon>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
-            </mat-card-content>
+            <form [formGroup]="loginForm">
+                <mat-card-content>
+                    <mat-icon class="icon_1">account_circle</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Name" formControlName="username">
+                    </mat-form-field>
+                    <mat-icon class="icon_2">lock</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="admin_password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </mat-card-content>
+            </form>
             <button mat-button class="action_login" mat-raised-button color="primary"
-                [routerLink]="['/adminhome']">Login</button>
+                (click)="admin_login()" routerLink="/adminhome">Login</button>
             <p>Forgot Password</p>
 
         </mat-card>
@@ -40,7 +42,7 @@
 
     </div>
     <div id="footer">
-        <span>Developed By Green Soft</span>
+        <span>Developed By <a href="https://www.greensoft.net.in">Green Soft</a></span>
         <span>Version 1.0</span>
     </div>
 </div>
