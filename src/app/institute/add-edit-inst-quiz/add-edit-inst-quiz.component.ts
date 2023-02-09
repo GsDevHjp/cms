@@ -14,8 +14,8 @@ export class AddEditInstQuizComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any
-  institute_id:string="5"
+  course_data:any 
+  institute_id=1;
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +40,7 @@ export class AddEditInstQuizComponent implements OnInit {
       quiz_answer: ['', Validators.required],
       quiz_description: ['', Validators.required],
       course_id_fk: ['', Validators.required],
-      institute_id_fk: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 

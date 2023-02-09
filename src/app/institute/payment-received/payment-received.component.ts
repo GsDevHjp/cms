@@ -20,7 +20,7 @@ export class PaymentReceivedComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl: string = 'http://localhost/cms/src/assets/';
+  imgUrl: string = 'assets/';
   action_btn: boolean = false
   login_deatils: any
   login: any

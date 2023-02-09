@@ -40,7 +40,7 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Course</mat-label>
-                    <mat-select formControlName="course_id_fk">
+                    <mat-select formControlName="course_id_fk" (valueChange)="get_course_single_data($event)">
                         <mat-option *ngFor="let course of course_data"
                             [value]="course.course_id">{{course.course_name}}</mat-option>
                     </mat-select>

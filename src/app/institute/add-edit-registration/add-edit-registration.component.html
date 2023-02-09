@@ -16,7 +16,7 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>WhatsApp No</mat-label>
-        <input type="number"  matInput formControlName="inst_whatsapp_no" onkeypress=" return this.value.length < 10">
+        <input type="number" matInput formControlName="inst_whatsapp_no" onkeypress=" return this.value.length < 10">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -27,11 +27,12 @@
     <mat-form-field class="example-full-width" appearance="fill" id="password">
         <mat-label>Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
     </mat-form-field>
-    
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Date</mat-label>
         <input type="date" matInput formControlName="inst_regist_date">
@@ -41,12 +42,13 @@
         <mat-label>Address</mat-label>
         <textarea matInput formControlName="inst_address"></textarea>
     </mat-form-field><br>
-    
+
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
 </form>
 
 <div class="register">
     <button mat-raised-button color="warn" (click)="form_reset()">Reset</button>
-    <button mat-raised-button color="primary" (click)="inst_regist()" [disabled]="!inst_regist_from.valid">Register</button>
+    <button mat-raised-button color="primary" (click)="inst_regist()"
+        [disabled]="!inst_regist_from.valid">Register</button>
 </div>
