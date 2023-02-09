@@ -14,6 +14,7 @@ export class QuizeComponent implements OnInit {
   quiz_option_d: any
   quiz_description: any
   ques_no: number = 1
+  hidden: boolean = true;
   constructor(
     private service: ManageService
   ) { }
@@ -33,6 +34,7 @@ export class QuizeComponent implements OnInit {
       }
     )
   }
+
   previewsQues() {
     alert("Previews")
   }

@@ -1,6 +1,6 @@
 <div class="add_head">
     <span>{{instupdate}}</span>
-    <button mat-mini-fab color="primary" id="close_btn" mat-dialog-close>
+    <button mat-mini-fab  id="close_btn" mat-dialog-close>
         <mat-icon>close</mat-icon>
     </button>
 </div>
@@ -11,13 +11,17 @@
         <input matInput formControlName="std_query">
     </mat-form-field>
 
-    <input type="number" readonly [ngModel]="std_id" formControlName="std_id_fk" hidden>
+    <input  readonly  formControlName="std_query_ans" hidden>
+
+    <input type="number" readonly  formControlName="std_id_fk" hidden>
+
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
     <input type="number" readonly formControlName="query_id" hidden>
 
 </form>
 <span class="btn_box">
-    <button class="reset_btn" mat-raised-button color="warn">Reset</button>
+    <button class="reset_btn" mat-raised-button color="warn" (click)="reset()">Reset</button>
 
     <button class="add_btn" mat-raised-button color="primary" (click)="addquery()"
         [disabled]="!Std_Query_Form.valid">{{actionBtn}}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
 
 
@@ -19,7 +20,8 @@ export class AddEditInstituteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<AddEditInstituteComponent>,
     private FromBuilder: FormBuilder,
-    private manageservice: ManageService
+    private manageservice: ManageService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -30,17 +32,17 @@ export class AddEditInstituteComponent implements OnInit {
       inst_whatsapp_no: ['', Validators.required],
       inst_email: ['', Validators.required],
       inst_password: ['', Validators.required],
-      inst_country: [''],
-      inst_state: [''],
-      inst_district: [''],
-      inst_address: [''],
-      account_no: [''],
-      inst_ifsc: [''],
-      account_holder: [''],
-      inst_logo: [''],
-      inst_doct: [''],
-      inst_doct_number: [''],
-      inst_doct_img: [''],
+      inst_country: ['',Validators.required],
+      inst_state: ['',Validators.required],
+      inst_district: ['',Validators.required],
+      inst_address: ['',Validators.required],
+      account_no: ['',Validators.required],
+      inst_ifsc: ['',Validators.required],
+      account_holder: ['',Validators.required],
+      inst_logo: ['',Validators.required],
+      inst_doct: ['',Validators.required],
+      inst_doct_number: ['',Validators.required],
+      inst_doct_img: ['',Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -100,6 +102,7 @@ export class AddEditInstituteComponent implements OnInit {
             console.log(result)
             this.InstForm.reset()
             this.matref.close()
+            this.router.navigate(['/institute'])
           },
           (error: any) => {
             console.log(error)

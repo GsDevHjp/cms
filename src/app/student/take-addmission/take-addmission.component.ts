@@ -17,7 +17,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./take-addmission.component.css']
 })
 export class TakeAddmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'std_whatsapp_no', 'course_name', 'batch_name', 'admission_date', 'batch_status'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_name', 'batch_name', 'std_whatsapp_no', 'admission_date', 'batch_status'];
   dataSource = new MatTableDataSource();
   count_admission: number = 0;
   color: ThemePalette = 'primary'
@@ -40,20 +40,21 @@ export class TakeAddmissionComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.std_id_for_std_login = this.login.std_id
-    console.log(this.login.std)
+    console.log("std" + this.std_id_for_std_login)
   }
 
   ngOnInit(): void {
- 
-    this.service.get_admission().subscribe(
+    const formdata = new FormData()
+    formdata.append('std_id', this.std_id_for_std_login)
+    this.service.get_admission_id_by_std_id(formdata).subscribe(
       (res: any) => {
-        // console.log(res)
+        console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.count_admission = res.data.length
       }
     )
-
+   
   }
   take_addmission() {
     this.dailog.open(AddEditTakeAddmissionComponent, {
