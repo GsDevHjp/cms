@@ -30,6 +30,7 @@ export class StudentProfileComponent implements OnInit {
     console.log(this.login.std_id)
     this.student_id = this.login.std_id
     this.imgurl = 'assets/' + this.login.std_img
+    console.log("instjbkj"+this.login.institute_id_fk)
   }
 
   ngOnInit(): void {
@@ -100,7 +101,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
     formdata.append('status', this.status)
-    formdata.append('institute_id_fk', this.student_profile_data.institute_id_fk)
+    formdata.append('institute_id_fk', this.login.institute_id_fk)
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
     if (this.student_form.valid) {

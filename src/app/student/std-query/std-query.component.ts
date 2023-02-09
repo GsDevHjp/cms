@@ -10,25 +10,36 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class StdQueryComponent implements OnInit {
   admin = 1
-  std_id = 1
   Std_Query_Form !: FormGroup
   actionBtn: string = "Submit"
   instupdate: string = "Query"
+  login_deatils: any;
+  login: any;
+  std_id: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public editquery: any,
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StdQueryComponent>,
     private manageservice: ManageService
-  ) { }
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_name)
+    this.std_id = this.login.std_id
+    console.log("vhdfjdv" + this.login.std_id)
+  }
 
   ngOnInit(): void {
     this.Std_Query_Form = this.FormBuilder.group({
       query_id: [''],
       std_query: ['', Validators.required],
+      std_query_ans: [''],
       std_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
       std_query_date: [new Date().toISOString().slice(0, 10)],
     })
+
+    this.Std_Query_Form.controls['std_id_fk'].setValue(this.login.std_id);
 
     if (this.editquery) {
       console.log(this.editquery.query_id)
@@ -36,9 +47,10 @@ export class StdQueryComponent implements OnInit {
       this.instupdate = "Update Ragistration";
       this.Std_Query_Form.controls['query_id'].setValue(Number(this.editquery.query_id));
       this.Std_Query_Form.controls['std_query'].setValue(this.editquery.std_query);
+      this.Std_Query_Form.controls['std_query_ans'].setValue(this.editquery.std_query_ans);
       this.Std_Query_Form.controls['std_id_fk'].setValue(this.editquery.std_id_fk);
-      this.Std_Query_Form.controls['admin_id_fk'].setValue(this.editquery.admin_id_fk);
       this.Std_Query_Form.controls['std_query_date'].setValue(this.editquery.std_query_date);
+      this.Std_Query_Form.controls['admin_id_fk'].setValue(this.editquery.admin_id_fk);
     }
 
   }
@@ -48,6 +60,7 @@ export class StdQueryComponent implements OnInit {
       this.manageservice.std_query(this.Std_Query_Form.value).subscribe(
         (result: any) => {
           console.log(result)
+          this.matref.close()
           alert("Message Send Successfully")
         },
         (error: any) => {
@@ -78,5 +91,8 @@ export class StdQueryComponent implements OnInit {
     })
   }
 
+  reset(){
+    this.Std_Query_Form.reset()
+  }
 
 }

@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { AddEditBatchComponent } from '../add-edit-batch/add-edit-batch.component';
 import { ManageService } from 'src/app/manage.service';
 
@@ -24,7 +24,9 @@ export class BatchComponent implements OnInit {
   tabledata: any;
   login_deatils: any
   login: any
-  inst_id_for_inst_login:any
+  inst_id_for_inst_login: any
+  inst_id_for_admin: any;
+  inst_id_for_std: any;
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -35,19 +37,35 @@ export class BatchComponent implements OnInit {
     };
 
     const institute_data = this.router.getCurrentNavigation();
-    this.inst_id = institute_data?.extras
-
+    this.inst_id_for_admin = institute_data?.extras
+    console.log("admin" + this.inst_id_for_admin)
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
+
+    this.inst_id_for_std = this.login.institute_id_fk
+
     // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
-    
+    console.log("std" + this.inst_id_for_std)
+    console.log("inst" + this.inst_id_for_inst_login)
+
   }
 
   ngOnInit(): void {
-    if (this.inst_id > 0) {
+    if (this.inst_id_for_admin) {
       this.action_btn = true
       this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description'];
+      this.get_batch_by_inst_id(this.inst_id_for_admin);
+    }
+    if (this.inst_id_for_inst_login) {
+      this.action_btn = false
+      this.get_batch_by_inst_id(this.inst_id_for_inst_login)
+    }
+    if (this.inst_id_for_std) {
+      this.get_batch_by_inst_id(this.inst_id_for_std)
+      this.action_btn = true
+      this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_description'];
+
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_batch_by_inst_id(instformdata).subscribe(
@@ -55,11 +73,14 @@ export class BatchComponent implements OnInit {
           console.log(result)
           this.dataSource.data = result.data
           this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
           this.count_batch = result.data.length
+          this.router.navigate(['/institutehome/batch']);
           return
         }
       )
     }
+    
     else {
       const instlogin = new FormData()
       instlogin.append('inst_id', this.inst_id_for_inst_login)
@@ -70,11 +91,27 @@ export class BatchComponent implements OnInit {
           this.dataSource.sort = this.sort;
           this.count_batch = res.data.length
           this.dataSource.paginator = this.paginator;
-
+          this.router.navigate(['/institutehome/batch'])
         }
       )
     }
   }
+
+
+  get_batch_by_inst_id(inst_for_all: any) {
+    const instformdata = new FormData()
+    instformdata.append('inst_id', inst_for_all)
+    this.service.get_batch_by_inst_id(instformdata).subscribe(
+      (result: any) => {
+        console.log(result)
+        this.dataSource.data = result.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_batch = result.data.length
+      }
+    )
+  }
+
 
   add_batch(): any {
     this.dailog.open(AddEditBatchComponent, {
