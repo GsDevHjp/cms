@@ -26,6 +26,8 @@ export class AddEditCourseComponent implements OnInit {
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -76,10 +78,11 @@ export class AddEditCourseComponent implements OnInit {
         this.service.post_course(this.course_form.value).subscribe(
           (result: any) => {
             console.log(result)
-            this.matref.close();
             this.course_form.reset();
             alert('form successfully...');
             this.router.navigate(['/institutehome/course']);   
+            this.matref.close();
+            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)
@@ -99,7 +102,7 @@ export class AddEditCourseComponent implements OnInit {
         console.log(res)
         this.matref.close();
         alert('update successfully');
-        this.router.navigate(['/institutehome/course']);   
+        this.router.navigate(['institutehome/course']);   
       },
       error: () => {
         alert('data not update')
