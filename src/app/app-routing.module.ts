@@ -34,6 +34,7 @@ import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StudentComponent } from './institute/student/student.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
 import { QueryComponent } from './student/query/query.component';
+import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
 import { QuizeComponent } from './student/quize/quize.component';
 import { ResultComponent } from './student/result/result.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
@@ -129,11 +130,12 @@ const routes: Routes = [
       { path: 'query', component: QueryComponent },
       { path: 'onlinetest', component: OnlineTestComponent },
       { path: 'result', component: ResultComponent },
-      { path: 'quize', component: QuizeComponent },
+      { path: 'quiz', component: QuizeComponent },
       { path: 'instbook', component: InstBookComponent },
       { path: 'instnotes', component: InstNotesComponent },
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
+      { path: 'quizdashboard', component: QuizDashboardComponent }
 
 
     ]
