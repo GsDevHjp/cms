@@ -12,10 +12,11 @@ import { ManageService } from 'src/app/manage.service';
 export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
   upload: any;
+  hide = true;
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  institute_id: any
+  institute_id: any;
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   status: any = 1
   login_deatils: any
@@ -157,7 +158,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
     updatedata.append('status', this.student_form.get('status')?.value)
-    updatedata.append('institute_id_fk', this.student_form.get('institute_id_fk')?.value)
+    updatedata.append('institute_id_fk', this.institute_id)
     updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     this.service.put_student(updatedata).subscribe(
       (result: any) => {

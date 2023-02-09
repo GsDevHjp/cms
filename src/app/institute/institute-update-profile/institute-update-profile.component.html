@@ -25,10 +25,10 @@
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="inst_email" readonly>
         </mat-form-field>
-
-        <mat-form-field appearance="fill" id="password">
+        
+        <mat-form-field class="example-full-width" appearance="fill" id="password">
             <mat-label>Password</mat-label>
-            <input type="password" [type]="hide ?'password' : 'text'" matInput formControlName="inst_password">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
