@@ -62,6 +62,7 @@ export class ManageService {
   put_student(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
+  
   std_self_reg(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_self_reg.php', data);
   }
@@ -88,6 +89,9 @@ export class ManageService {
   get_student_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_student_by_std_id.php', data);
   }
+  get_fee_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_fee_by_inst_id.php', data);
+  }
   post_fee(data: any) {
     return this.http.post<any>(this.baseUrl + 'fee_insert.php', data);
   }
@@ -107,6 +111,9 @@ export class ManageService {
   }
   put_enquiry(data: any) {
     return this.http.put<any>(this.baseUrl + 'enquiry_update.php', data)
+  }
+  get_enquiry_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_enquiry_by_inst_id.php',data)
   }
   // for quiz module 
 
@@ -243,8 +250,4 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_admission_by_inst_id.php', data);
   }
 
-  // for fee 
-  get_fee_by_inst_id(data:any){
-    return this.http.post<any>(this.baseUrl + 'get_fee_by_inst_id.php', data); 
-  }
 }
