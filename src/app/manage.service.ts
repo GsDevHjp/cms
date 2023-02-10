@@ -9,7 +9,6 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
-  // baseUrl: string = 'http://localhost/cmsapinew/';
 
   //for admin
   admin_login(data: any) {
