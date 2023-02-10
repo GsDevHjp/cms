@@ -20,7 +20,9 @@ export class EnquiryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-
+  login_deatils:any
+  login:any
+  inst_id_for_inst_login:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -32,7 +34,12 @@ export class EnquiryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get_enquiry().subscribe(
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id_for_inst_login = this.login.inst_id
+    const instlogin = new FormData()
+      instlogin.append('inst_id', this.inst_id_for_inst_login)
+    this.service.get_enquiry_by_inst_id(instlogin).subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data

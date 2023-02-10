@@ -100,8 +100,9 @@ export class ManageService {
   }
 
   // for enquiry module 
-  get_enquiry() {
-    return this.http.get<[]>(this.baseUrl + 'enquiry_view.php')
+ 
+  get_enquiry_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_enquiry_by_inst_id.php', data)
   }
   post_enquiry(data: any) {
     return this.http.post<any>(this.baseUrl + 'enquiry_insert.php', data)
