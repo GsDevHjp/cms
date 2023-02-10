@@ -25,6 +25,7 @@ export class PaymentReceivedComponent implements OnInit {
   login_deatils: any
   login: any
   inst_id: any
+  std_id: any;
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -35,18 +36,18 @@ export class PaymentReceivedComponent implements OnInit {
     };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
+    this.std_id = this.login.std_id
+    console.log("std"+ this.std_id)
     console.log("instsd"+ this.login.inst_id)
   }
 
   ngOnInit(): void {
-    if (this.inst_id > 0) {
+    if (this.login.inst_id > 0) {
       const fromdata = new FormData()
       fromdata.append("inst_id",this.login.inst_id)
       this.service.get_fee_by_inst_id(fromdata).subscribe(
         (res: any) => {
-          this.action_btn = true
-          this.displayedColumns = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'fee_description', 'std_img', 'fee_date'];
+         
           console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
@@ -57,8 +58,8 @@ export class PaymentReceivedComponent implements OnInit {
     }
     else {
       const fromdata = new FormData()
-      fromdata.append("inst_id",this.login.inst_id)
-      this.service.get_fee_by_inst_id(fromdata).subscribe(
+      fromdata.append("std_id",this.login.std_id)
+      this.service.get_fee_by_std_id(fromdata).subscribe(
         (res: any) => {
           console.log(res)
           this.dataSource.data = res.data
@@ -68,6 +69,7 @@ export class PaymentReceivedComponent implements OnInit {
         }
       )
     }
+   
   }
   add_payment() {
     this.dailog.open(AddEditPaymentRecivedComponent, {
