@@ -60,7 +60,6 @@ export class StdRegComponent implements OnInit {
         console.log(this.std_data)
         if (res.success == 1) {
           this.std = res.data.length + 1
-          alert(this.std)
         }
       }
     )

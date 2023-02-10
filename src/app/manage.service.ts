@@ -78,7 +78,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
   }
   get_admission_id_by_std_id(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_inst_by_inst_id.php', data);
+    return this.http.post<any>(this.baseUrl + 'get_admission_id_by_std_id.php', data);
   }
 
   // for fee module component payment recive
@@ -130,17 +130,15 @@ export class ManageService {
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
-
-  get_notification_by_inst_id(){
-    return this.http.get<[]>(this.baseUrl + 'get_notification_by_inst_id.php',);
-  }
   get_notification() {
     return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
   }
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-
+  get_notification_by_inst_id(){
+    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
+  }
   // for inst book module
   post_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_insert.php', data);

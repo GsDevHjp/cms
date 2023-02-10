@@ -86,6 +86,7 @@ import { StdChnangePwdComponent } from './student/std-chnange-pwd/std-chnange-pw
 import { HttpClientModule } from '@angular/common/http';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { InstituteUpdateProfileComponent } from './institute/institute-update-profile/institute-update-profile.component';
+import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
 
 
 @NgModule({
@@ -156,6 +157,7 @@ import { InstituteUpdateProfileComponent } from './institute/institute-update-pr
     StdChnangePwdComponent,
     StudentProfileComponent,
     InstituteUpdateProfileComponent,
+    QuizDashboardComponent,
 
   ],
   imports: [
