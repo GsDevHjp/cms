@@ -14,19 +14,28 @@ export class AddEditInstNotificationComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-
+  login_deatils:any;
+  login: any;
+  inst_id: any;
+  inst_id_for_inst_login: any;
 
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
     private matref: MatDialogRef<AddEditInstNotificationComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_notification: any
-  ) { }
+  ) { 
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
+  }
   ngOnInit(): void {
     this.notification_form = this.fb.group({
       notification_id: ['',],
       notification: ['', Validators.required],
       description: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -37,6 +46,7 @@ export class AddEditInstNotificationComponent implements OnInit {
       this.notification_form.controls['description'].setValue(this.edit_notification.description);
       this.notification_form.controls['admin_id_fk'].setValue(this.edit_notification.admin_id_fk);
     }
+    this.notification_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   notification_btn(){
     console.log(this.notification_form.value)
@@ -68,12 +78,10 @@ export class AddEditInstNotificationComponent implements OnInit {
         console.log(res)
         this.matref.close();
        alert('data update successfully')
-
       },
       error: () => {
         alert('data not update')
       }
-
     })
   }
 }

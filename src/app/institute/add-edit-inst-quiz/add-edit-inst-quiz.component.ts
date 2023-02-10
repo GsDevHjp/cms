@@ -19,24 +19,29 @@ export class AddEditInstQuizComponent implements OnInit {
   login_deatils: any;
   inst_id: any;
   login: any;
+  inst_id_for_inst_login: any;
 
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
-  ) { 
-    this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
-  }
+    ) {
+      this.login_deatils = localStorage.getItem('Token')
+      this.login = JSON.parse(this.login_deatils)
+      this.inst_id = this.login.inst_id
+      this.inst_id_for_inst_login = this.login.inst_id
+    }
+   
+    ngOnInit(): void {
+      const formdata = new FormData()
+      formdata.append("inst_id", this.inst_id_for_inst_login)
+      this.service.get_course_by_inst_id(formdata).subscribe(
+        (std_res: any) => {
+          this.course_data = std_res.data
+        }
+      )
   
-  ngOnInit(): void {
-    this.service.get_course().subscribe(
-      (std_res: any) => {
-        this.course_data = std_res.data
-      }
-    )
 
     this.quiz_form = this.fb.group({
       quiz_id: ['',],

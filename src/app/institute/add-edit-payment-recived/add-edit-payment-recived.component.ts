@@ -25,27 +25,45 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   monthly_act: boolean = true;
   setvalue: any;
   imgUrl: string = 'http://localhost/cms/src/assets/user.png';
+  login_deatils: any;
+  login: any;
+  inst_id: any;
+  inst_id_for_inst_login: any;
 
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
     @Inject(MAT_DIALOG_DATA) public editfee: any,
-  ) { }
+
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
+    console.log(this.login.inst_id)
+  }
 
   ngOnInit(): void {
-    this.service.get_student().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id_for_inst_login)
+    this.service.get_student_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.student_data = std_res.data
       }
     )
-    this.service.get_course().subscribe(
+    const courseformdata = new FormData()
+    courseformdata.append("inst_id", this.inst_id_for_inst_login)
+    this.service.get_course_by_inst_id(courseformdata).subscribe(
       (batch_res: any) => {
         this.course_data = batch_res.data
       }
     )
-    this.service.get_batch().subscribe(
+    const batchformdata = new FormData()
+    batchformdata.append("inst_id", this.inst_id_for_inst_login)
+    this.service.get_batch_by_inst_id(batchformdata).subscribe(
       (batch_res: any) => {
+        console.log(batch_res.data)
         this.batch_data = batch_res.data
       }
     )
@@ -69,6 +87,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       fee_description: ['', Validators.required],
       fee_date: ['', Validators.required],
       batch_id_fk: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -94,7 +113,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       this.fee_form.controls['fee_description'].setValue(this.editfee.fee_description);
       this.fee_form.controls['std_img'].setValue(this.editfee.std_img);
       this.imgUrl = 'assets/' + this.editfee.std_img;
-      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_id);
+      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_name);
       this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
     }
   }
@@ -142,6 +161,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     formadd.append('fee_description', this.fee_form.get('fee_description')?.value)
     formadd.append('fee_date', this.fee_form.get('fee_date')?.value)
     formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
+    formadd.append('institute_id_fk', this.inst_id)
     formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
     if (!this.editfee) {
       if (this.fee_form.valid) {
@@ -175,6 +195,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     formupdate.append('student_id_fk', this.fee_form.get('student_id_fk')?.value)
     formupdate.append('course_id_fk', this.fee_form.get('course_id_fk')?.value)
     formupdate.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
+    formupdate.append('institute_id_fk', this.inst_id)
     formupdate.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
     this.service.put_fee(formupdate).subscribe({
       next: (res: any) => {
@@ -195,6 +216,9 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     }
     else {
       this.monthly_act = true
+    }
+    if (event == "Admission Fee") {
+      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_admission_fee')?.value);
     }
     if (event == "Total Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_total_fee')?.value);
