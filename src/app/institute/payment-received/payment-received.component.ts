@@ -35,12 +35,15 @@ export class PaymentReceivedComponent implements OnInit {
     };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    this.inst_id = this.login.inst_id
+    console.log("instsd"+ this.login.inst_id)
   }
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
-      this.service.get_fee().subscribe(
+      const fromdata = new FormData()
+      fromdata.append("inst_id",this.login.inst_id)
+      this.service.get_fee_by_inst_id(fromdata).subscribe(
         (res: any) => {
           this.action_btn = true
           this.displayedColumns = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'fee_description', 'std_img', 'fee_date'];
@@ -53,7 +56,9 @@ export class PaymentReceivedComponent implements OnInit {
       )
     }
     else {
-      this.service.get_fee().subscribe(
+      const fromdata = new FormData()
+      fromdata.append("inst_id",this.login.inst_id)
+      this.service.get_fee_by_inst_id(fromdata).subscribe(
         (res: any) => {
           console.log(res)
           this.dataSource.data = res.data
