@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ManageService {
-
   constructor(
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  // baseUrl: string = 'http://localhost/cmsapinew/';
 
   //for admin
   admin_login(data: any) {
@@ -132,6 +132,9 @@ export class ManageService {
   }
   quiz_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'quiz_delete.php', data);
+  }
+  get_quiz_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_quiz_by_inst_id.php',data)
   }
 
   // for notification module

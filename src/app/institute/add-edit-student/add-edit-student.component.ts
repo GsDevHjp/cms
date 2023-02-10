@@ -34,7 +34,6 @@ export class AddEditStudentComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
-    console.log("hbhgb" + this.login.inst_id)
   }
 
   ngOnInit(): void {
