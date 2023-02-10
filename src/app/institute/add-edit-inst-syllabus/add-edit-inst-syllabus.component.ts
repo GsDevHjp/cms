@@ -12,10 +12,13 @@ export class AddEditInstSyllabusComponent implements OnInit {
   disableSelect = new FormControl(false);
   inst_syllabus_form!: FormGroup;
   admin = 1;
-  institute_id = 1;
   upload: any;
   actionBtn: string = 'Add'
   course_data:any
+  inst_id: any
+  login_deatils: any
+  login: any
+  institute_id:any
 
   constructor(
     private fb: FormBuilder,
@@ -27,9 +30,14 @@ export class AddEditInstSyllabusComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {
-    this.service.get_course().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id", this.institute_id)
+    this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
       }

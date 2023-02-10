@@ -14,13 +14,17 @@ import { ManageService } from 'src/app/manage.service';
 })
 
 export class InstQuizComponent implements OnInit {
-
   displayedColumns: string[] = ['quiz_id','course_id_fk', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer','quiz_description', 'action'];
   dataSource = new MatTableDataSource();
   count_quiz: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
+  inst_id_for_admin: any;
+  login_deatils:any;
+  login: any;
+  inst_id_for_inst_login: any;
+  inst_id: any;
 
   constructor(
     private dailog: MatDialog,
@@ -30,6 +34,19 @@ export class InstQuizComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    
+    const institute_data = this.router.getCurrentNavigation();
+    this.inst_id_for_admin = institute_data?.extras
+    console.log("admin" + this.inst_id_for_admin)
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+
+    this.inst_id_for_admin = this.login.institute_id_fk
+
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
+    console.log("std" + this.inst_id_for_admin)
+    console.log("inst" + this.inst_id_for_inst_login)
   }
 
   ngOnInit(): void { 
@@ -69,7 +86,6 @@ export class InstQuizComponent implements OnInit {
     else {
       alert('cancle')
     }
-  
   }
 
   applyFilter(event: Event) {

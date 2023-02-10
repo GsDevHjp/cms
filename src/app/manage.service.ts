@@ -15,7 +15,6 @@ export class ManageService {
   admin_login(data:any){
     return this.http.post<[]>(this.baseUrl + 'this.admin_login.php', data)
   }
-
   // for course module 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -174,11 +173,11 @@ export class ManageService {
   get_notes_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_notes_by_inst_id.php', data);
   }
-
+ 
   // for inst syllabus module
-  get_inst_syllabus() {
-    return this.http.get<[]>(this.baseUrl + 'inst_syllabus_view.php');
-  }
+  get_syllabus_by_inst_id() {
+    return this.http.get<[]>(this.baseUrl + 'get_syllabus_by_inst_id.php');
+  } 
   post_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
   }
@@ -190,8 +189,8 @@ export class ManageService {
   }
 
   // for inst question bank module
-  get_inst_question_bank() {
-    return this.http.get<[]>(this.baseUrl + 'inst_question_bank_view.php');
+  get_question_bank_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_question_bank_by_inst_id.php', data);
   }
   post_inst_question_bank(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php', data);

@@ -26,8 +26,6 @@ export class AddEditCourseComponent implements OnInit {
     private matref: MatDialogRef<AddEditCourseComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_course: any
   ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };

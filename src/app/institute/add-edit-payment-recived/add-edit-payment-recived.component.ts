@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 
-
 @Component({
   selector: 'app-add-edit-payment-recived',
   templateUrl: './add-edit-payment-recived.component.html',
@@ -11,7 +10,6 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class AddEditPaymentRecivedComponent implements OnInit {
   toppings = new FormControl('');
-
   toppingList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   disableSelect = new FormControl(false);
   fee_form!: FormGroup;
@@ -112,15 +110,15 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-      this.imgUrl = 'assets/' + this.editfee.std_img;
+        this.imgUrl = 'assets/' + this.editfee.std_img;
       }
     )
   }
-  get_course_single_data(event: any){
+  get_course_single_data(event: any) {
     const courseformdata = new FormData();
     courseformdata.append('course_id', event)
     this.service.get_course_by_course_id(courseformdata).subscribe(
-      (res:any)=>{
+      (res: any) => {
         console.log(res)
         this.course_single_data = res.data
         this.fee_form.controls['course_total_fee'].setValue(this.course_single_data.course_total_fee);
@@ -184,7 +182,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.matref.close();
         alert('update successfully..')
       },
-      error: (error: any) => { 
+      error: (error: any) => {
         console.log(error)
         alert('data not Update')
       }
@@ -198,16 +196,15 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     else {
       this.monthly_act = true
     }
-    if(event == "Total Fee"){
+    if (event == "Total Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_total_fee')?.value);
     }
-    if(event == "Half Fee"){
+    if (event == "Half Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_half_fee')?.value);
     }
-    if(event == "Quarter Fee"){
+    if (event == "Quarter Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
     }
-
   }
   select_admission_fee(event: any) {
     console.log(event)
