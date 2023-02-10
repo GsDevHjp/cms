@@ -28,7 +28,7 @@ export class PaymentReceivedComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service: ManageService 
+    private service: ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -38,7 +38,6 @@ export class PaymentReceivedComponent implements OnInit {
     this.inst_id = this.login.inst_id
     console.log("instsd"+ this.login.inst_id)
   }
-
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
