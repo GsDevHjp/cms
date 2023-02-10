@@ -244,4 +244,8 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_admission_by_inst_id.php', data);
   }
 
+  // for fee 
+  get_fee_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_fee_by_inst_id.php', data); 
+  }
 }
