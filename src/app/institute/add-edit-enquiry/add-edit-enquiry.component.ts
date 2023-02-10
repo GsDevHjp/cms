@@ -14,18 +14,18 @@ export class AddEditEnquiryComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  enquiry_heading: string ='Add Enquiry'
+  enquiry_heading: string = 'Add Enquiry'
   course_data: any;
   login_deatils: any
   login: any
   inst_id: any
-  inst_id_for_inst_login:any
+  inst_id_for_inst_login: any
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditEnquiryComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_enq: any
-  ) { 
+  ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.institute_id_fk
@@ -34,7 +34,7 @@ export class AddEditEnquiryComponent implements OnInit {
 
   ngOnInit(): void {
     const formdata = new FormData()
-    formdata.append("inst_id",this.inst_id_for_inst_login)
+    formdata.append("inst_id", this.inst_id_for_inst_login)
     this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
@@ -42,7 +42,7 @@ export class AddEditEnquiryComponent implements OnInit {
     )
 
     this.enquiry_form = this.fb.group({
-      enq_id: [''], 
+      enq_id: [''],
       std_name: ['', Validators.required],
       std_father_name: [''],
       std_whatsapp_no: ['', Validators.required],

@@ -34,7 +34,7 @@
     <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>Status</mat-label>
         <mat-select formControlName="batch_status">
-            <mat-option value="Yet to start">Yet to start</mat-option>
+            <mat-option value="Yet to start" Selected>Yet to start</mat-option>
             <mat-option value="Running">Running</mat-option>
             <mat-option value="Completed">Completed</mat-option>
             <mat-option value="Inactive">Inactive</mat-option>
@@ -62,5 +62,5 @@
 
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="batch_btn()" [disabled]="!batch_form.valid">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="batch_btn()">{{actionBtn}}</button>
 </div>

@@ -19,7 +19,10 @@ export class InstQuestionBankComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
-
+  login_deatils: any
+  login: any
+  inst_id:any
+  inst_id_for_inst_login: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -28,10 +31,16 @@ export class InstQuestionBankComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
   }
 
   ngOnInit(): void {
-    this.service.get_inst_question_bank().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id",this.inst_id_for_inst_login)
+    this.service.get_question_bank_by_inst_id(formdata).subscribe(
       (res:any)=>{
         console.log(res)
         this.dataSource.data = res.data

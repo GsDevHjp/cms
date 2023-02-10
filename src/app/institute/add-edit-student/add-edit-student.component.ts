@@ -29,7 +29,7 @@ export class AddEditStudentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
     this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils) 
+    this.login = JSON.parse(this.login_deatils)
     this.institute_id = this.login.inst_id
   }
   ngOnInit(): void {
@@ -78,8 +78,6 @@ export class AddEditStudentComponent implements OnInit {
     }
     else {
     }
-
-
     // for enquery to insert 
     if (this.edit_std) {
       this.ActionBtn = "Update";
@@ -90,9 +88,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-
   }
-
   student_btn() {
     this.student_id = this.edit_std.std_id
     if (this.student_id) {
@@ -117,7 +113,6 @@ export class AddEditStudentComponent implements OnInit {
       formdata.append('status', '1')
       formdata.append('institute_id_fk', this.institute_id)
       formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
-
       if (this.student_form.valid) {
         this.service.post_student(formdata).subscribe(
           (result: any) => {
@@ -132,11 +127,7 @@ export class AddEditStudentComponent implements OnInit {
           }
         )
       }
-
     }
-
-
-
   }
 
   updateStudent() {
@@ -173,7 +164,6 @@ export class AddEditStudentComponent implements OnInit {
       }
     )
   }
-
 
   OnUpload(event: any) {
     if (event.target.files) {
