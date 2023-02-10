@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admission',
   templateUrl: './admission.component.html',
-  styleUrls: ['./admission.component.css']
+  styleUrls: ['./admission.component.css'] 
 })
 
 export class AdmissionComponent implements OnInit {

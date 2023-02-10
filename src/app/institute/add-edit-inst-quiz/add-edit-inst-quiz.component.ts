@@ -16,13 +16,21 @@ export class AddEditInstQuizComponent implements OnInit {
   actionBtn: string = 'Add'
   course_data:any 
   institute_id=1;
+  login_deatils: any;
+  inst_id: any;
+  login: any;
 
   constructor(
     private fb: FormBuilder,
     private service:ManageService,
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
-  ) { }
+  ) { 
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+  }
+  
   ngOnInit(): void {
     this.service.get_course().subscribe(
       (std_res: any) => {
