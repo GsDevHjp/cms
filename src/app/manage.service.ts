@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ManageService {
-
   constructor(
     private http: HttpClient
   ) { }
@@ -132,6 +131,9 @@ export class ManageService {
   }
   quiz_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'quiz_delete.php', data);
+  }
+  get_quiz_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_quiz_by_inst_id.php',data)
   }
 
   // for notification module

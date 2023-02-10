@@ -80,7 +80,6 @@ export class AddEditCourseComponent implements OnInit {
             alert('form successfully...');
             this.router.navigate(['/institutehome/course']);   
             this.matref.close();
-            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)

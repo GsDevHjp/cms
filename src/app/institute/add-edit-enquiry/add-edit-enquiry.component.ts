@@ -63,7 +63,7 @@ export class AddEditEnquiryComponent implements OnInit {
       this.enquiry_form.controls['std_whatsapp_no'].setValue(this.edit_enq.std_whatsapp_no)
       this.enquiry_form.controls['std_gender'].setValue(this.edit_enq.std_gender)
       this.enquiry_form.controls['std_address'].setValue(this.edit_enq.std_address)
-      this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id_fk)
+      this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id)
       this.enquiry_form.controls['institute_id_fk'].setValue(this.login.inst_id);
       this.enquiry_form.controls['admin_id_fk'].setValue(this.edit_enq.admin_id_fk)
     }
