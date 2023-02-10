@@ -12,9 +12,10 @@ export class ManageService {
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
   //for admin
-  admin_login(data:any){
+  admin_login(data: any) {
     return this.http.post<[]>(this.baseUrl + 'this.admin_login.php', data)
   }
+
   // for course module 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -50,6 +51,9 @@ export class ManageService {
   }
   get_batch_by_course_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_course_id.php', data);
+  }
+  get_batch_by_batch_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_batch_by_batch_id.php', data);
   }
 
   // for student module 
@@ -94,7 +98,7 @@ export class ManageService {
   put_fee(data: any) {
     return this.http.post<any>(this.baseUrl + 'fee_update.php', data);
   }
-  get_course_by_course_id(data:any){
+  get_course_by_course_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
   }
 
@@ -136,7 +140,7 @@ export class ManageService {
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-  get_notification_by_inst_id(){
+  get_notification_by_inst_id() {
     return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
   }
   // for inst book module
@@ -171,11 +175,11 @@ export class ManageService {
   get_notes_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_notes_by_inst_id.php', data);
   }
- 
+
   // for inst syllabus module
-  get_syllabus_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'get_syllabus_by_inst_id.php');
-  } 
+  get_inst_syllabus() {
+    return this.http.get<[]>(this.baseUrl + 'inst_syllabus_view.php');
+  }
   post_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
   }
@@ -185,10 +189,12 @@ export class ManageService {
   inst_syllabus_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
   }
-
+  get_syllabus_by_inst_id() {
+    return this.http.get<[]>(this.baseUrl + 'get_syllabus_by_inst_id.php');
+  }
   // for inst question bank module
-  get_question_bank_by_inst_id(data:any) {
-    return this.http.post<any>(this.baseUrl + 'get_question_bank_by_inst_id.php', data);
+  get_inst_question_bank() {
+    return this.http.get<[]>(this.baseUrl + 'inst_question_bank_view.php');
   }
   post_inst_question_bank(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php', data);
@@ -199,7 +205,9 @@ export class ManageService {
   inst_question_bank_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_question_bank_delete.php', data);
   }
-
+  get_question_bank_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_question_bank_by_inst_id.php', data);
+  }
   // for institute module 
   institute_view() {
     return this.http.get<[]>(this.baseUrl + 'institute_view.php');
@@ -207,7 +215,7 @@ export class ManageService {
   inst_post(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_insert.php', data);
   }
-  delete_inst(data: any) { 
+  delete_inst(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_delete.php', data);
   }
   put_inst(data: any) {
@@ -244,7 +252,10 @@ export class ManageService {
   }
 
   // for fee 
-  get_fee_by_inst_id(data:any){
-    return this.http.post<any>(this.baseUrl + 'get_fee_by_inst_id.php', data); 
+  get_fee_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_fee_by_inst_id.php', data);
+  }
+  get_fee_by_std_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_fee_by_std_id.php', data);
   }
 }

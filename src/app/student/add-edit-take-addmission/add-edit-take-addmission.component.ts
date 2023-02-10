@@ -22,6 +22,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   login_deatils: any
   login: any
   inst_id: any
+  batch: any;
   onSubmit() {
     throw new Error('Method not implemented.');
   }
@@ -80,10 +81,11 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login)
     this.inst_id_fk = this.login.institute_id_fk
+    console.log("std_regist_no" + this.login.std_regist_no)
 
     this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
     this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
-    this.addmission_form.controls['regist_no'].setValue(this.inst_id_fk + this.login.std_id);
+    this.addmission_form.controls['regist_no'].setValue(this.inst_id_fk+this.login.std_id);
     this.addmission_form.controls['roll_no'].setValue(this.login.std_id);
 
   }
@@ -102,14 +104,24 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.addmission_form.controls['course_half_fee'].setValue(this.batch_data[0].course_half_fee);
         this.addmission_form.controls['course_quarter_fee'].setValue(this.batch_data[0].course_quarter_fee);
         this.addmission_form.controls['course_monthly_fee'].setValue(this.batch_data[0].course_monthly_fee);
-        this.addmission_form.controls['batch_id_fk'].setValue(this.batch_data[0].batch_id);
+        this.addmission_form.controls['admission_date'].setValue(new Date().toISOString().slice(0, 10));
+      }
+    )
+  }
+
+  get_batch(event: any) {
+    console.log("batch" + event)
+    const batchfromdata = new FormData();
+    batchfromdata.append('batch_id', event)
+    this.service.get_batch_by_batch_id(batchfromdata).subscribe(
+      (batch_res: any) => {
         this.addmission_form.controls['batch_arrival'].setValue(this.batch_data[0].batch_arrival);
         this.addmission_form.controls['batch_departure'].setValue(this.batch_data[0].batch_departure);
         this.addmission_form.controls['batch_status'].setValue(this.batch_data[0].batch_status);
         this.addmission_form.controls['batch_date'].setValue(this.batch_data[0].batch_date);
-        this.addmission_form.controls['admission_date'].setValue(new Date().toISOString().slice(0, 10));
       }
     )
+
   }
 
 
