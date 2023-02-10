@@ -43,6 +43,7 @@ export class PaymentReceivedComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.login.inst_id > 0) {
+      this.action_btn = false
       const fromdata = new FormData()
       fromdata.append("inst_id",this.login.inst_id)
       this.service.get_fee_by_inst_id(fromdata).subscribe(
