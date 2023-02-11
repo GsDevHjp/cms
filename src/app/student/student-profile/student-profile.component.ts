@@ -12,11 +12,10 @@ export class StudentProfileComponent implements OnInit {
   student_form!: FormGroup;
   admin = 1;
   hide=true
-  // institute_id_fk: string = '5';
-  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
+  url: any = 'https://greensoft.net.in/gscms/assets/';
+  imgurl: any = 'profile.png';
   login_deatils: any
   login: any
-  imgurl: any
   student_id: any
   student_profile_data: any
   status: any = 1
@@ -29,8 +28,13 @@ export class StudentProfileComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_id)
     this.student_id = this.login.std_id
-    this.imgurl = 'assets/' + this.login.std_img
-    console.log("instjbkj"+this.login.institute_id_fk)
+    console.log("inst"+ this.login.institute_id_fk)
+    if(!this.login.std_img){
+      this.imgurl = "profile.png"
+    }
+    else{
+      this.imgurl = this.login.std_img
+    }
   }
 
   ngOnInit(): void {
@@ -47,6 +51,7 @@ export class StudentProfileComponent implements OnInit {
       std_state: ['', Validators.required],
       std_district: ['', Validators.required],
       std_regist_date: ['', Validators.required],
+      std_regist_no: ['', Validators.required],
       std_img: ['', Validators.required],
       std_address: ['', Validators.required],
       status: ['1', Validators.required],
@@ -55,6 +60,9 @@ export class StudentProfileComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
     this.profile_set_data()
+    this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
+    this.student_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
+
   }
   profile_set_data() {
     const formdata = new FormData()
@@ -76,6 +84,7 @@ export class StudentProfileComponent implements OnInit {
         this.student_form.controls['std_state'].setValue(this.student_profile_data.std_state);
         this.student_form.controls['std_district'].setValue(this.student_profile_data.std_district);
         this.student_form.controls['std_regist_date'].setValue(this.student_profile_data.std_regist_date);
+        this.student_form.controls['std_regist_no'].setValue(this.student_profile_data.std_regist_no);
         this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
         this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
         this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
@@ -98,6 +107,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_state', this.student_form.get('std_state')?.value)
     formdata.append('std_district', this.student_form.get('std_district')?.value)
     formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+    formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
     formdata.append('std_img', this.student_form.get('std_img')?.value)
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
@@ -136,7 +146,7 @@ export class StudentProfileComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.selectedImage = reader.result;
+        // this.imgurl = reader.result;
       };
     }
   }

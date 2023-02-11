@@ -86,8 +86,8 @@
         </mat-form-field>
 
         <div class="user_image">
-            <div *ngIf="selectedImage" style="background:url(/src/assets/logosocial.png);">
-                <img src={{imgurl}} class="select_file" width="100%" height="100%">
+            <div>
+                <img src={{url}}{{imgurl}} class="select_file" width="100%" height="100%">
             </div>
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
         </div><br>
@@ -100,7 +100,8 @@
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
         <input type="number" readonly  formControlName="std_id" hidden>
-        <input type="number" readonly  formControlName="status" hidden>
+        <input type="number" readonly  formControlName="institute_id_fk" hidden>
+        <input type="number" readonly  formControlName="std_regist_no" hidden>
 
     </form>
 
