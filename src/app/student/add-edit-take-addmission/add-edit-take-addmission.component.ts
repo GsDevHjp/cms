@@ -129,7 +129,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     const formdata = new FormData();
 
-    console.log('regist_no' + this.addmission_form.get('regist_no')?.value)
+    console.log('std_regist_no' + this.addmission_form.get('std_regist_no')?.value)
     console.log('roll_no' + this.addmission_form.get('roll_no')?.value)
     console.log('inst_id_fk' + this.addmission_form.get('inst_id_fk')?.value)
     console.log('std_id_fk' + this.addmission_form.get('std_id_fk')?.value)
@@ -139,7 +139,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     console.log('admin_id_fk' + this.addmission_form.get('admin_id_fk')?.value)
 
 
-    formdata.append('regist_no', this.addmission_form.get('regist_no')?.value)
+    formdata.append('std_regist_no', this.addmission_form.get('std_regist_no')?.value)
     formdata.append('roll_no', this.addmission_form.get('roll_no')?.value)
     formdata.append('inst_id_fk', this.addmission_form.get('inst_id_fk')?.value)
     formdata.append('std_id_fk', this.addmission_form.get('std_id_fk')?.value)
