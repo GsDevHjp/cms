@@ -49,6 +49,7 @@ export class StudentProfileComponent implements OnInit {
       std_regist_date: ['', Validators.required],
       std_img: ['', Validators.required],
       std_address: ['', Validators.required],
+      status: ['1', Validators.required],
       std_password: ['', Validators.required],
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
