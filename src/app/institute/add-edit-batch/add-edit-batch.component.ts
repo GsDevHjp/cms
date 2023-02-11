@@ -13,14 +13,13 @@ export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
   admin = 1;
-  institute_id:any;
+  institute_id: any;
   upload: any;
   actionBtn: string = 'Add'
   batch_heading: string = 'Add Batch'
   course_data: any;
-  login_deatils:any
-  login:any
-  selected:string='yet '
+  login_deatils: any
+  login: any
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -80,7 +79,7 @@ export class AddEditBatchComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            this.router.navigate(['/institutehome/batch']);   
+            this.router.navigate(['/institutehome/batch']);
             alert('form successfully...')
           },
           (error: any) => {
@@ -100,7 +99,7 @@ export class AddEditBatchComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.router.navigate(['/institutehome/batch']);   
+        this.router.navigate(['/institutehome/batch']);
         alert('update successfully')
 
       },
