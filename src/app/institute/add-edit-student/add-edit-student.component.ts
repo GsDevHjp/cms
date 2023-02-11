@@ -18,7 +18,7 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   admin = 1;
   institute_id: any;
-  selectedImage :any = 'https://greensoft.net.in/gscms/assets/';
+  selectedImage: any = 'https://greensoft.net.in/gscms/assets/';
   status: any = 1
   login_deatils: any
   login: any
@@ -32,21 +32,23 @@ export class AddEditStudentComponent implements OnInit {
     private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
-  )
-   {
+  ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
+
+    console.log("inst_id " + this.login.inst_id)
+
     // console.log("inst_id "+this.login.inst_id)
-    const fromdata =  new FormData()
-    fromdata.append("inst_id",this.login.inst_id)
-      this.service.get_student_by_inst_id(fromdata).subscribe(
-        (res:any)=>{
-          console.log(res.data.length + 1)
-          
-        }
-      )
+    const fromdata = new FormData()
+    fromdata.append("inst_id", this.login.inst_id)
+    this.service.get_student_by_inst_id(fromdata).subscribe(
+      (res: any) => {
+        console.log(res.data.length + 1)
+
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -86,6 +88,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_state'].setValue(this.edit_std.std_state);
       this.student_form.controls['std_district'].setValue(this.edit_std.std_district);
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
+      this.student_form.controls['std_regist_no'].setValue(this.edit_std.std_regist_no);
       this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
       this.selectedImage = 'assets/' + this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
@@ -128,6 +131,7 @@ export class AddEditStudentComponent implements OnInit {
       formdata.append('std_state', this.student_form.get('std_state')?.value)
       formdata.append('std_district', this.student_form.get('std_district')?.value)
       formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+      formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
       formdata.append('std_img', this.student_form.get('std_img')?.value)
       formdata.append('std_address', this.student_form.get('std_address')?.value)
       formdata.append('std_password', this.student_form.get('std_password')?.value)
@@ -166,6 +170,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_state', this.student_form.get('std_state')?.value)
     updatedata.append('std_district', this.student_form.get('std_district')?.value)
     updatedata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+    updatedata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
     updatedata.append('std_img', this.student_form.get('std_img')?.value)
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
@@ -187,9 +192,28 @@ export class AddEditStudentComponent implements OnInit {
   }
 
 
-  
+  regist_no_generate() {
+    if (!this.edit_std) {
+      const stdfromdata = new FormData()
+      stdfromdata.append("inst_id", this.login.inst_id)
+      this.service.get_student_by_inst_id(stdfromdata).subscribe(
+        (res: any) => {
+          this.std_data = res.data
+          console.log(this.std_data)
+          if (res.success == 1) {
+            this.std = res.data.length + 1
+            this.student_form.controls['std_regist_no'].setValue(this.login.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
 
-  
+          }
+        }
+      )
+    }
+    else {
+      return
+    }
+
+
+  }
 
   OnUpload(event: any) {
     if (event.target.files) {
@@ -209,4 +233,7 @@ export class AddEditStudentComponent implements OnInit {
   }
 
 
+  reset() {
+    this.student_form.reset()
+  }
 }

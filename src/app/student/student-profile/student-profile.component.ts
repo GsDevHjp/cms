@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef} from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -28,6 +28,7 @@ export class StudentProfileComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_id)
     this.student_id = this.login.std_id
+    console.log("std regist"+ this.login.std_regist_no)
     console.log("inst"+ this.login.institute_id_fk)
     if(!this.login.std_img){
       this.imgurl = "profile.png"
@@ -41,12 +42,12 @@ export class StudentProfileComponent implements OnInit {
     this.student_form = this.FormBuilder.group({
       std_id: [''],
       std_name: ['', Validators.required],
-      std_father_name: ['', Validators.required],
+      std_father_name: [''],
       std_father_occupation: [''],
       std_whatsapp_no: ['', Validators.required],
       std_aadhar: [''],
       std_email: ['', Validators.required],
-      std_dob: ['', Validators.required],
+      std_dob: [''],
       std_gender: ['', Validators.required],
       std_state: [''],
       std_district: [''],
@@ -56,7 +57,7 @@ export class StudentProfileComponent implements OnInit {
       std_address: ['', Validators.required],
       status: ['1', Validators.required],
       std_password: ['', Validators.required],
-      institute_id_fk: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
     this.profile_set_data(this.student_id)
@@ -107,7 +108,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_state', this.student_form.get('std_state')?.value)
     formdata.append('std_district', this.student_form.get('std_district')?.value)
     formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
-    formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
+    formdata.append('std_regist_no', this.login.std_regist_no)
     formdata.append('std_img', this.student_form.get('std_img')?.value)
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)

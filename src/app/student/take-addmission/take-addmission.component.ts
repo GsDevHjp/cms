@@ -17,7 +17,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./take-addmission.component.css']
 })
 export class TakeAddmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_name', 'batch_name', 'std_whatsapp_no', 'admission_date', 'batch_status'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'roll_no', 'std_name',  'course_name', 'batch_name', 'std_whatsapp_no', 'admission_date', 'batch_status'];
   dataSource = new MatTableDataSource();
   count_admission: number = 0;
   color: ThemePalette = 'primary'
