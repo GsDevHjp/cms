@@ -101,7 +101,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
     formdata.append('status', this.status)
-    formdata.append('institute_id_fk', this.login.institute_id_fk)
+    formdata.append('institute_id_fk', (this.login.institute_id_fk))
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
     if (this.student_form.valid) {

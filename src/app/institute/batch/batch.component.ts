@@ -53,8 +53,8 @@ export class BatchComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.inst_id_for_admin) {
-      this.action_btn = true
-      this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description'];
+      // this.action_btn = true
+      // this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description'];
       this.get_batch_by_inst_id(this.inst_id_for_admin);
     }
     if (this.inst_id_for_inst_login) {

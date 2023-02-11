@@ -57,7 +57,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
 
     this.addmission_form = this.fb.group({
-      regist_no: ['', Validators.required],
+      std_regist_no: ['', Validators.required],
       course_id_fk: ['', Validators.required],
       course_duration: [''],
       course_total_fee: [''],
@@ -85,7 +85,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
     this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
-    this.addmission_form.controls['regist_no'].setValue(this.inst_id_fk+this.login.std_id);
+    this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
     this.addmission_form.controls['roll_no'].setValue(this.login.std_id);
 
   }
