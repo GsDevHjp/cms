@@ -43,7 +43,7 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'batch_update.php', data);
   }
   batch_delete(data: any) {
-    return this.http.post<any>(this.baseUrl + 'batch_update.php', data);
+    return this.http.post<any>(this.baseUrl + 'batch_delete.php', data);
   }
   get_batch_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_inst_id.php', data);
