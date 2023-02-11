@@ -60,14 +60,14 @@ export class StudentProfileComponent implements OnInit {
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
-    this.profile_set_data()
+    this.profile_set_data(this.student_id)
     this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
     this.student_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
 
   }
-  profile_set_data() {
+  profile_set_data(std_id_fun:any) {
     const formdata = new FormData()
-    formdata.append('std_id', this.student_id)
+    formdata.append('std_id', std_id_fun)
     this.service.get_student_by_std_id(formdata).subscribe(
       (res: any) => {
         this.student_profile_data = res.data
@@ -117,11 +117,11 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
     if (this.student_form.valid) {
-      console.log(this.student_form)
       this.service.put_student(formdata).subscribe(
         (result: any) => {
           console.log(result)
           alert('Profile Update Successfully...')
+          this.profile_set_data(this.student_id)
           this.matref.close()
         },
         (error: any) => {
@@ -147,7 +147,7 @@ export class StudentProfileComponent implements OnInit {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        // this.imgurl = reader.result;
+        this.imgurl = reader.result;
       };
     }
   }

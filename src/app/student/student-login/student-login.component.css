@@ -136,3 +136,13 @@ p {
 span {
     margin: 0px 10px;
 }
+
+/* for input auto fill background transparent  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000000s ease-in-out 0s;
+}
+/* for input auto fill background transparent  */

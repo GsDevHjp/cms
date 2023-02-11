@@ -80,7 +80,7 @@ export class BatchComponent implements OnInit {
         }
       )
     }
-    
+
     else {
       const instlogin = new FormData()
       instlogin.append('inst_id', this.inst_id_for_inst_login)
@@ -126,9 +126,9 @@ export class BatchComponent implements OnInit {
   }
   batch_delete(row: any) {
     if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('batch_id', row.batch_id);
-      this.service.batch_delete(deldata).subscribe(
+      const deletedata = new FormData();
+      deletedata.append('batch_id', row.batch_id);
+      this.service.batch_delete(deletedata).subscribe(
         (res: any) => {
           alert('data delate sucessfully')
         }

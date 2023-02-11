@@ -17,7 +17,8 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
+  institute_id: any;
+  selectedImage: any = 'https://greensoft.net.in/gscms/assets/';
   status: any = 1
   login_deatils: any
   login: any
@@ -36,7 +37,18 @@ export class AddEditStudentComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
+
     console.log("inst_id " + this.login.inst_id)
+
+    // console.log("inst_id "+this.login.inst_id)
+    const fromdata = new FormData()
+    fromdata.append("inst_id", this.login.inst_id)
+    this.service.get_student_by_inst_id(fromdata).subscribe(
+      (res: any) => {
+        console.log(res.data.length + 1)
+
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -97,7 +109,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-    this.regist_no_generate()
+    // this.regist_no_generate(t)
   }
 
   student_btn() {
@@ -221,7 +233,7 @@ export class AddEditStudentComponent implements OnInit {
   }
 
 
-  reset(){
+  reset() {
     this.student_form.reset()
   }
 }
