@@ -13,8 +13,8 @@ export class InstituteHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'assets/';
-  img_url:string='http://localhost/cms/src/assets/user.png'
+  url:string='https://greensoft.net.in/gscms/assets/'
+  img_url:string=''
   login_deatils: any
   login: any
   constructor(
@@ -37,7 +37,14 @@ export class InstituteHomeComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.name = this.login.inst_name
-    this.img_url = this.login.inst_logo
+    if(!this.login.inst_logo){
+      this.img_url = "profile.png"
+    }
+    else{
+      this.img_url = this.login.inst_logo
+
+    }
+   
   }
   
   profile_update(){

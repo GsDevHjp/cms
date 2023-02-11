@@ -20,7 +20,9 @@ export class EnquiryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-
+  login_deatils: any;
+  login: any
+  inst_id:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -36,7 +38,9 @@ export class EnquiryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get_enquiry().subscribe(
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.login.inst_id)
+    this.service.get_enquiry_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
