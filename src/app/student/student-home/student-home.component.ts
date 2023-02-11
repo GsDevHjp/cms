@@ -14,7 +14,7 @@ export class StudentHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'assets/';
+  url: string = 'https://greensoft.net.in/gscms/assets/';
   img_url: string = '';
   login_deatils: any
   login: any
@@ -40,7 +40,12 @@ export class StudentHomeComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_name)
     this.name = this.login.std_name
-    this.img_url = this.login.std_img
+    if(!this.login.std_img){
+      this.img_url = "profile.png"
+    }
+    else{
+      this.img_url = this.login.std_img
+    }
 
   }
 
