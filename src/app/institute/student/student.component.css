@@ -15,5 +15,5 @@
     cursor: pointer;
 }
 .icon_box:hover{
-    background-color:white;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(58deg) brightness(104%) contrast(101%);
 }

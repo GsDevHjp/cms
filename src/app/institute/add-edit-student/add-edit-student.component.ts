@@ -20,7 +20,7 @@ export class AddEditStudentComponent implements OnInit {
   selectedImage: any = 'http://localhost/cms/src/assets/user.png';
   status: any = 1
   login_deatils: any
-  login: any 
+  login: any
   student_id: Number = 0
   inst_id: any;
   inst_id_for_inst_login: any;
@@ -29,7 +29,7 @@ export class AddEditStudentComponent implements OnInit {
     private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
-  ){
+  ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id

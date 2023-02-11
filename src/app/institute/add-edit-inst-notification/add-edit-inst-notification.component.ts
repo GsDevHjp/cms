@@ -14,17 +14,17 @@ export class AddEditInstNotificationComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  login_deatils:any;
+  login_deatils: any;
   login: any;
   inst_id: any;
   inst_id_for_inst_login: any;
 
   constructor(
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditInstNotificationComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_notification: any
-  ) { 
+  ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -48,7 +48,7 @@ export class AddEditInstNotificationComponent implements OnInit {
     }
     this.notification_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
-  notification_btn(){
+  notification_btn() {
     console.log(this.notification_form.value)
     if (!this.edit_notification) {
       if (this.notification_form.valid) {
@@ -57,7 +57,7 @@ export class AddEditInstNotificationComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.notification_form.reset();
-           alert('form successfully...')
+            alert('form successfully...')
 
           },
           (error: any) => {
@@ -77,7 +77,7 @@ export class AddEditInstNotificationComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-       alert('data update successfully')
+        alert('data update successfully')
       },
       error: () => {
         alert('data not update')
