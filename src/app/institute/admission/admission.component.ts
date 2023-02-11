@@ -27,9 +27,9 @@ export class AdmissionComponent implements OnInit {
   inst_id: any
   inst_id_for_inst_login: any
   constructor(
-    private dailog: MatDialog,
-    private service: ManageService,
-    private router: Router
+    private dailog:MatDialog,
+    private service:ManageService,
+    private router:Router
   ) {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
@@ -62,7 +62,7 @@ export class AdmissionComponent implements OnInit {
       fromdata.append("inst_id", this.inst_id_for_inst_login)
       this.service.get_admission_by_inst_id(fromdata).subscribe(
         (res: any) => {
-          // console.log(res)
+          console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;

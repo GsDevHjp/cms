@@ -17,7 +17,8 @@ export class AddEditStudentComponent implements OnInit {
   ActionBtn: string = 'Add'
   heading_act: string = 'Add Student'
   admin = 1;
-  selectedImage: any = 'http://localhost/cms/src/assets/user.png';
+  institute_id: any;
+  selectedImage :any = 'https://greensoft.net.in/gscms/assets/';
   status: any = 1
   login_deatils: any
   login: any

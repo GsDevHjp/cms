@@ -24,7 +24,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   course_single_data: any;
   monthly_act: boolean = true;
   setvalue: any;
-  imgUrl: string = 'http://localhost/cms/src/assets/user.png';
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets';
   login_deatils: any;
   login: any;
   inst_id: any;
@@ -229,9 +229,5 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     if (event == "Quarter Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
     }
-  }
-  select_admission_fee(event: any) {
-    console.log(event)
-    alert('hello')
   }
 }

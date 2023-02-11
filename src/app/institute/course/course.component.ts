@@ -95,9 +95,7 @@ export class CourseComponent implements OnInit {
         }
       )
     }
-
   }
-
 
   get_course_by_inst_id(inst_for_all: any) {
     const instformdata = new FormData()
@@ -112,13 +110,11 @@ export class CourseComponent implements OnInit {
       }
     )
   }
-
   add_course() {
     this.dailog.open(AddEditCourseComponent, {
       disableClose: true
     });
   }
-
   course_edit(row: any) {
     this.dailog.open(AddEditCourseComponent, {
       data: row,

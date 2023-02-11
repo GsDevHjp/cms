@@ -14,7 +14,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
   hide = true;
   actionBtn: string = 'Update'
   instupdate: string = 'Profile Update'
-  imgUrl: string = 'http://localhost/cms/src/assets/user.png';
+  imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
   institute_profile_data:any
   institute_id:any;
   login_deatils:any;
