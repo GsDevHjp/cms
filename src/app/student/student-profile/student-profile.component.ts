@@ -37,20 +37,20 @@ export class StudentProfileComponent implements OnInit {
     this.student_form = this.FormBuilder.group({
       std_id: [''],
       std_name: ['', Validators.required],
-      std_father_name: [''],
-      std_father_occupation: [''],
+      std_father_name: ['', Validators.required],
+      std_father_occupation: ['', Validators.required],
       std_whatsapp_no: ['', Validators.required],
-      std_aadhar: [''],
+      std_aadhar: ['', Validators.required],
       std_email: ['', Validators.required],
-      std_dob: [''],
+      std_dob: ['', Validators.required],
       std_gender: ['', Validators.required],
-      std_state: [''],
-      std_district: [''],
+      std_state: ['', Validators.required],
+      std_district: ['', Validators.required],
       std_regist_date: ['', Validators.required],
-      std_img: [''],
+      std_img: ['', Validators.required],
       std_address: ['', Validators.required],
       std_password: ['', Validators.required],
-      institute_id_fk: [''],
+      institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
     this.profile_set_data()
@@ -76,7 +76,7 @@ export class StudentProfileComponent implements OnInit {
         this.student_form.controls['std_district'].setValue(this.student_profile_data.std_district);
         this.student_form.controls['std_regist_date'].setValue(this.student_profile_data.std_regist_date);
         this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
-        this.student_form.controls['institute_id_fk'].setValue(this.student_profile_data.institute_id_fk);
+        this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
         this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
 
       })
@@ -101,7 +101,7 @@ export class StudentProfileComponent implements OnInit {
     formdata.append('std_address', this.student_form.get('std_address')?.value)
     formdata.append('std_password', this.student_form.get('std_password')?.value)
     formdata.append('status', this.status)
-    formdata.append('institute_id_fk', this.login.institute_id_fk)
+    formdata.append('institute_id_fk', (this.login.institute_id_fk))
     formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
 
     if (this.student_form.valid) {

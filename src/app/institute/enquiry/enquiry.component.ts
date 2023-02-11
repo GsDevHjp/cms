@@ -20,26 +20,23 @@ export class EnquiryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  login_deatils:any
-  login:any
-  inst_id_for_inst_login:any
+
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService
+    private service: ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    console.log("inst" + this.login.inst_id)
   }
 
   ngOnInit(): void {
-    this.login_deatils = localStorage.getItem('Token')
-    this.login = JSON.parse(this.login_deatils)
-    this.inst_id_for_inst_login = this.login.inst_id
-    const instlogin = new FormData()
-      instlogin.append('inst_id', this.inst_id_for_inst_login)
-    this.service.get_enquiry_by_inst_id(instlogin).subscribe(
+    this.service.get_enquiry().subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
@@ -48,7 +45,6 @@ export class EnquiryComponent implements OnInit {
         this.count_enquiry = res.data.length
       }
     )
-   
   }
 
   add_enquiry() {
@@ -64,11 +60,11 @@ export class EnquiryComponent implements OnInit {
     });
   }
 
-  admission_form(row:any){
-   this.dailog.open(AddEditStudentComponent,{
-   data:row,
-    disableClose: true,
-   })
+  admission_form(row: any) {
+    this.dailog.open(AddEditStudentComponent, {
+      data: row,
+      disableClose: true,
+    })
   }
 
   applyFilter(event: Event) {

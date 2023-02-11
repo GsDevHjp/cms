@@ -8,7 +8,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Registration No.</mat-label>
-        <input matInput formControlName="regist_no" readonly>
+        <input matInput formControlName="std_regist_no" readonly>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -51,7 +51,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Batch</mat-label>
-        <mat-select formControlName="batch_id_fk">
+        <mat-select formControlName="batch_id_fk" (valueChange)="get_batch($event)">
             <mat-option *ngFor="let batch of batch_data" [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
         </mat-select>
     </mat-form-field>

@@ -14,16 +14,16 @@ export class AddEditInstQuestionBankComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any
+  course_data: any
   inst_id: any
   login_deatils: any
   login: any
-  institute_id:any
+  institute_id: any
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditInstQuestionBankComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_inst_question_bank: any
   ) {
@@ -80,11 +80,11 @@ export class AddEditInstQuestionBankComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_question_bank_form.reset();
-           alert('form successfully...')
+            alert('form successfully...')
           },
           (error: any) => {
             console.log(error)
-           alert('data not insert')
+            alert('data not insert')
           }
         )
       }
@@ -94,28 +94,28 @@ export class AddEditInstQuestionBankComponent implements OnInit {
     }
   }
   updateInstQuestionBank() {
-      console.log(this.inst_question_bank_form.value)
-      const updatedata = new FormData();
-      updatedata.append('inst_question_bank_id', this.inst_question_bank_form.get('inst_question_bank_id')?.value);
-      updatedata.append('inst_question_bank_title', this.inst_question_bank_form.get('inst_question_bank_title')?.value);
-      updatedata.append('inst_question_bank_img', this.inst_question_bank_form.get('inst_question_bank_img')?.value);
-      updatedata.append('inst_question_bank_description', this.inst_question_bank_form.get('inst_question_bank_description')?.value);
-      updatedata.append('course_id_fk', this.inst_question_bank_form.get('course_id_fk')?.value);
-      updatedata.append('institute_id_fk', this.inst_question_bank_form.get('institute_id_fk')?.value);
-      updatedata.append('admin_id_fk', this.inst_question_bank_form.get('admin_id_fk')?.value);
-     this.service.put_inst_question_bank(updatedata).subscribe({
-      next:(res:any)=>{
+    console.log(this.inst_question_bank_form.value)
+    const updatedata = new FormData();
+    updatedata.append('inst_question_bank_id', this.inst_question_bank_form.get('inst_question_bank_id')?.value);
+    updatedata.append('inst_question_bank_title', this.inst_question_bank_form.get('inst_question_bank_title')?.value);
+    updatedata.append('inst_question_bank_img', this.inst_question_bank_form.get('inst_question_bank_img')?.value);
+    updatedata.append('inst_question_bank_description', this.inst_question_bank_form.get('inst_question_bank_description')?.value);
+    updatedata.append('course_id_fk', this.inst_question_bank_form.get('course_id_fk')?.value);
+    updatedata.append('institute_id_fk', this.inst_question_bank_form.get('institute_id_fk')?.value);
+    updatedata.append('admin_id_fk', this.inst_question_bank_form.get('admin_id_fk')?.value);
+    this.service.put_inst_question_bank(updatedata).subscribe({
+      next: (res: any) => {
         console.log(res)
         this.matref.close();
         alert('update successfully..')
       },
-      error:(error:any)=>{
+      error: (error: any) => {
         console.log(error)
         alert('data not update')
       }
-     })
-    }
- 
+    })
+  }
+
   OnUpload(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];

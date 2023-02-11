@@ -22,6 +22,8 @@ export class AddEditStudentComponent implements OnInit {
   login_deatils: any
   login: any
   student_id: Number = 0
+  inst_id: any;
+  inst_id_for_inst_login: any;
   constructor(
     private fb: FormBuilder,
     private service: ManageService,
@@ -30,8 +32,10 @@ export class AddEditStudentComponent implements OnInit {
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.institute_id = this.login.inst_id
+    this.inst_id = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
   }
+
   ngOnInit(): void {
     this.student_form = this.fb.group({
       std_id: [''],
@@ -95,6 +99,7 @@ export class AddEditStudentComponent implements OnInit {
       this.updateStudent();
     }
     else {
+      console.log(this.student_form.value)
       const formdata = new FormData();
       formdata.append('std_name', this.student_form.get('std_name')?.value)
       formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
@@ -111,7 +116,7 @@ export class AddEditStudentComponent implements OnInit {
       formdata.append('std_address', this.student_form.get('std_address')?.value)
       formdata.append('std_password', this.student_form.get('std_password')?.value)
       formdata.append('status', '1')
-      formdata.append('institute_id_fk', this.institute_id)
+      formdata.append('institute_id_fk', this.inst_id)
       formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
       if (this.student_form.valid) {
         this.service.post_student(formdata).subscribe(
@@ -149,7 +154,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
     updatedata.append('status', this.student_form.get('status')?.value)
-    updatedata.append('institute_id_fk', this.institute_id)
+    updatedata.append('institute_id_fk', this.inst_id)
     updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     this.service.put_student(updatedata).subscribe(
       (result: any) => {

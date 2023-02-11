@@ -14,14 +14,14 @@ import { ManageService } from 'src/app/manage.service';
 })
 
 export class InstQuizComponent implements OnInit {
-  displayedColumns: string[] = ['quiz_id','course_id_fk', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer','quiz_description', 'action'];
+  displayedColumns: string[] = ['quiz_id', 'course_id_fk', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer', 'quiz_description', 'action'];
   dataSource = new MatTableDataSource();
   count_quiz: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   inst_id_for_admin: any;
-  login_deatils:any;
+  login_deatils: any;
   login: any;
   inst_id_for_inst_login: any;
   inst_id: any;
@@ -29,28 +29,22 @@ export class InstQuizComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService,
+    private service: ManageService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-    
-    const institute_data = this.router.getCurrentNavigation();
-    this.inst_id_for_admin = institute_data?.extras
-    console.log("admin" + this.inst_id_for_admin)
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-
-    this.inst_id_for_admin = this.login.institute_id_fk
-
-    this.inst_id = this.login.institute_id_fk
-    this.inst_id_for_inst_login = this.login.inst_id
-    console.log("std" + this.inst_id_for_admin)
-    console.log("inst" + this.inst_id_for_inst_login)
+    this.inst_id = this.login.inst_id
+    console.log("inst" + this.login.inst_id)
   }
 
-  ngOnInit(): void { 
-    this.service.get_quiz().subscribe(
+  ngOnInit(): void {
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.login.inst_id)
+    this.service.get_quiz_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
@@ -72,7 +66,7 @@ export class InstQuizComponent implements OnInit {
       data: row,
     });
   }
-  course_delete(row:any){
+  course_delete(row: any) {
     if (confirm("Are you sure to delate")) {
       const deldata = new FormData();
       deldata.append('quiz_id', row.quiz_id);

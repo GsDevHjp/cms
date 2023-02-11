@@ -28,10 +28,10 @@ export class AddEditEnquiryComponent implements OnInit {
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
   }
-
+ 
   ngOnInit(): void {
     const formdata = new FormData()
     formdata.append("inst_id", this.inst_id_for_inst_login)
@@ -50,6 +50,7 @@ export class AddEditEnquiryComponent implements OnInit {
       std_regist_date: [''],
       std_gender: ['', Validators.required],
       std_address: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
     this.enquiry_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
@@ -62,9 +63,11 @@ export class AddEditEnquiryComponent implements OnInit {
       this.enquiry_form.controls['std_whatsapp_no'].setValue(this.edit_enq.std_whatsapp_no)
       this.enquiry_form.controls['std_gender'].setValue(this.edit_enq.std_gender)
       this.enquiry_form.controls['std_address'].setValue(this.edit_enq.std_address)
-      this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id_fk)
+      this.enquiry_form.controls['course_id_fk'].setValue(this.edit_enq.course_id)
+      this.enquiry_form.controls['institute_id_fk'].setValue(this.login.inst_id);
       this.enquiry_form.controls['admin_id_fk'].setValue(this.edit_enq.admin_id_fk)
     }
+    this.enquiry_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   enquiry_btn() {
     console.log(this.enquiry_form.value)
