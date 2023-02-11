@@ -32,12 +32,21 @@ export class AddEditStudentComponent implements OnInit {
     private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
-  ) {
+  )
+   {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
-    console.log("inst_id "+this.login.inst_id)
+    // console.log("inst_id "+this.login.inst_id)
+    const fromdata =  new FormData()
+    fromdata.append("inst_id",this.login.inst_id)
+      this.service.get_student_by_inst_id(fromdata).subscribe(
+        (res:any)=>{
+          console.log(res.data.length + 1)
+          
+        }
+      )
   }
 
   ngOnInit(): void {
@@ -97,7 +106,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-    this.regist_no_generate()
+    // this.regist_no_generate(t)
   }
 
   student_btn() {
@@ -178,31 +187,9 @@ export class AddEditStudentComponent implements OnInit {
   }
 
 
-  regist_no_generate() {
-    const stdfromdata = new FormData()
-    stdfromdata.append("inst_id", this.login.inst_id)
-    this.service.get_student_by_inst_id(stdfromdata).subscribe(
-      (res: any) => {
-        this.std_data = res.data
-        console.log(this.std_data)
-        if (res.success == 1) {
-          this.std = res.data.length + 1
-        }
-      }
-    )
+  
 
-
-    const formdata = new FormData()
-    formdata.append('inst_id', this.login.inst_id)
-    this.service.get_inst_by_inst_id(formdata).subscribe(
-      (res: any) => {
-        console.log(res.data.inst_name.charAt(0))
-        this.student_form.controls['std_regist_no'].setValue(res.data.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
-
-      }
-    )
-
-  }
+  
 
   OnUpload(event: any) {
     if (event.target.files) {
