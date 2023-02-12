@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-inst-notification',
   templateUrl: './add-edit-inst-notification.component.html',
@@ -20,6 +20,7 @@ export class AddEditInstNotificationComponent implements OnInit {
   inst_id_for_inst_login: any;
 
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditInstNotificationComponent>,
@@ -57,12 +58,12 @@ export class AddEditInstNotificationComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.notification_form.reset();
-            alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Notification Insert Successfully..', sticky: true, position: 'tr' })
 
           },
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -77,10 +78,10 @@ export class AddEditInstNotificationComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        alert('data update successfully')
+        this.popup.success({ detail: 'Success', summary: 'Notification Update Successfully..', sticky: true, position: 'tr' })
       },
       error: () => {
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Update..', sticky: true, position: 'tr' })
       }
     })
   }

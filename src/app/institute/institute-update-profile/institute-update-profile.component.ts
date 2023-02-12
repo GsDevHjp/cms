@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-institute-update-profile',
   templateUrl: './institute-update-profile.component.html',
@@ -23,7 +23,8 @@ export class InstituteUpdateProfileComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<InstituteUpdateProfileComponent>,
     private FromBuilder: FormBuilder,
-    private service: ManageService
+    private service: ManageService,
+    private popup:NgToastService
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -110,11 +111,11 @@ export class InstituteUpdateProfileComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          alert('Profile Update Successfully...')
+          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', sticky: true, position: 'tr' })
         },
         (error: any) => {
           console.log(error)
-          alert('Profile Not Update')
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..', sticky: true, position: 'tr' })
         }
       )
     }

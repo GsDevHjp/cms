@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-inst-quiz',
   templateUrl: './add-edit-inst-quiz.component.html',
@@ -14,34 +14,35 @@ export class AddEditInstQuizComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any 
-  institute_id=1;
+  course_data: any
+  institute_id = 1;
   login_deatils: any;
   inst_id: any;
   login: any;
   inst_id_for_inst_login: any;
 
   constructor(
+    private popup:NgToastService,
     private fb: FormBuilder,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
-    ) {
-      this.login_deatils = localStorage.getItem('Token')
-      this.login = JSON.parse(this.login_deatils)
-      this.inst_id = this.login.inst_id
-      this.inst_id_for_inst_login = this.login.inst_id
-    }
-   
-    ngOnInit(): void {
-      const formdata = new FormData()
-      formdata.append("inst_id", this.inst_id_for_inst_login)
-      this.service.get_course_by_inst_id(formdata).subscribe(
-        (std_res: any) => {
-          this.course_data = std_res.data
-        }
-      )
-  
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
+  }
+
+  ngOnInit(): void {
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id_for_inst_login)
+    this.service.get_course_by_inst_id(formdata).subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
+
 
     this.quiz_form = this.fb.group({
       quiz_id: ['',],
@@ -73,36 +74,36 @@ export class AddEditInstQuizComponent implements OnInit {
     }
   }
   quiz_btn() {
-    if(!this.edit_quiz){
-      if(this.quiz_form.valid)
-    this.service.post_quiz(this.quiz_form.value).subscribe(
-      (res:any)=>{
+    if (!this.edit_quiz) {
+      if (this.quiz_form.valid)
+        this.service.post_quiz(this.quiz_form.value).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.matref.close();
+            this.popup.success({ detail: 'Success', summary: 'Quiz Added Successfully..', sticky: true, position: 'tr' })
+          },
+          (error: any) => {
+            console.log(error)
+            this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Added..', sticky: true, position: 'tr' })
+          }
+        )
+    }
+    else {
+      this.quizUpdate()
+    }
+  }
+  quizUpdate() {
+    console.log(this.quiz_form.value)
+    this.service.put_quiz(this.quiz_form.value).subscribe({
+      next: (res: any) => {
         console.log(res)
         this.matref.close();
-        alert('form successfully...')
+        this.popup.success({ detail: 'Success', summary: 'Quiz Update Successfully..', sticky: true, position: 'tr' })
       },
-      (error:any)=>{
+      error: (error: any) => {
         console.log(error)
-        alert('data not insert')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Update..', sticky: true, position: 'tr' })
       }
-    )
+    })
   }
-  else{
-    this.quizUpdate()
-  }
-}
-quizUpdate(){
-  console.log(this.quiz_form.value)
-  this.service.put_quiz(this.quiz_form.value).subscribe({
-    next:(res:any)=>{
-      console.log(res)
-      this.matref.close();
-      alert('update successfully..')
-    },
-    error:(error:any)=>{
-      console.log(error)
-      alert('data not update')
-    }
-  })
-}
 }

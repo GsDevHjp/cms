@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-inst-book',
   templateUrl: './add-edit-inst-book.component.html',
@@ -24,6 +24,7 @@ export class AddEditInstBookComponent implements OnInit {
   inst_id_for_inst_login:any
 
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private service: ManageService,
@@ -86,10 +87,11 @@ export class AddEditInstBookComponent implements OnInit {
             this.matref.close();
             this.inst_book_form.reset();
             alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Book Insert Successfully...', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -113,11 +115,11 @@ export class AddEditInstBookComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.router.navigate(['/inst-book'])
-        alert('update successfully..')
+        this.popup.success({ detail: 'Success', summary: 'Book Update Successfully...', sticky: true, position: 'tr' })
       },
       error: (error: any) => {
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Update..', sticky: true, position: 'tr' })
       }
     })
   }

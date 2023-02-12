@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-std-query',
   templateUrl: './std-query.component.html',
@@ -20,7 +20,8 @@ export class StdQueryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editquery: any,
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StdQueryComponent>,
-    private manageservice: ManageService
+    private manageservice: ManageService,
+    private popup:NgToastService
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -61,11 +62,11 @@ export class StdQueryComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close()
-          alert("Message Send Successfully")
+          this.popup.success({ detail: 'Success', summary: 'Message Send Successfully..', sticky: true, position: 'tr' })
         },
         (error: any) => {
           console.log(error)
-          alert("Message Not Send")
+          this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Send..', sticky: true, position: 'tr' })
         }
 
       )
@@ -81,11 +82,11 @@ export class StdQueryComponent implements OnInit {
     this.manageservice.put_inst(this.Std_Query_Form.value).subscribe({
       next: (res) => {
         console.log(res)
-        alert('Query Update Successfully')
+        this.popup.success({ detail: 'Success', summary: 'Message Update Successfully..', sticky: true, position: 'tr' })
       },
       error: (error: any) => {
         console.log(error)
-        alert('Query Not Update..')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Update..', sticky: true, position: 'tr' })
       }
 
     })

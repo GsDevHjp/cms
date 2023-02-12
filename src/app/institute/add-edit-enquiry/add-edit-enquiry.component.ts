@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-enquiry',
   templateUrl: './add-edit-enquiry.component.html',
@@ -21,6 +21,7 @@ export class AddEditEnquiryComponent implements OnInit {
   inst_id: any
   inst_id_for_inst_login: any
   constructor(
+    private popup : NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditEnquiryComponent>,
@@ -78,10 +79,12 @@ export class AddEditEnquiryComponent implements OnInit {
             console.log(res)
             this.matref.close();
             alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...', sticky: true, position: 'tr' })
           },
           (error) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Send..', sticky: true, position: 'tr' })
+
           }
         )
       }
@@ -95,11 +98,11 @@ export class AddEditEnquiryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close()
-        alert('update successfully')
+        this.popup.success({ detail: 'Success', summary: 'Enquiry Update Successfully...', sticky: true, position: 'tr' })
       },
       error: (error) => {
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Update..', sticky: true, position: 'tr' })
       }
     })
   }

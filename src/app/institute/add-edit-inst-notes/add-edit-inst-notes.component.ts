@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-inst-notes',
@@ -16,16 +17,17 @@ export class AddEditInstNotesComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data:any
+  course_data: any
   inst_id: any
   login_deatils: any
   login: any
-  institute_id:any
+  institute_id: any
 
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
-    private service:ManageService,
+    private service: ManageService,
     private matref: MatDialogRef<AddEditInstNotesComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_inst_notes: any
   ) {
@@ -82,11 +84,11 @@ export class AddEditInstNotesComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_notes_form.reset();
-           alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Notes Insert Successfully...', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-           alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Notes Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -96,28 +98,28 @@ export class AddEditInstNotesComponent implements OnInit {
     }
   }
   updateInstNotes() {
-      console.log(this.inst_notes_form.value)
-      const updatedata = new FormData();
-      updatedata.append('inst_notes_id', this.inst_notes_form.get('inst_notes_id')?.value);
-      updatedata.append('inst_notes_title', this.inst_notes_form.get('inst_notes_title')?.value);
-      updatedata.append('inst_notes_img', this.inst_notes_form.get('inst_notes_img')?.value);
-      updatedata.append('inst_notes_description', this.inst_notes_form.get('inst_notes_description')?.value);
-      updatedata.append('course_id_fk', this.inst_notes_form.get('course_id_fk')?.value);
-      updatedata.append('institute_id_fk', this.inst_notes_form.get('institute_id_fk')?.value);
-      updatedata.append('admin_id_fk', this.inst_notes_form.get('admin_id_fk')?.value);
-     this.service.put_inst_notes(updatedata).subscribe({
-      next:(res:any)=>{
+    console.log(this.inst_notes_form.value)
+    const updatedata = new FormData();
+    updatedata.append('inst_notes_id', this.inst_notes_form.get('inst_notes_id')?.value);
+    updatedata.append('inst_notes_title', this.inst_notes_form.get('inst_notes_title')?.value);
+    updatedata.append('inst_notes_img', this.inst_notes_form.get('inst_notes_img')?.value);
+    updatedata.append('inst_notes_description', this.inst_notes_form.get('inst_notes_description')?.value);
+    updatedata.append('course_id_fk', this.inst_notes_form.get('course_id_fk')?.value);
+    updatedata.append('institute_id_fk', this.inst_notes_form.get('institute_id_fk')?.value);
+    updatedata.append('admin_id_fk', this.inst_notes_form.get('admin_id_fk')?.value);
+    this.service.put_inst_notes(updatedata).subscribe({
+      next: (res: any) => {
         console.log(res)
         this.matref.close();
-        alert('update successfully..')
+        this.popup.success({ detail: 'Success', summary: 'Notes Update Successfully...', sticky: true, position: 'tr' })
       },
-      error:(error:any)=>{
+      error: (error: any) => {
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Notes Not Update..', sticky: true, position: 'tr' })
       }
-     })
-    }
- 
+    })
+  }
+
   OnUpload(event: any) {
     if (event.target.files) {
       const file = event.target.files[0];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from 'src/app/manage.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-registration',
@@ -14,6 +14,7 @@ export class AddEditRegistrationComponent implements OnInit {
   admin = 1;
   hide = true;
   constructor(
+    private popup:NgToastService,
     private FormBuilder: FormBuilder,
     private manageservice: ManageService,
     private matref: MatDialogRef<AddEditRegistrationComponent>,
@@ -39,9 +40,12 @@ export class AddEditRegistrationComponent implements OnInit {
       (result: any) => {
         console.log(result)
         this.matref.close();
-        alert("Registration Successfully..")
+        this.popup.success({ detail: 'Success', summary: 'Registration Successfully..', sticky: true, position: 'tr' })
+      },
+      (error: any) => {
+        console.log(error)
+        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..', sticky: true, position: 'tr' })
       }
-
     )
   }
   form_reset() {

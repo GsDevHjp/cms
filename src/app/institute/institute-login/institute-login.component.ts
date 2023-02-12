@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditRegistrationComponent } from '../add-edit-registration/add-edit-registration.component';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class InstituteLoginComponent implements OnInit {
   hide = true;
   inst_login_form !: FormGroup
   constructor(
+    private popup: NgToastService,
     private dailog: MatDialog,
     private FromBuilder: FormBuilder,
     private service: ManageService,
@@ -47,9 +49,10 @@ export class InstituteLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.router.navigate(['/institutehome']);
+            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', sticky: true, position: 'tr' })
           }
           else {
-            alert("Username and Password Not Match..")
+            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..', sticky: true, position: 'tr' })
           }
         }
       )
