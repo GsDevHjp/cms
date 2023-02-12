@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef} from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-student-profile',
   templateUrl: './student-profile.component.html',
@@ -20,6 +20,7 @@ export class StudentProfileComponent implements OnInit {
   student_profile_data: any
   status: any = 1
   constructor(
+    private popup:NgToastService,
     private service: ManageService,
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StudentProfileComponent>
@@ -120,13 +121,13 @@ export class StudentProfileComponent implements OnInit {
       this.service.put_student(formdata).subscribe(
         (result: any) => {
           console.log(result)
-          alert('Profile Update Successfully...')
+          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', sticky: true, position: 'tr' })
           this.profile_set_data(this.student_id)
           this.matref.close()
         },
         (error: any) => {
           console.log(error)
-          alert('Profile Not Update')
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..', sticky: true, position: 'tr' })
         }
       )
     }

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
 import { StdRegComponent } from '../std-reg/std-reg.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-student-login',
@@ -14,6 +15,7 @@ export class StudentLoginComponent implements OnInit {
   hide = true
   loginForm !: FormGroup
   constructor(
+    private popup: NgToastService,
     private dailog: MatDialog,
     private FromBuilder: FormBuilder,
     private service: ManageService,
@@ -44,9 +46,10 @@ export class StudentLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.Router.navigate(['/studenthome']);
+            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', sticky: true, position: 'tr' })
           }
           else {
-            alert("Username and Password Not Match..")
+            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..', sticky: true, position: 'tr' })
           }
         }
       )

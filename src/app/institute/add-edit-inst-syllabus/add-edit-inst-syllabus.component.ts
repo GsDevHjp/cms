@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-inst-syllabus',
   templateUrl: './add-edit-inst-syllabus.component.html',
@@ -21,6 +22,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
   institute_id:any
 
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private service:ManageService,
@@ -80,11 +82,11 @@ export class AddEditInstSyllabusComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_syllabus_form.reset();
-           alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Syllabus Added Successfully..', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-           alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Added..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -107,11 +109,11 @@ export class AddEditInstSyllabusComponent implements OnInit {
       next:(res:any)=>{
         console.log(res)
         this.matref.close();
-        alert('update successfully..')
+        this.popup.success({ detail: 'Success', summary: 'Syllabus Update Successfully..', sticky: true, position: 'tr' })
       },
       error:(error:any)=>{
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Update..', sticky: true, position: 'tr' })
       }
      })
     }

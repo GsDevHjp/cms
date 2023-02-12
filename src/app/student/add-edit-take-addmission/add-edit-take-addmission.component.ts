@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-take-addmission',
   templateUrl: './add-edit-take-addmission.component.html',
@@ -34,6 +34,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   addmission_form!: FormGroup;
 
   constructor(
+    private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditTakeAddmissionComponent>
@@ -151,15 +152,14 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
-
-        alert("Admission Successfully..")
+        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..', sticky: true, position: 'tr' })
         this.addmission_form.reset();
         this.matref.close(0)
 
       },
       (error: any) => {
         console.log(error)
-        alert("Admission Unsuccess..")
+        this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..', sticky: true, position: 'tr' })
       }
     )
   }

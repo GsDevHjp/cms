@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-batch',
@@ -21,6 +22,7 @@ export class AddEditBatchComponent implements OnInit {
   login_deatils: any
   login: any
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private service: ManageService,
@@ -80,11 +82,11 @@ export class AddEditBatchComponent implements OnInit {
             console.log(res)
             this.matref.close();
             this.router.navigate(['/institutehome/batch']);
-            alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Batch Insert Successfully...', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Insert...', sticky: true, position: 'tr' })
           }
         )
       }
@@ -100,12 +102,11 @@ export class AddEditBatchComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.router.navigate(['/institutehome/batch']);
-        alert('update successfully')
-
+        this.popup.success({ detail: 'Success', summary: 'Batch Update Successfully...', sticky: true, position: 'tr' })
       },
       error: (error) => {
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Update...', sticky: true, position: 'tr' })
       }
 
     })

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-course',
   templateUrl: './add-edit-course.component.html',
@@ -20,6 +20,7 @@ export class AddEditCourseComponent implements OnInit {
   login_deatils: any
   login: any
   constructor(
+    private popup: NgToastService,
     private fb: FormBuilder,
     private router: Router,
     private service: ManageService,
@@ -39,12 +40,12 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form = this.fb.group({
       course_id: [''],
       course_name: ['', Validators.required],
-      course_total_fee: ['',Validators.required],
+      course_total_fee: ['', Validators.required],
       course_half_fee: ['', Validators.required],
       course_quarter_fee: ['', Validators.required],
       course_monthly_fee: ['', Validators.required],
       course_admission_fee: [''],
-      course_duration: ['',Validators.required],
+      course_duration: ['', Validators.required],
       course_description: [''],
       course_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
@@ -77,13 +78,13 @@ export class AddEditCourseComponent implements OnInit {
           (result: any) => {
             console.log(result)
             this.course_form.reset();
-            alert('form successfully...');
-            this.router.navigate(['/institutehome/course']);   
+            this.router.navigate(['/institutehome/course']);
             this.matref.close();
+            this.popup.success({ detail: 'Success', summary: 'Course Insert Successfully...', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -98,11 +99,11 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        alert('update successfully');
-        this.router.navigate(['institutehome/course']);   
+        this.popup.success({ detail: 'Success', summary: 'Course Update Successfully...', sticky: true, position: 'tr' })
+        this.router.navigate(['institutehome/course']);
       },
       error: () => {
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Update..', sticky: true, position: 'tr' })
       }
     })
   }

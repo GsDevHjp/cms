@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-std-reg',
   templateUrl: './std-reg.component.html',
@@ -24,6 +24,7 @@ export class StdRegComponent implements OnInit {
   std_data: any
   inst_id_for_regist: any
   constructor(
+    private popup:NgToastService,
     private FormBuilder: FormBuilder,
     private manageservice: ManageService,
     private matref: MatDialogRef<StdRegComponent>,
@@ -87,11 +88,11 @@ export class StdRegComponent implements OnInit {
       (result: any) => {
         console.log(result)
         this.matref.close()
-        alert("Registration Successfully..")
+        this.popup.success({ detail: 'Success', summary: 'Registraion Successfully..', sticky: true, position: 'tr' })
       },
       (error: any) => {
         console.log(error)
-        alert("Unsuccessfull Registration")
+        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..', sticky: true, position: 'tr' })
       }
     )
   }
