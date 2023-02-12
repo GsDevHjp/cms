@@ -26,6 +26,7 @@ export class AddEditStudentComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   std_data: any;
+ 
   std: any;
   constructor(
     private popup:NgToastService,
