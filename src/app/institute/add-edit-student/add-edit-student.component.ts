@@ -37,7 +37,18 @@ export class AddEditStudentComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
-    console.log("inst_id "+this.login.inst_id)
+
+    console.log("inst_id " + this.login.inst_id)
+
+    // console.log("inst_id "+this.login.inst_id)
+    const fromdata = new FormData()
+    fromdata.append("inst_id", this.login.inst_id)
+    this.service.get_student_by_inst_id(fromdata).subscribe(
+      (res: any) => {
+        console.log(res.data.length + 1)
+
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -78,6 +89,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_state'].setValue(this.edit_std.std_state);
       this.student_form.controls['std_district'].setValue(this.edit_std.std_district);
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
+      this.student_form.controls['std_regist_no'].setValue(this.edit_std.std_regist_no);
       this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
       this.selectedImage = 'https://greensoft.net.in/gscms/assets/' + this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
@@ -98,7 +110,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-    this.regist_no_generate()
+    // this.regist_no_generate(t)
   }
 
   student_btn() {
@@ -120,6 +132,7 @@ export class AddEditStudentComponent implements OnInit {
       formdata.append('std_state', this.student_form.get('std_state')?.value)
       formdata.append('std_district', this.student_form.get('std_district')?.value)
       formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+      formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
       formdata.append('std_img', this.student_form.get('std_img')?.value)
       formdata.append('std_address', this.student_form.get('std_address')?.value)
       formdata.append('std_password', this.student_form.get('std_password')?.value)
@@ -158,6 +171,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_state', this.student_form.get('std_state')?.value)
     updatedata.append('std_district', this.student_form.get('std_district')?.value)
     updatedata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+    updatedata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
     updatedata.append('std_img', this.student_form.get('std_img')?.value)
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
@@ -180,19 +194,24 @@ export class AddEditStudentComponent implements OnInit {
 
 
   regist_no_generate() {
-    const stdfromdata = new FormData()
-    stdfromdata.append("inst_id", this.login.inst_id)
-    this.service.get_student_by_inst_id(stdfromdata).subscribe(
-      (res: any) => {
-        this.std_data = res.data
-        console.log(this.std_data)
-        if (res.success == 1) {
-          this.std = res.data.length + 1
+    if (!this.edit_std) {
+      const stdfromdata = new FormData()
+      stdfromdata.append("inst_id", this.login.inst_id)
+      this.service.get_student_by_inst_id(stdfromdata).subscribe(
+        (res: any) => {
+          this.std_data = res.data
+          console.log(this.std_data)
+          if (res.success == 1) {
+            this.std = res.data.length + 1
+            this.student_form.controls['std_regist_no'].setValue(this.login.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+
+          }
         }
-      }
-    )
-
-
+      )
+    }
+    else {
+      return
+    }
     const formdata = new FormData()
     formdata.append('inst_id', this.login.inst_id)
     this.service.get_inst_by_inst_id(formdata).subscribe(
@@ -201,7 +220,6 @@ export class AddEditStudentComponent implements OnInit {
         this.student_form.controls['std_regist_no'].setValue(res.data.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
       }
     )
-
   }
 
   OnUpload(event: any) {
@@ -222,4 +240,7 @@ export class AddEditStudentComponent implements OnInit {
   }
 
 
+  reset() {
+    this.student_form.reset()
+  }
 }
