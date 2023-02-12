@@ -14,7 +14,7 @@ export class InstituteHomeComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   url :string = 'https://greensoft.net.in/gscms/assets/';
-  img_url:string=''
+  img_url:string='';
   login_deatils: any
   login: any
   constructor(
@@ -42,7 +42,6 @@ export class InstituteHomeComponent implements OnInit {
     }
     else{
       this.img_url = this.login.inst_logo
-
     }
   }
   

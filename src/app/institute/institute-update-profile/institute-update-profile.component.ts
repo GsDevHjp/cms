@@ -18,7 +18,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
   institute_profile_data:any
   institute_id:any;
   login_deatils:any;
-  login:any;
+  login:any; 
   constructor(
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<InstituteUpdateProfileComponent>,

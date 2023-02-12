@@ -17,8 +17,8 @@
       <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="registration">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Registration</th>
+    <ng-container matColumnDef="std_regist_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Registration No</th>
       <td mat-cell *matCellDef="let row"> {{row.std_regist_no}}</td>
     </ng-container>
 
@@ -44,21 +44,22 @@
 
     <ng-container matColumnDef="std_photo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
-      <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.std_img}}" width="40px" height="40px" alt="image"></td>
+      <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.std_img}}" width="40px" height="40px" alt="image">
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="std_regist_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
       <td mat-cell *matCellDef="let row"> {{row.std_regist_date}} </td>
     </ng-container>
- 
+
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
       <td mat-cell *matCellDef="let row">
         <mat-icon class="action_icon" (click)="edit_student(row)">edit</mat-icon>
-       <div class="icon_box">
-        <img src="assets/payment_icon.png" alt="icon" width="100%" (click)="fee_pay()">
-       </div>
+        <div class="icon_box">
+          <img src="assets/payment_icon.png" alt="icon" width="100%" (click)="fee_pay(row)">
+        </div>
       </td>
     </ng-container>
 
@@ -72,4 +73,3 @@
 
   <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
-

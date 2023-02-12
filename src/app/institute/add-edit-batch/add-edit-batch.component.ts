@@ -20,6 +20,7 @@ export class AddEditBatchComponent implements OnInit {
   course_data: any;
   login_deatils: any
   login: any
+  autoselect = "Yet to start"
   constructor(
     private fb: FormBuilder,
     private router: Router,

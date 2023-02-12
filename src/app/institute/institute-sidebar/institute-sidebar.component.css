@@ -6,6 +6,8 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
     position: sticky;
     top: 0px;
+    text-align: center;
+    padding: 8px;
 }
 
 .title_text {
@@ -14,7 +16,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 20px;
+    top: 0px;
 }
 
 .menu-button {
