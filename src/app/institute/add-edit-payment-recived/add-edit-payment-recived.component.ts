@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-payment-recived',
   templateUrl: './add-edit-payment-recived.component.html',
@@ -31,6 +31,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   inst_id_for_inst_login: any;
 
   constructor(
+    private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
@@ -170,12 +171,12 @@ export class AddEditPaymentRecivedComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Payment Insert Successfully..', sticky: true, position: 'tr' })
           },
 
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -202,11 +203,11 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        alert('update successfully..')
+        this.popup.success({ detail: 'Success', summary: 'Payment Update Successfully..', sticky: true, position: 'tr' })
       },
       error: (error: any) => {
         console.log(error)
-        alert('data not Update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Update..', sticky: true, position: 'tr' })
       }
     })
   }

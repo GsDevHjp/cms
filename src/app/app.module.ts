@@ -87,7 +87,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { InstituteUpdateProfileComponent } from './institute/institute-update-profile/institute-update-profile.component';
 import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
-
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
+import { NgToastModule } from 'ng-angular-popup'
 
 @NgModule({
   declarations: [
@@ -185,6 +186,12 @@ import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.
     MatSelectModule,
     MatSelectModule,
     HttpClientModule, 
+    NgToastModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderRouterModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

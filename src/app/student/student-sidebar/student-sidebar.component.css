@@ -7,13 +7,14 @@
     position: sticky;
     top: 0px;
     text-align: center;
+    padding: 8px;
 }
 
 .title_text {
     color: whitesmoke;
     font-size: 20px;
     position: relative;
-    top: 20px;
+    top: 10px;
 }
 
 .menu-button {

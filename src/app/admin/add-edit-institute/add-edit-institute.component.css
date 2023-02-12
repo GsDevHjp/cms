@@ -31,8 +31,8 @@
 }
 
 .add_box {
-    width: calc(100% - 75.5%);
-    margin-left: 3px;
+    width: calc(100% - 77.5%);
+    margin-left: 18px;
     height: auto;
     float: left;
 }

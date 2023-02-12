@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-student',
   templateUrl: './add-edit-student.component.html',
@@ -28,6 +28,7 @@ export class AddEditStudentComponent implements OnInit {
   std_data: any;
   std: any;
   constructor(
+    private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditStudentComponent>,
@@ -145,11 +146,11 @@ export class AddEditStudentComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.student_form.reset();
-            alert('form successfully...')
+            this.popup.success({ detail: 'Success', summary: 'Student Added Successfully..', sticky: true, position: 'tr' })
           },
           (error: any) => {
             console.log(error)
-            alert('data not insert')
+            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Insert..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -183,11 +184,11 @@ export class AddEditStudentComponent implements OnInit {
         console.log(result)
         this.matref.close();
         this.student_form.reset();
-        alert('update successfully...')
+        this.popup.success({ detail: 'Success', summary: 'Student Update Successfully..', sticky: true, position: 'tr' })
       },
       (error: any) => {
         console.log(error)
-        alert('data not update')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Update..', sticky: true, position: 'tr' })
       }
     )
   }

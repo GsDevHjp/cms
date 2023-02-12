@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { StdQueryComponent } from '../std-query/std-query.component';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class QueryComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
   constructor(
+    private popup:NgToastService,
     private dailog: MatDialog,
     private router: Router,
     private manageservice: ManageService
@@ -62,13 +63,13 @@ export class QueryComponent implements OnInit {
       console.log(row.query_id)
       this.manageservice.delete_query(deletedata).subscribe(
         (res: any) => {
-          alert('data delete successfully')
+          this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..', sticky: true, position: 'tr' })
         }
       )
 
     }
     else {
-      alert('data not delete')
+      this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Delete..', sticky: true, position: 'tr' })
     }
 
   }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
-
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-add-edit-institute',
@@ -21,7 +21,8 @@ export class AddEditInstituteComponent implements OnInit {
     private matref: MatDialogRef<AddEditInstituteComponent>,
     private FromBuilder: FormBuilder,
     private manageservice: ManageService,
-    private router:Router
+    private router:Router,
+    private popup:NgToastService
   ) { }
 
   ngOnInit(): void {
@@ -98,7 +99,7 @@ export class AddEditInstituteComponent implements OnInit {
         console.log(this.InstForm.value)
         this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
-            alert("Institute Added Successfully")
+            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..', sticky: true, position: 'tr' })
             console.log(result)
             this.InstForm.reset()
             this.matref.close()
@@ -106,7 +107,7 @@ export class AddEditInstituteComponent implements OnInit {
           },
           (error: any) => {
             console.log(error)
-            alert("Institute Not Insert")
+            this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Added..', sticky: true, position: 'tr' })
           }
         )
       }
@@ -142,13 +143,13 @@ export class AddEditInstituteComponent implements OnInit {
     this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
-        alert('Institute Update Successfully')
+        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..', sticky: true, position: 'tr' })
         this.InstForm.reset()
         this.matref.close()
       },
       error: (error: any) => {
         console.log(error)
-        alert('Institute Not Update..')
+        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..', sticky: true, position: 'tr' })
       }
 
     })
