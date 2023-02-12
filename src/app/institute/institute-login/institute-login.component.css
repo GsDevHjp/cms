@@ -61,7 +61,7 @@ mat-card-header {
 
 img {
     width: 100px;
-    margin-left: 100px;
+    margin-left: 110px;
 }
 
 mat-card-content {
@@ -98,7 +98,7 @@ mat-form-field mat-label {
 .action_login {
     width: 80px;
     color: white;
-    margin-left: 110px;
+    margin-left: 118px;
     border-radius: 5px;
 }
 .info_box{

@@ -24,7 +24,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   course_single_data: any;
   monthly_act: boolean = true;
   setvalue: any;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets';
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
   login_deatils: any;
   login: any;
   inst_id: any;
@@ -75,6 +75,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       std_father_name: [''],
       std_whatsapp_no: [''],
       std_address: [''],
+      std_img: [''],
       course_id_fk: ['', Validators.required],
       course_total_fee: [''],
       course_half_fee: [''],
@@ -113,7 +114,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       this.fee_form.controls['fee_amount'].setValue(this.editfee.fee_amount);
       this.fee_form.controls['fee_description'].setValue(this.editfee.fee_description);
       this.fee_form.controls['std_img'].setValue(this.editfee.std_img);
-      this.imgUrl = 'assets/' + this.editfee.std_img;
+      this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.editfee.std_img;
       this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_name);
       this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
     }
@@ -130,7 +131,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
         this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
         this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'assets/' + this.editfee.std_img;
+        this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.editfee.std_img;
       }
     )
   }

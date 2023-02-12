@@ -88,7 +88,7 @@ export class AddEditEnquiryComponent implements OnInit {
           }
         )
       }
-    }
+    } 
     else {
       this.enquiryUpdate()
     }

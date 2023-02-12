@@ -18,7 +18,7 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   admin = 1;
   institute_id: any;
-  selectedImage: any = 'https://greensoft.net.in/gscms/assets/';
+  selectedImage :any = 'https://greensoft.net.in/gscms/assets/profile.png';
   status: any = 1
   login_deatils: any
   login: any
@@ -77,6 +77,7 @@ export class AddEditStudentComponent implements OnInit {
     this.student_id = this.edit_std.std_id
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.student_id > 0) {
+      this.heading_act="Update"
       this.ActionBtn = "Update";
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
@@ -92,7 +93,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_regist_no'].setValue(this.edit_std.std_regist_no);
       this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
-      this.selectedImage = 'assets/' + this.edit_std.std_img;
+      this.selectedImage = 'https://greensoft.net.in/gscms/assets/' + this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
@@ -103,7 +104,7 @@ export class AddEditStudentComponent implements OnInit {
     }
     // for enquery to insert 
     if (this.edit_std) {
-      this.ActionBtn = "Update";
+      this.heading_act="Update"
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
       this.student_form.controls['std_whatsapp_no'].setValue(this.edit_std.std_whatsapp_no);
@@ -213,8 +214,14 @@ export class AddEditStudentComponent implements OnInit {
     else {
       return
     }
-
-
+    const formdata = new FormData()
+    formdata.append('inst_id', this.login.inst_id)
+    this.service.get_inst_by_inst_id(formdata).subscribe(
+      (res: any) => {
+        console.log(res.data.inst_name.charAt(0))
+        this.student_form.controls['std_regist_no'].setValue(res.data.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+      }
+    )
   }
 
   OnUpload(event: any) {

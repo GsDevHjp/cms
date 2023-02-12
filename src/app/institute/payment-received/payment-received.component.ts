@@ -20,7 +20,7 @@ export class PaymentReceivedComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl :string = 'https://greensoft.net.in/gscms/assets/profile.png';
   action_btn: boolean = false
   login_deatils: any
   login: any
