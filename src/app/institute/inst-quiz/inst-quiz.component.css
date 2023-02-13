@@ -1,3 +1,6 @@
 #add_course{
     cursor: pointer;
 }
+td{
+    height: 80px;
+}

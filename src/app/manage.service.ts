@@ -10,6 +10,10 @@ export class ManageService {
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
+  // dashboard 
+  get_dashboad() {
+    return this.http.get<[]>(this.baseUrl + 'dashboard_view.php');
+  }
   //for admin
   admin_login(data: any) {
     return this.http.post<[]>(this.baseUrl + 'this.admin_login.php', data)
