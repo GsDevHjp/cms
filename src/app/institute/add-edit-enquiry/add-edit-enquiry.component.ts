@@ -78,7 +78,6 @@ export class AddEditEnquiryComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            alert('form successfully...')
             this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...', sticky: true, position: 'tr' })
           },
           (error) => {

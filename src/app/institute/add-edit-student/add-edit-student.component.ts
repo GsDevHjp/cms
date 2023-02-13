@@ -97,7 +97,6 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
-      this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
     else {
@@ -112,7 +111,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-    // this.regist_no_generate(t)
+    this.regist_no_generate()
   }
 
   student_btn() {

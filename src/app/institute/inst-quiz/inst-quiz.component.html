@@ -18,7 +18,7 @@
     </ng-container>
 
     <ng-container matColumnDef="course_id_fk">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Id </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name</th>
       <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
     </ng-container>
 
@@ -73,5 +73,5 @@
     </tr>
   </table>
 
-  <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator #paginatorRef [pageSizeOptions]="[5, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
