@@ -29,6 +29,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   login: any;
   inst_id: any;
   inst_id_for_inst_login: any;
+  autoselect='Offline'
 
   constructor(
     private popup:NgToastService,

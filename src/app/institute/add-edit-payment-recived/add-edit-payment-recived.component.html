@@ -115,7 +115,7 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Payment Mode</mat-label>
-                    <mat-select formControlName="fee_mode">
+                    <mat-select formControlName="fee_mode" [ngModel]="autoselect">
                         <mat-option value="Online">Online</mat-option>
                         <mat-option value="Offline">Offline</mat-option>
                     </mat-select>

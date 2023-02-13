@@ -80,6 +80,7 @@ export class AddEditInstQuizComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
+            console.log(this.quiz_form.value)
             this.popup.success({ detail: 'Success', summary: 'Quiz Added Successfully..', sticky: true, position: 'tr' })
           },
           (error: any) => {

@@ -157,7 +157,7 @@ export class ManageService {
   put_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_update.php', data)
   }
-  get_inst_book_view() {
+  get_inst_book() {
     return this.http.get<[]>(this.baseUrl + 'inst_book_view.php')
   }
   inst_book_delete(data: any) {

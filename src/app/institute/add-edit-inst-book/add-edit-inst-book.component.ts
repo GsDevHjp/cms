@@ -14,14 +14,13 @@ export class AddEditInstBookComponent implements OnInit {
   disableSelect = new FormControl(false);
   inst_book_form!: FormGroup;
   admin = 1;
-  institute_id = 1;
   upload: any;
   actionBtn: string = 'Add'
-  course_data: any
+  course_data: any;
   login_deatils: any
-  login:any
-  inst_id:any
-  inst_id_for_inst_login:any
+  login: any
+  inst_id: any
+  inst_id_for_inst_login: any
 
   constructor(
     private popup: NgToastService,
@@ -34,15 +33,14 @@ export class AddEditInstBookComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
   }
   ngOnInit(): void {
     const formdata = new FormData()
-    formdata.append("inst_id",this.inst_id_for_inst_login)
+    formdata.append("inst_id", this.inst_id_for_inst_login)
     this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
@@ -54,7 +52,7 @@ export class AddEditInstBookComponent implements OnInit {
       inst_book_img: ['', Validators.required],
       inst_book_description: ['', Validators.required],
       course_id_fk: ['', Validators.required],
-      institute_id_fk: ['', Validators.required],
+      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -68,6 +66,7 @@ export class AddEditInstBookComponent implements OnInit {
       this.inst_book_form.controls['institute_id_fk'].setValue(this.edit_inst_book.institute_id_fk);
       this.inst_book_form.controls['admin_id_fk'].setValue(this.edit_inst_book.admin_id_fk);
     }
+    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   inst_book_btn() {
     console.log(this.inst_book_form.value)
