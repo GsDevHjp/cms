@@ -93,21 +93,24 @@
         </div><br>
 
 
-        <mat-form-field appearance="fill" id="address">
+        <mat-form-field appearance="fill">
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Registration No</mat-label>
+            <input matInput formControlName="std_regist_no">
+        </mat-form-field>
+
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-        <input type="number" readonly  formControlName="std_id" hidden>
-        <input type="number" readonly  formControlName="institute_id_fk" hidden>
-        <input type="text" readonly  formControlName="std_regist_no" hidden>
+        <input type="number" readonly formControlName="std_id" hidden>
+        <input type="number" readonly formControlName="institute_id_fk" hidden>
 
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="update_profile()"
-            >Update</button>
+        <button mat-raised-button color="primary" (click)="update_profile()">Update</button>
     </div>
 </div>
