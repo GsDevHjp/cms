@@ -14,12 +14,12 @@ export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
   admin = 1;
-  institute_id: any;
+  institute_id: any; 
   upload: any;
   actionBtn: string = 'Add'
   batch_heading: string = 'Add Batch'
   course_data: any;
-  login_deatils: any
+  login_deatils: any;
   login: any
   autoselect = "Yet to start"
   constructor(
