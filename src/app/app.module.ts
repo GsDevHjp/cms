@@ -88,7 +88,8 @@ import { StudentProfileComponent } from './student/student-profile/student-profi
 import { InstituteUpdateProfileComponent } from './institute/institute-update-profile/institute-update-profile.component';
 import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
-import { NgToastModule } from 'ng-angular-popup'
+import { NgToastModule } from 'ng-angular-popup';
+import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component'
 
 @NgModule({
   declarations: [
@@ -159,6 +160,7 @@ import { NgToastModule } from 'ng-angular-popup'
     StudentProfileComponent,
     InstituteUpdateProfileComponent,
     QuizDashboardComponent,
+    InstquizdashboardComponent,
 
   ],
   imports: [
