@@ -7,7 +7,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Institute</mat-label>
         <mat-select formControlName="institute_id_fk" (valueChange)="regist_no_generate($event)">
-            <mat-option *ngFor="let inst of inst_data" [value]="inst.inst_id" >{{inst.inst_name}}</mat-option>
+            <mat-option *ngFor="let inst of inst_data" [value]="inst.inst_id">{{inst.inst_name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -43,7 +43,7 @@
 
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-    <input type="text" readonly  formControlName="std_regist_no" hidden>
+    <input type="text" readonly formControlName="std_regist_no" hidden>
 
 </form>
 
