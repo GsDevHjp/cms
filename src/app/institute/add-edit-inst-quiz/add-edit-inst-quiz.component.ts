@@ -36,15 +36,6 @@ export class AddEditInstQuizComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.edit_quiz)
-    // const formdata = new FormData()
-    // formdata.append("inst_id", this.inst_id_for_inst_login)
-    // this.service.get_course_by_inst_id(formdata).subscribe(
-    //   (std_res: any) => {
-    //     this.course_data = std_res.data
-    //   }
-    // )
-
-
     this.quiz_form = this.fb.group({
       quiz_id: ['',],
       quiz_no: ['1'],
