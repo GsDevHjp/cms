@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -13,12 +14,14 @@ export class QuizDashboardComponent implements OnInit {
   login:any
   inst_id:any
   course_quiz:any
+  course_data:any
   constructor(
+    private router:Router,
     private service: ManageService
   ) { 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
+    this.inst_id = this.login.institute_id_fk
   }
 
 
@@ -29,7 +32,12 @@ export class QuizDashboardComponent implements OnInit {
       (res: any) => {
         console.log(res.data)
         this.course_quiz  =  res.data
+      
       }
     )
+  }
+
+  onQuiz(event:any){
+    this.router.navigate(['/studenthome/quiz'] ,event )
   }
 }
