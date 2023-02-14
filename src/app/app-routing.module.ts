@@ -29,6 +29,7 @@ import { InstSyllabusComponent } from './institute/inst-syllabus/inst-syllabus.c
 import { InstituteDashboardComponent } from './institute/institute-dashboard/institute-dashboard.component';
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
+import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StudentComponent } from './institute/student/student.component';
@@ -109,7 +110,7 @@ const routes: Routes = [
       { path: 'instnotes', component: InstNotesComponent },
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
-
+      { path: 'instquizdashboard', component: InstquizdashboardComponent }
     ]
   },
 
@@ -144,7 +145,7 @@ const routes: Routes = [
 ];
 @NgModule({
 
-  imports: [RouterModule.forRoot(routes,)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

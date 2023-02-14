@@ -78,9 +78,9 @@ export class AddEditCourseComponent implements OnInit {
           (result: any) => {
             console.log(result)
             this.course_form.reset();
-            this.router.navigate(['/institutehome/course']);
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'Course Insert Successfully...', sticky: true, position: 'tr' })
+            this.router.navigate(['/institutehome/course']);
           },
           (error: any) => {
             console.log(error)
