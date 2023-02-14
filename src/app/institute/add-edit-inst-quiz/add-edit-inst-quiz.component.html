@@ -5,13 +5,13 @@
 
 <form [formGroup]="quiz_form">
     
-    <mat-form-field appearance="fill" class="example-full-width" id="cursedescription">
+    <!-- <mat-form-field appearance="fill" class="example-full-width" id="cursedescription">
         <mat-label>Course</mat-label>
         <mat-select formControlName="course_id_fk" (valueChange)="onCourse($event)">
             <mat-option *ngFor="let course of course_data"
                 [value]="course.course_id">{{course.course_name}}</mat-option>
         </mat-select>
-    </mat-form-field><br>
+    </mat-form-field><br> -->
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Question</mat-label>
@@ -49,9 +49,10 @@
     </mat-form-field>
 
 
-    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden redonly>
-    <input type="number" readonly formControlName="quiz_no"  hidden redonly>
-    <input type="number" readonly [ngModel]="institute_id" formControlName="institute_id_fk" hidden redonly >
+    <input type="number" placeholder="course_no " readonly formControlName="course_id_fk"  readonly hidden >
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" readonly hidden >
+    <input type="number" placeholder="quiz no" readonly formControlName="quiz_no"  readonly hidden  >
+    <input type="number" placeholder="inst_id" readonly formControlName="institute_id_fk"  readonly hidden>
 
 </form>
 
