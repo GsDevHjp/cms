@@ -152,14 +152,14 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
-        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..'})
         this.addmission_form.reset();
         this.matref.close(0)
 
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..'})
       }
     )
   }

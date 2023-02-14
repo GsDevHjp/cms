@@ -62,11 +62,11 @@ export class StdQueryComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close()
-          this.popup.success({ detail: 'Success', summary: 'Message Send Successfully..', sticky: true, position: 'tr' })
+          this.popup.success({ detail: 'Success', summary: 'Message Send Successfully..'})
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Send..', sticky: true, position: 'tr' })
+          this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Send..'})
         }
 
       )
@@ -82,11 +82,11 @@ export class StdQueryComponent implements OnInit {
     this.manageservice.put_inst(this.Std_Query_Form.value).subscribe({
       next: (res) => {
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Message Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Message Update Successfully..'})
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Update..'})
       }
 
     })
