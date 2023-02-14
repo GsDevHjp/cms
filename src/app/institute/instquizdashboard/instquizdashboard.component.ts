@@ -24,6 +24,7 @@ export class InstquizdashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     const formdata = new FormData()
     formdata.append("inst_id", this.inst_id)
     this.service.get_quiz_course(formdata).subscribe(

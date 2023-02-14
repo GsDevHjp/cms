@@ -14,7 +14,7 @@ import { ManageService } from 'src/app/manage.service';
 })
 
 export class InstQuizComponent implements OnInit {
-  displayedColumns: string[] = ['quiz_id', 'course_id_fk', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer', 'quiz_description', 'action'];
+  displayedColumns: string[] = ['quiz_id', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'quiz_answer', 'quiz_description', 'action'];
   dataSource = new MatTableDataSource();
   count_quiz: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -25,7 +25,9 @@ export class InstQuizComponent implements OnInit {
   login: any;
   inst_id_for_inst_login: any;
   inst_id: any;
-  course_data:any
+  course_data:any;
+  sub_name:any;
+  course:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -38,20 +40,22 @@ export class InstQuizComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
-    console.log("inst" + this.login.inst_id)
 
     const navigation = this.router.getCurrentNavigation();
     this.course_data = navigation?.extras
   }
 
   ngOnInit(): void {
-    alert(this.course_data.course_id)
+  console.log(this.course_data)
     const fromdata = new FormData()
     fromdata.append('inst_id', this.login.inst_id)
-    fromdata.append('course_id', this.course_data.course_id)
+    fromdata.append('course_id',this.course_data)
     this.service.get_quiz_by_inst_id(fromdata).subscribe(
       (res: any) => {
-        // console.log(res)
+        console.log(res)
+        this.sub_name = res.data[0].course_name
+        this.course = res.data[0].course_id
+        
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -62,7 +66,10 @@ export class InstQuizComponent implements OnInit {
 
   add_course() {
     this.dailog.open(AddEditInstQuizComponent, {
-      disableClose: true
+      disableClose: true,
+      data:this.course
+
+
     });
   }
 

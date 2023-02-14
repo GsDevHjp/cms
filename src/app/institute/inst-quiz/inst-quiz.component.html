@@ -1,6 +1,6 @@
 <div class="head">
-  <span class="course_text">Quiz Details</span>
-  <mat-icon id="add_course" (click)="add_course()">add_circle</mat-icon>
+  <span class="course_text">{{sub_name}}</span>
+  <mat-icon id="add_course"  (click)="add_course()">add_circle</mat-icon>
 </div>
 <div class="count_area">
   <span class="notice_text">Total : {{count_quiz}}</span>
@@ -16,12 +16,6 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
       <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
     </ng-container>
-
-    <ng-container matColumnDef="course_id_fk">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name</th>
-      <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
-    </ng-container>
-
     <ng-container matColumnDef="quiz_question">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
       <td mat-cell *matCellDef="let row"> {{row.quiz_question}}</td>

@@ -35,13 +35,14 @@ export class AddEditInstQuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const formdata = new FormData()
-    formdata.append("inst_id", this.inst_id_for_inst_login)
-    this.service.get_course_by_inst_id(formdata).subscribe(
-      (std_res: any) => {
-        this.course_data = std_res.data
-      }
-    )
+    console.log(this.edit_quiz)
+    // const formdata = new FormData()
+    // formdata.append("inst_id", this.inst_id_for_inst_login)
+    // this.service.get_course_by_inst_id(formdata).subscribe(
+    //   (std_res: any) => {
+    //     this.course_data = std_res.data
+    //   }
+    // )
 
 
     this.quiz_form = this.fb.group({
@@ -53,16 +54,19 @@ export class AddEditInstQuizComponent implements OnInit {
       quiz_option_c: ['', Validators.required],
       quiz_option_d: ['', Validators.required],
       quiz_answer: ['', Validators.required],
-      quiz_description: ['', Validators.required],
+      quiz_description: [''],
       course_id_fk: ['', Validators.required],
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 
     
-    if (this.edit_quiz) {
+    this.quiz_form.controls['institute_id_fk'].setValue(this.inst_id_for_inst_login);
+
+    if (this.edit_quiz.quiz_id) {
       this.actionBtn = "Update";
       this.quiz_form.controls['quiz_id'].setValue(this.edit_quiz.quiz_id);
+      this.quiz_form.controls['quiz_no'].setValue(this.edit_quiz.quiz_no);
       this.quiz_form.controls['quiz_question'].setValue(this.edit_quiz.quiz_question);
       this.quiz_form.controls['quiz_option_a'].setValue(this.edit_quiz.quiz_option_a);
       this.quiz_form.controls['quiz_option_b'].setValue(this.edit_quiz.quiz_option_b);
@@ -70,13 +74,26 @@ export class AddEditInstQuizComponent implements OnInit {
       this.quiz_form.controls['quiz_option_d'].setValue(this.edit_quiz.quiz_option_d);
       this.quiz_form.controls['quiz_answer'].setValue(this.edit_quiz.quiz_answer);
       this.quiz_form.controls['quiz_description'].setValue(this.edit_quiz.quiz_description);
-      this.quiz_form.controls['course_id_fk'].setValue(this.edit_quiz.course_id_fk);
-      this.quiz_form.controls['institute_id_fk'].setValue(this.edit_quiz.institute_id_fk);
+      this.quiz_form.controls['course_id_fk'].setValue(this.edit_quiz.course_id);
+      this.quiz_form.controls['institute_id_fk'].setValue(this.edit_quiz.inst_id);
       this.quiz_form.controls['admin_id_fk'].setValue(this.edit_quiz.admin_id_fk);
+    }
+    else{
+      this.quiz_form.controls['course_id_fk'].setValue(this.edit_quiz);
+      const fromdata  = new FormData()
+      fromdata.append('course_id', this.edit_quiz)
+      fromdata.append('inst_id', this.inst_id)
+      this.service.get_quiz_no_inst_course(fromdata).subscribe(
+        (res:any)=>{
+          // console.log(res.data.length + 1) 
+          this.quiz_form.controls['quiz_no'].setValue(res.data.length + 1);
+  
+        }
+      )
     }
   }
   quiz_btn() {
-    if (!this.edit_quiz) {
+    if (!this.edit_quiz.quiz_id) {
       if (this.quiz_form.valid)
         this.service.post_quiz(this.quiz_form.value).subscribe(
           (res: any) => {
@@ -112,18 +129,18 @@ export class AddEditInstQuizComponent implements OnInit {
     )
   }
 
-  onCourse(event:any){
-    console.log(this.inst_id)
-    console.log(event)
-    const fromdata  = new FormData()
-    fromdata.append('course_id', event)
-    fromdata.append('inst_id', this.inst_id)
-    this.service.get_quiz_no_inst_course(fromdata).subscribe(
-      (res:any)=>{
-        // console.log(res.data.length + 1) 
-        this.quiz_form.controls['quiz_no'].setValue(res.data.length + 1);
+  // onCourse(event:any){
+  //   console.log(this.inst_id)
+  //   console.log(event)
+  //   const fromdata  = new FormData()
+  //   fromdata.append('course_id', event)
+  //   fromdata.append('inst_id', this.inst_id)
+  //   this.service.get_quiz_no_inst_course(fromdata).subscribe(
+  //     (res:any)=>{
+  //       // console.log(res.data.length + 1) 
+  //       this.quiz_form.controls['quiz_no'].setValue(res.data.length + 1);
 
-      }
-    )
-  }
+  //     }
+  //   )
+  // }
 }
