@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
 
 @Component({
@@ -9,25 +10,31 @@ import { ManageService } from 'src/app/manage.service';
 export class InstquizdashboardComponent implements OnInit {
   course_count: any;
   course_name: any;
-
+  login_deatils: any
+  login: any
+  inst_id: any
+  course_quiz: any
   constructor(
-    private service: ManageService
-  ) { }
+    private service: ManageService,
+    private router: Router
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+  }
 
   ngOnInit(): void {
-    this.service.get_dashboad().subscribe(
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id)
+    this.service.get_quiz_course(formdata).subscribe(
       (res: any) => {
-        console.log(res)
-        this.course_count = res.data.course_tbl
-    
+        console.log(res.data)
+        this.course_quiz = res.data
       }
     )
-    this.service.get_quiz().subscribe(
-      (res: any) => {
-        console.log(res)
-        this.course_name = res.data[0].course_id_fk
-      }
-    )
+  }
+  OnQuiz(event: any) {
+    this.router.navigate(['/institutehome/instquiz'], event.course_id)
   }
 
 }

@@ -1,9 +1,9 @@
 <div class="main_area">
-    <a [routerLink]="['../instquiz']">
-        <div id="thumbnail" class="color4">
+    <a  *ngFor="let course of course_quiz" >
+        <div id="thumbnail" class="color4" (click)="OnQuiz(course)">
             <mat-icon>school</mat-icon><br>
-            <span><b>{{course_count}}</b></span><br><br>
-            <span>{{course_name}}</span>
+            <span><b>{{course.total_quiz}}</b></span><br><br>
+            <span>{{course.course_name}}</span>
         </div>
     </a>
 </div>

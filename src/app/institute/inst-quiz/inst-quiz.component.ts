@@ -25,7 +25,7 @@ export class InstQuizComponent implements OnInit {
   login: any;
   inst_id_for_inst_login: any;
   inst_id: any;
-
+  course_data:any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -39,14 +39,19 @@ export class InstQuizComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
     console.log("inst" + this.login.inst_id)
+
+    const navigation = this.router.getCurrentNavigation();
+    this.course_data = navigation?.extras
   }
 
   ngOnInit(): void {
+    alert(this.course_data.course_id)
     const fromdata = new FormData()
     fromdata.append('inst_id', this.login.inst_id)
+    fromdata.append('course_id', this.course_data.course_id)
     this.service.get_quiz_by_inst_id(fromdata).subscribe(
       (res: any) => {
-        console.log(res)
+        // console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

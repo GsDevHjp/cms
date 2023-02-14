@@ -59,6 +59,7 @@ export class AddEditInstQuizComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
 
+    
     if (this.edit_quiz) {
       this.actionBtn = "Update";
       this.quiz_form.controls['quiz_id'].setValue(this.edit_quiz.quiz_id);

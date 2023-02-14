@@ -140,6 +140,9 @@ export class ManageService {
   get_quiz_no_inst_course(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_quiz_no_inst_course.php', data)
   }
+  get_quiz_course(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_quiz_course.php', data)
+  }
 
   
 
