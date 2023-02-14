@@ -8,7 +8,7 @@ import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-add-edit-inst-notes',
   templateUrl: './add-edit-inst-notes.component.html',
-  styleUrls: ['./add-edit-inst-notes.component.css']
+  styleUrls: ['./add-edit-inst-notes.component.css'] 
 })
 export class AddEditInstNotesComponent implements OnInit {
 
