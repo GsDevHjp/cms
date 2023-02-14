@@ -121,13 +121,13 @@ export class StudentProfileComponent implements OnInit {
       this.service.put_student(formdata).subscribe(
         (result: any) => {
           console.log(result)
-          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', sticky: true, position: 'tr' })
+          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..',})
           this.profile_set_data(this.student_id)
           this.matref.close()
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..', sticky: true, position: 'tr' })
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..',})
         }
       )
     }

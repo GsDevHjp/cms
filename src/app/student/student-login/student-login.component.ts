@@ -46,16 +46,16 @@ export class StudentLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.Router.navigate(['/studenthome']);
-            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Login Successfull...',})
           }
           else {
-            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..',})
           }
         }
       )
     }
     else {
-      alert("Account Not Found...")
+      this.popup.error({ detail: 'Unsuccess', summary: 'Account Not Found..',})
     }
 
   }

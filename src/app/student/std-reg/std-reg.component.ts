@@ -88,11 +88,11 @@ export class StdRegComponent implements OnInit {
       (result: any) => {
         console.log(result)
         this.matref.close()
-        this.popup.success({ detail: 'Success', summary: 'Registraion Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Registraion Successfully..'})
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..'})
       }
     )
   }

@@ -63,13 +63,13 @@ export class QueryComponent implements OnInit {
       console.log(row.query_id)
       this.manageservice.delete_query(deletedata).subscribe(
         (res: any) => {
-          this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..', sticky: true, position: 'tr' })
+          this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..'})
         }
       )
 
     }
     else {
-      this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Delete..', sticky: true, position: 'tr' })
+      this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Delete..'})
     }
 
   }

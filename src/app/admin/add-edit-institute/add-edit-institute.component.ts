@@ -99,7 +99,7 @@ export class AddEditInstituteComponent implements OnInit {
         console.log(this.InstForm.value)
         this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
-            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..'})
             console.log(result)
             this.InstForm.reset()
             this.matref.close()
@@ -107,7 +107,7 @@ export class AddEditInstituteComponent implements OnInit {
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Added..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Added..'})
           }
         )
       }
@@ -143,13 +143,13 @@ export class AddEditInstituteComponent implements OnInit {
     this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..'})
         this.InstForm.reset()
         this.matref.close()
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..'})
       }
 
     })
