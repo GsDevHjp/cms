@@ -33,14 +33,14 @@ export class QuizeComponent implements OnInit {
     this.service.get_quiz_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log(res)
-        // this.quizQuestion = res.data[0].quiz_question
-        // this.quiz_option_a = res.data[0].quiz_option_a
-        // this.quiz_option_b = res.data[0].quiz_option_b
-        // this.quiz_option_c = res.data[0].quiz_option_c
-        // this.quiz_option_d = res.data[0].quiz_option_d
-        // this.quiz_description = res.data[0].quiz_description
-        // this.count_admission = res.data.length
-        // this.ques_no = res.data[0].quiz_id
+        this.quizQuestion = res.data[0].quiz_question
+        this.quiz_option_a = res.data[0].quiz_option_a
+        this.quiz_option_b = res.data[0].quiz_option_b
+        this.quiz_option_c = res.data[0].quiz_option_c
+        this.quiz_option_d = res.data[0].quiz_option_d
+        this.quiz_description = res.data[0].quiz_description
+        this.count_admission = res.data.length
+        this.ques_no = res.data[0].quiz_id
 
       }
     )
