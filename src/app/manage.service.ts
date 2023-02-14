@@ -137,6 +137,11 @@ export class ManageService {
   get_quiz_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_quiz_by_inst_id.php', data)
   }
+  get_quiz_no_inst_course(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_quiz_no_inst_course.php', data)
+  }
+
+  
 
   // for notification module
   post_notification(data: any) {

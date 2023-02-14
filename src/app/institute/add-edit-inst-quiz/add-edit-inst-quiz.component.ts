@@ -46,6 +46,7 @@ export class AddEditInstQuizComponent implements OnInit {
 
     this.quiz_form = this.fb.group({
       quiz_id: ['',],
+      quiz_no: ['1'],
       quiz_question: ['', Validators.required],
       quiz_option_a: ['', Validators.required],
       quiz_option_b: ['', Validators.required],
@@ -105,6 +106,23 @@ export class AddEditInstQuizComponent implements OnInit {
         console.log(error)
         this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Update..', sticky: true, position: 'tr' })
       }
-    })
+
+    }
+    )
+  }
+
+  onCourse(event:any){
+    console.log(this.inst_id)
+    console.log(event)
+    const fromdata  = new FormData()
+    fromdata.append('course_id', event)
+    fromdata.append('inst_id', this.inst_id)
+    this.service.get_quiz_no_inst_course(fromdata).subscribe(
+      (res:any)=>{
+        // console.log(res.data.length + 1) 
+        this.quiz_form.controls['quiz_no'].setValue(res.data.length + 1);
+
+      }
+    )
   }
 }
