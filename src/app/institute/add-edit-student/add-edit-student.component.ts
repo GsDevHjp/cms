@@ -48,7 +48,6 @@ export class AddEditStudentComponent implements OnInit {
     this.service.get_student_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log(res.data.length + 1)
-
       }
     )
   }
@@ -74,6 +73,7 @@ export class AddEditStudentComponent implements OnInit {
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
+    this.regist_no_generate()
     this.student_id = this.edit_std.std_id
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.student_id > 0) {
@@ -97,6 +97,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
+      this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['admin_id_fk'].setValue(this.edit_std.admin_id_fk);
     }
     else {
@@ -111,7 +112,6 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
-    this.regist_no_generate()
   }
 
   student_btn() {
