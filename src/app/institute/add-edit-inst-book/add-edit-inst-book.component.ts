@@ -76,7 +76,7 @@ export class AddEditInstBookComponent implements OnInit {
     formdata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
     formdata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
     formdata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
-    formdata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
+    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
     formdata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
     if (!this.edit_inst_book) {
       if (this.inst_book_form.valid) {
@@ -107,7 +107,7 @@ export class AddEditInstBookComponent implements OnInit {
     updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
     updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
     updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
-    updatedata.append('institute_id_fk', this.inst_book_form.get('institute_id_fk')?.value);
+    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
     updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
     this.service.put_inst_book(updatedata).subscribe({
       next: (res: any) => {

@@ -36,21 +36,21 @@ export class InstituteUpdateProfileComponent implements OnInit {
   ngOnInit(): void {
     this.InstForm = this.FromBuilder.group({
       inst_id: [''],
-      inst_name: ['', Validators.required],
-      inst_owner_name: ['', Validators.required],
-      inst_whatsapp_no: ['', Validators.required],
-      inst_email: ['', Validators.required],
-      inst_password: ['', Validators.required],
-      inst_country: [''],
-      inst_state: [''],
-      inst_district: [''],
-      inst_address: [''],
-      account_no: [''],
-      inst_ifsc: [''],
-      account_holder: [''],
+      inst_name: ['',Validators.required],
+      inst_owner_name: ['',Validators.required],
+      inst_whatsapp_no: ['',Validators.required],
+      inst_email: ['',Validators.required],
+      inst_password: ['',Validators.required],
+      inst_country: ['',Validators.required],
+      inst_state: ['',Validators.required],
+      inst_district: ['',Validators.required],
+      inst_address: ['',Validators.required],
+      account_no: ['',Validators.required],
+      inst_ifsc: ['',Validators.required],
+      account_holder: ['',Validators.required],
       inst_logo: [''],
-      inst_doct: [''],
-      inst_doct_number: [''],
+      inst_doct: ['',Validators.required],
+      inst_doct_number: ['',Validators.required],
       inst_doct_img: [''],
       admin_id_fk: ['', Validators.required]
     })
@@ -111,11 +111,11 @@ export class InstituteUpdateProfileComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', sticky: true, position: 'tr' })
+          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..',})
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..', sticky: true, position: 'tr' })
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..',})
         }
       )
     }

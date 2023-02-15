@@ -78,11 +78,11 @@ export class AddEditEnquiryComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...',})
           },
           (error) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Send..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Send..',})
 
           }
         )
@@ -97,11 +97,11 @@ export class AddEditEnquiryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close()
-        this.popup.success({ detail: 'Success', summary: 'Enquiry Update Successfully...', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Enquiry Update Successfully...',})
       },
       error: (error) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Update..',})
       }
     })
   }

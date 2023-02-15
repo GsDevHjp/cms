@@ -144,3 +144,14 @@ input:-webkit-autofill:active {
     transition: background-color 5000000s ease-in-out 0s;
 }
 /* for input auto fill background transparent  */
+
+/* for responsive design in institute login */
+
+@media(min-width:768px)and (max-width:860px) { }
+  
+  @media(min-width:420px)and (max-width:768px) { }
+  @media(max-width:420px) {
+    #main {
+        height: calc(100% - 105px);       
+    }
+  }
