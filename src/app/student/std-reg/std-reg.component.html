@@ -31,7 +31,7 @@
         <input type="text" matInput formControlName="std_address">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill" id="pass_css">
+    <mat-form-field class="example-full-width" appearance="fill" id="password">
         <mat-label>Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="std_password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"

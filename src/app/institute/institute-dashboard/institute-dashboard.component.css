@@ -12,6 +12,8 @@
     margin-top: 20px;
     margin-left: 18px;
     background-color: #393b42;
+    position: relative;
+    top: 60px;
   }
   
   mat-icon {
@@ -44,10 +46,7 @@
     }
   
     #thumbnail {
-      width: 27%;
-      float: left;
-      margin-top: 5%;
-      margin-left: 4.4%;
+      width: calc(33% - 20px);
     }
   
     #thumbnail span {
@@ -64,15 +63,13 @@
     }
   }
   
-  @media(min-width:768px)and (max-width:919px) {
+  @media(min-width:767px)and (max-width:920px) {
     .main_area {
       padding-right: 0px;
     }
   
     #thumbnail {
-      width: 45%;
-      float: left;
-      margin-top: 20px;
+      width: calc(49.2% - 20px);
     }
   
     #thumbnail span {
@@ -96,7 +93,6 @@
   
     #thumbnail {
       width: 90%;
-      float: left;
       margin: 5% 0% 0% 5%;
     }
   

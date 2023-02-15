@@ -2,6 +2,10 @@
     width: 100%;
     height: 100vh;
     background-color: #2C3E50 ;
+    background-image: url('src/assets/main_back.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 #header {
@@ -38,9 +42,6 @@ h1 {
     justify-content: center;
     align-items: center;
     height: calc(100% - 105px);
-    background-image: url('src/assets/main_back.jpeg');
-    background-repeat: no-repeat;
-    background-size: 100%;
 }
 
 .example-card {
@@ -137,3 +138,38 @@ input:-webkit-autofill:active {
     transition: background-color 5000000s ease-in-out 0s;
 }
 /* for input auto fill background transparent  */
+
+/* for responsive design in institute login */
+
+@media(max-width:360px) { 
+    .example-card {
+        max-width: 270px;
+        height: 350px;
+    }
+    mat-card-header{
+        font-size:20px;
+        padding: 10px 0px 0px 30px;
+    }
+    img {
+        width: 70px;
+        margin-left: 90px;
+    }
+    mat-form-field {
+        width: 88%;
+    }
+    .action_login {
+        width: 70px;
+        margin-left: 83px;
+    }
+    .new_account{
+        font-size: 11px;
+    }
+    p{
+        position: relative;
+        bottom: 15px;
+        font-size: 12px;
+    }   
+    span{
+        font-size: 11px;
+    }
+  }
