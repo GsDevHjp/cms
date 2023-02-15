@@ -172,12 +172,12 @@ export class AddEditPaymentRecivedComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Payment Insert Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Payment Insert Successfully..',})
           },
 
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Insert..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Insert..',})
           }
         )
       }
@@ -204,11 +204,11 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Payment Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Payment Update Successfully..',})
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Update..',})
       }
     })
   }

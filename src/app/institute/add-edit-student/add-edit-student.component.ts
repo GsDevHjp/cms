@@ -146,11 +146,11 @@ export class AddEditStudentComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.student_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Student Added Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Student Added Successfully..',})
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Insert..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Insert..',})
           }
         )
       }
@@ -184,11 +184,11 @@ export class AddEditStudentComponent implements OnInit {
         console.log(result)
         this.matref.close();
         this.student_form.reset();
-        this.popup.success({ detail: 'Success', summary: 'Student Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Student Update Successfully..',})
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Update..',})
       }
     )
   }

@@ -49,10 +49,10 @@ export class InstituteLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.router.navigate(['/institutehome']);
-            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Login Successfull...',})
           }
           else {
-            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..',})
           }
         }
       )

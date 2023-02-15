@@ -83,11 +83,11 @@ export class AddEditBatchComponent implements OnInit {
             console.log(res)
             this.matref.close();
             this.router.navigate(['/institutehome/batch']);
-            this.popup.success({ detail: 'Success', summary: 'Batch Insert Successfully...', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Batch Insert Successfully...',})
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Insert...', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Insert...',})
           }
         )
       }
@@ -103,11 +103,11 @@ export class AddEditBatchComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.router.navigate(['/institutehome/batch']);
-        this.popup.success({ detail: 'Success', summary: 'Batch Update Successfully...', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Batch Update Successfully...',})
       },
       error: (error) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Update...', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Update...',})
       }
 
     })
