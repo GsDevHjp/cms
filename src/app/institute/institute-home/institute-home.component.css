@@ -4,7 +4,6 @@
     cursor: default;
 }
 
-/********************* css for home side navbar layout start ******************/
 mat-sidenav {
     width: 250px;
     height: 100%;
@@ -16,11 +15,13 @@ mat-sidenav-content {
     background-color: whitesmoke;
 }
 
-/********************* css for home side navbar layout end ******************/
-/******************************************** css for header start *****************************************/
 mat-toolbar {
+    height: 65px;
     justify-content: space-between;
     background-color: #1d1f23;
+    position: fixed;
+    z-index: 2;
+
 }
 
 mat-icon {
@@ -37,9 +38,10 @@ mat-icon {
 }
 
 .name_text {
-    width: calc(100% - 80px);
+    width: calc(100% - 330px);
     height: 100%;
     display: inline-block;
+    margin-left:10px;
 }
 
 #dash_header_admin span {
@@ -59,6 +61,11 @@ mat-icon {
     border-radius: 50%;
     cursor: pointer;
     background-color: white;
+    position: fixed;
+    right:2%;
+    top:0px;
+
+
 }
 
 #admin_logo img {
@@ -71,11 +78,25 @@ mat-icon {
     padding: 2px;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media(min-width: 768px) and (max-width:991px) {}
+/* for media queary starting here */
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media(min-width: 420px) and (max-width:767px) {}
+@media(min-width: 767px) and (max-width:991px) {
+    .name_text{
+       position: relative;
+       right:40px;
+    }
+}
+
+@media(min-width: 420px) and (max-width:767px) {
+    .name_text {
+        display: none;
+    }
+
+    #admin_logo {
+        width: 40px;
+        height: 40px;
+    }
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 420px) {
@@ -85,14 +106,8 @@ mat-icon {
     }
 
     #admin_logo {
-        margin: 13px 0px;
-        width: 35px;
-        height: 35px;
-    }
-
-    .box {
-        width: 100%;
-        margin: 20px 5px 0px 0px;
+        width: 40px;
+        height: 40px;
     }
 
     mat-sidenav {
