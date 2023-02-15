@@ -1,51 +1,58 @@
 <div class="wrapper">
     <div class="head">
         <span>Angular Quiz</span>
-        <span>03:00</span>
+        <span>{{counter}} Sec</span>
     </div>
 
     <div id="main">
-        <div id="ques_viewport">
-            <p id="ques_viewport_head">Question {{ques_no}} of {{count_admission}}:</p>
-            <span class="ques_text">
-                <p><b>Q.</b>&nbsp;&nbsp;{{quizQuestion}}</p>
+        <form [formGroup]="quizfrom">
+            <div id="ques_viewport">
+                <p id="ques_viewport_head">Question {{currentQuestion +1}} of {{count_ques}}:</p>
+                <span class="ques_text">
+                    <p><b>Q.</b>&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_question}}</p>
 
-                <mat-card>
-                    <mat-card-content>
-                        <span><b>(A)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_a}}</span>
-                    </mat-card-content>
-                </mat-card>
-                <br>
-                <mat-card>
-                    <mat-card-content>
-                        <span><b>(B)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_b}}</span>
-                    </mat-card-content>
-                </mat-card>
-                <br>
-                <mat-card>
-                    <mat-card-content>
-                        <span><b>(C)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_c}}</span>
-                    </mat-card-content>
-                </mat-card>
-                <br>
-                <mat-card>
-                    <mat-card-content>
-                        <span><b>(D)</b>&nbsp;&nbsp;&nbsp;{{quiz_option_d}}</span>
-                    </mat-card-content>
-                </mat-card>
-                <br>
-                <mat-card class="text_info" [hidden]="hidden">
-                    <mat-card-content>
-                        {{quiz_description}}
-                    </mat-card-content>
-                </mat-card>
-                <br>
-            </span>
-        </div>
+                    <!-- <div (click)="option($event)"> -->
+
+                    <mat-card formControlName="quiz_option_a" (click)="option1($event)">
+                        <mat-card-content>
+                            <span><b>(A)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_a}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_b" (click)="option2($event)">
+                        <mat-card-content>
+                            <span><b>(B)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_b}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_c" (click)="option3($event)">
+                        <mat-card-content>
+                            <span><b>(C)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_c}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_d" (click)="option4($event)">
+                        <mat-card-content>
+                            <span><b>(D)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_d}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <!-- </div> -->
+                    <mat-card class="text_info" [hidden]="hidden">
+                        <mat-card-content>
+                            {{quiz_description}}
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                </span>
+            </div>
+        </form>
     </div>
     <div class="footer">
-        <button mat-raised-button color="basic" (click)="previewsQues()">Previews Question</button>
-        <button mat-raised-button color="basic" (click)="nextQues()">Next Question</button>
+        <button mat-raised-button color="basic" [disabled]="currentQuestion==0" (click)="previewsQues()">Previews
+            Question</button>
+        <button mat-raised-button color="basic" [disabled]="currentQuestion==count_ques-1" (click)="nextQues()">Next
+            Question</button>
 
     </div>
 </div>
