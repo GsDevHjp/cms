@@ -6,11 +6,14 @@ import { AdminDuesComponent } from './admin/admin-dues/admin-dues.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminPaymetRecivedComponent } from './admin/admin-paymet-recived/admin-paymet-recived.component';
+import { CountryComponent } from './admin/country/country.component';
+import { DistrictComponent } from './admin/district/district.component';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
 import { InsadmissionComponent } from './admin/insadmission/insadmission.component';
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
 import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InstituteComponent } from './admin/institute/institute.component';
+import { StateComponent } from './admin/state/state.component';
 import { TAndCComponent } from './admin/t-and-c/t-and-c.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -48,7 +51,6 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
-
   {
     path: 'adminhome', component: AdminHomeComponent,
     children: [
@@ -86,7 +88,10 @@ const routes: Routes = [
 
       { path: 'inspayment', component: AdminPaymetRecivedComponent },
       { path: 'insdues', component: AdminDuesComponent },
-      { path: 'terms', component: TAndCComponent }
+      { path: 'terms', component: TAndCComponent },
+      { path: 'country', component: CountryComponent },
+      { path: 'state', component: StateComponent },
+      { path: 'district', component: DistrictComponent }
     ]
   },
 

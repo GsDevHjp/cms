@@ -45,6 +45,31 @@
                 <span>Received</span>
             </button>
 
+            <div>
+                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                    <mat-icon>list_alt</mat-icon>
+                    <span>Address</span>
+                    <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+                </button>
+
+
+                <div id="dropdown_report">
+                    <button mat-button class="menu-button" [routerLink]="['country']">
+                        <mat-icon> business</mat-icon>
+                        <span>Country</span>
+                    </button>
+                    <button mat-button class="menu-button" [routerLink]="['state']">
+                        <mat-icon>ballot</mat-icon>
+                        <span>State</span>
+                    </button>
+                    <button mat-button class="menu-button" [routerLink]="['district']">
+                        <mat-icon>ballot</mat-icon>
+                        <span>District</span>
+                    </button>
+
+                </div>
+
             <button mat-button class="menu-button" [routerLink]="['terms']">
                 <mat-icon>description</mat-icon>
                 <span>Term & Condition</span>
