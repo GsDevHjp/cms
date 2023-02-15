@@ -6,6 +6,7 @@ import { ManageService } from 'src/app/manage.service';
   templateUrl: './quize.component.html',
   styleUrls: ['./quize.component.css']
 })
+
 export class QuizeComponent implements OnInit {
   count_admission: number = 0;
   quizQuestion: any

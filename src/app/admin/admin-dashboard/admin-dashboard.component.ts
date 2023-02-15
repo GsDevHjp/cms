@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.services.get_dashboad().subscribe(
+    this.services.get_dashboad_admin().subscribe(
       (res: any) => {
         console.log(res)
         this.institute_count=res.data.institute_tbl

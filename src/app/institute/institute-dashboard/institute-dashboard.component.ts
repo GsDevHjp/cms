@@ -23,12 +23,20 @@ export class InstituteDashboardComponent implements OnInit {
   notes_count:number=0
   syllabus_count:number=0
   question_count:number=0
+  login_deatils:any
+  login:any
+  inst_id:any
   constructor(
     private services: ManageService
   ) { }
 
   ngOnInit(): void {
-    this.services.get_dashboad().subscribe(
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    const formdata =  new FormData()
+    formdata.append("inst_id", this.inst_id)
+    this.services.get_dashboad(formdata).subscribe(
       (res: any) => {
         console.log(res)
         this.course_count=res.data.course_tbl
