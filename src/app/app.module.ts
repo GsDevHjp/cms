@@ -89,7 +89,10 @@ import { InstituteUpdateProfileComponent } from './institute/institute-update-pr
 import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
 import { NgToastModule } from 'ng-angular-popup';
-import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component'
+import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component';
+import { CountryComponent } from './admin/country/country.component';
+import { StateComponent } from './admin/state/state.component';
+import { DistrictComponent } from './admin/district/district.component'
 
 @NgModule({
   declarations: [
@@ -161,6 +164,9 @@ import { InstquizdashboardComponent } from './institute/instquizdashboard/instqu
     InstituteUpdateProfileComponent,
     QuizDashboardComponent,
     InstquizdashboardComponent,
+    CountryComponent,
+    StateComponent,
+    DistrictComponent,
 
   ],
   imports: [
