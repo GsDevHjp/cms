@@ -22,7 +22,7 @@ mat-toolbar {
 mat-form-field {
     margin-left: 10px;
 }
-#pass_css{
+#password{
     width: 200px;
 }
 textarea {
@@ -35,4 +35,31 @@ textarea {
 
 button {
     margin-left: 10px;
+}
+@media(min-width:420px)and (max-width:768px) {
+    mat-form-field {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #password {
+        width: 100%;
+    }
+    .register {
+        margin-left: 6em;
+    }
+}
+
+@media(max-width:420px) {
+    mat-form-field {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    #password {
+        width: 100%;
+    }
+    .register {
+        margin-left: 3em;
+    }
 }

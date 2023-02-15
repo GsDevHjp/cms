@@ -18,27 +18,60 @@ mat-toolbar {
     position: relative;
     color: whitesmoke;
 }
-#password{
+
+#password {
     width: 200px;
 }
-#address{
-    width:98.5%;
+
+#address {
+    width: 98.5%;
     margin-left: 1.5%;
-  }
-  textarea {
+}
+
+textarea {
     height: 17px;
-  }
+}
 
 mat-form-field {
     margin-left: 10px;
 }
-textarea{
+
+textarea {
     height: 17px;
 }
+
 .register {
     margin-left: 8.2em;
 }
 
 button {
     margin-left: 10px;
+}
+
+@media(min-width:420px)and (max-width:768px) {
+    mat-form-field {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #password {
+        width: 100%;
+    }
+    .register {
+        margin-left: 6em;
+    }
+}
+
+@media(max-width:420px) {
+    mat-form-field {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    #password {
+        width: 100%;
+    }
+    .register {
+        margin-left: 3em;
+    }
 }
