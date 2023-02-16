@@ -25,7 +25,8 @@
                     <mat-icon class="icon_2">lock</mat-icon>
                     <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="admin_password">
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+                            formControlName="admin_password">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -33,13 +34,11 @@
                     </mat-form-field>
                 </mat-card-content>
             </form>
-            <button mat-button class="action_login" mat-raised-button color="primary"
-                (click)="admin_login()" routerLink="/adminhome">Login</button>
+            <button mat-button class="action_login" mat-raised-button color="primary" (click)="admin_login()"
+                routerLink="/adminhome">Login</button>
             <p>Forgot Password</p>
 
         </mat-card>
-
-
     </div>
     <div id="footer">
         <span>Developed By <a href="https://www.greensoft.net.in">Green Soft</a></span>

@@ -21,8 +21,8 @@ export class AddEditInstituteComponent implements OnInit {
     private matref: MatDialogRef<AddEditInstituteComponent>,
     private FromBuilder: FormBuilder,
     private manageservice: ManageService,
-    private router:Router,
-    private popup:NgToastService
+    private router: Router,
+    private popup: NgToastService
   ) { }
 
   ngOnInit(): void {
@@ -33,17 +33,17 @@ export class AddEditInstituteComponent implements OnInit {
       inst_whatsapp_no: ['', Validators.required],
       inst_email: ['', Validators.required],
       inst_password: ['', Validators.required],
-      inst_country: ['',Validators.required],
-      inst_state: ['',Validators.required],
-      inst_district: ['',Validators.required],
-      inst_address: ['',Validators.required],
-      account_no: ['',Validators.required],
-      inst_ifsc: ['',Validators.required],
-      account_holder: ['',Validators.required],
-      inst_logo: ['',Validators.required],
-      inst_doct: ['',Validators.required],
-      inst_doct_number: ['',Validators.required],
-      inst_doct_img: ['',Validators.required],
+      inst_country: ['', Validators.required],
+      inst_state: ['', Validators.required],
+      inst_district: ['', Validators.required],
+      inst_address: ['', Validators.required],
+      account_no: ['', Validators.required],
+      inst_ifsc: ['', Validators.required],
+      account_holder: ['', Validators.required],
+      inst_logo: ['', Validators.required],
+      inst_doct: ['', Validators.required],
+      inst_doct_number: ['', Validators.required],
+      inst_doct_img: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -99,7 +99,7 @@ export class AddEditInstituteComponent implements OnInit {
         console.log(this.InstForm.value)
         this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
-            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..'})
+            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..' })
             console.log(result)
             this.InstForm.reset()
             this.matref.close()
@@ -107,7 +107,7 @@ export class AddEditInstituteComponent implements OnInit {
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Added..'})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Added..' })
           }
         )
       }
@@ -143,13 +143,13 @@ export class AddEditInstituteComponent implements OnInit {
     this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..'})
+        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..' })
         this.InstForm.reset()
         this.matref.close()
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..'})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..' })
       }
 
     })

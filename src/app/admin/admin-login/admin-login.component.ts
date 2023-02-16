@@ -10,11 +10,11 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class AdminLoginComponent implements OnInit {
   hide = true;
-  loginForm !:FormGroup
+  loginForm !: FormGroup
   constructor(
     private service: ManageService,
-    private router:Router,
-    private FromBuilder:FormBuilder
+    private router: Router,
+    private FromBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
