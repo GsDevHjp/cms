@@ -20,7 +20,10 @@ export class StudentLoginComponent implements OnInit {
     private FromBuilder: FormBuilder,
     private service: ManageService,
     private Router: Router
-  ) { }
+  ) {
+    localStorage.removeItem
+    localStorage.clear()
+   }
 
   ngOnInit(): void {
     this.loginForm = this.FromBuilder.group({

@@ -18,7 +18,10 @@ export class AdminLoginComponent implements OnInit {
     private FromBuilder: FormBuilder,
     private popup: NgToastService,
     private router: Router,
-  ) { }
+  ) {
+    localStorage.removeItem
+    localStorage.clear()
+   }
 
   ngOnInit(): void {
     this.loginForm = this.FromBuilder.group({
