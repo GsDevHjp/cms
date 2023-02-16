@@ -25,7 +25,7 @@ const UserData: UserData[] = [
   styleUrls: ['./admin-dues.component.css']
 })
 export class AdminDuesComponent implements OnInit {
-  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email','institute_address','institute_dues','action'];
+  displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_address', 'institute_dues', 'action'];
   dataSource!: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

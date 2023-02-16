@@ -7,8 +7,6 @@ import { AddEditInstituteComponent } from '../add-edit-institute/add-edit-instit
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-ins-course',
   templateUrl: './ins-course.component.html',
@@ -17,7 +15,6 @@ import { Router } from '@angular/router';
 export class InsCourseComponent implements OnInit {
   displayedColumns: string[] = ['institute_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'total_course',];
   dataSource = new MatTableDataSource();
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   course_count: any
@@ -26,8 +23,7 @@ export class InsCourseComponent implements OnInit {
     private dailog: MatDialog,
     private manageservice: ManageService,
     private route: Router
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.manageservice.institute_view().subscribe(
@@ -39,7 +35,6 @@ export class InsCourseComponent implements OnInit {
         this.course_count = instdata.data.length
       }
     )
-
   }
 
   add_Institute() {
@@ -50,7 +45,7 @@ export class InsCourseComponent implements OnInit {
 
   get_course(row: any) {
     console.log(row.inst_id)
-    this.route.navigate(['/adminhome/inscourse/course'],row.inst_id)
+    this.route.navigate(['/adminhome/inscourse/course'], row.inst_id)
   }
 
 

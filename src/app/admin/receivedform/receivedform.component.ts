@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-receivedform',
   templateUrl: './receivedform.component.html',
@@ -14,7 +12,6 @@ export class ReceivedformComponent implements OnInit {
   hide = true;
   constructor(
     private FromBuilder: FormBuilder,
-
   ) { }
 
   ngOnInit(): void {
@@ -30,9 +27,7 @@ export class ReceivedformComponent implements OnInit {
 
   }
 
-
   addInst() {
-
   }
 
   OnUpload(event: any) {

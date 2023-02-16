@@ -1,3 +1,5 @@
+ /* for the admin sidebar css startinging here */
+
 .top_head {
     width: 100%;
     height: 59px;
@@ -46,8 +48,9 @@
 #dropdown_report {
     display: none ;
 }
+ /* for the admin sidebar css ending here */
 
-/* ===========================================media Query================================================== */
+/* for the meadia queary starting here */
 
 @media(max-width:420px) {
 

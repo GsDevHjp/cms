@@ -16,7 +16,8 @@ export class AdminLoginComponent implements OnInit {
     private service: ManageService,
     private Router: Router,
     private FromBuilder: FormBuilder,
-    private popup: NgToastService
+    private popup: NgToastService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {

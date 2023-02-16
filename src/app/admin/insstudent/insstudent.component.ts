@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-insstudent',
   templateUrl: './insstudent.component.html',
@@ -39,7 +38,7 @@ export class InsstudentComponent implements OnInit {
   }
 
   get_student(row: any) {
-    this.router.navigate(['/adminhome/insstudent/student'],row.inst_id)
+    this.router.navigate(['/adminhome/insstudent/student'], row.inst_id)
   }
 
   applyFilter(event: Event) {

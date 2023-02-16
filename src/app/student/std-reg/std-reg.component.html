@@ -1,54 +1,53 @@
-<mat-toolbar>
-    <span class="example-spacer">Student Registration</span>
-    <mat-icon mat-dialog-close>cancel</mat-icon>
-</mat-toolbar>
-<form [formGroup]="std_regist_from">
+<div id="wrapper">
+    <mat-toolbar>
+        <span class="example-spacer">Student Registration</span>
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+    </mat-toolbar>
+    <form [formGroup]="std_regist_from">
 
-    <mat-form-field appearance="fill">
-        <mat-label>Institute</mat-label>
-        <mat-select formControlName="institute_id_fk" (valueChange)="regist_no_generate($event)">
-            <mat-option *ngFor="let inst of inst_data" [value]="inst.inst_id">{{inst.inst_name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Institute</mat-label>
+            <mat-select formControlName="institute_id_fk" (valueChange)="regist_no_generate($event)">
+                <mat-option *ngFor="let inst of inst_data" [value]="inst.inst_id">{{inst.inst_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input type="text" matInput formControlName="std_name">
-    </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="std_name">
+        </mat-form-field><br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>WhatsApp No</mat-label>
-        <input type="number" matInput formControlName="std_whatsapp_no" onkeypress=" return this.value.length < 10">
-    </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>WhatsApp No</mat-label>
+            <input type="number" matInput formControlName="std_whatsapp_no" onkeypress=" return this.value.length < 10">
+        </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <input type="email" matInput formControlName="std_email">
-    </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="std_email">
+        </mat-form-field><br>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Address</mat-label>
-        <input type="text" matInput formControlName="std_address">
-    </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input type="text" matInput formControlName="std_address">
+        </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill" id="password">
-        <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="std_password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill" id="password">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="std_password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
 
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+        <input type="text" readonly formControlName="std_regist_no" hidden>
 
-
-    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-    <input type="text" readonly formControlName="std_regist_no" hidden>
-
-</form>
-
-<div class="register">
-    <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-    <button mat-raised-button color="primary" (click)="std_regist()"
-        [disabled]="!std_regist_from.valid">Register</button>
+    </form>
+    <div class="register">
+        <button mat-raised-button color="warn" (click)="reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="std_regist()"
+            [disabled]="!std_regist_from.valid">Register</button>
+    </div>
 </div>

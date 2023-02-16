@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef} from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
 @Component({
@@ -11,7 +11,7 @@ import { NgToastService } from 'ng-angular-popup';
 export class StudentProfileComponent implements OnInit {
   student_form!: FormGroup;
   admin = 1;
-  hide=true
+  hide = true
   url: any = 'https://greensoft.net.in/gscms/assets/';
   imgurl: any = 'profile.png';
   login_deatils: any
@@ -20,7 +20,7 @@ export class StudentProfileComponent implements OnInit {
   student_profile_data: any
   status: any = 1
   constructor(
-    private popup:NgToastService,
+    private popup: NgToastService,
     private service: ManageService,
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StudentProfileComponent>
@@ -29,12 +29,12 @@ export class StudentProfileComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_id)
     this.student_id = this.login.std_id
-    console.log("std regist"+ this.login.std_regist_no)
-    console.log("inst"+ this.login.institute_id_fk)
-    if(!this.login.std_img){
+    console.log("std regist" + this.login.std_regist_no)
+    console.log("inst" + this.login.institute_id_fk)
+    if (!this.login.std_img) {
       this.imgurl = "profile.png"
     }
-    else{
+    else {
       this.imgurl = this.login.std_img
     }
   }
@@ -66,7 +66,7 @@ export class StudentProfileComponent implements OnInit {
     this.student_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
 
   }
-  profile_set_data(std_id_fun:any) {
+  profile_set_data(std_id_fun: any) {
     const formdata = new FormData()
     formdata.append('std_id', std_id_fun)
     this.service.get_student_by_std_id(formdata).subscribe(
@@ -90,7 +90,6 @@ export class StudentProfileComponent implements OnInit {
         this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
         this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
         this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
-
       })
   }
 
@@ -121,13 +120,13 @@ export class StudentProfileComponent implements OnInit {
       this.service.put_student(formdata).subscribe(
         (result: any) => {
           console.log(result)
-          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..',})
+          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', })
           this.profile_set_data(this.student_id)
           this.matref.close()
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..',})
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..', })
         }
       )
     }

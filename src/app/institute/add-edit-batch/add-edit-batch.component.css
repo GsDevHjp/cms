@@ -1,3 +1,6 @@
+#wrapper{
+  height: 340px;
+}
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
@@ -39,11 +42,17 @@ button {
     width: 100%;
     margin-left: 0px;
   }
+  .submit {
+    margin-left:7em;
+  }
 }
 
 @media(max-width:420px) {
   mat-form-field {
     width: 100%;
     margin-left: 0px;
+  }
+  .submit {
+    margin-left:4.5em;
   }
 }

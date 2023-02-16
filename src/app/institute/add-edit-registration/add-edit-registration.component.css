@@ -49,6 +49,9 @@ button {
 }
 
 @media(min-width:420px)and (max-width:768px) {
+    #wrapper{
+        height: 400px;
+    }
     mat-form-field {
         width: 100%;
         margin-left: 0;
@@ -63,6 +66,9 @@ button {
 }
 
 @media(max-width:420px) {
+    #wrapper{
+        height: 400px;
+    }
     mat-form-field {
         width: 100%;
         margin-left: 0px;

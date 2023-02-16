@@ -1,7 +1,7 @@
 #wrapper {
     width: 100%;
     height: 100vh;
-    background-color: #2C3E50 ;
+    background-color: #2C3E50;
     background-image: url('src/assets/main_back.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -124,7 +124,8 @@ p {
 span {
     margin: 0px 10px;
 }
-a{
+
+a {
     text-decoration: none;
     color: whitesmoke;
 }
@@ -137,39 +138,47 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #fff !important;
     transition: background-color 5000000s ease-in-out 0s;
 }
+
 /* for input auto fill background transparent  */
 
 /* for responsive design in institute login */
 
-@media(max-width:360px) { 
+@media(max-width:360px) {
     .example-card {
         max-width: 270px;
         height: 350px;
     }
-    mat-card-header{
-        font-size:20px;
+
+    mat-card-header {
+        font-size: 20px;
         padding: 10px 0px 0px 30px;
     }
+
     img {
         width: 70px;
         margin-left: 90px;
     }
+
     mat-form-field {
         width: 88%;
     }
+
     .action_login {
         width: 70px;
         margin-left: 83px;
     }
-    .new_account{
+
+    .new_account {
         font-size: 11px;
     }
-    p{
+
+    p {
         position: relative;
         bottom: 15px;
         font-size: 12px;
-    }   
-    span{
+    }
+
+    span {
         font-size: 11px;
     }
-  }
+}
