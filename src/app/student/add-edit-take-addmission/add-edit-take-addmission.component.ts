@@ -34,7 +34,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   addmission_form!: FormGroup;
 
   constructor(
-    private popup:NgToastService,
+    private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
     private matref: MatDialogRef<AddEditTakeAddmissionComponent>
@@ -152,14 +152,14 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
-        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..'})
+        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..' })
         this.addmission_form.reset();
         this.matref.close(0)
 
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..'})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..' })
       }
     )
   }
