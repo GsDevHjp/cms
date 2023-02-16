@@ -3,7 +3,6 @@
     background-color: rgb(244, 246, 247);
 }
 
-
 .add_head {
     display: flex;
     height: 30px;
@@ -54,7 +53,8 @@ mat-form-field mat-icon {
     color: #1d1f23;
 }
 
-#inst_img, #doct_img {
+#inst_img,
+#doct_img {
     width: 100%;
     padding: 10px;
     cursor: pointer;

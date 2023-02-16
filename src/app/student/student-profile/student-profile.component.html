@@ -5,7 +5,6 @@
     </mat-toolbar>
 
     <form [formGroup]="student_form">
-
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput formControlName="std_name">
@@ -108,7 +107,6 @@
         <input type="number" readonly formControlName="institute_id_fk" hidden>
 
     </form>
-
     <div class="submit">
         <button mat-raised-button color="warn" (click)="reset()">Reset</button>
         <button mat-raised-button color="primary" (click)="update_profile()">Update</button>

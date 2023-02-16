@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-insbatch',
   templateUrl: './insbatch.component.html',

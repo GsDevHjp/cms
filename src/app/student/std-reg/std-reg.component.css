@@ -30,13 +30,16 @@ textarea {
 }
 
 .register {
-    margin-left: 8.2em;
+    margin-left:9.6em;
 }
 
 button {
     margin-left: 10px;
 }
 @media(min-width:420px)and (max-width:768px) {
+    #wrapper{
+        height: 350px;
+    }
     mat-form-field {
         width: 100%;
         margin-left: 0;
@@ -51,6 +54,9 @@ button {
 }
 
 @media(max-width:420px) {
+    #wrapper{
+        height: 300px;
+    }
     mat-form-field {
         width: 100%;
         margin-left: 0px;
