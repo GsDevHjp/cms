@@ -1,5 +1,5 @@
-
-<div class="head">
+<div id="manage_table_wrapper">
+  <div class="head">
     <span class="batch_text">Batch Details</span>
     <mat-icon id="add_batch" (click)="add_batch()" [hidden]="action_btn">add_circle</mat-icon>
   </div>
@@ -9,15 +9,16 @@
       <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
     </div>
   </div>
-  
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-  
+
       <ng-container matColumnDef="batch_id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
-        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
-      </ng-container> 
-  
+        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="course_id_fk">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
         <td mat-cell *matCellDef="let row"> {{row.course_name}}</td>
@@ -27,12 +28,12 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_name}}</td>
       </ng-container>
-  
+
       <ng-container matColumnDef="batch_arrival">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrival</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_arrival}}</td>
       </ng-container>
-  
+
       <ng-container matColumnDef="batch_departure">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Departuar</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_departure}}</td>
@@ -47,7 +48,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>BST Date </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_date}}</td>
       </ng-container>
-  
+
       <ng-container matColumnDef="batch_total_std">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Student</th>
         <td mat-cell *matCellDef="let row">{{Ttalstd}} {{row.batch_total_std}}</td>
@@ -57,7 +58,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
         <td mat-cell *matCellDef="let row"> {{row.batch_description}}</td>
       </ng-container>
-   
+
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
         <td mat-cell *matCellDef="let row">
@@ -65,14 +66,15 @@
           <mat-icon (click)="batch_delete(row)" style="cursor: pointer;">delete</mat-icon>
         </td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
-    
+
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="10" style="color:silver;">No record found "{{input.value}}"</td>
       </tr>
     </table>
-  
+
     <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</div>
