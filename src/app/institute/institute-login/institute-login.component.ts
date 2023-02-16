@@ -49,16 +49,17 @@ export class InstituteLoginComponent implements OnInit {
           if (res.success) {
             localStorage.setItem('Token', JSON.stringify(res.uid[0]));
             this.router.navigate(['/institutehome']);
-            this.popup.success({ detail: 'Success', summary: 'Login Successfull...',})
+            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
           }
-          else {
-            this.popup.error({ detail: 'Unsuccess', summary: 'Username and Password Not Match..',})
-          }
+        },
+        (error: any) => {
+          console.log(error)
+          this.popup.error({ detail: 'Failed', summary: 'Username and Password Not Match...' })
         }
       )
     }
     else {
-      alert("Account Not Found...")
+      this.popup.error({ detail: 'Failed', summary: 'Account Not Found...' })
     }
   }
 

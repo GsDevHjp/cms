@@ -19,7 +19,7 @@ export class ManageService {
   }
   //for admin
   admin_login(data: any) {
-    return this.http.post<[]>(this.baseUrl + 'this.admin_login.php', data)
+    return this.http.post<[]>(this.baseUrl + 'admin_login.php', data)
   }
 
   // for course module 

@@ -25,6 +25,7 @@
                     <mat-icon class="icon_2">lock</mat-icon>
                     <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
                             formControlName="admin_password">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -34,6 +35,8 @@
                     </mat-form-field>
                 </mat-card-content>
             </form>
+            <button mat-button class="action_login" mat-raised-button color="primary"
+                (click)="admin_login()">Login</button>
             <button mat-button class="action_login" mat-raised-button color="primary" (click)="admin_login()"
                 routerLink="/adminhome">Login</button>
             <p>Forgot Password</p>
