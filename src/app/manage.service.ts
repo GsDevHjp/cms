@@ -279,4 +279,14 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_fee_by_std_id.php', data);
   }
 
+  // for address 
+  post_country(data: any) {
+    return this.http.post<any>(this.baseUrl + 'country_insert.php', data)
+  }
+  put_country(data: any) {
+    return this.http.post<any>(this.baseUrl + 'country_update.php', data);
+  }
+  get_country() {
+    return this.http.get<[]>(this.baseUrl + 'country_view.php')
+  }
 }

@@ -92,7 +92,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component';
 import { CountryComponent } from './admin/country/country.component';
 import { StateComponent } from './admin/state/state.component';
-import { DistrictComponent } from './admin/district/district.component'
+import { DistrictComponent } from './admin/district/district.component';
+import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-country.component'
 
 @NgModule({
   declarations: [
@@ -167,6 +168,7 @@ import { DistrictComponent } from './admin/district/district.component'
     CountryComponent,
     StateComponent,
     DistrictComponent,
+    AddEditCountryComponent,
 
   ],
   imports: [

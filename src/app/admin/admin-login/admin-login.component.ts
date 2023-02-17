@@ -32,27 +32,27 @@ export class AdminLoginComponent implements OnInit {
 
 
   admin_login() {
-    console.log(this.loginForm)
-    if (this.loginForm.valid) {
-      this.service.admin_login(this.loginForm.value).subscribe(
-        (res: any) => {
-          console.log(res)
-          if (res.success) {
-            localStorage.setItem('Token', JSON.stringify(res.uid[0]));
-            this.Router.navigate(['/adminhome']);
-            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
-          }
-        },
-        (error: any) => {
-          console.log(error)
-          this.popup.error({ detail: 'Failed', summary: 'Username and Password Not Match...' })
-        }
+    // console.log(this.loginForm)
+    // if (this.loginForm.valid) {
+    //   this.service.admin_login(this.loginForm.value).subscribe(
+    //     (res: any) => {
+    //       console.log(res)
+    //       if (res.success) {
+    //         localStorage.setItem('Token', JSON.stringify(res.uid[0]));
+    //         this.Router.navigate(['/adminhome']);
+    //         this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
+    //       }
+    //     },
+    //     (error: any) => {
+    //       console.log(error)
+    //       this.popup.error({ detail: 'Failed', summary: 'Username and Password Not Match...' })
+    //     }
 
-      )
-    }
-    else {
-      this.popup.error({ detail: 'Failed', summary: 'Account Not Found...', })
-    }
+    //   )
+    // }
+    // else {
+    //   this.popup.error({ detail: 'Failed', summary: 'Account Not Found...', })
+    // }
   }
 }
 
