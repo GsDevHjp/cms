@@ -16,6 +16,7 @@ export class AdminLoginComponent implements OnInit {
     private service: ManageService,
     private Router: Router,
     private FromBuilder: FormBuilder,
+    private popup: NgToastService
   ) { 
 
     localStorage.removeItem
