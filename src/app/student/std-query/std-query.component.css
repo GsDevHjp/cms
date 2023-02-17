@@ -62,5 +62,7 @@ button {
 }
 
 .btn_box {
-  margin: 42px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
