@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor(
   ) {
-    // localStorage.removeItem
-    // localStorage.clear()
+    localStorage.removeItem
+    localStorage.clear()
   }
 }

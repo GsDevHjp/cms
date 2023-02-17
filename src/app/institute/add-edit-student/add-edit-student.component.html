@@ -3,7 +3,6 @@
         <span class="example-spacer">{{heading_act}}</span>
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
-
     <form [formGroup]="student_form">
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -92,13 +91,12 @@
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
         </div><br>
 
-
         <mat-form-field appearance="fill" id="address">
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-        <input type="text" readonly  formControlName="std_regist_no" hidden>
+        <input type="text" readonly formControlName="std_regist_no" hidden>
 
     </form>
 

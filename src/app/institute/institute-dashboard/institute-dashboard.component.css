@@ -92,8 +92,7 @@
     }
   
     #thumbnail {
-      width: 90%;
-      margin: 5% 0% 0% 5%;
+      width: calc(49.2% - 20px);
     }
   
     #thumbnail span {

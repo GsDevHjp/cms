@@ -22,7 +22,10 @@ export class InstituteLoginComponent implements OnInit {
     private service: ManageService,
     private router: Router
 
-  ) { }
+  ) {
+    localStorage.removeItem
+    localStorage.clear()
+   }
 
   ngOnInit(): void {
     this.inst_login_form = this.FromBuilder.group({
