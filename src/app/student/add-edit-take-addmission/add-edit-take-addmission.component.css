@@ -1,3 +1,6 @@
+#wrapper{
+  height: 385px;
+}
 .add_head {
   display: flex;
   height: 30px;
@@ -33,67 +36,30 @@
   display: flex;
   justify-content: center;
 }
-
-.add_btn {
-  height: 39px;
-  margin-top: 28px;
-  width: 14%;
-  color: white;
+button {
+  margin-left: 10px;
 }
-
-.reset_btn {
-  margin-right: 14px;
-  margin-top: 28px;
-  height: 39px;
-  width: 14%;
-}
-
 .address {
   width: 432px;
 }
 
-@media (max-width: 520px) {
-  .add_box {
-    width: 98%;
+@media (min-width: 420px) and (max-width: 867px) {
+  .btn_box {
+    padding-bottom: 15px;
   }
-
-  .address {
+  mat-form-field{
     width: 100%;
+    margin: 0px;
   }
 }
 
-@media (min-width: 520px) and (max-width: 720px) {
-  .add_box {
-    width: 48%;
+@media (max-width: 420px) {
+  .btn_box {
+    padding-bottom: 15px;
   }
-
-  .gender[_ngcontent-wra-c190] {
-    width: 102%;
-    margin: 2px 11px 16px -1px;
-
-  }
-
-  .address {
+  mat-form-field{
     width: 100%;
-  }
-
-  .add_box:last-child {
-    width: 98%;
-
-  }
-
-}
-
-@media (min-width: 720px) and (max-width: 1020px) {
-  .add_box {
-    width: 32.3%;
-  }
-
-  .gender {
-    font-size: 14px;
-  }
-
-  .address {
-    width: 400px;
+    margin: 0px;
   }
 }
+
