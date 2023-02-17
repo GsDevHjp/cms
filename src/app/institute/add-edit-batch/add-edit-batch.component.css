@@ -1,6 +1,7 @@
-#wrapper{
+#wrapper {
   height: 340px;
 }
+
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
@@ -30,7 +31,9 @@ mat-form-field {
 }
 
 .submit {
-  margin-left: 9.6em;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button {
@@ -42,8 +45,9 @@ button {
     width: 100%;
     margin-left: 0px;
   }
+
   .submit {
-    margin-left:7em;
+    padding-bottom: 15px;
   }
 }
 
@@ -52,7 +56,8 @@ button {
     width: 100%;
     margin-left: 0px;
   }
+
   .submit {
-    margin-left:4.5em;
+    padding-bottom: 15px;
   }
 }

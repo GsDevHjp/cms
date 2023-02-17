@@ -113,6 +113,7 @@ tr:hover {
 
     table td {
         font-size: 14px;
+        text-align: center;
     }
 
     mat-paginator {
@@ -136,6 +137,7 @@ tr:hover {
 
     td {
         font-size: 11px;
+        text-align: center;
     }
 
     mat-paginator {

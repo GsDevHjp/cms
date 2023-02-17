@@ -1,3 +1,6 @@
+#wrapper{
+    height: 340px;
+}
 .example-spacer {
     flex: 1 1 auto;
     margin-bottom: 20px;
@@ -27,21 +30,17 @@ mat-toolbar {
     width: 98.5%;
     margin-left: 1.5%;
 }
-
 textarea {
     height: 17px;
 }
-
 mat-form-field {
-    margin-left: 10px;
-}
-
-textarea {
-    height: 17px;
+    margin: 0px 5px 0px 5px;
 }
 
 .register {
-    margin-left: 8.2em;
+    justify-content:center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 button {
@@ -49,35 +48,37 @@ button {
 }
 
 @media(min-width:420px)and (max-width:768px) {
-    #wrapper{
-        height: 400px;
-    }
     mat-form-field {
         width: 100%;
-        margin-left: 0;
+        margin: 0px;
     }
 
     #password {
         width: 100%;
     }
     .register {
-        margin-left: 6em;
+        padding-bottom:15px;
+    }
+    #address {
+        width: 100%;
+        margin-left:0px;
     }
 }
 
 @media(max-width:420px) {
-    #wrapper{
-        height: 400px;
-    }
     mat-form-field {
         width: 100%;
-        margin-left: 0px;
+        margin: 0px;
     }
 
     #password {
         width: 100%;
     }
-    .register {
-        margin-left: 3em;
+    #address {
+        width: 100%;
+        margin-left:0px;
     }
+    .register {
+        padding-bottom:15px;
+     }
 }
