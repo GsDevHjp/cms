@@ -17,64 +17,83 @@ mat-toolbar {
   position: relative;
   color: whitesmoke;
 }
-mat-form-field{
+
+mat-form-field {
   margin-left: 10px;
 }
-.user_image{
+
+.user_image {
   width: 200px;
   height: 122px;
-  float:right;
+  float: right;
 }
-.user_image mat-label{
+
+.user_image mat-label {
   margin-left: 10px;
 }
-.user_file{
-  margin-top:15px;
+
+.user_file {
+  margin-top: 15px;
   width: 180px;
   margin-left: 10px;
 }
-.select_file{
+
+.select_file {
   height: 75px;
   padding: 2px 50px 0px 50px;
 
 }
-#password{
+
+#password {
   width: 200px;
 }
-  #address{
-    width:65%;
-    margin-left: 1.5%;
+
+#address {
+  width: 65%;
+  margin-left: 1.5%;
+}
+
+textarea {
+  height: 17px;
+}
+
+.submit {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  margin-left: 5px;
+}
+
+
+@media(min-width:420px)and (max-width:860px) {
+  mat-form-field {
+    width: 100%;
+    margin-left: 0px;
   }
-  textarea {
-    height: 17px;
+
+  #password {
+    width: 100%;
   }
-    
+
   .submit {
-    margin-left: 40%;
+    padding-bottom: 15px;
   }
-  
-  button {
-    margin-left: 5px;
+}
+
+@media(max-width:420px) {
+  mat-form-field {
+    width: 100%;
+    margin-left: 0px;
   }
 
-
-  @media(max-width:860px) {
-    mat-form-field{
-      width: 100%;
-      margin-left:0px;
-    }
-    .user_image{
-      width: 30%;
-      float:right;
-    }
-    .user_file{
-      width: 150px;
-    }
-    #address{
-      width:66%;
-      margin-left: 0px;
-    }
-    textarea {
-      height: 88px;
-    }
+  #password {
+    width: 100%;
   }
+
+  .submit {
+    padding-bottom: 15px;
+  }
+}
