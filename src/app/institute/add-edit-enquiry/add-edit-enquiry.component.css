@@ -1,3 +1,7 @@
+#wrapper {
+  height: 340px;
+}
+
 .example-spacer {
   flex: 1 1 auto;
   margin-bottom: 20px;
@@ -17,42 +21,56 @@ mat-toolbar {
   position: relative;
   color: whitesmoke;
 }
+
 .example-full-width {
-  margin-left: 10px;
+  margin: 0px 5px 0px 5px;
 }
 
-.address {
-  width: 95.2%;
-  margin-left: 2.5%;
+#address {
+  width: 98.5%;
+  margin-left: 1.5%;
 }
-
 textarea {
   height: 17px;
 }
 
 .submit {
-  margin-left: 31.5%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button {
   margin-left: 10px;
 }
 
-
-@media(min-width:920px)and (max-width:1199px) {}
-
-@media(min-width:768px)and (max-width:919px) {}
-
 @media(min-width:420px)and (max-width:768px) {
-  .example-full-width {
+  mat-form-field {
     width: 100%;
-    margin-left: 0px;
+    margin: 0px;
+  }
+
+  #address {
+    width: 100%;
+  }
+
+  .submit {
+    padding-bottom: 15px;
   }
 }
 
 @media(max-width:420px) {
   .example-full-width {
     width: 100%;
+    margin: 0px;
+  }
+
+  #address {
+    width: 100%;
     margin-left: 0px;
+  }
+
+  .submit {
+    padding-bottom: 15px;
   }
 }
