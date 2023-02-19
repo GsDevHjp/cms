@@ -1,3 +1,4 @@
+/* for style css enquiry form */
 #wrapper {
   height: 340px;
 }
@@ -44,6 +45,7 @@ button {
   margin-left: 10px;
 }
 
+/* for meadia queary starting here */
 @media(min-width:420px)and (max-width:768px) {
   mat-form-field {
     width: 100%;
