@@ -101,9 +101,7 @@ export class AddEditCourseComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Course Update Successfully...',})
-        this.router.navigate(['institutehome/course']);
-
-        
+        this.router.navigate(['institutehome/course']); 
       },
       error: () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Update..',})

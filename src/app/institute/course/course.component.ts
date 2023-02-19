@@ -113,6 +113,7 @@ export class CourseComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/course']);
         }
       )
     }

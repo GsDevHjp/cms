@@ -23,7 +23,11 @@ export class AddEditInstituteComponent implements OnInit {
     private manageservice: ManageService,
     private router: Router,
     private popup: NgToastService
-  ) { }
+  ) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.InstForm = this.FromBuilder.group({
@@ -46,8 +50,6 @@ export class AddEditInstituteComponent implements OnInit {
       inst_doct_img: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
-
-
 
     if (this.editinst) {
       console.log(this.editinst.inst_id)
@@ -74,7 +76,6 @@ export class AddEditInstituteComponent implements OnInit {
     }
   }
 
-
   addInst() {
     const formdata = new FormData();
     formdata.append('inst_name', this.InstForm.get('inst_name')?.value)
@@ -99,11 +100,11 @@ export class AddEditInstituteComponent implements OnInit {
         console.log(this.InstForm.value)
         this.manageservice.inst_post(formdata).subscribe(
           (result: any) => {
-            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..' })
             console.log(result)
             this.InstForm.reset()
             this.matref.close()
-            this.router.navigate(['/institute'])
+            this.popup.success({ detail: 'Success', summary: 'Institute Added Successfully..' })
+            this.router.navigate(['/adminhome/institute'])
           },
           (error: any) => {
             console.log(error)
@@ -121,7 +122,6 @@ export class AddEditInstituteComponent implements OnInit {
     // console.log(this.InstForm.value)
     const updatedata = new FormData();
     console.log("inst_name" + this.InstForm.get('inst_name')?.value)
-
     updatedata.append('inst_id', this.InstForm.get('inst_id')?.value)
     updatedata.append('inst_name', this.InstForm.get('inst_name')?.value)
     updatedata.append('inst_owner_name', this.InstForm.get('inst_owner_name')?.value)
@@ -143,18 +143,18 @@ export class AddEditInstituteComponent implements OnInit {
     this.manageservice.put_inst(updatedata).subscribe({
       next: (res) => {
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..' })
         this.InstForm.reset()
         this.matref.close()
+        this.popup.success({ detail: 'Success', summary: 'Institute Update Successfully..' })
+        this.router.navigate(['/adminhome/institute'])
+
       },
       error: (error: any) => {
         console.log(error)
         this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Update..' })
       }
-
     })
   }
-
 
   OnInstUpload(event: any) {
     if (event.target.files) {
@@ -168,7 +168,6 @@ export class AddEditInstituteComponent implements OnInit {
       this.InstForm.get('inst_doct_img')?.setValue(file)
     }
   }
-
 
   reset() {
     this.InstForm.reset()

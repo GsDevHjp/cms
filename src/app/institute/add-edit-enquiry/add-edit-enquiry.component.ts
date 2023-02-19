@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-enquiry',
   templateUrl: './add-edit-enquiry.component.html',
@@ -20,13 +21,19 @@ export class AddEditEnquiryComponent implements OnInit {
   login: any
   inst_id: any
   inst_id_for_inst_login: any
+
   constructor(
     private popup : NgToastService,
     private fb: FormBuilder,
+    private router:Router,
     private service: ManageService,
     private matref: MatDialogRef<AddEditEnquiryComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_enq: any
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -79,11 +86,12 @@ export class AddEditEnquiryComponent implements OnInit {
             console.log(res)
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...',})
+            this.router.navigate(['/institutehome/enquiry']);
+
           },
           (error) => {
             console.log(error)
             this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Send..',})
-
           }
         )
       }
@@ -98,6 +106,7 @@ export class AddEditEnquiryComponent implements OnInit {
         console.log(res)
         this.matref.close()
         this.popup.success({ detail: 'Success', summary: 'Enquiry Update Successfully...',})
+        this.router.navigate(['/institutehome/enquiry']);
       },
       error: (error) => {
         console.log(error)

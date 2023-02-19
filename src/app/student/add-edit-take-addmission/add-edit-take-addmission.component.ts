@@ -3,12 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-take-addmission',
   templateUrl: './add-edit-take-addmission.component.html',
   styleUrls: ['./add-edit-take-addmission.component.css']
 })
-
 
 export class AddEditTakeAddmissionComponent implements OnInit {
   addparty: any;
@@ -37,8 +37,13 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router: Router,
     private matref: MatDialogRef<AddEditTakeAddmissionComponent>
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_name)
@@ -54,8 +59,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.course_data = res.data
       }
     )
-
-
 
     this.addmission_form = this.fb.group({
       std_regist_no: ['', Validators.required],
@@ -98,7 +101,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.get_batch_by_course_id(courseformdata).subscribe(
       (course_res: any) => {
         this.batch_data = course_res.data
-
         this.addmission_form.controls['course_duration'].setValue(this.batch_data[0].course_duration);
         this.addmission_form.controls['course_admission_fee'].setValue(this.batch_data[0].course_admission_fee);
         this.addmission_form.controls['course_total_fee'].setValue(this.batch_data[0].course_total_fee);
@@ -122,14 +124,10 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.addmission_form.controls['batch_date'].setValue(this.batch_data[0].batch_date);
       }
     )
-
   }
 
-
   addstd() {
-
     const formdata = new FormData();
-
     console.log('std_regist_no' + this.addmission_form.get('std_regist_no')?.value)
     console.log('roll_no' + this.addmission_form.get('roll_no')?.value)
     console.log('inst_id_fk' + this.addmission_form.get('inst_id_fk')?.value)
@@ -138,7 +136,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     console.log('batch_id_fk' + this.addmission_form.get('batch_id_fk')?.value)
     console.log('admission_date' + this.addmission_form.get('admission_date')?.value)
     console.log('admin_id_fk' + this.addmission_form.get('admin_id_fk')?.value)
-
 
     formdata.append('std_regist_no', this.addmission_form.get('std_regist_no')?.value)
     formdata.append('roll_no', this.addmission_form.get('roll_no')?.value)
@@ -152,9 +149,10 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
-        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..' })
         this.addmission_form.reset();
         this.matref.close(0)
+        this.popup.success({ detail: 'Success', summary: 'Admission Successfully..' })
+        this.router.navigate(['/studenthome/takeaddmission'])
 
       },
       (error: any) => {
@@ -163,5 +161,4 @@ export class AddEditTakeAddmissionComponent implements OnInit {
       }
     )
   }
-
 }

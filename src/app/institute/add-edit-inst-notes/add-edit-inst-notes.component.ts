@@ -87,6 +87,7 @@ export class AddEditInstNotesComponent implements OnInit {
             this.matref.close();
             this.inst_notes_form.reset();
             this.popup.success({ detail: 'Success', summary: 'Notes Insert Successfully...', sticky: true, position: 'tr' })
+            this.router.navigate(['/institutehome/instnotes'])
           },
           (error: any) => {
             console.log(error)
@@ -114,6 +115,8 @@ export class AddEditInstNotesComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Notes Update Successfully...', sticky: true, position: 'tr' })
+        this.router.navigate(['/institutehome/instnotes'])
+
       },
       error: (error: any) => {
         console.log(error)

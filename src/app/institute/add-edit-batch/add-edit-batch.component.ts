@@ -14,7 +14,7 @@ export class AddEditBatchComponent implements OnInit {
   disableSelect = new FormControl(false);
   batch_form!: FormGroup;
   admin = 1;
-  institute_id: any; 
+  institute_id: any;
   upload: any;
   actionBtn: string = 'Add'
   batch_heading: string = 'Add Batch'
@@ -83,11 +83,11 @@ export class AddEditBatchComponent implements OnInit {
             console.log(res)
             this.matref.close();
             this.router.navigate(['/institutehome/batch']);
-            this.popup.success({ detail: 'Success', summary: 'Batch Insert Successfully...',})
+            this.popup.success({ detail: 'Success', summary: 'Batch Insert Successfully...', })
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Insert...',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Insert...', })
           }
         )
       }
@@ -103,13 +103,12 @@ export class AddEditBatchComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.router.navigate(['/institutehome/batch']);
-        this.popup.success({ detail: 'Success', summary: 'Batch Update Successfully...',})
+        this.popup.success({ detail: 'Success', summary: 'Batch Update Successfully...', })
       },
       error: (error) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Update...',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Update...', })
       }
-
     })
   }
 }
