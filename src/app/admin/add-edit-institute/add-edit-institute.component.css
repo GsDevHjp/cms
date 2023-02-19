@@ -97,14 +97,15 @@ textarea {
     width: 8%;
 }
 
-@media (min-width:520px) and (max-width:968px) {
+@media (min-width:767px) and (max-width:999px) {
     ::ng-deep .mat-dialog-container {
         height: 380px;
         overflow: auto;
     }
 
     .add_box {
-        width: calc(100% - 51.5%);
+        width:100%;
+        margin-left:0px;
     }
 
     .margin_top {
@@ -118,9 +119,13 @@ textarea {
     .reset_btn {
         width: 16%;
     }
+    
+    label{
+    width: 100%;
+}
 }
 
-@media (min-width:420px) and (max-width:520px) {
+@media (min-width:420px) and (max-width:767px) {
     ::ng-deep .mat-dialog-container {
         height: 380px;
         overflow: auto;
@@ -128,6 +133,7 @@ textarea {
 
     .add_box {
         width: 100%;
+        margin-left:0px;
     }
 
     .add_btn {
@@ -148,6 +154,7 @@ textarea {
 
     .add_box {
         width: 100%;
+        margin-left:0px;
     }
 
     .add_btn {
