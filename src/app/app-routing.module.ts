@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { viewport } from '@popperjs/core';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminDuesComponent } from './admin/admin-dues/admin-dues.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -150,7 +149,7 @@ const routes: Routes = [
 ];
 @NgModule({
 
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
