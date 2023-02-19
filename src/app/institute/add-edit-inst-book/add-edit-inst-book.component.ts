@@ -85,8 +85,9 @@ export class AddEditInstBookComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_book_form.reset();
-            alert('form successfully...')
             this.popup.success({ detail: 'Success', summary: 'Book Insert Successfully...', sticky: true, position: 'tr' })
+            this.router.navigate(['/institutehome/instquestionbank'])
+
           },
           (error: any) => {
             console.log(error)

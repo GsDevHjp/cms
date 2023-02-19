@@ -81,20 +81,20 @@ export class BatchComponent implements OnInit {
       )
     }
 
-    else {
-      const instlogin = new FormData()
-      instlogin.append('inst_id', this.inst_id_for_inst_login)
-      this.service.get_batch_by_inst_id(instlogin).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.dataSource.data = res.data
-          this.dataSource.sort = this.sort;
-          this.count_batch = res.data.length
-          this.dataSource.paginator = this.paginator;
-          this.router.navigate(['/institutehome/batch'])
-        }
-      )
-    }
+    // else {
+    //   const instlogin = new FormData()
+    //   instlogin.append('inst_id', this.inst_id_for_inst_login)
+    //   this.service.get_batch_by_inst_id(instlogin).subscribe(
+    //     (res: any) => {
+    //       console.log(res)
+    //       this.dataSource.data = res.data
+    //       this.dataSource.sort = this.sort;
+    //       this.count_batch = res.data.length
+    //       this.dataSource.paginator = this.paginator;
+    //       this.router.navigate(['/institutehome/batch'])
+    //     }
+    //   )
+    // }
   }
 
 
@@ -131,6 +131,7 @@ export class BatchComponent implements OnInit {
       this.service.batch_delete(deletedata).subscribe(
         (res: any) => {
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/batch']);
         }
       )
     }
