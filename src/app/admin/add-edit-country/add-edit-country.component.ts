@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-country',
   templateUrl: './add-edit-country.component.html',
@@ -17,12 +18,14 @@ export class AddEditCountryComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router:Router,
     private matref: MatDialogRef<AddEditCountryComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_country: any
   ) {
-   
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
   }
-
   ngOnInit(): void {
     this.address_from = this.fb.group({
       country_id: [''],
@@ -51,6 +54,7 @@ export class AddEditCountryComponent implements OnInit {
             this.address_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'Country Insert Successfully...',})
+            this.router.navigate(['/adminhome/country'])
           },
           (error: any) => {
             console.log(error)
@@ -70,6 +74,7 @@ export class AddEditCountryComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Country Update Successfully...',})
+        this.router.navigate(['/adminhome/country'])
       },
       error: () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Update..',})

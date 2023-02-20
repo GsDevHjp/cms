@@ -83,6 +83,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
             this.matref.close();
             this.inst_syllabus_form.reset();
             this.popup.success({ detail: 'Success', summary: 'Syllabus Added Successfully..', sticky: true, position: 'tr' })
+            this.router.navigate(['/institutehome/instsyllabus'])
           },
           (error: any) => {
             console.log(error)
@@ -110,6 +111,8 @@ export class AddEditInstSyllabusComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Syllabus Update Successfully..', sticky: true, position: 'tr' })
+        this.router.navigate(['/institutehome/instsyllabus'])
+
       },
       error:(error:any)=>{
         console.log(error)

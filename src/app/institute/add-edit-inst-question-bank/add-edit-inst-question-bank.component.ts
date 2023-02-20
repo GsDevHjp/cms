@@ -83,6 +83,7 @@ export class AddEditInstQuestionBankComponent implements OnInit {
             this.matref.close();
             this.inst_question_bank_form.reset();
             this.popup.success({ detail: 'Success', summary: 'Question Added Successfully..', sticky: true, position: 'tr' })
+            this.router.navigate(['/institutehome/instbook'])
           },
           (error: any) => {
             console.log(error)
@@ -110,6 +111,8 @@ export class AddEditInstQuestionBankComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Question Update Successfully..', sticky: true, position: 'tr' })
+        this.router.navigate(['/institutehome/instbook'])
+
       },
       error: (error: any) => {
         console.log(error)

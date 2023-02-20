@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-inst-quiz',
   templateUrl: './add-edit-inst-quiz.component.html',
@@ -25,6 +26,7 @@ export class AddEditInstQuizComponent implements OnInit {
     private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router:Router,
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
   ) {
@@ -51,7 +53,6 @@ export class AddEditInstQuizComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
 
-    
     this.quiz_form.controls['institute_id_fk'].setValue(this.inst_id_for_inst_login);
 
     if (this.edit_quiz.quiz_id) {
@@ -78,7 +79,6 @@ export class AddEditInstQuizComponent implements OnInit {
         (res:any)=>{
           // console.log(res.data.length + 1) 
           this.quiz_form.controls['quiz_no'].setValue(res.data.length + 1);
-  
         }
       )
     }
@@ -110,6 +110,7 @@ export class AddEditInstQuizComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Quiz Update Successfully..', sticky: true, position: 'tr' })
+        this.router.navigate(['institutehome/instquizdashboard'])
       },
       error: (error: any) => {
         console.log(error)

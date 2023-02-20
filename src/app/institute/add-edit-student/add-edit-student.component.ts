@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-student',
   templateUrl: './add-edit-student.component.html',
@@ -32,9 +33,14 @@ export class AddEditStudentComponent implements OnInit {
     private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router :Router,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -147,6 +153,7 @@ export class AddEditStudentComponent implements OnInit {
             this.matref.close();
             this.student_form.reset();
             this.popup.success({ detail: 'Success', summary: 'Student Added Successfully..',})
+            this.router.navigate(['/institutehome/student'])
           },
           (error: any) => {
             console.log(error)
@@ -185,6 +192,8 @@ export class AddEditStudentComponent implements OnInit {
         this.matref.close();
         this.student_form.reset();
         this.popup.success({ detail: 'Success', summary: 'Student Update Successfully..',})
+        this.router.navigate(['/institutehome/student'])
+
       },
       (error: any) => {
         console.log(error)
@@ -192,7 +201,6 @@ export class AddEditStudentComponent implements OnInit {
       }
     )
   }
-
 
   regist_no_generate() {
     if (!this.edit_std) {
@@ -205,7 +213,6 @@ export class AddEditStudentComponent implements OnInit {
           if (res.success == 1) {
             this.std = res.data.length + 1
             this.student_form.controls['std_regist_no'].setValue(this.login.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
-
           }
         }
       )
@@ -239,7 +246,6 @@ export class AddEditStudentComponent implements OnInit {
       };
     }
   }
-
 
   reset() {
     this.student_form.reset()

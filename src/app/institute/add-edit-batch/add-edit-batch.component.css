@@ -1,3 +1,4 @@
+/* for style css add edit batch form */
 #wrapper {
   height: 340px;
 }
@@ -40,6 +41,7 @@ button {
   margin-left: 10px;
 }
 
+/* for media queary */
 @media(min-width:420px)and (max-width:768px) {
   mat-form-field {
     width: 100%;

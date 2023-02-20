@@ -66,7 +66,6 @@ export class CourseComponent implements OnInit {
       this.get_course_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
       this.displayedColumns = ['course_id', 'course_name', 'course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee', 'course_monthly_fee', 'course_admission_fee', 'course_description', 'course_date'];
-
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_course_by_inst_id(instformdata).subscribe(
@@ -78,20 +77,6 @@ export class CourseComponent implements OnInit {
           this.count_course = result.data.length
           this.router.navigate(['/institutehome/course']);
           return
-        }
-      )
-    }
-    else {
-      const instlogin = new FormData()
-      instlogin.append('inst_id', this.inst_id_for_inst_login)
-      this.service.get_course_by_inst_id(instlogin).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.dataSource.data = res.data
-          this.dataSource.sort = this.sort;
-          this.count_course = res.data.length
-          this.dataSource.paginator = this.paginator;
-          this.router.navigate(['/institutehome/course']);
         }
       )
     }
@@ -128,6 +113,7 @@ export class CourseComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/course']);
         }
       )
     }

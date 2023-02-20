@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-payment-recived',
   templateUrl: './add-edit-payment-recived.component.html',
@@ -35,6 +36,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     private popup:NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router:Router,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
     @Inject(MAT_DIALOG_DATA) public editfee: any,
 
@@ -173,6 +175,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
             console.log(res)
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'Payment Insert Successfully..',})
+            this.router.navigate(['/institutehome/fee'])
           },
 
           (error: any) => {
@@ -205,6 +208,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Payment Update Successfully..',})
+        this.router.navigate(['/institutehome/fee'])
       },
       error: (error: any) => {
         console.log(error)
