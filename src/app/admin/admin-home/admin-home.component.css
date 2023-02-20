@@ -8,7 +8,47 @@ mat-sidenav-content {
     height: 100vh;
     background-color: whitesmoke;
 }
+#dash_header_admin {
+    width: calc(100% - 500px);
+    height: 100%;
+}
 
+.name_text {
+    width: calc(100% - 330px);
+    height: 100%;
+    display: inline-block;
+    margin-left:10px;
+}
+
+#dash_header_admin span {
+    line-height: 65px;
+    font-size: 14px;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    margin-left: 40px;
+    float: right;
+}
+
+#admin_logo {
+    width: 45px;
+    height: 45px;
+    float: right;
+    margin: 10px 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    position: fixed;
+    right:2%;
+    top:0px;
+
+
+}
+
+#admin_logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
 .main {
     padding: 61px 2px 2px 2px;
 }
