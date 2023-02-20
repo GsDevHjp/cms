@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-std-query',
   templateUrl: './std-query.component.html',
@@ -21,7 +22,8 @@ export class StdQueryComponent implements OnInit {
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StdQueryComponent>,
     private manageservice: ManageService,
-    private popup:NgToastService
+    private popup:NgToastService,
+    private router:Router,
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -63,12 +65,12 @@ export class StdQueryComponent implements OnInit {
           console.log(result)
           this.matref.close()
           this.popup.success({ detail: 'Success', summary: 'Message Send Successfully..'})
+          this.router.navigate(['/studenthome/query'])
         },
         (error: any) => {
           console.log(error)
           this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Send..'})
         }
-
       )
     }
     else {
@@ -83,12 +85,12 @@ export class StdQueryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: 'Message Update Successfully..'})
+        this.router.navigate(['/studenthome/query'])
       },
       error: (error: any) => {
         console.log(error)
         this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Update..'})
       }
-
     })
   }
 
