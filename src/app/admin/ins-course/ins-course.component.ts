@@ -18,7 +18,6 @@ export class InsCourseComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   course_count: any
-  total_course_count: any;
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
@@ -26,7 +25,8 @@ export class InsCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.manageservice.institute_view().subscribe(
+
+    this.manageservice.course_for_admin().subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);
@@ -47,9 +47,6 @@ export class InsCourseComponent implements OnInit {
     console.log(row.inst_id)
     this.route.navigate(['/adminhome/inscourse/course'], row.inst_id)
   }
-
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
