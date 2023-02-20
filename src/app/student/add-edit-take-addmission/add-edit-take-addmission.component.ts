@@ -90,8 +90,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
     this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
     this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
-    this.addmission_form.controls['roll_no'].setValue(this.login.std_id);
-
+    this.addmission_form.controls['roll_no'].setValue(this.login.std_id)
   }
 
   get_course(event: any) {
@@ -153,7 +152,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.matref.close(0)
         this.popup.success({ detail: 'Success', summary: 'Admission Successfully..' })
         this.router.navigate(['/studenthome/takeaddmission'])
-
       },
       (error: any) => {
         console.log(error)

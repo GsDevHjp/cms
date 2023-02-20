@@ -8,7 +8,6 @@ import { StdQueryComponent } from '../std-query/std-query.component';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
 
-
 @Component({
   selector: 'app-query',
   templateUrl: './query.component.html',
@@ -64,16 +63,14 @@ export class QueryComponent implements OnInit {
       this.manageservice.delete_query(deletedata).subscribe(
         (res: any) => {
           this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..'})
+          this.router.navigate(['/studenthome/query'])
         }
       )
-
     }
     else {
       this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Delete..'})
     }
-
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
