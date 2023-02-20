@@ -36,7 +36,7 @@ export class AddEditCountryComponent implements OnInit {
       this.country = "Update Country"
       this.address_from.controls['country_id'].setValue(this.edit_country.country_id);
       this.address_from.controls['country_name'].setValue(this.edit_country.country_name);
-      this.address_from.controls['discription'].setValue(this.edit_country.discription);
+      this.address_from.controls['description'].setValue(this.edit_country.description);
       this.address_from.controls['admin_id_fk'].setValue(this.edit_country.admin_id_fk);
     }
   }
@@ -50,11 +50,11 @@ export class AddEditCountryComponent implements OnInit {
             console.log(result)
             this.address_from.reset();
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Course Insert Successfully...',})
+            this.popup.success({ detail: 'Success', summary: 'Country Insert Successfully...',})
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Insert..',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Insert..',})
           }
         )
       }
@@ -69,10 +69,10 @@ export class AddEditCountryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Course Update Successfully...',})
+        this.popup.success({ detail: 'Success', summary: 'Country Update Successfully...',})
       },
       error: () => {
-        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Update..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Update..',})
       }
     })
   }

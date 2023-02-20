@@ -93,7 +93,9 @@ import { InstquizdashboardComponent } from './institute/instquizdashboard/instqu
 import { CountryComponent } from './admin/country/country.component';
 import { StateComponent } from './admin/state/state.component';
 import { DistrictComponent } from './admin/district/district.component';
-import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-country.component'
+import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-country.component';
+import { AddEditDistrictComponent } from './admin/add-edit-district/add-edit-district.component';
+import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.component'
 
 @NgModule({
   declarations: [
@@ -169,6 +171,8 @@ import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-count
     StateComponent,
     DistrictComponent,
     AddEditCountryComponent,
+    AddEditDistrictComponent,
+    AddEditStateComponent,
 
   ],
   imports: [

@@ -11,8 +11,8 @@ export class ManageService {
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
 
   // dashboard 
-  get_dashboad(data:any) {
-    return this.http.post<any>(this.baseUrl + 'dashboard_view.php',data);
+  get_dashboad(data: any) {
+    return this.http.post<any>(this.baseUrl + 'dashboard_view.php', data);
   }
   get_dashboad_admin() {
     return this.http.get<[]>(this.baseUrl + 'get_dashboad_admin.php');
@@ -147,7 +147,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_quiz_course.php', data)
   }
 
-  
+
 
   // for notification module
   post_notification(data: any) {
@@ -284,9 +284,38 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'country_insert.php', data)
   }
   put_country(data: any) {
-    return this.http.post<any>(this.baseUrl + 'country_update.php', data);
+    return this.http.put<any>(this.baseUrl + 'country_update.php', data);
   }
   get_country() {
     return this.http.get<[]>(this.baseUrl + 'country_view.php')
+  }
+  delete_country(data: any) {
+    return this.http.post<any>(this.baseUrl + 'country_delete.php', data);
+  }
+
+  post_state(data: any) {
+    return this.http.post<any>(this.baseUrl + 'state_insert.php', data)
+  }
+  put_state(data: any) {
+    return this.http.put<any>(this.baseUrl + 'state_update.php', data);
+  }
+  get_state() {
+    return this.http.get<[]>(this.baseUrl + 'state_view.php')
+  }
+  delete_state(data: any) {
+    return this.http.post<any>(this.baseUrl + 'state_delete.php', data);
+  }
+
+  post_district(data: any) {
+    return this.http.post<any>(this.baseUrl + 'district_insert.php', data)
+  }
+  put_district(data: any) {
+    return this.http.put<any>(this.baseUrl + 'district_update.php', data);
+  }
+  get_district() {
+    return this.http.get<[]>(this.baseUrl + 'district_view.php')
+  }
+  delete_district(data: any) {
+    return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
   }
 }

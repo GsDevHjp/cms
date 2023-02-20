@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-import { Router } from '@angular/router';
 import { AddEditCountryComponent } from '../add-edit-country/add-edit-country.component';
 @Component({
   selector: 'app-country',
@@ -12,16 +11,14 @@ import { AddEditCountryComponent } from '../add-edit-country/add-edit-country.co
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  displayedColumns: string[] = ['address_id', 'country', 'description'];
+  displayedColumns: string[] = ['country_id', 'country', 'description','action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  course_count: any
-  total_course_count: any;
+  country_count: any
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
-    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +28,7 @@ export class CountryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(instdata.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.course_count = instdata.data.length
+        this.country_count = instdata.data.length
       }
     )
   }
@@ -43,6 +40,28 @@ export class CountryComponent implements OnInit {
   }
 
 
+  edit_country(row: any) {
+    this.dailog.open(AddEditCountryComponent, {
+      data: row
+    });
+  }
+
+  delete_country(row: any) {
+    if (confirm("Are You Sure To Delete")) {
+      const deletedata = new FormData();
+      deletedata.append('country_id', row.country_id);
+      this.manageservice.delete_country(deletedata).subscribe(
+        (res: any) => {
+          alert('data delete successfully')
+        }
+      )
+
+    }
+    else {
+      alert('data not delete')
+    }
+
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
