@@ -26,6 +26,9 @@ export class ManageService {
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
   }
+  course_for_admin() {
+    return this.http.get<[]>(this.baseUrl + 'get_course_for_admin.php');
+  }
   post_course(data: any) {
     return this.http.post<any>(this.baseUrl + 'course_insert.php', data);
   }
@@ -42,6 +45,9 @@ export class ManageService {
   // for batch module 
   get_batch() {
     return this.http.get<[]>(this.baseUrl + 'batch_view.php');
+  }
+  batch_for_admin() {
+    return this.http.get<[]>(this.baseUrl + 'get_batch_for_admin.php');
   }
   post_batch(data: any) {
     return this.http.post<any>(this.baseUrl + 'batch_insert.php', data);
@@ -111,6 +117,7 @@ export class ManageService {
   get_course_by_course_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
   }
+
 
   // for enquiry module 
 
