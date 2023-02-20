@@ -30,7 +30,7 @@ export class AddEditCountryComponent implements OnInit {
     this.address_from = this.fb.group({
       country_id: [''],
       country_name: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       admin_id_fk: ['', Validators.required],
     })
 

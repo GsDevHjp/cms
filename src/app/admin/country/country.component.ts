@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditCountryComponent } from '../add-edit-country/add-edit-country.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -18,6 +19,7 @@ export class CountryComponent implements OnInit {
   country_count: any
   constructor(
     private dailog: MatDialog,
+    private router: Router,
     private manageservice: ManageService,
   ) { }
 
@@ -52,6 +54,7 @@ export class CountryComponent implements OnInit {
       deletedata.append('country_id', row.country_id);
       this.manageservice.delete_country(deletedata).subscribe(
         (res: any) => {
+          this.router.navigate(['/adminhome/country'])
           alert('data delete successfully')
         }
       )

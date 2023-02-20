@@ -9,7 +9,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./add-edit-state.component.css']
 })
 export class AddEditStateComponent implements OnInit {
-  address_from!: FormGroup;
+  state_from!: FormGroup;
   admin = 1;
   state: string = 'Add State'
   actionBtn: string = 'Add'
@@ -23,38 +23,36 @@ export class AddEditStateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.address_from = this.fb.group({
-      state_id: [''],
-      state_name: ['', Validators.required],
-      description: [''],
-      country_id_fk: ['', Validators.required],
-      admin_id_fk: ['', Validators.required],
-    })
-
     this.service.get_country().subscribe(
       (res: any) => {
         this.country_data = res.data
       }
     )
 
+    this.state_from = this.fb.group({
+      state_id: [''],
+      state_name: ['', Validators.required],
+      country_id_fk: ['', Validators.required],
+      admin_id_fk: ['', Validators.required],
+    })
+
     if (this.edit_state) {
       this.actionBtn = "Update";
       this.state = "Update State"
-      this.address_from.controls['state_id'].setValue(this.edit_state.state_id);
-      this.address_from.controls['state_name'].setValue(this.edit_state.state_name);
-      this.address_from.controls['description'].setValue(this.edit_state.description);
-      this.address_from.controls['country_id_fk'].setValue(this.edit_state.country_id_fk);
-      this.address_from.controls['admin_id_fk'].setValue(this.edit_state.admin_id_fk);
+      this.state_from.controls['state_id'].setValue(this.edit_state.state_id);
+      this.state_from.controls['state_name'].setValue(this.edit_state.state_name);
+      this.state_from.controls['country_id_fk'].setValue(this.edit_state.country_id_fk);
+      this.state_from.controls['admin_id_fk'].setValue(this.edit_state.admin_id_fk);
     }
   }
   onAdd() {
-    console.log(this.address_from.value)
+    console.log(this.state_from.value)
     if (!this.edit_state) {
-      if (this.address_from.valid) {
-        this.service.post_state(this.address_from.value).subscribe(
+      if (this.state_from.valid) {
+        this.service.post_state(this.state_from.value).subscribe(
           (result: any) => {
             console.log(result)
-            this.address_from.reset();
+            this.state_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'State Insert Successfully...', })
           },
@@ -71,7 +69,7 @@ export class AddEditStateComponent implements OnInit {
   }
 
   updateCourse() {
-    this.service.put_state(this.address_from.value).subscribe({
+    this.service.put_state(this.state_from.value).subscribe({
       next: (res) => {
         console.log(res)
         this.matref.close();
