@@ -1,0 +1,30 @@
+<div id="wrapper">
+    <mat-toolbar>
+        <span class="example-spacer">{{state}}</span>
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+    </mat-toolbar>
+
+    <form [formGroup]="state_from">
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country_id_fk">
+                <mat-option *ngFor="let Country of country_data"
+                    [value]="Country.country_id">{{Country.country_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state_name">
+        </mat-form-field>
+
+
+        <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number" formControlName="state_id" hidden>
+
+    </form>
+    <div class="submit">
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="primary" (click)="onAdd()" [disabled]="!state_from.valid">{{actionBtn}}</button>
+    </div>
+</div>

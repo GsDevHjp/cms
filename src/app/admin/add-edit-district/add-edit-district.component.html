@@ -1,0 +1,45 @@
+<div id="wrapper">
+    <mat-toolbar>
+        <span class="example-spacer">{{district}}</span>
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+    </mat-toolbar>
+
+    <form [formGroup]="address_from">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country_id_fk">
+                <mat-option *ngFor="let Country of country_data"
+                    [value]="Country.country_id">{{Country.country_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Select an option</mat-label>
+            <mat-select disableRipple formControlName="state_id_fk">
+              <mat-option value="1">Bihar</mat-option>
+              <mat-option value="2">UP</mat-option>
+              <mat-option value="3">Jharkhand</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>District</mat-label>
+            <input matInput formControlName="district_name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" id="total">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="description">
+        </mat-form-field>
+
+        <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number"  formControlName="country_id" hidden>
+
+    </form>
+    <div class="submit">
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="primary" (click)="onAdd()"
+            >{{actionBtn}}</button>
+    </div>
+</div>
