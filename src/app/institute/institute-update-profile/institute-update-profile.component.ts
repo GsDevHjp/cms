@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-institute-update-profile',
   templateUrl: './institute-update-profile.component.html',
@@ -24,7 +25,8 @@ export class InstituteUpdateProfileComponent implements OnInit {
     private matref: MatDialogRef<InstituteUpdateProfileComponent>,
     private FromBuilder: FormBuilder,
     private service: ManageService,
-    private popup:NgToastService
+    private popup:NgToastService,
+    private router:Router,
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -112,6 +114,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
           console.log(result)
           this.matref.close();
           this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..',})
+          this.router.navigate(['/institutehome/institute-update-profile'])
         },
         (error: any) => {
           console.log(error)

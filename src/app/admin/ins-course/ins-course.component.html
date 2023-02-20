@@ -39,7 +39,7 @@
     <ng-container matColumnDef="total_course">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Course</th>
       <td mat-cell *matCellDef="let row" style="cursor: pointer;">
-        <span (click)="get_course(row)">20</span>
+        <span (click)="get_course(row)">{{row.total_course}}</span>
       </td>
     </ng-container>
 

@@ -25,7 +25,7 @@ export class InsbatchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.manageservice.institute_view().subscribe(
+    this.manageservice.batch_for_admin().subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);
@@ -35,6 +35,7 @@ export class InsbatchComponent implements OnInit {
       }
     )
   }
+  
 
   get_batch(row: any) {
     console.log(row.inst_id)
