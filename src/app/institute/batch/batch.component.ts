@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./batch.component.css']
 })
 export class BatchComponent implements OnInit {
-  displayedColumns: string[] = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description', 'action'];
+  displayedColumns: string[] = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_date', 'batch_total_std', 'batch_status', 'batch_description', 'action'];
   dataSource = new MatTableDataSource();
   count_batch: number = 0;
   inst_id: any
@@ -64,7 +64,7 @@ export class BatchComponent implements OnInit {
     if (this.inst_id_for_std) {
       this.get_batch_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
-      this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_description'];
+      this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure',  'batch_date', 'batch_description', 'batch_status'];
 
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)

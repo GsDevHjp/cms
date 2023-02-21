@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admission',
   templateUrl: './admission.component.html',
-  styleUrls: ['./admission.component.css'] 
+  styleUrls: ['./admission.component.css']
 })
 
 export class AdmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'roll_no', 'std_name',  'std_whatsapp_no', 'course_id_fk', 'batch_name', 'admission_date', 'admission_status', 'action'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_id_fk', 'batch_name', 'admission_date', 'std_whatsapp_no', 'admission_status', 'action'];
   dataSource = new MatTableDataSource();
   count_admission: number = 0;
   color: ThemePalette = 'primary'
@@ -27,9 +27,9 @@ export class AdmissionComponent implements OnInit {
   inst_id: any
   inst_id_for_inst_login: any
   constructor(
-    private dailog:MatDialog,
-    private service:ManageService,
-    private router:Router
+    private dailog: MatDialog,
+    private service: ManageService,
+    private router: Router
   ) {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras

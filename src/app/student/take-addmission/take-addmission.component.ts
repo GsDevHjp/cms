@@ -8,6 +8,7 @@ import { AddEditTakeAddmissionComponent } from '../add-edit-take-addmission/add-
 
 import { ThemePalette } from '@angular/material/core';
 import { ManageService } from 'src/app/manage.service';
+import { StudentProfileComponent } from '../student-profile/student-profile.component';
 
 
 
@@ -17,7 +18,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./take-addmission.component.css']
 })
 export class TakeAddmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'roll_no', 'std_name',  'course_name', 'batch_name', 'std_whatsapp_no', 'admission_date', 'batch_status'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_name', 'batch_name', 'std_whatsapp_no', 'admission_date', 'batch_status'];
   dataSource = new MatTableDataSource();
   count_admission: number = 0;
   color: ThemePalette = 'primary'
@@ -40,7 +41,7 @@ export class TakeAddmissionComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.std_id_for_std_login = this.login.std_id
-    console.log("std" + this.std_id_for_std_login)
+    console.log("std" + this.login.status)
   }
 
   ngOnInit(): void {
@@ -54,12 +55,20 @@ export class TakeAddmissionComponent implements OnInit {
         this.count_admission = res.data.length
       }
     )
-   
+
   }
   take_addmission() {
-    this.dailog.open(AddEditTakeAddmissionComponent, {
-      disableClose: true
-    });
+    if (this.login.status == 0) {
+      this.dailog.open(StudentProfileComponent, {
+        disableClose: true
+      });
+    }
+    else {
+      this.dailog.open(AddEditTakeAddmissionComponent, {
+        disableClose: true
+      });
+    }
+
   }
 
 

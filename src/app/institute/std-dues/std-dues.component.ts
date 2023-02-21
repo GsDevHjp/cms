@@ -10,17 +10,17 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./std-dues.component.css']
 })
 export class StdDuesComponent implements OnInit {
-  displayedColumns: string[] = ['enq_id', 'image', 'std_name', 'mobile', 'course', 'batch', 'current_dues', 'action'];
+  displayedColumns: string[] = ['enq_id', 'std_name', 'course', 'batch', 'current_dues', 'mobile', 'image', 'action'];
   dataSource = new MatTableDataSource();
-  count_dues: number=0;
+  count_dues: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl:string = 'http://localhost/cms/src/assets/';
+  imgUrl: string = 'http://localhost/cms/src/assets/';
 
   constructor(
     private dailog: MatDialog,
- ) { }
+  ) { }
 
   ngOnInit(): void {
 

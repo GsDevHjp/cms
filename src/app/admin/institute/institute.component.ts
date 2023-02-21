@@ -14,7 +14,7 @@ import { ManageService } from 'src/app/manage.service';
 
 export class InstituteComponent implements OnInit {
   imageUrl: string = 'https://greensoft.net.in/gscms/assets/'
-  displayedColumns: string[] = ['inst_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity', 'institute_logo', 'action'];
+  displayedColumns: string[] = ['inst_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity','document_no', 'institute_logo', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
