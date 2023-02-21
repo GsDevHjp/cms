@@ -12,6 +12,10 @@ export class AdminHomeComponent implements OnInit {
   opened:boolean= true
   @ViewChild(MatSidenav)
   sidenav!:MatSidenav;
+  url: string = 'https://greensoft.net.in/gscms/assets/';
+  img_url: string = '';
+  login_deatils: any
+  login: any
   constructor(
     private observe:BreakpointObserver
   ) { }
@@ -27,6 +31,16 @@ export class AdminHomeComponent implements OnInit {
         this.sidenav.close();
       }
     })
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.name = this.login.admin_name
+    if(!this.login.admin_img){
+      this.img_url = "profile.png"
+    }
+    else{
+      this.img_url = this.login.admin_img
+    }
   }
 
 }

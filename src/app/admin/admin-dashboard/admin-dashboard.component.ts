@@ -20,16 +20,32 @@ export class AdminDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.services.get_dashboad_admin().subscribe(
+
+    this.services.institute_view().subscribe(
       (res: any) => {
-        console.log(res)
-        this.institute_count = res.data.institute_tbl
-        this.course_count = res.data.course_tbl
-        this.batch_count = res.data.batch_tbl
-        this.student_count = res.data.student_tbl
-        this.admission_count = res.data.admission_tbl
-        this.dues_count = res.data.dues_tbl
-        this.received_count = res.data.fee_tbl
-      })
+        this.institute_count = res.data.length
+      }
+    )
+    this.services.get_course().subscribe(
+      (res: any) => {
+        this.course_count = res.data.length
+      }
+    )
+    this.services.get_batch().subscribe(
+      (res: any) => {
+        this.batch_count = res.data.length
+      }
+    )
+    this.services.get_student().subscribe(
+      (res: any) => {
+        this.student_count = res.data.length
+      }
+    )
+    this.services.get_admission().subscribe(
+      (res: any) => {
+        this.admission_count = res.data.length
+      }
+    )
+
   }
 }

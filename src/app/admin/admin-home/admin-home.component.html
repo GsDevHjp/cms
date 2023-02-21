@@ -7,11 +7,13 @@
             <div class="toolbar">
                 <mat-toolbar>
                     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-                    <div class="user">
-                        <span class="login">Login As: Saddam Husain{{name}}</span>
-                        <mat-icon class="user-icon">account_circle</mat-icon>
-                        <mat-menu #menu="matMenu" class="myMenu">
-                        </mat-menu>
+                    <div id="dash_header_admin">
+                        <div class="name_text">
+                            <span>Login as :&nbsp;&nbsp;{{name}}</span>
+                        </div>
+                        <div id="admin_logo">
+                            <img src={{url}}{{img_url}}>
+                        </div>
                     </div>
                 </mat-toolbar>
             </div>
