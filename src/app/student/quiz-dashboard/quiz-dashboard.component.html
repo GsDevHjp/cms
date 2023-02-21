@@ -2,7 +2,7 @@
     <a  *ngFor="let course of course_quiz"  (click)="onQuiz(course)">
         <div id="thumbnail" class="color4" >
             <mat-icon>school</mat-icon><br>
-            <span><b>{{course.total_quiz}}</b></span><br><br>
+            <span><b>{{course.total_quiz}}</b></span><br>
             <span>{{course.course_name}}</span>
         </div>
     </a>

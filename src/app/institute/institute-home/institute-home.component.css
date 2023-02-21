@@ -32,7 +32,7 @@ mat-icon {
     color: whitesmoke;
 }
 .main{
-    padding: 62px 2px;
+    padding: 62px 2px 2px 2px;
 }
 #dash_header_admin {
     width: calc(100% - 500px);
@@ -59,12 +59,12 @@ mat-icon {
     width: 45px;
     height: 45px;
     float: right;
-    margin: 10px 0px;
+    margin: 8px 0px;
     border-radius: 50%;
     cursor: pointer;
     background-color: white;
     position: fixed;
-    right:2%;
+    right:1.4%;
     top:0px;
 }
 

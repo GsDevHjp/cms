@@ -57,13 +57,13 @@ export class AddEditEnquiryComponent implements OnInit {
       course_id_fk: ['', Validators.required],
       std_regist_date: [''],
       std_gender: ['', Validators.required],
-      std_address: ['', Validators.required],
+      std_address: [''],
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
     this.enquiry_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.edit_enq) {
-      this.actionBtn = 'update'
+      this.actionBtn = 'Update'
       this.enquiry_heading = 'Update Enquiry'
       this.enquiry_form.controls['enq_id'].setValue(this.edit_enq.enq_id)
       this.enquiry_form.controls['std_name'].setValue(this.edit_enq.std_name)
@@ -85,13 +85,13 @@ export class AddEditEnquiryComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Enquiry Sending Successfully...',})
+            this.popup.success({ detail: 'Success', summary: 'Enquiry Saved',})
             this.router.navigate(['/institutehome/enquiry']);
 
           },
           (error) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Send..',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Saved',})
           }
         )
       }
@@ -105,12 +105,12 @@ export class AddEditEnquiryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close()
-        this.popup.success({ detail: 'Success', summary: 'Enquiry Update Successfully...',})
+        this.popup.success({ detail: 'Success', summary: 'Enquiry Updated',})
         this.router.navigate(['/institutehome/enquiry']);
       },
       error: (error) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Update..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Updated',})
       }
     })
   }

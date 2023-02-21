@@ -95,7 +95,9 @@ import { StateComponent } from './admin/state/state.component';
 import { DistrictComponent } from './admin/district/district.component';
 import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-country.component';
 import { AddEditDistrictComponent } from './admin/add-edit-district/add-edit-district.component';
-import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.component'
+import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.component';
+import { OESComponent } from './institute/oes/oes.component';
+import { ELearningComponent } from './institute/e-learning/e-learning.component'
 
 @NgModule({
   declarations: [
@@ -173,6 +175,8 @@ import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.com
     AddEditCountryComponent,
     AddEditDistrictComponent,
     AddEditStateComponent,
+    OESComponent,
+    ELearningComponent,
 
   ],
   imports: [

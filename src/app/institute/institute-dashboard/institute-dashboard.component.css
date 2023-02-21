@@ -16,9 +16,9 @@
 }
 
 mat-icon {
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
   float: right;
   margin: 20px;
   color: whitesmoke;
@@ -103,7 +103,7 @@ mat-icon {
 
   mat-icon {
     font-size: 28px;
-    margin: 35px 0px 0px 0px;
+    margin: 35px 20px 0px 0px;
   }
 }
 
