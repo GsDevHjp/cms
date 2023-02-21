@@ -34,7 +34,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill" id="password">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="std_password">
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password@123" formControlName="std_password" onkeypress=" return this.value.length < 12">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

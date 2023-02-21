@@ -14,13 +14,13 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_father_name', 'std_whatsapp_no', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'fee_description', 'std_img', 'fee_date', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_name', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'std_whatsapp_no', 'std_img', 'fee_date', 'fee_description', 'action'];
   dataSource = new MatTableDataSource();
   count_payment: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl :string = 'https://greensoft.net.in/gscms/assets/profile.png';
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
   action_btn: boolean = false
   login_deatils: any
   login: any
@@ -37,18 +37,18 @@ export class PaymentReceivedComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.std_id = this.login.std_id
-    console.log("std"+ this.std_id)
-    console.log("instsd"+ this.login.inst_id)
+    console.log("std" + this.std_id)
+    console.log("instsd" + this.login.inst_id)
   }
 
   ngOnInit(): void {
     if (this.login.inst_id > 0) {
       this.action_btn = false
       const fromdata = new FormData()
-      fromdata.append("inst_id",this.login.inst_id)
+      fromdata.append("inst_id", this.login.inst_id)
       this.service.get_fee_by_inst_id(fromdata).subscribe(
         (res: any) => {
-         
+
           console.log(res)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
@@ -59,10 +59,11 @@ export class PaymentReceivedComponent implements OnInit {
     }
     else {
       const fromdata = new FormData()
-      fromdata.append("std_id",this.login.std_id)
+      fromdata.append("std_id", this.login.std_id)
       this.service.get_fee_by_std_id(fromdata).subscribe(
         (res: any) => {
           console.log(res)
+          this.action_btn = true
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
@@ -70,7 +71,6 @@ export class PaymentReceivedComponent implements OnInit {
         }
       )
     }
-   
   }
   add_payment() {
     this.dailog.open(AddEditPaymentRecivedComponent, {

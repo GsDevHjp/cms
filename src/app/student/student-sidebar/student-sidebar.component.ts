@@ -50,18 +50,6 @@ export class StudentSidebarComponent implements OnInit {
 
   }
 
-  take_addmission() {
-    if (this.status == 0) {
-      this.dailog.open(StudentProfileComponent)
-    }
-
-    else {
-      this.dailog.open(AddEditTakeAddmissionComponent, {
-        disableClose: true
-      });
-    }
-
-  }
 
 
   report_dropdown() {

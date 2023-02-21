@@ -48,11 +48,13 @@
     </ng-container>
 
     <ng-container matColumnDef="institute_identity">
-
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Documennt</th>
-
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Document</th>
       <td mat-cell *matCellDef="let row"> {{row.inst_doct}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="document_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Document No</th>
+      <td mat-cell *matCellDef="let row"> {{row.inst_doct_number}} </td>
     </ng-container>
 
     <ng-container matColumnDef="institute_logo">
