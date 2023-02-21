@@ -39,14 +39,14 @@
         <td mat-cell *matCellDef="let row"> {{row.batch_departure}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="batch_status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_status}}</td>
-      </ng-container>
-
       <ng-container matColumnDef="batch_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>BST Date </th>
         <td mat-cell *matCellDef="let row"> {{row.batch_date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="batch_description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_description}}</td>
       </ng-container>
 
       <ng-container matColumnDef="batch_total_std">
@@ -54,9 +54,9 @@
         <td mat-cell *matCellDef="let row">{{Ttalstd}} {{row.batch_total_std}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="batch_description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_description}}</td>
+      <ng-container matColumnDef="batch_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row"> {{row.batch_status}}</td>
       </ng-container>
 
       <ng-container matColumnDef="action">

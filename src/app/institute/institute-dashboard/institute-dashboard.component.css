@@ -13,13 +13,12 @@
   margin-left: 18px;
   background-color: #393b42;
   position: relative;
-  top: 60px;
 }
 
 mat-icon {
-  width: 28px;
-  height: 28px;
-  font-size:28px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
   float: right;
   margin: 20px;
   color: whitesmoke;
@@ -54,6 +53,13 @@ mat-icon {
     line-height: 25px;
     margin-left: 10px;
   }
+
+  mat-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    margin-top: 35px;
+  }
 }
 
 @media(min-width:767px)and (max-width:920px) {
@@ -69,6 +75,13 @@ mat-icon {
     font-size: 20px;
     line-height: 25px;
     margin-left: 10px;
+  }
+
+  mat-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    margin-top: 35px;
   }
 }
 
@@ -86,6 +99,11 @@ mat-icon {
     font-size: 20px;
     line-height: 25px;
     margin-left: 10px;
+  }
+
+  mat-icon {
+    font-size: 28px;
+    margin: 35px 20px 0px 0px;
   }
 }
 
@@ -111,5 +129,7 @@ mat-icon {
     width: 25px;
     height: 25px;
     font-size: 25px;
+    margin-top: 35px;
+    margin-left: 0px;
   }
 }
