@@ -16,7 +16,7 @@ mat-sidenav-content {
 }
 
 mat-toolbar {
-    height: 65px;
+    height: 60px;
     justify-content: space-between;
     background-color: #1d1f23;
     position: fixed;
@@ -31,7 +31,9 @@ mat-icon {
     cursor: pointer;
     color: whitesmoke;
 }
-
+.main{
+    padding: 62px 2px;
+}
 #dash_header_admin {
     width: calc(100% - 500px);
     height: 100%;
@@ -64,18 +66,12 @@ mat-icon {
     position: fixed;
     right:2%;
     top:0px;
-
-
 }
 
 #admin_logo img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-}
-
-.main {
-    padding: 2px;
 }
 
 /* for media queary starting here */
