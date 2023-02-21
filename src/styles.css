@@ -93,9 +93,9 @@ tr:hover {
 #tbl_hight {
     height: 40px;
 }
-#manage_table_wrapper{
+/* #manage_table_wrapper{
     margin-top:65px;
-}
+} */
 
 /* /////////////////////////////////////////////////Media Quary Starting Here//////////////////////////////////////////////// */
 @media(min-width:420px) and (max-width:1080px) {
