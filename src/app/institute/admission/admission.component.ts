@@ -33,7 +33,6 @@ export class AdmissionComponent implements OnInit {
   ) {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
-    console.log("hdcgsh" + this.inst_id)
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)

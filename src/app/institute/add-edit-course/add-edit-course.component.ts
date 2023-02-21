@@ -80,12 +80,12 @@ export class AddEditCourseComponent implements OnInit {
             console.log(result)
             this.course_form.reset();
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Course Insert Successfully...',})
+            this.popup.success({ detail: 'Success', summary: 'Course Saved',})
             this.router.navigate(['/institutehome/course']);
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Insert..',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Saved',})
           }
         )
       }
@@ -100,11 +100,11 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Course Update Successfully...',})
+        this.popup.success({ detail: 'Success', summary: 'Course Updated',})
         this.router.navigate(['institutehome/course']); 
       },
       error: () => {
-        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Update..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Updated..',})
       }
     })
   }

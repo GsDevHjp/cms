@@ -1,0 +1,7 @@
+.wrapper{
+    width: 100%;
+    height: calc(100vh - 69px);
+    display: flex;
+    justify-content: center;
+    background-color: #ee5035;
+}

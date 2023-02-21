@@ -174,13 +174,13 @@ export class AddEditPaymentRecivedComponent implements OnInit {
           (res: any) => {
             console.log(res)
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Payment Insert Successfully..',})
+            this.popup.success({ detail: 'Success', summary: 'Payment Saved',})
             this.router.navigate(['/institutehome/fee'])
           },
 
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Insert..',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Saved',})
           }
         )
       }
@@ -207,12 +207,12 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Payment Update Successfully..',})
+        this.popup.success({ detail: 'Success', summary: 'Payment Updated',})
         this.router.navigate(['/institutehome/fee'])
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Update..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Updated',})
       }
     })
   }

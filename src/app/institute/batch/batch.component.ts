@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./batch.component.css']
 })
 export class BatchComponent implements OnInit {
-  displayedColumns: string[] = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description', 'action'];
+  displayedColumns: string[] = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_date', 'batch_description','batch_total_std','batch_status', 'action'];
   dataSource = new MatTableDataSource();
   count_batch: number = 0;
   inst_id: any

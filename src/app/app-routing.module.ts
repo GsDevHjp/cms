@@ -19,6 +19,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
 import { BatchComponent } from './institute/batch/batch.component';
 import { CourseComponent } from './institute/course/course.component';
+import { ELearningComponent } from './institute/e-learning/e-learning.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
 import { InstBookComponent } from './institute/inst-book/inst-book.component';
 import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
@@ -32,6 +33,7 @@ import { InstituteDashboardComponent } from './institute/institute-dashboard/ins
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
 import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component';
+import { OESComponent } from './institute/oes/oes.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StudentComponent } from './institute/student/student.component';
@@ -114,7 +116,9 @@ const routes: Routes = [
       { path: 'instnotes', component: InstNotesComponent },
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
-      { path: 'instquizdashboard', component: InstquizdashboardComponent }
+      { path: 'instquizdashboard', component: InstquizdashboardComponent },
+      { path: 'oes', component: OESComponent},
+      { path: 'elearning', component: ELearningComponent }
     ]
   },
 
