@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./inst-notes.component.css']
 })
 export class InstNotesComponent implements OnInit {
-  displayedColumns: string[] = ['inst_notes_id', 'course_id_fk', 'inst_notes_title', 'inst_notes_description','institute_id_fk', 'inst_notes_img', 'action'];
+  displayedColumns: string[] = ['inst_notes_id', 'course_id_fk', 'inst_notes_title', 'inst_notes_description', 'inst_notes_img', 'action'];
   dataSource = new MatTableDataSource();
   count_inst_notes:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,6 +70,7 @@ export class InstNotesComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instnotes'])
         }
       )
     }

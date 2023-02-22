@@ -16,10 +16,9 @@ export class AddEditInstSyllabusComponent implements OnInit {
   upload: any;
   actionBtn: string = 'Add'
   course_data:any
-  inst_id: any
   login_deatils: any
   login: any
-  institute_id:any
+  inst_id_for_inst_login:any
 
   constructor(
     private popup: NgToastService,
@@ -34,11 +33,11 @@ export class AddEditInstSyllabusComponent implements OnInit {
     };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.institute_id = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
   }
   ngOnInit(): void {
     const formdata = new FormData()
-    formdata.append("inst_id", this.institute_id)
+    formdata.append("inst_id", this.inst_id_for_inst_login)
     this.service.get_course_by_inst_id(formdata).subscribe(
       (std_res: any) => {
         this.course_data = std_res.data
@@ -50,7 +49,6 @@ export class AddEditInstSyllabusComponent implements OnInit {
       inst_syllabus_img: ['', Validators.required],
       inst_syllabus_description: ['', Validators.required],
       course_id_fk: ['', Validators.required],
-      institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -61,7 +59,6 @@ export class AddEditInstSyllabusComponent implements OnInit {
       this.inst_syllabus_form.controls['inst_syllabus_img'].setValue(this.edit_inst_syllabus.inst_syllabus_img);
       this.inst_syllabus_form.controls['inst_syllabus_description'].setValue(this.edit_inst_syllabus.inst_syllabus_description);
       this.inst_syllabus_form.controls['course_id_fk'].setValue(this.edit_inst_syllabus.course_id_fk);
-      this.inst_syllabus_form.controls['institute_id_fk'].setValue(this.edit_inst_syllabus.institute_id_fk);
       this.inst_syllabus_form.controls['admin_id_fk'].setValue(this.edit_inst_syllabus.admin_id_fk);
     }
   }
@@ -73,7 +70,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
     formdata.append('inst_syllabus_img', this.inst_syllabus_form.get('inst_syllabus_img')?.value);
     formdata.append('inst_syllabus_description', this.inst_syllabus_form.get('inst_syllabus_description')?.value);
     formdata.append('course_id_fk', this.inst_syllabus_form.get('course_id_fk')?.value);
-    formdata.append('institute_id_fk', this.inst_syllabus_form.get('institute_id_fk')?.value);
+    formdata.append('institute_id_fk', this.inst_id_for_inst_login);
     formdata.append('admin_id_fk', this.inst_syllabus_form.get('admin_id_fk')?.value);
     if (!this.edit_inst_syllabus) {
       if (this.inst_syllabus_form.valid) {
@@ -104,19 +101,19 @@ export class AddEditInstSyllabusComponent implements OnInit {
       updatedata.append('inst_syllabus_img', this.inst_syllabus_form.get('inst_syllabus_img')?.value);
       updatedata.append('inst_syllabus_description', this.inst_syllabus_form.get('inst_syllabus_description')?.value);
       updatedata.append('course_id_fk', this.inst_syllabus_form.get('course_id_fk')?.value);
-      updatedata.append('institute_id_fk', this.inst_syllabus_form.get('institute_id_fk')?.value);
+      updatedata.append('institute_id_fk', this.inst_id_for_inst_login);
       updatedata.append('admin_id_fk', this.inst_syllabus_form.get('admin_id_fk')?.value);
      this.service.put_inst_syllabus(updatedata).subscribe({
       next:(res:any)=>{
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Syllabus Updated', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Syllabus Updated',})
         this.router.navigate(['/institutehome/instsyllabus'])
 
       },
       error:(error:any)=>{
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Updated', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Updated',})
       }
      })
     }

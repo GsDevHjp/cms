@@ -36,7 +36,6 @@ export class AddEditInstNotesComponent implements OnInit {
     };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
   }
   ngOnInit(): void {
@@ -53,7 +52,6 @@ export class AddEditInstNotesComponent implements OnInit {
       inst_notes_img: ['', Validators.required],
       inst_notes_description: [''],
       course_id_fk: ['', Validators.required],
-      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -64,10 +62,8 @@ export class AddEditInstNotesComponent implements OnInit {
       this.inst_notes_form.controls['inst_notes_img'].setValue(this.edit_inst_notes.inst_notes_img);
       this.inst_notes_form.controls['inst_notes_description'].setValue(this.edit_inst_notes.inst_notes_description);
       this.inst_notes_form.controls['course_id_fk'].setValue(this.edit_inst_notes.course_id_fk);
-      this.inst_notes_form.controls['institute_id_fk'].setValue(this.edit_inst_notes.institute_id_fk);
       this.inst_notes_form.controls['admin_id_fk'].setValue(this.edit_inst_notes.admin_id_fk);
     }
-    this.inst_notes_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   inst_notes_btn() {
     console.log(this.inst_notes_form.value)
@@ -77,7 +73,7 @@ export class AddEditInstNotesComponent implements OnInit {
     formdata.append('inst_notes_img', this.inst_notes_form.get('inst_notes_img')?.value);
     formdata.append('inst_notes_description', this.inst_notes_form.get('inst_notes_description')?.value);
     formdata.append('course_id_fk', this.inst_notes_form.get('course_id_fk')?.value);
-    this.inst_notes_form.controls['institute_id_fk'].setValue(this.inst_id_for_inst_login);
+    formdata.append('institute_id_fk', this.inst_id_for_inst_login);
     formdata.append('admin_id_fk', this.inst_notes_form.get('admin_id_fk')?.value);
     if (!this.edit_inst_notes) {
       if (this.inst_notes_form.valid) {
@@ -101,14 +97,13 @@ export class AddEditInstNotesComponent implements OnInit {
     }
   }
   updateInstNotes() {
-    console.log(this.inst_notes_form.value)
     const updatedata = new FormData();
     updatedata.append('inst_notes_id', this.inst_notes_form.get('inst_notes_id')?.value);
     updatedata.append('inst_notes_title', this.inst_notes_form.get('inst_notes_title')?.value);
     updatedata.append('inst_notes_img', this.inst_notes_form.get('inst_notes_img')?.value);
     updatedata.append('inst_notes_description', this.inst_notes_form.get('inst_notes_description')?.value);
     updatedata.append('course_id_fk', this.inst_notes_form.get('course_id_fk')?.value);
-    this.inst_notes_form.controls['institute_id_fk'].setValue(this.inst_id_for_inst_login);
+    updatedata.append('institute_id_fk', this.inst_id_for_inst_login);
     updatedata.append('admin_id_fk', this.inst_notes_form.get('admin_id_fk')?.value);
     this.service.put_inst_notes(updatedata).subscribe({
       next: (res: any) => {

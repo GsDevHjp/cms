@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./inst-question-bank.component.css']
 })
 export class InstQuestionBankComponent implements OnInit {
-  displayedColumns: string[] = ['inst_question_bank_id', 'course_id_fk', 'inst_question_bank_title', 'inst_question_bank_description','institute_id_fk', 'inst_question_bank_img', 'action'];
+  displayedColumns: string[] = ['inst_question_bank_id', 'course_id_fk', 'inst_question_bank_title', 'inst_question_bank_description', 'inst_question_bank_img', 'action'];
   dataSource = new MatTableDataSource();
   count_inst_question_bank:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,6 +70,7 @@ export class InstQuestionBankComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instquestionbank'])
         }
       )
     }

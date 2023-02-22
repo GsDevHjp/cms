@@ -82,12 +82,12 @@ export class AddEditInstQuestionBankComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_question_bank_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Question Added Successfully..', sticky: true, position: 'tr' })
-            this.router.navigate(['/institutehome/instbook'])
+            this.popup.success({ detail: 'Success', summary: 'Question Saved', })
+            this.router.navigate(['/institutehome/instquestionbank'])
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Question Not Added..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Question Not Saved',})
           }
         )
       }
@@ -110,13 +110,13 @@ export class AddEditInstQuestionBankComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Question Update Successfully..', sticky: true, position: 'tr' })
-        this.router.navigate(['/institutehome/instbook'])
+        this.popup.success({ detail: 'Success', summary: 'Question Updated',})
+        this.router.navigate(['/institutehome/instquestionbank'])
 
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Question Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Question Not Updated',})
       }
     })
   }
