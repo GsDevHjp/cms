@@ -22,22 +22,29 @@ export class InstNotificationComponent implements OnInit {
   login_deatils: any
   login: any
   inst_id:any
+  inst_id_for_inst_login: any;
 
   constructor(
     private dailog: MatDialog,
     private service:ManageService,
+    private router:Router
   ) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
     
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.institute_id_fk
-    // this.inst_id_for_inst_login = this.login.inst_id
+    this.inst_id_for_inst_login = this.login.inst_id
   }
 
   ngOnInit(): void {
-    this.service.get_notification_by_inst_id().subscribe(
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.inst_id_for_inst_login)
+    this.service.get_notification_by_inst_id(fromdata).subscribe(
       (res: any) => {
-        console.log(res)
+        console.log("hdbk"+res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -65,6 +72,7 @@ export class InstNotificationComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instnotification'])
         }
       )
     }

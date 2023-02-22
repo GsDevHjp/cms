@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./inst-syllabus.component.css']
 })
 export class InstSyllabusComponent implements OnInit {
-  displayedColumns: string[] = ['inst_syllabus_id', 'course_id_fk', 'inst_syllabus_title', 'inst_syllabus_description','institute_id_fk', 'inst_syllabus_img', 'action'];
+  displayedColumns: string[] = ['inst_syllabus_id', 'course_id_fk', 'inst_syllabus_title', 'inst_syllabus_description', 'inst_syllabus_img', 'action'];
   dataSource = new MatTableDataSource();
   count_inst_syllabus:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,7 +40,7 @@ export class InstSyllabusComponent implements OnInit {
   ngOnInit(): void {
     const formdata = new FormData()
     formdata.append("inst_id",this.inst_id_for_inst_login)
-    this.service.get_syllabus_by_inst_id().subscribe(
+    this.service.get_syllabus_by_inst_id(formdata).subscribe(
       (res:any)=>{
         console.log(res)
         this.dataSource.data = res.data
@@ -70,6 +70,7 @@ export class InstSyllabusComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instsyllabus'])
         }
       )
     }

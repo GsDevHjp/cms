@@ -154,8 +154,6 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_quiz_course.php', data)
   }
 
-
-
   // for notification module
   post_notification(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_insert.php', data);
@@ -163,14 +161,12 @@ export class ManageService {
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
-  get_notification() {
-    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
-  }
+
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-  get_notification_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
+  get_notification_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_notification_by_inst_id.php',data);
   }
   // for inst book module
   post_inst_book(data: any) {
@@ -179,9 +175,6 @@ export class ManageService {
   put_inst_book(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_update.php', data)
   }
-  get_inst_book() {
-    return this.http.get<[]>(this.baseUrl + 'inst_book_view.php')
-  }
   inst_book_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_book_delete.php', data);
   }
@@ -189,9 +182,6 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_book_by_inst_id.php', data);
   }
   // for inst notes module
-  get_inst_notes() {
-    return this.http.get<[]>(this.baseUrl + 'inst_notes_view.php');
-  }
   post_inst_notes(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_notes_insert.php', data);
   }
@@ -206,9 +196,6 @@ export class ManageService {
   }
 
   // for inst syllabus module
-  get_inst_syllabus() {
-    return this.http.get<[]>(this.baseUrl + 'inst_syllabus_view.php');
-  }
   post_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
   }
@@ -218,13 +205,10 @@ export class ManageService {
   inst_syllabus_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
   }
-  get_syllabus_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'get_syllabus_by_inst_id.php');
+  get_syllabus_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_syllabus_by_inst_id.php', data);
   }
   // for inst question bank module
-  get_inst_question_bank() {
-    return this.http.get<[]>(this.baseUrl + 'inst_question_bank_view.php');
-  }
   post_inst_question_bank(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_question_bank_insert.php', data);
   }

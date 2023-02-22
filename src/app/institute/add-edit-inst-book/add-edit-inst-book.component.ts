@@ -17,9 +17,8 @@ export class AddEditInstBookComponent implements OnInit {
   upload: any;
   actionBtn: string = 'Add'
   course_data: any;
-  login_deatils: any
+  login_deatils: any 
   login: any
-  inst_id: any
   inst_id_for_inst_login: any
 
   constructor(
@@ -35,7 +34,6 @@ export class AddEditInstBookComponent implements OnInit {
     };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
     this.inst_id_for_inst_login = this.login.inst_id
   }
   ngOnInit(): void {
@@ -50,9 +48,8 @@ export class AddEditInstBookComponent implements OnInit {
       inst_book_id: ['',],
       inst_book_title: ['', Validators.required],
       inst_book_img: ['', Validators.required],
-      inst_book_description: ['', Validators.required],
+      inst_book_description: [''],
       course_id_fk: ['', Validators.required],
-      institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
 
@@ -62,21 +59,18 @@ export class AddEditInstBookComponent implements OnInit {
       this.inst_book_form.controls['inst_book_title'].setValue(this.edit_inst_book.inst_book_title);
       this.inst_book_form.controls['inst_book_img'].setValue(this.edit_inst_book.inst_book_img);
       this.inst_book_form.controls['inst_book_description'].setValue(this.edit_inst_book.inst_book_description);
-      this.inst_book_form.controls['course_id_fk'].setValue(this.edit_inst_book.course_id_fk);
-      this.inst_book_form.controls['institute_id_fk'].setValue(this.edit_inst_book.institute_id_fk);
+      this.inst_book_form.controls['course_id_fk'].setValue(this.edit_inst_book.course_id);
       this.inst_book_form.controls['admin_id_fk'].setValue(this.edit_inst_book.admin_id_fk);
     }
-    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   inst_book_btn() {
-    console.log(this.inst_book_form.value)
     const formdata = new FormData();
     formdata.append('inst_book_id', this.inst_book_form.get('inst_book_id')?.value);
     formdata.append('inst_book_title', this.inst_book_form.get('inst_book_title')?.value);
     formdata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
     formdata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
     formdata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
-    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+    formdata.append('institute_id_fk', this.inst_id_for_inst_login);
     formdata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
     if (!this.edit_inst_book) {
       if (this.inst_book_form.valid) {
@@ -85,17 +79,17 @@ export class AddEditInstBookComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_book_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Book Insert Successfully...', sticky: true, position: 'tr' })
-            this.router.navigate(['/institutehome/instquestionbank'])
+            this.popup.success({ detail: 'Success', summary: 'Book Saved',})
+            this.router.navigate(['/institutehome/instbook'])
 
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Insert..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Saved',})
           }
         )
       }
-    }
+    } 
     else {
       this.updateInstBook()
     }
@@ -108,18 +102,18 @@ export class AddEditInstBookComponent implements OnInit {
     updatedata.append('inst_book_img', this.inst_book_form.get('inst_book_img')?.value);
     updatedata.append('inst_book_description', this.inst_book_form.get('inst_book_description')?.value);
     updatedata.append('course_id_fk', this.inst_book_form.get('course_id_fk')?.value);
-    this.inst_book_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+    updatedata.append('institute_id_fk', this.inst_id_for_inst_login);
     updatedata.append('admin_id_fk', this.inst_book_form.get('admin_id_fk')?.value);
     this.service.put_inst_book(updatedata).subscribe({
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        this.router.navigate(['/inst-book'])
-        this.popup.success({ detail: 'Success', summary: 'Book Update Successfully...', sticky: true, position: 'tr' })
+        this.router.navigate(['/institutehome/instbook'])
+        this.popup.success({ detail: 'Success', summary: 'Book Updated', sticky: true, position: 'tr' })
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Updated', sticky: true, position: 'tr' })
       }
     })
   }

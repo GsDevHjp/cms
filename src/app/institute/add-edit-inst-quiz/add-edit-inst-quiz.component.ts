@@ -92,11 +92,11 @@ export class AddEditInstQuizComponent implements OnInit {
             console.log(res)
             this.matref.close();
             console.log(this.quiz_form.value)
-            this.popup.success({ detail: 'Success', summary: 'Quiz Added Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Quiz Saved', })
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Added..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Saved', })
           }
         )
     }
@@ -110,12 +110,12 @@ export class AddEditInstQuizComponent implements OnInit {
       next: (res: any) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Quiz Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Quiz Updated' })
         this.router.navigate(['institutehome/instquizdashboard'])
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Updated'})
       }
 
     }
