@@ -40,7 +40,7 @@ export class InstSyllabusComponent implements OnInit {
   ngOnInit(): void {
     const formdata = new FormData()
     formdata.append("inst_id",this.inst_id_for_inst_login)
-    this.service.get_syllabus_by_inst_id().subscribe(
+    this.service.get_syllabus_by_inst_id(formdata).subscribe(
       (res:any)=>{
         console.log(res)
         this.dataSource.data = res.data

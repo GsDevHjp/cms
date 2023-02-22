@@ -24,10 +24,13 @@ export class AddEditInstNotificationComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
-    private router:Router,
+    private router: Router,
     private matref: MatDialogRef<AddEditInstNotificationComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_notification: any
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -37,7 +40,7 @@ export class AddEditInstNotificationComponent implements OnInit {
     this.notification_form = this.fb.group({
       notification_id: ['',],
       notification: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
@@ -60,13 +63,13 @@ export class AddEditInstNotificationComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.notification_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Notification Insert Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Notification Saved', })
             this.router.navigate(['/institutehome/instnotification'])
 
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Insert..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Saved', })
           }
         )
       }
@@ -81,12 +84,12 @@ export class AddEditInstNotificationComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Notification Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Notification Updated', sticky: true, position: 'tr' })
         this.router.navigate(['/institutehome/instnotification'])
 
       },
       error: () => {
-        this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Updated', sticky: true, position: 'tr' })
       }
     })
   }

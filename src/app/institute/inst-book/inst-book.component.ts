@@ -13,7 +13,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./inst-book.component.css']
 })
 export class InstBookComponent implements OnInit {
-  displayedColumns: string[] = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description','institute_id_fk','inst_book_img', 'action'];
+  displayedColumns: string[] = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description','inst_book_img', 'action'];
   dataSource = new MatTableDataSource();
   count_inst_book:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,7 +42,7 @@ export class InstBookComponent implements OnInit {
     const formdata = new FormData()
     formdata.append("inst_id",this.inst_id_for_inst_login)
     this.service.get_book_by_inst_id(formdata).subscribe(
-      (res:any)=>{
+      (res:any)=>{ 
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
@@ -72,6 +72,7 @@ export class InstBookComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instbook'])
         }
       )
     }

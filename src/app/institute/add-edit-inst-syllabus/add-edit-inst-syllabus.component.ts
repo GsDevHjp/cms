@@ -82,12 +82,12 @@ export class AddEditInstSyllabusComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.inst_syllabus_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Syllabus Added Successfully..', sticky: true, position: 'tr' })
+            this.popup.success({ detail: 'Success', summary: 'Syllabus Saved',})
             this.router.navigate(['/institutehome/instsyllabus'])
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Added..', sticky: true, position: 'tr' })
+            this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Saved',})
           }
         )
       }
@@ -110,13 +110,13 @@ export class AddEditInstSyllabusComponent implements OnInit {
       next:(res:any)=>{
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Syllabus Update Successfully..', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Syllabus Updated', sticky: true, position: 'tr' })
         this.router.navigate(['/institutehome/instsyllabus'])
 
       },
       error:(error:any)=>{
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Update..', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Syllabus Not Updated', sticky: true, position: 'tr' })
       }
      })
     }

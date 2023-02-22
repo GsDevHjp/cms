@@ -163,14 +163,12 @@ export class ManageService {
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
-  get_notification() {
-    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
-  }
+
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-  get_notification_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'notification_view.php',);
+  get_notification_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_notification_by_inst_id.php',data);
   }
   // for inst book module
   post_inst_book(data: any) {
@@ -218,8 +216,8 @@ export class ManageService {
   inst_syllabus_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
   }
-  get_syllabus_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'get_syllabus_by_inst_id.php');
+  get_syllabus_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_syllabus_by_inst_id.php', data);
   }
   // for inst question bank module
   get_inst_question_bank() {
