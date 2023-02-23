@@ -26,29 +26,5 @@ export class InstChangePasswordComponent implements OnInit {
       return false;
     };
   }
-  ngOnInit(): void {
-    this.batch_form = this.fb.group({
-      quiz_question: ['', Validators.required],
-      quiz_option_a: ['', Validators.required],
-      quiz_option_b: ['', Validators.required],
-      quiz_option_c: ['', Validators.required],
-      quiz_option_d: ['', Validators.required],
-      quiz_answer: ['', Validators.required],
-      admin_id_fk: ['', Validators.required]
-    })
-
-    if (this.edit_batch) {
-      this.actionBtn = "Update";
-      this.batch_form.controls['quiz_question'].setValue(this.edit_batch.quiz_question);
-      this.batch_form.controls['quiz_option_a'].setValue(this.edit_batch.quiz_option_a);
-      this.batch_form.controls['quiz_option_b'].setValue(this.edit_batch.quiz_option_b);
-      this.batch_form.controls['quiz_option_c'].setValue(this.edit_batch.quiz_option_c);
-      this.batch_form.controls['quiz_option_d'].setValue(this.edit_batch.quiz_option_d);
-      this.batch_form.controls['quiz_answer'].setValue(this.edit_batch.quiz_answer);
-      this.batch_form.controls['admin_id_fk'].setValue(this.edit_batch.admin_id_fk);
-    }
-  }
-  batch_btn() {
-
-  }
+  ngOnInit(): void { }
 }

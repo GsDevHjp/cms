@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminChangePasswordComponent } from '../admin-change-password/admin-change-password.component';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -11,7 +13,10 @@ export class AdminSidebarComponent implements OnInit {
   action_icon2: boolean = true
   action_icon3: boolean = false
   action_icon4: boolean = true
-  constructor() { }
+  constructor(
+    private dailog: MatDialog,
+
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,5 +46,10 @@ export class AdminSidebarComponent implements OnInit {
       this.action_icon3 = false
       this.action_icon4 = true
     }
+  }
+  changepassword() {
+    this.dailog.open(AdminChangePasswordComponent, {
+      disableClose: true
+    });
   }
 }

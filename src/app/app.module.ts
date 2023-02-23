@@ -97,7 +97,8 @@ import { AddEditCountryComponent } from './admin/add-edit-country/add-edit-count
 import { AddEditDistrictComponent } from './admin/add-edit-district/add-edit-district.component';
 import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.component';
 import { OESComponent } from './institute/oes/oes.component';
-import { ELearningComponent } from './institute/e-learning/e-learning.component'
+import { ELearningComponent } from './institute/e-learning/e-learning.component';
+import { AdminChangePasswordComponent } from './admin/admin-change-password/admin-change-password.component'
 
 @NgModule({
   declarations: [
@@ -177,6 +178,7 @@ import { ELearningComponent } from './institute/e-learning/e-learning.component'
     AddEditStateComponent,
     OESComponent,
     ELearningComponent,
+    AdminChangePasswordComponent,
 
   ],
   imports: [
