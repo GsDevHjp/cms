@@ -47,7 +47,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
       inst_syllabus_id: ['',],
       inst_syllabus_title: ['', Validators.required],
       inst_syllabus_img: ['', Validators.required],
-      inst_syllabus_description: ['', Validators.required],
+      inst_syllabus_description: [''],
       course_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })

@@ -30,6 +30,9 @@ export class AddEditInstQuizComponent implements OnInit {
     private matref: MatDialogRef<AddEditInstQuizComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_quiz: any
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -83,8 +86,8 @@ export class AddEditInstQuizComponent implements OnInit {
       )
     }
   }
+
   quiz_btn() {
-    console.log(this.quiz_form.value)
     if (!this.edit_quiz.quiz_id) {
       if (this.quiz_form.valid)
         this.service.post_quiz(this.quiz_form.value).subscribe(
@@ -93,6 +96,7 @@ export class AddEditInstQuizComponent implements OnInit {
             this.matref.close();
             console.log(this.quiz_form.value)
             this.popup.success({ detail: 'Success', summary: 'Quiz Saved', })
+            this.router.navigate(['/institutehome/instquiz'],this.edit_quiz)
           },
           (error: any) => {
             console.log(error)
@@ -111,7 +115,7 @@ export class AddEditInstQuizComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Quiz Updated' })
-        this.router.navigate(['institutehome/instquizdashboard'])
+        this.router.navigate(['/institutehome/instquiz'],this.quiz_form.get('course_id_fk')?.value)
       },
       error: (error: any) => {
         console.log(error)

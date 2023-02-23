@@ -19,7 +19,7 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   admin = 1;
   institute_id: any;
-  selectedImage :any = 'https://greensoft.net.in/gscms/assets/profile.png';
+  selectedImage: any = 'https://greensoft.net.in/gscms/assets/profile.png';
   status: any = 1
   login_deatils: any
   login: any
@@ -27,13 +27,13 @@ export class AddEditStudentComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   std_data: any;
- 
+
   std: any;
   constructor(
-    private popup:NgToastService,
+    private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
-    private router :Router,
+    private router: Router,
     private matref: MatDialogRef<AddEditStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_std: any,
   ) {
@@ -73,9 +73,9 @@ export class AddEditStudentComponent implements OnInit {
       std_district: [''],
       std_regist_date: ['', Validators.required],
       std_img: [''],
-      std_address: ['', Validators.required],
+      std_address: [''],
       std_password: ['', Validators.required],
-      std_regist_no: ['', Validators.required],
+      std_regist_no: [''],
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
     })
@@ -83,7 +83,7 @@ export class AddEditStudentComponent implements OnInit {
     this.student_id = this.edit_std.std_id
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.student_id > 0) {
-      this.heading_act="Update"
+      this.heading_act = "Student Update"
       this.ActionBtn = "Update";
       this.student_form.controls['std_id'].setValue(this.edit_std.std_id);
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
@@ -110,7 +110,6 @@ export class AddEditStudentComponent implements OnInit {
     }
     // for enquery to insert 
     if (this.edit_std) {
-      this.heading_act="Update"
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
       this.student_form.controls['std_whatsapp_no'].setValue(this.edit_std.std_whatsapp_no);
@@ -118,6 +117,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
+    this.student_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
 
   student_btn() {
@@ -152,12 +152,12 @@ export class AddEditStudentComponent implements OnInit {
             console.log(result)
             this.matref.close();
             this.student_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Student Saved',})
+            this.popup.success({ detail: 'Success', summary: 'Student Saved', })
             this.router.navigate(['/institutehome/student'])
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Saved',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Saved', })
           }
         )
       }
@@ -191,13 +191,13 @@ export class AddEditStudentComponent implements OnInit {
         console.log(result)
         this.matref.close();
         this.student_form.reset();
-        this.popup.success({ detail: 'Success', summary: 'Student Updated',})
+        this.popup.success({ detail: 'Success', summary: 'Student Updated', })
         this.router.navigate(['/institutehome/student'])
 
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Updated',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Updated', })
       }
     )
   }
