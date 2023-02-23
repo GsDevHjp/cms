@@ -109,11 +109,11 @@ export class AddEditInstBookComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.router.navigate(['/institutehome/instbook'])
-        this.popup.success({ detail: 'Success', summary: 'Book Updated', sticky: true, position: 'tr' })
+        this.popup.success({ detail: 'Success', summary: 'Book Updated', })
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Updated', sticky: true, position: 'tr' })
+        this.popup.error({ detail: 'Unsuccess', summary: 'Book Not Updated', })
       }
     })
   }

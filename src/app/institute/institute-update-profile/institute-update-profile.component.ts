@@ -113,12 +113,12 @@ export class InstituteUpdateProfileComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..',})
+          this.popup.success({ detail: 'Success', summary: 'Profile Updated',})
           this.router.navigate(['/institutehome/institute-update-profile'])
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Update..',})
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Updated',})
         }
       )
     }

@@ -48,7 +48,7 @@ export class AddEditInstQuestionBankComponent implements OnInit {
       inst_question_bank_id: ['',],
       inst_question_bank_title: ['', Validators.required],
       inst_question_bank_img: ['', Validators.required],
-      inst_question_bank_description: ['', Validators.required],
+      inst_question_bank_description: [''],
       course_id_fk: ['', Validators.required],
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]

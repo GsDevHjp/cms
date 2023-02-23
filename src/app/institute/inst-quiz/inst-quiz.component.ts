@@ -25,9 +25,9 @@ export class InstQuizComponent implements OnInit {
   login: any;
   inst_id_for_inst_login: any;
   inst_id: any;
-  course_data:any;
-  sub_name:any;
-  course:any
+  course_data: any;
+  sub_name: any;
+  course: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
@@ -46,16 +46,16 @@ export class InstQuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  console.log(this.course_data)
+    console.log(this.course_data)
     const fromdata = new FormData()
     fromdata.append('inst_id', this.login.inst_id)
-    fromdata.append('course_id',this.course_data)
+    fromdata.append('course_id', this.course_data)
     this.service.get_quiz_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log(res)
         this.sub_name = res.data[0].course_name
         this.course = res.data[0].course_id
-        
+
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -67,9 +67,7 @@ export class InstQuizComponent implements OnInit {
   add_course() {
     this.dailog.open(AddEditInstQuizComponent, {
       disableClose: true,
-      data:this.course
-
-
+      data: this.course_data
     });
   }
 
@@ -86,6 +84,7 @@ export class InstQuizComponent implements OnInit {
         (res: any) => {
           console.log(res)
           alert('data delate sucessfully')
+          this.router.navigate(['/institutehome/instquiz'],this.course_data)
         }
       )
     }

@@ -89,7 +89,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       fee_monthly: [''],
       fee_mode: ['', Validators.required],
       fee_amount: ['', Validators.required],
-      fee_description: ['', Validators.required],
+      fee_description: [''],
       fee_date: ['', Validators.required],
       batch_id_fk: ['', Validators.required],
       institute_id_fk: [''],

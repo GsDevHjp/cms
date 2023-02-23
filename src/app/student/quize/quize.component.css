@@ -1,12 +1,12 @@
 .wrapper {
     width: 100%;
-    height: calc(100vh - 74px);
-    margin-top: 64px;
+    /* height: calc(100vh - 74px); */
+    /* margin-top:50px; */
 }
 
 #main {
     width: 100%;
-    height: calc(100% - 120px);
+    /* height: calc(100% - 80px); */
 }
 
 #ques_viewport {
