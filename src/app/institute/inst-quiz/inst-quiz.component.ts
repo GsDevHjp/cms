@@ -68,7 +68,7 @@ export class InstQuizComponent implements OnInit {
     this.dailog.open(AddEditInstQuizComponent, {
       disableClose: true,
       data: this.course_data
-    });
+    }); 
   }
 
   course_edit(row: any) {

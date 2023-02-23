@@ -14,13 +14,13 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class PaymentReceivedComponent implements OnInit {
 
-  displayedColumns: string[] = ['payment_id', 'std_name', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'std_whatsapp_no', 'std_img', 'fee_date', 'fee_description', 'action'];
+  displayedColumns: string[] = ['payment_id', 'std_name', 'course_id_fk', 'batch_id_fk', 'fee_amount', 'std_whatsapp_no', 'fee_date', 'fee_description', 'action'];
   dataSource = new MatTableDataSource();
   count_payment: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
+  // imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
   action_btn: boolean = false
   login_deatils: any
   login: any

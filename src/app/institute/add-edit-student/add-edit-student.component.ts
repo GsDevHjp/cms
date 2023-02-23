@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-edit-student',
   templateUrl: './add-edit-student.component.html',
@@ -193,7 +194,6 @@ export class AddEditStudentComponent implements OnInit {
         this.student_form.reset();
         this.popup.success({ detail: 'Success', summary: 'Student Updated', })
         this.router.navigate(['/institutehome/student'])
-
       },
       (error: any) => {
         console.log(error)
@@ -239,10 +239,8 @@ export class AddEditStudentComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-
       reader.onload = () => {
         this.selectedImage = reader.result;
-
       };
     }
   }
