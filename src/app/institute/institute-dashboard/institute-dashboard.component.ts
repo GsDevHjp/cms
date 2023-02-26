@@ -15,7 +15,7 @@ export class InstituteDashboardComponent implements OnInit {
   fee_count:number=0
   dues_count:number=0
   quiz_count:number=0
-  oes_count:number=0
+  oes_count:number=0 
   elearning_count:number=0
   query_count:number=0
   notification_count:number=0

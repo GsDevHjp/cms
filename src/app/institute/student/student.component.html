@@ -60,9 +60,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
           <mat-icon class="action_icon" (click)="edit_student(row)">edit</mat-icon>
-          <div class="icon_box">
-            <img src="assets/payment_icon.png" alt="icon" width="100%" (click)="fee_pay(row)">
-          </div>
+          <mat-icon>payment</mat-icon>
         </td>
       </ng-container>
 

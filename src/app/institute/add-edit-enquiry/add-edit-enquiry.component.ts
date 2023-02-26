@@ -21,6 +21,7 @@ export class AddEditEnquiryComponent implements OnInit {
   login: any
   inst_id: any
   inst_id_for_inst_login: any
+  autoselect='Male'
 
   constructor(
     private popup : NgToastService,

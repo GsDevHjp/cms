@@ -28,8 +28,9 @@ export class AddEditStudentComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   std_data: any;
-
   std: any;
+  autoselect='Male'
+
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,

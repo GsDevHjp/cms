@@ -15,7 +15,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'dashboard_view.php', data);
   }
   get_dashboad_admin() {
-    return this.http.get<[]>(this.baseUrl + 'get_dashboad_admin.php');
+    return this.http.get<[]>(this.baseUrl + 'admin_dashboard_view.php');
   }
   //for admin
   admin_login(data: any) {
