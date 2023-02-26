@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditCourseComponent } from '../add-edit-course/add-edit-course.component';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-course',
@@ -19,7 +21,7 @@ export class CourseComponent implements OnInit {
   inst_id_for_admin: any
   inst_id_for_inst_login: any
   inst_id_for_std: any
-  inst_id:any;
+  inst_id: any;
   std_id: any
   action_btn: boolean = false
   Course: string = "Course Details"
@@ -32,7 +34,9 @@ export class CourseComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service: ManageService
+    private service: ManageService,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -106,20 +110,21 @@ export class CourseComponent implements OnInit {
     });
   }
   course_delete(row: any) {
-    if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('course_id', row.course_id);
-      this.service.course_delete(deldata).subscribe(
-        (res: any) => {
-          console.log(res)
-          alert('data delate sucessfully')
-          this.router.navigate(['/institutehome/course']);
-        }
-      )
-    }
-    else {
-      alert('cancle')
-    }
+    this.confirmServices.showConfirm('Are you sure to delate',
+      () => {
+        const deldata = new FormData();
+        deldata.append('course_id', row.course_id);
+        this.service.course_delete(deldata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Course Deleted', })
+            this.router.navigate(['/institutehome/course']);
+          }
+        )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Deleted', })
+      })
   }
 
   applyFilter(event: Event) {

@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditInstituteComponent } from '../add-edit-institute/add-edit-institute.component';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
+import { NgConfirmService } from 'ng-confirm-box';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institute',
@@ -14,7 +17,7 @@ import { ManageService } from 'src/app/manage.service';
 
 export class InstituteComponent implements OnInit {
   imageUrl: string = 'https://greensoft.net.in/gscms/assets/'
-  displayedColumns: string[] = ['inst_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity','document_no', 'institute_logo', 'action'];
+  displayedColumns: string[] = ['inst_id', 'institute_name', 'institute_owner', 'institute_whatsapp', 'institute_email', 'institute_password', 'institute_address', 'institute_identity', 'document_no', 'institute_logo', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,9 +26,14 @@ export class InstituteComponent implements OnInit {
 
   constructor(
     private dailog: MatDialog,
-    private manageservice: ManageService
+    private manageservice: ManageService,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService,
+    private router: Router,
   ) {
-
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
   }
 
   ngOnInit(): void {
@@ -62,21 +70,23 @@ export class InstituteComponent implements OnInit {
   }
 
   deleteinst(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('inst_id', row.inst_id);
-      this.manageservice.delete_inst(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-        }
-      )
-
-    }
-    else {
-      alert('data not delete')
-    }
-
+    this.confirmServices.showConfirm('Are you sure to delate',
+      () => {
+        const deletedata = new FormData();
+        deletedata.append('inst_id', row.inst_id);
+        this.manageservice.delete_inst(deletedata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Institute Deleted', })
+            this.router.navigate(['/adminhome/institute']);
+          }
+          )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Institute Not Deleted', })
+      })
   }
+
 
 
 }

@@ -31,9 +31,11 @@ mat-icon {
     cursor: pointer;
     color: whitesmoke;
 }
-.main{
+
+.main {
     padding: 62px 2px 2px 2px;
 }
+
 #dash_header_admin {
     width: calc(100% - 500px);
     height: 100%;
@@ -43,12 +45,12 @@ mat-icon {
     width: calc(100% - 330px);
     height: 100%;
     display: inline-block;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 #dash_header_admin span {
     line-height: 65px;
-    font-size: 14px;
+    font-size: 16px;
     color: whitesmoke;
     letter-spacing: 1px;
     margin-left: 40px;
@@ -64,8 +66,8 @@ mat-icon {
     cursor: pointer;
     background-color: white;
     position: fixed;
-    right:1.4%;
-    top:0px;
+    right: 1.4%;
+    top: 0px;
 }
 
 #admin_logo img {
@@ -77,9 +79,9 @@ mat-icon {
 /* for media queary starting here */
 
 @media(min-width: 767px) and (max-width:991px) {
-    .name_text{
-       position: relative;
-       right:40px;
+    .name_text {
+        position: relative;
+        right: 40px;
     }
 }
 
