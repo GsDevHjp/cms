@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditInstQuizComponent } from '../add-edit-inst-quiz/add-edit-inst-quiz.component';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-inst-quiz',
@@ -32,6 +34,8 @@ export class InstQuizComponent implements OnInit {
     private dailog: MatDialog,
     private router: Router,
     private service: ManageService,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -68,7 +72,7 @@ export class InstQuizComponent implements OnInit {
     this.dailog.open(AddEditInstQuizComponent, {
       disableClose: true,
       data: this.course_data
-    }); 
+    });
   }
 
   course_edit(row: any) {
@@ -77,20 +81,21 @@ export class InstQuizComponent implements OnInit {
     });
   }
   course_delete(row: any) {
-    if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('quiz_id', row.quiz_id);
-      this.service.quiz_delete(deldata).subscribe(
-        (res: any) => {
-          console.log(res)
-          alert('data delate sucessfully')
-          this.router.navigate(['/institutehome/instquiz'],this.course_data)
-        }
-      )
-    }
-    else {
-      alert('cancle')
-    }
+    this.confirmServices.showConfirm('Are you sure to delate',
+      () => {
+        const deldata = new FormData();
+        deldata.append('quiz_id', row.quiz_id);
+        this.service.quiz_delete(deldata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Quiz Deleted', })
+            this.router.navigate(['/institutehome/instquiz'], this.course_data)
+          }
+        )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Quiz Not Deleted', })
+      })
   }
 
   applyFilter(event: Event) {

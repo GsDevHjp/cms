@@ -50,5 +50,4 @@ export class InstituteHomeComponent implements OnInit {
       disableClose: true
     });
   }
-
 }

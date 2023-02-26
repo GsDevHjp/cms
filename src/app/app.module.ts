@@ -98,7 +98,8 @@ import { AddEditDistrictComponent } from './admin/add-edit-district/add-edit-dis
 import { AddEditStateComponent } from './admin/add-edit-state/add-edit-state.component';
 import { OESComponent } from './institute/oes/oes.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
-import { AdminChangePasswordComponent } from './admin/admin-change-password/admin-change-password.component'
+import { AdminChangePasswordComponent } from './admin/admin-change-password/admin-change-password.component';
+import { NgConfirmModule } from 'ng-confirm-box';
 
 @NgModule({
   declarations: [
@@ -209,6 +210,7 @@ import { AdminChangePasswordComponent } from './admin/admin-change-password/admi
     NgToastModule,
     NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
+    NgConfirmModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,
     })

@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddEditInstNotificationComponent } from '../add-edit-inst-notification/add-edit-inst-notification.component';
 import { ManageService } from 'src/app/manage.service';
+import { NgConfirmService } from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-inst-notification',
@@ -21,18 +23,20 @@ export class InstNotificationComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   login_deatils: any
   login: any
-  inst_id:any
+  inst_id: any
   inst_id_for_inst_login: any;
 
   constructor(
     private dailog: MatDialog,
-    private service:ManageService,
-    private router:Router
-  ) { 
+    private service: ManageService,
+    private router: Router,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-    
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.institute_id_fk
@@ -44,14 +48,14 @@ export class InstNotificationComponent implements OnInit {
     fromdata.append('inst_id', this.inst_id_for_inst_login)
     this.service.get_notification_by_inst_id(fromdata).subscribe(
       (res: any) => {
-        console.log("hdbk"+res)
+        console.log("hdbk" + res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.count_notification = res.data.length
       }
     )
-   }
+  }
 
   add_notification() {
     this.dailog.open(AddEditInstNotificationComponent, {
@@ -64,22 +68,22 @@ export class InstNotificationComponent implements OnInit {
       data: row,
     });
   }
-  notification_delete(row:any){
-    if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('notification_id', row.notification_id);
-      this.service.notification_delete(deldata).subscribe(
-        (res: any) => {
-          console.log(res)
-          alert('data delate sucessfully')
-          this.router.navigate(['/institutehome/instnotification'])
-        }
-      )
-    }
-    else {
-      alert('cancle')
-    }
-  
+  notification_delete(row: any) {
+    this.confirmServices.showConfirm('Are you sure to delate',
+      () => {
+        const deldata = new FormData();
+        deldata.append('notification_id', row.notification_id);
+        this.service.notification_delete(deldata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Notification Deleted', })
+            this.router.navigate(['/institutehome/instnotification'])
+          }
+        )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Deleted', })
+      })
   }
 
   applyFilter(event: Event) {
