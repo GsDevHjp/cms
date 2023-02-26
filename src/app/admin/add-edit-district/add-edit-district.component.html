@@ -28,13 +28,8 @@
             <input matInput formControlName="district_name">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill" id="total">
-            <mat-label>Description</mat-label>
-            <input type="text" matInput formControlName="description">
-        </mat-form-field>
-
         <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
-        <input type="number"  formControlName="country_id" hidden>
+        <input type="number"  formControlName="district_id" hidden>
 
     </form>
     <div class="submit">
