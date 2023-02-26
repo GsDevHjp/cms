@@ -33,7 +33,8 @@ export class AdmissionComponent implements OnInit {
     private dailog: MatDialog,
     private service: ManageService,
     private router: Router
-  ) {
+  )
+   {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
 
