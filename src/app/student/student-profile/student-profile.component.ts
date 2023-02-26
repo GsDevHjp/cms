@@ -19,6 +19,7 @@ export class StudentProfileComponent implements OnInit {
   student_id: any
   student_profile_data: any
   status: any = 1
+  autoselect='Male'
   constructor(
     private popup: NgToastService,
     private service: ManageService,

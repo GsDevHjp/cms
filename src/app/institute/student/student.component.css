@@ -1,4 +1,6 @@
-
+mat-icon{
+    cursor: pointer;
+}
 td{
     height: 93px;
 }

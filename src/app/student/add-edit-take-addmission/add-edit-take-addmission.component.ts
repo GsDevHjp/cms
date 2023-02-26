@@ -94,7 +94,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   }
 
   get_course(event: any) {
-    console.log(event)
     const courseformdata = new FormData();
     courseformdata.append('course_id', event)
     this.service.get_batch_by_course_id(courseformdata).subscribe(
@@ -112,11 +111,11 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   }
 
   get_batch(event: any) {
-    console.log("batch" + event)
     const batchfromdata = new FormData();
     batchfromdata.append('batch_id', event)
     this.service.get_batch_by_batch_id(batchfromdata).subscribe(
       (batch_res: any) => {
+        console.log(batch_res)
         this.addmission_form.controls['batch_arrival'].setValue(this.batch_data[0].batch_arrival);
         this.addmission_form.controls['batch_departure'].setValue(this.batch_data[0].batch_departure);
         this.addmission_form.controls['batch_status'].setValue(this.batch_data[0].batch_status);
