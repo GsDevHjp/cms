@@ -94,7 +94,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       batch_id_fk: ['', Validators.required],
       institute_id_fk: [''],
       admin_id_fk: ['', Validators.required]
-    })
+    }) 
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.editfee) {
       this.actionBtn = "Update";

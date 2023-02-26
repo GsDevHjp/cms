@@ -24,7 +24,7 @@ export class AddEditStudentComponent implements OnInit {
   status: any = 1
   login_deatils: any
   login: any
-  student_id: Number = 0
+  student_id: Number = 0 
   inst_id: any;
   inst_id_for_inst_login: any;
   std_data: any;
