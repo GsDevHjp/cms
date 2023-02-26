@@ -37,7 +37,6 @@ export class AdmissionComponent implements OnInit {
    {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
-
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     // this.inst_id = this.login.institute_id_fk
