@@ -41,7 +41,9 @@ export class StudentSidebarComponent implements OnInit {
     fromdata.append('inst_id', this.inst_id)
     this.service.get_inst_by_inst_id(fromdata).subscribe(
       (result: any) => {
-        this.inst_name = result.data.inst_name
+        let str = result.data.inst_name;
+        let res = str.charAt(str.indexOf(" ") + 1);
+        this.inst_name = result.data.inst_name.charAt(0) + (res)
       },
       (error: any) => {
         console.log(error)

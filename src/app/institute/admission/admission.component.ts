@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ThemePalette } from '@angular/material/core';
 import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { faAllergies } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admission',
@@ -26,14 +28,15 @@ export class AdmissionComponent implements OnInit {
   login: any
   inst_id: any
   inst_id_for_inst_login: any
+  add_status:string = ""
   constructor(
     private dailog: MatDialog,
     private service: ManageService,
     private router: Router
-  ) {
+  )
+   {
     const institute_data = this.router.getCurrentNavigation();
     this.inst_id = institute_data?.extras
-
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     // this.inst_id = this.login.institute_id_fk
@@ -79,6 +82,29 @@ export class AdmissionComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  toggle(event: MatSlideToggleChange) {
+    if(event.checked == true){
+      const editdata = new FormData()
+      editdata.append('admissition_status' , '1')
+        this.service.admission_update(editdata).subscribe(
+          (res:any)=>{
+            console.log(res)
+          }
+        )
+    }
+
+    if(event.checked == false){
+      const editdata = new FormData()
+      editdata.append('admissition_status' , '2')
+        this.service.admission_update(editdata).subscribe(
+          (res:any)=>{
+            console.log(res)
+          }
+        )
+    }
+   
+}
 }
 
 

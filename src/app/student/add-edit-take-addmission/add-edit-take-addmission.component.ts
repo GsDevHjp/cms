@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AddEditTakeAddmissionComponent implements OnInit {
   addparty: any;
   admin = 1
+  admissition_status = 0
   inst_id_fk: any;
   upload: any;
   actionBtn: string = 'Submit'
@@ -78,7 +79,8 @@ export class AddEditTakeAddmissionComponent implements OnInit {
       admission_date: [''],
       inst_id_fk: [''],
       std_id_fk: [''],
-      admin_id_fk: ['', Validators.required]
+      admin_id_fk: ['', Validators.required],
+      admissition_status: ['', Validators.required]
     })
 
     this.login_deatils = localStorage.getItem('Token')
@@ -126,14 +128,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
   addstd() {
     const formdata = new FormData();
-    console.log('std_regist_no' + this.addmission_form.get('std_regist_no')?.value)
-    console.log('roll_no' + this.addmission_form.get('roll_no')?.value)
-    console.log('inst_id_fk' + this.addmission_form.get('inst_id_fk')?.value)
-    console.log('std_id_fk' + this.addmission_form.get('std_id_fk')?.value)
-    console.log('course_id_fk' + this.addmission_form.get('course_id_fk')?.value)
-    console.log('batch_id_fk' + this.addmission_form.get('batch_id_fk')?.value)
-    console.log('admission_date' + this.addmission_form.get('admission_date')?.value)
-    console.log('admin_id_fk' + this.addmission_form.get('admin_id_fk')?.value)
+  
 
     formdata.append('std_regist_no', this.addmission_form.get('std_regist_no')?.value)
     formdata.append('roll_no', this.addmission_form.get('roll_no')?.value)
@@ -143,6 +138,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     formdata.append('batch_id_fk', this.addmission_form.get('batch_id_fk')?.value)
     formdata.append('admission_date', this.addmission_form.get('admission_date')?.value)
     formdata.append('admin_id_fk', this.addmission_form.get('admin_id_fk')?.value)
+    formdata.append('admissition_status', this.addmission_form.get('admissition_status')?.value)
 
     this.service.std_admission(formdata).subscribe(
       (result: any) => {

@@ -72,7 +72,10 @@
 
       <ng-container matColumnDef="admission_status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_status}} </td>
+        <td mat-cell *matCellDef="let row">
+          <p [hidden]="row.admissition_status ==1"> Pending</p> 
+          <p [hidden]="row.admissition_status ==0"> Active</p> 
+        </td>
       </ng-container>
 
       <!----------------------------------------------- Action ------------------------------------------------------->
@@ -80,7 +83,7 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
-          <mat-slide-toggle [color]="color"></mat-slide-toggle>
+          <mat-slide-toggle [color]="color" [checked]="row.admissition_status ==1" (change)="toggle($event)" ></mat-slide-toggle>
         </td>
       </ng-container>
 
