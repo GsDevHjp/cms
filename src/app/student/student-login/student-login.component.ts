@@ -51,6 +51,9 @@ export class StudentLoginComponent implements OnInit {
             this.Router.navigate(['/studenthome']);
             this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
           }
+          else{
+            this.popup.error({ detail: 'Failed', summary: 'Username and Password Not Match...' })
+          }
         },
         (error: any) => {
           console.log(error)

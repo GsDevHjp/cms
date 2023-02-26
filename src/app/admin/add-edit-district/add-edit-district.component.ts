@@ -27,7 +27,6 @@ export class AddEditDistrictComponent implements OnInit {
     this.address_from = this.fb.group({
       district_id: [''],
       district_name: ['', Validators.required],
-      description: [''],
       country_id_fk: ['', Validators.required],
       state_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
@@ -44,7 +43,6 @@ export class AddEditDistrictComponent implements OnInit {
       this.district = "Update District"
       this.address_from.controls['district_id'].setValue(this.edit_district.district_id);
       this.address_from.controls['district_name'].setValue(this.edit_district.district_name);
-      this.address_from.controls['discription'].setValue(this.edit_district.discription);
       this.address_from.controls['country_id_fk'].setValue(this.edit_district.country_id_fk);
       this.address_from.controls['state_id_fk'].setValue(this.edit_district.state_id_fk);
       this.address_from.controls['admin_id_fk'].setValue(this.edit_district.admin_id_fk);
