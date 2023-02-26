@@ -37,7 +37,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Gender : </mat-label>
-            <mat-select formControlName="std_gender">
+            <mat-select formControlName="std_gender" [ngModel]="autoselect">
                 <mat-option value="Male">Male</mat-option>
                 <mat-option value="Female">Female</mat-option>
                 <mat-option value="Other">Other</mat-option>
