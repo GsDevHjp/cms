@@ -1,7 +1,7 @@
 <div id="manage_table_wrapper">
   <div class="head">
     <span class="batch_text">Question Bank</span>
-    <mat-icon id="add_batch" (click)="add_inst_question_bank()">add_circle</mat-icon>
+    <mat-icon id="add_batch" (click)="add_inst_question_bank()" [hidden]="action_btn">add_circle</mat-icon>
   </div>
   <div class="count_area">
     <span class="notice_text">Total : {{count_inst_question_bank}}</span>

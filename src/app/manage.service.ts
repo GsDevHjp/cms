@@ -249,9 +249,7 @@ export class ManageService {
   std_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_query.php', data);
   }
-  query_view() {
-    return this.http.get<[]>(this.baseUrl + "query_view.php")
-  }
+  
   std_query_update(data: any) {
     return this.http.put<any>(this.baseUrl + 'query_update.php', data);
   }
@@ -311,5 +309,12 @@ export class ManageService {
   }
   delete_district(data: any) {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
+  }
+
+  post_query(data:any){
+    return this.http.post<any>(this.baseUrl + 'query_insert.php',data)
+  }
+  query_view() {
+    return this.http.get<[]>(this.baseUrl + 'query_view.php')
   }
 }
