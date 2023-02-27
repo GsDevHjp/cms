@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { AddEditInstBookComponent } from '../add-edit-inst-book/add-edit-inst-book.component';
 import { ManageService } from 'src/app/manage.service';
+import { NgToastService } from 'ng-angular-popup';
+import { NgConfirmService } from 'ng-confirm-box';
 
 @Component({
   selector: 'app-inst-book',
@@ -13,36 +15,74 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./inst-book.component.css']
 })
 export class InstBookComponent implements OnInit {
-  displayedColumns: string[] = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description','inst_book_img', 'action'];
+  displayedColumns: string[] = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description', 'inst_book_img', 'action'];
   dataSource = new MatTableDataSource();
-  count_inst_book:number=0;
+  count_inst_book: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
   login_deatils: any
   login: any
-  inst_id:any
+  inst_id: any
   inst_id_for_inst_login: any
+  action_btn: boolean = false
+  inst_id_for_admin: any;
+  inst_id_for_std: any;
+
   constructor(
     private dailog: MatDialog,
     private router: Router,
-    private service:ManageService,
-    
+    private service: ManageService,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService,
+
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+    const institute_data = this.router.getCurrentNavigation();
+    this.inst_id_for_admin = institute_data?.extras
+    console.log("admin" + this.inst_id_for_admin)
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_std = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
+    console.log("std" + this.inst_id_for_std)
+    console.log("inst" + this.inst_id_for_inst_login)
   }
 
   ngOnInit(): void {
-    const formdata = new FormData()
-    formdata.append("inst_id",this.inst_id_for_inst_login)
-    this.service.get_book_by_inst_id(formdata).subscribe(
-      (res:any)=>{ 
+    if (this.inst_id_for_admin) {
+      this.get_book_by_inst_id(this.inst_id_for_admin);
+    }
+    if (this.inst_id_for_inst_login) {
+      this.get_book_by_inst_id(this.inst_id_for_inst_login)
+    }
+    if (this.inst_id_for_std) {
+      this.get_book_by_inst_id(this.inst_id_for_std)
+      this.action_btn = true
+      this.displayedColumns = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description', 'inst_book_img', 'action'];
+      const instformdata = new FormData()
+      instformdata.append('inst_id', this.inst_id)
+      this.service.get_book_by_inst_id(instformdata).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.dataSource.data = result.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_inst_book = result.data.length
+          return
+        }
+      )
+    }
+  }
+
+  get_book_by_inst_id(inst_for_all: any) {
+    const instformdata = new FormData()
+    instformdata.append('inst_id', inst_for_all)
+    this.service.get_book_by_inst_id(instformdata).subscribe(
+      (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
@@ -63,23 +103,23 @@ export class InstBookComponent implements OnInit {
       data: row,
     });
   }
-  
-  inst_book_delete(row:any){
-    if (confirm("Are you sure to delate")) {
-      const deldata = new FormData();
-      deldata.append('inst_book_id', row.inst_book_id);
-      this.service.inst_book_delete(deldata).subscribe(
-        (res: any) => {
-          console.log(res)
-          alert('data delate sucessfully')
-          this.router.navigate(['/institutehome/instbook'])
-        }
-      )
-    }
-    else {
-      alert('cancle')
-    }
-  
+
+  inst_book_delete(row: any) {
+    this.confirmServices.showConfirm('Are you sure to delate',
+      () => {
+        const deldata = new FormData();
+        deldata.append('inst_book_id', row.inst_book_id);
+        this.service.inst_book_delete(deldata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Course Deleted', })
+            this.router.navigate(['/institutehome/instbook']);
+          }
+        )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Deleted', })
+      })
   }
 
   applyFilter(event: Event) {

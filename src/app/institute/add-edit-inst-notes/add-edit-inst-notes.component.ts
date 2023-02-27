@@ -61,7 +61,7 @@ export class AddEditInstNotesComponent implements OnInit {
       this.inst_notes_form.controls['inst_notes_title'].setValue(this.edit_inst_notes.inst_notes_title);
       this.inst_notes_form.controls['inst_notes_img'].setValue(this.edit_inst_notes.inst_notes_img);
       this.inst_notes_form.controls['inst_notes_description'].setValue(this.edit_inst_notes.inst_notes_description);
-      this.inst_notes_form.controls['course_id_fk'].setValue(this.edit_inst_notes.course_id_fk);
+      this.inst_notes_form.controls['course_id_fk'].setValue(this.edit_inst_notes.course_id);
       this.inst_notes_form.controls['admin_id_fk'].setValue(this.edit_inst_notes.admin_id_fk);
     }
   }

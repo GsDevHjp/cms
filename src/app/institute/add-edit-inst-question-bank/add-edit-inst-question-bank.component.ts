@@ -60,7 +60,7 @@ export class AddEditInstQuestionBankComponent implements OnInit {
       this.inst_question_bank_form.controls['inst_question_bank_title'].setValue(this.edit_inst_question_bank.inst_question_bank_title);
       this.inst_question_bank_form.controls['inst_question_bank_img'].setValue(this.edit_inst_question_bank.inst_question_bank_img);
       this.inst_question_bank_form.controls['inst_question_bank_description'].setValue(this.edit_inst_question_bank.inst_question_bank_description);
-      this.inst_question_bank_form.controls['course_id_fk'].setValue(this.edit_inst_question_bank.course_id_fk);
+      this.inst_question_bank_form.controls['course_id_fk'].setValue(this.edit_inst_question_bank.course_id);
       this.inst_question_bank_form.controls['institute_id_fk'].setValue(this.edit_inst_question_bank.institute_id_fk);
       this.inst_question_bank_form.controls['admin_id_fk'].setValue(this.edit_inst_question_bank.admin_id_fk);
     }

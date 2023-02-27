@@ -100,6 +100,7 @@ import { OESComponent } from './institute/oes/oes.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
 import { AdminChangePasswordComponent } from './admin/admin-change-password/admin-change-password.component';
 import { NgConfirmModule } from 'ng-confirm-box';
+import { AddEditQueryComponent } from './institute/add-edit-query/add-edit-query.component';
 
 @NgModule({
   declarations: [
@@ -180,6 +181,7 @@ import { NgConfirmModule } from 'ng-confirm-box';
     OESComponent,
     ELearningComponent,
     AdminChangePasswordComponent,
+    AddEditQueryComponent,
 
   ],
   imports: [

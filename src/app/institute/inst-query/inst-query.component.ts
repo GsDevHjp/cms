@@ -4,17 +4,18 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AddEditInstQuizComponent } from '../add-edit-inst-quiz/add-edit-inst-quiz.component';
 import { ManageService } from 'src/app/manage.service';
+import { AddEditQueryComponent } from '../add-edit-query/add-edit-query.component';
 
 @Component({
   selector: 'app-inst-query',
   templateUrl: './inst-query.component.html',
   styleUrls: ['./inst-query.component.css']
 })
+
 export class InstQueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['quiz_id', 'quiz_question', 'quiz_option_a', 'quiz_option_b', 'quiz_option_c', 'quiz_option_d', 'action'];
+  displayedColumns: string[] = ['quiz_id', 'query_message', 'query_answer', 'query_description', 'query_date', 'action'];
   dataSource = new MatTableDataSource();
   count_query: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -45,7 +46,7 @@ export class InstQueryComponent implements OnInit {
   ngOnInit(): void {
     const fromdata = new FormData()
     fromdata.append('inst_id', this.login.inst_id)
-    this.service.get_quiz_by_inst_id(fromdata).subscribe(
+    this.service.query_view().subscribe(
       (res: any) => {
         console.log(res)
         this.dataSource.data = res.data
@@ -55,14 +56,14 @@ export class InstQueryComponent implements OnInit {
       }
     )
   }
-  add_course() {
-    this.dailog.open(AddEditInstQuizComponent, {
+  add_quiz() {
+    this.dailog.open(AddEditQueryComponent, {
       disableClose: true
     });
   }
 
   course_edit(row: any) {
-    this.dailog.open(AddEditInstQuizComponent, {
+    this.dailog.open(AddEditQueryComponent, {
       data: row,
     });
   }

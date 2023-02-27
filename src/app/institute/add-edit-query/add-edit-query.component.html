@@ -1,0 +1,34 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Query</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="Query_Form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Massage</mat-label>
+        <input matInput formControlName="query_message">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Answer</mat-label>
+        <input matInput formControlName="query_answer">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="query_description">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput formControlName="query_date">
+    </mat-form-field>
+
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+</form>
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" (click)="add_query()">{{actionBtn}}</button>
+</div>

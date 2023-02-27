@@ -33,8 +33,8 @@ export class BatchComponent implements OnInit {
     private dailog: MatDialog,
     private router: Router,
     private service: ManageService,
-    private popup:NgToastService,
-    private confirmServices:NgConfirmService,
+    private popup: NgToastService,
+    private confirmServices: NgConfirmService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -48,7 +48,6 @@ export class BatchComponent implements OnInit {
 
     this.inst_id_for_std = this.login.institute_id_fk
 
-    // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
     console.log("std" + this.inst_id_for_std)
     console.log("inst" + this.inst_id_for_inst_login)
@@ -57,8 +56,6 @@ export class BatchComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.inst_id_for_admin) {
-      // this.action_btn = true
-      // this.displayedColumns = ['batch_id', 'course_id_fk', 'batch_name', 'batch_arrival', 'batch_departure', 'batch_status', 'batch_date', 'batch_total_std', 'batch_description'];
       this.get_batch_by_inst_id(this.inst_id_for_admin);
     }
     if (this.inst_id_for_inst_login) {

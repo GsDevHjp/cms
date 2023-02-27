@@ -58,7 +58,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
       this.inst_syllabus_form.controls['inst_syllabus_title'].setValue(this.edit_inst_syllabus.inst_syllabus_title);
       this.inst_syllabus_form.controls['inst_syllabus_img'].setValue(this.edit_inst_syllabus.inst_syllabus_img);
       this.inst_syllabus_form.controls['inst_syllabus_description'].setValue(this.edit_inst_syllabus.inst_syllabus_description);
-      this.inst_syllabus_form.controls['course_id_fk'].setValue(this.edit_inst_syllabus.course_id_fk);
+      this.inst_syllabus_form.controls['course_id_fk'].setValue(this.edit_inst_syllabus.course_id);
       this.inst_syllabus_form.controls['admin_id_fk'].setValue(this.edit_inst_syllabus.admin_id_fk);
     }
   }
