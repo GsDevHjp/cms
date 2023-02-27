@@ -46,31 +46,10 @@ export class AdmissionComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
-      const fromdata = new FormData()
-      fromdata.append("inst_id", this.inst_id)
-      this.service.get_admission_by_inst_id(fromdata).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.dataSource.data = res.data
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-          this.count_admission = res.data.length
-          return
-        }
-      )
+      this.get_admission_data(this.inst_id)
     }
     else {
-      const fromdata = new FormData()
-      fromdata.append("inst_id", this.inst_id_for_inst_login)
-      this.service.get_admission_by_inst_id(fromdata).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.dataSource.data = res.data
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-          this.count_admission = res.data.length
-        }
-      )
+     this.get_admission_data(this.inst_id_for_inst_login)
     }
   }
 
@@ -81,29 +60,48 @@ export class AdmissionComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
   }
 
-  toggle(event: MatSlideToggleChange) {
+  toggle(event: MatSlideToggleChange, admission_id:any) {
+    console.log(admission_id)
     if(event.checked == true){
       const editdata = new FormData()
       editdata.append('admissition_status' , '1')
+      editdata.append('admission_id' , admission_id)
         this.service.admission_update(editdata).subscribe(
           (res:any)=>{
-            console.log(res)
+            this.get_admission_data(this.inst_id_for_inst_login)    
           }
         )
     }
 
     if(event.checked == false){
       const editdata = new FormData()
-      editdata.append('admissition_status' , '2')
+      editdata.append('admissition_status' , '0')
+      editdata.append('admission_id' , admission_id)
+
         this.service.admission_update(editdata).subscribe(
           (res:any)=>{
-            console.log(res)
-          }
+            this.get_admission_data(this.inst_id_for_inst_login)          }
         )
     }
    
+}
+
+
+get_admission_data(inst_id:any){
+  const fromdata = new FormData()
+  fromdata.append("inst_id",inst_id)
+  this.service.get_admission_by_inst_id(fromdata).subscribe(
+    (res: any) => {
+      console.log(res)
+      this.dataSource.data = res.data
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.count_admission = res.data.length
+    }
+  )
 }
 }
 

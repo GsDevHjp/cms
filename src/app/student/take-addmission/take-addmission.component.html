@@ -54,10 +54,13 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
         <td mat-cell *matCellDef="let row"> {{row.admission_date}} </td>
       </ng-container>
-
+      
       <ng-container matColumnDef="batch_status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let row"> {{row.batch_status}} </td>
+        <td mat-cell *matCellDef="let row">
+          <p [hidden]="row.admissition_status ==1"> Pending</p> 
+          <p [hidden]="row.admissition_status ==0"> Active</p> 
+        </td>
       </ng-container>
 
 
