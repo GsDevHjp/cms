@@ -120,6 +120,9 @@ export class ManageService {
   get_course_by_course_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_course_id.php', data);
   }
+  student_conform(data: any) {
+    return this.http.post<any>(this.baseUrl + 'student_conform.php', data);
+  }
 
 
   // for enquiry module 
