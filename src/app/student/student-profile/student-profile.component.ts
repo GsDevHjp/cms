@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-student-profile',
   templateUrl: './student-profile.component.html',
@@ -24,8 +25,13 @@ export class StudentProfileComponent implements OnInit {
     private popup: NgToastService,
     private service: ManageService,
     private FormBuilder: FormBuilder,
+    private router:Router,
     private matref: MatDialogRef<StudentProfileComponent>
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_id)
@@ -36,7 +42,7 @@ export class StudentProfileComponent implements OnInit {
       this.imgurl = "profile.png"
     }
     else {
-      this.imgurl = this.login.std_img
+      // this.imgurl = this.login.std_img
     }
   }
 
@@ -91,6 +97,7 @@ export class StudentProfileComponent implements OnInit {
         this.student_form.controls['std_img'].setValue(this.student_profile_data.std_img);
         this.student_form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
         this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
+        this.imgurl = this.student_profile_data.std_img
       })
   }
 
@@ -123,6 +130,7 @@ export class StudentProfileComponent implements OnInit {
           console.log(result)
           this.popup.success({ detail: 'Success', summary: 'Profile Update Successfully..', })
           this.profile_set_data(this.student_id)
+          this.router.navigate(['studenthome/dashboard'])
           this.matref.close()
         },
         (error: any) => {
@@ -131,6 +139,8 @@ export class StudentProfileComponent implements OnInit {
         }
       )
     }
+
+
   }
 
   reset() {

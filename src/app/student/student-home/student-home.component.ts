@@ -3,6 +3,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentProfileComponent } from '../student-profile/student-profile.component';
+import { ManageService } from 'src/app/manage.service';
 
 @Component({
   selector: 'app-student-home',
@@ -18,9 +19,12 @@ export class StudentHomeComponent implements OnInit {
   img_url: string = '';
   login_deatils: any
   login: any
+  std_id:any
   constructor(
     private dailog: MatDialog,
-    private observe: BreakpointObserver
+    private observe: BreakpointObserver,
+    private servies:ManageService
+
   ) { }
 
   ngOnInit(): void {
@@ -38,15 +42,30 @@ export class StudentHomeComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
+    this.std_id  = this.login.std_id
+    this.get_std_data(this.std_id)
     console.log(this.login.std_name)
     this.name = this.login.std_name
+
     if(!this.login.std_img){
       this.img_url = "profile.png"
     }
     else{
-      this.img_url = this.login.std_img
+          this.img_url = this.login.std_img
     }
 
+  }
+
+  get_std_data(std:any){
+    const fromdata = new FormData()
+    fromdata.append('std_id', std)
+    this.servies.get_student_by_std_id(fromdata).subscribe(
+     (res:any)=>{
+      console.log(res.data.std_img)
+       this.name = res.data.std_name
+       this.img_url = res.data.std_img
+     }
+    )
   }
 
 

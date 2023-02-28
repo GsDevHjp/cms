@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AddEditEnquiryComponent } from '../add-edit-enquiry/add-edit-enquiry.component';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
+import { ConverttoadmissionComponent } from '../converttoadmission/converttoadmission.component';
 
 @Component({
   selector: 'app-enquiry',
@@ -65,7 +66,7 @@ export class EnquiryComponent implements OnInit {
   }
 
   admission_form(row: any) {
-    this.dailog.open(AddEditStudentComponent, {
+    this.dailog.open(ConverttoadmissionComponent, {
       data: row,
       disableClose: true,
     })
