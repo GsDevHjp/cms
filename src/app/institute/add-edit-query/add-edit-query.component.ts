@@ -37,7 +37,7 @@ export class AddEditQueryComponent implements OnInit {
       query_message: ['', Validators.required],
       query_answer: [''],
       query_description: [''],
-      institute_id_fk: ['', Validators.required],
+      institute_id_fk: ['', Validators.required], 
       admin_id_fk: ['', Validators.required],
       query_date: [new Date().toISOString().slice(0, 10)],
     })
