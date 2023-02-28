@@ -21,7 +21,7 @@ export class InstQueryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
-  imgUrl:string = 'http://localhost/cms/src/assets/';
+  imgUrl: string = 'http://localhost/cms/src/assets/';
   inst_id_for_admin: any;
   login_deatils: any;
   login: any;
