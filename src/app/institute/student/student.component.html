@@ -60,7 +60,8 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
           <mat-icon (click)="edit_student(row)">edit</mat-icon>
-          <mat-icon (click)="fee_pay(row)">payment</mat-icon>
+          &nbsp;  <mat-icon (click)="fee_pay(row)">paid</mat-icon>  &nbsp; 
+          <mat-slide-toggle [color]="color" [checked]="row.status ==1" (change)="toggle($event, row.std_id)" ></mat-slide-toggle>          
         </td>
       </ng-container>
 

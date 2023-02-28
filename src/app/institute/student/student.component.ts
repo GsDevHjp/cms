@@ -7,6 +7,8 @@ import { ManageService } from 'src/app/manage.service';
 import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
 import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 import { Router } from '@angular/router';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-student',
@@ -25,7 +27,7 @@ export class StudentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
-
+  color: ThemePalette = 'primary'
   constructor(
     private dailog: MatDialog,
     private service: ManageService,
@@ -43,30 +45,10 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
-      const instformdata = new FormData()
-      instformdata.append('inst_id', this.inst_id)
-      this.service.get_student_by_inst_id(instformdata).subscribe(
-        (result: any) => {
-          console.log(result)
-          this.dataSource.data = result.data
-          this.dataSource.sort = this.sort;
-          this.count_student = result.data.length
-          return
-        }
-      )
+     this.get_std(this.inst_id)
     }
     else {
-      const instlogin = new FormData()
-      instlogin.append('inst_id', this.inst_id_for_inst_login)
-      this.service.get_student_by_inst_id(instlogin).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.dataSource.data = res.data
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-          this.count_student = res.data.length
-        }
-      )
+     this.get_std(this.inst_id_for_inst_login)
     }
   }
 
@@ -97,5 +79,45 @@ export class StudentComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  toggle(event: MatSlideToggleChange, std_id:any) {
+    if(event.checked == true){
+      const editdata = new FormData()
+      editdata.append('status' , '1')
+      editdata.append('std_id' , std_id)
+        this.service.admission_update(editdata).subscribe(
+          (res:any)=>{
+            this.get_std(this.inst_id_for_inst_login)   
+          }
+        )
+    }
+
+    if(event.checked == false){
+      const editdata = new FormData()
+      editdata.append('status' , '0')
+      editdata.append('std_id' , std_id )
+
+        this.service.student_conform(editdata).subscribe(
+          (res:any)=>{
+            this.get_std(this.inst_id_for_inst_login)      
+            }
+        )
+    }
+   
+}
+get_std(inst:any){
+  const instformdata = new FormData()
+  instformdata.append('inst_id', inst)
+  this.service.get_student_by_inst_id(instformdata).subscribe(
+    (result: any) => {
+      console.log(result)
+      this.dataSource.data = result.data
+      this.dataSource.sort = this.sort;
+      this.count_student = result.data.length
+      return
+    }
+  )
+}
+
 }
 

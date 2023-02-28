@@ -94,6 +94,12 @@ export class QuizeComponent implements OnInit {
       (val => {
         this.counter--;
         if (this.counter == 0) {
+          if (this.counter == 0 && this.currentQuestion == this.count_ques) {
+            this.router.navigate(['/studenthome/quizdashboard']);
+          }
+          else {
+
+          }
           this.nextQues()
           this.counter = 60
         }
