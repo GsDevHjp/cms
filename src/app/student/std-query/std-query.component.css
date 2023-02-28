@@ -1,68 +1,31 @@
-::ng-deep .mat-dialog-container {
-  width: 300px;
-  background-color: rgb(244, 246, 247);
-  height: auto;
-}
-
-.add_head {
-  display: flex;
-  height: 30px;
-  width: 100%;
-  margin-bottom: 15px;
-  justify-content: space-between;
-}
-
-.add_head span {
-  line-height: 30px;
+.example-spacer {
+  flex: 1 1 auto;
+  margin-bottom: 20px;
+  color: #1d1f23;
   font-size: 18px;
-  font-weight: 600;
-  color:  #1d1f23;
 }
 
-#close_btn {
-  width: 30px;
+.material-icons {
+  color: #1d1f23;
+  margin-bottom: 20px;
+}
+
+mat-toolbar {
   height: 30px;
-  background-color:  #1d1f23;
-  }
-
-#close_btn mat-icon {
+  padding: 0px;
+  background: none;
   position: relative;
-  bottom: 6px;
+  color: whitesmoke;
 }
-
-
-.add_box {
-  width: calc(100% - 67.5%);
-  margin-left: 5px;
-  height: auto;
-  float: left;
-
+mat-form-field{
+  margin-left:10px;
 }
-
-textarea {
-  height: 17px;
-}
-
-.register {
-  margin-left: 8.2em;
+.submit {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button {
   margin-left: 10px;
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-.btn_box {
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
 }

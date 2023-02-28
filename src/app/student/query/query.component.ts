@@ -15,12 +15,15 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class QueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['query_id', 'std_query', 'std_query_ans', 'std_query_date', 'action'];
+  displayedColumns: string[] = ['query_id', 'query_message', 'query_answer','query_description', 'query_date', 'action'];
   dataSource = new MatTableDataSource();
   query_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
+  login: any;
+  std_id: any;
+  login_deatils:any;
   constructor(
     private popup:NgToastService,
     private dailog: MatDialog,
@@ -30,10 +33,15 @@ export class QueryComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    console.log(this.login.std_name)
+    this.std_id = this.login.std_id
+    console.log("vhdfjdv" + this.login.std_id)
   }
 
   ngOnInit(): void {
-    this.manageservice.query_view().subscribe(
+    this.manageservice.get_query_by_inst_id().subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);
@@ -47,12 +55,6 @@ export class QueryComponent implements OnInit {
     this.dailog.open(StdQueryComponent, {
       disableClose: true
     });
-  }
-
-  editmsg(row: any) {
-    this.dailog.open(StdQueryComponent, {
-      data: row
-    })
   }
 
   deleteQuery(row: any) {

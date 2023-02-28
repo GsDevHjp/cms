@@ -25,6 +25,8 @@ export class AddEditQueryComponent implements OnInit {
     private manageservice: ManageService,
     private popup: NgToastService,
     private router: Router,
+    @Inject(MAT_DIALOG_DATA) public edit_queary: any
+
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -37,22 +39,52 @@ export class AddEditQueryComponent implements OnInit {
       query_message: ['', Validators.required],
       query_answer: [''],
       query_description: [''],
-      institute_id_fk: ['', Validators.required], 
+      institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
       query_date: [new Date().toISOString().slice(0, 10)],
     })
     this.Query_Form.controls['institute_id_fk'].setValue(this.inst_id);
+
+    if (this.edit_queary) {
+      this.actionBtn = "Update";
+      this.Query_Form.controls['query_id'].setValue(this.edit_queary.query_id);
+      this.Query_Form.controls['query_message'].setValue(this.edit_queary.query_message);
+      this.Query_Form.controls['query_answer'].setValue(this.edit_queary.query_answer);
+      this.Query_Form.controls['query_description'].setValue(this.edit_queary.query_description);
+      this.Query_Form.controls['admin_id_fk'].setValue(this.edit_queary.admin_id_fk);
+    }
   }
-  add_query(){
+  add_query() {
     console.log(this.Query_Form.value)
-    this.manageservice.post_query(this.Query_Form.value).subscribe(
-      (res:any)=>{
+    if (!this.edit_queary) {
+      this.manageservice.post_query(this.Query_Form.value).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.matref.close();
+          this.popup.success({ detail: 'Success', summary: 'Query Saved', })
+          this.router.navigate(['/institutehome/instquery'])
+        },
+        (error: any) => {
+          this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Saved', })
+        }
+      )
+    }
+    else {
+      this.query_edit()
+    }
+  }
+  query_edit() {
+    this.manageservice.put_quary(this.Query_Form.value).subscribe({
+      next: (res) => {
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Query Saved',})
+        this.matref.close();
+        this.popup.success({ detail: 'Success', summary: 'Query Updated', })
+        this.router.navigate(['/institutehome/instquery'])
+
       },
-      (error:any)=>{
-        this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Saved',})
+      error: () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Updated',})
       }
-    )
+    })
   }
 }

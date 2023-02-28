@@ -20,13 +20,10 @@ export class InstQueryComponent implements OnInit {
   count_query: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  tabledata: any;
-  imgUrl: string = 'http://localhost/cms/src/assets/';
-  inst_id_for_admin: any;
-  login_deatils: any;
-  login: any;
+  login_deatils: any
+  login: any
+  inst_id: any
   inst_id_for_inst_login: any;
-  inst_id: any;
 
   constructor(
     private dailog: MatDialog,
@@ -39,16 +36,16 @@ export class InstQueryComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    this.inst_id = this.login.inst_id
-    console.log("inst" + this.login.inst_id)
+    this.inst_id = this.login.institute_id_fk
+    this.inst_id_for_inst_login = this.login.inst_id
   }
 
   ngOnInit(): void {
-    const fromdata = new FormData()
-    fromdata.append('inst_id', this.login.inst_id)
-    this.service.query_view().subscribe(
+    // const fromdata = new FormData()
+    // fromdata.append('inst_id', this.inst_id_for_inst_login)
+    this.service.get_query_by_inst_id().subscribe(
       (res: any) => {
-        console.log(res)
+        console.log("hdbk" + res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

@@ -1,29 +1,19 @@
-<div class="add_head">
-    <span>{{instupdate}}</span>
-    <button mat-mini-fab  id="close_btn" mat-dialog-close>
-        <mat-icon>close</mat-icon>
-    </button>
-</div>
-<form [formGroup]="Std_Query_Form">
+<mat-toolbar>
+    <span class="example-spacer">{{instupdate}}</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<form [formGroup]="Query_Form">
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Massage</mat-label>
-        <input matInput formControlName="std_query">
+        <input matInput formControlName="query_message"> 
     </mat-form-field>
-
-    <input  readonly  formControlName="std_query_ans" hidden>
-
-    <input type="number" readonly  formControlName="std_id_fk" hidden>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
-    <input type="number" readonly formControlName="query_id" hidden>
-
 </form>
-<span class="btn_box">
-    <button class="reset_btn" mat-raised-button color="warn" (click)="reset()">Reset</button>
-
-    <button class="add_btn" mat-raised-button color="primary" (click)="addquery()"
-        [disabled]="!Std_Query_Form.valid">{{actionBtn}}
-    </button>
-</span>
+<div class="submit">
+    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="primary" (click)="add_query()">{{actionBtn}}</button>
+</div>

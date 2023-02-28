@@ -168,8 +168,8 @@ export class ManageService {
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
-  get_notification_by_inst_id(data:any) {
-    return this.http.post<any>(this.baseUrl + 'get_notification_by_inst_id.php',data);
+  get_notification_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_notification_by_inst_id.php', data);
   }
   // for inst book module
   post_inst_book(data: any) {
@@ -208,7 +208,7 @@ export class ManageService {
   inst_syllabus_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_delete.php', data);
   }
-  get_syllabus_by_inst_id(data:any) {
+  get_syllabus_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_syllabus_by_inst_id.php', data);
   }
   // for inst question bank module
@@ -242,19 +242,6 @@ export class ManageService {
   }
   inst_login(data: any) {
     return this.http.post<any>(this.baseUrl + 'institute_login.php', data);
-  }
-
-  // for query module 
-
-  std_query(data: any) {
-    return this.http.post<any>(this.baseUrl + 'std_query.php', data);
-  }
-  
-  std_query_update(data: any) {
-    return this.http.put<any>(this.baseUrl + 'query_update.php', data);
-  }
-  delete_query(data: any) {
-    return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
 
   // for admission 
@@ -311,10 +298,25 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
   }
 
-  post_query(data:any){
-    return this.http.post<any>(this.baseUrl + 'query_insert.php',data)
-  }
-  query_view() {
+  // for query module 
+  get_query_by_inst_id() {
     return this.http.get<[]>(this.baseUrl + 'query_view.php')
   }
+  // get_query_by_inst_id(data: any) {
+  //   return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
+  // }
+  post_query(data: any) {
+    return this.http.post<any>(this.baseUrl + 'query_insert.php', data)
+  }
+  post_std_query(data: any) {
+    return this.http.post<any>(this.baseUrl + 'std_queary_insert.php', data)
+  }
+  put_quary(data: any) {
+    return this.http.put<any>(this.baseUrl + 'query_update.php', data);
+  }
+  delete_query(data: any) {
+    return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
+  }
+
+
 }
