@@ -60,20 +60,9 @@ export class QuizeComponent implements OnInit {
     this.startCounter()
   }
 
-  option1(event: any) {
-    console.log(event.data)
+  option(event: any) {
+    console.log(event)
   }
-  option2(event: any) {
-    console.log(event.data)
-  }
-  option3(event: any) {
-    console.log(event.data)
-  }
-  option4(event: any) {
-    console.log(event.data)
-  }
-
-
 
   nextQues() {
     console.log(this.quizfrom.value)
