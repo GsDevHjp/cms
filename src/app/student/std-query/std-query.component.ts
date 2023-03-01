@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class StdQueryComponent implements OnInit {
   admin = 1
-  Std_Query_Form !: FormGroup
+  Query_Form !: FormGroup
   actionBtn: string = "Submit"
   instupdate: string = "Query"
   login_deatils: any;
@@ -22,8 +22,8 @@ export class StdQueryComponent implements OnInit {
     private FormBuilder: FormBuilder,
     private matref: MatDialogRef<StdQueryComponent>,
     private manageservice: ManageService,
-    private popup:NgToastService,
-    private router:Router,
+    private popup: NgToastService,
+    private router: Router,
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -33,69 +33,28 @@ export class StdQueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.Std_Query_Form = this.FormBuilder.group({
+    this.Query_Form = this.FormBuilder.group({
       query_id: [''],
-      std_query: ['', Validators.required],
-      std_query_ans: [''],
-      std_id_fk: ['', Validators.required],
+      query_message: ['', Validators.required],
+      std_id_fk: [''],
       admin_id_fk: ['', Validators.required],
-      std_query_date: [new Date().toISOString().slice(0, 10)],
     })
 
-    this.Std_Query_Form.controls['std_id_fk'].setValue(this.login.std_id);
-
-    if (this.editquery) {
-      console.log(this.editquery.query_id)
-      this.actionBtn = "Update";
-      this.instupdate = "Update Ragistration";
-      this.Std_Query_Form.controls['query_id'].setValue(Number(this.editquery.query_id));
-      this.Std_Query_Form.controls['std_query'].setValue(this.editquery.std_query);
-      this.Std_Query_Form.controls['std_query_ans'].setValue(this.editquery.std_query_ans);
-      this.Std_Query_Form.controls['std_id_fk'].setValue(this.editquery.std_id_fk);
-      this.Std_Query_Form.controls['std_query_date'].setValue(this.editquery.std_query_date);
-      this.Std_Query_Form.controls['admin_id_fk'].setValue(this.editquery.admin_id_fk);
-    }
+    this.Query_Form.controls['std_id_fk'].setValue(this.login.std_id);
 
   }
-  addquery() {
-    // console.log(this.Std_Query_Form.value)
-    if (!this.editquery) {
-      this.manageservice.std_query(this.Std_Query_Form.value).subscribe(
-        (result: any) => {
-          console.log(result)
-          this.matref.close()
-          this.popup.success({ detail: 'Success', summary: 'Message Send Successfully..'})
-          this.router.navigate(['/studenthome/query'])
-        },
-        (error: any) => {
-          console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Send..'})
-        }
-      )
-    }
-    else {
-      this.updateQuery()
-    }
-
-  }
-
-  updateQuery() {
-    console.log(this.Std_Query_Form.value)
-    this.manageservice.put_inst(this.Std_Query_Form.value).subscribe({
-      next: (res) => {
+  add_query() {
+    console.log(this.Query_Form.value)
+    this.manageservice.post_std_query(this.Query_Form.value).subscribe(
+      (res:any)=>{
         console.log(res)
-        this.popup.success({ detail: 'Success', summary: 'Message Update Successfully..'})
+        this.matref.close();
+        this.popup.success({ detail: 'Success', summary: 'Query Saved',})
         this.router.navigate(['/studenthome/query'])
       },
-      error: (error: any) => {
-        console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Message Not Update..'})
+      (error:any)=>{
+        this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Saved',})
       }
-    })
+    )
   }
-
-  reset(){
-    this.Std_Query_Form.reset()
-  }
-
 }
