@@ -104,6 +104,8 @@ import { AddEditQueryComponent } from './institute/add-edit-query/add-edit-query
 import { EmployeeComponent } from './institute/employee/employee.component';
 import { AddEditEmployeeComponent } from './institute/add-edit-employee/add-edit-employee.component';
 import { ConverttoadmissionComponent } from './institute/converttoadmission/converttoadmission.component';
+import { CertificateComponent } from './institute/certificate/certificate.component';
+import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 
 @NgModule({
   declarations: [
@@ -188,6 +190,8 @@ import { ConverttoadmissionComponent } from './institute/converttoadmission/conv
     EmployeeComponent,
     AddEditEmployeeComponent,
     ConverttoadmissionComponent,
+    CertificateComponent,
+    AddEditCertificateComponent,
 
   ],
   imports: [

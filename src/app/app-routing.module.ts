@@ -16,8 +16,10 @@ import { StateComponent } from './admin/state/state.component';
 import { TAndCComponent } from './admin/t-and-c/t-and-c.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
 import { BatchComponent } from './institute/batch/batch.component';
+import { CertificateComponent } from './institute/certificate/certificate.component';
 import { CourseComponent } from './institute/course/course.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
 import { EmployeeComponent } from './institute/employee/employee.component';
@@ -120,7 +122,9 @@ const routes: Routes = [
       { path: 'instquizdashboard', component: InstquizdashboardComponent },
       { path: 'oes', component: OESComponent },
       { path: 'elearning', component: ELearningComponent },
-      { path: 'employee', component: EmployeeComponent }
+      { path: 'employee', component: EmployeeComponent },
+      { path: 'certificate', component: CertificateComponent },
+      { path: 'add_edit_certificate', component: AddEditCertificateComponent }
     ]
   },
 

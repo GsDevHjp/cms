@@ -1,0 +1,88 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+	<li [ngbNavItem]="1">
+		<a ngbNavLink>personal Information</a>
+		<ng-template ngbNavContent>
+			<mat-toolbar>
+				<span class="example-spacer">Add Notification</span>
+				<mat-icon mat-dialog-close>cancel</mat-icon>
+			</mat-toolbar>
+			
+			<form [formGroup]="notification_form">
+			
+				<mat-form-field class="example-full-width" appearance="fill">
+					<mat-label>Name</mat-label>
+					<input matInput>
+				</mat-form-field>
+			
+				<mat-form-field class="example-full-width" appearance="fill">
+					<mat-label>Father Name</mat-label>
+					<input matInput>
+				</mat-form-field>
+
+				<mat-form-field class="example-full-width" appearance="fill">
+					<mat-label>Father Name</mat-label>
+					<input matInput>
+				</mat-form-field>
+
+				<mat-form-field class="example-full-width" appearance="fill">
+					<mat-label>Father Name</mat-label>
+					<input matInput>
+				</mat-form-field>
+			
+				<input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+			
+			</form>
+			
+			<div class="submit">
+				<button mat-raised-button color="warn">Reset</button>
+				<button mat-raised-button color="primary"
+					[disabled]="!notification_form.valid">{{actionBtn}}</button>
+			</div>
+		</ng-template>
+	</li>
+	<li [ngbNavItem]="2">
+		<a ngbNavLink>Parmanet Address</a>
+		<ng-template ngbNavContent>
+			<p>
+				Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
+				farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+				ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
+				helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
+				8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
+				stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+			</p>
+		</ng-template>
+	</li>
+	<li [ngbNavItem]="3">
+		<a ngbNavLink>Rigistration Section</a>
+		<ng-template ngbNavContent>
+			<p>
+				Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
+				Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+				Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
+				egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
+				tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
+				magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+				neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+			</p>
+		</ng-template>
+	</li>
+	<li [ngbNavItem]="4">
+		<a ngbNavLink>Upload Document</a>
+		<ng-template ngbNavContent>
+			<p>
+				Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
+				Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+				Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
+				egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
+				tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
+				magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+				neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+			</p>
+		</ng-template>
+	</li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<pre>Active: {{ active }}</pre>
