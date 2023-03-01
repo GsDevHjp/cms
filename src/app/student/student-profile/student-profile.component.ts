@@ -27,7 +27,8 @@ export class StudentProfileComponent implements OnInit {
     private FormBuilder: FormBuilder,
     private router:Router,
     private matref: MatDialogRef<StudentProfileComponent>
-  ) {
+  )
+   {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
