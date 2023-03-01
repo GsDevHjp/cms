@@ -101,6 +101,8 @@ import { ELearningComponent } from './institute/e-learning/e-learning.component'
 import { AdminChangePasswordComponent } from './admin/admin-change-password/admin-change-password.component';
 import { NgConfirmModule } from 'ng-confirm-box';
 import { AddEditQueryComponent } from './institute/add-edit-query/add-edit-query.component';
+import { EmployeeComponent } from './institute/employee/employee.component';
+import { AddEditEmployeeComponent } from './institute/add-edit-employee/add-edit-employee.component';
 import { ConverttoadmissionComponent } from './institute/converttoadmission/converttoadmission.component';
 
 @NgModule({
@@ -183,6 +185,8 @@ import { ConverttoadmissionComponent } from './institute/converttoadmission/conv
     ELearningComponent,
     AdminChangePasswordComponent,
     AddEditQueryComponent,
+    EmployeeComponent,
+    AddEditEmployeeComponent,
     ConverttoadmissionComponent,
 
   ],
