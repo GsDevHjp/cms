@@ -1,0 +1,71 @@
+<mat-toolbar>
+    <span class="example-spacer">Add Employee</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div mat-dialog-content>
+    <form [formGroup]="empForm">
+        <div class="column">
+            <input type="number" formControlName="emp_id" readonly hidden>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input formControlName="emp_name" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" formControlName="emp_email" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Acount No</mat-label>
+                <input type="number" formControlName="emp_account_no" matInput onkeypress="return this.value.length < 18;">
+            </mat-form-field>
+        </div>
+        
+        <div class="column">
+            <mat-form-field appearance="fill" id="mobil">
+                <mat-label>Mobile</mat-label>
+                <input type="number" formControlName="emp_whatsapp" matInput onkeypress="return this.value.length < 10;">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="text" formControlName="emp_password" matInput onkeypress="return this.value.length < 20;">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" id="account">
+                <mat-label>Holder Name </mat-label>
+                <input formControlName="emp_ac_holder_name" matInput>
+            </mat-form-field>
+        </div>
+
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Aadhar No </mat-label>
+                <input type="number" formControlName="emp_aadhar_no" matInput onkeypress="return this.value.length < 12;">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>IFSC</mat-label>
+                <input formControlName="emp_ifsc" matInput>
+            </mat-form-field>
+
+            <table class="photo" cellspacing="0">
+                <mat-label class="student_kb">image</mat-label>
+                <input type="file" name="std_photo" class="upload" (change)="onPhotoUpload($event)"
+                    formControlName="emp_photo">
+            </table>
+        </div>
+
+        <mat-form-field appearance="fill" id="adress">
+            <mat-label>Address</mat-label>
+            <textarea formControlName="emp_address" matInput></textarea>
+        </mat-form-field><br>
+        <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="resetEmp()">Reset</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()"
+                [disabled]="!empForm.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

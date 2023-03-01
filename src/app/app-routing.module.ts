@@ -20,6 +20,7 @@ import { AdmissionComponent } from './institute/admission/admission.component';
 import { BatchComponent } from './institute/batch/batch.component';
 import { CourseComponent } from './institute/course/course.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
+import { EmployeeComponent } from './institute/employee/employee.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
 import { InstBookComponent } from './institute/inst-book/inst-book.component';
 import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
@@ -117,8 +118,9 @@ const routes: Routes = [
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
       { path: 'instquizdashboard', component: InstquizdashboardComponent },
-      { path: 'oes', component: OESComponent},
-      { path: 'elearning', component: ELearningComponent }
+      { path: 'oes', component: OESComponent },
+      { path: 'elearning', component: ELearningComponent },
+      { path: 'employee', component: EmployeeComponent }
     ]
   },
 
@@ -153,7 +155,7 @@ const routes: Routes = [
 ];
 @NgModule({
 
-  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,143 @@
+.column {
+    width: 100%;
+    height: 72px;
+    display: flex;
+  }
+  
+  .column mat-form-field {
+    width: 30.5%;
+    margin-left: 3%;
+  }
+  
+  form {
+    margin-right: 22px;
+  }
+  
+  textarea {
+    height: 18px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  #adress {
+    width: 97%;
+    margin-left: 3%;
+    margin-top: -5px;
+  }
+  
+  mat-toolbar {
+    height: 40px;
+    background: none;
+    color:  #1d1f23;
+    padding: 0px;
+    position: relative;
+    top: -10px;
+  }
+  
+  .photo {
+    width: 240px;;
+    height: 51px;
+    margin-left: 22px;
+    border-bottom: 1px solid #757272;
+    background-color: whitesmoke;
+  }
+  
+  .student_kb {
+    margin-left: 10px;
+  }
+  
+  .upload {
+    font-size: 9.5px;
+    margin-left: 10px;
+  }
+  
+  .submit {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  
+  @media (min-width:1200px) and (max-width:2000px) {
+    .column {
+      width: 100%;
+      height: 72px;
+      display: flex;
+    }
+  
+    .column mat-form-field {
+      width: 30.5%;
+      margin-left: 3%;
+    }
+  
+    .photo {
+      width: 250px;
+      margin-left: 3%;
+    }
+  
+    #adress {
+      width: 97%;
+      margin-left: 3%;
+      margin-top: -5px;
+    }
+  
+  }
+  
+  @media (min-width:768px) and (max-width:1200px) {
+    .column {
+      width: 100%;
+      height: 72px;
+      display: flex;
+    }
+  
+    .column mat-form-field {
+      width: 30.5%;
+      margin-left: 3%;
+    }
+  
+    .photo {
+      width: 250px;
+      margin-left: 3%;
+    }
+  
+    #adress {
+      width: 97%;
+      margin-left: 3%;
+      margin-top: -5px;
+    }
+  }
+  
+  @media(max-width: 767px) {
+    .column {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .column mat-form-field {
+      width: 100%;
+      margin: 0px;
+    }
+  
+    form {
+      margin: 0px;
+    }
+  
+    #adress {
+      width: 100%;
+      margin-top: -5px;
+      margin-left: 0px;
+    }
+  
+    .photo {
+      width: 100%;
+      margin-left: 0px;
+    }
+  
+  }

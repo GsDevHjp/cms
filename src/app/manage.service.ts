@@ -8,7 +8,8 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  // baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  baseUrl: string = 'http://localhost/cmsapinew/';
 
   // dashboard  
   get_dashboad(data: any) {
@@ -321,5 +322,19 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
 
+  //  For Employee Module
+  getEmployee() {
+    return this.http.get<[]>(this.baseUrl + 'employee_view.php')
+  }
+  postEmployee(data: any) {
+    return this.http.post<any>(this.baseUrl + 'employee_insert.php', data)
+  }
+
+  putEmployee(data: any) {
+    return this.http.post<any>(this.baseUrl + 'employee_update.php', data);
+  }
+  delete_employee(data:any){
+    return this.http.post<any>(this.baseUrl + 'employee_delete.php', data);
+  }
 
 }
