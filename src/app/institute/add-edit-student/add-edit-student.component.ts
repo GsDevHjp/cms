@@ -128,42 +128,65 @@ export class AddEditStudentComponent implements OnInit {
       this.updateStudent();
     }
     else {
-      console.log(this.student_form.value)
-      const formdata = new FormData();
-      formdata.append('std_name', this.student_form.get('std_name')?.value)
-      formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
-      formdata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
-      formdata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
-      formdata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
-      formdata.append('std_email', this.student_form.get('std_email')?.value)
-      formdata.append('std_dob', this.student_form.get('std_dob')?.value)
-      formdata.append('std_gender', this.student_form.get('std_gender')?.value)
-      formdata.append('std_state', this.student_form.get('std_state')?.value)
-      formdata.append('std_district', this.student_form.get('std_district')?.value)
-      formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
-      formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
-      formdata.append('std_img', this.student_form.get('std_img')?.value)
-      formdata.append('std_address', this.student_form.get('std_address')?.value)
-      formdata.append('std_password', this.student_form.get('std_password')?.value)
-      formdata.append('status', '1')
-      formdata.append('institute_id_fk', this.login.inst_id)
-      formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
-      if (this.student_form.valid) {
-        this.service.post_student(formdata).subscribe(
-          (result: any) => {
-            console.log(result)
-            this.matref.close();
-            this.student_form.reset();
-            this.popup.success({ detail: 'Success', summary: 'Student Saved', })
-            this.router.navigate(['/institutehome/student'])
-          },
-          (error: any) => {
-            console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Saved', })
-          }
-        )
+      const fromdata = new FormData()
+      fromdata.append('inst_id', this.inst_id)
+      fromdata.append('std_email', this.student_form.get('std_email')?.value)
+      this.service.std_email_verfiy(fromdata).subscribe(
+        (res: any) => {
+          console.log(res)
+          if (res.success) {
+            this.popup.warning({ detail: 'Warning', summary: 'this email already exists ' + res.data[0].std_name, })
       }
+          else{
+  
+              this.final_submit()
+          }
+        },
+        (error: any) => {
+        }
+      )
+
+
+        }
+  }
+
+  final_submit(){
+    console.log(this.student_form.value)
+    const formdata = new FormData();
+    formdata.append('std_name', this.student_form.get('std_name')?.value)
+    formdata.append('std_father_name', this.student_form.get('std_father_name')?.value)
+    formdata.append('std_father_occupation', this.student_form.get('std_father_occupation')?.value)
+    formdata.append('std_whatsapp_no', this.student_form.get('std_whatsapp_no')?.value)
+    formdata.append('std_aadhar', this.student_form.get('std_aadhar')?.value)
+    formdata.append('std_email', this.student_form.get('std_email')?.value)
+    formdata.append('std_dob', this.student_form.get('std_dob')?.value)
+    formdata.append('std_gender', this.student_form.get('std_gender')?.value)
+    formdata.append('std_state', this.student_form.get('std_state')?.value)
+    formdata.append('std_district', this.student_form.get('std_district')?.value)
+    formdata.append('std_regist_date', this.student_form.get('std_regist_date')?.value)
+    formdata.append('std_regist_no', this.student_form.get('std_regist_no')?.value)
+    formdata.append('std_img', this.student_form.get('std_img')?.value)
+    formdata.append('std_address', this.student_form.get('std_address')?.value)
+    formdata.append('std_password', this.student_form.get('std_password')?.value)
+    formdata.append('status', '1')
+    formdata.append('institute_id_fk', this.login.inst_id)
+    formdata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
+    if (this.student_form.valid) {
+      this.service.post_student(formdata).subscribe(
+        (result: any) => {
+          console.log(result)
+          this.matref.close();
+          this.student_form.reset();
+          this.popup.success({ detail: 'Success', summary: 'Student Saved', })
+          this.router.navigate(['/institutehome/student'])
+        },
+        (error: any) => {
+          console.log(error)
+          this.popup.error({ detail: 'Unsuccess', summary: 'Student Not Saved', })
+        }
+      )
     }
+
   }
 
   updateStudent() {

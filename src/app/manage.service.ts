@@ -248,6 +248,10 @@ export class ManageService {
   }
 
   // for admission 
+  std_email_verfiy(data:any) {
+    return this.http.post<any>(this.baseUrl + 'std_email_verify.php', data);
+  }
+  
   get_admission() {
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }

@@ -113,6 +113,7 @@ get_std(inst:any){
       console.log(result)
       this.dataSource.data = result.data
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.count_student = result.data.length
       return
     }

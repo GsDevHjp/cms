@@ -103,6 +103,7 @@ import { NgConfirmModule } from 'ng-confirm-box';
 import { AddEditQueryComponent } from './institute/add-edit-query/add-edit-query.component';
 import { EmployeeComponent } from './institute/employee/employee.component';
 import { AddEditEmployeeComponent } from './institute/add-edit-employee/add-edit-employee.component';
+import { ConverttoadmissionComponent } from './institute/converttoadmission/converttoadmission.component';
 
 @NgModule({
   declarations: [
@@ -186,6 +187,7 @@ import { AddEditEmployeeComponent } from './institute/add-edit-employee/add-edit
     AddEditQueryComponent,
     EmployeeComponent,
     AddEditEmployeeComponent,
+    ConverttoadmissionComponent,
 
   ],
   imports: [
