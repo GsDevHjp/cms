@@ -3,7 +3,12 @@
         <span class="example-spacer">{{heading_act}}</span>
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
-    <form [formGroup]="student_form">
+    <form [formGroup]="student_form" >
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Registration No.</mat-label>
+            <input matInput formControlName="std_regist_no" readonly >
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
@@ -13,12 +18,12 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Father Name</mat-label>
             <input matInput formControlName="std_father_name">
-        </mat-form-field>
+        </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Father Occupation</mat-label>
             <input matInput formControlName="std_father_occupation">
-        </mat-form-field><br>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Whatapp No</mat-label>
@@ -28,12 +33,12 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Aadhar</mat-label>
             <input type="number" matInput formControlName="std_aadhar" onkeypress=" return this.value.length < 12">
-        </mat-form-field>
+        </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>E-mail</mat-label>
             <input type="email" matInput formControlName="std_email">
-        </mat-form-field><br>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill" id="password">
             <mat-label>Password</mat-label>
@@ -47,7 +52,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>DOB</mat-label>
             <input type="date" matInput formControlName="std_dob">
-        </mat-form-field>
+        </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Gender : </mat-label>
@@ -56,7 +61,7 @@
                 <mat-option value="Female">Female</mat-option>
                 <mat-option value="Other">Other</mat-option>
             </mat-select>
-        </mat-form-field><br>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>State</mat-label>
@@ -79,10 +84,6 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill" hidden>
-            <mat-label>Date</mat-label>
-            <input type="date" matInput formControlName="std_regist_date">
-        </mat-form-field>
 
         <div class="user_image">
             <div *ngIf="selectedImage">
@@ -91,12 +92,13 @@
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
         </div><br>
 
-        <mat-form-field appearance="fill" id="address">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
+
+        <input type="date" matInput formControlName="std_regist_date" readonly hidden>
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-        <input type="text" readonly formControlName="std_regist_no" hidden>
 
     </form>
 

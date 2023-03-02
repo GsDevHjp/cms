@@ -16,8 +16,10 @@ import { faAllergies } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class AdmissionComponent implements OnInit {
-  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_id_fk', 'batch_name', 'admission_date', 'std_whatsapp_no', 'admission_status', 'action'];
+  displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_id_fk', 'batch_name', 'admission_date', 'std_whatsapp_no','std_photo', 'admission_status', 'action'];
   dataSource = new MatTableDataSource();
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+
   count_admission: number = 0;
   color: ThemePalette = 'primary'
   @ViewChild(MatPaginator) paginator!: MatPaginator;

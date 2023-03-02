@@ -249,7 +249,8 @@ export class AddEditStudentComponent implements OnInit {
     this.service.get_inst_by_inst_id(formdata).subscribe(
       (res: any) => {
         console.log(res.data.inst_name.charAt(0))
-        this.student_form.controls['std_regist_no'].setValue(res.data.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+        const instname = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
+        this.student_form.controls['std_regist_no'].setValue(instname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
       }
     )
   }

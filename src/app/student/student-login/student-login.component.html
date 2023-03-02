@@ -37,7 +37,7 @@
             </form>
 
             <button mat-button class="action_login" mat-raised-button color="primary"
-                (click)="Std_login()">Login</button>
+                (click)="Std_login()" [disabled]="!this.loginForm.valid">Login</button>
             <div class="info_box">
                 <p class="new_account" (click)="new_account()">Create new Account</p>
                 <p class="forgot_pwd">Forgot Password</p>
