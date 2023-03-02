@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-edit-certificate',
@@ -8,20 +7,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./add-edit-certificate.component.css']
 })
 export class AddEditCertificateComponent implements OnInit {
-  active = 1;
-  notification_form!: FormGroup;
-  admin = 1;
-  actionBtn: string = 'Add'
+  action_text: string = 'Registraction Form'
+  certificate_count: string = "0"
 
-  constructor(
-    private fb: FormBuilder,
+  constructor() { }
 
-  ) { }
-
-  ngOnInit(): void {
-    this.notification_form = this.fb.group({
-      admin_id_fk: ['', Validators.required]
-    }
-    )
-  }
+  ngOnInit(): void { }
 }
