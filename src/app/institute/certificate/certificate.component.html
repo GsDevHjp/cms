@@ -1,0 +1,56 @@
+<div id="manage_table_wrapper">
+    <div class="head">
+        <span class="course_text">Certificate Deleails</span>
+        <mat-icon id="add_course" [routerLink]="['../add_edit_certificate']">add_circle</mat-icon>
+    </div>
+    <div class="count_area">
+        <span class="notice_text">Total :0</span>
+        <div class="search">
+            <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+        </div>
+    </div>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort id="table">
+            <ng-container matColumnDef="slno">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N</th>
+                <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
+                    paginatorRef.pageSize)+(i+1)}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="persional">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Persional Information</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.persional}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Permanent">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Permanent Address</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.Permanent}}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Registration">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Registration</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.Registration}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Upload">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Upload Document</th>
+                <td class="data" mat-cell *matCellDef="let row">{{row.Upload}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                <td class="data" mat-cell *matCellDef="let row"> </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="13">No data show"{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
+            aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>

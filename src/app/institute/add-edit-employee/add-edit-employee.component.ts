@@ -70,6 +70,7 @@ export class AddEditEmployeeComponent implements OnInit {
       this.empForm.controls['emp_account_no'].setValue(this.editData.emp_account_no);
       this.empForm.controls['emp_ifsc'].setValue(this.editData.emp_ifsc);
       this.empForm.controls['emp_photo'].setValue(this.editData.emp_photo);
+      this.empForm.controls['institute_id_fk'].setValue(this.editData.institute_id_fk);
       this.empForm.controls['admin_id_fk'].setValue(this.editData.admin_id_fk);
     }
     this.empForm.controls['institute_id_fk'].setValue(this.login.inst_id);
@@ -129,24 +130,19 @@ export class AddEditEmployeeComponent implements OnInit {
     this.manageService.putEmployee(formdataedit).subscribe({
       next: (res) => {
         console.log(res)
-        this.router.navigate(['/institutehome/employee']);
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Employee Updated' })
-
+        this.router.navigate(['/institutehome/employee']);
       },
       error: (error) => {
         console.log(error)
         this.popup.error({ detail: 'Error', summary: 'Employee Not Updated' })
-
       }
-
     })
   }
   resetEmp() {
     this.empForm.reset()
   }
-
-  // ........photo  Upload start here...........
 
   onPhotoUpload(e: any) {
     if (e.target.files) {

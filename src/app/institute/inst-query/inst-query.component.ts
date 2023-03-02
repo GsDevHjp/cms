@@ -41,9 +41,9 @@ export class InstQueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const fromdata = new FormData()
-    // fromdata.append('inst_id', this.inst_id_for_inst_login)
-    this.service.get_query_by_inst_id().subscribe(
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.inst_id_for_inst_login)
+    this.service.get_query_by_inst_id(fromdata).subscribe(
       (res: any) => {
         console.log("hdbk" + res)
         this.dataSource.data = res.data

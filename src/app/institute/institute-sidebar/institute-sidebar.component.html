@@ -10,15 +10,38 @@
                 <span>Dashboard</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['course']">
-                <mat-icon>school</mat-icon>
-                <span>Course</span>
-            </button>
 
-            <button mat-button class="menu-button" [routerLink]="['batch']">
-                <mat-icon>local_library</mat-icon>
-                <span>Batch</span>
-            </button>
+            <div>
+                <button mat-button class="menu-button" (click)="setting_dropdown()">
+                    <mat-icon>dvr</mat-icon>
+                    <span>Master Entery</span>
+                    <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
+                </button>
+
+                <div id="dropdown_setting">
+                    <button mat-button class="menu-button" [routerLink]="['course']">
+                        <mat-icon>school</mat-icon>
+                        <span>Course</span>
+                    </button>
+        
+                    <button mat-button class="menu-button" [routerLink]="['batch']">
+                        <mat-icon>local_library</mat-icon>
+                        <span>Batch</span>
+                    </button>
+
+                    <button mat-button class="menu-button" [routerLink]="['instnotification']">
+                        <mat-icon>notifications</mat-icon>
+                        <span>Notification</span>
+                    </button>
+        
+                    <button mat-button class="menu-button" [routerLink]="['employee']">
+                        <mat-icon>supervisor_account</mat-icon>
+                        <span>Employee</span>
+                    </button>
+
+                </div>
+            </div>
 
             <button mat-button class="menu-button" [routerLink]="['enquiry']">
                 <mat-icon>transfer_within_a_station</mat-icon>
@@ -65,14 +88,9 @@
                 <span>Query</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['instnotification']">
-                <mat-icon>notifications</mat-icon>
-                <span>Notification</span>
-            </button>
-
-            <button mat-button class="menu-button" [routerLink]="['employee']">
-                <mat-icon>supervisor_account</mat-icon>
-                <span>Employee</span>
+            <button mat-button class="menu-button" [routerLink]="['certificate']">
+                <mat-icon>file_copy</mat-icon>
+                <span>Issue Certificate</span>
             </button>
 
             <div>
@@ -104,28 +122,6 @@
                         <span>Question Bank</span>
                     </button>
 
-                </div>
-
-                <div>
-                    <button mat-button class="menu-button" (click)="setting_dropdown()">
-                        <mat-icon>settings</mat-icon>
-                        <span>Settings</span>
-                        <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
-                        <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
-                    </button>
-
-                    <div id="dropdown_setting">
-                        <button mat-button class="menu-button" (click)="changepassword()">
-                            <mat-icon>password</mat-icon>
-                            <span>Change Password</span>
-                        </button>
-
-                        <button mat-button class="menu-button" [routerLink]="['/institutelogin']">
-                            <mat-icon>logout</mat-icon>
-                            <span>Logout</span>
-                        </button>
-
-                    </div>
                 </div>
             </div>
         </div>
