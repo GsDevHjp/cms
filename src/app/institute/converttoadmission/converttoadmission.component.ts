@@ -17,7 +17,7 @@ export class ConverttoadmissionComponent implements OnInit {
   upload: any;
   hide = true;
   ActionBtn: string = 'Add'
-  heading_act: string = 'Convert to Admission'
+  heading_act: string = 'Convert To Registration'
   admin = 1;
   institute_id: any;
   selectedImage: any = 'https://greensoft.net.in/gscms/assets/profile.png';

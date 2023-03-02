@@ -50,6 +50,7 @@ import { StudentProfileComponent } from './student/student-profile/student-profi
 import { TakeAddmissionComponent } from './student/take-addmission/take-addmission.component';
 
 const routes: Routes = [
+
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'adminlogin', component: AdminLoginComponent },

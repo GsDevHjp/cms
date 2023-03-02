@@ -1,0 +1,78 @@
+/* for style css enquiry form */
+#wrapper {
+    height: 340px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+  }
+  
+  .material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+  }
+  
+  mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+  }
+  
+  .example-full-width {
+    margin: 0px 5px 0px 5px;
+  }
+  
+  #address {
+    width: 98.5%;
+    margin-left: 1.5%;
+  }
+  textarea {
+    height: 17px;
+  }
+  
+  .submit {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  
+  /* for meadia queary starting here */
+  @media(min-width:420px)and (max-width:768px) {
+    mat-form-field {
+      width: 100%;
+      margin: 0px;
+    }
+  
+    #address {
+      width: 100%;
+    }
+  
+    .submit {
+      padding-bottom: 15px;
+    }
+  }
+  
+  @media(max-width:420px) {
+    .example-full-width {
+      width: 100%;
+      margin: 0px;
+    }
+  
+    #address {
+      width: 100%;
+      margin-left: 0px;
+    }
+  
+    .submit {
+      padding-bottom: 15px;
+    }
+  }
