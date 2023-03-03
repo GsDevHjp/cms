@@ -1,7 +1,9 @@
 <div class="wrapper">
-    <div class="head">
+    <div class="header">
         <span>Angular Quiz</span>
-        <span>{{counter}} Sec</span>
+        <span class="round_box">{{counter}} Sec</span>
+        <span class="round_box">Score: {{score}}</span>
+        <span class="round_box">Result: {{result}}</span>
     </div>
 
     <div id="main">
@@ -41,7 +43,7 @@
                     <br>
                     <mat-card class="text_info" [hidden]="hidden">
                         <mat-card-content>
-                            {{quiz_description}}
+                            {{questionlist[currentQuestion]?.quiz_description}}
                         </mat-card-content>
                     </mat-card>
                     <br>
