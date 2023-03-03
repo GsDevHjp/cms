@@ -79,7 +79,7 @@ export class QuizeComponent implements OnInit {
     }
     else {
       this.backgroundColor1 = "red"
-
+      this.color1 = "white"
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
@@ -97,7 +97,7 @@ export class QuizeComponent implements OnInit {
 
     }
   }
-  
+
   option2(event: any) {
     console.log(event)
     if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
@@ -107,7 +107,7 @@ export class QuizeComponent implements OnInit {
     }
     else {
       this.backgroundColor2 = "red"
-
+      this.color2 = "white"
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
@@ -134,25 +134,25 @@ export class QuizeComponent implements OnInit {
     }
     else {
       this.backgroundColor3 = "red"
-
+      this.color3 = "white"
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
       }
-    
+
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
       }
-     
+
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
       }
-    
+
     }
   }
-  
+
   option4(event: any) {
     console.log(event)
     if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
@@ -162,22 +162,22 @@ export class QuizeComponent implements OnInit {
     }
     else {
       this.backgroundColor4 = "red"
-
+      this.color4 = "white"
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
       }
-      
+
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
       }
-     
+
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
       }
-    
+
     }
   }
 
@@ -193,6 +193,10 @@ export class QuizeComponent implements OnInit {
     this.backgroundColor2 = ""
     this.backgroundColor3 = ""
     this.backgroundColor4 = ""
+    this.color1 = ""
+    this.color2 = ""
+    this.color3 = ""
+    this.color4 = ""
   }
 
   previewsQues() {
