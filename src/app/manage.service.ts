@@ -347,4 +347,14 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_std_id.php', data);
   }
 
+  // for certificate module working
+  post_certificate_personal(data:any){
+    return this.http.post<any>(this.baseUrl + 'certificate_personal_insert.php', data)
+  }
+  put_certificate_permanent(data:any){
+    return this.http.post<any>(this.baseUrl + 'certificate_permanent_update.php', data)
+  }
+  get_certificate(){
+    return this.http.get<[]>(this.baseUrl + 'certificate_view.php')
+  }
 }

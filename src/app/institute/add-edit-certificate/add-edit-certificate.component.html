@@ -59,13 +59,20 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Gender</mat-label>
-								<input matInput formControlName="std_gender">
+								<mat-select formControlName="std_gender" [ngModel]="autoselect">
+									<mat-option value="Male">Male</mat-option>
+									<mat-option value="Female">Female</mat-option>
+									<mat-option value="Other">Other</mat-option>
+								</mat-select>
 							</mat-form-field>
+
+							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+							<input type="number" readonly  formControlName="certificate_id" >
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="personal_next()">Next</button>
+							style="background-color: #1d1f23; color: white;" (click)="personal_add()">Next</button>
 					</div>
 				</div>
 			</ng-template>
@@ -78,50 +85,50 @@
 			<a ngbNavLink class="certificate_link">Permanent Address</a>
 			<ng-template ngbNavContent>
 				<div class="content_area">
-					<form>
+					<form [formGroup]="permanet_form">
 						<div class="column">
 							<mat-form-field appearance="fill">
 								<mat-label>Village/ City</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_village">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Post Office</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_post_office">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Panchayat/ Ward</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_panchayat">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Distric</mat-label>
-								<input matInput>
-							</mat-form-field>
-						</div>
-						<div class="column">
-
+								<mat-label>District</mat-label>
+								<input matInput formControlName="std_distric">
+							</mat-form-field><br>
+							
 							<mat-form-field appearance="fill">
 								<mat-label>Block</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_block">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Pin Code</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_pin_code">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Area</mat-label>
-								<input matInput>
+								<input matInput formControlName="std_area">
 							</mat-form-field>
+							
+							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" >
 
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;">Next</button>
+							style="background-color: #1d1f23; color: white;" (click)="permanent_add()">Next</button>
 					</div>
 				</div>
 			</ng-template>
