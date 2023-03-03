@@ -23,7 +23,7 @@ export class StudentLoginComponent implements OnInit {
   ) {
     localStorage.removeItem
     localStorage.clear()
-   }
+  }
 
   ngOnInit(): void {
     this.loginForm = this.FromBuilder.group({
@@ -45,13 +45,20 @@ export class StudentLoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.service.std_login(this.loginForm.value).subscribe(
         (res: any) => {
-          console.log(res)
+          console.log(res.uid[0].status)
+
           if (res.success) {
-            localStorage.setItem('Token', JSON.stringify(res.uid[0]));
-            this.Router.navigate(['/studenthome']);
-            this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
+            if (res.uid[0].status != 0) {
+              localStorage.setItem('Token', JSON.stringify(res.uid[0]));
+              this.Router.navigate(['/studenthome']);
+              this.popup.success({ detail: 'Success', summary: 'Login Successfull...', })
+            }
+            else{
+              this.popup.error({ detail: 'Account is disabled', summary: 'please contact your Institute' })
+            }
+
           }
-          else{
+          else {
             this.popup.error({ detail: 'Failed', summary: 'Username and Password Not Match...' })
           }
         },

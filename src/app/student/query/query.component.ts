@@ -28,7 +28,7 @@ export class QueryComponent implements OnInit {
     private popup:NgToastService,
     private dailog: MatDialog,
     private router: Router,
-    private manageservice: ManageService
+    private service: ManageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -41,7 +41,9 @@ export class QueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.manageservice.get_query_by_inst_id().subscribe(
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.std_id)
+    this.service.get_query_by_inst_id(fromdata).subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);
@@ -62,7 +64,7 @@ export class QueryComponent implements OnInit {
       const deletedata = new FormData();
       deletedata.append('query_id', row.query_id);
       console.log(row.query_id)
-      this.manageservice.delete_query(deletedata).subscribe(
+      this.service.delete_query(deletedata).subscribe(
         (res: any) => {
           this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..'})
           this.router.navigate(['/studenthome/query'])

@@ -81,24 +81,28 @@ export class StudentComponent implements OnInit {
   }
 
   toggle(event: MatSlideToggleChange, std_id:any) {
+
     if(event.checked == true){
-      const editdata = new FormData()
-      editdata.append('status' , '1')
-      editdata.append('std_id' , std_id)
-        this.service.admission_update(editdata).subscribe(
+      const editstd = new FormData()
+      editstd.append('status' , '1')
+      editstd.append('std_id' , std_id )
+
+        this.service.student_conform(editstd).subscribe(
           (res:any)=>{
-            this.get_std(this.inst_id_for_inst_login)   
-          }
+            console.log(res)
+            this.get_std(this.inst_id_for_inst_login)      
+            }
         )
     }
 
     if(event.checked == false){
-      const editdata = new FormData()
-      editdata.append('status' , '0')
-      editdata.append('std_id' , std_id )
+      const editstd = new FormData()
+      editstd.append('status' , '0')
+      editstd.append('std_id' , std_id )
 
-        this.service.student_conform(editdata).subscribe(
+        this.service.student_conform(editstd).subscribe(
           (res:any)=>{
+            console.log(res)
             this.get_std(this.inst_id_for_inst_login)      
             }
         )

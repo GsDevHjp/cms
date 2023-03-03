@@ -306,12 +306,12 @@ export class ManageService {
   }
 
   // for query module 
-  get_query_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'query_view.php')
-  }
-  // get_query_by_inst_id(data: any) {
-  //   return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
+  // get_query_by_inst_id() {
+  //   return this.http.get<[]>(this.baseUrl + 'query_view.php')
   // }
+  get_query_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
+  }
   post_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'query_insert.php', data)
   }
@@ -332,12 +332,19 @@ export class ManageService {
   postEmployee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_insert.php', data)
   }
-
   putEmployee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_update.php', data);
   }
   delete_employee(data:any){
     return this.http.post<any>(this.baseUrl + 'employee_delete.php', data);
+  }
+
+  // for dues  module working 
+  get_dues_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_dues_by_inst_id.php', data);
+  }
+  get_dues_by_std_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_dues_by_std_id.php', data);
   }
 
 }
