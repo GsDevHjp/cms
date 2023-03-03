@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,6 +18,10 @@ export class QuizeComponent implements OnInit {
   quiz_option_c: string = "C"
   quiz_option_d: string = "D"
   quiz_description: any
+  color1: string = ""
+  color2: string = ""
+  color3: string = ""
+  color4: string = ""
   currentQuestion: number = 0
   hidden: boolean = true;
   course_data: any
@@ -65,29 +68,6 @@ export class QuizeComponent implements OnInit {
     this.startCounter()
   }
 
-  // option(event: any) {
-  //   console.log(event)
-  //   if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
-  //     this.answer = "A"
-  //   } else if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
-  //     this.answer = "B"
-  //   } else if (this.questionlist[this.currentQuestion]?.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
-  //     this.answer = "C"
-  //   } else if (this.questionlist[this.currentQuestion]?.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
-  //     this.answer = "D"
-  //   }
-  //   else { }
-
-
-  //   console.log("ans" + this.questionlist[this.currentQuestion]?.quiz_answer)
-  //   if (this.answer == this.questionlist[this.currentQuestion]?.quiz_answer) {
-  //     console.log("Answer is Correct")
-  //   }
-  //   else {
-  //     console.log("Answer is Wrong")
-  //   }
-
-  // }
 
 
   option1(event: any) {
@@ -95,123 +75,109 @@ export class QuizeComponent implements OnInit {
     if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
       console.log("Ans " + this.quiz_option_a)
       this.backgroundColor1 = "green"
-      this.backgroundColor2 = "red"
-      this.backgroundColor3 = "red"
-      this.backgroundColor4 = "red"
+      this.color1 = "white"
     }
     else {
       this.backgroundColor1 = "red"
-      if(this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor2="green"
+
+      if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor2 = "green"
+        this.color2 = "white"
       }
-      else{
-        this.backgroundColor2="red"
+
+      if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor3 = "green"
+        this.color3 = "white"
       }
-      if(this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor3="green"
+
+      if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor4 = "green"
+        this.color4 = "white"
       }
-      else{
-        this.backgroundColor3="red"
-      }
-      if(this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor4="green"
-      }
-      else{
-        this.backgroundColor4="red"
-      }
+
     }
   }
+  
   option2(event: any) {
     console.log(event)
     if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
       console.log("Ans " + this.quiz_option_b)
       this.backgroundColor2 = "green"
-      this.backgroundColor1 = "red"
-      this.backgroundColor3 = "red"
-      this.backgroundColor4 = "red"
+      this.color2 = "white"
     }
     else {
       this.backgroundColor2 = "red"
-      if(this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor1="green"
+
+      if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor1 = "green"
+        this.color1 = "white"
       }
-      else{
-        this.backgroundColor1="red"
+
+      if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor3 = "green"
+        this.color3 = "white"
       }
-      if(this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor3="green"
-      }
-      else{
-        this.backgroundColor3="red"
-      }
-      if(this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor4="green"
-      }
-      else{
-        this.backgroundColor4="red"
+
+      if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor4 = "green"
+        this.color4 = "white"
       }
     }
   }
+
   option3(event: any) {
     console.log(event)
     if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
       console.log("Ans " + this.quiz_option_c)
       this.backgroundColor3 = "green"
-      this.backgroundColor1 = "red"
-      this.backgroundColor2 = "red"
-      this.backgroundColor4 = "red"
+      this.color3 = "white"
     }
     else {
       this.backgroundColor3 = "red"
-      if(this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor1="green"
+
+      if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor1 = "green"
+        this.color1 = "white"
       }
-      else{
-        this.backgroundColor1="red"
+    
+      if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor2 = "green"
+        this.color2 = "white"
       }
-      if(this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor2="green"
+     
+      if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor4 = "green"
+        this.color4 = "white"
       }
-      else{
-        this.backgroundColor2="red"
-      }
-      if(this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor4="green"
-      }
-      else{
-        this.backgroundColor4="red"
-      }
+    
     }
   }
+  
   option4(event: any) {
     console.log(event)
     if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
       console.log("Ans " + this.quiz_option_d)
       this.backgroundColor4 = "green"
-      this.backgroundColor1 = "red"
-      this.backgroundColor2 = "red"
-      this.backgroundColor3 = "red"
+      this.color4 = "white"
     }
     else {
       this.backgroundColor4 = "red"
-      if(this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor1="green"
+
+      if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor1 = "green"
+        this.color1 = "white"
       }
-      else{
-        this.backgroundColor1="red"
+      
+      if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor2 = "green"
+        this.color2 = "white"
       }
-      if(this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor2="green"
+     
+      if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
+        this.backgroundColor3 = "green"
+        this.color3 = "white"
       }
-      else{
-        this.backgroundColor2="red"
-      }
-      if(this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer){
-        this.backgroundColor3="green"
-      }
-      else{
-        this.backgroundColor3="red"
-      }
+    
     }
   }
 
@@ -223,10 +189,10 @@ export class QuizeComponent implements OnInit {
     this.currentQuestion + 1
     console.log(this.currentQuestion++)
     this.counter = 60
-    this.backgroundColor1=""
-    this.backgroundColor2=""
-    this.backgroundColor3=""
-    this.backgroundColor4=""
+    this.backgroundColor1 = ""
+    this.backgroundColor2 = ""
+    this.backgroundColor3 = ""
+    this.backgroundColor4 = ""
   }
 
   previewsQues() {

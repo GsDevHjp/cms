@@ -11,33 +11,34 @@
                 <span class="ques_text">
                     <p><b>Q.</b>&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_question}}</p>
 
-                    <!-- <span (click)="option($event)"> -->
-
-                        <mat-card formControlName="quiz_option_a" (click)="option1($event)"  [style.background-color]="backgroundColor1">
-                            <mat-card-content>
-                                <span><b>(A)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_a}}</span>
-                            </mat-card-content>
-                        </mat-card>
-                        <br>
-                        <mat-card formControlName="quiz_option_b" (click)="option2($event)" [style.background-color]="backgroundColor2">
-                            <mat-card-content>
-                                <span><b>(B)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_b}}</span>
-                            </mat-card-content>
-                        </mat-card>
-                        <br>
-                        <mat-card formControlName="quiz_option_c" (click)="option3($event)" [style.background-color]="backgroundColor3">
-                            <mat-card-content>
-                                <span><b>(C)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_c}}</span>
-                            </mat-card-content>
-                        </mat-card>
-                        <br>
-                        <mat-card formControlName="quiz_option_d" (click)="option4($event)" [style.background-color]="backgroundColor4">
-                            <mat-card-content>
-                                <span><b>(D)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_d}}</span>
-                            </mat-card-content>
-                        </mat-card>
-                        <br>
-                    <!-- </span> -->
+                    <mat-card formControlName="quiz_option_a" (click)="option1($event)"
+                        [style.background-color]="backgroundColor1">
+                        <mat-card-content>
+                            <span [style.color]="color1"><b>(A)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_a}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_b" (click)="option2($event)"
+                        [style.background-color]="backgroundColor2">
+                        <mat-card-content>
+                            <span [style.color]="color2"><b>(B)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_b}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_c" (click)="option3($event)"
+                        [style.background-color]="backgroundColor3">
+                        <mat-card-content>
+                            <span [style.color]="color3"><b>(C)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_c}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <mat-card formControlName="quiz_option_d" (click)="option4($event)"
+                        [style.background-color]="backgroundColor4">
+                        <mat-card-content>
+                            <span [style.color]="color4"><b>(D)</b>&nbsp;&nbsp;&nbsp;{{questionlist[currentQuestion]?.quiz_option_d}}</span>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
                     <mat-card class="text_info" [hidden]="hidden">
                         <mat-card-content>
                             {{quiz_description}}
