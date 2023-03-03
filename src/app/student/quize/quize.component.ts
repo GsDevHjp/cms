@@ -22,6 +22,8 @@ export class QuizeComponent implements OnInit {
   color2: string = ""
   color3: string = ""
   color4: string = ""
+  score: number = 0
+  result: number = 0
   currentQuestion: number = 0
   hidden: boolean = true;
   course_data: any
@@ -76,23 +78,33 @@ export class QuizeComponent implements OnInit {
       console.log("Ans " + this.quiz_option_a)
       this.backgroundColor1 = "green"
       this.color1 = "white"
+      this.hidden = false
+      this.score++
     }
     else {
       this.backgroundColor1 = "red"
       this.color1 = "white"
+      this.score--
+
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
+        this.hidden = false
+        this.score--
       }
 
     }
@@ -104,6 +116,8 @@ export class QuizeComponent implements OnInit {
       console.log("Ans " + this.quiz_option_b)
       this.backgroundColor2 = "green"
       this.color2 = "white"
+      this.hidden = false
+      this.score++
     }
     else {
       this.backgroundColor2 = "red"
@@ -111,16 +125,22 @@ export class QuizeComponent implements OnInit {
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
+        this.hidden = false
+        this.score--
       }
     }
   }
@@ -131,6 +151,8 @@ export class QuizeComponent implements OnInit {
       console.log("Ans " + this.quiz_option_c)
       this.backgroundColor3 = "green"
       this.color3 = "white"
+      this.hidden = false
+      this.score++
     }
     else {
       this.backgroundColor3 = "red"
@@ -138,16 +160,22 @@ export class QuizeComponent implements OnInit {
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
+        this.hidden = false
+        this.score--
       }
 
     }
@@ -159,6 +187,8 @@ export class QuizeComponent implements OnInit {
       console.log("Ans " + this.quiz_option_d)
       this.backgroundColor4 = "green"
       this.color4 = "white"
+      this.hidden = false
+      this.score++
     }
     else {
       this.backgroundColor4 = "red"
@@ -166,16 +196,22 @@ export class QuizeComponent implements OnInit {
       if (this.quiz_option_a == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor1 = "green"
         this.color1 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
+        this.hidden = false
+        this.score--
       }
 
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
+        this.hidden = false
+        this.score--
       }
 
     }
@@ -197,6 +233,7 @@ export class QuizeComponent implements OnInit {
     this.color2 = ""
     this.color3 = ""
     this.color4 = ""
+    this.hidden=true
   }
 
   previewsQues() {
