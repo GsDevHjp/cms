@@ -14,7 +14,6 @@ export class CertificateComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
   PrintActionIcon: boolean = true
   DraftsActionIcon: boolean = false
   pur_count: string = "0"
@@ -22,10 +21,7 @@ export class CertificateComponent implements OnInit {
    
   ) { }
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void { }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -143,23 +143,39 @@ ng-container {
   text-align: center;
 }
 
-#main_file{
-  width:50%;
-  margin-left:25%;
-  height: 400px;
-  /* border: 1px solid red; */
+.upload_img_div{
+  width: 815px;
+  margin-right: 10px;
+  height: auto;
+  margin: auto;
 }
-.file_upload{
+.upload_img {
+  width: 100%;
+  color: gray;
+  border-bottom: 1px solid gray;
+  background-color: #ebebeb;
+  margin-bottom: 18px; 
+} 
+
+.certificate_uplaod {
   float: left;
-  margin-left: 1px;
-  width: calc(100% - 51%);
-  height: 100%;
-  /* background-color: black; */
+  text-align: justify;
+  font-size: 16px; 
+  color: rgb(26, 28, 27);
 }
-.file_box{
-  margin-bottom: 10px;
-  background-color: gray;
+
+.bill_img{
+  width: auto;
+  border: none;
+  margin-left: -500px;
+  padding: 10px;
 }
+
+.show_file{
+  position: relative;
+  left: 480px;
+}
+
 
 @media (min-width:1081px) and (max-width:2000px) {
   .content_area {
