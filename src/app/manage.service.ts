@@ -339,4 +339,12 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'employee_delete.php', data);
   }
 
+  // for dues  module working 
+  get_dues_by_inst_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_dues_by_inst_id.php', data);
+  }
+  get_dues_by_std_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_dues_by_std_id.php', data);
+  }
+
 }
