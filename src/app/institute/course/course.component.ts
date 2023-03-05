@@ -50,7 +50,6 @@ export class CourseComponent implements OnInit {
 
     this.inst_id_for_std = this.login.institute_id_fk
 
-    // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
     console.log("std" + this.inst_id_for_std)
     console.log("inst" + this.inst_id_for_inst_login)
@@ -59,8 +58,6 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.inst_id_for_admin) {
-      // this.action_btn = true
-      // this.displayedColumns = ['course_id', 'course_name', 'course_duration', 'course_total_fee', 'course_half_fee', 'course_quarter_fee', 'course_monthly_fee', 'course_admission_fee', 'course_description', 'course_date'];
       this.get_course_by_inst_id(this.inst_id_for_admin);
     }
     if (this.inst_id_for_inst_login) {

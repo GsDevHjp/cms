@@ -27,6 +27,8 @@ export class CertificateComponent implements OnInit {
     private confirmServices:NgConfirmService,
     private popup:NgToastService,
     private router:Router,
+    private dailog: MatDialog,
+
   ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -43,6 +45,10 @@ export class CertificateComponent implements OnInit {
         this.cer_count = result.data.length
       }
     )
+  }
+
+  certificate_edit(row: any) {
+      this.router.navigate(['/institutehome/add_edit_certificate'], row)
   }
 
   certificate_delete(row: any) {

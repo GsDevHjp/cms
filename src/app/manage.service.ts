@@ -123,9 +123,6 @@ export class ManageService {
   student_conform(data: any) {
     return this.http.post<any>(this.baseUrl + 'student_conform.php', data);
   }
-  get_std_by_reg_no(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_std_by_reg_no.php', data);
-  }
 
 
   // for enquiry module 
@@ -368,5 +365,11 @@ export class ManageService {
   }
   certificate_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'certificate_document_delete.php', data)
+  }
+  get_std_by_reg_no(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_std_by_reg_no.php', data);
+  }
+  get_certificate_by_certificate_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_certificate_by_certificate_id.php', data);
   }
 }
