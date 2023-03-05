@@ -22,7 +22,7 @@
 
             <button mat-button class="menu-button" [routerLink]="['takeaddmission']">
                 <mat-icon>airline_seat_recline_normal</mat-icon>
-                <span>Tack Admission</span>
+                <span>Take Admission</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['paymentreceived']">
@@ -35,6 +35,11 @@
                 <span>Dues</span>
             </button>
 
+            <button mat-button class="menu-button" [routerLink]="['liveclass']">
+                <mat-icon>redeem</mat-icon>
+                <span>Live Class</span>
+            </button>
+
             <button mat-button class="menu-button" [routerLink]="['query']">
                 <mat-icon>accessible</mat-icon>
                 <span>Query</span>
@@ -42,12 +47,12 @@
 
             <button mat-button class="menu-button" [routerLink]="['onlinetest']">
                 <mat-icon>wc</mat-icon>
-                <span>Online test</span>
+                <span>Test</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['result']">
                 <mat-icon>account_balance_wallet</mat-icon>
-                <span>Reult</span>
+                <span>Result</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['quizdashboard']">
@@ -56,7 +61,7 @@
             </button>
 
             <div>
-                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                <button mat-button class="menu-button" (click)="report_dropdown()">
                     <mat-icon>list_alt</mat-icon>
                     <span>Study Material</span>
                     <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>

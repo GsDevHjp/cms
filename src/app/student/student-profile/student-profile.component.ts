@@ -43,7 +43,7 @@ export class StudentProfileComponent implements OnInit {
       this.imgurl = "profile.png"
     }
     else {
-      // this.imgurl = this.login.std_img
+      this.imgurl = this.login.std_img
     }
   }
 
@@ -160,6 +160,7 @@ export class StudentProfileComponent implements OnInit {
 
       reader.onload = () => {
         this.imgurl = reader.result;
+       
       };
     }
   }
