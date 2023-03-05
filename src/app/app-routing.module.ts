@@ -40,6 +40,7 @@ import { OESComponent } from './institute/oes/oes.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StudentComponent } from './institute/student/student.component';
+import { LiveClassComponent } from './student/live-class/live-class.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
 import { QueryComponent } from './student/query/query.component';
 import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
@@ -127,7 +128,8 @@ const routes: Routes = [
       { path: 'elearning', component: ELearningComponent },
       { path: 'employee', component: EmployeeComponent },
       { path: 'certificate', component: CertificateComponent },
-      { path: 'add_edit_certificate', component: AddEditCertificateComponent }
+      { path: 'add_edit_certificate', component: AddEditCertificateComponent },
+      { path: 'liveclass', component: LiveClassComponent }
     ]
   },
 
@@ -154,8 +156,8 @@ const routes: Routes = [
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
       { path: 'quizdashboard', component: QuizDashboardComponent },
-      { path: 'quizresult', component: QuizresultComponent }
-
+      { path: 'quizresult', component: QuizresultComponent },
+      { path: 'liveclass', component: LiveClassComponent }
 
     ]
   }
