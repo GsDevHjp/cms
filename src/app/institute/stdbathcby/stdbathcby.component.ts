@@ -11,11 +11,11 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'app-stdbathcby',
+  templateUrl: './stdbathcby.component.html',
+  styleUrls: ['./stdbathcby.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StdbathcbyComponent implements OnInit {
   displayedColumns: string[] = ['std_id', 'std_regist_no', 'std_name', 'std_whatsapp_no', 'std_email', 'std_aadhar', 'std_regist_date', 'std_photo', 'action'];
   dataSource = new MatTableDataSource();
   count_student: number = 0;
@@ -24,6 +24,7 @@ export class StudentComponent implements OnInit {
   login_deatils: any
   login: any
   inst_id_for_inst_login: any
+  batch_name:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
@@ -38,84 +39,19 @@ export class StudentComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    // this.inst_id = this.login.institute_id_fk
-    this.inst_id_for_inst_login = this.login.inst_id
 
   }
 
   ngOnInit(): void {
-    
-    if (this.inst_id > 0) {
-      this.get_std(this.inst_id)
-    }
-    else {
-      this.get_std(this.inst_id_for_inst_login)
-    }
-
+      console.log(this.login)
 
   }
-
-  add_student(): any {
-    this.dailog.open(AddEditStudentComponent, {
-      data: this.rowdata,
-      disableClose: true
-    });
-  }
-  fee_pay(row: any) {
-    this.dailog.open(AddEditPaymentRecivedComponent, {
-      data: row,
-      disableClose: true,
-    });
-  }
-
-  edit_student(row: any) {
-    this.dailog.open(AddEditStudentComponent, {
-      data: row,
-    });
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  toggle(event: MatSlideToggleChange, std_id: any) {
-
-    if (event.checked == true) {
-      const editstd = new FormData()
-      editstd.append('status', '1')
-      editstd.append('std_id', std_id)
-
-      this.service.student_conform(editstd).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.get_std(this.inst_id_for_inst_login)
-        }
-      )
-    }
-
-    if (event.checked == false) {
-      const editstd = new FormData()
-      editstd.append('status', '0')
-      editstd.append('std_id', std_id)
-
-      this.service.student_conform(editstd).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.get_std(this.inst_id_for_inst_login)
-        }
-      )
-    }
-
-  }
-  get_std(inst: any) {
+ 
+  get_std(inst: any, batch_id:any) {
     const instformdata = new FormData()
     instformdata.append('inst_id', inst)
-    this.service.get_student_by_inst_id(instformdata).subscribe(
+    instformdata.append('batch_id', batch_id)
+    this.service.get_std_for_batch_id(instformdata).subscribe(
       (result: any) => {
         console.log(result)
         this.dataSource.data = result.data
@@ -126,6 +62,26 @@ export class StudentComponent implements OnInit {
       }
     )
   }
+
+  fee_pay(row: any) {
+    this.dailog.open(AddEditPaymentRecivedComponent, {
+      data: row,
+      disableClose: true,
+    });
+  }
+
+ 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
 
 }
 
