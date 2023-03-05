@@ -2,7 +2,6 @@
 	<div class="view_notice">
 		<span class="notice_text">{{action_text}}</span>
 	</div>
-
 	<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
 
 		<!-- ////////////////////////////////////////// For Personal Information Form Starting Here ////////////////////////////////// -->
@@ -30,16 +29,18 @@
 							<mat-form-field appearance="fill">
 								<mat-label>DOB</mat-label>
 								<input type="date" matInput formControlName="std_dob">
-							</mat-form-field><br>
-
-							<mat-form-field appearance="fill">
-								<mat-label>Contact No</mat-label>
-								<input type="number" matInput formControlName="std_contact_no">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
+								<mat-label>Contact No</mat-label>
+								<input type="number" matInput formControlName="std_contact_no"
+									onkeypress=" return this.value.length < 10">
+							</mat-form-field><br>
+
+							<mat-form-field appearance="fill">
 								<mat-label>Alt No</mat-label>
-								<input type="number" matInput formControlName="std_alt_contect_no">
+								<input type="number" matInput formControlName="std_alt_contect_no"
+									onkeypress=" return this.value.length < 10">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -49,8 +50,9 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Aadhar No</mat-label>
-								<input type="number" matInput formControlName="std_aadhar_no">
-							</mat-form-field><br>
+								<input type="number" matInput formControlName="std_aadhar_no"
+									onkeypress=" return this.value.length < 12">
+							</mat-form-field>
 
 							<mat-form-field appearance="fill">
 								<mat-label>Category</mat-label>
@@ -67,12 +69,12 @@
 							</mat-form-field>
 
 							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
-							<input type="number" readonly  formControlName="certificate_id" >
+							<input type="number" readonly formControlName="certificate_id" hidden>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="personal_add()">Next</button>
+							style="background-color: #1d1f23; color: white;" (click)="personal_add()">Save</button>
 					</div>
 				</div>
 			</ng-template>
@@ -105,30 +107,32 @@
 							<mat-form-field appearance="fill">
 								<mat-label>District</mat-label>
 								<input matInput formControlName="std_distric">
-							</mat-form-field><br>
-							
+							</mat-form-field>
+
 							<mat-form-field appearance="fill">
 								<mat-label>Block</mat-label>
 								<input matInput formControlName="std_block">
-							</mat-form-field>
+							</mat-form-field><br>
 
-							<mat-form-field appearance="fill">
-								<mat-label>Pin Code</mat-label>
-								<input matInput formControlName="std_pin_code">
-							</mat-form-field>
+							<div class="left_form_field">
+								<mat-form-field appearance="fill">
+									<mat-label>Pin Code</mat-label>
+									<input matInput formControlName="std_pin_code"
+										onkeypress=" return this.value.length < 6">
+								</mat-form-field>
 
-							<mat-form-field appearance="fill">
-								<mat-label>Area</mat-label>
-								<input matInput formControlName="std_area">
-							</mat-form-field>
-							
-							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" >
+								<mat-form-field appearance="fill">
+									<mat-label>Area</mat-label>
+									<input matInput formControlName="std_area">
+								</mat-form-field>
 
+								<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+							</div>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="permanent_add()">Next</button>
+							style="background-color: #1d1f23; color: white;" (click)="permanent_update()">Save</button>
 					</div>
 				</div>
 			</ng-template>
@@ -142,55 +146,63 @@
 
 			<ng-template ngbNavContent>
 				<div class="content_area">
-					<form>
+					<form [formGroup]="registration_form">
 						<mat-form-field appearance="fill">
 							<mat-label>Registration No</mat-label>
-							<input matInput type="number">
+							<input matInput type="number" formControlName="std_rigistration_no">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Center Code</mat-label>
-							<input matInput>
+							<input matInput formControlName="std_center_code">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Certificate No</mat-label>
-							<input matInput>
+							<input matInput formControlName="std_certificate_no">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Total Marks</mat-label>
-							<input matInput type="number">
-						</mat-form-field><br>
+							<input matInput type="number" formControlName="std_total_marks">
+						</mat-form-field>
 
 						<mat-form-field appearance="fill">
 							<mat-label>Registration Date</mat-label>
-							<input matInput type="date">
-						</mat-form-field>
-
-						<mat-form-field appearance="fill">
-							<mat-label>Total Amount</mat-label>
-							<input matInput type="number">
-						</mat-form-field>
-
-						<mat-form-field appearance="fill" class="bill_no">
-							<mat-label>Date Of Issue</mat-label>
-							<input matInput>
-						</mat-form-field>
-
-						<mat-form-field appearance="fill" class="bill_no">
-							<mat-label>Select Course</mat-label>
-							<input matInput>
+							<input matInput type="date" formControlName="std_rigistration_date">
 						</mat-form-field><br>
 
-						<mat-form-field appearance="fill" class="bill_no">
-							<mat-label>Ref. Name</mat-label>
-							<input matInput>
-						</mat-form-field>
+						<div class="registration_form_left">
+							<mat-form-field appearance="fill">
+								<mat-label>Total Amount</mat-label>
+								<input matInput type="number" formControlName="std_total_amount">
+							</mat-form-field>
 
-						<div mat-dialog-action [align]="'end'" id="main_button">
-							<button mat-raised-button class="add_btn" type="submit"
-								style="background-color: #1d1f23; color: white;">Next</button>
+							<mat-form-field appearance="fill">
+								<mat-label>Date Of Issue</mat-label>
+								<input type="date" matInput formControlName="std_date_issue">
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Select Course</mat-label>
+								<mat-select formControlName="course_id_fk">
+									<mat-option *ngFor="let course of course_data"
+										[value]="course.course_id">{{course.course_name}}</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Ref. Name</mat-label>
+								<input matInput formControlName="std_ref_name">
+							</mat-form-field>
+
+							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+
+							<div mat-dialog-action [align]="'end'" id="main_button">
+								<button mat-raised-button class="add_btn" type="submit"
+									style="background-color: #1d1f23; color: white;"
+									(click)="registration_update()">Save</button>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -205,47 +217,53 @@
 
 			<ng-template ngbNavContent>
 				<div class="content_area">
-					<form>
+					<form [formGroup]="document_form">
 						<div class="upload_img_div">
 							<div class="upload_img">
 								<label class="certificate_uplaod">Aadhar Card</label><br>
-								<input class="bill_img" type="file">
+								<input class="file_img" type="file" (change)="aadharupload($event)" accept=".jpg,.png,"
+									formControlName="std_aadhar_card">
 								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
 							<div class="upload_img">
 								<label class="certificate_uplaod">Gen, Certificate</label><br>
-								<input class="bill_img" type="file">
+								<input class="file_img" type="file" (change)="genupload($event)" accept=".jpg,.png,"
+									formControlName="std_gen_certificate">
 								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
 							<div class="upload_img">
 								<label class="certificate_uplaod">10th Marksheet</label><br>
-								<input class="bill_img" type="file">
+								<input class="file_img" type="file" (change)="markesupload($event)" accept=".jpg,.png,"
+									formControlName="std_10th_marksheet">
 								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
 							<div class="upload_img">
 								<label class="certificate_uplaod">Residential</label><br>
-								<input class="bill_img" type="file">
+								<input class="file_img" type="file" (change)="redsidentalupload($event)"
+									accept=".jpg,.png," formControlName="std_residential">
 								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
 							<div class="upload_img">
 								<label class="certificate_uplaod">Photo</label><br>
-								<input class="bill_img" type="file">
+								<input class="file_img" type="file" (change)="imageupload($event)" accept=".jpg,.png,"
+									formControlName="std_image">
 								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
+						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;">Submit</button>
+							style="background-color: #1d1f23; color: white;" (click)="document_submit()">Submit</button>
 					</div>
 				</div>
 			</ng-template>

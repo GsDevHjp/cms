@@ -348,13 +348,22 @@ export class ManageService {
   }
 
   // for certificate module working
+  get_certificate(){
+    return this.http.get<[]>(this.baseUrl + 'certificate_view.php')
+  }
   post_certificate_personal(data:any){
     return this.http.post<any>(this.baseUrl + 'certificate_personal_insert.php', data)
   }
   put_certificate_permanent(data:any){
     return this.http.post<any>(this.baseUrl + 'certificate_permanent_update.php', data)
   }
-  get_certificate(){
-    return this.http.get<[]>(this.baseUrl + 'certificate_view.php')
+  put_certificate_registration(data:any){
+    return this.http.post<any>('http://localhost/cmsapinew/certificate_rigistration_update.php', data)
+  }
+  put_certificate_document(data:any){
+    return this.http.post<any>(this.baseUrl + 'certificate_document_update.php', data)
+  }
+  certificate_delete(data:any){
+    return this.http.post<any>(this.baseUrl + 'certificate_document_delete.php', data)
   }
 }

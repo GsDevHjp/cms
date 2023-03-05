@@ -16,14 +16,14 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  displayedColumns: string[] = ['std_id', 'std_regist_no', 'std_name', 'std_whatsapp_no',  'std_email','std_aadhar', 'std_regist_date', 'std_photo', 'action'];
+  displayedColumns: string[] = ['std_id', 'std_regist_no', 'std_name', 'std_whatsapp_no', 'std_email', 'std_aadhar', 'std_regist_date', 'std_photo', 'action'];
   dataSource = new MatTableDataSource();
   count_student: number = 0;
   inst_id: any
-  rowdata= 0
+  rowdata = 0
   login_deatils: any
   login: any
-  inst_id_for_inst_login:any
+  inst_id_for_inst_login: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
@@ -40,15 +40,15 @@ export class StudentComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     // this.inst_id = this.login.institute_id_fk
     this.inst_id_for_inst_login = this.login.inst_id
-    
+
   }
 
   ngOnInit(): void {
     if (this.inst_id > 0) {
-     this.get_std(this.inst_id)
+      this.get_std(this.inst_id)
     }
     else {
-     this.get_std(this.inst_id_for_inst_login)
+      this.get_std(this.inst_id_for_inst_login)
     }
   }
 
@@ -58,7 +58,7 @@ export class StudentComponent implements OnInit {
       disableClose: true
     });
   }
-  fee_pay(row:any){
+  fee_pay(row: any) {
     this.dailog.open(AddEditPaymentRecivedComponent, {
       data: row,
       disableClose: true,
@@ -80,49 +80,49 @@ export class StudentComponent implements OnInit {
     }
   }
 
-  toggle(event: MatSlideToggleChange, std_id:any) {
+  toggle(event: MatSlideToggleChange, std_id: any) {
 
-    if(event.checked == true){
+    if (event.checked == true) {
       const editstd = new FormData()
-      editstd.append('status' , '1')
-      editstd.append('std_id' , std_id )
+      editstd.append('status', '1')
+      editstd.append('std_id', std_id)
 
-        this.service.student_conform(editstd).subscribe(
-          (res:any)=>{
-            console.log(res)
-            this.get_std(this.inst_id_for_inst_login)      
-            }
-        )
+      this.service.student_conform(editstd).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.get_std(this.inst_id_for_inst_login)
+        }
+      )
     }
 
-    if(event.checked == false){
+    if (event.checked == false) {
       const editstd = new FormData()
-      editstd.append('status' , '0')
-      editstd.append('std_id' , std_id )
+      editstd.append('status', '0')
+      editstd.append('std_id', std_id)
 
-        this.service.student_conform(editstd).subscribe(
-          (res:any)=>{
-            console.log(res)
-            this.get_std(this.inst_id_for_inst_login)      
-            }
-        )
+      this.service.student_conform(editstd).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.get_std(this.inst_id_for_inst_login)
+        }
+      )
     }
-   
-}
-get_std(inst:any){
-  const instformdata = new FormData()
-  instformdata.append('inst_id', inst)
-  this.service.get_student_by_inst_id(instformdata).subscribe(
-    (result: any) => {
-      console.log(result)
-      this.dataSource.data = result.data
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.count_student = result.data.length
-      return
-    }
-  )
-}
+
+  }
+  get_std(inst: any) {
+    const instformdata = new FormData()
+    instformdata.append('inst_id', inst)
+    this.service.get_student_by_inst_id(instformdata).subscribe(
+      (result: any) => {
+        console.log(result)
+        this.dataSource.data = result.data
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.count_student = result.data.length
+        return
+      }
+    )
+  }
 
 }
 
