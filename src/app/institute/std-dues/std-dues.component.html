@@ -49,7 +49,7 @@
 
       <ng-container matColumnDef="current_dues">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Dues </th>
-        <td mat-cell *matCellDef="let row"> {{row.dues_amount }} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dues_amount  | currency:'INR':'symbol-narrow':'0.2' }} </td>
       </ng-container>
 
       <ng-container matColumnDef="date">
@@ -65,9 +65,9 @@
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Received </th>
         <td mat-cell *matCellDef="let row">
-          <mat-icon (click)="onpaymet(row)" >payment</mat-icon>
+          <mat-icon (click)="onpaymet(row.std_regist_no)" >payment</mat-icon>
         </td>
       </ng-container>
 

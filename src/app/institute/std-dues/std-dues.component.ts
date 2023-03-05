@@ -37,7 +37,7 @@ export class StdDuesComponent implements OnInit {
     fromdata.append('inst_id',this.login.inst_id)
       this.servies.get_dues_by_inst_id(fromdata).subscribe(
         (res:any)=>{
-          console.log(res)
+          console.log(res.data)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
@@ -58,6 +58,7 @@ export class StdDuesComponent implements OnInit {
   onpaymet(row:any){
     this.dailog.open(AddEditPaymentRecivedComponent,{
       data: row,
+     
     }
       
       )

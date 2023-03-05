@@ -10,17 +10,14 @@
                 <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Registration</mat-label>
-                        <input matInput type="text" placeholder="Registration" formControlName="std_reg" [readonly]="action" > 
+                        <input (keyup)="call_std_reg()" matInput type="text" placeholder="Registration" formControlName="std_reg" [readonly]="action"  > 
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Student Name</mat-label>
-                        <mat-select formControlName="student_id_fk" >
-                            <mat-option *ngFor="let std of student_data"
-                                [value]="std.std_id">{{std.std_name}}</mat-option>
-                        </mat-select>
+                        <input matInput formControlName="student_id_fk" readonly>
                     </mat-form-field>
-
+                    
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father</mat-label>
                         <input matInput formControlName="std_father_name" readonly>
