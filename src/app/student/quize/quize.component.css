@@ -9,6 +9,32 @@
     /* height: calc(100% - 80px); */
 }
 
+.header {
+    height: 40px;
+    width: 100%;
+    background-color: #1d1f23;
+    color: whitesmoke;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.header span:first-child {
+    float: left;
+    color: whitesmoke;
+    margin: 5px;
+}
+.round_box{
+    float: right;
+    width: 80px;
+    height: 30px;
+    border-radius: 50px;
+    margin-right: 15px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #626262;
+}
+
+
 #ques_viewport {
     width: 100%;
     height: 100%;

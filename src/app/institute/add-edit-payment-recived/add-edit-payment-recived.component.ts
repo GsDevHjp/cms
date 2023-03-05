@@ -17,7 +17,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  fee_heading: string = 'Add Fee'
+  fee_heading: string = 'Fee'
   student_data: any;
   course_data: any;
   batch_data: any;
@@ -31,6 +31,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   autoselect='Offline'
+  action:boolean = true
 
   constructor(
     private popup:NgToastService,
@@ -72,7 +73,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       }
     )
     this.fee_form = this.fb.group({
-      fee_by_std_id: ['',],
+      std_reg: ['',],
       fee_id: ['',],
       student_id_fk: ['', Validators.required],
       std_father_name: [''],
@@ -98,9 +99,10 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
     if (this.editfee) {
       this.actionBtn = "Update";
-      this.fee_heading = "Update"
+      console.log(this.editfee)
+      // this.fee_heading = "Fee"
       this.fee_form.controls['fee_id'].setValue(this.editfee.fee_id);
-      this.fee_form.controls['fee_by_std_id'].setValue(this.editfee.std_id);
+      this.fee_form.controls['std_reg'].setValue(this.editfee.std_regist_no);
       this.fee_form.controls['student_id_fk'].setValue(this.editfee.std_id);
       this.fee_form.controls['std_father_name'].setValue(this.editfee.std_father_name);
       this.fee_form.controls['std_whatsapp_no'].setValue(this.editfee.std_whatsapp_no);
@@ -122,23 +124,27 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
     }
   }
-  get_student_single_data(event: any) {
-    const formdata = new FormData();
-    formdata.append('std_id', event)
-    this.service.get_student_by_std_id(formdata).subscribe(
-      (res: any) => {
-        console.log(res.data)
-        this.student_single_data = res.data
-        this.fee_form.controls['fee_by_std_id'].setValue(this.student_single_data.std_id);
-        this.fee_form.controls['std_father_name'].setValue(this.student_single_data.std_father_name);
-        this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
-        this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
-        this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.student_single_data.std_img;
-      }
-    )
-  }
-  get_course_single_data(event: any) {
+
+
+  // get_student_single_data(event: any) {
+  //   const formdata = new FormData();
+  //   formdata.append('std_id', event)
+  //   this.service.get_student_by_std_id(formdata).subscribe(
+  //     (res: any) => {
+  //       console.log(res.data)
+  //       this.student_single_data = res.data
+  //       this.fee_form.controls['std_reg'].setValue(this.student_single_data.std_reg);
+  //       this.fee_form.controls['std_father_name'].setValue(this.student_single_data.std_father_name);
+  //       this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
+  //       this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
+  //       this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
+  //       this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.student_single_data.std_img;
+  //     }
+  //   )
+  // }
+
+
+  get_course_by_course_id(event: any) {
     const courseformdata = new FormData();
     courseformdata.append('course_id', event)
     this.service.get_course_by_course_id(courseformdata).subscribe(
