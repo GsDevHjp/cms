@@ -107,6 +107,7 @@ import { ConverttoadmissionComponent } from './institute/converttoadmission/conv
 import { CertificateComponent } from './institute/certificate/certificate.component';
 import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { ResionComponent } from './institute/resion/resion.component';
+import { QuizresultComponent } from './student/quizresult/quizresult.component';
 
 
 @NgModule({
@@ -195,6 +196,7 @@ import { ResionComponent } from './institute/resion/resion.component';
     CertificateComponent,
     AddEditCertificateComponent,
     ResionComponent,
+    QuizresultComponent,
 
   ],
   imports: [
