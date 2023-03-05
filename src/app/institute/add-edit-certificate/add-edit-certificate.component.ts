@@ -128,13 +128,11 @@ export class AddEditCertificateComponent implements OnInit {
     this.registration_form.controls['std_rigistration_date'].setValue(new Date().toISOString().slice(0, 10));
 
     if (this.certificate_id > 0) {
-      this.action_text = "Update";
       const certificateiddata = new FormData();
       certificateiddata.append('certificate_id', this.certificate_id);
       this.services.get_certificate_by_certificate_id(certificateiddata).subscribe({
         next: (res: any) => {
           console.log(res.data[0].std_name)
-          this.personal_form.controls['certificate_id'].setValue(res.data[0].certificate_id);
           this.personal_form.controls['std_name'].setValue(res.data[0].std_name);
           this.personal_form.controls['std_father_name'].setValue(res.data[0].std_father_name);
           this.personal_form.controls['std_mother_name'].setValue(res.data[0].std_mother_name);
@@ -169,39 +167,32 @@ export class AddEditCertificateComponent implements OnInit {
     }
   }
   personal_add() {
-    if (this.certificate_id!) {
-      alert('add')
-      const personaldata = new FormData();
-      personaldata.append('certificate_id', this.personal_form.get('certificate_id')?.value);
-      personaldata.append('std_name', this.personal_form.get('std_name')?.value);
-      personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
-      personaldata.append('std_mother_name', this.personal_form.get('std_mother_name')?.value);
-      personaldata.append('std_dob', this.personal_form.get('std_dob')?.value);
-      personaldata.append('std_contact_no', this.personal_form.get('std_contact_no')?.value);
-      personaldata.append('std_alt_contect_no', this.personal_form.get('std_alt_contect_no')?.value);
-      personaldata.append('std_email', this.personal_form.get('std_email')?.value);
-      personaldata.append('std_aadhar_no', this.personal_form.get('std_aadhar_no')?.value);
-      personaldata.append('std_category', this.personal_form.get('std_category')?.value);
-      personaldata.append('std_gender', this.personal_form.get('std_gender')?.value);
-      personaldata.append('institute_id_fk', this.inst_id_for_inst_login);
-      personaldata.append('admin_id_fk', this.personal_form.get('admin_id_fk')?.value);
-      this.services.post_certificate_personal(personaldata).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.popup.success({ detail: 'Success', summary: 'Personal Data Add' })
-          this.router.navigate(['//institutehome/add_edit_certificate'])
-        },
-        (error: any) => {
-          console.log(error)
-          this.popup.error({ detail: 'Fail', summary: 'Personal Data Fail' })
-        }
-      )
-    }
-    else {
-      alert("Update")
-    }
+    const personaldata = new FormData();
+    personaldata.append('certificate_id', this.personal_form.get('certificate_id')?.value);
+    personaldata.append('std_name', this.personal_form.get('std_name')?.value);
+    personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
+    personaldata.append('std_mother_name', this.personal_form.get('std_mother_name')?.value);
+    personaldata.append('std_dob', this.personal_form.get('std_dob')?.value);
+    personaldata.append('std_contact_no', this.personal_form.get('std_contact_no')?.value);
+    personaldata.append('std_alt_contect_no', this.personal_form.get('std_alt_contect_no')?.value);
+    personaldata.append('std_email', this.personal_form.get('std_email')?.value);
+    personaldata.append('std_aadhar_no', this.personal_form.get('std_aadhar_no')?.value);
+    personaldata.append('std_category', this.personal_form.get('std_category')?.value);
+    personaldata.append('std_gender', this.personal_form.get('std_gender')?.value);
+    personaldata.append('institute_id_fk', this.inst_id_for_inst_login);
+    personaldata.append('admin_id_fk', this.personal_form.get('admin_id_fk')?.value);
+    this.services.post_certificate_personal(personaldata).subscribe(
+      (res: any) => {
+        console.log(res)
+        this.popup.success({ detail: 'Success', summary: 'Personal Data Add' })
+        this.router.navigate(['//institutehome/add_edit_certificate'])
+      },
+      (error: any) => {
+        console.log(error)
+        this.popup.error({ detail: 'Fail', summary: 'Personal Data Fail' })
+      }
+    )
   }
-
   permanent_update() {
     console.log(this.permanet_form.value)
     const permanetdata = new FormData();
