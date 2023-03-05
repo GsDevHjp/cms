@@ -166,6 +166,7 @@ export class AddEditCertificateComponent implements OnInit {
       })
     }
   }
+  
   personal_add() {
     const personaldata = new FormData();
     personaldata.append('certificate_id', this.personal_form.get('certificate_id')?.value);
@@ -193,6 +194,8 @@ export class AddEditCertificateComponent implements OnInit {
       }
     )
   }
+
+
   permanent_update() {
     console.log(this.permanet_form.value)
     const permanetdata = new FormData();
@@ -247,6 +250,7 @@ export class AddEditCertificateComponent implements OnInit {
       }
     })
   }
+
   document_submit() {
     console.log(this.document_form.value)
     const documentdata = new FormData();
