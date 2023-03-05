@@ -366,4 +366,10 @@ export class ManageService {
   certificate_delete(data:any){
     return this.http.post<any>(this.baseUrl + 'certificate_document_delete.php', data)
   }
+  get_std_by_reg_no(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_std_by_reg_no.php', data);
+  }
+  get_certificate_by_certificate_id(data:any){
+    return this.http.post<any>(this.baseUrl + 'get_certificate_by_certificate_id.php', data);
+  }
 }

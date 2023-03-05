@@ -2,6 +2,7 @@
 	<div class="view_notice">
 		<span class="notice_text">{{action_text}}</span>
 	</div>
+
 	<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
 
 		<!-- ////////////////////////////////////////// For Personal Information Form Starting Here ////////////////////////////////// -->
@@ -38,7 +39,7 @@
 							</mat-form-field><br>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Alt No</mat-label>
+								<mat-label>Alternate Mobile No</mat-label>
 								<input type="number" matInput formControlName="std_alt_contect_no"
 									onkeypress=" return this.value.length < 10">
 							</mat-form-field>
@@ -56,7 +57,14 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Category</mat-label>
-								<input matInput formControlName="std_category">
+								<mat-select formControlName="std_category" [ngModel]="catselect">
+									<mat-option value="Select">Select</mat-option>
+									<mat-option value="SC">SC</mat-option>
+									<mat-option value="ST">ST</mat-option>
+									<mat-option value="OBC">OBC</mat-option>
+									<mat-option value="EBC">EBC</mat-option>
+									<mat-option value="General">General</mat-option>
+								</mat-select>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -90,8 +98,70 @@
 					<form [formGroup]="permanet_form">
 						<div class="column">
 							<mat-form-field appearance="fill">
+								<mat-label>Country</mat-label>
+								<mat-select formControlName="std_country">
+									<mat-option value="India">India</mat-option>
+									<mat-option value="Armenia">Armenia</mat-option>
+									<mat-option value="Afghanistan">Afghanistan</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>State</mat-label>
+								<mat-select formControlName="std_state">
+									<mat-option value="Bihar">Bihar</mat-option>
+									<mat-option value="Assam">Assam</mat-option>
+									<mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>District</mat-label>
+								<mat-select formControlName="std_distric">
+									<mat-option value="Vaishali">Vaishali</mat-option>
+									<mat-option value="Patna">Patna</mat-option>
+									<mat-option value="Muzaffarpur">Muzaffarpur</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Block</mat-label>
+								<mat-select formControlName="std_block">
+									<mat-option value="Hajipur">Hajipur</mat-option>
+									<mat-option value="Bidupur">Bidupur</mat-option>
+									<mat-option value="Jandaha">Jandaha</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Panchayat/ Ward</mat-label>
+								<mat-select formControlName="std_panchayat">
+									<mat-option value="Hajipur">Hajipur</mat-option>
+									<mat-option value="Bidupur">Bidupur</mat-option>
+									<mat-option value="Jandaha">Rajasan</mat-option>
+								</mat-select>
+							</mat-form-field><br>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Area</mat-label>
+								<mat-select formControlName="std_area">
+									<mat-option value="Rural">Rural</mat-option>
+									<mat-option value="Urban">Urban</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
 								<mat-label>Village/ City</mat-label>
 								<input matInput formControlName="std_village">
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Police Station</mat-label>
+								<mat-select formControlName="std_ps">
+									<mat-option value="Hajipur">Hajipur</mat-option>
+									<mat-option value="Bidupur">Bidupur</mat-option>
+									<mat-option value="Mahua">Mahua</mat-option>
+								</mat-select>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -100,34 +170,12 @@
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Panchayat/ Ward</mat-label>
-								<input matInput formControlName="std_panchayat">
+								<mat-label>Pin Code</mat-label>
+								<input matInput formControlName="std_pin_code"
+									onkeypress=" return this.value.length < 6">
 							</mat-form-field>
 
-							<mat-form-field appearance="fill">
-								<mat-label>District</mat-label>
-								<input matInput formControlName="std_distric">
-							</mat-form-field>
-
-							<mat-form-field appearance="fill">
-								<mat-label>Block</mat-label>
-								<input matInput formControlName="std_block">
-							</mat-form-field><br>
-
-							<div class="left_form_field">
-								<mat-form-field appearance="fill">
-									<mat-label>Pin Code</mat-label>
-									<input matInput formControlName="std_pin_code"
-										onkeypress=" return this.value.length < 6">
-								</mat-form-field>
-
-								<mat-form-field appearance="fill">
-									<mat-label>Area</mat-label>
-									<input matInput formControlName="std_area">
-								</mat-form-field>
-
-								<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
-							</div>
+							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
@@ -142,14 +190,14 @@
 		<!-- /////////////////////////////////////// for Registracton Form starting Here ////////////////////////////////// -->
 
 		<ng-container ngbNavItem><br>
-			<a ngbNavLink class="certificate_link">Registration Section</a>
+			<a ngbNavLink class="certificate_link">Certificate Details</a>
 
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="registration_form">
 						<mat-form-field appearance="fill">
 							<mat-label>Registration No</mat-label>
-							<input matInput type="number" formControlName="std_rigistration_no">
+							<input matInput type="text" formControlName="std_rigistration_no">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -186,8 +234,10 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Select Course</mat-label>
 								<mat-select formControlName="course_id_fk">
-									<mat-option *ngFor="let course of course_data"
-										[value]="course.course_id">{{course.course_name}}</mat-option>
+									<mat-option value="1">BCA</mat-option>
+									<mat-option value="2">MCA</mat-option>
+									<!-- <mat-option *ngFor="let course of course_data"
+									[value]="course.course_id">{{course.course_name}}</mat-option> -->
 								</mat-select>
 							</mat-form-field>
 
@@ -223,7 +273,6 @@
 								<label class="certificate_uplaod">Aadhar Card</label><br>
 								<input class="file_img" type="file" (change)="aadharupload($event)" accept=".jpg,.png,"
 									formControlName="std_aadhar_card">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -231,7 +280,6 @@
 								<label class="certificate_uplaod">Gen, Certificate</label><br>
 								<input class="file_img" type="file" (change)="genupload($event)" accept=".jpg,.png,"
 									formControlName="std_gen_certificate">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -239,7 +287,6 @@
 								<label class="certificate_uplaod">10th Marksheet</label><br>
 								<input class="file_img" type="file" (change)="markesupload($event)" accept=".jpg,.png,"
 									formControlName="std_10th_marksheet">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -247,7 +294,6 @@
 								<label class="certificate_uplaod">Residential</label><br>
 								<input class="file_img" type="file" (change)="redsidentalupload($event)"
 									accept=".jpg,.png," formControlName="std_residential">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -255,7 +301,6 @@
 								<label class="certificate_uplaod">Photo</label><br>
 								<input class="file_img" type="file" (change)="imageupload($event)" accept=".jpg,.png,"
 									formControlName="std_image">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
