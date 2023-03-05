@@ -103,6 +103,9 @@ export class ManageService {
   admission_update(data: any) {
     return this.http.post<any>(this.baseUrl + 'admission_update.php', data);
   }
+  get_std_by_reg_no(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_std_by_reg_no.php', data);
+  }
 
   // for fee module component payment recive
   get_fee() {
@@ -127,9 +130,7 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'student_conform.php', data);
   }
 
-
   // for enquiry module 
-
   post_enquiry(data: any) {
     return this.http.post<any>(this.baseUrl + 'enquiry_insert.php', data)
   }
@@ -251,10 +252,10 @@ export class ManageService {
   }
 
   // for admission 
-  std_email_verfiy(data:any) {
+  std_email_verfiy(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_email_verify.php', data);
   }
-  
+
   get_admission() {
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }
@@ -338,41 +339,41 @@ export class ManageService {
   putEmployee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_update.php', data);
   }
-  delete_employee(data:any){
+  delete_employee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_delete.php', data);
   }
 
   // for dues  module working 
-  get_dues_by_inst_id(data:any){
+  get_dues_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_inst_id.php', data);
   }
-  get_dues_by_std_id(data:any){
+  get_dues_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_std_id.php', data);
   }
 
   // for certificate module working
-  get_certificate(){
+  get_certificate() {
     return this.http.get<[]>(this.baseUrl + 'certificate_view.php')
   }
-  post_certificate_personal(data:any){
+  post_certificate_personal(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_personal_insert.php', data)
   }
-  put_certificate_permanent(data:any){
+  put_certificate_permanent(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_permanent_update.php', data)
   }
-  put_certificate_registration(data:any){
-    return this.http.post<any>('http://localhost/cmsapinew/certificate_rigistration_update.php', data)
+  put_certificate_registration(data: any) {
+    return this.http.post<any>(this.baseUrl + 'certificate_rigistration_update.php', data)
   }
-  put_certificate_document(data:any){
+  put_certificate_document(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_document_update.php', data)
   }
-  certificate_delete(data:any){
+  certificate_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_document_delete.php', data)
   }
-  get_std_by_reg_no(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_std_by_reg_no.php', data);
-  }
-  get_certificate_by_certificate_id(data:any){
+  get_certificate_by_certificate_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_certificate_by_certificate_id.php', data);
+  }
+  put_certificate_personal(data: any) {
+    return this.http.post<any>(this.baseUrl + 'certificate_personal_update.php', data);
   }
 }
