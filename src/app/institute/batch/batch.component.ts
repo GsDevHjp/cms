@@ -21,6 +21,7 @@ export class BatchComponent implements OnInit {
   inst_id: any
   action_btn: boolean = false
   Ttalstd: number = 0
+  total_batch:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -55,12 +56,23 @@ export class BatchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     if (this.inst_id_for_admin) {
       this.get_batch_by_inst_id(this.inst_id_for_admin);
     }
     if (this.inst_id_for_inst_login) {
       this.action_btn = false
       this.get_batch_by_inst_id(this.inst_id_for_inst_login)
+
+      const fromdatata = new FormData()
+      fromdatata.append('inst_id',this.inst_id_for_inst_login )
+      this.service.get_total_std_by_inst(fromdatata).subscribe(
+        (res:any)=>{
+            this.total_batch = res.data
+            console.log(this.total_batch)
+        }
+      )
+
     }
     if (this.inst_id_for_std) {
       this.get_batch_by_inst_id(this.inst_id_for_std)
