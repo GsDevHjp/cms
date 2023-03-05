@@ -74,6 +74,7 @@ export class ConverttoadmissionComponent implements OnInit {
 
     // for enquery to insert 
     if (this.edit_std) {
+      this.regist_no_generate()
       this.student_form.controls['std_name'].setValue(this.edit_std.std_name);
       this.student_form.controls['std_father_name'].setValue(this.edit_std.std_father_name);
       this.student_form.controls['std_whatsapp_no'].setValue(this.edit_std.std_whatsapp_no);
@@ -151,20 +152,20 @@ export class ConverttoadmissionComponent implements OnInit {
       (res: any) => {
 
         this.std_data = res.data
-        console.log(this.std_data)
         if (res.success == 1) {
           this.std = res.data.length + 1
+          const instname = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
+          const instshotname = this.login.inst_name.charAt(0) + (instname)
+          this.student_form.controls['std_regist_no'].setValue(instshotname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
         }
       }
     )
     const instname = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
     const instshotname = this.login.inst_name.charAt(0) + (instname)
     this.student_form.controls['std_regist_no'].setValue(instshotname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
-  }
-
-  verfiy_email(std_email: any) {
 
   }
+
 
 
   OnUpload(event: any) {

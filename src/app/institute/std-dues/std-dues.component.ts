@@ -33,8 +33,19 @@ export class StdDuesComponent implements OnInit {
    }
 
   ngOnInit(): void {
+      if(this.login.inst_id){
+        this.get_dues(this.login.inst_id)
+      }
+      if(this.login.institute_id_fk){
+        this.get_dues(this.login.institute_id_fk)
+        this.displayedColumns = ['enq_id', 'std_name','std_reg','roll_no', 'mobile','course', 'batch', 'current_dues', 'date'];
+      }
+  }
+
+
+  get_dues(inst_id:any){
     const fromdata =  new  FormData()
-    fromdata.append('inst_id',this.login.inst_id)
+    fromdata.append('inst_id',inst_id)
       this.servies.get_dues_by_inst_id(fromdata).subscribe(
         (res:any)=>{
           console.log(res.data)
