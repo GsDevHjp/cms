@@ -249,7 +249,7 @@ export class QuizeComponent implements OnInit {
         this.counter--;
         if (this.counter == 0) {
           if (this.counter == 0 && this.currentQuestion == this.count_ques) {
-            this.router.navigate(['/studenthome/quizdashboard']);
+            this.router.navigate(['/studenthome/quizresult']);
           }
           else {
 

@@ -44,6 +44,7 @@ import { OnlineTestComponent } from './student/online-test/online-test.component
 import { QueryComponent } from './student/query/query.component';
 import { QuizDashboardComponent } from './student/quiz-dashboard/quiz-dashboard.component';
 import { QuizeComponent } from './student/quize/quize.component';
+import { QuizresultComponent } from './student/quizresult/quizresult.component';
 import { ResultComponent } from './student/result/result.component';
 import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
@@ -152,7 +153,8 @@ const routes: Routes = [
       { path: 'instnotes', component: InstNotesComponent },
       { path: 'instsyllabus', component: InstSyllabusComponent },
       { path: 'instquestionbank', component: InstQuestionBankComponent },
-      { path: 'quizdashboard', component: QuizDashboardComponent }
+      { path: 'quizdashboard', component: QuizDashboardComponent },
+      { path: 'quizresult', component: QuizresultComponent }
 
 
     ]

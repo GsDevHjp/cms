@@ -1,0 +1,13 @@
+#wrapper{
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding-bottom: 0px;
+    background-color: red;
+    position: fixed;
+}
+.result_box{
+    width: 300px;
+    height:300px;
+    margin: 10% 20%;
+    background-color: green;
+}
