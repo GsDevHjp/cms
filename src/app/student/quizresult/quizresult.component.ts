@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quizresult.component.css']
 })
 export class QuizresultComponent implements OnInit {
-
+  url: string = 'https://greensoft.net.in/gscms/assets/';
+  img_url: string = '';
+  login_deatils: any
+  login: any
   constructor() { }
 
   ngOnInit(): void {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+
+    if (!this.login.std_img) {
+      this.img_url = "profile.png"
+    }
+    else {
+      this.img_url = this.login.std_img
+    }
   }
 
 }
