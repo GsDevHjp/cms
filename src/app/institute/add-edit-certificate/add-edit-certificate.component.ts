@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-certificate',
@@ -14,6 +14,8 @@ export class AddEditCertificateComponent implements OnInit {
   certificate_count: string = "0"
   personal_form!: FormGroup
   permanet_form!: FormGroup
+  registration_form!: FormGroup
+  document_form!: FormGroup
   admin_id = 1;
   login_deatils: any;
   login: any;
@@ -21,14 +23,24 @@ export class AddEditCertificateComponent implements OnInit {
   inst_id_for_inst_login: any;
   autoselect = 'Male'
   editpermanent:any
-  certificate_id:any = 1
+  certificate_id='0'
+  institute_id:any
+  course_data:any
   constructor(
     private personal: FormBuilder,
     private permanet: FormBuilder,
+    private registration:FormBuilder,
+    private document:FormBuilder,
     private services: ManageService,
     private popup: NgToastService,
+    private router:Router
 
   ) {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
@@ -38,12 +50,19 @@ export class AddEditCertificateComponent implements OnInit {
       (res:any)=>{
         console.log(res.data[0].certificate_id)
         this.certificate_id = res.data[0].certificate_id
-
       }
     )
   }
 
   ngOnInit(): void {
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id_for_inst_login)
+    this.services.get_course_by_inst_id(formdata).subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
+
     this.personal_form = this.personal.group({
       certificate_id: [''],
       std_name: ['', Validators.required],
@@ -72,23 +91,37 @@ export class AddEditCertificateComponent implements OnInit {
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
-
-    if (this.editpermanent) {
-      this.permanet_form.controls['certificate_id'].setValue(this.personal_form.get('personal_form')?.value);
-      this.permanet_form.controls['personal_form'].setValue(this.editpermanent.personal_form);
-      this.permanet_form.controls['std_village'].setValue(this.editpermanent.std_village);
-      this.permanet_form.controls['std_post_office'].setValue(this.editpermanent.std_post_office);
-      this.permanet_form.controls['std_panchayat'].setValue(this.editpermanent.std_panchayat);
-      this.permanet_form.controls['std_distric'].setValue(this.editpermanent.std_distric);
-      this.permanet_form.controls['std_block'].setValue(this.editpermanent.std_block);
-      this.permanet_form.controls['std_pin_code'].setValue(this.editpermanent.std_pin_code);
-      this.permanet_form.controls['std_area'].setValue(this.editpermanent.std_area);
-      this.permanet_form.controls['institute_id_fk'].setValue(this.editpermanent.institute_id_fk);
-      this.permanet_form.controls['admin_id_fk'].setValue(this.editpermanent.admin_id_fk);
-    }
+    this.registration_form = this.registration.group({
+      certificate_id: [''],
+      std_rigistration_no: ['', Validators.required],
+      std_center_code: ['', Validators.required],
+      std_certificate_no: ['', Validators.required],
+      std_total_marks: ['', Validators.required],
+      std_rigistration_date: ['', Validators.required],
+      std_total_amount: ['', Validators.required],
+      std_date_issue: ['', Validators.required],
+      course_id_fk: ['', Validators.required],
+      std_ref_name: ['', Validators.required],
+      institute_id_fk: ['', Validators.required],
+      admin_id_fk: ['', Validators.required]
+    })
+    this.document_form = this.document.group({
+      certificate_id: [''],
+      std_aadhar_card: ['', Validators.required],
+      std_gen_certificate: ['', Validators.required],
+      std_10th_marksheet: ['', Validators.required],
+      std_residential: ['', Validators.required],
+      std_image: ['', Validators.required],
+      status: ['0'],
+      institute_id_fk: ['', Validators.required],
+      admin_id_fk: ['', Validators.required]
+    })
 
     this.personal_form.controls['institute_id_fk'].setValue(this.login.inst_id);
     this.permanet_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+    this.registration_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+    this.document_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+    this.registration_form.controls['std_rigistration_date'].setValue(new Date().toISOString().slice(0, 10));
   }
   personal_add() {
     const personaldata = new FormData();
@@ -109,6 +142,7 @@ export class AddEditCertificateComponent implements OnInit {
       (res: any) => {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: 'Personal Data Add' })
+        this.router.navigate(['//institutehome/add_edit_certificate'])
       },
       (error: any) => {
         console.log(error)
@@ -116,9 +150,7 @@ export class AddEditCertificateComponent implements OnInit {
       }
     )
 }
-  permanent_add(){
-    alert(this.inst_id_for_inst_login)
-    alert(this.certificate_id)
+  permanent_update(){
     console.log(this.permanet_form.value)
     const permanetdata = new FormData();
     permanetdata.append('certificate_id', this.certificate_id);
@@ -141,5 +173,86 @@ export class AddEditCertificateComponent implements OnInit {
         this.popup.error({ detail: 'Fail', summary: 'Permanet Data Fail' })
       }
     })
+  }
+
+  registration_update(){
+    console.log(this.registration_form.value)
+    const registrationdata = new FormData();
+    registrationdata.append('certificate_id', this.certificate_id);
+    registrationdata.append('std_rigistration_no', this.registration_form.get('std_rigistration_no')?.value);
+    registrationdata.append('std_center_code', this.registration_form.get('std_center_code')?.value);
+    registrationdata.append('std_certificate_no', this.registration_form.get('std_certificate_no')?.value);
+    registrationdata.append('std_total_marks', this.registration_form.get('std_total_marks')?.value);
+    registrationdata.append('std_rigistration_date', this.registration_form.get('std_rigistration_date')?.value);
+    registrationdata.append('std_total_amount', this.registration_form.get('std_total_amount')?.value);
+    registrationdata.append('std_date_issue', this.registration_form.get('std_date_issue')?.value);
+    registrationdata.append('course_id_fk', this.registration_form.get('course_id_fk')?.value);
+    registrationdata.append('std_ref_name', this.registration_form.get('std_ref_name')?.value);
+    registrationdata.append('institute_id_fk', this.inst_id_for_inst_login);
+    registrationdata.append('admin_id_fk', this.registration_form.get('admin_id_fk')?.value);
+    this.services.put_certificate_registration(registrationdata).subscribe({
+      next:(res:any)=>{
+        console.log(res)
+        this.popup.success({detail: 'Success', summary: 'Registration Data Add'})
+      },
+      error:(error:any)=>{
+        console.log(error)
+        this.popup.error({ detail: 'Fail', summary: 'Registration Data Fail' })
+      }
+    })
+  }
+  document_submit(){
+    console.log(this.document_form.value)
+    const documentdata = new FormData();
+    documentdata.append('certificate_id', this.certificate_id);
+    documentdata.append('std_aadhar_card', this.document_form.get('std_aadhar_card')?.value);
+    documentdata.append('std_gen_certificate', this.document_form.get('std_gen_certificate')?.value);
+    documentdata.append('std_10th_marksheet', this.document_form.get('std_10th_marksheet')?.value);
+    documentdata.append('std_residential', this.document_form.get('std_residential')?.value);
+    documentdata.append('std_image', this.document_form.get('std_image')?.value);
+    documentdata.append('status', this.document_form.get('status')?.value);
+    documentdata.append('institute_id_fk', this.inst_id_for_inst_login);
+    documentdata.append('admin_id_fk', this.document_form.get('admin_id_fk')?.value);
+    this.services.put_certificate_document(documentdata).subscribe({
+      next:(res:any)=>{
+        console.log(res)
+        this.popup.success({detail: 'Success', summary: 'Registration Data Add'})
+      },
+      error:(error:any)=>{
+        console.log(error)
+        this.popup.error({ detail: 'Fail', summary: 'Registration Data Fail' })
+      }
+    })
+  }
+
+  aadharupload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.document_form.get('std_aadhar_card')?.setValue(file)
+    }
+  }
+  genupload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.document_form.get('std_gen_certificate')?.setValue(file)
+    }
+  }
+  markesupload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.document_form.get('std_10th_marksheet')?.setValue(file)
+    }
+  }
+  redsidentalupload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.document_form.get('std_residential')?.setValue(file)
+    }
+  }
+  imageupload(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      this.document_form.get('std_image')?.setValue(file)
+    }
   }
 }

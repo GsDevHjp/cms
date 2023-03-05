@@ -51,6 +51,7 @@ import { StudentLoginComponent } from './student/student-login/student-login.com
 import { StudentProfileComponent } from './student/student-profile/student-profile.component';
 import { TakeAddmissionComponent } from './student/take-addmission/take-addmission.component';
 
+
 const routes: Routes = [
 
   { path: '', component: HomepageComponent },

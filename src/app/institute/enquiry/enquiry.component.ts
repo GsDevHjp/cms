@@ -23,7 +23,7 @@ export class EnquiryComponent implements OnInit {
   tabledata: any;
   login_deatils: any;
   login: any
-  inst_id:any
+  inst_id: any
   constructor(
     private dailog: MatDialog,
     private router: Router,
