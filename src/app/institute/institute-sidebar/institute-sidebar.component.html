@@ -11,30 +11,30 @@
             </button>
 
             <div>
-                <button mat-button class="menu-button" (click)="setting_dropdown()">
+                <button mat-button class="menu-button" (click)="dropdown_master()">
                     <mat-icon>dvr</mat-icon>
                     <span>Master Entery</span>
                     <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
                     <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
                 </button>
 
-                <div id="dropdown_setting">
-                    <button mat-button class="menu-button" [routerLink]="['course']">
+                <div id="dropdown_master">
+                    <button mat-button class="master_icon" [routerLink]="['course']">
                         <mat-icon>school</mat-icon>
                         <span>Course</span>
                     </button>
         
-                    <button mat-button class="menu-button" [routerLink]="['batch']">
+                    <button mat-button class="menu-button" class="master_icon" [routerLink]="['batch']">
                         <mat-icon>local_library</mat-icon>
                         <span>Batch</span>
                     </button>
 
-                    <button mat-button class="menu-button" [routerLink]="['instnotification']">
+                    <button mat-button class="menu-button" class="master_icon" [routerLink]="['instnotification']">
                         <mat-icon>notifications</mat-icon>
                         <span>Notification</span>
                     </button>
         
-                    <button mat-button class="menu-button" [routerLink]="['employee']">
+                    <button mat-button class="menu-button" class="master_icon" [routerLink]="['employee']">
                         <mat-icon>supervisor_account</mat-icon>
                         <span>Employee</span>
                     </button>

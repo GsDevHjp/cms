@@ -10,7 +10,7 @@ import { ManageService } from 'src/app/manage.service';
 })
 export class InstituteSidebarComponent implements OnInit {
 
-  setting: any
+  master: any
   action_icon1: boolean = false
   action_icon2: boolean = true
   action_icon3: boolean = false
@@ -47,28 +47,28 @@ export class InstituteSidebarComponent implements OnInit {
 
   //////////////////////////////////////////////////////////////////////// Report Dropdown /////////////////////////////////////////////////////
   report_dropdown() {
-    this.setting = document.getElementById("dropdown_report")
-    if (this.setting.style.display != "block") {
-      this.setting.style.display = "block";
+    this.master = document.getElementById("dropdown_report")
+    if (this.master.style.display != "block") {
+      this.master.style.display = "block";
       this.action_icon1 = true
       this.action_icon2 = false
 
     } else {
-      this.setting.style.display = "none";
+      this.master.style.display = "none";
       this.action_icon1 = false
       this.action_icon2 = true
     }
   }
 
-  setting_dropdown() {
-    this.setting = document.getElementById("dropdown_setting")
-    if (this.setting.style.display != "block") {
-      this.setting.style.display = "block";
+  dropdown_master() {
+    this.master = document.getElementById("dropdown_master")
+    if (this.master.style.display != "block") {
+      this.master.style.display = "block";
       this.action_icon3 = true
       this.action_icon4 = false
 
     } else {
-      this.setting.style.display = "none";
+      this.master.style.display = "none";
       this.action_icon3 = false
       this.action_icon4 = true
     }

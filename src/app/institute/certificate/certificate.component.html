@@ -1,56 +1,86 @@
 <div id="manage_table_wrapper">
     <div class="head">
-        <span class="course_text">Certificate Deleails</span>
-        <mat-icon id="add_course" [routerLink]="['../add_edit_certificate']">add_circle</mat-icon>
+      <span class="course_text">Certificate Details</span>
+      <mat-icon id="add_course" [routerLink]="['../add_edit_certificate']">add_circle</mat-icon>
     </div>
     <div class="count_area">
-        <span class="notice_text">Total :0</span>
-        <div class="search">
-            <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
-        </div>
+      <span class="notice_text">Total : 0</span>
+      <div class="search">
+        <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+      </div>
     </div>
-
+  
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort id="table">
-            <ng-container matColumnDef="slno">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>S.N</th>
-                <td class="data" mat-cell *matCellDef="let row; let i = index;">{{(paginatorRef.pageIndex *
-                    paginatorRef.pageSize)+(i+1)}}</td>
-            </ng-container>
+      <table mat-table [dataSource]="dataSource" matSort>
+  
+        <ng-container matColumnDef="no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+          <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="std_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_name}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="persional">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Persional Information</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.persional}}</td>
-            </ng-container>
+        <ng-container matColumnDef="std_father_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Father Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_father_name}}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="std_contact_no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
+          <td mat-cell *matCellDef="let row"> {{row.std_contact_no}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="Permanent">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Permanent Address</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.Permanent}}</td>
-            </ng-container>
+        <ng-container matColumnDef="std_village">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Village</th>
+          <td mat-cell *matCellDef="let row"> {{row.std_village}}</td>
+        </ng-container>
 
+        <ng-container matColumnDef="std_rigistration_no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Registration No</th>
+          <td mat-cell *matCellDef="let row"> {{row.std_rigistration_no}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="Registration">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Registration</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.Registration}}</td>
-            </ng-container>
+        <ng-container matColumnDef="std_center_code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Center Code</th>
+          <td mat-cell *matCellDef="let row"> {{row.std_center_code}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="Upload">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Upload Document</th>
-                <td class="data" mat-cell *matCellDef="let row">{{row.Upload}}</td>
-            </ng-container>
+        <ng-container matColumnDef="std_total_marks">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Marks</th>
+          <td mat-cell *matCellDef="let row"> {{row.std_total_marks}}</td>
+        </ng-container>
 
-            <ng-container matColumnDef="action">
-                <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-                <td class="data" mat-cell *matCellDef="let row"> </td>
-            </ng-container>
+        <ng-container matColumnDef="course_id_fk">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+          <td mat-cell *matCellDef="let row"> {{row.course_id_fk}}</td>
+        </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="13">No data show"{{input.value}}"</td>
-            </tr>
-        </table>
-        <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]"
-            aria-label="Select page of users"></mat-paginator>
+        <ng-container matColumnDef="std_image">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Photo</th>
+          <td mat-cell *matCellDef="let row"><img src="{{imgUrl}}{{row.std_image}}" width="40px" height="40px" alt="image"
+            style="border-radius: 50px;"></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+           <mat-icon>edit</mat-icon>
+           <mat-icon (click)="certificate_delete(row)">delete</mat-icon>
+          </td>
+  
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
+  
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="11" style="color:silver;">No record found"{{input.value}}"</td>
+        </tr>
+      </table>
+  
+      <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
-</div> 
+  </div>

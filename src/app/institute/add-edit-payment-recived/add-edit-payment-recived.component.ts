@@ -17,7 +17,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   admin = 1;
   upload: any;
   actionBtn: string = 'Add'
-  fee_heading: string = 'Add Fee'
+  fee_heading: string = 'Fee'
   student_data: any;
   course_data: any;
   batch_data: any;
@@ -31,6 +31,9 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   autoselect='Offline'
+  action:boolean = false
+  std_id:any
+  roll_no:any
 
   constructor(
     private popup:NgToastService,
@@ -38,7 +41,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     private service: ManageService,
     private router:Router,
     private matref: MatDialogRef<AddEditPaymentRecivedComponent>,
-    @Inject(MAT_DIALOG_DATA) public editfee: any,
+    @Inject(MAT_DIALOG_DATA) public regno: any,
 
   ) {
     this.login_deatils = localStorage.getItem('Token')
@@ -49,30 +52,8 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const formdata = new FormData()
-    formdata.append("inst_id", this.inst_id_for_inst_login)
-    this.service.get_student_by_inst_id(formdata).subscribe(
-      (std_res: any) => {
-        this.student_data = std_res.data
-      }
-    )
-    const courseformdata = new FormData()
-    courseformdata.append("inst_id", this.inst_id_for_inst_login)
-    this.service.get_course_by_inst_id(courseformdata).subscribe(
-      (batch_res: any) => {
-        this.course_data = batch_res.data
-      }
-    )
-    const batchformdata = new FormData()
-    batchformdata.append("inst_id", this.inst_id_for_inst_login)
-    this.service.get_batch_by_inst_id(batchformdata).subscribe(
-      (batch_res: any) => {
-        console.log(batch_res.data)
-        this.batch_data = batch_res.data
-      }
-    )
     this.fee_form = this.fb.group({
-      fee_by_std_id: ['',],
+      std_reg: ['',],
       fee_id: ['',],
       student_id_fk: ['', Validators.required],
       std_father_name: [''],
@@ -96,49 +77,15 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     }) 
     this.fee_form.controls['fee_date'].setValue(new Date().toISOString().slice(0, 10));
-    if (this.editfee) {
-      this.actionBtn = "Update";
-      this.fee_heading = "Update"
-      this.fee_form.controls['fee_id'].setValue(this.editfee.fee_id);
-      this.fee_form.controls['fee_by_std_id'].setValue(this.editfee.std_id);
-      this.fee_form.controls['student_id_fk'].setValue(this.editfee.std_id);
-      this.fee_form.controls['std_father_name'].setValue(this.editfee.std_father_name);
-      this.fee_form.controls['std_whatsapp_no'].setValue(this.editfee.std_whatsapp_no);
-      this.fee_form.controls['std_address'].setValue(this.editfee.std_address);
-      this.fee_form.controls['course_id_fk'].setValue(this.editfee.course_id);
-      this.fee_form.controls['course_total_fee'].setValue(this.editfee.course_total_fee);
-      this.fee_form.controls['course_half_fee'].setValue(this.editfee.course_half_fee);
-      this.fee_form.controls['course_quarter_fee'].setValue(this.editfee.course_quarter_fee);
-      this.fee_form.controls['course_monthly_fee'].setValue(this.editfee.course_monthly_fee);
-      this.fee_form.controls['course_admission_fee'].setValue(this.editfee.course_admission_fee);
-      this.fee_form.controls['fee_type'].setValue(this.editfee.fee_type);
-      this.fee_form.controls['fee_monthly'].setValue(this.editfee.fee_monthly);
-      this.fee_form.controls['fee_mode'].setValue(this.editfee.fee_mode);
-      this.fee_form.controls['fee_amount'].setValue(this.editfee.fee_amount);
-      this.fee_form.controls['fee_description'].setValue(this.editfee.fee_description);
-      this.fee_form.controls['std_img'].setValue(this.editfee.std_img);
-      this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.editfee.std_img;
-      this.fee_form.controls['batch_id_fk'].setValue(this.editfee.batch_id);
-      this.fee_form.controls['admin_id_fk'].setValue(this.editfee.admin_id_fk);
+    if (this.regno) {
+      console.log(this.regno)
+      this.fee_form.controls['std_reg'].setValue(this.regno);
+      this.ongetstd(this.regno)
+
     }
   }
-  get_student_single_data(event: any) {
-    const formdata = new FormData();
-    formdata.append('std_id', event)
-    this.service.get_student_by_std_id(formdata).subscribe(
-      (res: any) => {
-        console.log(res.data)
-        this.student_single_data = res.data
-        this.fee_form.controls['fee_by_std_id'].setValue(this.student_single_data.std_id);
-        this.fee_form.controls['std_father_name'].setValue(this.student_single_data.std_father_name);
-        this.fee_form.controls['std_whatsapp_no'].setValue(this.student_single_data.std_whatsapp_no);
-        this.fee_form.controls['std_address'].setValue(this.student_single_data.std_address);
-        this.fee_form.controls['std_img'].setValue(this.student_single_data.std_img);
-        this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + this.student_single_data.std_img;
-      }
-    )
-  }
-  get_course_single_data(event: any) {
+
+  get_course_by_course_id(event: any) {
     const courseformdata = new FormData();
     courseformdata.append('course_id', event)
     this.service.get_course_by_course_id(courseformdata).subscribe(
@@ -155,9 +102,8 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   }
 
   fee_btn() {
-    console.log(this.fee_form.value)
     const formadd = new FormData();
-    formadd.append('student_id_fk', this.fee_form.get('student_id_fk')?.value)
+    formadd.append('student_id_fk', this.std_id)
     formadd.append('course_id_fk', this.fee_form.get('course_id_fk')?.value)
     formadd.append('fee_type', this.fee_form.get('fee_type')?.value)
     formadd.append('fee_monthly', this.fee_form.get('fee_monthly')?.value)
@@ -168,7 +114,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
     formadd.append('institute_id_fk', this.inst_id)
     formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
-    if (!this.editfee) {
+    formadd.append('roll_no', this.roll_no)
       if (this.fee_form.valid) {
         this.service.post_fee(formadd).subscribe(
           (res: any) => {
@@ -184,38 +130,10 @@ export class AddEditPaymentRecivedComponent implements OnInit {
           }
         )
       }
-    }
-    else {
-      this.updateFee()
-    }
+    
+   
   }
-  updateFee() {
-    const formupdate = new FormData();
-    formupdate.append('fee_id', this.fee_form.get('fee_id')?.value)
-    formupdate.append('fee_type', this.fee_form.get('fee_type')?.value)
-    formupdate.append('fee_monthly', this.fee_form.get('fee_monthly')?.value)
-    formupdate.append('fee_mode', this.fee_form.get('fee_mode')?.value)
-    formupdate.append('fee_amount', this.fee_form.get('fee_amount')?.value)
-    formupdate.append('fee_description', this.fee_form.get('fee_description')?.value)
-    formupdate.append('fee_date', this.fee_form.get('fee_date')?.value)
-    formupdate.append('student_id_fk', this.fee_form.get('student_id_fk')?.value)
-    formupdate.append('course_id_fk', this.fee_form.get('course_id_fk')?.value)
-    formupdate.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
-    formupdate.append('institute_id_fk', this.inst_id)
-    formupdate.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
-    this.service.put_fee(formupdate).subscribe({
-      next: (res: any) => {
-        console.log(res)
-        this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Payment Updated',})
-        this.router.navigate(['/institutehome/fee'])
-      },
-      error: (error: any) => {
-        console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Payment Not Updated',})
-      }
-    })
-  }
+ 
   select_fee_type(event: any) {
     console.log(event)
     if (event == "Monthly Fee") {
@@ -236,5 +154,40 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     if (event == "Quarter Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
     }
+  }
+
+  call_std_reg(){
+    this.ongetstd(this.fee_form.get('std_reg')?.value)
+  }
+  ongetstd(std_reg:any){
+    const fromdata = new FormData()
+    fromdata.append('std_reg',std_reg )
+    this.service.get_std_by_reg_no(fromdata).subscribe(
+      (res:any)=>{
+        console.log(res.data)
+        this.std_id = res.data[0].std_id
+        this.roll_no = res.data[0].roll_no
+        this.fee_form.controls['student_id_fk'].setValue(res.data[0].std_name);
+        this.fee_form.controls['std_father_name'].setValue(res.data[0].std_father_name);
+        this.fee_form.controls['std_whatsapp_no'].setValue(res.data[0].std_whatsapp_no);
+        this.fee_form.controls['std_address'].setValue(res.data[0].std_address);
+        this.fee_form.controls['course_id_fk'].setValue(res.data[0].course_id);
+        this.fee_form.controls['course_total_fee'].setValue(res.data[0].course_total_fee);
+        this.fee_form.controls['course_half_fee'].setValue(res.data[0].course_half_fee);
+        this.fee_form.controls['course_quarter_fee'].setValue(res.data[0].course_quarter_fee);
+        this.fee_form.controls['course_monthly_fee'].setValue(res.data[0].course_monthly_fee);
+        this.fee_form.controls['course_admission_fee'].setValue(res.data[0].course_admission_fee);
+        this.fee_form.controls['fee_amount'].setValue(res.data[0].fee_amount);
+        this.fee_form.controls['std_img'].setValue(res.data[0].std_img);
+        this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + res.data[0].std_img;
+        this.fee_form.controls['batch_id_fk'].setValue(res.data[0].batch_id);
+
+        // for course and batch 
+        this.course_data = res.data
+        this.batch_data = res.data
+
+
+      }
+    )
   }
 }

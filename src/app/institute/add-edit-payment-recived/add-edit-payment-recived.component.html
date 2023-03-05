@@ -9,18 +9,15 @@
             <div class="box">
                 <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Student Id</mat-label>
-                        <input matInput type="number" placeholder="search" formControlName="fee_by_std_id">
+                        <mat-label>Registration</mat-label>
+                        <input (keyup)="call_std_reg()" matInput type="text" placeholder="Registration" formControlName="std_reg" [readonly]="action"  > 
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Student Name</mat-label>
-                        <mat-select formControlName="student_id_fk" (valueChange)="get_student_single_data($event)">
-                            <mat-option *ngFor="let std of student_data"
-                                [value]="std.std_id">{{std.std_name}}</mat-option>
-                        </mat-select>
+                        <input matInput formControlName="student_id_fk" readonly>
                     </mat-form-field>
-
+                    
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father</mat-label>
                         <input matInput formControlName="std_father_name" readonly>
@@ -39,7 +36,7 @@
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Course</mat-label>
-                    <mat-select formControlName="course_id_fk" (valueChange)="get_course_single_data($event)">
+                    <mat-select formControlName="course_id_fk" (valueChange)="get_course_by_course_id($event)">
                         <mat-option *ngFor="let course of course_data"
                             [value]="course.course_id">{{course.course_name}}</mat-option>
                     </mat-select>

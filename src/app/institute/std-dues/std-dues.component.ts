@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { formatDate } from '@angular/common';
+import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 
 @Component({
   selector: 'app-std-dues',
@@ -36,15 +37,15 @@ export class StdDuesComponent implements OnInit {
     fromdata.append('inst_id',this.login.inst_id)
       this.servies.get_dues_by_inst_id(fromdata).subscribe(
         (res:any)=>{
-          console.log(res)
+          console.log(res.data)
           this.dataSource.data = res.data
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           this.count_dues = res.data.length
         }
       )
-
   }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -52,5 +53,14 @@ export class StdDuesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onpaymet(row:any){
+    this.dailog.open(AddEditPaymentRecivedComponent,{
+      data: row,
+     
+    }
+      
+      )
   }
 }
