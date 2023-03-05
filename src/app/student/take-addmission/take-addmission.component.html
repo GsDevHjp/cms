@@ -58,8 +58,8 @@
       <ng-container matColumnDef="batch_status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let row">
-          <p [hidden]="row.admissition_status ==1"> Pending</p> 
-          <p [hidden]="row.admissition_status ==0"> Active</p> 
+          <p [hidden]="row.admissition_status ==1"> <b style="color: red;">Pending</b></p> 
+          <p [hidden]="row.admissition_status ==0"> <b style="color: green;">Success</b></p> 
         </td>
       </ng-container>
 
