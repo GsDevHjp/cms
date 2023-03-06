@@ -67,8 +67,8 @@ export class ManageService {
   get_batch_by_batch_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_batch_id.php', data);
   }
-  get_total_std_by_inst(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_total_std_by_inst_id.php', data);
+  get_std_for_batch_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_std_for_batch_id.php', data);
   }
 
   // for student module 

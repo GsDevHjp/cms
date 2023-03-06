@@ -110,7 +110,7 @@ import { ResionComponent } from './institute/resion/resion.component';
 import { QuizresultComponent } from './student/quizresult/quizresult.component';
 import { ExpenceComponent } from './institute/expence/expence.component';
 import { AddEditExpenceComponent } from './institute/add-edit-expence/add-edit-expence.component';
-
+import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
 
 @NgModule({
   declarations: [
@@ -201,6 +201,7 @@ import { AddEditExpenceComponent } from './institute/add-edit-expence/add-edit-e
     QuizresultComponent,
     ExpenceComponent,
     AddEditExpenceComponent,
+    StdbathcbyComponent,
 
   ],
   imports: [

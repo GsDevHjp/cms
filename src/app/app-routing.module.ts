@@ -40,6 +40,7 @@ import { InstquizdashboardComponent } from './institute/instquizdashboard/instqu
 import { OESComponent } from './institute/oes/oes.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
+import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
 import { StudentComponent } from './institute/student/student.component';
 import { LiveClassComponent } from './student/live-class/live-class.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
@@ -111,7 +112,14 @@ const routes: Routes = [
       { path: '', component: InstituteDashboardComponent },
       { path: 'dashboard', component: InstituteDashboardComponent },
       { path: 'course', component: CourseComponent },
-      { path: 'batch', component: BatchComponent },
+      { path: 'batch', component: ViewportComponent,
+        children:[
+          { path: '', component: BatchComponent},
+          { path: 'studentbatch', component: StdbathcbyComponent },
+
+        ]
+      
+          },
       { path: 'student', component: StudentComponent },
       { path: 'admission', component: AdmissionComponent },
       { path: 'enquiry', component: EnquiryComponent },

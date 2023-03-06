@@ -64,14 +64,7 @@ export class BatchComponent implements OnInit {
       this.action_btn = false
       this.get_batch_by_inst_id(this.inst_id_for_inst_login)
 
-      const fromdatata = new FormData()
-      fromdatata.append('inst_id',this.inst_id_for_inst_login )
-      this.service.get_total_std_by_inst(fromdatata).subscribe(
-        (res:any)=>{
-            this.total_batch = res.data
-            console.log(this.total_batch)
-        }
-      )
+     
 
     }
     if (this.inst_id_for_std) {
@@ -136,6 +129,12 @@ export class BatchComponent implements OnInit {
       () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Deleted', })
       })
+  }
+
+  onstdview(row:any){
+    console.log(row.batch_id)
+    
+    this.router.navigate(['institutehome/batch/studentbatch'],row)  
   }
 
   applyFilter(event: Event) {
