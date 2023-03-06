@@ -111,6 +111,10 @@ import { QuizresultComponent } from './student/quizresult/quizresult.component';
 import { ExpenceComponent } from './institute/expence/expence.component';
 import { AddEditExpenceComponent } from './institute/add-edit-expence/add-edit-expence.component';
 import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
+import { LedgerComponent } from './institute/ledger/ledger.component';
+import { AddEditLedgerComponent } from './institute/add-edit-ledger/add-edit-ledger.component';
+import { ProfitLossComponent } from './institute/profit-loss/profit-loss.component';
+import { AddEditProfitLossComponent } from './institute/add-edit-profit-loss/add-edit-profit-loss.component';
 
 @NgModule({
   declarations: [
@@ -202,6 +206,10 @@ import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component
     ExpenceComponent,
     AddEditExpenceComponent,
     StdbathcbyComponent,
+    LedgerComponent,
+    AddEditLedgerComponent,
+    ProfitLossComponent,
+    AddEditProfitLossComponent,
 
   ],
   imports: [

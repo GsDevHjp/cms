@@ -28,6 +28,7 @@
     border-bottom: 0.2px solid #525458;
     transition: 0.5s;
 }
+
 .menu-button:hover {
     padding-left: 25px;
 }
@@ -35,15 +36,13 @@
 .menu-button span {
     margin-left: 10px;
 }
-.menu-button:hover{
+
+.menu-button:hover {
     background-color: #525458;
 }
- .menu-button:focus{
-    background-color: #35373d;
-}
 
-#dropdown_master {
-    display: none;
+.menu-button:focus {
+    background-color: #35373d;
 }
 
 .master_icon {
@@ -56,22 +55,33 @@
     border-bottom: 0.2px solid #525458;
     transition: 0.5s;
 }
+
 .master_icon:hover {
-    padding-left:40px;
+    padding-left: 40px;
 }
 
 .master_icon span {
     margin-left: 10px;
 }
-.master_icon:hover{
+
+.master_icon:hover {
     background-color: #525458;
 }
- .master_icon:focus{
+
+.master_icon:focus {
     background-color: #35373d;
 }
 
-#dropdown_report {
-    display: none ;
+#dropdown_study {
+    display: none;
+}
+
+#dropdown_master {
+    display: none;
+}
+
+#dropdown_account {
+    display: none;
 }
 
 /* ===========================================media Query================================================== */
@@ -85,7 +95,7 @@
 
     .title_text {
         font-size: 15px;
-        margin-left:35px;
+        margin-left: 35px;
     }
 
     .menu-button {

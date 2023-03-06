@@ -1,0 +1,56 @@
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+}
+
+.material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+}
+
+mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+}
+
+mat-form-field {
+    margin-left: 10px;
+}
+
+textarea {
+    height: 17px;
+}
+#description{
+    width: 98%;
+}
+.submit {
+    margin-left: 9.5em;
+}
+
+button {
+    margin-left: 10px;
+}
+
+/* --------------------------Media Query------------------------- */
+@media(min-width: 350px) and (max-width: 520px) {
+    .mat-form-field {
+        width: 100%;
+    }
+}
+
+@media(min-width: 521px) and (max-width: 767px) {
+    .mat-form-field {
+        width: 48.8%;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1699px) {
+    .add_form {
+        width: 99%;
+    }
+}
