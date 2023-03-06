@@ -121,7 +121,6 @@ export class AddEditPaymentRecivedComponent implements OnInit {
      }
     )
   }
-
   fee_btn() {
     const formadd = new FormData();
     formadd.append('student_id_fk', this.std_id)
