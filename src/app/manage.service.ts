@@ -9,7 +9,7 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
-
+ 
   // dashboard  
   get_dashboad(data: any) {
     return this.http.post<any>(this.baseUrl + 'dashboard_view.php', data);
