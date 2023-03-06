@@ -28,6 +28,7 @@
     width: 200px;
     height: 122px;
     float: right;
+    margin-top: -64px;
   }
   
   .user_image mat-label {

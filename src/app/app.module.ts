@@ -108,6 +108,8 @@ import { CertificateComponent } from './institute/certificate/certificate.compon
 import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { ResionComponent } from './institute/resion/resion.component';
 import { QuizresultComponent } from './student/quizresult/quizresult.component';
+import { ExpenceComponent } from './institute/expence/expence.component';
+import { AddEditExpenceComponent } from './institute/add-edit-expence/add-edit-expence.component';
 
 
 @NgModule({
@@ -197,6 +199,8 @@ import { QuizresultComponent } from './student/quizresult/quizresult.component';
     AddEditCertificateComponent,
     ResionComponent,
     QuizresultComponent,
+    ExpenceComponent,
+    AddEditExpenceComponent,
 
   ],
   imports: [

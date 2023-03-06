@@ -23,6 +23,13 @@ mat-toolbar {
     z-index: 2;
 
 }
+.action_btn {
+    color: #fff;
+}
+
+.action_btn:hover {
+    background-color: #5a74ad;
+}
 
 mat-icon {
     height: 30px;

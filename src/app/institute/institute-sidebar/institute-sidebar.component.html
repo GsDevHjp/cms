@@ -67,14 +67,14 @@
                 <span>Dues</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['liveclass']">
-                <mat-icon>redeem</mat-icon>
-                <span>Live Class</span>
-            </button>
-
             <button mat-button class="menu-button" [routerLink]="['instquizdashboard']">
                 <mat-icon>quiz</mat-icon>
                 <span>Quiz</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['liveclass']">
+                <mat-icon>chrome_reader_mode</mat-icon>
+                <span>Live Class</span>
             </button>
 
             <button mat-button class="menu-button" [routerLink]="['oes']">
@@ -97,8 +97,13 @@
                 <span>Issue Certificate</span>
             </button>
 
+            <button mat-button class="menu-button" [routerLink]="['expence']">
+                <mat-icon>explicit</mat-icon>
+                <span>Expence</span>
+            </button>
+
             <div>
-                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                <button mat-button class="menu-button" (click)="report_dropdown()">
                     <mat-icon>list_alt</mat-icon>
                     <span>Study Material</span>
                     <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>

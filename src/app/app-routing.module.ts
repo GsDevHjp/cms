@@ -24,6 +24,7 @@ import { CourseComponent } from './institute/course/course.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
 import { EmployeeComponent } from './institute/employee/employee.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
+import { ExpenceComponent } from './institute/expence/expence.component';
 import { InstBookComponent } from './institute/inst-book/inst-book.component';
 import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
 import { InstNotesComponent } from './institute/inst-notes/inst-notes.component';
@@ -129,7 +130,8 @@ const routes: Routes = [
       { path: 'employee', component: EmployeeComponent },
       { path: 'certificate', component: CertificateComponent },
       { path: 'add_edit_certificate', component: AddEditCertificateComponent },
-      { path: 'liveclass', component: LiveClassComponent }
+      {path: 'liveclass', component: LiveClassComponent},
+      { path: 'expence', component: ExpenceComponent }
     ]
   },
 
