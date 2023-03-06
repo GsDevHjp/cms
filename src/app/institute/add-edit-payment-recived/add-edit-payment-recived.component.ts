@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-edit-payment-recived.component.css']
 })
 export class AddEditPaymentRecivedComponent implements OnInit {
-  toppings = new FormControl('');
-  toppingList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   disableSelect = new FormControl(false);
   fee_form!: FormGroup;
   admin = 1;
@@ -23,7 +21,8 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   batch_data: any;
   student_single_data: any;
   course_single_data: any;
-  monthly_act: boolean = true;
+  monthly_act: boolean =true;
+  current_act: boolean =true;
   setvalue: any;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
   login_deatils: any;
@@ -86,7 +85,6 @@ export class AddEditPaymentRecivedComponent implements OnInit {
       this.fee_form.controls['std_reg'].setValue(this.regno);
       this.ongetstd(this.regno)
       this.get_dues(this.batch_id,this.regno)
-      
     }
   }
 
@@ -153,12 +151,17 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   select_fee_type(event: any) {
     this.get_dues( this.fee_form.get('batch_id_fk')?.value, this.fee_form.get('std_reg')?.value)
 
-
     if (event == "Monthly Fee") {
       this.monthly_act = false
     }
     else {
       this.monthly_act = true
+    }
+    if (event == "Other Fee") {
+      this.current_act = false
+    }
+    else {
+      this.current_act = true
     }
     if (event == "Admission Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_admission_fee')?.value);
@@ -174,7 +177,12 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     }
     if (event == "Quarter Fee") {
       this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
-      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_quarter_fee')?.value);
+      this.fee_form.controls['net_amt'].setValue(this.fee_form.get('course_quarter_fee')?.value);
+    }
+
+    if (event == "Monthly Fee") {
+      this.fee_form.controls['fee_amount'].setValue(this.fee_form.get('course_monthly_fee')?.value);
+      this.fee_form.controls['net_amt'].setValue(this.fee_form.get('course_monthly_fee')?.value);
     }
     this.fee_form.controls['dist_amt'].setValue(0)
   }

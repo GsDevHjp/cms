@@ -104,16 +104,19 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Monthly</mat-label>
-                    <mat-select [formControl]="toppings" multiple [disabled]="monthly_act"
-                        formControlName="fee_monthly">
-                        <mat-select-trigger>
-                            {{toppings.value?.[0] || ''}}
-                            <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                                (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' :
-                                'others'}})
-                            </span>
-                        </mat-select-trigger>
-                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    <mat-select [disabled]="monthly_act" formControlName="fee_monthly">
+                        <mat-option value="January">January</mat-option>
+                        <mat-option value="February">February</mat-option>
+                        <mat-option value="March">March</mat-option>
+                        <mat-option value="April">April</mat-option>
+                        <mat-option value="May">May</mat-option>
+                        <mat-option value="June">June</mat-option>
+                        <mat-option value="July">July</mat-option>
+                        <mat-option value="August">August</mat-option>
+                        <mat-option value="September">September</mat-option>
+                        <mat-option value="October">October</mat-option>
+                        <mat-option value="November">November</mat-option>
+                        <mat-option value="December">December</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -125,33 +128,34 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            <div class="box">
+                <mat-form-field appearance="fill" style="margin: 0;">
+                    <mat-label>Current Dues</mat-label>
+                    <input type="number" matInput formControlName="dues_amt" readonly>
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin: 0;">
+                    <mat-label>Amount</mat-label>
+                    <input type="number" matInput formControlName="fee_amount" (keyup)="amount_calc()" readonly>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Discount</mat-label>
+                    <input type="number" matInput (keyup)="amount_calc()" formControlName="dist_amt">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Net Amount</mat-label>
+                    <input type="number" matInput formControlName="net_amt" readonly>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="fee_description">
+                </mat-form-field>
+
+                <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
+                <input type="date" matInput formControlName="fee_date" readonly hidden>
+            </div>
         </div>
-        <mat-form-field appearance="fill" class="text_box" style="margin: 0;">
-            <mat-label>Current Dues</mat-label>
-            <input type="number" matInput formControlName="dues_amt">
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="text_box" style="margin: 0;">
-            <mat-label>Amount</mat-label>
-            <input type="number" matInput formControlName="fee_amount" (keyup)="amount_calc()">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="text_box">
-            <mat-label>Discount</mat-label>
-            <input type="number" matInput (keyup)="amount_calc()" formControlName="dist_amt">
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="text_box">
-            <mat-label>Net Amount</mat-label>
-            <input type="number" matInput  formControlName="net_amt">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" id="description">
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="fee_description">
-        </mat-form-field>
-
-        <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
-        <input type="date" matInput formControlName="fee_date" readonly hidden>
-
     </form>
 
     <div class="submit">
