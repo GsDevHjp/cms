@@ -4,6 +4,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentProfileComponent } from '../student-profile/student-profile.component';
 import { ManageService } from 'src/app/manage.service';
+import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.component';
+
 
 @Component({
   selector: 'app-student-home',
@@ -68,7 +70,11 @@ export class StudentHomeComponent implements OnInit {
     )
   }
 
-
+  changepassword() {
+    this.dailog.open(StdChnangePwdComponent, {
+      disableClose: true
+    });
+  }
   show_profile() {
     this.dailog.open(StudentProfileComponent, {
       disableClose: true

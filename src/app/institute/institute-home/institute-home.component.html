@@ -11,9 +11,18 @@
                         <div class="name_text">
                             <span>Login as :&nbsp;&nbsp;{{name}}</span>
                         </div>
-                        <div id="admin_logo" (click)="profile_update()">
-                            <img src={{url}}{{img_url}}>
-                        </div>
+                        <button class="login_head" mat-button [matMenuTriggerFor]="menu">
+                            <div id="admin_logo">
+                                <img src={{url}}{{img_url}}>
+                            </div>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item class="action_btn" (click)="profile_update()">Update Profile</button>
+                            <button mat-menu-item class="action_btn" [routerLink]="['#']">I-Card</button>
+                            <button mat-menu-item class="action_btn" (click)="inst_change_pwd()">Change
+                                Password</button>
+                            <button mat-menu-item class="action_btn" [routerLink]="['/institutelogin']">LogOut</button>
+                        </mat-menu>
                     </div>
                 </mat-toolbar>
             </div>

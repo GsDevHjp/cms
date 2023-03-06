@@ -21,7 +21,6 @@ mat-toolbar {
     background-color: #1d1f23;
     position: fixed;
     z-index: 2;
-
 }
 
 mat-icon {
@@ -30,6 +29,14 @@ mat-icon {
     font-size: 30px;
     cursor: pointer;
     color: whitesmoke;
+}
+
+.action_btn {
+    color: #fff;
+}
+
+.action_btn:hover {
+    background-color: #5a74ad;
 }
 
 #dash_header_admin {
@@ -41,7 +48,7 @@ mat-icon {
     width: calc(100% - 330px);
     height: 100%;
     display: inline-block;
-    margin-left:10px;
+    margin-left: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -63,8 +70,8 @@ mat-icon {
     cursor: pointer;
     background-color: white;
     position: fixed;
-    right:2%;
-    top:0px;
+    right: 2%;
+    top: 0px;
 
 
 }
@@ -82,9 +89,9 @@ mat-icon {
 /* for media queary starting here */
 
 @media(min-width: 767px) and (max-width:991px) {
-    .name_text{
-       position: relative;
-       right:40px;
+    .name_text {
+        position: relative;
+        right: 40px;
     }
 }
 

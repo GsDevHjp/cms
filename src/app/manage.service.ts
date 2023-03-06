@@ -67,6 +67,9 @@ export class ManageService {
   get_batch_by_batch_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_batch_by_batch_id.php', data);
   }
+  get_total_std_by_inst(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_total_std_by_inst_id.php', data);
+  }
   get_std_for_batch_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_std_for_batch_id.php', data);
   }
@@ -378,5 +381,18 @@ export class ManageService {
   }
   put_certificate_personal(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_personal_update.php', data);
+  }
+  // for expence module
+  post_expense(data: any) {
+    return this.http.post<any>(this.baseUrl + 'expence_insert.php', data)
+  }
+  put_expense(data: any) {
+    return this.http.put<any>(this.baseUrl + 'expense_update.php', data);
+  }
+  get_expence() {
+    return this.http.get<[]>(this.baseUrl + 'expense_view.php')
+  }
+  expence_delete(data: any) {
+    return this.http.post<any>(this.baseUrl + 'expence_delete.php', data)
   }
 }

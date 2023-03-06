@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AdminChangePasswordComponent } from '../admin-change-password/admin-change-password.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-home',
@@ -17,7 +19,8 @@ export class AdminHomeComponent implements OnInit {
   login_deatils: any
   login: any
   constructor(
-    private observe:BreakpointObserver
+    private observe:BreakpointObserver,
+    private dailog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,11 @@ export class AdminHomeComponent implements OnInit {
     else{
       this.img_url = this.login.admin_img
     }
+  }
+  changepassword() {
+    this.dailog.open(AdminChangePasswordComponent, {
+      disableClose: true
+    });
   }
 
 }

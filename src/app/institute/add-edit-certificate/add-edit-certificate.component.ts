@@ -171,7 +171,7 @@ export class AddEditCertificateComponent implements OnInit {
   
   personal_add() {
     if (!this.certificate_id) {
-      alert('add')
+      alert(this.certificate_id)
       const personaldata = new FormData();
       personaldata.append('certificate_id', this.personal_form.get('certificate_id')?.value);
       personaldata.append('std_name', this.personal_form.get('std_name')?.value);
@@ -199,7 +199,7 @@ export class AddEditCertificateComponent implements OnInit {
       )
     }
     else {
-      alert("Update")
+      alert(this.certificate_id)
     }
   }
 

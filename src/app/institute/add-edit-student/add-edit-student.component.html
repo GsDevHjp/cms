@@ -3,10 +3,9 @@
         <span class="example-spacer">{{heading_act}}</span>
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
-    <form [formGroup]="student_form" >
-
+    <form [formGroup]="student_form">
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Registration No.</mat-label>
+            <mat-label>Registration No</mat-label>
             <input matInput formControlName="std_regist_no" readonly>
         </mat-form-field>
 
@@ -71,7 +70,7 @@
                 <mat-option value="Bihar">Bihar</mat-option>
                 <mat-option value="Up">Up</mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>District</mat-label>
@@ -84,26 +83,29 @@
             </mat-select>
         </mat-form-field>
 
+        <mat-form-field class="example-full-width" appearance="fill" hidden>
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="std_regist_date">
+        </mat-form-field>
 
         <div class="user_image">
             <div *ngIf="selectedImage">
                 <img [src]="selectedImage" class="select_file" width="100%" height="100%">
             </div>
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
-        </div><br>
+        </div>
 
-        <mat-form-field appearance="fill" class="example-full-width">
+        <mat-form-field appearance="fill"  class="example-full-width">
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
 
-        <input type="date" matInput formControlName="std_regist_date" readonly hidden>
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
-
+ 
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="student_btn()">{{ActionBtn}}</button>
+        <button mat-raised-button color="primary" (click)="student_btn()"  [disabled]="!this.student_form.valid">{{ActionBtn}}</button>
     </div>
 </div>

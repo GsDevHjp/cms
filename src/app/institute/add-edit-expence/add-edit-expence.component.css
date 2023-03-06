@@ -1,0 +1,36 @@
+mat-form-field {
+    margin-left: 10px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+}
+
+.material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+}
+
+mat-toolbar {
+    height: 40px;
+    background: none;
+    color: whitesmoke;
+    padding: 0px;
+    position: relative;
+}
+#description{
+    width: 98%;
+}
+
+.submit {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin-left: 10px;
+}

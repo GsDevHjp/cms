@@ -3,6 +3,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { InstituteUpdateProfileComponent } from '../institute-update-profile/institute-update-profile.component';
+import { InstChangePasswordComponent } from '../inst-change-password/inst-change-password.component';
 @Component({
   selector: 'app-institute-home',
   templateUrl: './institute-home.component.html',
@@ -47,6 +48,11 @@ export class InstituteHomeComponent implements OnInit {
   
   profile_update(){
     this.dailog.open(InstituteUpdateProfileComponent, {
+      disableClose: true
+    });
+  }
+  inst_change_pwd(){
+    this.dailog.open(InstChangePasswordComponent, {
       disableClose: true
     });
   }
