@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+import { Call } from '@angular/compiler';
 
 @Component({
   selector: 'app-add-edit-certificate',
@@ -20,7 +21,6 @@ export class AddEditCertificateComponent implements OnInit {
   login_deatils: any;
   login: any;
   inst_id: any;
-  inst_id_for_inst_login: any;
   catselect = 'Select'
   autoselect = 'Male'
   editpermanent: any
@@ -45,14 +45,13 @@ export class AddEditCertificateComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
-    this.inst_id_for_inst_login = this.login.inst_id
 
-    this.services.get_certificate().subscribe(
-      (res: any) => {
-        console.log(res.data[0].certificate_id)
-        this.certificate_id = res.data[0].certificate_id
-      }
-    )
+    // this.services.get_certificate().subscribe(
+    //   (res: any) => {
+    //     console.log(res.data[0].certificate_id)
+    //     this.certificate_id = res.data[0].certificate_id
+    //   }
+    // )
   }
 
   ngOnInit(): void {
@@ -170,10 +169,8 @@ export class AddEditCertificateComponent implements OnInit {
   }
   
   personal_add() {
-    if (!this.certificate_id) {
-      alert(this.certificate_id)
+  alert(this.inst_id)
       const personaldata = new FormData();
-      personaldata.append('certificate_id', this.personal_form.get('certificate_id')?.value);
       personaldata.append('std_name', this.personal_form.get('std_name')?.value);
       personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
       personaldata.append('std_mother_name', this.personal_form.get('std_mother_name')?.value);
@@ -184,7 +181,7 @@ export class AddEditCertificateComponent implements OnInit {
       personaldata.append('std_aadhar_no', this.personal_form.get('std_aadhar_no')?.value);
       personaldata.append('std_category', this.personal_form.get('std_category')?.value);
       personaldata.append('std_gender', this.personal_form.get('std_gender')?.value);
-      personaldata.append('institute_id_fk', this.inst_id_for_inst_login);
+      personaldata.append('institute_id_fk', this.inst_id);
       personaldata.append('admin_id_fk', this.personal_form.get('admin_id_fk')?.value);
       this.services.post_certificate_personal(personaldata).subscribe(
         (res: any) => {
@@ -197,10 +194,7 @@ export class AddEditCertificateComponent implements OnInit {
           this.popup.error({ detail: 'Fail', summary: 'Personal Data Fail' })
         }
       )
-    }
-    else {
-      alert(this.certificate_id)
-    }
+   
   }
 
 
@@ -218,7 +212,7 @@ export class AddEditCertificateComponent implements OnInit {
     permanetdata.append('std_block', this.permanet_form.get('std_block')?.value);
     permanetdata.append('std_pin_code', this.permanet_form.get('std_pin_code')?.value);
     permanetdata.append('std_area', this.permanet_form.get('std_area')?.value);
-    permanetdata.append('institute_id_fk', this.inst_id_for_inst_login);
+    permanetdata.append('institute_id_fk', this.inst_id);
     permanetdata.append('admin_id_fk', this.permanet_form.get('admin_id_fk')?.value);
     this.services.put_certificate_permanent(permanetdata).subscribe({
       next: (res: any) => {
@@ -245,7 +239,7 @@ export class AddEditCertificateComponent implements OnInit {
     registrationdata.append('std_date_issue', this.registration_form.get('std_date_issue')?.value);
     registrationdata.append('course_id_fk', this.registration_form.get('course_id_fk')?.value);
     registrationdata.append('std_ref_name', this.registration_form.get('std_ref_name')?.value);
-    registrationdata.append('institute_id_fk', this.inst_id_for_inst_login);
+    registrationdata.append('institute_id_fk', this.inst_id);
     registrationdata.append('admin_id_fk', this.registration_form.get('admin_id_fk')?.value);
     this.services.put_certificate_registration(registrationdata).subscribe({
       next: (res: any) => {
@@ -269,7 +263,7 @@ export class AddEditCertificateComponent implements OnInit {
     documentdata.append('std_residential', this.document_form.get('std_residential')?.value);
     documentdata.append('std_image', this.document_form.get('std_image')?.value);
     documentdata.append('status', this.document_form.get('status')?.value);
-    documentdata.append('institute_id_fk', this.inst_id_for_inst_login);
+    documentdata.append('institute_id_fk', this.inst_id);
     documentdata.append('admin_id_fk', this.document_form.get('admin_id_fk')?.value);
     this.services.put_certificate_document(documentdata).subscribe({
       next: (res: any) => {

@@ -358,8 +358,8 @@ export class ManageService {
   }
 
   // for certificate module working
-  get_certificate() {
-    return this.http.get<[]>(this.baseUrl + 'certificate_view.php')
+  get_certificate_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_certificate_by_inst_id.php', data)
   }
   post_certificate_personal(data: any) {
     return this.http.post<any>(this.baseUrl + 'certificate_personal_insert.php', data)

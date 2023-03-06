@@ -1,4 +1,4 @@
-#wrapper {
+/* #wrapper {
     width: 100%;
     height: 100vh;
     background-color: #2C3E50 ;
@@ -78,4 +78,308 @@ a{
     #main .welcome_text {
         font-size: 1.5rem;
     }
-  }
+  } */
+
+
+/* Code written by Rohit start from here */
+
+#wrapper{
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+/***** header code start from here *****/
+
+#header{
+    width: 100%;
+    height: 90px;
+    float: left;
+    background-color: white;
+    box-shadow: 1px 1px 15px rgb(188, 188, 188);
+    position: fixed;
+    z-index: 5;
+}
+
+#logo{
+    width: 30%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+#logo img{
+    scale: 1.20;
+    margin-left: 50%;
+}
+
+#menu{
+    width: calc(100% - 35%);
+    float: left;
+    height: 100%;
+}
+
+#menu button{
+    float: left;
+    margin-top: 28px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: cambria;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+#menu button:hover{
+    background-color:#292c30;
+    color: white;
+}
+
+#navigation_bar{
+    width: 5%;
+    height: 100%;
+    float: right;
+    display: none;
+}
+#navigation_bar button{
+    width: auto;
+    height: auto;
+    margin-top: 5px;
+}
+
+#navigation_bar button mat-icon{
+    width: auto;
+    height: auto;
+    font-size: 35px;
+    padding: 22px;
+    float: left;
+    cursor: pointer;
+    color: black;
+}
+
+/**** slider code start from here ****/
+#slider_area{
+    width: 100%;
+    height: 500px;
+    float: left;
+    margin-top: 80px;
+}
+
+#for_text{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#for_image{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#for_image img{
+    width: 80%;
+    height: 80%;
+    margin: 8%;
+}
+
+#text_1{
+    font-size: 50px;
+    float: left;
+    margin-top: 120px;
+    line-height: 50px;
+    margin-left: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#text_2{
+    font-size: 30px;
+    margin-top: 25px;
+    float: left;
+    margin-left: 50px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+#whatshapp_chat{
+    width: 65px;
+    height: 65px;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+    z-index: 20;
+}
+
+#whatshapp_chat img{
+    width: 100%;
+    height: 100%;
+}
+
+/****** Services code start from here *******/
+#services{
+    width: 100%;
+    height: 400px;
+    float: left;
+}
+
+#service_title{
+    width: 100%;
+    height: 50px;
+    float: left;
+    /* background-color: rebeccapurple; */
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;
+    font-family: cambria;
+    letter-spacing: 2px;
+}
+
+.service_card{
+    width: 18%;
+    height: 320px;
+    float: left;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 8px rgb(177, 177, 177);
+    margin-left: 1.6%;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.service_card:hover{
+    cursor: pointer;
+    transform: scale(1.08);
+}
+
+.card_head{
+    width: 100%;
+    height: 50px;
+    float: left;
+    font-size: 22px;
+    font-family: cambria;
+    text-align: center;
+    line-height: 50px;
+}
+
+.card_image{
+    width: 90%;
+    height: 150px;
+    float: left;
+    margin-left: 5%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(205, 205, 205);
+}
+
+.card_image img{
+    width: 100%;
+    height: 100%;
+}
+
+.about_card_img{
+    width: 100%;
+    height: calc(100% - 200px);
+    float: left;
+    font-size: 18px;
+    font-family: cambria;
+    padding: 12px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+/***** facilities code start from here*****/
+#facilities{
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+#facility_title{
+    width: 100%;
+    height: 50px;
+    float: left;
+    font-size: 22px;
+    font-family: cambria;
+    text-align: center;
+    line-height: 50px;
+}
+
+.facilitie_card{
+    width: 48%;
+    height: 300px;
+    float: left;
+    background-color: rgb(252, 249, 249);
+    margin-left: 1.3%;
+    border-radius: 10px;
+    margin-bottom: 1.3%;
+    overflow: hidden;
+}
+
+.facility_heading{
+    width: 100%;
+    height: 50px;
+    float: left;
+    font-size: 22px;
+    font-family: cambria;
+    padding: 15px;
+}
+
+.facility_content{
+    width: 40%;
+    height: calc(100% - 50px);
+    float: left;
+    font-family: cambria;
+    font-size: 18px;
+    font-family: cambria;
+    line-height: 28px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.facility_image{
+    width: 60%;
+    height: calc(100% - 50px);
+    float: left;
+}
+
+/* footer code start from here */
+
+#footer{
+    width: 100%;
+    height: 460px;
+    float: left;
+    /* background-color: rgb(241, 129, 129); */
+}
+
+#footer_overlap{
+    width: 80%;
+    height: 150px;
+    float: left;
+    background: rgb(36,39,78);
+    background: linear-gradient(63deg, rgba(36,39,78,1) 0%, rgba(52,68,134,1) 46%, rgba(35,81,231,1) 100%);
+    margin-left: 10%;
+    border-radius: 10px;
+    position: relative;
+    top: 30px;
+    z-index: 2;
+}
+
+#footer_text_overlap{
+    font-size: 50px;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 60px;
+    float: left;
+}
+
+#register_button{
+    float: right;
+    margin-left: 5px;
+}
+
+#footer_details{
+    width: 100%;
+    height: calc(100% - 100px);
+    float: left;
+    background-color: rgb(30, 44, 59);
+    z-index: 1;
+    position: relative;
+    bottom: 50px;
+}

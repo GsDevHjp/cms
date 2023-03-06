@@ -22,21 +22,30 @@ export class CertificateComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   cer_count: string = "0"
   imgUrl: string = '/assets/';
-  constructor(
+  inst_id :any
+  login:any
+  login_deatils:any
+    constructor(
     private service:ManageService,
     private confirmServices:NgConfirmService,
     private popup:NgToastService,
     private router:Router,
-    private dailog: MatDialog,
 
   ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
   }
 
   ngOnInit(): void { 
-    this.service.get_certificate().subscribe(
+   const fromdata  =  new FormData ()
+   fromdata.append('inst_id',this.inst_id)
+    this.service.get_certificate_by_inst_id(fromdata).subscribe(
       (result: any) => {
         console.log(result)
         this.dataSource.data = result.data
