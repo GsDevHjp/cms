@@ -24,6 +24,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   login: any
   inst_id: any
   batch: any;
+  reg:boolean = false
   onSubmit() {
     throw new Error('Method not implemented.');
   }
@@ -92,10 +93,10 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
     this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
     this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
-    this.addmission_form.controls['roll_no'].setValue(this.login.std_id)
   }
 
   get_course(event: any) {
+    this.resetform()
     const courseformdata = new FormData();
     courseformdata.append('course_id', event)
     this.service.get_batch_by_course_id(courseformdata).subscribe(
@@ -113,8 +114,15 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   }
 
   get_batch(event: any) {
+    this.addmission_form.controls['batch_arrival'].reset()
+    this.addmission_form.controls['batch_status'].reset()
+    this.addmission_form.controls['batch_departure'].reset()
+    this.addmission_form.controls['batch_date'].reset()
+    this.addmission_form.controls['roll_no'].reset()
+
     const batchfromdata = new FormData();
     batchfromdata.append('batch_id', event)
+    batchfromdata.append('inst_id', this.inst_id)
     this.service.get_batch_by_batch_id(batchfromdata).subscribe(
       (batch_res: any) => {
         console.log(batch_res)
@@ -124,6 +132,17 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.addmission_form.controls['batch_date'].setValue(this.batch_data[0].batch_date);
       }
     )
+
+    this.service.get_std_for_batch_id(batchfromdata).subscribe(
+      (res:any)=>{
+        console.log(res.data)
+        this.addmission_form.controls['roll_no'].setValue(res.data.length + 1)
+      }
+    )
+    this.addmission_form.controls['roll_no'].setValue(1)
+
+   
+
   }
 
   addstd() {
@@ -154,5 +173,19 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         this.popup.error({ detail: 'Unsuccess', summary: 'Admission Unsuccess..' })
       }
     )
+  }
+
+  resetform(){
+    this.addmission_form.controls['course_total_fee'].reset()
+    this.addmission_form.controls['course_half_fee'].reset()
+    this.addmission_form.controls['course_quarter_fee'].reset()
+    this.addmission_form.controls['course_monthly_fee'].reset()
+    this.addmission_form.controls['course_admission_fee'].reset()
+    this.addmission_form.controls['batch_id_fk'].reset()
+    this.addmission_form.controls['batch_arrival'].reset()
+    this.addmission_form.controls['batch_status'].reset()
+    this.addmission_form.controls['batch_departure'].reset()
+    this.addmission_form.controls['batch_date'].reset()
+    this.addmission_form.controls['roll_no'].reset()
   }
 }

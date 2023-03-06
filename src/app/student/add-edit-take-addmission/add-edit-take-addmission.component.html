@@ -9,7 +9,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Registration No.</mat-label>
-            <input matInput formControlName="std_regist_no" readonly>
+            <input matInput formControlName="std_regist_no" [readonly]="reg" >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -79,7 +79,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Roll Number</mat-label>
-            <input matInput formControlName="roll_no">
+            <input matInput formControlName="roll_no" readonly>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
