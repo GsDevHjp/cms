@@ -57,6 +57,8 @@ button {
   margin-left: 5px;
 }
 
+
+
 @media(min-width:768px)and (max-width:860px) {
   .box {
     width: 100%;
@@ -78,4 +80,10 @@ button {
   .submit {
     margin-left: 20%;
   }
+}
+
+.text_box{
+  width: 200px;
+  margin-left: 10px;
+  float: left;
 }

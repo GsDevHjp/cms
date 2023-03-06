@@ -10,14 +10,15 @@
                 <table class="example-full-width" cellspacing="0">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Registration</mat-label>
-                        <input (keyup)="call_std_reg()" matInput type="text" placeholder="Registration" formControlName="std_reg" [readonly]="action"  > 
+                        <input (keyup)="call_std_reg()" matInput type="text" placeholder="Registration"
+                            formControlName="std_reg" [readonly]="action">
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Student Name</mat-label>
                         <input matInput formControlName="student_id_fk" readonly>
                     </mat-form-field>
-                    
+
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Father</mat-label>
                         <input matInput formControlName="std_father_name" readonly>
@@ -41,13 +42,14 @@
                             [value]="course.course_id">{{course.course_name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+
             </div>
 
             <div class="box">
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Batch</mat-label>
-                    <mat-select formControlName="batch_id_fk">
+                    <mat-select formControlName="batch_id_fk" (valueChange)="get_batch_data($event)">
                         <mat-option *ngFor="let batch of batch_data"
                             [value]="batch.batch_id">{{batch.batch_name}}</mat-option>
                     </mat-select>
@@ -82,6 +84,12 @@
                 <div class="user_image">
                     <img src={{imgUrl}} alt="user image" width="100%" height="100%" formControlName="std_img">
                 </div><br>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Roll No</mat-label>
+                    <input type="number" matInput formControlName="roll_no">
+                </mat-form-field>
+
                 <mat-form-field appearance="fill">
                     <mat-label>Fee Type</mat-label>
                     <mat-select formControlName="fee_type" (valueChange)="select_fee_type($event)">
@@ -90,8 +98,7 @@
                         <mat-option value="Half Fee"> Tution Fee (Half)</mat-option>
                         <mat-option value="Quarter Fee">Tution Fee (Quarter)</mat-option>
                         <mat-option value="Monthly Fee">Monthly Fee</mat-option>
-                        <mat-option value="Test Fee">Test Fee</mat-option>
-                        <mat-option value="Advance Fee">Advance Fee</mat-option>
+                        <mat-option value="Other Fee">Other Fee</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -117,26 +124,33 @@
                         <mat-option value="Offline">Offline</mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Amount</mat-label>
-                    <input type="number" matInput formControlName="fee_amount" (click)="setvalue()">
-                </mat-form-field>
-
-                <table class="example-full-width" cellspacing="0" hidden>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Date</mat-label>
-                        <input type="date" matInput formControlName="fee_date">
-                    </mat-form-field>
-                </table>
             </div>
         </div>
+        <mat-form-field appearance="fill" class="text_box" style="margin: 0;">
+            <mat-label>Current Dues</mat-label>
+            <input type="number" matInput formControlName="dues_amt">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="text_box" style="margin: 0;">
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput formControlName="fee_amount" (keyup)="amount_calc()">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="text_box">
+            <mat-label>Discount</mat-label>
+            <input type="number" matInput (keyup)="amount_calc()" formControlName="dist_amt">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="text_box">
+            <mat-label>Net Amount</mat-label>
+            <input type="number" matInput  formControlName="net_amt">
+        </mat-form-field>
+
         <mat-form-field appearance="fill" id="description">
             <mat-label>Description</mat-label>
             <input matInput formControlName="fee_description">
         </mat-form-field>
 
         <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
+        <input type="date" matInput formControlName="fee_date" readonly hidden>
 
     </form>
 

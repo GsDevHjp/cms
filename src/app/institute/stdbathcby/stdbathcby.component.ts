@@ -16,15 +16,15 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./stdbathcby.component.css']
 })
 export class StdbathcbyComponent implements OnInit {
-  displayedColumns: string[] = ['std_id', 'std_regist_no', 'std_name', 'std_whatsapp_no', 'std_email', 'std_aadhar', 'std_regist_date', 'std_photo', 'action'];
+  displayedColumns: string[] = ['std_id', 'std_regist_no','roll_no', 'std_name', 'std_whatsapp_no', 'std_email', 'std_aadhar', 'std_regist_date', 'std_photo', 'action'];
   dataSource = new MatTableDataSource();
   count_student: number = 0;
   inst_id: any
   rowdata = 0
   login_deatils: any
   login: any
-  inst_id_for_inst_login: any
   batch_name:any
+  routdata:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
@@ -35,7 +35,7 @@ export class StdbathcbyComponent implements OnInit {
     private router: Router
   ) {
     const institute_data = this.router.getCurrentNavigation();
-    this.inst_id = institute_data?.extras
+    this.routdata = institute_data?.extras
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
@@ -43,26 +43,22 @@ export class StdbathcbyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log(this.login)
-
-  }
- 
-  get_std(inst: any, batch_id:any) {
     const instformdata = new FormData()
-    instformdata.append('inst_id', inst)
-    instformdata.append('batch_id', batch_id)
+    instformdata.append('inst_id', this.login.inst_id)
+    instformdata.append('batch_id', this.routdata.batch_id)
     this.service.get_std_for_batch_id(instformdata).subscribe(
       (result: any) => {
-        console.log(result)
+        console.log(result.data)
+        this.batch_name = result.data[0].batch_name
         this.dataSource.data = result.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.count_student = result.data.length
-        return
+        
       }
     )
   }
-
+ 
   fee_pay(row: any) {
     this.dailog.open(AddEditPaymentRecivedComponent, {
       data: row,
