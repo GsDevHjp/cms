@@ -64,11 +64,11 @@ export class AddEditCountryComponent implements OnInit {
       }
     }
     else {
-      this.updateCourse()
+      this.updateCountry()
     }
   }
 
-  updateCourse() {
+  updateCountry() {
     this.service.put_country(this.address_from.value).subscribe({
       next: (res) => {
         console.log(res)

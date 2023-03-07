@@ -108,6 +108,12 @@ import { CertificateComponent } from './institute/certificate/certificate.compon
 import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { ResionComponent } from './institute/resion/resion.component';
 import { QuizresultComponent } from './student/quizresult/quizresult.component';
+import { BlockComponent } from './admin/block/block.component';
+import { AddEditBlockComponent } from './admin/add-edit-block/add-edit-block.component';
+import { PanchayatComponent } from './admin/panchayat/panchayat.component';
+import { AddEditPanchayatComponent } from './admin/add-edit-panchayat/add-edit-panchayat.component';
+import { WardComponent } from './admin/ward/ward.component';
+import { AddEditWardComponent } from './admin/add-edit-ward/add-edit-ward.component';
 
 
 @NgModule({
@@ -197,6 +203,12 @@ import { QuizresultComponent } from './student/quizresult/quizresult.component';
     AddEditCertificateComponent,
     ResionComponent,
     QuizresultComponent,
+    BlockComponent,
+    AddEditBlockComponent,
+    PanchayatComponent,
+    AddEditPanchayatComponent,
+    WardComponent,
+    AddEditWardComponent,
 
   ],
   imports: [

@@ -10,6 +10,9 @@ export class QuizresultComponent implements OnInit {
   img_url: string = '';
   login_deatils: any
   login: any
+  score: number = 0
+  result: number = 0
+  grade: number = 0
   constructor() { }
 
   ngOnInit(): void {

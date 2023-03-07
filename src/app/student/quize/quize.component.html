@@ -2,7 +2,7 @@
     <div class="header">
         <span>Angular Quiz</span>
         <span class="round_box">{{counter}} Sec</span>
-        <span class="round_box">Score: {{score}}</span>
+        <span class="round_box" [routerLink]="['/studenthome/quizresult']">Score: {{score}}</span>
     </div>
 
     <div id="main">

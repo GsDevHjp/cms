@@ -4,55 +4,52 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-import { AddEditDistrictComponent } from '../add-edit-district/add-edit-district.component';
-import { Router } from '@angular/router';
+import { AddEditPanchayatComponent } from '../add-edit-panchayat/add-edit-panchayat.component';
 @Component({
-  selector: 'app-district',
-  templateUrl: './district.component.html',
-  styleUrls: ['./district.component.css']
+  selector: 'app-panchayat',
+  templateUrl: './panchayat.component.html',
+  styleUrls: ['./panchayat.component.css']
 })
-export class DistrictComponent implements OnInit {
-  displayedColumns: string[] = ['district_id', 'country', 'state','district', 'action'];
+export class PanchayatComponent implements OnInit {
+  displayedColumns: string[] = ['panchayat_id', 'country', 'state','district','block','panchayat', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  district_count = 0
+  panchayat_count = 0
   constructor(
     private dailog: MatDialog,
-    private router: Router,
     private manageservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    this.manageservice.get_district().subscribe(
-      (districtdata: any) => {
-        console.log(districtdata)
-        this.dataSource = new MatTableDataSource(districtdata.data);
+    this.manageservice.get_panchayat().subscribe(
+      (blockdata: any) => {
+        console.log(blockdata)
+        this.dataSource = new MatTableDataSource(blockdata.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.district_count = districtdata.data.lenght
+        this.panchayat_count = blockdata.data.lenght
       }
     )
   }
-  add_district() {
-    this.dailog.open(AddEditDistrictComponent, {
+  add_panchayat() {
+    this.dailog.open(AddEditPanchayatComponent, {
       disableClose: true
     });
   }
-  edit_district(row: any) {
-    this.dailog.open(AddEditDistrictComponent, {
+  edit_panchayat(row: any) {
+    this.dailog.open(AddEditPanchayatComponent, {
       data: row
     });
   }
 
-  delete_district(row: any) {
+  delete_panchayat(row: any) {
     if (confirm("Are You Sure To Delete")) {
       const deletedata = new FormData();
-      deletedata.append('district_id', row.district_id);
-      this.manageservice.delete_district(deletedata).subscribe(
+      deletedata.append('panchayat_id', row.panchayat_id);
+      this.manageservice.delete_panchayat(deletedata).subscribe(
         (res: any) => {
           alert('data delete successfully')
-          this.router.navigate(['/adminhome/district'])
         }
       )
 
