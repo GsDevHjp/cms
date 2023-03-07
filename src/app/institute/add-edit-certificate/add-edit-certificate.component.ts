@@ -169,7 +169,6 @@ export class AddEditCertificateComponent implements OnInit {
   }
   
   personal_add() {
-  alert(this.inst_id)
       const personaldata = new FormData();
       personaldata.append('std_name', this.personal_form.get('std_name')?.value);
       personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
@@ -187,7 +186,6 @@ export class AddEditCertificateComponent implements OnInit {
         (res: any) => {
           console.log(res)
           this.popup.success({ detail: 'Success', summary: 'Personal Data Add' })
-          this.router.navigate(['//institutehome/add_edit_certificate'])
         },
         (error: any) => {
           console.log(error)
