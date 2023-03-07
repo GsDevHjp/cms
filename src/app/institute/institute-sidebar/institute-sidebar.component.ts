@@ -15,6 +15,8 @@ export class InstituteSidebarComponent implements OnInit {
   action_icon2: boolean = true
   action_icon3: boolean = false
   action_icon4: boolean = true
+  action_icon5: boolean = false
+  action_icon6: boolean = true
   inst_id: any
   login_deatils: any
   login: any
@@ -46,8 +48,8 @@ export class InstituteSidebarComponent implements OnInit {
   }
 
   //////////////////////////////////////////////////////////////////////// Report Dropdown /////////////////////////////////////////////////////
-  report_dropdown() {
-    this.master = document.getElementById("dropdown_report")
+  dropdown_study() {
+    this.master = document.getElementById("dropdown_study")
     if (this.master.style.display != "block") {
       this.master.style.display = "block";
       this.action_icon1 = true
@@ -71,6 +73,19 @@ export class InstituteSidebarComponent implements OnInit {
       this.master.style.display = "none";
       this.action_icon3 = false
       this.action_icon4 = true
+    }
+  }
+  account_dropdown() {
+    this.master = document.getElementById("dropdown_account")
+    if (this.master.style.display != "block") {
+      this.master.style.display = "block";
+      this.action_icon5 = true
+      this.action_icon6 = false
+
+    } else {
+      this.master.style.display = "none";
+      this.action_icon5 = false
+      this.action_icon6 = true
     }
   }
   changepassword() {

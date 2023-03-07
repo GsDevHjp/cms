@@ -114,6 +114,13 @@ import { PanchayatComponent } from './admin/panchayat/panchayat.component';
 import { AddEditPanchayatComponent } from './admin/add-edit-panchayat/add-edit-panchayat.component';
 import { WardComponent } from './admin/ward/ward.component';
 import { AddEditWardComponent } from './admin/add-edit-ward/add-edit-ward.component';
+import { ExpenceComponent } from './institute/expence/expence.component';
+import { AddEditExpenceComponent } from './institute/add-edit-expence/add-edit-expence.component';
+import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
+import { LedgerComponent } from './institute/ledger/ledger.component';
+import { AddEditLedgerComponent } from './institute/add-edit-ledger/add-edit-ledger.component';
+import { ProfitLossComponent } from './institute/profit-loss/profit-loss.component';
+import { AddEditProfitLossComponent } from './institute/add-edit-profit-loss/add-edit-profit-loss.component';
 
 
 @NgModule({
@@ -209,7 +216,13 @@ import { AddEditWardComponent } from './admin/add-edit-ward/add-edit-ward.compon
     AddEditPanchayatComponent,
     WardComponent,
     AddEditWardComponent,
-
+    ExpenceComponent,
+    AddEditExpenceComponent,
+    StdbathcbyComponent,
+    LedgerComponent,
+    AddEditLedgerComponent,
+    ProfitLossComponent,
+    AddEditProfitLossComponent,
   ],
   imports: [
     BrowserModule,

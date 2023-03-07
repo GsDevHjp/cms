@@ -44,12 +44,15 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     if (this.inst_id > 0) {
       this.get_std(this.inst_id)
     }
     else {
       this.get_std(this.inst_id_for_inst_login)
     }
+
+
   }
 
   add_student(): any {

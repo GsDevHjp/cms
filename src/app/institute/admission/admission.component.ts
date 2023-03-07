@@ -8,6 +8,7 @@ import { ManageService } from 'src/app/manage.service';
 import { Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { faAllergies } from '@fortawesome/free-solid-svg-icons';
+import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
 
 @Component({
   selector: 'app-admission',
@@ -104,6 +105,10 @@ get_admission_data(inst_id:any){
       this.count_admission = res.data.length
     }
   )
+}
+
+add_addmission(){
+  this.dailog.open(AddEditTakeAddmissionComponent)
 }
 }
 

@@ -21,6 +21,7 @@ export class BatchComponent implements OnInit {
   inst_id: any
   action_btn: boolean = false
   Ttalstd: number = 0
+  total_batch:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -55,12 +56,16 @@ export class BatchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     if (this.inst_id_for_admin) {
       this.get_batch_by_inst_id(this.inst_id_for_admin);
     }
     if (this.inst_id_for_inst_login) {
       this.action_btn = false
       this.get_batch_by_inst_id(this.inst_id_for_inst_login)
+
+     
+
     }
     if (this.inst_id_for_std) {
       this.get_batch_by_inst_id(this.inst_id_for_std)
@@ -124,6 +129,12 @@ export class BatchComponent implements OnInit {
       () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Deleted', })
       })
+  }
+
+  onstdview(row:any){
+    console.log(row.batch_id)
+    
+    this.router.navigate(['institutehome/batch/studentbatch'],row)  
   }
 
   applyFilter(event: Event) {

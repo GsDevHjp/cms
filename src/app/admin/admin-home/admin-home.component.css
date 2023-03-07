@@ -13,6 +13,14 @@ mat-sidenav-content {
     height: 100%;
 }
 
+.action_btn {
+    color: #fff;
+}
+
+.action_btn:hover {
+    background-color: #5a74ad;
+}
+
 .name_text {
     width: calc(100% - 330px);
     height: 100%;

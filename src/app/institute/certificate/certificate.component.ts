@@ -21,20 +21,31 @@ export class CertificateComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   cer_count: string = "0"
-  imgUrl: string = '/assets/';
-  constructor(
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/certificate/';
+  inst_id :any
+  login:any
+  login_deatils:any
+    constructor(
     private service:ManageService,
     private confirmServices:NgConfirmService,
     private popup:NgToastService,
     private router:Router,
+
   ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
   }
 
   ngOnInit(): void { 
-    this.service.get_certificate().subscribe(
+   const fromdata  =  new FormData ()
+   fromdata.append('inst_id',this.inst_id)
+    this.service.get_certificate_by_inst_id(fromdata).subscribe(
       (result: any) => {
         console.log(result)
         this.dataSource.data = result.data
@@ -43,6 +54,10 @@ export class CertificateComponent implements OnInit {
         this.cer_count = result.data.length
       }
     )
+  }
+
+  certificate_edit(row: any) {
+      this.router.navigate(['/institutehome/add_edit_certificate'], row)
   }
 
   certificate_delete(row: any) {

@@ -2,6 +2,7 @@
 	<div class="view_notice">
 		<span class="notice_text">{{action_text}}</span>
 	</div>
+
 	<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
 
 		<!-- ////////////////////////////////////////// For Personal Information Form Starting Here ////////////////////////////////// -->
@@ -38,7 +39,7 @@
 							</mat-form-field><br>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Alt No</mat-label>
+								<mat-label>Alternate Mobile No</mat-label>
 								<input type="number" matInput formControlName="std_alt_contect_no"
 									onkeypress=" return this.value.length < 10">
 							</mat-form-field>
@@ -56,7 +57,14 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Category</mat-label>
-								<input matInput formControlName="std_category">
+								<mat-select formControlName="std_category" [ngModel]="catselect">
+									<mat-option value="Select">Select</mat-option>
+									<mat-option value="SC">SC</mat-option>
+									<mat-option value="ST">ST</mat-option>
+									<mat-option value="OBC">OBC</mat-option>
+									<mat-option value="EBC">EBC</mat-option>
+									<mat-option value="General">General</mat-option>
+								</mat-select>
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -69,12 +77,12 @@
 							</mat-form-field>
 
 							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
-							<input type="number" readonly formControlName="certificate_id" hidden>
+							<input type="number" readonly formControlName="certificate_id"  redonly hidden>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="personal_add()">Save</button>
+							style="background-color: #1d1f23; color: white;" (click)="personal_add()" [disabled]="!this.personal_form.valid">Save</button>
 					</div>
 				</div>
 			</ng-template>
@@ -90,18 +98,13 @@
 					<form [formGroup]="permanet_form">
 						<div class="column">
 							<mat-form-field appearance="fill">
-								<mat-label>Village/ City</mat-label>
-								<input matInput formControlName="std_village">
+								<mat-label>Country</mat-label>
+								<input matInput formControlName="std_country">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
-								<mat-label>Post Office</mat-label>
-								<input matInput formControlName="std_post_office">
-							</mat-form-field>
-
-							<mat-form-field appearance="fill">
-								<mat-label>Panchayat/ Ward</mat-label>
-								<input matInput formControlName="std_panchayat">
+								<mat-label>State</mat-label>
+								<input matInput formControlName="std_state">
 							</mat-form-field>
 
 							<mat-form-field appearance="fill">
@@ -112,22 +115,40 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Block</mat-label>
 								<input matInput formControlName="std_block">
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Panchayat/ Ward</mat-label>
+								<input matInput formControlName="std_panchayat">
 							</mat-form-field><br>
 
-							<div class="left_form_field">
-								<mat-form-field appearance="fill">
-									<mat-label>Pin Code</mat-label>
-									<input matInput formControlName="std_pin_code"
-										onkeypress=" return this.value.length < 6">
-								</mat-form-field>
+							<mat-form-field appearance="fill">
+								<mat-label>Area</mat-label>
+								<input matInput formControlName="std_area">
+							</mat-form-field>
 
-								<mat-form-field appearance="fill">
-									<mat-label>Area</mat-label>
-									<input matInput formControlName="std_area">
-								</mat-form-field>
+							<mat-form-field appearance="fill">
+								<mat-label>Village/ City</mat-label>
+								<input matInput formControlName="std_village">
+							</mat-form-field>
 
-								<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
-							</div>
+							<mat-form-field appearance="fill">
+								<mat-label>Police Station</mat-label>
+								<input matInput formControlName="std_ps">
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Post Office</mat-label>
+								<input matInput formControlName="std_post_office">
+							</mat-form-field>
+
+							<mat-form-field appearance="fill">
+								<mat-label>Pin Code</mat-label>
+								<input matInput formControlName="std_pin_code"
+									onkeypress=" return this.value.length < 6">
+							</mat-form-field>
+
+							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
@@ -142,14 +163,14 @@
 		<!-- /////////////////////////////////////// for Registracton Form starting Here ////////////////////////////////// -->
 
 		<ng-container ngbNavItem><br>
-			<a ngbNavLink class="certificate_link">Registration Section</a>
+			<a ngbNavLink class="certificate_link">Certificate Details</a>
 
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="registration_form">
 						<mat-form-field appearance="fill">
 							<mat-label>Registration No</mat-label>
-							<input matInput type="number" formControlName="std_rigistration_no">
+							<input matInput type="text" formControlName="std_rigistration_no">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -186,8 +207,10 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Select Course</mat-label>
 								<mat-select formControlName="course_id_fk">
-									<mat-option *ngFor="let course of course_data"
-										[value]="course.course_id">{{course.course_name}}</mat-option>
+									<mat-option value="1">BCA</mat-option>
+									<mat-option value="2">MCA</mat-option>
+									<!-- <mat-option *ngFor="let course of course_data"
+									[value]="course.course_id">{{course.course_name}}</mat-option> -->
 								</mat-select>
 							</mat-form-field>
 
@@ -223,7 +246,6 @@
 								<label class="certificate_uplaod">Aadhar Card</label><br>
 								<input class="file_img" type="file" (change)="aadharupload($event)" accept=".jpg,.png,"
 									formControlName="std_aadhar_card">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -231,7 +253,6 @@
 								<label class="certificate_uplaod">Gen, Certificate</label><br>
 								<input class="file_img" type="file" (change)="genupload($event)" accept=".jpg,.png,"
 									formControlName="std_gen_certificate">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -239,7 +260,6 @@
 								<label class="certificate_uplaod">10th Marksheet</label><br>
 								<input class="file_img" type="file" (change)="markesupload($event)" accept=".jpg,.png,"
 									formControlName="std_10th_marksheet">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -247,7 +267,6 @@
 								<label class="certificate_uplaod">Residential</label><br>
 								<input class="file_img" type="file" (change)="redsidentalupload($event)"
 									accept=".jpg,.png," formControlName="std_residential">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<div class="upload_img_div">
@@ -255,7 +274,6 @@
 								<label class="certificate_uplaod">Photo</label><br>
 								<input class="file_img" type="file" (change)="imageupload($event)" accept=".jpg,.png,"
 									formControlName="std_image">
-								<mat-icon class="show_file" matSuffix>visibility</mat-icon>
 							</div>
 						</div>
 						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>

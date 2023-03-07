@@ -27,6 +27,7 @@ import { CourseComponent } from './institute/course/course.component';
 import { ELearningComponent } from './institute/e-learning/e-learning.component';
 import { EmployeeComponent } from './institute/employee/employee.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
+import { ExpenceComponent } from './institute/expence/expence.component';
 import { InstBookComponent } from './institute/inst-book/inst-book.component';
 import { InstChangePasswordComponent } from './institute/inst-change-password/inst-change-password.component';
 import { InstNotesComponent } from './institute/inst-notes/inst-notes.component';
@@ -39,9 +40,12 @@ import { InstituteDashboardComponent } from './institute/institute-dashboard/ins
 import { InstituteHomeComponent } from './institute/institute-home/institute-home.component';
 import { InstituteLoginComponent } from './institute/institute-login/institute-login.component';
 import { InstquizdashboardComponent } from './institute/instquizdashboard/instquizdashboard.component';
+import { LedgerComponent } from './institute/ledger/ledger.component';
 import { OESComponent } from './institute/oes/oes.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
+import { ProfitLossComponent } from './institute/profit-loss/profit-loss.component';
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
+import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
 import { StudentComponent } from './institute/student/student.component';
 import { LiveClassComponent } from './student/live-class/live-class.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
@@ -116,7 +120,14 @@ const routes: Routes = [
       { path: '', component: InstituteDashboardComponent },
       { path: 'dashboard', component: InstituteDashboardComponent },
       { path: 'course', component: CourseComponent },
-      { path: 'batch', component: BatchComponent },
+      { path: 'batch', component: ViewportComponent,
+        children:[
+          { path: '', component: BatchComponent},
+          { path: 'studentbatch', component: StdbathcbyComponent },
+
+        ]
+      
+          },
       { path: 'student', component: StudentComponent },
       { path: 'admission', component: AdmissionComponent },
       { path: 'enquiry', component: EnquiryComponent },
@@ -135,7 +146,10 @@ const routes: Routes = [
       { path: 'employee', component: EmployeeComponent },
       { path: 'certificate', component: CertificateComponent },
       { path: 'add_edit_certificate', component: AddEditCertificateComponent },
-      { path: 'liveclass', component: LiveClassComponent }
+      {path: 'liveclass', component: LiveClassComponent},
+      { path: 'expence', component: ExpenceComponent },
+      {path: 'ledger', component: LedgerComponent},
+      {path: 'profitloss', component: ProfitLossComponent}
     ]
   },
 

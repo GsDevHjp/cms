@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 
 export class AddEditStudentComponent implements OnInit {
   student_form!: FormGroup;
+  reg_id:boolean = true;
   upload: any;
   hide = true;
   ActionBtn: string = 'Add'
@@ -28,7 +29,7 @@ export class AddEditStudentComponent implements OnInit {
   inst_id: any;
   inst_id_for_inst_login: any;
   std_data: any;
-  std: any;
+  std: any = 1;
   autoselect='Male'
 
   constructor(
@@ -236,7 +237,10 @@ export class AddEditStudentComponent implements OnInit {
           console.log(this.std_data)
           if (res.success == 1) {
             this.std = res.data.length + 1
-            this.student_form.controls['std_regist_no'].setValue(this.login.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+
+            const instname = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
+            const instshotname = this.login.inst_name.charAt(0) + (instname)
+            this.student_form.controls['std_regist_no'].setValue(instshotname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
           }
         }
       )
@@ -248,9 +252,11 @@ export class AddEditStudentComponent implements OnInit {
     formdata.append('inst_id', this.login.inst_id)
     this.service.get_inst_by_inst_id(formdata).subscribe(
       (res: any) => {
-        console.log(res.data.inst_name.charAt(0))
-        const instname = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
-        this.student_form.controls['std_regist_no'].setValue(instname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+
+        const instname_ = this.login.inst_name.charAt(this.login.inst_name.indexOf(" ") + 1);
+        const instshotname = this.login.inst_name.charAt(0) + (instname_)
+        this.student_form.controls['std_regist_no'].setValue(instshotname + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
+
       }
     )
   }

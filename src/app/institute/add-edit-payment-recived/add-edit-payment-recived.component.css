@@ -50,11 +50,11 @@ textarea {
 }
 
 .submit {
-  margin-left: 40%;
+  margin-left: 78%;
 }
 
 button {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 @media(min-width:768px)and (max-width:860px) {
@@ -78,4 +78,10 @@ button {
   .submit {
     margin-left: 20%;
   }
+}
+
+.text_box{
+  width: 200px;
+  margin-left: 10px;
+  float: left;
 }

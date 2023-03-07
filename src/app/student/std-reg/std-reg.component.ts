@@ -22,9 +22,8 @@ export class StdRegComponent implements OnInit {
   letter: any
   std: number = 1
   std_data: any
-  inst_id_for_regist: any
   constructor(
-    private popup:NgToastService,
+    private popup: NgToastService,
     private FormBuilder: FormBuilder,
     private manageservice: ManageService,
     private matref: MatDialogRef<StdRegComponent>,
@@ -34,7 +33,9 @@ export class StdRegComponent implements OnInit {
 
     this.manageservice.institute_view().subscribe(
       (res: any) => {
+
         this.inst_data = res.data
+        
       }
     )
 
@@ -46,53 +47,100 @@ export class StdRegComponent implements OnInit {
       std_email: ['', Validators.required],
       std_address: ['', Validators.required],
       std_password: ['', Validators.required],
-      std_regist_no: [''],
+      std_regist_no: ['',Validators.required],
       std_regist_date: [new Date().toISOString().slice(0, 10)],
       admin_id_fk: ['', Validators.required],
     })
   }
 
+
+
   regist_no_generate(event: any) {
+    this.inst_id = event
+    this.std_regist_from.controls['std_regist_no'].reset()
     const stdfromdata = new FormData()
     stdfromdata.append("inst_id", event)
+    this.manageservice.get_inst_by_inst_id(stdfromdata).subscribe(
+      (result:any)=> {
+          console.log(result.data.inst_name)
+          this.inst_name  = result.data.inst_name
+          this.get_reg(result.data.inst_name, this.std)
+      } 
+    )
+
     this.manageservice.get_student_by_inst_id(stdfromdata).subscribe(
       (res: any) => {
+        this.inst_name = res.data[0].inst_name
         this.std_data = res.data
-        console.log(this.std_data)
         if (res.success == 1) {
           this.std = res.data.length + 1
+          this.get_reg(this.inst_name, this.std)
+
         }
+        else{
+          this.std = 1
+          this.get_reg(this.inst_name, this.std)
+        }
+      },
+      (error:any)=>{
+        this.std = 1
+        this.get_reg(this.inst_name, this.std)
       }
+
     )
+    this.std = 1
+    this.get_reg(this.inst_name, this.std)
 
-
-    const formdata = new FormData()
-    formdata.append('inst_id', event)
-    this.manageservice.get_inst_by_inst_id(formdata).subscribe(
-      (res: any) => {
-        console.log(res.data.inst_name.charAt(0))
-        this.std_regist_from.controls['std_regist_no'].setValue(res.data.inst_name.charAt(0) + formatDate(new Date(), 'yyyyMMdd', 'en') + this.std);
-
-      }
-    )
 
   }
 
-  reset(){
+  get_reg(name:any, std_no:any){
+    const instname = name.charAt(name.indexOf(" ") + 1);
+    const instshotname = name.charAt(0) + (instname)
+    this.std_regist_from.controls['std_regist_no'].setValue(instshotname + formatDate(new Date(), 'yyyyMMdd', 'en') + std_no);
+   
+  }
+
+  reset() {
     this.std_regist_from.reset()
   }
 
+
   std_regist() {
-    console.log(this.std_regist_from.value)
+    const fromdata = new FormData()
+    fromdata.append('inst_id', this.inst_id)
+    fromdata.append('std_email', this.std_regist_from.get('std_email')?.value)
+    this.manageservice.std_email_verfiy(fromdata).subscribe(
+      (res: any) => {
+        console.log(res)
+        if (res.success) {
+          this.popup.warning({ detail: 'Warning', summary: 'this email already exists ' + res.data[0].std_name, })
+    }
+        else{
+
+            this.final_submit()
+        }
+      },
+      (error: any) => {
+
+      }
+    )
+
+  }
+
+
+
+  final_submit() {
+
     this.manageservice.std_self_reg(this.std_regist_from.value).subscribe(
       (result: any) => {
         console.log(result)
         this.matref.close()
-        this.popup.success({ detail: 'Success', summary: 'Registraion Successfully..'})
+        this.popup.success({ detail: 'Success', summary: 'Registraion Successfully..' })
       },
       (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..'})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..' })
       }
     )
   }
