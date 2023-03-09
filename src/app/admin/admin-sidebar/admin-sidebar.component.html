@@ -37,7 +37,7 @@
                 <span>Received</span>
             </button>
             <div>
-                <button mat-button class="menu-button" (click)="report_dropdown()" [routerLink]="['/#']">
+                <button mat-button class="menu-button" (click)="report_dropdown()">
                     <mat-icon>list_alt</mat-icon>
                     <span>Address</span>
                     <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
@@ -45,16 +45,28 @@
                 </button>
                 <div id="dropdown_report">
                     <button mat-button class="menu-button" [routerLink]="['country']">
-                        <mat-icon> business</mat-icon>
+                        <mat-icon> language</mat-icon>
                         <span>Country</span>
                     </button>
                     <button mat-button class="menu-button" [routerLink]="['state']">
-                        <mat-icon>ballot</mat-icon>
+                        <mat-icon>room</mat-icon>
                         <span>State</span>
                     </button>
                     <button mat-button class="menu-button" [routerLink]="['district']">
-                        <mat-icon>ballot</mat-icon>
+                        <mat-icon>map</mat-icon>
                         <span>District</span>
+                    </button>
+                    <button mat-button class="menu-button" [routerLink]="['block']">
+                        <mat-icon>room</mat-icon>
+                        <span>Block</span>
+                    </button>
+                    <button mat-button class="menu-button" [routerLink]="['panchayat']">
+                        <mat-icon>gps_fixed</mat-icon>
+                        <span>Panchayat</span>
+                    </button>
+                    <button mat-button class="menu-button" [routerLink]="['ward']">
+                        <mat-icon>room</mat-icon>
+                        <span>Ward</span>
                     </button>
                 </div>
                 <button mat-button class="menu-button" [routerLink]="['terms']">

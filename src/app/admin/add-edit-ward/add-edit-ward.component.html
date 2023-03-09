@@ -1,0 +1,61 @@
+<div id="wrapper">
+    <mat-toolbar>
+        <span class="example-spacer">{{ward}}</span>
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+    </mat-toolbar>
+
+    <form [formGroup]="address_from">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country_id_fk">
+                <mat-option *ngFor="let Country of country_data"
+                    [value]="Country.country_id">{{Country.country_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state_id_fk">
+                <mat-option *ngFor="let state of state_data" [value]="state.state_id">{{state.state_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>District</mat-label>
+            <mat-select formControlName="district_id_fk">
+                <mat-option *ngFor="let district of district_data"
+                    [value]="district.district_id">{{district.district_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Block</mat-label>
+            <mat-select formControlName="block_id_fk">
+                <mat-option *ngFor="let block of block_data" [value]="block.block_id">{{block.block_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Panchayat</mat-label>
+            <mat-select formControlName="panchayat_id_fk">
+                <mat-option *ngFor="let panchayat of panchayat_data"
+                    [value]="panchayat.panchayat_id">{{panchayat.panchayat_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ward</mat-label>
+            <input matInput formControlName="ward_name">
+        </mat-form-field>
+
+        <input type="number" [(ngModel)]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number" formControlName="block_id" hidden>
+
+    </form>
+    <div class="submit">
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="primary" (click)="onAdd()"
+            [disabled]="!address_from.valid">{{actionBtn}}</button>
+    </div>
+</div>

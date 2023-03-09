@@ -4,55 +4,52 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
-import { AddEditDistrictComponent } from '../add-edit-district/add-edit-district.component';
-import { Router } from '@angular/router';
+import { AddEditBlockComponent } from '../add-edit-block/add-edit-block.component';
 @Component({
-  selector: 'app-district',
-  templateUrl: './district.component.html',
-  styleUrls: ['./district.component.css']
+  selector: 'app-block',
+  templateUrl: './block.component.html',
+  styleUrls: ['./block.component.css']
 })
-export class DistrictComponent implements OnInit {
-  displayedColumns: string[] = ['district_id', 'country', 'state','district', 'action'];
+export class BlockComponent implements OnInit {
+  displayedColumns: string[] = ['block_id', 'country', 'state','district','block', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  district_count = 0
+  block_count = 0
   constructor(
     private dailog: MatDialog,
-    private router: Router,
     private manageservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    this.manageservice.get_district().subscribe(
-      (districtdata: any) => {
-        console.log(districtdata)
-        this.dataSource = new MatTableDataSource(districtdata.data);
+    this.manageservice.get_block().subscribe(
+      (blockdata: any) => {
+        console.log(blockdata)
+        this.dataSource = new MatTableDataSource(blockdata.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.district_count = districtdata.data.lenght
+        this.block_count = blockdata.data.lenght
       }
     )
   }
-  add_district() {
-    this.dailog.open(AddEditDistrictComponent, {
+  add_block() {
+    this.dailog.open(AddEditBlockComponent, {
       disableClose: true
     });
   }
-  edit_district(row: any) {
-    this.dailog.open(AddEditDistrictComponent, {
+  edit_block(row: any) {
+    this.dailog.open(AddEditBlockComponent, {
       data: row
     });
   }
 
-  delete_district(row: any) {
+  delete_block(row: any) {
     if (confirm("Are You Sure To Delete")) {
       const deletedata = new FormData();
-      deletedata.append('district_id', row.district_id);
-      this.manageservice.delete_district(deletedata).subscribe(
+      deletedata.append('block_id', row.block_id);
+      this.manageservice.delete_block(deletedata).subscribe(
         (res: any) => {
           alert('data delete successfully')
-          this.router.navigate(['/adminhome/district'])
         }
       )
 

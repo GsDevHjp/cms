@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-district',
   templateUrl: './add-edit-district.component.html',
@@ -19,6 +20,7 @@ export class AddEditDistrictComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router: Router,
     private matref: MatDialogRef<AddEditDistrictComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_district: any
   ) { }
@@ -35,6 +37,11 @@ export class AddEditDistrictComponent implements OnInit {
     this.service.get_country().subscribe(
       (res:any)=>{
         this.country_data = res.data
+      }
+    )
+    this.service.get_state().subscribe(
+      (res:any)=>{
+        this.state_data = res.data
       }
     )
 
@@ -59,6 +66,7 @@ export class AddEditDistrictComponent implements OnInit {
             this.address_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'District Insert Successfully...', })
+            this.router.navigate(['/adminhome/district'])
           },
           (error: any) => {
             console.log(error)
@@ -68,16 +76,17 @@ export class AddEditDistrictComponent implements OnInit {
       }
     }
     else {
-      this.updateCourse()
+      this.updateDistrict()
     }
   }
 
-  updateCourse() {
+  updateDistrict() {
     this.service.put_district(this.address_from.value).subscribe({
       next: (res) => {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'District Update Successfully...', })
+        this.router.navigate(['/adminhome/district'])
       },
       error: () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'District Not Update..', })

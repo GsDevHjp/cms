@@ -32,17 +32,12 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
         <td mat-cell *matCellDef="let row"> {{row.district_name}}</td>
       </ng-container>
-  
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let row"> {{row.description}}</td>
-      </ng-container>
-  
+    
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
-          <mat-icon style="cursor: pointer;" (click)="edit_state(row)">edit</mat-icon>
-          <mat-icon style="cursor: pointer;" (click)="delete_state(row)">delete</mat-icon>
+          <mat-icon style="cursor: pointer;" (click)="edit_district(row)">edit</mat-icon>
+          <mat-icon style="cursor: pointer;" (click)="delete_district(row)">delete</mat-icon>
         </td>
       </ng-container>
   

@@ -1,0 +1,18 @@
+mat-toolbar {
+    display: flex;
+    background: none;
+    height: 35px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+mat-form-field{
+    margin: 0px 8px;
+}
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.submit button {
+    margin: 6px 7px;
+}

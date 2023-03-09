@@ -119,21 +119,21 @@ export class QuizeComponent implements OnInit {
         this.backgroundColor1 = "green"
         this.color1 = "white"
         this.hidden = false
-        this.score--
+        
       }
 
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
         this.hidden = false
-        this.score--
+      
       }
 
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
         this.hidden = false
-        this.score--
+      
       }
     }
   }
@@ -154,21 +154,21 @@ export class QuizeComponent implements OnInit {
         this.backgroundColor1 = "green"
         this.color1 = "white"
         this.hidden = false
-        this.score--
+      
       }
 
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
         this.hidden = false
-        this.score--
+        
       }
 
       if (this.quiz_option_d == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor4 = "green"
         this.color4 = "white"
         this.hidden = false
-        this.score--
+       
       }
 
     }
@@ -190,21 +190,21 @@ export class QuizeComponent implements OnInit {
         this.backgroundColor1 = "green"
         this.color1 = "white"
         this.hidden = false
-        this.score--
+        
       }
 
       if (this.quiz_option_b == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor2 = "green"
         this.color2 = "white"
         this.hidden = false
-        this.score--
+       
       }
 
       if (this.quiz_option_c == this.questionlist[this.currentQuestion]?.quiz_answer) {
         this.backgroundColor3 = "green"
         this.color3 = "white"
         this.hidden = false
-        this.score--
+        
       }
 
     }

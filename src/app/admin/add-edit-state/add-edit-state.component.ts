@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit-state',
   templateUrl: './add-edit-state.component.html',
@@ -18,6 +19,7 @@ export class AddEditStateComponent implements OnInit {
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
+    private router: Router,
     private matref: MatDialogRef<AddEditStateComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_state: any
   ) { }
@@ -52,6 +54,7 @@ export class AddEditStateComponent implements OnInit {
         this.service.post_state(this.state_from.value).subscribe(
           (result: any) => {
             console.log(result)
+            this.router.navigate(['/adminhome/state']);
             this.state_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'State Insert Successfully...', })
@@ -64,18 +67,19 @@ export class AddEditStateComponent implements OnInit {
       }
     }
     else {
-      this.updateCourse()
+      this.updateState()
     }
   }
 
-  updateCourse() {
+  updateState() {
     this.service.put_state(this.state_from.value).subscribe({
       next: (res) => {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'State Update Successfully...', })
       },
-      error: () => {
+      error: (error: any) => {
+        console.log(error)
         this.popup.error({ detail: 'Unsuccess', summary: 'State Not Update..', })
       }
     })
