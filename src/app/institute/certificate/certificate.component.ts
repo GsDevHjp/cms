@@ -58,6 +58,7 @@ export class CertificateComponent implements OnInit {
 
   certificate_edit(row: any) {
       this.router.navigate(['/institutehome/add_edit_certificate'], row)
+     
   }
 
   certificate_delete(row: any) {

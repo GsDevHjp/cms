@@ -93,7 +93,7 @@
 
 		<!-- /////////////////////////////////////////// For Permanent Address Form Starting Heare ////////////////////////////////////// -->
 		<ng-container ngbNavItem>
-			<a ngbNavLink class="certificate_link">Permanent Address</a>
+			<a ngbNavLink class="certificate_link" (click)="get_certificate_id()">Permanent Address</a>
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="permanet_form">
@@ -247,86 +247,84 @@
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="document_form">
-
-						<!-- for aadhar upload -->
+						<div id="doc_area">
+							<!-- for image upload -->
 						<div class="img_box">
-							<div class="upload_type">
-								<input class="d-none" type="file" accept=".jpg,.png," #aadhar
-									(change)="onaadhar(aadhar.files)">
-								<button (click)="aadhar.click()">
-									Upload Addhar
-								</button>
-							</div>
 							<div class="img_area">
 								<div class="image-preview">
-									<img alt="prescription_image" [src]="aadhar_url" width="90px" height="90px">
+									<img   alt="prescription_image" [src]="image_url">
 								</div>
 							</div>
-						</div>
 
-						<!-- for certificate upload -->
-						<div class="img_box">
 							<div class="upload_type">
-								<input class="d-none" type="file" accept=".jpg,.png," #certificate
-									(change)="oncertificate(certificate.files)">
-								<button (click)="certificate.click()">
-									Upload Certificate
-								</button>
-							</div>
-							<div class="img_area">
-								<div class="image-preview">
-									<img alt="prescription_image" [src]="certificate_url" width="90px" height="90px">
-								</div>
-							</div>
-						</div>
-						<!-- for markseet upload -->
-						<div class="img_box">
-							<div class="upload_type">
-								<input class="d-none" type="file" accept=".jpg,.png," #markseet
-									(change)="onmarkseet(markseet.files)">
-								<button (click)="markseet.click()">
-									Upload 10th Markseet
-								</button>
-							</div>
-							<div class="img_area">
-								<div class="image-preview">
-									<img alt="prescription_image" [src]="markseet_url" width="90px" height="90px">
-								</div>
-							</div>
-						</div>
-
-						<!-- for residential upload -->
-						<div class="img_box">
-							<div class="upload_type">
-								<input class="d-none" type="file" accept=".jpg,.png," #residential
-									(change)="onresidential(residential.files)">
-								<button (click)="residential.click()">
-									Upload Residential
-								</button>
-							</div>
-							<div class="img_area">
-								<div class="image-preview">
-									<img alt="prescription_image" [src]="residential_url" width="90px" height="90px">
-								</div>
-							</div>
-						</div>
-
-						<!-- for image upload -->
-						<div class="img_box">
-							<div class="upload_type">
-								<input class="d-none" type="file" accept=".jpg,.png," #image
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg," #image
 									(change)="onimage(image.files)">
 								<button (click)="image.click()">
 									Upload Image
 								</button>
 							</div>
+						
+						</div>
+						
+
+						<!-- for aadhar upload -->
+						<div class="img_box">
 							<div class="img_area">
 								<div class="image-preview">
-									<img alt="prescription_image" [src]="image_url" width="90px" height="90px">
+									<img alt="prescription_image" [src]="aadhar_url" >
 								</div>
 							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg,.pdf" #aadhar
+									(change)="onaadhar(aadhar.files)">
+								<button (click)="aadhar.click()">
+									Upload Addhar
+								</button>
+							</div>
+							
+						</div>
+
+					
+						<!-- for markseet upload -->
+						<div class="img_box">
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="markseet_url" >
+								</div>
+							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg,.pdf" #markseet
+									(change)="onmarkseet(markseet.files)">
+								<button (click)="markseet.click()">
+									Upload 10th Markseet
+								</button>
+							</div>
+						</div>
+
+							<!-- for certificate upload -->
+							<div class="img_box">
+								<div class="img_area">
+									<div class="image-preview">
+										<img alt="prescription_image" [src]="certificate_url" >
+									</div>
+								</div>
+	
+								<div class="upload_type">
+									<input class="d-none" type="file" accept=".pdf," #certificate
+										(change)="oncertificate(certificate.files)">
+									<button (click)="certificate.click()">
+										Upload Certificate
+									</button>
+								</div>
+								
+							</div>
+
 						</div>						
 					</form>
+					<br>
+					<br>
 					<br>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"

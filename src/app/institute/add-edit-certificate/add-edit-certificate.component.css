@@ -148,281 +148,90 @@ ng-container {
 
 
 
-
-
-@media (min-width:1081px) and (max-width:2000px) {
-  .content_area {
-    margin-top: 10px;
-  }
-
-  .column {
-    width: 100%;
-    height: auto;
-    margin: auto;
-  }
-
-  .column mat-form-field {
-    width: 200px;
-  }
-
-  .column_1 mat-form-field {
-    width: 815px;
-    margin: auto;
-    margin-right: 5px;
-  }
-
-  .column_first {
-    width: 818px;
-    margin-right: 10px;
-    height: auto;
-    margin: auto;
-  }
-
-  .column_first mat-form-field {
-    width: 200px;
-    float: left;
-  }
+/* for final submit  */
+#doc_area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img_box {
+  width: 250px;
+  height: auto;
+  float: left;
+  margin-left: 50px;
+  border: 0.5px solid gray;
 
 }
-
-/* for final submit  */
-.img_box {
-  width: 40%;
-  height: 100px;
-  margin-left: 30%;
+#doc_area :first-child{
+margin: 0;
 }
 .upload_type{
-  width: 70%;
-  height: 100%;
-  float: left;
-
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .upload_type button{
-  position: relative;
-  top: 50px;
+ margin: 0;
+ margin: 5px;
+ width: 100%;
 }   
 
 .img_area{
-  width: 30%;
-  height: 100%;
-  float: right;
+  width: 250px;
+  height: 280px;
   padding: 5px;
+
 }
 
+img{
+width: 240px;
+height: 270px;
+}
+
+
+@media (min-width:1081px) and (max-width:2000px) {
+  
+
+}
+
+
 @media (min-width:769px) and (max-width:1080px) {
-  .column {
-    width: 500px;
-    height: auto;
-    margin: auto;
-  }
-
-  .column mat-form-field {
-    width: 200px;
-  }
-
-  .column_1 mat-form-field {
-    width: 406px;
-    margin: 0px;
-    margin-right: 5px;
-  }
-
-  .column_first {
-    width: 410px;
-    height: auto;
-    margin: auto;
-  }
-
-  .column_first mat-form-field {
-    width: 200px;
-    float: left;
-  }
-
-  .upload_img_div {
-    width: 410px;
-  }
-
-  .upload_img {
-    width: 100%;
-    margin-bottom: 18px;
-  }
-
-  .file_img {
-    margin-left: -142px;
-  }
-
+  
 }
 
 @media(min-width:481px) and (max-width:768px) {
-  .content_area {
-    margin-top: 15px;
-  }
+ 
 
-  .column {
-    width: 100%;
-    height: auto;
-  }
 
-  .column mat-form-field {
-    width: 100%;
-    margin: 0px;
-  }
-
-  .column_1 mat-form-field {
-    width: 100%;
-    margin: 0px;
-  }
-
-  .cotainer {
-    margin-top: 10px;
-    overflow-x: hidden;
-  }
-
-  #table_area {
-    overflow-x: auto;
-  }
-
-  .column_first {
-    width: 100%;
-    height: auto;
-
-  }
-
-  .addButton {
-    float: none;
-    margin: 0px;
-  }
-
-  .total_amount {
-    width: 100%;
-    margin: 0px;
-  }
-
-  .date_box {
-    width: 100%;
-  }
-
-  .upload_img_div {
-    margin: 0px;
-    margin-top: 20px;
-    width: 100%;
-    float: left;
-  }
-
-  .upload_img {
-    width: 100%;
-    margin-bottom: 18px;
-    float: left;
-  }
-
-  .file_img {
-    width: 100%;
-    height: auto;
-    float: left;
-    margin: 0px;
-  }
 }
 
 @media(max-width:480px) {
-  .content_area {
-    margin-top: 15px;
-  }
+  /* for final submit  */
+.img_box {
+  width: 100%;
+  height: 250px;
+}
+.upload_type{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+}
 
-  .column {
-    width: 100%;
-    height: auto;
-  }
+.upload_type button{
+ margin: 0;
+}   
 
-  .column mat-form-field {
-    width: 100%;
-    margin: 0px;
-  }
+.img_area{
+  width: 100%;
+  height: 80%;
+}
 
-  .column_1 mat-form-field {
-    width: 100%;
-    margin: 0px;
-  }
-
-  .cotainer {
-    margin-top: 10px;
-    overflow-x: hidden;
-  }
-
-  #table_area {
-    overflow-x: auto;
-  }
-
-  .notice_text {
-    font-size: 13px;
-  }
-
-  .count_search .notice_text {
-    font-size: 13px;
-  }
-
-  table th {
-    font-size: 13px;
-  }
-
-  table td {
-    font-size: 13px;
-  }
-
-  th.mat-header-cell:first-of-type {
-    padding-left: 13px;
-  }
-
-  th.mat-header-cell:last-of-type {
-    padding-right: 0px;
-    width: 0%;
-  }
-
-  td.mat-cell:first-of-type {
-    padding-left: 20px;
-  }
-
-  td.mat-cell:last-of-type {
-    padding-right: 0px;
-    padding-left: 10px;
-  }
-
-  .total_amount {
-    width: 100%;
-    margin: 0px;
-  }
-
-  .column_first {
-    width: 100%;
-    height: auto;
-  }
-
-  .addButton {
-    float: none;
-    margin: 0px;
-  }
-
-  .date_box {
-    width: 100%;
-  }
-
-  .upload_img_div {
-    margin: 0px;
-    margin-top: 20px;
-    width: 100%;
-    float: left;
-  }
-
-  .upload_img {
-    width: 100%;
-    margin-bottom: 18px;
-    float: left;
-  }
-
-  .file_img {
-    width: 100%;
-    height: auto;
-    float: left;
-    margin: 0px;
-  }
+img{
+width: 150px;
+height: 180px;
+}
 
 }
