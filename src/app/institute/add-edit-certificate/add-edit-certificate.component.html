@@ -77,12 +77,13 @@
 							</mat-form-field>
 
 							<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
-							<input type="number" readonly formControlName="certificate_id"  redonly hidden>
+							<input type="number" readonly formControlName="certificate_id" redonly hidden>
 						</div>
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="personal_add()" [disabled]="!this.personal_form.valid">Save</button>
+							style="background-color: #1d1f23; color: white;" (click)="personal_add()"
+							[disabled]="!this.personal_form.valid">Save</button>
 					</div>
 				</div>
 			</ng-template>
@@ -153,7 +154,7 @@
 					</form>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="permanent_update()">Save</button>
+							style="background-color: #1d1f23; color: white;" (click)="permanent_update()" [disabled]="!this.permanet_form.valid">Save</button>
 					</div>
 				</div>
 			</ng-template>
@@ -179,6 +180,11 @@
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
+							<mat-label>Center Name</mat-label>
+							<input matInput formControlName="std_center_name">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
 							<mat-label>Certificate No</mat-label>
 							<input matInput formControlName="std_certificate_no">
 						</mat-form-field>
@@ -188,12 +194,14 @@
 							<input matInput type="number" formControlName="std_total_marks">
 						</mat-form-field>
 
-						<mat-form-field appearance="fill">
-							<mat-label>Registration Date</mat-label>
-							<input matInput type="date" formControlName="std_rigistration_date">
-						</mat-form-field><br>
 
 						<div class="registration_form_left">
+
+							<mat-form-field appearance="fill">
+								<mat-label>Registration Date</mat-label>
+								<input matInput type="date" formControlName="std_rigistration_date">
+							</mat-form-field>
+
 							<mat-form-field appearance="fill">
 								<mat-label>Total Amount</mat-label>
 								<input matInput type="number" formControlName="std_total_amount">
@@ -207,10 +215,8 @@
 							<mat-form-field appearance="fill">
 								<mat-label>Select Course</mat-label>
 								<mat-select formControlName="course_id_fk">
-									<mat-option value="1">BCA</mat-option>
-									<mat-option value="2">MCA</mat-option>
-									<!-- <mat-option *ngFor="let course of course_data"
-									[value]="course.course_id">{{course.course_name}}</mat-option> -->
+									<mat-option *ngFor="let course of course_data"
+										[value]="course.course_name">{{course.course_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -224,7 +230,7 @@
 							<div mat-dialog-action [align]="'end'" id="main_button">
 								<button mat-raised-button class="add_btn" type="submit"
 									style="background-color: #1d1f23; color: white;"
-									(click)="registration_update()">Save</button>
+									(click)="registration_update()" [disabled]="!this.registration_form.valid">Save</button>
 							</div>
 						</div>
 					</form>
@@ -241,47 +247,91 @@
 			<ng-template ngbNavContent>
 				<div class="content_area">
 					<form [formGroup]="document_form">
-						<div class="upload_img_div">
-							<div class="upload_img">
-								<label class="certificate_uplaod">Aadhar Card</label><br>
-								<input class="file_img" type="file" (change)="aadharupload($event)" accept=".jpg,.png,"
-									formControlName="std_aadhar_card">
-							</div>
-						</div>
-						<div class="upload_img_div">
-							<div class="upload_img">
-								<label class="certificate_uplaod">Gen, Certificate</label><br>
-								<input class="file_img" type="file" (change)="genupload($event)" accept=".jpg,.png,"
-									formControlName="std_gen_certificate">
-							</div>
-						</div>
-						<div class="upload_img_div">
-							<div class="upload_img">
-								<label class="certificate_uplaod">10th Marksheet</label><br>
-								<input class="file_img" type="file" (change)="markesupload($event)" accept=".jpg,.png,"
-									formControlName="std_10th_marksheet">
-							</div>
-						</div>
-						<div class="upload_img_div">
-							<div class="upload_img">
-								<label class="certificate_uplaod">Residential</label><br>
-								<input class="file_img" type="file" (change)="redsidentalupload($event)"
-									accept=".jpg,.png," formControlName="std_residential">
-							</div>
-						</div>
-						<div class="upload_img_div">
-							<div class="upload_img">
-								<label class="certificate_uplaod">Photo</label><br>
-								<input class="file_img" type="file" (change)="imageupload($event)" accept=".jpg,.png,"
-									formControlName="std_image">
-							</div>
-						</div>
-						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 
+						<!-- for aadhar upload -->
+						<div class="img_box">
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png," #aadhar
+									(change)="onaadhar(aadhar.files)">
+								<button (click)="aadhar.click()">
+									Upload Addhar
+								</button>
+							</div>
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="aadhar_url" width="90px" height="90px">
+								</div>
+							</div>
+						</div>
+
+						<!-- for certificate upload -->
+						<div class="img_box">
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png," #certificate
+									(change)="oncertificate(certificate.files)">
+								<button (click)="certificate.click()">
+									Upload Certificate
+								</button>
+							</div>
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="certificate_url" width="90px" height="90px">
+								</div>
+							</div>
+						</div>
+						<!-- for markseet upload -->
+						<div class="img_box">
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png," #markseet
+									(change)="onmarkseet(markseet.files)">
+								<button (click)="markseet.click()">
+									Upload 10th Markseet
+								</button>
+							</div>
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="markseet_url" width="90px" height="90px">
+								</div>
+							</div>
+						</div>
+
+						<!-- for residential upload -->
+						<div class="img_box">
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png," #residential
+									(change)="onresidential(residential.files)">
+								<button (click)="residential.click()">
+									Upload Residential
+								</button>
+							</div>
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="residential_url" width="90px" height="90px">
+								</div>
+							</div>
+						</div>
+
+						<!-- for image upload -->
+						<div class="img_box">
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png," #image
+									(change)="onimage(image.files)">
+								<button (click)="image.click()">
+									Upload Image
+								</button>
+							</div>
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="image_url" width="90px" height="90px">
+								</div>
+							</div>
+						</div>						
 					</form>
+					<br>
 					<div mat-dialog-action [align]="'end'" id="main_button">
 						<button mat-raised-button class="add_btn" type="submit"
-							style="background-color: #1d1f23; color: white;" (click)="document_submit()">Submit</button>
+							style="background-color: #1d1f23; color: white;" (click)="document_submit()"
+							>Final Submit</button>
 					</div>
 				</div>
 			</ng-template>

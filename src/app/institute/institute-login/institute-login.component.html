@@ -1,18 +1,14 @@
 <div id="wrapper">
     <div id="header">
-        <h1>CMS</h1>
-        <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item class="action_btn" routerLink="/adminlogin">Admin</button>
-            <button mat-menu-item class="action_btn" routerLink="/institutelogin">Institute</button>
-            <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
-        </mat-menu>
+        <h1>Educatorbox</h1>
+        
+       
     </div>
     <div id="main">
 
         <mat-card class="example-card">
             <mat-card-header>
-                Institute Login
+                Teacher Login
             </mat-card-header>
             <img src="assets/login.png" alt="login">
             <form [formGroup]="inst_login_form">

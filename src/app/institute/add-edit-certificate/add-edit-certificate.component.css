@@ -146,38 +146,9 @@ ng-container {
   margin-right: 615px;
 }
 
-.registration_form_left {
-  margin-right: 206px;
-}
 
-.upload_img_div {
-  width: 815px;
-  margin-right: 10px;
-  height: auto;
-  margin: auto;
-}
 
-.upload_img {
-  width: 100%;
-  color: gray;
-  border-bottom: 1px solid gray;
-  background-color: #ebebeb;
-  margin-bottom: 18px;
-}
 
-.certificate_uplaod {
-  float: left;
-  text-align: justify;
-  font-size: 16px;
-  color: rgb(26, 28, 27);
-}
-
-.file_img {
-  width: auto;
-  border: none;
-  margin-left: -530px;
-  padding: 10px;
-}
 
 @media (min-width:1081px) and (max-width:2000px) {
   .content_area {
@@ -212,6 +183,31 @@ ng-container {
     float: left;
   }
 
+}
+
+/* for final submit  */
+.img_box {
+  width: 40%;
+  height: 100px;
+  margin-left: 30%;
+}
+.upload_type{
+  width: 70%;
+  height: 100%;
+  float: left;
+
+}
+
+.upload_type button{
+  position: relative;
+  top: 50px;
+}   
+
+.img_area{
+  width: 30%;
+  height: 100%;
+  float: right;
+  padding: 5px;
 }
 
 @media (min-width:769px) and (max-width:1080px) {

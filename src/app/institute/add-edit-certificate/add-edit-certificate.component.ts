@@ -27,6 +27,25 @@ export class AddEditCertificateComponent implements OnInit {
   certificate_id: any;
   institute_id: any
   course_data: any
+ 
+
+  // for new docment  
+  url:string = 'https://greensoft.net.in/gscms/assets/certificate/'
+  aadhar_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  aadhar_select:any
+
+  certificate_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  certificate_select:any
+
+  markseet_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  markseet_select:any
+
+  residential_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  residential_select:any 
+
+  image_url:any = "https://greensoft.net.in/gscms/assets/certificate/man.png"
+  image_select:any
+
   constructor(
     private personal: FormBuilder,
     private permanet: FormBuilder,
@@ -46,22 +65,23 @@ export class AddEditCertificateComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
 
-    // this.services.get_certificate().subscribe(
-    //   (res: any) => {
-    //     console.log(res.data[0].certificate_id)
-    //     this.certificate_id = res.data[0].certificate_id
-    //   }
-    // )
+    this.services.get_certificate().subscribe(
+      (res: any) => {
+        console.log(res.data[0].certificate_id)
+        this.certificate_id = res.data[0].certificate_id
+      }
+    )
+    
   }
 
   ngOnInit(): void {
-    // const formdata = new FormData()
-    // formdata.append("inst_id", this.inst_id_for_inst_login)
-    // this.services.get_course_by_inst_id(formdata).subscribe(
-    //   (std_res: any) => {
-    //     this.course_data = std_res.data
-    //   }
-    // )
+    const formdata = new FormData()
+    formdata.append("inst_id", this.inst_id)
+    this.services.get_course_by_inst_id(formdata).subscribe(
+      (std_res: any) => {
+        this.course_data = std_res.data
+      }
+    )
 
     this.personal_form = this.personal.group({
       certificate_id: [''],
@@ -98,6 +118,7 @@ export class AddEditCertificateComponent implements OnInit {
       certificate_id: [''],
       std_rigistration_no: ['', Validators.required],
       std_center_code: ['', Validators.required],
+      std_center_name: ['', Validators.required],
       std_certificate_no: ['', Validators.required],
       std_total_marks: ['', Validators.required],
       std_rigistration_date: ['', Validators.required],
@@ -132,7 +153,6 @@ export class AddEditCertificateComponent implements OnInit {
       certificateiddata.append('certificate_id', this.certificate_id);
       this.services.get_certificate_by_certificate_id(certificateiddata).subscribe({
         next: (res: any) => {
-          console.log(res.data[0].std_name)
           this.personal_form.controls['certificate_id'].setValue(res.data[0].certificate_id);
           this.personal_form.controls['std_name'].setValue(res.data[0].std_name);
           this.personal_form.controls['std_father_name'].setValue(res.data[0].std_father_name);
@@ -156,6 +176,7 @@ export class AddEditCertificateComponent implements OnInit {
           this.permanet_form.controls['std_ps'].setValue(res.data[0].std_ps);
           this.registration_form.controls['std_rigistration_no'].setValue(res.data[0].std_rigistration_no);
           this.registration_form.controls['std_center_code'].setValue(res.data[0].std_center_code);
+          this.registration_form.controls['std_center_name'].setValue(res.data[0].std_center_name);
           this.registration_form.controls['std_certificate_no'].setValue(res.data[0].std_certificate_no);
           this.registration_form.controls['std_total_marks'].setValue(res.data[0].std_total_marks);
           this.registration_form.controls['std_rigistration_date'].setValue(res.data[0].std_rigistration_date);
@@ -163,6 +184,20 @@ export class AddEditCertificateComponent implements OnInit {
           this.registration_form.controls['std_date_issue'].setValue(res.data[0].std_date_issue);
           this.registration_form.controls['course_id_fk'].setValue(res.data[0].course_id_fk);
           this.registration_form.controls['std_ref_name'].setValue(res.data[0].std_ref_name);
+
+          // for docment form           
+          this.markseet_url = this.url + res.data[0].std_10th_marksheet
+          this.aadhar_url = this.url + res.data[0].std_aadhar_card
+          this.certificate_url = this.url + res.data[0].std_gen_certificate
+          this.residential_url = this.url +  res.data[0].std_residential
+          this.image_url = this.url +  res.data[0].std_image
+
+          // for update as same 
+          this.aadhar_select = res.data[0].std_aadhar_card
+          this.certificate_select = res.data[0].std_gen_certificate
+          this.markseet_select = res.data[0].std_10th_marksheet
+          this.residential_select = res.data[0].std_residential
+          this.image_select = res.data[0].std_image
         }
       })
     }
@@ -225,11 +260,11 @@ export class AddEditCertificateComponent implements OnInit {
   }
 
   registration_update() {
-    console.log(this.registration_form.value)
     const registrationdata = new FormData();
     registrationdata.append('certificate_id', this.certificate_id);
     registrationdata.append('std_rigistration_no', this.registration_form.get('std_rigistration_no')?.value);
     registrationdata.append('std_center_code', this.registration_form.get('std_center_code')?.value);
+    registrationdata.append('std_center_name', this.registration_form.get('std_center_name')?.value);
     registrationdata.append('std_certificate_no', this.registration_form.get('std_certificate_no')?.value);
     registrationdata.append('std_total_marks', this.registration_form.get('std_total_marks')?.value);
     registrationdata.append('std_rigistration_date', this.registration_form.get('std_rigistration_date')?.value);
@@ -251,22 +286,20 @@ export class AddEditCertificateComponent implements OnInit {
     })
   }
 
-  document_submit() {
-    console.log(this.document_form.value)
+  document_submit() { 
     const documentdata = new FormData();
     documentdata.append('certificate_id', this.certificate_id);
-    documentdata.append('std_aadhar_card', this.document_form.get('std_aadhar_card')?.value);
-    documentdata.append('std_gen_certificate', this.document_form.get('std_gen_certificate')?.value);
-    documentdata.append('std_10th_marksheet', this.document_form.get('std_10th_marksheet')?.value);
-    documentdata.append('std_residential', this.document_form.get('std_residential')?.value);
-    documentdata.append('std_image', this.document_form.get('std_image')?.value);
-    documentdata.append('status', this.document_form.get('status')?.value);
+    documentdata.append('std_aadhar_card', this.aadhar_select[0]);
+    documentdata.append('std_gen_certificate', this.certificate_select[0]);
+    documentdata.append('std_10th_marksheet', this.markseet_select[0]);
+    documentdata.append('std_residential', this.residential_select[0]);
+    documentdata.append('std_image',this.image_select[0]);
     documentdata.append('institute_id_fk', this.inst_id);
-    documentdata.append('admin_id_fk', this.document_form.get('admin_id_fk')?.value);
     this.services.put_certificate_document(documentdata).subscribe({
       next: (res: any) => {
         console.log(res)
         this.popup.success({ detail: 'Success', summary: 'Registration Data Add' })
+        this.router.navigate(['/institutehome/certificate'])
       },
       error: (error: any) => {
         console.log(error)
@@ -275,34 +308,114 @@ export class AddEditCertificateComponent implements OnInit {
     })
   }
 
-  aadharupload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.document_form.get('std_aadhar_card')?.setValue(file)
-    }
+
+ 
+// fro aadhar upload 
+onaadhar(files:any) {
+if (files.length === 0) {
+  return;
+}
+const mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  
+  return;
+}
+const reader = new FileReader();
+this.aadhar_select = files;
+reader.onload = () => {
+  this.aadhar_url = reader.result;
+};
+reader.readAsDataURL(this.aadhar_select[0]);
   }
-  genupload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.document_form.get('std_gen_certificate')?.setValue(file)
-    }
+  
+  
+
+// fro oncertificate upload 
+oncertificate(files:any) {
+if (files.length === 0) {
+  return;
+}
+const mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  console.log('Only images are supported.');
+  return;
+}
+const reader = new FileReader();
+this.certificate_select = files;
+reader.onload = () => {
+  this.certificate_url = reader.result;
+};
+reader.readAsDataURL(this.certificate_select[0]);
   }
-  markesupload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.document_form.get('std_10th_marksheet')?.setValue(file)
-    }
+
+// fro oncertificate upload 
+onmarksheet(files:any) {
+if (files.length === 0) {
+  return;
+}
+let mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  console.log('Only images are supported.');
+  return;
+}
+let reader = new FileReader();
+this.markseet_select = files;
+reader.onload = () => {
+  this.markseet_url = reader.result;
+};
+reader.readAsDataURL(this.markseet_select[0]);
   }
-  redsidentalupload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.document_form.get('std_residential')?.setValue(file)
-    }
+// fro residential  upload 
+onresidential(files:any) {
+if (files.length === 0) {
+  return;
+}
+let mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  console.log('Only images are supported.');
+  return;
+}
+let reader = new FileReader();
+this.residential_select = files;
+reader.onload = () => {
+  this.residential_url = reader.result;
+};
+reader.readAsDataURL(this.residential_select[0]);
   }
-  imageupload(event: any) {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      this.document_form.get('std_image')?.setValue(file)
-    }
+// fro markseet  upload 
+onmarkseet(files:any) {
+if (files.length === 0) {
+  return;
+}
+let mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  console.log('Only images are supported.');
+  return;
+}
+let reader = new FileReader();
+this.markseet_select = files;
+reader.onload = () => {
+  this.markseet_url = reader.result;
+};
+reader.readAsDataURL(this.markseet_select[0]);
   }
+// fro image  upload 
+onimage(files:any) {
+if (files.length === 0) {
+  return;
+}
+let mimeType = files[0].type;
+if (mimeType.match(/image\/*/) == null) {
+  console.log('Only images are supported.');
+  return;
+}
+let reader = new FileReader();
+this.image_select = files;
+reader.onload = () => {
+  this.image_url = reader.result;
+};
+reader.readAsDataURL(this.image_select[0]);
+  }
+
+
 }

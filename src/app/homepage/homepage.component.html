@@ -1,43 +1,38 @@
-<!-- <div id="wrapper">
-  <div id="header">
-    <h1>CMS</h1>
-    <button class="login_head" mat-button [matMenuTriggerFor]="menu">Login</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item class="action_btn" [routerLink]="['adminlogin']">Admin</button>
-      <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']">Institute</button>
-      <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']">Student</button>
-    </mat-menu>
-  </div>
-  <div id="main">
-    <h2 class="welcome_text">Welcome To Green Soft</h2>
-  </div>
-  <div id="footer">
-    <span>Developed By <a href="https://www.greensoft.net.in">Green Soft</a></span>
-    <span>Version 1.0</span>
-  </div>
-</div> -->
-
 
 <!------------ Code written by Rohit start from here ------------------->
 
 <div id="wrapper">
   <div id="header">
     <div id="logo">
-      <img src="assets/educatorbox.png" width="40%" height="100%">
+      <a href="#">
+        <img src="assets/educatorbox.png" width="40%" height="100%">
+      </a>
     </div>
 
     <div id="menu">
-      <button mat-button>Home</button>
-      <button mat-button>About us</button>
-      <button mat-button>Solutions</button>
-      <button mat-button>Services</button>
-      <button mat-button>Features</button>
-      <button mat-button>Careers</button>
-      <button class="login_head" mat-button [matMenuTriggerFor]="menu" style="border: 2px solid #292c30;">Login/Register</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item class="action_btn" [routerLink]="['adminlogin']" style="color: white;">Admin</button>
-        <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']" style="color: white;">Institute</button>
-        <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']" style="color: white;">Student</button>
+      <button mat-button>
+        <a href="#">Home</a>
+      </button>
+      <!-- <button mat-button>
+        <a href="#about">About us</a>
+      </button>
+      <button mat-button>
+        <a href="#">Demo</a>
+      </button>
+      <button mat-button>
+        <a href="#facilities">Features</a>
+      </button>
+      <button mat-button>
+        <a href="#contact">Contact</a>
+      </button>
+      <button mat-button style="border: 2px solid #292c30;">
+        <a href="#">Register</a>
+      </button> -->
+      <button class="login_head" mat-button [matMenuTriggerFor]="menu"
+        style="border: 2px solid #e5e6e89d;">Login</button>
+      <mat-menu #menu="matMenu" id="menu_btn">
+        <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']" style="color: black;">Teacher</button>
+        <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']"  style="color: black;">Student</button>
       </mat-menu>
     </div>
 
@@ -53,74 +48,20 @@
 
   <div id="slider_area">
     <div id="for_text">
-      <span id="text_1">Integrated Digital School Management System</span>
-      <span id="text_2">Best Services in India...</span>
+      <span id="text_1">Integrated Digital Coaching Management System</span>
+      <!-- <span id="text_2">Best Services in India...</span> -->
     </div>
     <div id="for_image">
-      <img src="assets/img.png">
+      <img src="assets/img.jpg">
     </div>
   </div>
   <div id="whatshapp_chat">
     <a href="https://wa.me/91.9470407608"><img src="assets/whatshapp.png"></a>
   </div>
-  <div id="services">
-    <div id="service_title">OUR SERVICES</div>
-
-    <div class="service_card">
-      <div class="card_head"> E-Learning </div>
-      <div class="card_image">
-        <img src="assets/educatorbox.png">
-      </div>
-      <div class="about_card_img">
-        We provide the service of E-Learning for getting knowledge by our this platform.
-      </div>
-    </div>
-
-    <div class="service_card">
-      <div class="card_head"> OES </div>
-      <div class="card_image">
-        <img src="assets/educatorbox.png">
-      </div>
-      <div class="about_card_img">
-        We provide the service of E-Learning for getting knowledge by our this platform.
-      </div>
-    </div>
-
-    <div class="service_card">
-      <div class="card_head"> CMS </div>
-      <div class="card_image">
-        <img src="assets/educatorbox.png">
-      </div>
-      <div class="about_card_img">
-        We provide the service of E-Learning for getting knowledge by our this platform.
-      </div>
-    </div>
-
-    <div class="service_card">
-      <div class="card_head"> Digital Content </div>
-      <div class="card_image">
-        <img src="assets/educatorbox.png">
-      </div>
-      <div class="about_card_img">
-        We provide the service of E-Learning for getting knowledge by our this platform.
-      </div>
-    </div>
-
-    <div class="service_card">
-      <div class="card_head"> Fee Management </div>
-      <div class="card_image">
-        <img src="assets/educatorbox.png">
-      </div>
-      <div class="about_card_img">
-        We provide the service of E-Learning for getting knowledge by our this platform.
-      </div>
-    </div>
-
-  </div>
 
   <!-- facility code start from here -->
   <div id="facilities">
-    <div id="facility_title">OUR FACILITY</div>
+    <div id="facility_title"><strong>OUR FEATURES</strong></div>
 
     <div class="facilitie_card">
       <div class="facility_heading">Quiz Program</div>
@@ -168,11 +109,5 @@
 
   </div>
 
-  <!-- footer code start from here -->
-  <div id="footer">
-    <div id="footer_overlap">
-      <span id="footer_text_overlap">Do Not Waste Your Time <button mat-button id="register_button">Register Now</button></span>
-    </div>
-    <div id="footer_details"></div>
-  </div>
+  <div id="copyright">Powered by : <a href="https://greensoft.net.in" target="_blank" style="color: white;">GreenSoft</a></div>
 </div>

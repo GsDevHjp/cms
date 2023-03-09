@@ -13,12 +13,14 @@ body {
 
 ::-webkit-scrollbar {
     width: 5px;
-    background-color: #525458;
+    background-color: #f9f9f9;
+    color: black;
 }
 
 .mat-menu-content:not(:empty) {
-    background-color: #1d1f23;
+    background-color: #e9ecf3;
     width: 150px;
+    color: black;
 }
 
 .mat-menu-panel {
