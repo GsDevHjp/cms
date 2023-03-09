@@ -47,6 +47,7 @@ import { ProfitLossComponent } from './institute/profit-loss/profit-loss.compone
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
 import { StudentComponent } from './institute/student/student.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LiveClassComponent } from './student/live-class/live-class.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
 import { QueryComponent } from './student/query/query.component';
@@ -62,7 +63,6 @@ import { TakeAddmissionComponent } from './student/take-addmission/take-addmissi
 
 
 const routes: Routes = [
-
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
@@ -180,7 +180,9 @@ const routes: Routes = [
       { path: 'liveclass', component: LiveClassComponent }
 
     ]
-  }
+  },
+
+  {path:'**', component:PageNotFoundComponent}
 
 ];
 @NgModule({

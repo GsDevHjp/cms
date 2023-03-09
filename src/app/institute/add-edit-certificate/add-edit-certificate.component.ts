@@ -177,7 +177,7 @@ export class AddEditCertificateComponent implements OnInit {
           // for docment form           
           this.markseet_url = this.url + res.data[0].std_10th_marksheet
           this.aadhar_url = this.url + res.data[0].std_aadhar_card
-          // this.certificate_url = this.url + res.data[0].std_gen_certificate
+          this.certificate_url = this.url + res.data[0].std_gen_certificate
           this.image_url = this.url +  res.data[0].std_image
 
           // for update as same 
@@ -330,10 +330,6 @@ onaadhar(files:any) {
 if (files.length === 0) {
   return;
 }
-const mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  return;
-}
 const reader = new FileReader();
 this.aadhar_select = files;
 console.log(this.aadhar_select)
@@ -361,11 +357,6 @@ reader.readAsDataURL(this.certificate_select[0]);
 // fro markseet upload 
 onmarkseet(files:any) {
 if (files.length === 0) {
-  return;
-}
-let mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  console.log('Only images are supported.');
   return;
 }
 let reader = new FileReader();
@@ -397,6 +388,7 @@ reader.readAsDataURL(this.image_select[0]);
 
   get_certificate_id(){
     if(this.certificate_id > 0){
+
       return
     }
     

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
@@ -40,7 +40,10 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     private fb: FormBuilder,
     private service: ManageService,
     private router: Router,
-    private matref: MatDialogRef<AddEditTakeAddmissionComponent>
+    private matref: MatDialogRef<AddEditTakeAddmissionComponent>,
+    @Inject(MAT_DIALOG_DATA) public edit_addmission: any
+
+
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -48,9 +51,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    console.log(this.login.std_name)
     this.inst_id = this.login.institute_id_fk
-    console.log(this.login.institute_id_fk)
   }
 
   ngOnInit(): void {
@@ -86,14 +87,23 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
-    console.log(this.login)
     this.inst_id_fk = this.login.institute_id_fk
-    console.log("std_regist_no" + this.login.std_regist_no)
-
-    this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
-    this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
-    this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
+    console.log(this.edit_addmission.std_regist_no)
+    if(this.login){
+      this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
+      this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
+      this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
+    }
+    if(this.edit_addmission){
+      console.log(this.edit_addmission)
+      this.addmission_form.controls['std_id_fk'].setValue(this.edit_addmission.std_id);
+      this.addmission_form.controls['inst_id_fk'].setValue(this.edit_addmission.inst_id);
+      this.addmission_form.controls['std_regist_no'].setValue(this.edit_addmission.std_regist_no);
+    }
   }
+
+
+ 
 
   get_course(event: any) {
     this.resetform()
@@ -147,8 +157,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
   addstd() {
     const formdata = new FormData();
-  
-
     formdata.append('std_regist_no', this.addmission_form.get('std_regist_no')?.value)
     formdata.append('roll_no', this.addmission_form.get('roll_no')?.value)
     formdata.append('inst_id_fk', this.addmission_form.get('inst_id_fk')?.value)
