@@ -15,7 +15,7 @@ import { AddEditQueryComponent } from '../add-edit-query/add-edit-query.componen
 
 export class InstQueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['quiz_id', 'query_message', 'query_answer', 'query_description', 'query_date', 'action'];
+  displayedColumns: string[] = ['quiz_id', 'query_priority', 'query_message', 'query_answer', 'query_date', 'action'];
   dataSource = new MatTableDataSource();
   count_query: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -41,9 +41,9 @@ export class InstQueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const fromdata = new FormData()
-    fromdata.append('inst_id', this.inst_id_for_inst_login)
-    this.service.get_query_by_inst_id(fromdata).subscribe(
+    // const fromdata = new FormData()
+    // fromdata.append('inst_id', this.inst_id_for_inst_login)
+    this.service.get_query_by_inst_id().subscribe(
       (res: any) => {
         console.log("hdbk" + res)
         this.dataSource.data = res.data

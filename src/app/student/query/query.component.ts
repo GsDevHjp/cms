@@ -15,7 +15,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class QueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['query_id', 'query_message', 'query_answer','query_description', 'query_date', 'action'];
+  displayedColumns: string[] = ['query_id', 'query_priority', 'query_message', 'query_answer', 'query_date',];
   dataSource = new MatTableDataSource();
   query_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -41,9 +41,9 @@ export class QueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const fromdata = new FormData()
-    fromdata.append('inst_id', this.std_id)
-    this.service.get_query_by_inst_id(fromdata).subscribe(
+    // const fromdata = new FormData()
+    // fromdata.append('inst_id', this.std_id)
+    this.service.get_query_by_inst_id().subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);
@@ -57,23 +57,6 @@ export class QueryComponent implements OnInit {
     this.dailog.open(StdQueryComponent, {
       disableClose: true
     });
-  }
-
-  deleteQuery(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('query_id', row.query_id);
-      console.log(row.query_id)
-      this.service.delete_query(deletedata).subscribe(
-        (res: any) => {
-          this.popup.success({ detail: 'Success', summary: 'Query Delete Successfully..'})
-          this.router.navigate(['/studenthome/query'])
-        }
-      )
-    }
-    else {
-      this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Delete..'})
-    }
   }
 
   applyFilter(event: Event) {

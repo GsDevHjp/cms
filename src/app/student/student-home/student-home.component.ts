@@ -13,6 +13,8 @@ import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.compo
   styleUrls: ['./student-home.component.css']
 })
 export class StudentHomeComponent implements OnInit {
+  displayedColumns: string[] = ['notification'];
+
   name: any;
   opened: boolean = true
   @ViewChild(MatSidenav)

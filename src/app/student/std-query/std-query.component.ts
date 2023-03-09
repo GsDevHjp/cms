@@ -13,10 +13,14 @@ export class StdQueryComponent implements OnInit {
   admin = 1
   Query_Form !: FormGroup
   actionBtn: string = "Submit"
-  instupdate: string = "Query"
+  headbtn: string = "Query"
   login_deatils: any;
   login: any;
   std_id: any;
+  autoselect='Low'
+  inst_id: any;
+  inst_id_for_inst_login: any;
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public editquery: any,
     private FormBuilder: FormBuilder,
@@ -29,19 +33,25 @@ export class StdQueryComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.std_name)
     this.std_id = this.login.std_id
-    console.log("vhdfjdv" + this.login.std_id)
+
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.institute_id_fk
   }
 
   ngOnInit(): void {
     this.Query_Form = this.FormBuilder.group({
       query_id: [''],
+      query_priority: ['', Validators.required],
       query_message: ['', Validators.required],
-      std_id_fk: [''],
+      query_date: ['', Validators.required],
+      std_id_fk:[''],
+      institute_id_fk:[''],
       admin_id_fk: ['', Validators.required],
     })
-
+    this.Query_Form.controls['query_date'].setValue(new Date().toISOString().slice(0, 10));
     this.Query_Form.controls['std_id_fk'].setValue(this.login.std_id);
-
+    this.Query_Form.controls['institute_id_fk'].setValue(this.login.institute_id_fk);
   }
   add_query() {
     console.log(this.Query_Form.value)

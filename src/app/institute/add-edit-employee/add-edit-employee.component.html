@@ -11,37 +11,46 @@
                 <input formControlName="emp_name" matInput>
             </mat-form-field>
 
+            <mat-form-field appearance="fill" id="mobil">
+                <mat-label>Mobile</mat-label>
+                <input type="number" formControlName="emp_whatsapp" matInput
+                    onkeypress="return this.value.length < 10;">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Aadhar No </mat-label>
+                <input type="number" formControlName="emp_aadhar_no" matInput
+                    onkeypress="return this.value.length < 12;">
+            </mat-form-field>
+
+        </div>
+
+        <div class="column">
+
             <mat-form-field appearance="fill">
                 <mat-label>Email</mat-label>
                 <input type="email" formControlName="emp_email" matInput>
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label> Acount No</mat-label>
-                <input type="number" formControlName="emp_account_no" matInput onkeypress="return this.value.length < 18;">
-            </mat-form-field>
-        </div>
-        
-        <div class="column">
-            <mat-form-field appearance="fill" id="mobil">
-                <mat-label>Mobile</mat-label>
-                <input type="number" formControlName="emp_whatsapp" matInput onkeypress="return this.value.length < 10;">
-            </mat-form-field>
+
 
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
                 <input type="text" formControlName="emp_password" matInput onkeypress="return this.value.length < 20;">
             </mat-form-field>
 
-            <mat-form-field appearance="fill" id="account">
-                <mat-label>Holder Name </mat-label>
-                <input formControlName="emp_ac_holder_name" matInput>
+            <mat-form-field appearance="fill">
+                <mat-label> Account No</mat-label>
+                <input type="number" formControlName="emp_account_no" matInput
+                    onkeypress="return this.value.length < 18;">
             </mat-form-field>
+
         </div>
 
         <div class="column">
-            <mat-form-field appearance="fill">
-                <mat-label>Aadhar No </mat-label>
-                <input type="number" formControlName="emp_aadhar_no" matInput onkeypress="return this.value.length < 12;">
+
+            <mat-form-field appearance="fill" id="account">
+                <mat-label>Holder Name </mat-label>
+                <input formControlName="emp_ac_holder_name" matInput>
             </mat-form-field>
 
             <mat-form-field appearance="fill">

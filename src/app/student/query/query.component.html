@@ -19,6 +19,11 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="query_priority">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Priority</th>
+        <td mat-cell *matCellDef="let row">{{row.query_priority}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="query_message">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Massage </th>
         <td mat-cell *matCellDef="let row">{{row.query_message}}</td>
@@ -29,21 +34,9 @@
         <td mat-cell *matCellDef="let row">{{row.query_answer}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="query_description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let row">{{row.query_description}}</td>
-      </ng-container>
-
       <ng-container matColumnDef="query_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
         <td mat-cell *matCellDef="let row">{{row.query_date}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <td mat-cell *matCellDef="let row">
-          <mat-icon style="cursor: pointer;" (click)="deleteQuery(row)">delete</mat-icon>
-        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
