@@ -1,19 +1,30 @@
 <mat-toolbar>
-    <span class="example-spacer">{{instupdate}}</span>
+    <span class="example-spacer">{{headbtn}}</span>
     <mat-icon mat-dialog-close>cancel</mat-icon>
 </mat-toolbar>
 
 <form [formGroup]="Query_Form">
 
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Massage</mat-label>
-        <input matInput formControlName="query_message"> 
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="query_priority" [ngModel]="autoselect">
+            <mat-option value="Low">Low</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="High">High</mat-option>
+        </mat-select>
     </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Massage</mat-label>
+        <textarea matInput formControlName="query_message"></textarea> 
+    </mat-form-field>
+
+    <input type="date" formControlName="query_date" hidden>
 
     <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
 </form>
 <div class="submit">
     <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="add_query()">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="add_query()" [disabled]="!this.Query_Form.valid">{{actionBtn}}</button>
 </div>

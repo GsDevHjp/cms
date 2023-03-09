@@ -18,6 +18,7 @@ export class AddEditQueryComponent implements OnInit {
   login_deatils: any;
   login: any;
   inst_id: any;
+  autoselect='Low'
   constructor(
     @Inject(MAT_DIALOG_DATA) public editquery: any,
     private FormBuilder: FormBuilder,
@@ -37,11 +38,10 @@ export class AddEditQueryComponent implements OnInit {
     this.Query_Form = this.FormBuilder.group({
       query_id: [''],
       query_message: ['', Validators.required],
-      query_answer: [''],
-      query_description: [''],
+      query_answer: ['',Validators.required],
+      query_priority: [''],
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
-      query_date: [new Date().toISOString().slice(0, 10)],
     })
     this.Query_Form.controls['institute_id_fk'].setValue(this.inst_id);
 
@@ -50,30 +50,11 @@ export class AddEditQueryComponent implements OnInit {
       this.Query_Form.controls['query_id'].setValue(this.edit_queary.query_id);
       this.Query_Form.controls['query_message'].setValue(this.edit_queary.query_message);
       this.Query_Form.controls['query_answer'].setValue(this.edit_queary.query_answer);
-      this.Query_Form.controls['query_description'].setValue(this.edit_queary.query_description);
+      this.Query_Form.controls['query_priority'].setValue(this.edit_queary.query_priority);
       this.Query_Form.controls['admin_id_fk'].setValue(this.edit_queary.admin_id_fk);
     }
   }
   add_query() {
-    console.log(this.Query_Form.value)
-    if (!this.edit_queary) {
-      this.manageservice.post_query(this.Query_Form.value).subscribe(
-        (res: any) => {
-          console.log(res)
-          this.matref.close();
-          this.popup.success({ detail: 'Success', summary: 'Query Saved', })
-          this.router.navigate(['/institutehome/instquery'])
-        },
-        (error: any) => {
-          this.popup.error({ detail: 'Unsuccess', summary: 'Query Not Saved', })
-        }
-      )
-    }
-    else {
-      this.query_edit()
-    }
-  }
-  query_edit() {
     this.manageservice.put_quary(this.Query_Form.value).subscribe({
       next: (res) => {
         console.log(res)

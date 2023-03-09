@@ -20,6 +20,8 @@ export class AddEditEmployeeComponent implements OnInit {
   login: any;
   inst_id: any;
   inst_id_for_inst_login: any;
+  image_url:any = "https://greensoft.net.in/gscms/assets/certificate/man.png"
+  image_select:any
 
   constructor(
     private popup: NgToastService,
@@ -143,7 +145,12 @@ export class AddEditEmployeeComponent implements OnInit {
   resetEmp() {
     this.empForm.reset()
   }
-
+  onimage(files:any) {
+    if (files.length === 0) {
+      return;
+    }
+  }
+  
   onPhotoUpload(e: any) {
     if (e.target.files) {
       const profile = e.target.files[0];

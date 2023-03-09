@@ -9,6 +9,7 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  // baseUrl: string = 'http://localhost/cmsapinew/';
  
   // dashboard  
   get_dashboad(data: any) {
@@ -316,12 +317,12 @@ export class ManageService {
   }
 
   // for query module 
-  // get_query_by_inst_id() {
-  //   return this.http.get<[]>(this.baseUrl + 'query_view.php')
-  // }
-  get_query_by_inst_id(data: any) {
-    return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
+  get_query_by_inst_id() {
+    return this.http.get<[]>(this.baseUrl + 'query_view.php')
   }
+  // get_query_by_inst_id(data: any) {
+  //   return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
+  // }
   post_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'query_insert.php', data)
   }

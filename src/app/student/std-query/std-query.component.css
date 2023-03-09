@@ -17,9 +17,6 @@ mat-toolbar {
   position: relative;
   color: whitesmoke;
 }
-mat-form-field{
-  margin-left:10px;
-}
 .submit {
   justify-content: center;
   display: flex;
