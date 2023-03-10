@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
   rohit:boolean = false;
   innerWidth: any;
+  contactForm !: FormGroup;
+  
 
   constructor() { 
     
@@ -36,5 +39,13 @@ export class HomepageComponent implements OnInit {
     else{
       this.rohit = false
     }
+  }
+
+  sendmsg(){
+    alert('Success')
+  }
+
+  reset(){
+    this.contactForm.reset()
   }
 }

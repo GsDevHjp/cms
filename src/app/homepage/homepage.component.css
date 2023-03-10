@@ -1,8 +1,12 @@
-
-
-/** header code start from here **/
-
-#header {
+#wrapper {
+    width: 100%;
+    height: auto;
+    float: left;
+  }
+  
+  /** header code start from here **/
+  
+  #header {
     width: 100%;
     height: 90px;
     float: left;
@@ -10,45 +14,41 @@
     box-shadow: 1px 1px 15px rgb(188, 188, 188);
     position: fixed;
     z-index: 5;
-}
-
-#logo {
+  }
+  
+  #logo {
     width: 30%;
     height: 100%;
     float: left;
     overflow: hidden;
-}
-
-#logo img {
+  }
+  
+  #logo img {
     scale: 1.20;
     margin-left: 50%;
-}
-
-.action_btn {
+  }
+  
+  .action_btn {
     color: #fff;
-}
-
-.action_btn:hover {
+  }
+  
+  .action_btn:hover {
     background-color: #43474f;
-}
-
-.menu {
+  }
+  
+  .menu {
     width: calc(100% - 35%);
     float: left;
     height: 100%;
-}
-
-a {
+  }
+  
+  a {
     text-decoration: none;
     color: black;
     transition: 0.5s;
-}
-
-a:hover {
-    color: white;
-}
-
-.menu button {
+  }
+  
+  .menu button {
     float: left;
     margin-top: 28px;
     margin-left: 10px;
@@ -56,89 +56,88 @@ a:hover {
     font-family: cambria;
     border-radius: 20px;
     transition: 0.5s;
-}
-
-.menu button:hover {
-    background-color: #292c30;
+  }
+  
+  .menu button:hover a{
     color: white;
-}
-
-#navigation_bar {
+  }
+  
+  #navigation_bar {
     width: 5%;
     height: 100%;
     float: right;
     display: none;
-}
-
-.nav button:hover:not(.active){
-    background-color: rgb(29, 32, 82);
+  }
+  
+  .nav button:hover:not(.active){
+    background-color:rgb(40, 46, 49);
     color: white;
     cursor: pointer;
- }
+  }
   .active{
-    background-color:rgb(41, 38, 98);
+    background-color:rgb(40, 46, 49);
     cursor: pointer;
    
-}
-
-/** slider code start from here **/
-#slider_area {
+  }
+  
+  /** slider code start from here **/
+  #slider_area {
     width: 100%;
     height: 500px;
     float: left;
     margin-top: 80px;
-}
-
-#for_text {
+  }
+  
+  #for_text {
     width: 50%;
     height: 100%;
     float: left;
-}
-
-#for_image {
+  }
+  
+  #for_image {
     width: 50%;
     height: 100%;
     float: left;
-}
-
-#for_image img {
+  }
+  
+  #for_image img {
     width: 80%;
     height: 80%;
     margin: 8%;
-}
-
-#text_1 {
+  }
+  
+  #text_1 {
     font-size: 50px;
     float: left;
     margin-top: 180px;
     line-height: 50px;
     margin-left: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#whatshapp_chat {
+  }
+  
+  #whatshapp_chat {
     width: 65px;
     height: 65px;
     position: fixed;
     bottom: 30px;
     right: 15px;
     z-index: 20;
-}
-
-#whatshapp_chat img {
+  }
+  
+  #whatshapp_chat img {
     width: 100%;
     height: 100%;
-}
-
-
-/** facilities code start from here**/
-#facilities {
+  }
+  
+  
+  /** facilities code start from here**/
+  #facilities {
     width: 100%;
     height: auto;
     float: left;
-}
-
-#facility_title {
+  }
+  
+  #facility_title {
     width: 100%;
     height: 50px;
     float: left;
@@ -146,9 +145,9 @@ a:hover {
     font-family: cambria;
     text-align: center;
     line-height: 50px;
-}
-
-.facilitie_card {
+  }
+  
+  .facilitie_card {
     width: 48%;
     height: 300px;
     float: left;
@@ -157,18 +156,18 @@ a:hover {
     border-radius: 10px;
     margin-bottom: 1.3%;
     overflow: hidden;
-}
-
-.facility_heading {
+  }
+  
+  .facility_heading {
     width: 100%;
     height: 50px;
     float: left;
     font-size: 22px;
     font-family: cambria;
     padding: 15px;
-}
-
-.facility_content {
+  }
+  
+  .facility_content {
     width: 40%;
     height: calc(100% - 50px);
     float: left;
@@ -178,23 +177,23 @@ a:hover {
     line-height: 28px;
     padding: 15px;
     text-align: justify;
-}
-
-.facility_image {
+  }
+  
+  .facility_image {
     width: 60%;
     height: calc(100% - 50px);
     float: left;
-}
-
-/* about code start from here */
-#about {
+  }
+  
+  /* about code start from here */
+  #about {
     width: 100%;
     height: auto;
     float: left;
     box-shadow: 1px 1px 8px rgb(199, 199, 199);
-}
-
-#about_head {
+  }
+  
+  #about_head {
     width: 100%;
     height: 50px;
     float: left;
@@ -202,9 +201,9 @@ a:hover {
     font-family: cambria;
     text-align: center;
     line-height: 50px;
-}
-
-#about_content {
+  }
+  
+  #about_content {
     width: 100%;
     height: calc(100% - 50px);
     float: left;
@@ -214,11 +213,11 @@ a:hover {
     line-height: 35px;
     text-align: justify;
     word-spacing: 8px;
-}
-
-/* contact code start from here */
-
-#contact {
+  }
+  
+  /* contact code start from here */
+  
+  #contact {
     width: 80%;
     height: 500px;
     float: left;
@@ -229,25 +228,25 @@ a:hover {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 1px 1px 10px rgb(176, 176, 176);
-}
-
-#contact_form {
+  }
+  
+  #contact_form {
     width: 50%;
     height: 100%;
     float: left;
-}
-
-#top_input {
+  }
+  
+  #top_input {
     margin-top: 90px;
-}
-
-#contact_form mat-form-field {
+  }
+  
+  #contact_form mat-form-field {
     width: 60%;
     margin-left: 20%;
-
-}
-
-#reset_btn {
+  
+  }
+  
+  #reset_btn {
     background-color: orangered;
     color: #fff;
     font-family: cambria;
@@ -255,9 +254,9 @@ a:hover {
     float: left;
     margin-left: 35%;
     margin-top: 20px;
-}
-
-#submit_btn {
+  }
+  
+  #submit_btn {
     background-color: rgb(9, 85, 227);
     color: #fff;
     font-family: cambria;
@@ -265,30 +264,30 @@ a:hover {
     margin-left: 5px;
     float: left;
     margin-top: 20px;
-}
-
-#contact_form_img {
+  }
+  
+  #contact_form_img {
     width: 50%;
     height: 100%;
     float: left;
-}
-
-#contact_form_img img {
+  }
+  
+  #contact_form_img img {
     width: 100%;
     height: 100%;
-}
-
-/***** why should choose us code start from here ******/
-
-#choose_us{
+  }
+  
+  /***** why should choose us code start from here ******/
+  
+  #choose_us{
     width: 100%;
     height: auto;
     background-color: rgb(250, 250, 250);
     float: left;
     margin-top: 10px;
-}
-
-#choose_title{
+  }
+  
+  #choose_title{
     width: 100%;
     height: 50px;
     float: left;
@@ -297,9 +296,9 @@ a:hover {
     padding: 10px;
     line-height: 40px;
     letter-spacing: 2px;
-}
-
-#choose_content{
+  }
+  
+  #choose_content{
     width: 100%;
     height: auto;
     float: left;
@@ -309,9 +308,9 @@ a:hover {
     line-height: 34px;
     word-spacing: 5px;
     text-align: justify;
-}
-
-#copyright {
+  }
+  
+  #copyright {
     width: 100%;
     height: 50px;
     float: left;
@@ -321,11 +320,11 @@ a:hover {
     line-height: 50px;
     font-size: 18px;
     font-family: cambria;
-}
-
-
-/** Media query start from here ***/
-@media(max-width:750px) and (min-width:500px){
+  }
+  
+  
+  /** Media query start from here ***/
+  @media(max-width:750px) and (min-width:500px){
     #header{
         height: 60px;
     }
@@ -348,8 +347,8 @@ a:hover {
     width: auto;
     height: auto;
     margin-top: 5px;
-}
-
+  }
+  
     #navigation_bar button mat-icon{
     width: auto;
     height: auto;
@@ -360,7 +359,7 @@ a:hover {
     float: left;
     cursor: pointer;
     color: black;
-}
+  }
     #slider_area{
         width: 100%;
         height: auto;
@@ -415,21 +414,21 @@ a:hover {
         height: 250px;
     
     }   
-} 
-
-@media(max-width:500px) and (min-width:100px) {
+  } 
+  
+  @media(max-width:500px) and (min-width:100px) {
     #header {
         height: 80px;
     }
-
+  
     #logo {
         width: 90%;
     }
-
+  
     #logo img {
         margin-left: 10%;
     }
-
+  
     /* #menu {
         display: none;
     } */
@@ -438,7 +437,7 @@ a:hover {
         height: 100%;
         display: block;
     }
-
+  
     .nav{
         width: 100%;
         transition: 0.5s;
@@ -446,23 +445,22 @@ a:hover {
       }
       section{
         background-color: rgb(40, 46, 49);
+        height: 400px;
       }
       .nav button{
-        width: 100%;
-        margin-left: 0px;
+        width: calc(100% - 10%);
+        margin-left: 5%;
         float: left;
         padding: 0;
         line-height: 10px;
         padding: 15px;
+        margin-top: 12.5px;
         letter-spacing: 1px;
-        color: #fff;
+        /* color: #fff; */
         font-family: cambria;
+        background-color: aliceblue;
         font-size: 18px;
         border: none;
-      }
-
-      .nav button a{
-        color: #fff;
       }
       .nav button:hover{
         background-color: #fff;
@@ -485,7 +483,7 @@ a:hover {
         right: 10px;
         top: 25px;
     }
-
+  
     #navigation_bar button mat-icon {
         width: auto;
         height: auto;
@@ -494,7 +492,7 @@ a:hover {
         cursor: pointer;
         color: black;
     }
-
+  
     #slider{
         width: 100%;
         height: 450px;
@@ -503,19 +501,19 @@ a:hover {
         width: 110%;
         height: 200px;
     }
-
+  
     #for_image img{
         scale: 1.2;
         margin-left: 16%;
     }
-
+  
     #text_1 {
         width: 100%;
         font-size: 35px;
         margin-top: 20px;
         margin-left: 20px;
     }
-
+  
     #for_image {
         width: 100%;
         height: 250px;
@@ -555,7 +553,7 @@ a:hover {
         margin-left: 8%;
         margin-bottom: -225px;
     }
-
+  
     #contact_form{
         width: 100%;
         height: 380px;
@@ -592,9 +590,9 @@ a:hover {
     }
     #choose_title{
         height: 40px;
-        font-size: 20px;
+        font-size: 22px;
     }
     #choose_content{
-        font-size: 18px;
+        font-size: 20px;
     }
-}
+  }

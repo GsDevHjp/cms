@@ -14,6 +14,7 @@ export class AddEditRegistrationComponent implements OnInit {
   admin = 1;
   hide = true;
   send_otp:any
+  valid_otp:boolean = true
   constructor(
     private popup:NgToastService,
     private FormBuilder: FormBuilder,
@@ -31,37 +32,54 @@ export class AddEditRegistrationComponent implements OnInit {
       inst_address: ['', Validators.required],
       inst_regist_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
-      get_opt: ['',],
+      otp_recive: [''],
     })
     this.inst_regist_from.controls['inst_regist_date'].setValue(new Date().toISOString().slice(0, 10));
    
   }
 
   inst_regist() {
+
     this.send_otp =  Math.floor(100000 + Math.random() * 900000);
     const formdata = new FormData()
     formdata.append("send_otp", this.send_otp) ;
     formdata.append("tomail",this.inst_regist_from.get('inst_email')?.value)
+    // this.manageservice.get_inst_by_email()
     this.manageservice.inst_reg_otp(formdata).subscribe(
       (res:any)=>{
-        console.log(res)
+        console.log(res.success)
+        if(res.success)
+        this.popup.success({ detail: 'Success', summary:'OTP Send Sucessfully...',})
+        else
+        this.popup.error({ detail: 'Fail', summary:'OTP Send Fail...',})
+
+      }
+    )
+  }
+
+  final_submit(){
+  console.log(this.inst_regist_from.value)
+    this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
+      (result: any) => {
+        console.log(result)
+        this.matref.close();
+        this.popup.success({ detail: 'Success', summary: 'Registration Successfully..',})
+      },
+      (error: any) => {
+        console.log(error)
+        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..',})
       }
     )
 
-    
-    // console.log(this.inst_regist_from.value)
-    // this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
-    //   (result: any) => {
-    //     console.log(result)
-    //     this.matref.close();
-    //     this.popup.success({ detail: 'Success', summary: 'Registration Successfully..',})
-    //   },
-    //   (error: any) => {
-    //     console.log(error)
-    //     this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..',})
-    //   }
-    // )
   }
+  match_otp(){
+  console.log(this.inst_regist_from.get('otp_recive')?.value)
+  if(this.send_otp == this.inst_regist_from.get('otp_recive')?.value){
+    this.valid_otp = false
+  }else{
+    this.valid_otp = true
+  }
+}
   form_reset() {
     this.inst_regist_from.reset()
   }

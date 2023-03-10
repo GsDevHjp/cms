@@ -23,7 +23,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>E-mail</mat-label>
-            <input type="email" matInput formControlName="inst_email">
+            <input type="email" matInput formControlName="inst_email" placeholder="Please Enter a Valid Email">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill" id="password">
@@ -42,14 +42,14 @@
 
         <mat-form-field class="example-full-width" appearance="fill" id="address">
             <mat-label>Address</mat-label>
-            <textarea matInput formControlName="inst_address"></textarea>
+            <textarea matInput formControlName="inst_address" ></textarea>
         </mat-form-field><br>
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
-        <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>OTP</mat-label>
-            <input type="Number" matInput formControlName="get_otp">
+            <input type="number" matInput formControlName="otp_recive" (keyup)="match_otp()" placeholder="Enter Email OTP">
         </mat-form-field>
          <button mat-raised-button color="primary" (click)="inst_regist()"
         [disabled]="!inst_regist_from.valid">Send OTP</button>
@@ -57,7 +57,7 @@
 
     <div class="register">
         <button mat-raised-button color="warn" (click)="form_reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="inst_regist()"
-            [disabled]="!inst_regist_from.valid">Register</button>
+        <button mat-raised-button color="primary" (click)="final_submit()"
+            [disabled]="valid_otp">Register</button>
     </div>
 </div>
