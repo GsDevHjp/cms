@@ -21,7 +21,6 @@ export class ManageService {
   admin_login(data: any) {
     return this.http.post<[]>(this.baseUrl + 'admin_login.php', data)
   }
-
   // for course module 
   get_course() {
     return this.http.get<[]>(this.baseUrl + 'course_view.php');
@@ -41,7 +40,6 @@ export class ManageService {
   get_course_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_course_by_inst_id.php', data);
   }
-
   // for batch module 
   get_batch() {
     return this.http.get<[]>(this.baseUrl + 'batch_view.php');
@@ -73,7 +71,6 @@ export class ManageService {
   get_std_for_batch_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_std_for_batch_id.php', data);
   }
-
   // for student module 
   get_student() {
     return this.http.get<[]>(this.baseUrl + 'std_view.php');
@@ -84,7 +81,6 @@ export class ManageService {
   put_student(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_update.php', data);
   }
-
   std_self_reg(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_self_reg.php', data);
   }
@@ -115,7 +111,6 @@ export class ManageService {
   duplicate_addmission(data: any) {
     return this.http.post<any>(this.baseUrl + 'duplicate_addmission.php', data);
   }
-
   // for fee module component payment recive
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
@@ -138,7 +133,6 @@ export class ManageService {
   student_conform(data: any) {
     return this.http.post<any>(this.baseUrl + 'student_conform.php', data);
   }
-
   // for enquiry module 
   post_enquiry(data: any) {
     return this.http.post<any>(this.baseUrl + 'enquiry_insert.php', data)
@@ -150,7 +144,6 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'get_enquiry_by_inst_id.php', data)
   }
   // for quiz module 
-
   get_quiz() {
     return this.http.get<[]>(this.baseUrl + 'quiz_view.php');
   }
@@ -172,7 +165,6 @@ export class ManageService {
   get_quiz_course(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_quiz_course.php', data)
   }
-
   // for notification module
   post_notification(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_insert.php', data);
@@ -180,7 +172,6 @@ export class ManageService {
   put_notification(data: any) {
     return this.http.put<any>(this.baseUrl + 'notification_update.php', data)
   }
-
   notification_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'notification_delete.php', data);
   }
@@ -213,7 +204,6 @@ export class ManageService {
   get_notes_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_notes_by_inst_id.php', data);
   }
-
   // for inst syllabus module
   post_inst_syllabus(data: any) {
     return this.http.post<any>(this.baseUrl + 'inst_syllabus_insert.php', data);
@@ -259,25 +249,20 @@ export class ManageService {
   inst_login(data: any) {
     return this.http.post<any>(this.baseUrl + 'institute_login.php', data);
   }
-
   // for admission 
   std_email_verfiy(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_email_verify.php', data);
   }
-
   get_admission() {
     return this.http.get<[]>(this.baseUrl + 'admission_view.php')
   }
   get_admission_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_admission_by_inst_id.php', data);
   }
-
   // for fee 
-
   get_fee_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_fee_by_std_id.php', data);
   }
-
   // for address 
   post_country(data: any) {
     return this.http.post<any>(this.baseUrl + 'country_insert.php', data)
@@ -291,7 +276,6 @@ export class ManageService {
   delete_country(data: any) {
     return this.http.post<any>(this.baseUrl + 'country_delete.php', data);
   }
-
   post_state(data: any) {
     return this.http.post<any>(this.baseUrl + 'state_insert.php', data)
   }
@@ -307,7 +291,6 @@ export class ManageService {
   delete_state(data: any) {
     return this.http.post<any>(this.baseUrl + 'state_delete.php', data);
   }
-
   post_district(data: any) {
     return this.http.post<any>(this.baseUrl + 'district_insert.php', data)
   }
@@ -323,7 +306,6 @@ export class ManageService {
   delete_district(data: any) {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
   }
-
   post_block(data: any) {
     return this.http.post<any>(this.baseUrl + 'block_insert.php', data)
   }
@@ -339,7 +321,6 @@ export class ManageService {
   delete_block(data: any) {
     return this.http.post<any>(this.baseUrl + 'block_delete.php', data);
   }
-
   post_panchayat(data: any) {
     return this.http.post<any>(this.baseUrl + 'panchayat_insert.php', data)
   }
@@ -355,7 +336,6 @@ export class ManageService {
   delete_panchayat(data: any) {
     return this.http.post<any>(this.baseUrl + 'panchayat_delete.php', data);
   }
-
   post_ward(data: any) {
     return this.http.post<any>(this.baseUrl + 'ward_insert.php', data)
   }
@@ -387,7 +367,6 @@ export class ManageService {
   delete_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'query_delete.php', data);
   }
-
   //  For Employee Module
   getEmployee() {
     return this.http.get<[]>(this.baseUrl + 'employee_view.php')
@@ -401,7 +380,6 @@ export class ManageService {
   delete_employee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_delete.php', data);
   }
-
   // for dues  module working 
   get_dues_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_inst_id.php', data);
@@ -409,10 +387,7 @@ export class ManageService {
   get_dues_by_std_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_std_id.php', data);
   }
-
   // for certificate module working
-
-
   get_certificate() {
     return this.http.get<[]>(this.baseUrl + 'get_certificate.php')
   }
@@ -453,10 +428,21 @@ export class ManageService {
   expence_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'expence_delete.php', data)
   }
-
   // for otp verfication 
-
   inst_reg_otp(data: any) {
     return this.http.post<any>(this.baseUrl + 'send_mail.php', data)
+  }
+  //ledger module
+  post_ledger(data:any){
+    return this.http.post<any>(this.baseUrl + 'ledger_insert.php', data)
+  }
+  put_ledger(data:any){
+    return this.http.put<any>(this.baseUrl + 'ledger_update.php', data)
+  }
+  delete_ledger(data:any){
+    return this.http.post<any>(this.baseUrl + 'ledger_delete.php', data)
+  }
+  get_ledger(){
+    return this.http.get<[]>(this.baseUrl + 'ledger_view.php',)
   }
 }
