@@ -20,17 +20,17 @@
   
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
-        <td mat-cell *matCellDef="let row"> {{row.country_name}}</td>
+        <td mat-cell *matCellDef="let row"> {{row.country_id_fk}}</td>
       </ng-container>
 
       <ng-container matColumnDef="state">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
-        <td mat-cell *matCellDef="let row"> {{row.state_name}}</td>
+        <td mat-cell *matCellDef="let row"> {{row.state_id_fk}}</td>
       </ng-container>
 
       <ng-container matColumnDef="district">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
-        <td mat-cell *matCellDef="let row"> {{row.district_name}}</td>
+        <td mat-cell *matCellDef="let row"> {{row.district_id_fk}}</td>
       </ng-container>
 
       <ng-container matColumnDef="block">

@@ -31,6 +31,8 @@ export class AddEditStudentComponent implements OnInit {
   std_data: any;
   std: any = 1;
   autoselect='Male'
+  state_data:any
+  district_data:any
 
   constructor(
     private popup: NgToastService,
@@ -121,6 +123,13 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
     }
     this.student_form.controls['institute_id_fk'].setValue(this.login.inst_id);
+
+    this.service.get_state().subscribe(
+      (state_res: any) => {
+        this.state_data = state_res.data
+      }
+    )
+  
   }
 
   student_btn() {
@@ -278,5 +287,16 @@ export class AddEditStudentComponent implements OnInit {
 
   reset() {
     this.student_form.reset()
+  }
+
+  get_district(event: any) {
+    console.log(event)
+    const districtformdata = new FormData();
+    districtformdata.append('state_id', event)
+    this.service.get_district_by_state(districtformdata).subscribe(
+      (district_res: any) => {
+        this.district_data = district_res.data
+      }
+    )
   }
 }

@@ -55,14 +55,14 @@ export class AddEditTakeAddmissionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const formdata = new FormData()
-    formdata.append("inst_id", this.inst_id)
-    this.service.get_course_by_inst_id(formdata).subscribe(
-      (res: any) => {
-        this.course_data = res.data
-      }
+    if(this.inst_id)(
+      this.get_course_by_inst(this.inst_id)
     )
-
+    if(this.edit_addmission){
+      this.get_course_by_inst(this.edit_addmission.inst_id)
+    }
+    
+   
     this.addmission_form = this.fb.group({
       std_regist_no: ['', Validators.required],
       course_id_fk: ['', Validators.required],
@@ -88,22 +88,31 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id_fk = this.login.institute_id_fk
-    console.log(this.edit_addmission.std_regist_no)
-    if(this.login){
+    if(this.login.institute_id_fk > 0){
       this.addmission_form.controls['std_id_fk'].setValue(this.login.std_id);
       this.addmission_form.controls['inst_id_fk'].setValue(this.login.institute_id_fk);
       this.addmission_form.controls['std_regist_no'].setValue(this.login.std_regist_no);
     }
+    console.log(this.edit_addmission)
     if(this.edit_addmission){
-      console.log(this.edit_addmission)
       this.addmission_form.controls['std_id_fk'].setValue(this.edit_addmission.std_id);
       this.addmission_form.controls['inst_id_fk'].setValue(this.edit_addmission.inst_id);
       this.addmission_form.controls['std_regist_no'].setValue(this.edit_addmission.std_regist_no);
     }
   }
+  get_course_by_inst(inst_id:any){
+    const formdata = new FormData()
+    formdata.append("inst_id", inst_id)
+    this.service.get_course_by_inst_id(formdata).subscribe(
+      (res: any) => {
+        this.course_data = res.data
+      }
+    )
+
+  }
 
 
- 
+
 
   get_course(event: any) {
     this.resetform()
@@ -132,10 +141,14 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     const batchfromdata = new FormData();
     batchfromdata.append('batch_id', event)
-    batchfromdata.append('inst_id', this.inst_id)
+    if(this.inst_id){
+      batchfromdata.append('inst_id', this.inst_id)
+    }
+    if(this.edit_addmission){
+      batchfromdata.append('inst_id', this.edit_addmission.inst_id)
+    }
     this.service.get_batch_by_batch_id(batchfromdata).subscribe(
       (batch_res: any) => {
-        console.log(batch_res)
         this.addmission_form.controls['batch_arrival'].setValue(this.batch_data[0].batch_arrival);
         this.addmission_form.controls['batch_departure'].setValue(this.batch_data[0].batch_departure);
         this.addmission_form.controls['batch_status'].setValue(this.batch_data[0].batch_status);
@@ -145,13 +158,34 @@ export class AddEditTakeAddmissionComponent implements OnInit {
 
     this.service.get_std_for_batch_id(batchfromdata).subscribe(
       (res:any)=>{
-        console.log(res.data)
         this.addmission_form.controls['roll_no'].setValue(res.data.length + 1)
       }
     )
     this.addmission_form.controls['roll_no'].setValue(1)
 
-   
+        // for addmisstion check 
+    const fromdata =  new FormData()
+    if(this.edit_addmission){
+      fromdata.append('std_id', this.edit_addmission.std_id)
+    }
+    if(this.inst_id){
+      fromdata.append('std_id', this.login.std_id)
+    } 
+    fromdata.append('batch_id', event)
+    this.service.duplicate_addmission(fromdata).subscribe(
+      (result:any)=>{
+        if(result.data.admission_id > 0){
+          this.popup.error({ detail: 'Already Admission', summary: 'Already Taken Admission ' })
+          this.addmission_form.controls['batch_id_fk'].reset()
+          this.addmission_form.controls['batch_arrival'].reset()
+          this.addmission_form.controls['batch_status'].reset()
+          this.addmission_form.controls['roll_no'].reset()
+        }
+
+      }
+    )
+
+
 
   }
 
@@ -168,13 +202,27 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     formdata.append('admissition_status', this.addmission_form.get('admissition_status')?.value)
     formdata.append('total_fee',this.addmission_form.get('course_total_fee')?.value)
 
+      if(this.edit_addmission){
+        formdata.append('admissition_status','1')
+      }
+      if(this.inst_id){
+        formdata.append('admissition_status','0')
+      }
+
+
     this.service.std_admission(formdata).subscribe(
       (result: any) => {
         console.log(result)
         this.addmission_form.reset();
         this.matref.close(0)
         this.popup.success({ detail: 'Success', summary: 'Admission Successfully..' })
-        this.router.navigate(['/studenthome/takeaddmission'])
+        if(this.edit_addmission){
+          this.router.navigate(['/institutehome/admission'])
+        }
+        if(this.inst_id){
+          this.router.navigate(['/studenthome/takeaddmission'])
+
+        }
       },
       (error: any) => {
         console.log(error)

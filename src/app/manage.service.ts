@@ -108,6 +108,9 @@ export class ManageService {
   get_dues_by_reg_no(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_reg_no.php', data);
   }
+  duplicate_addmission(data: any) {
+    return this.http.post<any>(this.baseUrl + 'duplicate_addmission.php', data);
+  }
   // for fee module component payment recive
   get_fee() {
     return this.http.get<[]>(this.baseUrl + 'fee_view.php')
@@ -282,6 +285,9 @@ export class ManageService {
   get_state() {
     return this.http.get<[]>(this.baseUrl + 'state_view.php')
   }
+  get_state_by_country(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_state_by_country.php', data)
+  }
   delete_state(data: any) {
     return this.http.post<any>(this.baseUrl + 'state_delete.php', data);
   }
@@ -293,6 +299,9 @@ export class ManageService {
   }
   get_district() {
     return this.http.get<[]>(this.baseUrl + 'district_view.php')
+  }
+  get_district_by_state(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_district_by_state.php', data)
   }
   delete_district(data: any) {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
@@ -306,6 +315,9 @@ export class ManageService {
   get_block() {
     return this.http.get<[]>(this.baseUrl + 'block_view.php')
   }
+  get_block_by_district(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_block_by_district.php', data)
+  }
   delete_block(data: any) {
     return this.http.post<any>(this.baseUrl + 'block_delete.php', data);
   }
@@ -317,6 +329,9 @@ export class ManageService {
   }
   get_panchayat() {
     return this.http.get<[]>(this.baseUrl + 'panchayat_view.php')
+  }
+  get_panchayat_by_block(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_panchayat_by_block.php', data)
   }
   delete_panchayat(data: any) {
     return this.http.post<any>(this.baseUrl + 'panchayat_delete.php', data);

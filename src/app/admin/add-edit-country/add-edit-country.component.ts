@@ -14,11 +14,14 @@ export class AddEditCountryComponent implements OnInit {
   admin = 1;
   country: string = 'Add Country'
   actionBtn: string = 'Add'
+  login_deatils: any;
+  login: any;
+  inst_id: any;
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
     private service: ManageService,
-    private router:Router,
+    private router: Router,
     private matref: MatDialogRef<AddEditCountryComponent>,
     @Inject(MAT_DIALOG_DATA) public edit_country: any
   ) {
@@ -27,6 +30,11 @@ export class AddEditCountryComponent implements OnInit {
     };
   }
   ngOnInit(): void {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    console.log("inst"+this.inst_id)
+
     this.address_from = this.fb.group({
       country_id: [''],
       country_name: ['', Validators.required],
@@ -53,12 +61,17 @@ export class AddEditCountryComponent implements OnInit {
             console.log(result)
             this.address_from.reset();
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Country Insert Successfully...',})
-            this.router.navigate(['/adminhome/country'])
+            this.popup.success({ detail: 'Success', summary: 'Country Insert Successfully...', })
+            if(this.inst_id){
+              this.router.navigate(['/institutehome/country'])
+            }
+            else{
+              this.router.navigate(['/adminhome/country'])
+            }
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Insert..',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Insert..', })
           }
         )
       }
@@ -73,11 +86,17 @@ export class AddEditCountryComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Country Update Successfully...',})
-        this.router.navigate(['/adminhome/country'])
+        this.popup.success({ detail: 'Success', summary: 'Country Update Successfully...', })
+        if(this.inst_id){
+          this.router.navigate(['/institutehome/country'])
+        }
+        else{
+          this.router.navigate(['/adminhome/country'])
+        }
+
       },
       error: () => {
-        this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Update..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Country Not Update..', })
       }
     })
   }
