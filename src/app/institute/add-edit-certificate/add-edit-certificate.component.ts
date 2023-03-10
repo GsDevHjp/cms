@@ -24,24 +24,21 @@ export class AddEditCertificateComponent implements OnInit {
   catselect = 'Select'
   autoselect = 'Male'
   editpermanent: any
-  certificate_id: any;
+  certificate_id: any = 0;
   institute_id: any
   course_data: any
  
 
   // for new docment  
   url:string = 'https://greensoft.net.in/gscms/assets/certificate/'
-  aadhar_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  aadhar_url:any = "assets/doc.png"
   aadhar_select:any
 
-  certificate_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  certificate_url:any = "assets/pdf_icon.jpg"
   certificate_select:any
 
-  markseet_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
+  markseet_url:any = "assets/doc.png"
   markseet_select:any
-
-  residential_url:any = "https://greensoft.net.in/gscms/assets/certificate/demodoc.png"
-  residential_select:any 
 
   image_url:any = "https://greensoft.net.in/gscms/assets/certificate/man.png"
   image_select:any
@@ -56,7 +53,6 @@ export class AddEditCertificateComponent implements OnInit {
     private router: Router,
   ) {
     this.certificate_id = this.router.getCurrentNavigation()?.extras
-
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -65,12 +61,6 @@ export class AddEditCertificateComponent implements OnInit {
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
 
-    this.services.get_certificate().subscribe(
-      (res: any) => {
-        console.log(res.data[0].certificate_id)
-        this.certificate_id = res.data[0].certificate_id
-      }
-    )
     
   }
 
@@ -134,7 +124,6 @@ export class AddEditCertificateComponent implements OnInit {
       std_aadhar_card: ['', Validators.required],
       std_gen_certificate: ['', Validators.required],
       std_10th_marksheet: ['', Validators.required],
-      std_residential: ['', Validators.required],
       std_image: ['', Validators.required],
       status: ['0'],
       institute_id_fk: ['', Validators.required],
@@ -189,14 +178,12 @@ export class AddEditCertificateComponent implements OnInit {
           this.markseet_url = this.url + res.data[0].std_10th_marksheet
           this.aadhar_url = this.url + res.data[0].std_aadhar_card
           this.certificate_url = this.url + res.data[0].std_gen_certificate
-          this.residential_url = this.url +  res.data[0].std_residential
           this.image_url = this.url +  res.data[0].std_image
 
           // for update as same 
           this.aadhar_select = res.data[0].std_aadhar_card
           this.certificate_select = res.data[0].std_gen_certificate
           this.markseet_select = res.data[0].std_10th_marksheet
-          this.residential_select = res.data[0].std_residential
           this.image_select = res.data[0].std_image
         }
       })
@@ -204,6 +191,35 @@ export class AddEditCertificateComponent implements OnInit {
   }
   
   personal_add() {
+    if(this.certificate_id > 0){
+      const personaldata = new FormData();
+      personaldata.append('certificate_id', this.certificate_id);
+      personaldata.append('std_name', this.personal_form.get('std_name')?.value);
+      personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
+      personaldata.append('std_mother_name', this.personal_form.get('std_mother_name')?.value);
+      personaldata.append('std_dob', this.personal_form.get('std_dob')?.value);
+      personaldata.append('std_contact_no', this.personal_form.get('std_contact_no')?.value);
+      personaldata.append('std_alt_contect_no', this.personal_form.get('std_alt_contect_no')?.value);
+      personaldata.append('std_email', this.personal_form.get('std_email')?.value);
+      personaldata.append('std_aadhar_no', this.personal_form.get('std_aadhar_no')?.value);
+      personaldata.append('std_category', this.personal_form.get('std_category')?.value);
+      personaldata.append('std_gender', this.personal_form.get('std_gender')?.value);
+      personaldata.append('institute_id_fk', this.inst_id);
+      personaldata.append('admin_id_fk', this.personal_form.get('admin_id_fk')?.value);
+      this.services.put_certificate_personal(personaldata).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.popup.success({ detail: 'Success', summary: 'Updated' })
+        },
+        (error: any) => {
+          console.log(error)
+          this.popup.error({ detail: 'Fail', summary: 'Not' })
+        }
+      )
+
+
+      return
+    }
       const personaldata = new FormData();
       personaldata.append('std_name', this.personal_form.get('std_name')?.value);
       personaldata.append('std_father_name', this.personal_form.get('std_father_name')?.value);
@@ -287,12 +303,12 @@ export class AddEditCertificateComponent implements OnInit {
   }
 
   document_submit() { 
+    console.log(this.certificate_id)
     const documentdata = new FormData();
     documentdata.append('certificate_id', this.certificate_id);
     documentdata.append('std_aadhar_card', this.aadhar_select[0]);
     documentdata.append('std_gen_certificate', this.certificate_select[0]);
     documentdata.append('std_10th_marksheet', this.markseet_select[0]);
-    documentdata.append('std_residential', this.residential_select[0]);
     documentdata.append('std_image',this.image_select[0]);
     documentdata.append('institute_id_fk', this.inst_id);
     this.services.put_certificate_document(documentdata).subscribe({
@@ -309,96 +325,49 @@ export class AddEditCertificateComponent implements OnInit {
   }
 
 
- 
 // fro aadhar upload 
 onaadhar(files:any) {
 if (files.length === 0) {
   return;
 }
-const mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  
-  return;
-}
 const reader = new FileReader();
 this.aadhar_select = files;
+console.log(this.aadhar_select)
 reader.onload = () => {
   this.aadhar_url = reader.result;
 };
 reader.readAsDataURL(this.aadhar_select[0]);
-  }
+}
   
   
-
 // fro oncertificate upload 
 oncertificate(files:any) {
 if (files.length === 0) {
-  return;
-}
-const mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  console.log('Only images are supported.');
   return;
 }
 const reader = new FileReader();
 this.certificate_select = files;
 reader.onload = () => {
   this.certificate_url = reader.result;
+console.log(this.certificate_select)
 };
 reader.readAsDataURL(this.certificate_select[0]);
   }
 
-// fro oncertificate upload 
-onmarksheet(files:any) {
-if (files.length === 0) {
-  return;
-}
-let mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  console.log('Only images are supported.');
-  return;
-}
-let reader = new FileReader();
-this.markseet_select = files;
-reader.onload = () => {
-  this.markseet_url = reader.result;
-};
-reader.readAsDataURL(this.markseet_select[0]);
-  }
-// fro residential  upload 
-onresidential(files:any) {
-if (files.length === 0) {
-  return;
-}
-let mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  console.log('Only images are supported.');
-  return;
-}
-let reader = new FileReader();
-this.residential_select = files;
-reader.onload = () => {
-  this.residential_url = reader.result;
-};
-reader.readAsDataURL(this.residential_select[0]);
-  }
-// fro markseet  upload 
+// fro markseet upload 
 onmarkseet(files:any) {
 if (files.length === 0) {
   return;
 }
-let mimeType = files[0].type;
-if (mimeType.match(/image\/*/) == null) {
-  console.log('Only images are supported.');
-  return;
-}
 let reader = new FileReader();
 this.markseet_select = files;
 reader.onload = () => {
   this.markseet_url = reader.result;
+  console.log(this.markseet_select)
 };
 reader.readAsDataURL(this.markseet_select[0]);
   }
+
 // fro image  upload 
 onimage(files:any) {
 if (files.length === 0) {
@@ -415,6 +384,23 @@ reader.onload = () => {
   this.image_url = reader.result;
 };
 reader.readAsDataURL(this.image_select[0]);
+  }
+
+  get_certificate_id(){
+    if(this.certificate_id > 0){
+
+      return
+    }
+    
+    const formdataedit =  new FormData()
+    formdataedit.append("inst_id", this.inst_id)
+
+    this.services.get_certificate_by_inst_id(formdataedit).subscribe(
+      (result: any) => {
+        console.log(result.data[0].certificate_id)
+        this.certificate_id = result.data[0].certificate_id
+      }
+    )
   }
 
 

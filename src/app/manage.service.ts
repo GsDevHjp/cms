@@ -315,6 +315,44 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
   }
 
+  post_block(data: any) {
+    return this.http.post<any>(this.baseUrl + 'block_insert.php', data)
+  }
+  put_block(data: any) {
+    return this.http.put<any>(this.baseUrl + 'block_update.php', data);
+  }
+  get_block() {
+    return this.http.get<[]>(this.baseUrl + 'block_view.php')
+  }
+  delete_block(data: any) {
+    return this.http.post<any>(this.baseUrl + 'block_delete.php', data);
+  }
+
+  post_panchayat(data: any) {
+    return this.http.post<any>(this.baseUrl + 'panchayat_insert.php', data)
+  }
+  put_panchayat(data: any) {
+    return this.http.put<any>(this.baseUrl + 'panchayat_update.php', data);
+  }
+  get_panchayat() {
+    return this.http.get<[]>(this.baseUrl + 'panchayat_view.php')
+  }
+  delete_panchayat(data: any) {
+    return this.http.post<any>(this.baseUrl + 'panchayat_delete.php', data);
+  }
+
+  post_ward(data: any) {
+    return this.http.post<any>(this.baseUrl + 'ward_insert.php', data)
+  }
+  put_ward(data: any) {
+    return this.http.put<any>(this.baseUrl + 'ward_update.php', data);
+  }
+  get_ward() {
+    return this.http.get<[]>(this.baseUrl + 'ward_view.php')
+  }
+  delete_ward(data: any) {
+    return this.http.post<any>(this.baseUrl + 'ward_delete.php', data);
+  }
   // for query module 
   get_query_by_inst_id() {
     return this.http.get<[]>(this.baseUrl + 'query_view.php')
@@ -399,5 +437,11 @@ export class ManageService {
   }
   expence_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'expence_delete.php', data)
+  }
+
+  // for otp verfication 
+  
+  inst_reg_otp(data: any) {
+    return this.http.post<any>(this.baseUrl + 'send_mail.php', data)
   }
 }

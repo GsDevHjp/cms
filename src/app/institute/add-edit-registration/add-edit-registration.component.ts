@@ -13,6 +13,7 @@ export class AddEditRegistrationComponent implements OnInit {
   inst_regist_from!: FormGroup;
   admin = 1;
   hide = true;
+  send_otp:any
   constructor(
     private popup:NgToastService,
     private FormBuilder: FormBuilder,
@@ -30,27 +31,41 @@ export class AddEditRegistrationComponent implements OnInit {
       inst_address: ['', Validators.required],
       inst_regist_date: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
+      get_opt: ['',],
     })
     this.inst_regist_from.controls['inst_regist_date'].setValue(new Date().toISOString().slice(0, 10));
+   
   }
 
   inst_regist() {
-    console.log(this.inst_regist_from.value)
-    this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
-      (result: any) => {
-        console.log(result)
-        this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Registration Successfully..',})
-      },
-      (error: any) => {
-        console.log(error)
-        this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..',})
+    this.send_otp =  Math.floor(100000 + Math.random() * 900000);
+    const formdata = new FormData()
+    formdata.append("send_otp", this.send_otp) ;
+    formdata.append("tomail",this.inst_regist_from.get('inst_email')?.value)
+    this.manageservice.inst_reg_otp(formdata).subscribe(
+      (res:any)=>{
+        console.log(res)
       }
     )
+
+    
+    // console.log(this.inst_regist_from.value)
+    // this.manageservice.inst_self_reg(this.inst_regist_from.value).subscribe(
+    //   (result: any) => {
+    //     console.log(result)
+    //     this.matref.close();
+    //     this.popup.success({ detail: 'Success', summary: 'Registration Successfully..',})
+    //   },
+    //   (error: any) => {
+    //     console.log(error)
+    //     this.popup.error({ detail: 'Unsuccess', summary: 'Registration Unsuccessfull..',})
+    //   }
+    // )
   }
   form_reset() {
     this.inst_regist_from.reset()
   }
+  
 }
 
 

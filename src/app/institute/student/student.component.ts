@@ -9,6 +9,8 @@ import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-
 import { Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ThemePalette } from '@angular/material/core';
+import { AddEditAddmissionComponent } from '../add-edit-addmission/add-edit-addmission.component';
+import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
 
 @Component({
   selector: 'app-student',
@@ -61,8 +63,8 @@ export class StudentComponent implements OnInit {
       disableClose: true
     });
   }
-  fee_pay(row: any) {
-    this.dailog.open(AddEditPaymentRecivedComponent, {
+  convertoadmission(row: any) {
+    this.dailog.open(AddEditTakeAddmissionComponent, {
       data: row,
       disableClose: true,
     });

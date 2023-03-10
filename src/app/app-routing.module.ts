@@ -5,6 +5,7 @@ import { AdminDuesComponent } from './admin/admin-dues/admin-dues.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminPaymetRecivedComponent } from './admin/admin-paymet-recived/admin-paymet-recived.component';
+import { BlockComponent } from './admin/block/block.component';
 import { CountryComponent } from './admin/country/country.component';
 import { DistrictComponent } from './admin/district/district.component';
 import { InsCourseComponent } from './admin/ins-course/ins-course.component';
@@ -12,9 +13,11 @@ import { InsadmissionComponent } from './admin/insadmission/insadmission.compone
 import { InsbatchComponent } from './admin/insbatch/insbatch.component';
 import { InsstudentComponent } from './admin/insstudent/insstudent.component';
 import { InstituteComponent } from './admin/institute/institute.component';
+import { PanchayatComponent } from './admin/panchayat/panchayat.component';
 import { StateComponent } from './admin/state/state.component';
 import { TAndCComponent } from './admin/t-and-c/t-and-c.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
+import { WardComponent } from './admin/ward/ward.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
@@ -44,6 +47,7 @@ import { ProfitLossComponent } from './institute/profit-loss/profit-loss.compone
 import { StdDuesComponent } from './institute/std-dues/std-dues.component';
 import { StdbathcbyComponent } from './institute/stdbathcby/stdbathcby.component';
 import { StudentComponent } from './institute/student/student.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LiveClassComponent } from './student/live-class/live-class.component';
 import { OnlineTestComponent } from './student/online-test/online-test.component';
 import { QueryComponent } from './student/query/query.component';
@@ -59,7 +63,6 @@ import { TakeAddmissionComponent } from './student/take-addmission/take-addmissi
 
 
 const routes: Routes = [
-
   { path: '', component: HomepageComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
@@ -103,7 +106,10 @@ const routes: Routes = [
       { path: 'terms', component: TAndCComponent },
       { path: 'country', component: CountryComponent },
       { path: 'state', component: StateComponent },
-      { path: 'district', component: DistrictComponent }
+      { path: 'district', component: DistrictComponent },
+      { path: 'block', component: BlockComponent },
+      { path: 'panchayat', component: PanchayatComponent },
+      { path: 'ward', component: WardComponent }
     ]
   },
 
@@ -174,7 +180,9 @@ const routes: Routes = [
       { path: 'liveclass', component: LiveClassComponent }
 
     ]
-  }
+  },
+
+  {path:'**', component:PageNotFoundComponent}
 
 ];
 @NgModule({

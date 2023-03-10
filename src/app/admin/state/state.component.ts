@@ -11,7 +11,7 @@ import { AddEditStateComponent } from '../add-edit-state/add-edit-state.componen
   styleUrls: ['./state.component.css']
 })
 export class StateComponent implements OnInit {
-  displayedColumns: string[] = ['state_id', 'country', 'state', 'description', 'action'];
+  displayedColumns: string[] = ['state_id', 'country', 'state', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

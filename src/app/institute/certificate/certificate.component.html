@@ -68,7 +68,7 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <mat-icon (click)="certificate_edit(row.certificate_id)" [hidden]="row.status == 1 " title="Drafts">drafts</mat-icon>
+            <mat-icon (click)="certificate_edit(row.certificate_id)" [hidden]="row.status == 1 " title="Drafts">description</mat-icon>
             <mat-icon (click)="certificate_edit(row.certificate_id)" [hidden]="row.status == 0 " title="View">visibility</mat-icon>
             &nbsp;
            <mat-icon (click)="certificate_edit(row.certificate_id)" title="Edit">edit</mat-icon>

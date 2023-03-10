@@ -1,7 +1,5 @@
 
-/* Code written by Rohit start from here */
-
-#wrapper{
+#wrapper {
     width: 100%;
     height: auto;
     float: left;
@@ -9,7 +7,7 @@
 
 /***** header code start from here *****/
 
-#header{
+#header {
     width: 100%;
     height: 90px;
     float: left;
@@ -19,14 +17,14 @@
     z-index: 5;
 }
 
-#logo{
+#logo {
     width: 30%;
     height: 100%;
     float: left;
     overflow: hidden;
 }
 
-#logo img{
+#logo img {
     scale: 1.20;
     margin-left: 50%;
 }
@@ -39,23 +37,23 @@
     background-color: #43474f;
 }
 
-#menu{
+#menu {
     width: calc(100% - 35%);
     float: left;
     height: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     color: white;
 }
 
-#menu button{
+#menu button {
     float: left;
     margin-top: 28px;
     margin-left: 10px;
@@ -65,12 +63,12 @@ a:hover{
     transition: 0.5s;
 }
 
-#menu button:hover{
-    background-color:#292c30;
+#menu button:hover {
+    background-color: #292c30;
     color: white;
 }
 
-#navigation_bar{
+#navigation_bar {
     width: 5%;
     height: 100%;
     float: right;
@@ -79,40 +77,41 @@ a:hover{
 
 
 /**** slider code start from here ****/
-#slider_area{
+#slider_area {
     width: 100%;
     height: 500px;
     float: left;
     margin-top: 80px;
 }
 
-#for_text{
+#for_text {
     width: 50%;
     height: 100%;
     float: left;
 }
 
-#for_image{
+#for_image {
     width: 50%;
     height: 100%;
     float: left;
 }
-#for_image img{
+
+#for_image img {
     width: 80%;
     height: 80%;
     margin: 8%;
 }
 
-#text_1{
+#text_1 {
     font-size: 50px;
     float: left;
     margin-top: 180px;
     line-height: 50px;
     margin-left: 50px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#whatshapp_chat{
+#whatshapp_chat {
     width: 65px;
     height: 65px;
     position: fixed;
@@ -121,20 +120,20 @@ a:hover{
     z-index: 20;
 }
 
-#whatshapp_chat img{
+#whatshapp_chat img {
     width: 100%;
     height: 100%;
 }
 
 
 /***** facilities code start from here*****/
-#facilities{
+#facilities {
     width: 100%;
     height: auto;
     float: left;
 }
 
-#facility_title{
+#facility_title {
     width: 100%;
     height: 50px;
     float: left;
@@ -144,7 +143,7 @@ a:hover{
     line-height: 50px;
 }
 
-.facilitie_card{
+.facilitie_card {
     width: 48%;
     height: 300px;
     float: left;
@@ -155,7 +154,7 @@ a:hover{
     overflow: hidden;
 }
 
-.facility_heading{
+.facility_heading {
     width: 100%;
     height: 50px;
     float: left;
@@ -164,7 +163,7 @@ a:hover{
     padding: 15px;
 }
 
-.facility_content{
+.facility_content {
     width: 40%;
     height: calc(100% - 50px);
     float: left;
@@ -176,21 +175,21 @@ a:hover{
     text-align: justify;
 }
 
-.facility_image{
+.facility_image {
     width: 60%;
     height: calc(100% - 50px);
     float: left;
 }
 
 /* about code start from here */
-#about{
+#about {
     width: 100%;
     height: auto;
     float: left;
     box-shadow: 1px 1px 8px rgb(199, 199, 199);
 }
 
-#about_head{
+#about_head {
     width: 100%;
     height: 50px;
     float: left;
@@ -200,7 +199,7 @@ a:hover{
     line-height: 50px;
 }
 
-#about_content{
+#about_content {
     width: 100%;
     height: calc(100% - 50px);
     float: left;
@@ -214,76 +213,67 @@ a:hover{
 
 /* contact code start from here */
 
-#contact{
-    width: 90%;
-    height: 400px;
+#contact {
+    width: 80%;
+    height: 500px;
     float: left;
-    background-color: rgb(232, 232, 232);
-    margin-left: 5%;
-    margin-top: 20px;
-    border-radius: 10px;
-}
-
-
-/* footer code start from here */
-
-#footer{
-    width: 100%;
-    height: 300px;
-    float: left;
-    background-color: rgb(45, 53, 71);
+    background-color: rgb(255, 255, 255);
+    margin-left: 10%;
     margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 1px 1px 10px rgb(176, 176, 176);
 }
 
-.footer_box{
-    width: 33.3%;
+#contact_form {
+    width: 50%;
     height: 100%;
     float: left;
-    border-right: 1px solid white;
-}
-.footer_box ul{
-    width: 100%;
-    height: calc(100% - 50px);
-    float: left;
 }
 
-.footer_box ul li{
-    width:100%;
-    height: auto;
-    padding: 10px;
-    float: left;
+#top_input {
+    margin-top: 90px;
+}
+
+#contact_form mat-form-field {
+    width: 60%;
+    margin-left: 20%;
+
+}
+
+#reset_btn {
+    background-color: orangered;
+    color: #fff;
+    font-family: cambria;
     font-size: 18px;
-    font-family: cambria;
-    color: white;
-    cursor: pointer;
-}
-
-.footer_box ul li a{
-    color: white;
-}
-
-.footer_box_header{
-    width: 100%;
-    height: 50px;
     float: left;
-    font-size: 22px;
-    font-family: cambria;
-    padding: 10px;
-    color: white;
+    margin-left: 35%;
+    margin-top: 20px;
 }
 
-.footer_box p{
-    width: 100%;
-    height: auto;
+#submit_btn {
+    background-color: rgb(9, 85, 227);
+    color: #fff;
+    font-family: cambria;
     font-size: 18px;
-    color: white;
+    margin-left: 5px;
     float: left;
-    padding: 10px;
-    line-height: 25px;
-    font-family: cambria;
+    margin-top: 20px;
 }
 
-#copyright{
+#contact_form_img {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#contact_form_img img {
+    width: 100%;
+    height: 100%;
+}
+
+#copyright {
     width: 100%;
     height: 50px;
     float: left;
@@ -297,7 +287,6 @@ a:hover{
 
 
 /****** Media query start from here *********/
-
 @media(max-width:750px) and (min-width:500px){
     #header{
         height: 60px;
@@ -386,19 +375,136 @@ a:hover{
     }
     #contact{
         height: 250px;
+    
+    }   
+} 
+
+@media(max-width:500px) and (min-width:100px) {
+    #header {
+        height: 80px;
     }
-    #footer{
+
+    #logo {
+        width: 90%;
+    }
+
+    #logo img {
+        margin-left: 10%;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    #navigation_bar {
+        width: 10%;
+        height: 100%;
+        display: block;
+    }
+
+    #navigation_bar button {
+        width: auto;
+        height: auto;
+        position: relative;
+        right: 10px;
+        top: 25px;
+    }
+
+    #navigation_bar button mat-icon {
+        width: auto;
+        height: auto;
+        font-size: 35px;
+        float: left;
+        cursor: pointer;
+        color: black;
+    }
+
+    #slider{
+        width: 100%;
+        height: 450px;
+    }
+    #for_text {
+        width: 110%;
+        height: 200px;
+    }
+
+    #for_image img{
+        scale: 1.2;
+        margin-left: 16%;
+    }
+
+    #text_1 {
+        width: 100%;
+        font-size: 35px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    #for_image {
+        width: 100%;
+        height: 250px;
+        float: left;
+    }
+    #facility_title {
+        width: 115%;
+    }
+    .facilitie_card{
+        width: calc(115% - 2%);
+        height: 400px;
+        margin-left: 5px;
+        margin-top: 10px;
+        background-color: rgb(235, 231, 239);
+    }
+    #facilities{
+        margin-top: -40px;
+    }
+    .facility_content{
+        width: 100%;
+        height: 200px;
+    }
+    .facility_image{
+        width: 100%;
+        height: 200px;
+    }
+    .facility_image img{
+        width: 100%;
+        height: 100%;
+    }
+    #about{
+        width: 115%;
+    }
+    #contact{
         width: 100%;
         height: auto;
+        margin-left: 8%;
+        margin-bottom: -225px;
     }
-    .footer_box{
-        width: 100%;
-        height: 300px;
-        /* border-bottom: 1px solid white; */
-    }
-    
-   
-    
-  
 
+    #contact_form{
+        width: 100%;
+        height: 380px;
+    }
+    #top_input{
+         margin-top: 10px;
+    }
+    #contact_form mat-form-field {
+        width: calc(100% - 10%);
+        margin-left: 5%;
+    }
+    #contact_form_img{
+        width: 100%;
+        height: 250px;
+    }
+    #reset_btn{
+        margin-left: 25%;
+    }
+    #copyright{
+        width: 116%;
+        position: relative;
+        bottom: -265px;
+    }
+    #whatshapp_chat{
+        width: 45px;
+        height: 45px;
+    }
 }

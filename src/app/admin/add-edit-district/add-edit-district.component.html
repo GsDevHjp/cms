@@ -15,14 +15,14 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Select an option</mat-label>
-            <mat-select disableRipple formControlName="state_id_fk">
-              <mat-option value="1">Bihar</mat-option>
-              <mat-option value="2">UP</mat-option>
-              <mat-option value="3">Jharkhand</mat-option>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state_id_fk">
+                <mat-option *ngFor="let state of state_data"
+                    [value]="state.state_id">{{state.state_name}}</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
 
+    
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>District</mat-label>
             <input matInput formControlName="district_name">

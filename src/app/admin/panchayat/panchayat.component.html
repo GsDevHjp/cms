@@ -1,0 +1,63 @@
+<div class="head">
+    <span>Panchayat</span>
+    <mat-icon  (click)="add_panchayat()">add_circle</mat-icon>
+  
+  </div>
+  <div class="count_area">
+    <span class="notice_text">Total : {{panchayat_count}}</span>
+    <div class="search">
+      <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+    </div>
+  </div>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="panchayat_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+        <td mat-cell *matCellDef="let row"> {{row.country_name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+        <td mat-cell *matCellDef="let row"> {{row.state_name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="district">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
+        <td mat-cell *matCellDef="let row"> {{row.district_name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="block">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Block</th>
+        <td mat-cell *matCellDef="let row"> {{row.block_name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="panchayat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Panchayat</th>
+        <td mat-cell *matCellDef="let row"> {{row.panchayat_name}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon style="cursor: pointer;" (click)="edit_panchayat(row)">edit</mat-icon>
+          <mat-icon style="cursor: pointer;" (click)="delete_panchayat(row)">delete</mat-icon>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
+  
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>

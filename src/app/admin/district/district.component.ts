@@ -5,30 +5,32 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditDistrictComponent } from '../add-edit-district/add-edit-district.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-district',
   templateUrl: './district.component.html',
   styleUrls: ['./district.component.css']
 })
 export class DistrictComponent implements OnInit {
-  displayedColumns: string[] = ['district_id', 'country', 'state','district', 'description', 'action'];
+  displayedColumns: string[] = ['district_id', 'country', 'state','district', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   district_count = 0
   constructor(
     private dailog: MatDialog,
+    private router: Router,
     private manageservice: ManageService,
   ) { }
 
   ngOnInit(): void {
-    this.manageservice.get_state().subscribe(
-      (instdata: any) => {
-        console.log(instdata)
-        this.dataSource = new MatTableDataSource(instdata.data);
+    this.manageservice.get_district().subscribe(
+      (districtdata: any) => {
+        console.log(districtdata)
+        this.dataSource = new MatTableDataSource(districtdata.data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        this.district_count = instdata.data.length
+        this.district_count = districtdata.data.lenght
       }
     )
   }
@@ -37,19 +39,20 @@ export class DistrictComponent implements OnInit {
       disableClose: true
     });
   }
-  edit_state(row: any) {
+  edit_district(row: any) {
     this.dailog.open(AddEditDistrictComponent, {
       data: row
     });
   }
 
-  delete_state(row: any) {
+  delete_district(row: any) {
     if (confirm("Are You Sure To Delete")) {
       const deletedata = new FormData();
-      deletedata.append('state_id', row.state_id);
-      this.manageservice.delete_state(deletedata).subscribe(
+      deletedata.append('district_id', row.district_id);
+      this.manageservice.delete_district(deletedata).subscribe(
         (res: any) => {
           alert('data delete successfully')
+          this.router.navigate(['/adminhome/district'])
         }
       )
 
