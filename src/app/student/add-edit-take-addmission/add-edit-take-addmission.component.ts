@@ -221,7 +221,6 @@ export class AddEditTakeAddmissionComponent implements OnInit {
         }
         if(this.inst_id){
           this.router.navigate(['/studenthome/takeaddmission'])
-
         }
       },
       (error: any) => {
