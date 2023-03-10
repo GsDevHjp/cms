@@ -6,41 +6,44 @@
 <form [formGroup]="Ledger_Form">
     <mat-form-field appearance="fill" floatLabel="always">
         <mat-label>Cash In Hand</mat-label>
-        <input formControlName="Cash_in_hand" matInput type="number" placeholder="0">
+        <input formControlName="ledger_cash_in_hand" matInput type="number" placeholder="0">
     </mat-form-field>
 
     <mat-form-field appearance="fill" floatLabel="always">
         <mat-label>Deposit into Bank</mat-label>
-        <input formControlName="Deposit_bank" matInput type="number" placeholder="0">
+        <input formControlName="ledger_deposit_bank" matInput type="number" placeholder="0">
     </mat-form-field><br>
 
     <mat-form-field appearance="fill">
         <mat-label>Today(Sale + Recived)</mat-label>
-        <input formControlName="Today_Recived" matInput>
+        <input formControlName="ledger_today_Recived" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="fill" floatLabel="always">
         <mat-label>Closing Amount</mat-label>
-        <input formControlName="Closing_amount" matInput type="number" placeholder="0">
+        <input formControlName="ledger_closing_amount" matInput type="number" placeholder="0">
     </mat-form-field><br>
 
     <mat-form-field appearance="fill" floatLabel="always">
-        <mat-label>Expense</mat-label>
-        <input formControlName="Expense" matInput type="number" placeholder="0">
+        <mat-label>Expence</mat-label>
+        <input formControlName="ledger_expence" matInput type="number" placeholder="0">
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Vailid Date</mat-label>
-        <input type="date" matInput formControlName="course_date" style="color: #495057;">
+        <input type="date" matInput formControlName="ledger_date" style="color: #495057;">
     </mat-form-field><br>
 
     <mat-form-field appearance="fill" id="description">
         <mat-label>Description</mat-label>
-        <textarea formControlName="Description" matInput placeholder="Description"></textarea>
+        <textarea formControlName="ledger_description" matInput placeholder="Description"></textarea>
     </mat-form-field>
+
+    <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
 </form>
 
 <div class="submit">
-    <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary">{{actionBtn}}</button>
+    <button mat-raised-button color="warn" (click)="ledger_form_reset()">Reset</button>
+    <button mat-raised-button color="primary" (click)="addBtn()">{{actionBtn}}</button>
 </div>
