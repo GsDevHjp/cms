@@ -83,6 +83,9 @@
 #dropdown_account {
     display: none;
 }
+#dropdown_address {
+    display: none;
+}
 
 /* ===========================================media Query================================================== */
 
