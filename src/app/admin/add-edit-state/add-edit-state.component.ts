@@ -15,6 +15,9 @@ export class AddEditStateComponent implements OnInit {
   state: string = 'Add State'
   actionBtn: string = 'Add'
   country_data: any;
+  login_deatils: any;
+  login: any;
+  inst_id: any;
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -25,6 +28,11 @@ export class AddEditStateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    console.log("inst"+this.inst_id)
+
     this.service.get_country().subscribe(
       (res: any) => {
         this.country_data = res.data
@@ -54,10 +62,16 @@ export class AddEditStateComponent implements OnInit {
         this.service.post_state(this.state_from.value).subscribe(
           (result: any) => {
             console.log(result)
-            this.router.navigate(['/adminhome/state']);
             this.state_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'State Insert Successfully...', })
+            if(this.inst_id){
+              this.router.navigate(['/institutehome/state'])
+            }
+            else{
+              this.router.navigate(['/adminhome/state'])
+            }
+
           },
           (error: any) => {
             console.log(error)
@@ -77,6 +91,12 @@ export class AddEditStateComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'State Update Successfully...', })
+        if(this.inst_id){
+          this.router.navigate(['/institutehome/state'])
+        }
+        else{
+          this.router.navigate(['/adminhome/state'])
+        }
       },
       error: (error: any) => {
         console.log(error)

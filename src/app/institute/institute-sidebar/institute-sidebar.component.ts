@@ -88,6 +88,20 @@ export class InstituteSidebarComponent implements OnInit {
       this.action_icon6 = true
     }
   }
+
+  dropdown_address() {
+    this.master = document.getElementById("dropdown_address")
+    if (this.master.style.display != "block") {
+      this.master.style.display = "block";
+      this.action_icon3 = true
+      this.action_icon4 = false
+
+    } else {
+      this.master.style.display = "none";
+      this.action_icon3 = false
+      this.action_icon4 = true
+    }
+  }
   changepassword() {
     this.dailog.open(InstChangePasswordComponent, {
       disableClose: true

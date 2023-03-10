@@ -16,6 +16,9 @@ export class AddEditDistrictComponent implements OnInit {
   actionBtn: string = 'Add'
   state_data: any;
   country_data: any;
+  login_deatils: any;
+  login: any;
+  inst_id: any;
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -26,6 +29,11 @@ export class AddEditDistrictComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+    this.inst_id = this.login.inst_id
+    console.log("inst" + this.inst_id)
+
     this.address_from = this.fb.group({
       district_id: [''],
       district_name: ['', Validators.required],
@@ -35,15 +43,11 @@ export class AddEditDistrictComponent implements OnInit {
     })
 
     this.service.get_country().subscribe(
-      (res:any)=>{
+      (res: any) => {
         this.country_data = res.data
       }
     )
-    this.service.get_state().subscribe(
-      (res:any)=>{
-        this.state_data = res.data
-      }
-    )
+
 
     if (this.edit_district) {
       this.actionBtn = "Update";
@@ -66,7 +70,12 @@ export class AddEditDistrictComponent implements OnInit {
             this.address_from.reset();
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'District Insert Successfully...', })
-            this.router.navigate(['/adminhome/district'])
+            if (this.inst_id) {
+              this.router.navigate(['/institutehome/district'])
+            }
+            else {
+              this.router.navigate(['/adminhome/district'])
+            }
           },
           (error: any) => {
             console.log(error)
@@ -86,12 +95,28 @@ export class AddEditDistrictComponent implements OnInit {
         console.log(res)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'District Update Successfully...', })
-        this.router.navigate(['/adminhome/district'])
+        if (this.inst_id) {
+          this.router.navigate(['/institutehome/district'])
+        }
+        else {
+          this.router.navigate(['/adminhome/district'])
+        }
       },
       error: () => {
         this.popup.error({ detail: 'Unsuccess', summary: 'District Not Update..', })
       }
     })
+  }
+
+  get_state(event: any) {
+    console.log(event)
+    const stateformdata = new FormData();
+    stateformdata.append('country_id', event)
+    this.service.get_state_by_country(stateformdata).subscribe(
+      (state_res: any) => {
+        this.state_data = state_res.data
+      }
+    )
   }
 
 }
