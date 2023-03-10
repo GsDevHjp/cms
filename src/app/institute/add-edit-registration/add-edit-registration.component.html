@@ -47,6 +47,12 @@
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
+        <mat-form-field class="example-full-width" appearance="fill" >
+            <mat-label>OTP</mat-label>
+            <input type="Number" matInput formControlName="get_otp">
+        </mat-form-field>
+         <button mat-raised-button color="primary" (click)="inst_regist()"
+        [disabled]="!inst_regist_from.valid">Send OTP</button>
     </form>
 
     <div class="register">

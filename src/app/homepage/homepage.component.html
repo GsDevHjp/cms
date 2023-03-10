@@ -1,6 +1,4 @@
 
-<!------------ Code written by Rohit start from here ------------------->
-
 <div id="wrapper">
   <div id="header">
     <div id="logo">
@@ -13,7 +11,7 @@
       <button mat-button>
         <a href="#">Home</a>
       </button>
-      <!-- <button mat-button>
+      <button mat-button>
         <a href="#about">About us</a>
       </button>
       <button mat-button>
@@ -27,13 +25,13 @@
       </button>
       <button mat-button style="border: 2px solid #292c30;">
         <a href="#">Register</a>
-      </button> -->
-      <button class="login_head" mat-button [matMenuTriggerFor]="menu"
-        style="border: 2px solid #e5e6e89d;">Login</button>
+      </button>
+      <button class="login_head" mat-button [matMenuTriggerFor]="menu" style="border: 2px solid #292c30;">Login</button>
       <mat-menu #menu="matMenu" id="menu_btn">
-        <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']" style="color: black;">Teacher</button>
-        <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']"  style="color: black;">Student</button>
+        <button mat-menu-item class="action_btn" [routerLink]="['institutelogin']">Teacher</button>
+        <button mat-menu-item class="action_btn" [routerLink]="['studentlogin']">Student</button>
       </mat-menu>
+      
     </div>
 
     <!-- mobile navigation bar code -->
@@ -55,6 +53,7 @@
       <img src="assets/img.jpg">
     </div>
   </div>
+
   <div id="whatshapp_chat">
     <a href="https://wa.me/91.9470407608"><img src="assets/whatshapp.png"></a>
   </div>
@@ -109,5 +108,77 @@
 
   </div>
 
-  <div id="copyright">Powered by : <a href="https://greensoft.net.in" target="_blank" style="color: white;">GreenSoft</a></div>
+  <!-- About code  start from here -->
+
+  <div id="about">
+    <div id="about_head">
+      <strong>ABOUT</strong>
+    </div>
+    <div id="about_content">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam impedit
+      non qui quibusdam quae eum cum mollitia praesentium dolor blanditiis reprehenderit
+      culpa hic facere doloribus similique nesciunt, assumenda, quas maiores ipsum
+      voluptates ex. Consectetur sed neque molestias cum quos. Iure alias a earum ullam inventore
+      fuga doloremque suscipit doloribus tempora cupiditate voluptate cum dolorum
+      ex quia sit qui asperiores illo, voluptatibus consequuntur, voluptatum exercitationem!
+      Reiciendis dignissimos nulla quidem esse illo assumenda eaque repudiandae
+      impedit dicta eum! Dolores adipisci atque cumque. Necessitatibus iure nihil doloremque
+      veritatis nemo at dolorum eius impedit, accusantium porro enim quis maiores
+      quisquam facilis amet modi eveniet. Voluptates id delectus voluptatibus
+      rerum quam nemo vitae neque quaerat minus fugiat esse enim, mollitia
+      iste, aperiam beatae? Sint fuga vitae ducimus dolor tenetur veniam harum, libero
+      repudiandae, expedita deleniti accusantium alias, optio illo maiores
+      exercitationem odit vel! Dolorum libero, iure accusamus minus cumque culpa officia necessitatibus optio ex quod?
+      quisquam facilis amet modi eveniet. Voluptates id delectus voluptatibus
+      rerum quam nemo vitae neque quaerat minus fugiat esse enim, mollitia
+      iste, aperiam beatae? Sint fuga vitae ducimus dolor tenetur veniam harum, libero
+      repudiandae, expedita deleniti accusantium alias, optio illo maiores
+      exercitationem odit vel! Dolorum libero, iure accusamus minus cumque culpa officia necessitatibus optio ex quod?
+      repudiandae, expedita deleniti accusantium alias, optio illo maiores
+      exercitationem odit vel! Dolorum libero, iure accusamus minus cumque culpa officia necessitatibus optio ex quod?
+
+    </div>
+
+  </div>
+
+  <!-- contact code start from here -->
+  <div id="contact">
+
+    <div id="contact_form_img">
+      <img src="assets/contact.svg">
+    </div>
+
+    <div id="contact_form">
+
+      <mat-form-field appearance="fill" id="top_input">
+        <mat-label>Enter Your Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your E-Mail ID</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your Phone Number</mat-label>
+        <input matInput type="number">
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Your Message...</mat-label>
+        <textarea matInput type="Number"></textarea>
+      </mat-form-field><br>
+
+      <button mat-button id="reset_btn">Reset</button>
+      <button mat-button id="submit_btn">Submit</button>
+
+    </div>
+    
+  </div>
+
+  <div id="copyright">Powered by : <a href="https://greensoft.net.in" target="_blank"
+      style="color: white;">GreenSoft</a>
+  </div>
 </div>

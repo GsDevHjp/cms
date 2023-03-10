@@ -439,4 +439,10 @@ export class ManageService {
   expence_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'expence_delete.php', data)
   }
+
+  // for otp verfication 
+  
+  inst_reg_otp(data: any) {
+    return this.http.post<any>(this.baseUrl + 'send_mail.php', data)
+  }
 }
