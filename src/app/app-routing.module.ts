@@ -120,14 +120,15 @@ const routes: Routes = [
       { path: '', component: InstituteDashboardComponent },
       { path: 'dashboard', component: InstituteDashboardComponent },
       { path: 'course', component: CourseComponent },
-      { path: 'batch', component: ViewportComponent,
-        children:[
-          { path: '', component: BatchComponent},
+      {
+        path: 'batch', component: ViewportComponent,
+        children: [
+          { path: '', component: BatchComponent },
           { path: 'studentbatch', component: StdbathcbyComponent },
 
         ]
-      
-          },
+
+      },
       { path: 'student', component: StudentComponent },
       { path: 'admission', component: AdmissionComponent },
       { path: 'enquiry', component: EnquiryComponent },
@@ -146,10 +147,16 @@ const routes: Routes = [
       { path: 'employee', component: EmployeeComponent },
       { path: 'certificate', component: CertificateComponent },
       { path: 'add_edit_certificate', component: AddEditCertificateComponent },
-      {path: 'liveclass', component: LiveClassComponent},
+      { path: 'liveclass', component: LiveClassComponent },
       { path: 'expence', component: ExpenceComponent },
-      {path: 'ledger', component: LedgerComponent},
-      {path: 'profitloss', component: ProfitLossComponent}
+      { path: 'ledger', component: LedgerComponent },
+      { path: 'profitloss', component: ProfitLossComponent },
+      { path: 'country', component: CountryComponent },
+      { path: 'state', component: StateComponent },
+      { path: 'district', component: DistrictComponent },
+      { path: 'block', component: BlockComponent },
+      { path: 'panchayat', component: PanchayatComponent },
+      { path: 'ward', component: WardComponent }
     ]
   },
 
@@ -182,7 +189,7 @@ const routes: Routes = [
     ]
   },
 
-  {path:'**', component:PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent }
 
 ];
 @NgModule({

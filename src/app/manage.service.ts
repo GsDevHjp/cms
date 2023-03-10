@@ -9,8 +9,7 @@ export class ManageService {
     private http: HttpClient
   ) { }
   baseUrl: string = 'https://greensoft.net.in/gscms/api/';
-  // baseUrl: string = 'http://localhost/cmsapinew/';
- 
+
   // dashboard  
   get_dashboad(data: any) {
     return this.http.post<any>(this.baseUrl + 'dashboard_view.php', data);
@@ -302,6 +301,9 @@ export class ManageService {
   get_state() {
     return this.http.get<[]>(this.baseUrl + 'state_view.php')
   }
+  get_state_by_country(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_state_by_country.php', data)
+  }
   delete_state(data: any) {
     return this.http.post<any>(this.baseUrl + 'state_delete.php', data);
   }
@@ -314,6 +316,9 @@ export class ManageService {
   }
   get_district() {
     return this.http.get<[]>(this.baseUrl + 'district_view.php')
+  }
+  get_district_by_state(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_district_by_state.php', data)
   }
   delete_district(data: any) {
     return this.http.post<any>(this.baseUrl + 'district_delete.php', data);
@@ -328,6 +333,9 @@ export class ManageService {
   get_block() {
     return this.http.get<[]>(this.baseUrl + 'block_view.php')
   }
+  get_block_by_district(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_block_by_district.php', data)
+  }
   delete_block(data: any) {
     return this.http.post<any>(this.baseUrl + 'block_delete.php', data);
   }
@@ -340,6 +348,9 @@ export class ManageService {
   }
   get_panchayat() {
     return this.http.get<[]>(this.baseUrl + 'panchayat_view.php')
+  }
+  get_panchayat_by_block(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_panchayat_by_block.php', data)
   }
   delete_panchayat(data: any) {
     return this.http.post<any>(this.baseUrl + 'panchayat_delete.php', data);
@@ -400,12 +411,12 @@ export class ManageService {
   }
 
   // for certificate module working
-  
+
 
   get_certificate() {
     return this.http.get<[]>(this.baseUrl + 'get_certificate.php')
   }
-  get_certificate_by_inst_id(data:any) {
+  get_certificate_by_inst_id(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_certificate_by_inst_id.php', data)
   }
   post_certificate_personal(data: any) {
@@ -444,7 +455,7 @@ export class ManageService {
   }
 
   // for otp verfication 
-  
+
   inst_reg_otp(data: any) {
     return this.http.post<any>(this.baseUrl + 'send_mail.php', data)
   }

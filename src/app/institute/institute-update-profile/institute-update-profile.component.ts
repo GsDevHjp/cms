@@ -20,6 +20,9 @@ export class InstituteUpdateProfileComponent implements OnInit {
   institute_id:any;
   login_deatils:any;
   login:any; 
+  country_data:any; 
+  district_data:any; 
+  state_data:any; 
   constructor(
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<InstituteUpdateProfileComponent>,
@@ -57,6 +60,12 @@ export class InstituteUpdateProfileComponent implements OnInit {
       admin_id_fk: ['', Validators.required]
     })
 
+    this.service.get_country().subscribe(
+      (state_res: any) => {
+        this.country_data = state_res.data
+      }
+    )
+   
     this.profile_set_data()
   }
   profile_set_data() {
@@ -135,6 +144,27 @@ export class InstituteUpdateProfileComponent implements OnInit {
       const file = event.target.files[0];
       this.InstForm.get('inst_doct_img')?.setValue(file)
     }
+  }
+
+  get_state(event: any) {
+    console.log(event)
+    const stateformdata = new FormData();
+    stateformdata.append('country_id', event)
+    this.service.get_state_by_country(stateformdata).subscribe(
+      (state_res: any) => {
+        this.state_data = state_res.data
+      }
+    )
+  }
+  get_district(event: any) {
+    console.log(event)
+    const districtformdata = new FormData();
+    districtformdata.append('state_id', event)
+    this.service.get_district_by_state(districtformdata).subscribe(
+      (district_res: any) => {
+        this.district_data = district_res.data
+      }
+    )
   }
 }
   

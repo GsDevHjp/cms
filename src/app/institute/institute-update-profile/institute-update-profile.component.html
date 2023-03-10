@@ -3,8 +3,8 @@
         <span class="example-spacer">{{instupdate}}</span>
         <mat-icon mat-dialog-close>cancel</mat-icon>
     </mat-toolbar>
-<form [formGroup]="InstForm">
-    
+    <form [formGroup]="InstForm">
+
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput formControlName="inst_name" readonly>
@@ -25,7 +25,7 @@
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="inst_email" readonly>
         </mat-form-field>
-        
+
         <mat-form-field class="example-full-width" appearance="fill" id="password">
             <mat-label>Password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password">
@@ -35,30 +35,25 @@
             </button>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Country</mat-label>
-            <mat-select disableRipple formControlName="inst_country">
-                <mat-option value="India">India</mat-option>
-                <mat-option value="Nepal">Nepal</mat-option>
-                <mat-option value="Srilanka">Srilanka</mat-option>
+            <mat-select formControlName="inst_country" (valueChange)="get_state($event)">
+                <mat-option *ngFor="let country of country_data"
+                    [value]="country.country_id">{{country.country_name}}</mat-option>
             </mat-select>
         </mat-form-field><br>
-
+      
         <mat-form-field appearance="fill">
             <mat-label>State</mat-label>
-            <mat-select disableRipple formControlName="inst_state">
-                <mat-option value="Bihar">Bihar</mat-option>
-                <mat-option value="Jharkhand">Jharkhand</mat-option>
-                <mat-option value="Utter Pardesh">Utter Pardesh</mat-option>
+            <mat-select formControlName="inst_state" (valueChange)="get_district($event)">
+                <mat-option *ngFor="let state of state_data" [value]="state.state_id">{{state.state_name}}</mat-option>
             </mat-select>
         </mat-form-field>
-
+       
         <mat-form-field appearance="fill" class="margin_top">
             <mat-label>District</mat-label>
-            <mat-select disableRipple formControlName="inst_district">
-                <mat-option value="Vaisahli">Vaisahli</mat-option>
-                <mat-option value="Chhapra">Chhapra</mat-option>
-                <mat-option value="Muzaffarpur">Muzaffarpur</mat-option>
+            <mat-select formControlName="inst_district">
+                <mat-option *ngFor="let district of district_data" [value]="district.district_id">{{district.district_name}}</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -91,12 +86,12 @@
             <input matInput formControlName="inst_doct_number" onkeypress=" return this.value.length < 12">
         </mat-form-field>
 
-         <label for="inst_img">
+        <label for="inst_img">
             <label id="inst_head_text">Institute logo</label><br>
             <input type="file" id="inst_img" (change)="OnInstUpload($event)" formControlName="inst_logo">
         </label>
         <label for="doct_img">
-           <label id="inst_head_text"> Document Image</label><br>
+            <label id="inst_head_text"> Document Image</label><br>
             <input type="file" id="doct_img" (change)="OnDoctUpload($event)" formControlName="inst_doct_img">
         </label><br>
 
@@ -104,13 +99,13 @@
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="inst_address"></textarea>
         </mat-form-field>
-     
+
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
         <input type="number" readonly formControlName="inst_id" hidden>
 
-</form>
-<div class="submit">
-    <button mat-raised-button color="warn">Reset</button>
-    <button mat-raised-button color="primary" (click)="update_profile()"
-    [disabled]="!InstForm.valid">{{actionBtn}}</button>
-</div>
+    </form>
+    <div class="submit">
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="primary" (click)="update_profile()"
+            [disabled]="!InstForm.valid">{{actionBtn}}</button>
+    </div>

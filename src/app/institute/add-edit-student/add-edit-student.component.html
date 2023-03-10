@@ -62,24 +62,17 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>State</mat-label>
-            <mat-select formControlName="std_state">
-                <mat-option value="Panjab">Panjab</mat-option>
-                <mat-option value="Hariyana">Hariyana</mat-option>
-                <mat-option value="Bihar">Bihar</mat-option>
-                <mat-option value="Up">Up</mat-option>
+            <mat-select formControlName="std_state" (valueChange)="get_district($event)">
+                <mat-option *ngFor="let state of state_data" [value]="state.state_id">{{state.state_name}}</mat-option>
             </mat-select>
-        </mat-form-field><br>
-
-        <mat-form-field class="example-full-width" appearance="fill">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>District</mat-label>
             <mat-select formControlName="std_district">
-                <mat-option value="Muzaffarpur">Muzaffarpur</mat-option>
-                <mat-option value="Samastipur">Samastipur</mat-option>
-                <mat-option value="Patna">Patna</mat-option>
-                <mat-option value="Vaishali">Vaishali</mat-option>
-                <mat-option value="Saran">Saran</mat-option>
+                <mat-option *ngFor="let district of district_data" [value]="district.district_id">{{district.district_name}}</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -95,17 +88,18 @@
             <input type="file" name="std_photo" class="user_file" (change)="OnUpload($event)" formControlName="std_img">
         </div>
 
-        <mat-form-field appearance="fill"  class="example-full-width">
+        <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Address</mat-label>
             <textarea matInput formControlName="std_address"></textarea>
         </mat-form-field>
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
- 
+
     </form>
 
     <div class="submit">
         <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="student_btn()"  [disabled]="!this.student_form.valid">{{ActionBtn}}</button>
+        <button mat-raised-button color="primary" (click)="student_btn()"
+            [disabled]="!this.student_form.valid">{{ActionBtn}}</button>
     </div>
 </div>

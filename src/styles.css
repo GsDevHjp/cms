@@ -18,7 +18,7 @@ body {
 }
 
 .mat-menu-content:not(:empty) {
-    background-color: #e9ecf3;
+    background-color: #123668;
     width: 150px;
     color: black;
 }

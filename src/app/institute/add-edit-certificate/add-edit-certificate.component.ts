@@ -27,8 +27,11 @@ export class AddEditCertificateComponent implements OnInit {
   certificate_id: any = 0;
   institute_id: any
   course_data: any
- 
-
+  country_data: any
+  state_data:any
+  district_data:any
+  block_data:any
+  panchayat_data:any
   // for new docment  
   url:string = 'https://greensoft.net.in/gscms/assets/certificate/'
   aadhar_url:any = "assets/doc.png"
@@ -72,7 +75,11 @@ export class AddEditCertificateComponent implements OnInit {
         this.course_data = std_res.data
       }
     )
-
+    this.services.get_country().subscribe(
+      (state_res: any) => {
+        this.country_data = state_res.data
+      }
+    )
     this.personal_form = this.personal.group({
       certificate_id: [''],
       std_name: ['', Validators.required],
@@ -403,5 +410,44 @@ reader.readAsDataURL(this.image_select[0]);
     )
   }
 
-
+  get_state(event: any) {
+    console.log(event)
+    const stateformdata = new FormData();
+    stateformdata.append('country_id', event)
+    this.services.get_state_by_country(stateformdata).subscribe(
+      (state_res: any) => {
+        this.state_data = state_res.data
+      }
+    )
+  }
+  get_district(event: any) {
+    console.log(event)
+    const districtformdata = new FormData();
+    districtformdata.append('state_id', event)
+    this.services.get_district_by_state(districtformdata).subscribe(
+      (district_res: any) => {
+        this.district_data = district_res.data
+      }
+    )
+  }
+  get_block(event: any) {
+    console.log(event)
+    const blockformdata = new FormData();
+    blockformdata.append('district_id', event)
+    this.services.get_block_by_district(blockformdata).subscribe(
+      (block_res: any) => {
+        this.block_data = block_res.data
+      }
+    )
+  }
+  get_panchayat(event: any) {
+    console.log(event)
+    const panchayatformdata = new FormData();
+    panchayatformdata.append('block_id', event)
+    this.services.get_panchayat_by_block(panchayatformdata).subscribe(
+      (panchayat_res: any) => {
+        this.panchayat_data = panchayat_res.data
+      }
+    )
+  }
 }

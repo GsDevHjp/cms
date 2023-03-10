@@ -17,8 +17,8 @@ export class AdminSidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  report_dropdown() {
-    this.setting = document.getElementById("dropdown_report")
+  address_dropdown() {
+    this.setting = document.getElementById("dropdown_address")
     if (this.setting.style.display != "block") {
       this.setting.style.display = "block";
       this.action_icon1 = true

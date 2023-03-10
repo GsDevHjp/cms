@@ -37,13 +37,13 @@
                 <span>Received</span>
             </button>
             <div>
-                <button mat-button class="menu-button" (click)="report_dropdown()">
+                <button mat-button class="menu-button" (click)="address_dropdown()">
                     <mat-icon>list_alt</mat-icon>
                     <span>Address</span>
                     <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
                     <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
                 </button>
-                <div id="dropdown_report">
+                <div id="dropdown_address">
                     <button mat-button class="menu-button" [routerLink]="['country']">
                         <mat-icon> language</mat-icon>
                         <span>Country</span>

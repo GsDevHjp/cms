@@ -23,7 +23,7 @@
                         <mat-icon>school</mat-icon>
                         <span>Course</span>
                     </button>
-        
+
                     <button mat-button class="master_icon" [routerLink]="['batch']">
                         <mat-icon>local_library</mat-icon>
                         <span>Batch</span>
@@ -37,8 +37,8 @@
                     <button mat-button class="master_icon" [routerLink]="['instquizdashboard']">
                         <mat-icon>quiz</mat-icon>
                         <span>Quiz</span>
-                    </button>        
-        
+                    </button>
+
                     <button mat-button class="master_icon" [routerLink]="['employee']">
                         <mat-icon>supervisor_account</mat-icon>
                         <span>Employee</span>
@@ -154,6 +154,43 @@
 
                 </div>
             </div>
+
+            <div>
+                <button mat-button class="menu-button" (click)="dropdown_address()">
+                    <mat-icon>list_alt</mat-icon>
+                    <span>Address</span>
+                    <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
+                </button>
+
+                <div id="dropdown_address">
+                    <button mat-button class="master_icon" [routerLink]="['country']">
+                        <mat-icon> language</mat-icon>
+                        <span>Country</span>
+                    </button>
+                    <button mat-button class="master_icon" [routerLink]="['state']">
+                        <mat-icon>room</mat-icon>
+                        <span>State</span>
+                    </button>
+                    <button mat-button class="master_icon" [routerLink]="['district']">
+                        <mat-icon>map</mat-icon>
+                        <span>District</span>
+                    </button>
+                    <button mat-button class="master_icon" [routerLink]="['block']">
+                        <mat-icon>room</mat-icon>
+                        <span>Block</span>
+                    </button>
+                    <button mat-button class="master_icon" [routerLink]="['panchayat']">
+                        <mat-icon>gps_fixed</mat-icon>
+                        <span>Panchayat</span>
+                    </button>
+                    <button mat-button class="master_icon" [routerLink]="['ward']">
+                        <mat-icon>room</mat-icon>
+                        <span>Ward</span>
+                    </button>
+
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
