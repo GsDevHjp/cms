@@ -144,6 +144,12 @@ export class AddEditCertificateComponent implements OnInit {
     this.registration_form.controls['std_rigistration_date'].setValue(new Date().toISOString().slice(0, 10));
 
     if (this.certificate_id > 0) {
+      this.services.get_state().subscribe((state_res:any)=>{this.state_data = state_res.data})
+      this.services.get_district().subscribe((district_res:any)=>{ this.district_data = district_res.data})
+      this.services.get_block().subscribe((block_res:any)=>{ this.block_data = block_res.data})
+      this.services.get_panchayat().subscribe((panchayat_res:any)=>{ this.panchayat_data = panchayat_res.data})
+     
+
       this.action_text = "Update";
       const certificateiddata = new FormData();
       certificateiddata.append('certificate_id', this.certificate_id);
@@ -413,7 +419,7 @@ reader.readAsDataURL(this.image_select[0]);
   get_state(event: any) {
     console.log(event)
     const stateformdata = new FormData();
-    stateformdata.append('country_id', event)
+    stateformdata.append('country_name', event)
     this.services.get_state_by_country(stateformdata).subscribe(
       (state_res: any) => {
         this.state_data = state_res.data
@@ -423,7 +429,7 @@ reader.readAsDataURL(this.image_select[0]);
   get_district(event: any) {
     console.log(event)
     const districtformdata = new FormData();
-    districtformdata.append('state_id', event)
+    districtformdata.append('state_name', event)
     this.services.get_district_by_state(districtformdata).subscribe(
       (district_res: any) => {
         this.district_data = district_res.data
@@ -433,7 +439,7 @@ reader.readAsDataURL(this.image_select[0]);
   get_block(event: any) {
     console.log(event)
     const blockformdata = new FormData();
-    blockformdata.append('district_id', event)
+    blockformdata.append('district_name', event)
     this.services.get_block_by_district(blockformdata).subscribe(
       (block_res: any) => {
         this.block_data = block_res.data
@@ -443,7 +449,7 @@ reader.readAsDataURL(this.image_select[0]);
   get_panchayat(event: any) {
     console.log(event)
     const panchayatformdata = new FormData();
-    panchayatformdata.append('block_id', event)
+    panchayatformdata.append('block_name', event)
     this.services.get_panchayat_by_block(panchayatformdata).subscribe(
       (panchayat_res: any) => {
         this.panchayat_data = panchayat_res.data

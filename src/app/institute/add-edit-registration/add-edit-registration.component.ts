@@ -15,6 +15,7 @@ export class AddEditRegistrationComponent implements OnInit {
   hide = true;
   send_otp:any
   valid_otp:boolean = true
+  otp_hidden_area: boolean = true
   constructor(
     private popup:NgToastService,
     private FormBuilder: FormBuilder,
@@ -48,11 +49,13 @@ export class AddEditRegistrationComponent implements OnInit {
     this.manageservice.inst_reg_otp(formdata).subscribe(
       (res:any)=>{
         console.log(res.success)
-        if(res.success)
+        if(res.success){
         this.popup.success({ detail: 'Success', summary:'OTP Send Sucessfully...',})
-        else
+          this.otp_hidden_area = false
+        }
+        else{
         this.popup.error({ detail: 'Fail', summary:'OTP Send Fail...',})
-
+        }
       }
     )
   }
@@ -64,6 +67,7 @@ export class AddEditRegistrationComponent implements OnInit {
         console.log(result)
         this.matref.close();
         this.popup.success({ detail: 'Success', summary: 'Registration Successfully..',})
+  
       },
       (error: any) => {
         console.log(error)

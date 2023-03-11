@@ -54,6 +54,7 @@ export class AddEditInstNotificationComponent implements OnInit {
     }
     this.notification_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
+  
   notification_btn() {
     console.log(this.notification_form.value)
     if (!this.edit_notification) {

@@ -47,17 +47,24 @@
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
+        <div class="register">
+         <button mat-raised-button color="primary" (click)="inst_regist()"
+        [disabled]="!inst_regist_from.valid">Register</button>
+        </div>
+        <br>
+        <div [hidden]="otp_hidden_area">
+        <div class="register">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>OTP</mat-label>
-            <input type="number" matInput formControlName="otp_recive" (keyup)="match_otp()" placeholder="Enter Email OTP">
-        </mat-form-field>
-         <button mat-raised-button color="primary" (click)="inst_regist()"
-        [disabled]="!inst_regist_from.valid">Send OTP</button>
+            <input type="number" matInput formControlName="otp_recive" (keyup)="match_otp()" placeholder="Enter Email OTP" onkeypress=" return this.value.length < 6">
+        </mat-form-field><br>
+</div>
+        <div class="register">
+            <button mat-raised-button color="primary" (click)="final_submit()"
+                [disabled]="valid_otp">Verify</button>
+        </div>
+        </div>
     </form>
 
-    <div class="register">
-        <button mat-raised-button color="warn" (click)="form_reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="final_submit()"
-            [disabled]="valid_otp">Register</button>
-    </div>
+   
 </div>
