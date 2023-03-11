@@ -45,7 +45,7 @@ export class AddEditCourseComponent implements OnInit {
       course_half_fee: ['', Validators.required],
       course_quarter_fee: ['', Validators.required],
       course_monthly_fee: ['', Validators.required],
-      course_admission_fee: ['',Validators.required],
+      course_admission_fee: ['', Validators.required],
       course_duration: ['', Validators.required],
       course_description: [''],
       course_date: ['', Validators.required],
@@ -80,12 +80,12 @@ export class AddEditCourseComponent implements OnInit {
             console.log(result)
             this.course_form.reset();
             this.matref.close();
-            this.popup.success({ detail: 'Success', summary: 'Course Saved',})
+            this.popup.success({ detail: 'Success', summary: 'Course Saved', })
             this.router.navigate(['/institutehome/course']);
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Saved',})
+            this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Saved', })
           }
         )
       }
@@ -100,11 +100,11 @@ export class AddEditCourseComponent implements OnInit {
       next: (res) => {
         console.log(res)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Course Updated',})
-        this.router.navigate(['institutehome/course']); 
+        this.popup.success({ detail: 'Success', summary: 'Course Updated', })
+        this.router.navigate(['institutehome/course']);
       },
       error: () => {
-        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Updated..',})
+        this.popup.error({ detail: 'Unsuccess', summary: 'Course Not Updated..', })
       }
     })
   }
@@ -114,4 +114,8 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / (this.course_form.get('course_duration')?.value))
     this.course_form.controls['course_admission_fee'].setValue(0)
   }
+  
+course_data_reset(){
+  this.course_form.reset()
+}
 }

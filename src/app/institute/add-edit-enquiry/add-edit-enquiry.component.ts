@@ -115,4 +115,7 @@ export class AddEditEnquiryComponent implements OnInit {
       }
     })
   }
+  enquiry_data_reset(){
+    this.enquiry_form.reset()
+  }
 }

@@ -126,4 +126,7 @@ export class AddEditInstNotesComponent implements OnInit {
       this.inst_notes_form.get('inst_notes_img')?.setValue(file)
     }
   }
+  inst_notes_reset(){
+    this.inst_notes_form.reset()
+  }
 }

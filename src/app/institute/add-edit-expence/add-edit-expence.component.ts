@@ -106,13 +106,16 @@ export class AddEditExpenceComponent implements OnInit {
       next: (result: any) => {
         console.log(result)
         this.matref.close();
-        this.popup.success({ detail: 'Success', summary: 'Expense Updated',})
+        this.popup.success({ detail: 'Success', summary: 'Expense Updated', })
         this.router.navigate(['/institutehome/expence'])
       },
       error: (error: any) => {
         console.log(error)
-        this.popup.error({ detail: 'Error', summary: 'Expense Not Updated',})
+        this.popup.error({ detail: 'Error', summary: 'Expense Not Updated', })
       }
     })
+  }
+  expence_data_reset() {
+    this.expenseForm.reset()
   }
 }

@@ -30,7 +30,9 @@ textarea {
 }
 
 .register {
-    margin-left:9.6em;
+    justify-content:center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 button {
@@ -49,8 +51,8 @@ button {
         width: 100%;
     }
     .register {
-        margin-left: 6em;
-    }
+        padding-bottom:15px;
+     }
 }
 
 @media(max-width:420px) {
@@ -66,6 +68,6 @@ button {
         width: 100%;
     }
     .register {
-        margin-left: 3em;
-    }
+        padding-bottom:15px;
+     }
 }

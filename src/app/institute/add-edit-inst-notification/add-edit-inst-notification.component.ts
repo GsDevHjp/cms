@@ -94,4 +94,7 @@ export class AddEditInstNotificationComponent implements OnInit {
       }
     })
   }
+  notification_data_reset(){
+    this.notification_form.reset()
+  }
 }

@@ -285,8 +285,21 @@ export class AddEditStudentComponent implements OnInit {
     }
   }
 
-  reset() {
-    this.student_form.reset()
+  student_data_reset() {
+    this.student_form.controls['std_name'].reset()
+    this.student_form.controls['std_father_name'].reset()
+    this.student_form.controls['std_father_occupation'].reset()
+    this.student_form.controls['std_whatsapp_no'].reset()
+    this.student_form.controls['std_aadhar'].reset()
+    this.student_form.controls['std_email'].reset()
+    this.student_form.controls['std_dob'].reset()
+    this.student_form.controls['std_gender'].reset()
+    this.student_form.controls['std_state'].reset()
+    this.student_form.controls['std_district'].reset()
+    this.student_form.controls['std_regist_date'].reset()
+    this.student_form.controls['std_img'].reset()
+    this.student_form.controls['std_address'].reset()
+    this.student_form.controls['std_password'].reset()
   }
 
   get_district(event: any) {

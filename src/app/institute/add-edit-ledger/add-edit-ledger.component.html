@@ -45,5 +45,5 @@
 
 <div class="submit">
     <button mat-raised-button color="warn" (click)="ledger_form_reset()">Reset</button>
-    <button mat-raised-button color="primary" (click)="addBtn()">{{actionBtn}}</button>
+    <button mat-raised-button color="primary" (click)="addBtn()" [disabled]="!this.Ledger_Form.vailid">{{actionBtn}}</button>
 </div>

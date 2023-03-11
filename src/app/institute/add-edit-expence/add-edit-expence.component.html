@@ -57,7 +57,7 @@
         <input formControlName="admin_id_fk" type="number" ngModel={{admin_id}} readonly hidden>
     </form>
     <div class="submit">
-        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="warn" (click)="expence_data_reset()">Reset</button>
         <button mat-raised-button color="primary" (click)="onSubmit()"
             [disabled]="!expenseForm.valid">{{actionBtn}}</button>
     </div>

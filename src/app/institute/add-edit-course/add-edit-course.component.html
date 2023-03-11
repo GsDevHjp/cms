@@ -56,7 +56,7 @@
     </form>
 
     <div class="submit">
-        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="warn" (click)="course_data_reset()">Reset</button>
         <button mat-raised-button color="primary" (click)="onAdd()"
             [disabled]="!course_form.valid">{{actionBtn}}</button>
     </div>

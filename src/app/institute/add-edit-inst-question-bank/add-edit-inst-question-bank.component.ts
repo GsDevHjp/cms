@@ -127,4 +127,7 @@ export class AddEditInstQuestionBankComponent implements OnInit {
       this.inst_question_bank_form.get('inst_question_bank_img')?.setValue(file)
     }
   }
+  inst_question_bank_reset(){
+    this.inst_question_bank_form.reset()
+  }
 }

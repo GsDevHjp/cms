@@ -125,6 +125,9 @@ export class AddEditInstQuizComponent implements OnInit {
     }
     )
   }
+  quiz_data_reset(){
+    this.quiz_form.reset()
+  }
 
   // onCourse(event:any){
   //   console.log(this.inst_id)

@@ -5,14 +5,6 @@
 
 <form [formGroup]="quiz_form">
     
-    <!-- <mat-form-field appearance="fill" class="example-full-width" id="cursedescription">
-        <mat-label>Course</mat-label>
-        <mat-select formControlName="course_id_fk" (valueChange)="onCourse($event)">
-            <mat-option *ngFor="let course of course_data"
-                [value]="course.course_id">{{course.course_name}}</mat-option>
-        </mat-select>
-    </mat-form-field><br> -->
-
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Question</mat-label>
         <input matInput formControlName="quiz_question">
@@ -55,7 +47,7 @@
 </form>
 
 <div class="submit">
-    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="warn" (click)="quiz_data_reset()">Reset</button>
     <button mat-raised-button color="primary" (click)="quiz_btn()"
         [disabled]="!quiz_form.valid">{{actionBtn}}</button>
 </div>
