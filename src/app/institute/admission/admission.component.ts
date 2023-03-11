@@ -19,7 +19,7 @@ import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-ad
 export class AdmissionComponent implements OnInit {
   displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_id_fk', 'batch_name', 'admission_date', 'std_whatsapp_no','std_photo', 'admission_status', 'action'];
   dataSource = new MatTableDataSource();
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'assets/';
 
   count_admission: number = 0;
   color: ThemePalette = 'primary'

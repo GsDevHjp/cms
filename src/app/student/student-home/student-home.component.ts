@@ -19,7 +19,7 @@ export class StudentHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'https://greensoft.net.in/gscms/assets/';
+  url: string = 'assets/';
   img_url: string = '';
   login_deatils: any
   login: any

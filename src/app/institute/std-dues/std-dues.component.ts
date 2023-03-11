@@ -16,7 +16,7 @@ export class StdDuesComponent implements OnInit {
   displayedColumns: string[] = ['enq_id', 'std_name','std_reg','roll_no', 'mobile','course', 'batch', 'current_dues', 'date', 'image','action'];
   dataSource = new MatTableDataSource();
   count_dues: number = 0;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/'; 
+  imgUrl: string = 'assets/'; 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tabledata: any;
@@ -37,7 +37,7 @@ export class StdDuesComponent implements OnInit {
         this.get_dues(this.login.inst_id)
       }
       if(this.login.institute_id_fk){
-        this.get_dues(this.login.institute_id_fk)
+        this.get_dues_by_std_id(this.login.std_id)
         this.displayedColumns = ['enq_id', 'std_name','std_reg','roll_no', 'mobile','course', 'batch', 'current_dues', 'date'];
       }
   }
@@ -47,6 +47,19 @@ export class StdDuesComponent implements OnInit {
     const fromdata =  new  FormData()
     fromdata.append('inst_id',inst_id)
       this.servies.get_dues_by_inst_id(fromdata).subscribe(
+        (res:any)=>{
+          console.log(res.data)
+          this.dataSource.data = res.data
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.count_dues = res.data.length
+        }
+      )
+  }
+  get_dues_by_std_id(std:any){
+    const fromdata =  new  FormData()
+    fromdata.append('std_id',std)
+      this.servies.get_dues_by_std_id(fromdata).subscribe(
         (res:any)=>{
           console.log(res.data)
           this.dataSource.data = res.data

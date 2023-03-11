@@ -59,8 +59,8 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
-          <mat-icon (click)="edit_student(row)">edit</mat-icon>
-          &nbsp; <button mat-icon-button [disabled]="row.status == 0" (click)="convertoadmission(row)"><mat-icon   >assignment_ind</mat-icon> </button> &nbsp; 
+          <mat-icon (click)="edit_student(row)" title="edit">edit</mat-icon>
+          &nbsp; <button mat-icon-button [disabled]="row.status == 0" (click)="convertoadmission(row)"><mat-icon title=" convert to admission"  >assignment_ind</mat-icon> </button> &nbsp; 
           <mat-slide-toggle [color]="color" [checked]="row.status ==1" (change)="toggle($event, row.std_id)" ></mat-slide-toggle>          
         </td>
       </ng-container>
