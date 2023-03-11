@@ -78,6 +78,19 @@
 
 #dropdown_master {
     display: none;
+    /* animation: dropdown 1s;
+    transition: 0.5s;
+    position: relative;
+}
+@keyframes dropdown{
+    0%{
+        position: relative;
+        top: 0px;
+    }
+    100%{
+        position: relative;
+        top: 10px;
+    } */
 }
 
 #dropdown_account {
