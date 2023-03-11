@@ -142,7 +142,7 @@ export class AddEditEmployeeComponent implements OnInit {
       }
     })
   }
-  resetEmp() {
+  employee_data_reset() {
     this.empForm.reset()
   }
   onimage(files:any) {

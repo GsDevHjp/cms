@@ -32,7 +32,6 @@ import { AddEditBatchComponent } from './institute/add-edit-batch/add-edit-batch
 import { StudentComponent } from './institute/student/student.component';
 import { AddEditStudentComponent } from './institute/add-edit-student/add-edit-student.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
-import { AddEditAddmissionComponent } from './institute/add-edit-addmission/add-edit-addmission.component';
 import { EnquiryComponent } from './institute/enquiry/enquiry.component';
 import { AddEditEnquiryComponent } from './institute/add-edit-enquiry/add-edit-enquiry.component';
 import { PaymentReceivedComponent } from './institute/payment-received/payment-received.component';
@@ -146,7 +145,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     StudentComponent,
     AddEditStudentComponent,
     AdmissionComponent,
-    AddEditAddmissionComponent,
     EnquiryComponent,
     AddEditEnquiryComponent,
     PaymentReceivedComponent,

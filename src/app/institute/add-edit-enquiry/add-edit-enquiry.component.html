@@ -53,7 +53,7 @@
     </form>
 
     <div class="submit">
-        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="warn" (click)="enquiry_data_reset()">Reset</button>
         <button mat-raised-button color="primary" (click)="enquiry_btn()"
             [disabled]="!enquiry_form.valid">{{actionBtn}}</button>
     </div>

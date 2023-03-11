@@ -124,4 +124,7 @@ export class AddEditInstSyllabusComponent implements OnInit {
       this.inst_syllabus_form.get('inst_syllabus_img')?.setValue(file)
     }
   }
+  inst_syllabus_reset(){
+    this.inst_syllabus_form.reset()
+  }
 }

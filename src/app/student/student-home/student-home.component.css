@@ -2,6 +2,7 @@
 .container-fluid {
     padding: 0px;
     cursor: default;
+    position: fixed;
 }
 
 mat-sidenav {

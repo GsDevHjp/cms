@@ -19,10 +19,10 @@ export class InstituteDashboardComponent implements OnInit {
   elearning_count:number=0
   query_count:number=0
   notification_count:number=0
-  book_count:number=0
-  notes_count:number=0
-  syllabus_count:number=0
-  question_count:number=0
+  employee_count:number=0
+  expence_count:number=0
+  ledger_count:number=0
+  
   login_deatils:any
   login:any
   inst_id:any
@@ -49,10 +49,6 @@ export class InstituteDashboardComponent implements OnInit {
         this.quiz_count=res.data.quiz_tbl
         this.query_count=res.data.query_tbl
         this.notification_count=res.data.notification_tbl
-        this.book_count=res.data.inst_book_tbl
-        this.notes_count=res.data.inst_notes_tbl
-        this.syllabus_count=res.data.inst_syllabus_tbl
-        this.question_count=res.data.inst_question_bank_tbl
       }
     )
   }

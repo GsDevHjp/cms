@@ -72,7 +72,7 @@
         <input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 
         <div class="submit">
-            <button mat-raised-button color="warn" (click)="resetEmp()">Reset</button>
+            <button mat-raised-button color="warn" (click)="employee_data_reset()">Reset</button>
             <button mat-raised-button color="primary" (click)="onSubmit()"
                 [disabled]="!empForm.valid">{{actionBtn}}</button>
         </div>

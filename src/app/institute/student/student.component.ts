@@ -5,11 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditStudentComponent } from '../add-edit-student/add-edit-student.component';
-import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 import { Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ThemePalette } from '@angular/material/core';
-import { AddEditAddmissionComponent } from '../add-edit-addmission/add-edit-addmission.component';
 import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
 
 @Component({

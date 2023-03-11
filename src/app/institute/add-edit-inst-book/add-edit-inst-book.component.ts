@@ -124,4 +124,7 @@ export class AddEditInstBookComponent implements OnInit {
       this.inst_book_form.get('inst_book_img')?.setValue(file)
     }
   }
+  inst_book_data_reset(){
+    this.inst_book_form.reset()
+  }
 }

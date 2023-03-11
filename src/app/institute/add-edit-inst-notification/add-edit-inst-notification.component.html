@@ -20,7 +20,7 @@
 </form>
 
 <div class="submit">
-    <button mat-raised-button color="warn">Reset</button>
+    <button mat-raised-button color="warn" (click)="notification_data_reset()">Reset</button>
     <button mat-raised-button color="primary" (click)="notification_btn()"
         [disabled]="!notification_form.valid">{{actionBtn}}</button>
 </div>

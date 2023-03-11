@@ -111,4 +111,7 @@ export class AddEditBatchComponent implements OnInit {
       }
     })
   }
+  batch_data_reset(){
+    this.batch_form.reset()
+  }
 }

@@ -1,11 +1,13 @@
 #wrapper {
     width: 100%;
-    height: 100vh;
+    height:100vh;
     background-color: #2C3E50 ;
     background-image: url('src/assets/main_back.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position:fixed;
+
 }
 
 #header {
