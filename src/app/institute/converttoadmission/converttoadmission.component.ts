@@ -30,6 +30,8 @@ export class ConverttoadmissionComponent implements OnInit {
   std: any = 1;
   autoselect = 'Male'
   std_id: any = 0
+  state_data:any
+  district_data:any
   constructor(
     private popup: NgToastService,
     private fb: FormBuilder,
@@ -69,6 +71,19 @@ export class ConverttoadmissionComponent implements OnInit {
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required]
     })
+    const fromdata = new FormData()
+    fromdata.append('country_name', 'India')
+    this.service.get_state_by_country(fromdata).subscribe(
+      (state: any) => {
+        this.state_data = state.data
+      }
+    )
+    this.service.get_district().subscribe(
+      (district_res: any) => {
+        this.district_data = district_res.data
+      }
+    )
+
     this.regist_no_generate()
     this.student_form.controls['std_regist_date'].setValue(new Date().toISOString().slice(0, 10));
 
@@ -199,4 +214,16 @@ export class ConverttoadmissionComponent implements OnInit {
     this.student_form.controls['std_address'].reset()
     this.student_form.controls['std_password'].reset()
   }
-} 
+
+  get_district(event: any) {
+    console.log(event)
+    const districtformdata = new FormData();
+    districtformdata.append('state_name', event)
+    this.service.get_district_by_state(districtformdata).subscribe(
+      (district_res: any) => {
+        this.district_data = district_res.data
+      }
+    )
+  }
+}
+

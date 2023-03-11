@@ -39,21 +39,21 @@
             <mat-label>Country</mat-label>
             <mat-select formControlName="inst_country" (valueChange)="get_state($event)">
                 <mat-option *ngFor="let country of country_data"
-                    [value]="country.country_id">{{country.country_name}}</mat-option>
+                    [value]="country.country_name">{{country.country_name}}</mat-option>
             </mat-select>
         </mat-form-field><br>
       
         <mat-form-field appearance="fill">
             <mat-label>State</mat-label>
             <mat-select formControlName="inst_state" (valueChange)="get_district($event)">
-                <mat-option *ngFor="let state of state_data" [value]="state.state_id">{{state.state_name}}</mat-option>
+                <mat-option *ngFor="let state of state_data" [value]="state.state_name">{{state.state_name}}</mat-option>
             </mat-select>
         </mat-form-field>
        
         <mat-form-field appearance="fill" class="margin_top">
             <mat-label>District</mat-label>
             <mat-select formControlName="inst_district">
-                <mat-option *ngFor="let district of district_data" [value]="district.district_id">{{district.district_name}}</mat-option>
+                <mat-option *ngFor="let district of district_data" [value]="district.district_name">{{district.district_name}}</mat-option>
             </mat-select>
         </mat-form-field>
 

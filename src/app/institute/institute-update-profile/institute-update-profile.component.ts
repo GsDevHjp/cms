@@ -65,6 +65,16 @@ export class InstituteUpdateProfileComponent implements OnInit {
         this.country_data = state_res.data
       }
     )
+      this.service.get_state().subscribe(
+        (state: any) => {
+          this.state_data = state.data
+        }
+      )
+      this.service.get_district().subscribe(
+        (district_res: any) => {
+          this.district_data = district_res.data
+        }
+      )
    
     this.profile_set_data()
   }
@@ -123,7 +133,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
           console.log(result)
           this.matref.close();
           this.popup.success({ detail: 'Success', summary: 'Profile Updated',})
-          this.router.navigate(['/institutehome/institute-update-profile'])
+          this.router.navigate(['/institutehome'])
         },
         (error: any) => {
           console.log(error)
@@ -149,7 +159,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
   get_state(event: any) {
     console.log(event)
     const stateformdata = new FormData();
-    stateformdata.append('country_id', event)
+    stateformdata.append('country_name', event)
     this.service.get_state_by_country(stateformdata).subscribe(
       (state_res: any) => {
         this.state_data = state_res.data
@@ -159,7 +169,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
   get_district(event: any) {
     console.log(event)
     const districtformdata = new FormData();
-    districtformdata.append('state_id', event)
+    districtformdata.append('state_name', event)
     this.service.get_district_by_state(districtformdata).subscribe(
       (district_res: any) => {
         this.district_data = district_res.data

@@ -14,7 +14,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  url: string = '../assets/'
+  url: string = 'assets/'
   displayedColumns: string[] = ['slno', 'emp_name', 'emp_whatsapp', 'emp_aadhar_no', 'emp_photo', 'emp_address', 'Action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

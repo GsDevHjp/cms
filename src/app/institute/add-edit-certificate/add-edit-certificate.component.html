@@ -103,7 +103,7 @@
 								<mat-label>Country</mat-label>
 								<mat-select formControlName="std_country" (valueChange)="get_state($event)">
 									<mat-option *ngFor="let country of country_data"
-										[value]="country.country_id">{{country.country_name}}</mat-option>
+										[value]="country.country_name">{{country.country_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -111,7 +111,7 @@
 								<mat-label>State</mat-label>
 								<mat-select formControlName="std_state" (valueChange)="get_district($event)">
 									<mat-option *ngFor="let state of state_data"
-										[value]="state.state_id">{{state.state_name}}</mat-option>
+										[value]="state.state_name">{{state.state_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -119,7 +119,7 @@
 								<mat-label>District</mat-label>
 								<mat-select formControlName="std_distric" (valueChange)="get_block($event)">
 									<mat-option *ngFor="let district of district_data"
-										[value]="district.district_id">{{district.district_name}}</mat-option>
+										[value]="district.district_name">{{district.district_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -127,7 +127,7 @@
 								<mat-label>Block</mat-label>
 								<mat-select formControlName="std_block" (valueChange)="get_panchayat($event)">
 									<mat-option *ngFor="let block of block_data"
-										[value]="block.block_id">{{block.block_name}}</mat-option>
+										[value]="block.block_name">{{block.block_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
@@ -135,7 +135,7 @@
 								<mat-label>Panchayat</mat-label>
 								<mat-select formControlName="std_panchayat">
 									<mat-option *ngFor="let panchayat of panchayat_data"
-										[value]="panchayat.panchayat_id">{{panchayat.panchayat_name}}</mat-option>
+										[value]="panchayat.panchayat_name">{{panchayat.panchayat_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 							<br>
