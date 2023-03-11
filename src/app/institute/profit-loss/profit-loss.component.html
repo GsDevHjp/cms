@@ -1,1 +1,87 @@
-<p>profit-loss works!</p>
+<!----------------------------------------------- Enquiry Table Start Here ------------------------------------------------------------>
+<div id="manage_table_wrapper">
+    <div class="head">
+      <span class="enquiry_text">Profit & Loss Details</span>
+    </div>
+    <div class="count_area">
+      <span class="notice_text">Total : {{count_enquiry}}</span>
+      <div class="search">
+        <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+      </div>
+    </div>
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+  
+        <!----------------------------------------------- S.N. ------------------------------------------------------------>
+  
+        <ng-container matColumnDef="enq_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+          <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+          </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Student Name ------------------------------------------------------>
+  
+        <ng-container matColumnDef="std_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Expence </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_name}}</td>
+        </ng-container>
+  
+        <!----------------------------------------------- Mobile Number ------------------------------------------------------->
+  
+        <ng-container matColumnDef="std_whatsapp_no">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_whatsapp_no}} </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Course ------------------------------------------------------->
+  
+        <ng-container matColumnDef="course_id_fk">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Profit Amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.course_name}} </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Gender ------------------------------------------------------->
+  
+        <ng-container matColumnDef="std_gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Loss Amount </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_gender}} </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Address -------------------------------------------------------->
+  
+        <ng-container matColumnDef="std_address">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_address}} </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Date ---------------------------------------------------------->
+  
+        <ng-container matColumnDef="std_regist_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let row"> {{row.std_regist_date}} </td>
+        </ng-container>
+  
+        <!----------------------------------------------- Action ----------------------------------------------------------->
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+           
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" id="tbl_hight"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="tbl_hight"></tr>
+  
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+        </tr>
+      </table>
+  
+      <mat-paginator #paginatorRef [pageSizeOptions]="[10, 22, 55, 100]"
+        aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>

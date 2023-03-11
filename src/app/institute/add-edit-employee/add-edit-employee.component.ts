@@ -20,7 +20,7 @@ export class AddEditEmployeeComponent implements OnInit {
   login: any;
   inst_id: any;
   inst_id_for_inst_login: any;
-  image_url:any = "https://greensoft.net.in/gscms/assets/certificate/man.png"
+  image_url:any = "https://greensoft.net.in/gscms/assets/"
   image_select:any
 
   constructor(

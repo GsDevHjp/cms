@@ -33,7 +33,6 @@ export class InstituteSidebarComponent implements OnInit {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     this.inst_id = this.login.inst_id
-
     const fromdata = new FormData()
     fromdata.append('inst_id', this.inst_id)
     this.service.get_inst_by_inst_id(fromdata).subscribe(

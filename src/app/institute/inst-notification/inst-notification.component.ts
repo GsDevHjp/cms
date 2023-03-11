@@ -25,7 +25,7 @@ export class InstNotificationComponent implements OnInit {
   login: any
   inst_id: any
   inst_id_for_inst_login: any;
-
+  bgColor ='rgba(0,0,0,0.9)';
   constructor(
     private dailog: MatDialog,
     private service: ManageService,
