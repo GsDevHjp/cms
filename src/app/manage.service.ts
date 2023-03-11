@@ -8,7 +8,7 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl: string = 'https://greensoft.net.in/gscms/api/';
+  baseUrl: string = 'https://educatorbox.com/api/';
 
   // dashboard  
   get_dashboad(data: any) {
