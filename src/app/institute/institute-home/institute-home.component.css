@@ -62,10 +62,10 @@ mat-icon {
 .name_text {
     width: calc(100% - 330px);
     height: 100%;
-    display: inline-block;
     margin-left: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 
 #dash_header_admin span {
     line-height: 65px;

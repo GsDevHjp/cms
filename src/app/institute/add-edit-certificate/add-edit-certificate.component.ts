@@ -33,7 +33,7 @@ export class AddEditCertificateComponent implements OnInit {
   block_data:any
   panchayat_data:any
   // for new docment  
-  url:string = 'https://greensoft.net.in/gscms/assets/certificate/'
+  url:string = 'assets/certificate/'
   aadhar_url:any = "assets/doc.png"
   aadhar_select:any
 
@@ -43,7 +43,7 @@ export class AddEditCertificateComponent implements OnInit {
   markseet_url:any = "assets/doc.png"
   markseet_select:any
 
-  image_url:any = "https://greensoft.net.in/gscms/assets/certificate/man.png"
+  image_url:any = "assets/man.png"
   image_select:any
 
   constructor(
@@ -446,14 +446,5 @@ reader.readAsDataURL(this.image_select[0]);
       }
     )
   }
-  get_panchayat(event: any) {
-    console.log(event)
-    const panchayatformdata = new FormData();
-    panchayatformdata.append('block_name', event)
-    this.services.get_panchayat_by_block(panchayatformdata).subscribe(
-      (panchayat_res: any) => {
-        this.panchayat_data = panchayat_res.data
-      }
-    )
-  }
+
 }

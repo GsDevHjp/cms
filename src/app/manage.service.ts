@@ -8,6 +8,7 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
+  
   baseUrl: string = 'https://educatorbox.com/api/';
 
   // dashboard  
