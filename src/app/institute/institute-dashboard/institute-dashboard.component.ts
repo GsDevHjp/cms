@@ -22,6 +22,7 @@ export class InstituteDashboardComponent implements OnInit {
   employee_count:number=0
   expence_count:number=0
   ledger_count:number=0
+  profitloss_count:number=0
   
   login_deatils:any
   login:any
