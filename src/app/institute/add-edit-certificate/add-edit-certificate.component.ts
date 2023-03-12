@@ -155,6 +155,7 @@ export class AddEditCertificateComponent implements OnInit {
       certificateiddata.append('certificate_id', this.certificate_id);
       this.services.get_certificate_by_certificate_id(certificateiddata).subscribe({
         next: (res: any) => {
+          console.log(res)
           this.personal_form.controls['certificate_id'].setValue(res.data[0].certificate_id);
           this.personal_form.controls['std_name'].setValue(res.data[0].std_name);
           this.personal_form.controls['std_father_name'].setValue(res.data[0].std_father_name);

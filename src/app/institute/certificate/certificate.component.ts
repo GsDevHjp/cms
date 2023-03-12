@@ -21,7 +21,7 @@ export class CertificateComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   cer_count: string = "0"
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/certificate/';
+  imgUrl: string = 'assets/certificate/';
   inst_id :any
   login:any
   login_deatils:any
