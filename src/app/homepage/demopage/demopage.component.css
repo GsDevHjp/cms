@@ -1,82 +1,157 @@
-
-.example-spacer {
-    flex: 1 1 auto;
-    margin-bottom: 20px;
-    color: #1d1f23;
-    font-size: 18px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+::ng-deep .mat-dialog-container {
+    padding: 0;
 }
 
-.material-icons {
-    color: #1d1f23;
-    margin-bottom: 20px;
+#wrapper {
+    width: 900px;
+    height: 500px;
 }
 
 mat-toolbar {
-    height: 30px;
-    padding: 0px;
-    background: none;
-    position: relative;
-    color: whitesmoke;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: rgb(242, 242, 242);
+}
+
+.side_img {
+    width: 40%;
+    height: 100%;
+    float: left;
+    background-color: rgb(230, 230, 230);
+}
+
+.side_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.user_info {
+    width: calc(100% - 40%);
+    height: 100%;
+    float: right;
+}
+
+mat-form-field {
+    margin: 5px 0px 0px 17px;
+    width: 45%;
 }
 
 #password {
-    width: 200px;
+    width: 243px;
 }
 
 #address {
-    width: 98.5%;
-    margin-left: 1.5%;
+    width: calc(100% - 30px);
+    margin-left: 15px;
 }
+
 textarea {
     height: 17px;
 }
-mat-form-field {
-    margin: 0px 5px 0px 5px;
-}
 
 .register {
-    justify-content:center;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
 
 button {
     margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+@media (min-width:968px) and (max-width: 1200px) {
+    #wrapper {
+        width: 630px;
+        height: 750px;
+    }
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+    }
+    mat-form-field{
+        width: calc(100% - 30px)
+    }
+    #password {
+        width: calc(100% - 30px);
+    }
+    
+}
+@media (min-width:768px) and (max-width:968px) {
+    #wrapper {
+        width: 100%;
+        height: 660px;
+    }
+
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+    }
+    mat-form-field{
+        width: calc(100% - 30px)
+    }
+    #password {
+        width: calc(100% - 30px);
+    }
+   
 }
 
 @media(min-width:420px)and (max-width:768px) {
-    mat-form-field {
+    #wrapper {
         width: 100%;
-        margin: 0px;
+        height: 500px;
     }
 
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+    }
+    mat-form-field{
+        width: calc(100% - 30px)
+    }
     #password {
-        width: 100%;
+        width: calc(100% - 30px);
     }
-    .register {
-        padding-bottom:15px;
-    }
-    #address {
-        width: 100%;
-        margin-left:0px;
-    }
+   
 }
 
-@media(max-width:420px) {
-    mat-form-field {
+@media screen and (max-width:420px) {
+    #wrapper {
         width: 100%;
-        margin: 0px;
+        height: 500px;
     }
 
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+    }
+    mat-form-field{
+        width: calc(100% - 30px)
+    }
     #password {
-        width: 100%;
+        width: calc(100% - 30px);
     }
-    #address {
-        width: 100%;
-        margin-left:0px;
-    }
-    .register {
-        padding-bottom:15px;
-     }
+  
 }
