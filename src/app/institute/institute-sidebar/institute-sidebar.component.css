@@ -38,12 +38,12 @@
 }
 
 .menu-button:hover {
-    background-color: #525458;
+    background-color: rgb(10, 74, 163);
 }
 
 .menu-button:focus {
-    background-color: #35373d;
-}
+    background-color: rgb(10, 74, 163);
+} 
 
 .master_icon {
     padding-left: 30px;
@@ -65,17 +65,19 @@
 }
 
 .master_icon:hover {
-    background-color: #525458;
+    background-color: rgb(10, 74, 163);
 }
 
 .master_icon:focus {
-    background-color: #35373d;
+    background-color:rgb(10, 74, 163);
 }
 
 #dropdown_study {
     display: none;
 }
-
+.active{
+    background-color: rgb(10, 74, 163);
+}
 #dropdown_master {
     display: none;
     /* animation: dropdown 1s;
