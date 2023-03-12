@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { faAllergies } from '@fortawesome/free-solid-svg-icons';
 import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
+import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 
 @Component({
   selector: 'app-admission',
@@ -109,6 +110,14 @@ get_admission_data(inst_id:any){
 
 add_addmission(){
   this.dailog.open(AddEditTakeAddmissionComponent)
+}
+
+onpaymet(row:any){
+  this.dailog.open(AddEditPaymentRecivedComponent,{
+    data: row,
+   
+  }
+  )
 }
 }
 

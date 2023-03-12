@@ -2,7 +2,6 @@
 <div id="manage_table_wrapper">
   <div class="head">
     <span class="admission_text">Admission Details</span>
-    <mat-icon id="add_batch" (click)="add_addmission()">add_circle</mat-icon>
 
   </div>
   <div class="count_area">
@@ -90,8 +89,9 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
+          <mat-icon (click)="onpaymet(row.regist_no)"  title="Payment Received">payment</mat-icon> &nbsp; &nbsp; 
           <mat-slide-toggle [color]="color" [checked]="row.admissition_status ==1" (change)="toggle($event, row.admission_id)" ></mat-slide-toggle>
-          &nbsp; &nbsp;  <mat-icon  title="drop out" class="cancell">cancel</mat-icon>
+          &nbsp; &nbsp;  <mat-icon  title="Drop Out" class="cancell">cancel</mat-icon>
         </td>
       </ng-container>
 
