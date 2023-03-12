@@ -1,12 +1,12 @@
 #wrapper {
     width: 100%;
-    height:100vh;
-    background-color: #2C3E50 ;
+    height: 100vh;
+    background-color: #2C3E50;
     background-image: url('src/assets/main_back.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    position:fixed;
+    position: fixed;
 
 }
 
@@ -25,7 +25,7 @@ h1 {
 }
 
 .login_head {
-    margin: 10px; 
+    margin: 10px;
     height: 40px;
     background-color: #5a74ad;
 }
@@ -104,11 +104,13 @@ mat-form-field mat-label {
     margin-left: 118px;
     border-radius: 5px;
 }
-.info_box{
+
+.info_box {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
+
 p {
     color: white;
     font-size: 14px;
@@ -146,47 +148,79 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #fff !important;
     transition: background-color 5000000s ease-in-out 0s;
 }
+
 /* for input auto fill background transparent  */
 
 /* for responsive design in institute login */
 
-  @media(max-width:767px) { 
+@media(max-width:767px) {
     .example-card {
         max-width: 270px;
         height: 350px;
     }
-    mat-card-header{
-        font-size:20px;
+
+    mat-card-header {
+        font-size: 20px;
         padding: 10px 0px 0px 30px;
     }
+
     img {
         width: 70px;
         margin-left: 90px;
     }
+
     mat-form-field {
         width: 88%;
     }
+
     .action_login {
         width: 70px;
         margin-left: 83px;
     }
-    .new_account{
+
+    .new_account {
         font-size: 11px;
     }
-    .new_account{
-       position: relative;
-       left: 75px;
-       font-size: 12px;
+
+    .new_account {
+        position: relative;
+        left: 75px;
+        font-size: 12px;
+    }
+
+    .forgot_pwd {
+        position: relative;
+        right: 70px;
+        top: 17px;
+        font-size: 12px;
+    }
+
+    span {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .example-card {
+        max-width: 320px;
+        height: 440px;
+    }
+
+    .new_account {
+        position: relative;
+        left: 10px;
+        top: 15px;
+        font-size: 12px;
 
     }
-    .forgot_pwd{
-       position: relative;
-       right: 70px;
-       top: 17px;
-       font-size: 12px;
+
+    .forgot_pwd {
+        position: relative;
+        right: 10px;
+        top: 15px;
+        font-size: 12px;
     }
-   
-    span{
-        font-size: 11px;
+    .action_login {
+        margin-left: 115px;
     }
-  }
+}

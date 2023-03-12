@@ -1,0 +1,82 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    color: #1d1f23;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.material-icons {
+    color: #1d1f23;
+    margin-bottom: 20px;
+}
+
+mat-toolbar {
+    height: 30px;
+    padding: 0px;
+    background: none;
+    position: relative;
+    color: whitesmoke;
+}
+
+#password {
+    width: 200px;
+}
+
+#address {
+    width: 98.5%;
+    margin-left: 1.5%;
+}
+textarea {
+    height: 17px;
+}
+mat-form-field {
+    margin: 0px 5px 0px 5px;
+}
+
+.register {
+    justify-content:center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin-left: 10px;
+}
+
+@media(min-width:420px)and (max-width:768px) {
+    mat-form-field {
+        width: 100%;
+        margin: 0px;
+    }
+
+    #password {
+        width: 100%;
+    }
+    .register {
+        padding-bottom:15px;
+    }
+    #address {
+        width: 100%;
+        margin-left:0px;
+    }
+}
+
+@media(max-width:420px) {
+    mat-form-field {
+        width: 100%;
+        margin: 0px;
+    }
+
+    #password {
+        width: 100%;
+    }
+    #address {
+        width: 100%;
+        margin-left:0px;
+    }
+    .register {
+        padding-bottom:15px;
+     }
+}
