@@ -5,47 +5,47 @@
     <div class="menu">
         <div [ngClass]="'menu_item'">
 
-            <button mat-button class="menu-button" [routerLink]="['dashboard']">
+            <button mat-button class="menu-button" [routerLink]="['dashboard']" routerLinkActive="active">
                 <mat-icon>dashboard</mat-icon>
                 <span>Dashboard</span>
             </button>
 
             <div>
-                <button mat-button class="menu-button" (click)="dropdown_master()">
+                <button mat-button class="menu-button" (click)="dropdown_master()" routerLinkActive="active">
                     <mat-icon>dvr</mat-icon>
-                    <span>Master Entery</span>
+                    <span>Master Entry</span>
                     <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
                     <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
                 </button>
 
                 <div id="dropdown_master">
-                    <button mat-button class="master_icon" [routerLink]="['course']">
+                    <button mat-button class="master_icon" [routerLink]="['course']" routerLinkActive="active">
                         <mat-icon>school</mat-icon>
                         <span>Course</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['batch']">
+                    <button mat-button class="master_icon"  [routerLink]="['batch']" routerLinkActive="active">
                         <mat-icon>local_library</mat-icon>
                         <span>Batch</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['instnotification']">
+                    <button mat-button class="master_icon" [routerLink]="['instnotification']" routerLinkActive="active">
                         <mat-icon>notifications</mat-icon>
                         <span>Notification</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['instquizdashboard']">
+                    <button mat-button class="master_icon" [routerLink]="['instquizdashboard']" routerLinkActive="active">
                         <mat-icon>quiz</mat-icon>
                         <span>Quiz</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['employee']">
+                    <button mat-button class="master_icon" [routerLink]="['employee']" routerLinkActive="active">
                         <mat-icon>supervisor_account</mat-icon>
                         <span>Employee</span>
                     </button>
 
 
-                    <button mat-button class="menu-button" (click)="dropdown_address()">
+                    <button mat-button class="menu-button" (click)="dropdown_address()" routerLinkActive="active">
                         <mat-icon>list_alt</mat-icon>
                         <span>Address</span>
                         <mat-icon [hidden]="action_icon7">chevron_right</mat-icon>
@@ -53,27 +53,27 @@
                     </button>
         
                     <div id="dropdown_address">
-                        <button mat-button class="master_icon" [routerLink]="['country']">
+                        <button mat-button class="master_icon" [routerLink]="['country']" routerLinkActive="active">
                             <mat-icon> language</mat-icon>
                             <span>Country</span>
                         </button>
-                        <button mat-button class="master_icon" [routerLink]="['state']">
+                        <button mat-button class="master_icon" [routerLink]="['state']" routerLinkActive="active">
                             <mat-icon>room</mat-icon>
                             <span>State</span>
                         </button>
-                        <button mat-button class="master_icon" [routerLink]="['district']">
+                        <button mat-button class="master_icon" [routerLink]="['district']" routerLinkActive="active">
                             <mat-icon>map</mat-icon>
                             <span>District</span>
                         </button>
-                        <button mat-button class="master_icon" [routerLink]="['block']">
+                        <button mat-button class="master_icon" [routerLink]="['block']" routerLinkActive="active">
                             <mat-icon>room</mat-icon>
                             <span>Block</span>
                         </button>
-                        <button mat-button class="master_icon" [routerLink]="['panchayat']">
+                        <button mat-button class="master_icon" [routerLink]="['panchayat']" routerLinkActive="active">
                             <mat-icon>gps_fixed</mat-icon>
                             <span>Panchayat</span>
                         </button>
-                        <button mat-button class="master_icon" [routerLink]="['ward']">
+                        <button mat-button class="master_icon" [routerLink]="['ward']" routerLinkActive="active">
                             <mat-icon>room</mat-icon>
                             <span>Ward</span>
                         </button>
@@ -83,63 +83,63 @@
                 </div>
             </div>
 
-            <button mat-button class="menu-button" [routerLink]="['enquiry']">
+            <button mat-button class="menu-button" [routerLink]="['enquiry']"  routerLinkActive="active">
                 <mat-icon>transfer_within_a_station</mat-icon>
                 <span>Enquiry</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['student']">
+            <button mat-button class="menu-button" [routerLink]="['student']"  routerLinkActive="active">
                 <mat-icon>library_books</mat-icon>
                 <span>Student</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['admission']">
+            <button mat-button class="menu-button" [routerLink]="['admission']" routerLinkActive="active">
                 <mat-icon>airline_seat_recline_normal</mat-icon>
                 <span>Admission</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['fee']">
+            <button mat-button class="menu-button" [routerLink]="['fee']"  routerLinkActive="active">
                 <mat-icon>payment</mat-icon>
                 <span>Fee</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['dues']">
+            <button mat-button class="menu-button" [routerLink]="['dues']"  routerLinkActive="active">
                 <mat-icon>redeem</mat-icon>
                 <span>Dues</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['liveclass']">
+            <button mat-button class="menu-button" [routerLink]="['liveclass']"  routerLinkActive="active">
                 <mat-icon>chrome_reader_mode</mat-icon>
                 <span>Live Class</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['oes']">
+            <button mat-button class="menu-button" [routerLink]="['oes']"  routerLinkActive="active">
                 <mat-icon>pets</mat-icon>
                 <span>OES</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['elearning']">
+            <button mat-button class="menu-button" [routerLink]="['elearning']"  routerLinkActive="active">
                 <mat-icon>explicit</mat-icon>
                 <span>E-Learning</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['instquery']">
+            <button mat-button class="menu-button" [routerLink]="['instquery']"  routerLinkActive="active">
                 <mat-icon>equalizer</mat-icon>
                 <span>Query</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['certificate']">
+            <button mat-button class="menu-button" [routerLink]="['certificate']"  routerLinkActive="active">
                 <mat-icon>file_copy</mat-icon>
                 <span>Issue Certificate</span>
             </button>
 
-            <button mat-button class="menu-button" [routerLink]="['expence']">
+            <button mat-button class="menu-button" [routerLink]="['expence']"  routerLinkActive="active">
                 <mat-icon>explicit</mat-icon>
                 <span>Expense</span>
             </button>
 
             <div>
-                <button mat-button class="menu-button" (click)="account_dropdown()">
+                <button mat-button class="menu-button" (click)="account_dropdown()"  routerLinkActive="active">
                     <mat-icon>business</mat-icon>
                     <span>Account</span>
                     <mat-icon [hidden]="action_icon5">chevron_right</mat-icon>
@@ -147,12 +147,12 @@
                 </button>
 
                 <div id="dropdown_account">
-                    <button mat-button class="master_icon" [routerLink]="['ledger']">
+                    <button mat-button class="master_icon" [routerLink]="['ledger']"  routerLinkActive="active">
                         <mat-icon>book</mat-icon>
                         <span>Ledger</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['profitloss']">
+                    <button mat-button class="master_icon" [routerLink]="['profitloss']"  routerLinkActive="active">
                         <mat-icon>notes</mat-icon>
                         <span>Profit & Loss</span>
                     </button>
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div>
-                <button mat-button class="menu-button" (click)="dropdown_study()">
+                <button mat-button class="menu-button" (click)="dropdown_study()"  routerLinkActive="active">
                     <mat-icon>list_alt</mat-icon>
                     <span>Study Material</span>
                     <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
@@ -168,22 +168,22 @@
                 </button>
 
                 <div id="dropdown_study">
-                    <button mat-button class="master_icon" [routerLink]="['instbook']">
+                    <button mat-button class="master_icon" [routerLink]="['instbook']" routerLinkActive="active">
                         <mat-icon>book</mat-icon>
                         <span>Book</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['instnotes']">
+                    <button mat-button class="master_icon" [routerLink]="['instnotes']"  routerLinkActive="active">
                         <mat-icon>notes</mat-icon>
                         <span>Notes</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['instsyllabus']">
+                    <button mat-button class="master_icon" [routerLink]="['instsyllabus']" routerLinkActive="active">
                         <mat-icon>style</mat-icon>
                         <span>Syllabus</span>
                     </button>
 
-                    <button mat-button class="master_icon" [routerLink]="['instquestionbank']">
+                    <button mat-button class="master_icon" [routerLink]="['instquestionbank']" routerLinkActive="active">
                         <mat-icon>question_answer</mat-icon>
                         <span>Question Bank</span>
                     </button>
