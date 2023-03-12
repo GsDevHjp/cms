@@ -27,7 +27,7 @@ export class StdbathcbyComponent implements OnInit {
   routdata:any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'assets/';
   color: ThemePalette = 'primary'
   constructor(
     private dailog: MatDialog,

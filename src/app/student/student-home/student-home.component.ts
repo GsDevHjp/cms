@@ -14,7 +14,7 @@ import { StdChnangePwdComponent } from '../std-chnange-pwd/std-chnange-pwd.compo
 })
 export class StudentHomeComponent implements OnInit {
   displayedColumns: string[] = ['notification'];
-
+  custtomize_noti:string = ''
   name: any;
   opened: boolean = true
   @ViewChild(MatSidenav)
@@ -58,8 +58,16 @@ export class StudentHomeComponent implements OnInit {
       this.img_url = this.login.std_img
     }
 
+    const fromdata = new FormData()
+    fromdata.append("inst_id", this.login.institute_id_fk)
+    this.servies.get_notification_by_inst_id(fromdata).subscribe(
+      (res:any)=>{
+        this.custtomize_noti = res.data[0].notification
+      }
+    )
   }
 
+  
   get_std_data(std: any) {
     const fromdata = new FormData()
     fromdata.append('std_id', std)
