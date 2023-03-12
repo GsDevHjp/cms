@@ -18,6 +18,7 @@ import { StateComponent } from './admin/state/state.component';
 import { TAndCComponent } from './admin/t-and-c/t-and-c.component';
 import { ViewportComponent } from './admin/viewport/viewport.component';
 import { WardComponent } from './admin/ward/ward.component';
+import { DemopageComponent } from './homepage/demopage/demopage.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AddEditCertificateComponent } from './institute/add-edit-certificate/add-edit-certificate.component';
 import { AdmissionComponent } from './institute/admission/admission.component';
@@ -64,7 +65,12 @@ import { TakeAddmissionComponent } from './student/take-addmission/take-addmissi
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'homepage', component: HomepageComponent },
+  {
+    path: 'homepage', component: HomepageComponent,
+    children: [
+      { path: 'demopage', component: DemopageComponent }
+    ]
+  },
   { path: 'adminlogin', component: AdminLoginComponent },
   {
     path: 'adminhome', component: AdminHomeComponent,

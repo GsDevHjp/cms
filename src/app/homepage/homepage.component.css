@@ -1,598 +1,440 @@
-#wrapper {
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+#header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 500;
+  box-shadow: 2px 2px 10px rgb(189, 189, 189);
+  background-color: white;
+}
+
+#logo {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#logo img {
+  width: 18%;
+  height: 95%;
+  margin-left: 15%;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+#btn_area {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#btn_area button {
+  border-radius: 20px;
+  float: right;
+  font-family: cambria;
+  font-size: 20px;
+  margin-right: 15%;
+  margin-top: 20px;
+  transition: 0.5s;
+  border: 2px solid black;
+}
+
+#btn_area button:hover {
+  background-color: rgb(46, 46, 54);
+  color: white;
+}
+
+#slider {
+  width: 100%;
+  height: 700px;
+  padding-top: 80px;
+}
+
+#slider_content {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#slider_content h2 {
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 150px;
+  margin-left: 60px;
+  line-height: 50px;
+}
+
+#slider_content p {
+  margin-left: 60px;
+  font-size: 15px;
+}
+
+#slider_content button {
+  margin-left: 60px;
+  margin-top: 15px;
+  border: 2px solid black;
+  font-size: 18px;
+  font-family: cambria;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+#slider_content button:hover {
+  background-color: rgb(50, 51, 65);
+  color: white;
+}
+
+#slider_img {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#slider_img img {
+  height: 100%;
+  width: 100%;
+}
+#website_details{
+  width: 100%;
+  height: 400px;
+  padding: 10px 10px;
+}
+.info_box{
+  width: 300px;
+  height: 380px;
+  border-radius: 5px;
+  float: left;
+  margin-left: 8px;
+  background-color: rgb(223, 223, 223);
+}
+.info_box img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+#choose_us {
+  width: 100%;
+  height: 400px;
+  padding: 0px 20px;
+}
+
+#choose_us strong {
+  width: 100%;
+  height: 50px;
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px;
+  line-height: 30px;
+}
+
+#choose_content {
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  text-align: justify;
+  line-height: 30px;
+  padding: 10px;
+  word-spacing: 5px;
+}
+
+#contact {
+  width: calc(100% - 20%);
+  height: 500px;
+  border-radius: 20px;
+  margin-left: 10%;
+  box-shadow: 0px 0px 5px gray;
+  margin-bottom: 20px;
+}
+
+.contact_form_img {
+  width: 500px;
+  height: 100%;
+  float: left;
+  border-radius: 20px 0px 0px 20px;
+  background-color: rgb(251 251 251);
+}
+
+.contact_form_img img {
+  width: 100%;
+  height: 100%;
+}
+
+.contact_form {
+  width: calc(100% - 500px);
+  height: 100%;
+  float: right;
+  padding: 50px 70px;
+  border-radius: 0px 20px 20px 0px;
+}
+
+.contact_form h4 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.submit button {
+  margin-left: 10px;
+}
+
+.my_info {
+  font-size: 20px;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 30px;
+  line-height: 50px;
+}
+.maticon{
+  line-height: 55px;
+  width: auto;
+  height: auto;
+}
+#footer {
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  padding: 10px;
+  background-color: rgb(34, 32, 43);
+}
+
+#footer a {
+  text-decoration: none;
+  color: white;
+}
+@media (min-width:968px) and (max-width:1268px) {
+  .contact_form_img {
+    width: 400px;
+  }
+  .contact_form{
+    width: calc(100% - 400px);
+    padding: 30px;
+  }
+}
+
+@media (min-width:768px) and (max-width:968px) {
+  #slider {
+    display: flex;
+    height: 770px;
+    flex-direction: column-reverse;
+  }
+
+  #slider_img {
     width: 100%;
-    height: auto;
+    height: 70%;
     float: left;
   }
-  
-  /** header code start from here **/
-  
-  #header {
+
+  #slider_content {
     width: 100%;
-    height: 90px;
+    height: 30%;
     float: left;
-    background-color: white;
-    box-shadow: 1px 1px 15px rgb(188, 188, 188);
-    position: fixed;
-    z-index: 5;
   }
-  
-  #logo {
-    width: 30%;
-    height: 100%;
-    float: left;
-    overflow: hidden;
+  #slider_content h2 {
+    margin-top: 1px;
+    margin-left: 18px;
+    font-size: 30px;
   }
-  
-  #logo img {
-    scale: 1.20;
-    margin-left: 50%;
+
+  #slider_content p {
+    margin-left: 24px;
   }
-  
-  .action_btn {
-    color: #fff;
-  }
-  
-  .action_btn:hover {
-    background-color: #43474f;
-  }
-  
-  .menu {
-    width: calc(100% - 35%);
-    float: left;
-    height: 100%;
-  }
-  
-  a {
-    text-decoration: none;
-    color: black;
-    transition: 0.5s;
-  }
-  
-  .menu button {
-    float: left;
-    margin-top: 28px;
-    margin-left: 10px;
-    font-size: 18px;
-    font-family: cambria;
-    border-radius: 20px;
-    transition: 0.5s;
-  }
-  
-  .menu button:hover a{
-    color: white;
-  }
-  
-  #navigation_bar {
-    width: 5%;
-    height: 100%;
-    float: right;
-    display: none;
-  }
-  
-  .nav button:hover:not(.active){
-    background-color:rgb(40, 46, 49);
-    color: white;
-    cursor: pointer;
-  }
-  .active{
-    background-color:rgb(40, 46, 49);
-    cursor: pointer;
-   
-  }
-  
-  /** slider code start from here **/
-  #slider_area {
-    width: 100%;
+  #choose_us {
     height: 500px;
-    float: left;
-    margin-top: 80px;
+    overflow: auto;
+    padding: 10px;
   }
-  
-  #for_text {
-    width: 50%;
-    height: 100%;
-    float: left;
+
+  #choose_us strong {
+    font-size: 27px;
   }
-  
-  #for_image {
-    width: 50%;
-    height: 100%;
-    float: left;
+
+  #contact {
+    width: calc(100% - 20%);
+    height: 750px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 10%;
+    box-shadow: 2px 2px 10px gray;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
-  
-  #for_image img {
-    width: 80%;
-    height: 80%;
-    margin: 8%;
-  }
-  
-  #text_1 {
-    font-size: 50px;
-    float: left;
-    margin-top: 180px;
-    line-height: 50px;
-    margin-left: 50px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-  
-  #whatshapp_chat {
-    width: 65px;
-    height: 65px;
-    position: fixed;
-    bottom: 30px;
-    right: 15px;
-    z-index: 20;
-  }
-  
-  #whatshapp_chat img {
+
+  .contact_form_img {
     width: 100%;
-    height: 100%;
-  }
-  
-  
-  /** facilities code start from here**/
-  #facilities {
-    width: 100%;
-    height: auto;
-    float: left;
-  }
-  
-  #facility_title {
-    width: 100%;
-    height: 50px;
-    float: left;
-    font-size: 22px;
-    font-family: cambria;
-    text-align: center;
-    line-height: 50px;
-  }
-  
-  .facilitie_card {
-    width: 48%;
     height: 300px;
     float: left;
-    background-color: rgb(252, 249, 249);
-    margin-left: 1.3%;
-    border-radius: 10px;
-    margin-bottom: 1.3%;
-    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+    background-color: rgb(251 251 251);
   }
-  
-  .facility_heading {
+
+  .contact_form {
     width: 100%;
-    height: 50px;
-    float: left;
-    font-size: 22px;
-    font-family: cambria;
-    padding: 15px;
-  }
-  
-  .facility_content {
-    width: 40%;
-    height: calc(100% - 50px);
-    float: left;
-    font-family: cambria;
-    font-size: 18px;
-    font-family: cambria;
-    line-height: 28px;
-    padding: 15px;
-    text-align: justify;
-  }
-  
-  .facility_image {
-    width: 60%;
-    height: calc(100% - 50px);
-    float: left;
-  }
-  
-  /* about code start from here */
-  #about {
-    width: 100%;
-    height: auto;
-    float: left;
-    box-shadow: 1px 1px 8px rgb(199, 199, 199);
-  }
-  
-  #about_head {
-    width: 100%;
-    height: 50px;
-    float: left;
-    font-size: 22px;
-    font-family: cambria;
-    text-align: center;
-    line-height: 50px;
-  }
-  
-  #about_content {
-    width: 100%;
-    height: calc(100% - 50px);
-    float: left;
-    font-size: 20px;
-    font-family: cambria;
-    padding: 12px;
-    line-height: 35px;
-    text-align: justify;
-    word-spacing: 8px;
-  }
-  
-  /* contact code start from here */
-  
-  #contact {
-    width: 80%;
-    height: 500px;
-    float: left;
+    height: calc(100% - 300px);
+    float: right;
+    padding: 10px 10px;
+    border-radius: 0px 0px 20px 20px;
     background-color: rgb(255, 255, 255);
-    margin-left: 10%;
-    margin-top: 18px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 1px 1px 10px rgb(176, 176, 176);
   }
-  
-  #contact_form {
-    width: 50%;
-    height: 100%;
-    float: left;
-  }
-  
-  #top_input {
-    margin-top: 90px;
-  }
-  
-  #contact_form mat-form-field {
-    width: 60%;
-    margin-left: 20%;
-  
-  }
-  
-  #reset_btn {
-    background-color: orangered;
-    color: #fff;
-    font-family: cambria;
-    font-size: 18px;
-    float: left;
-    margin-left: 35%;
-    margin-top: 20px;
-  }
-  
-  #submit_btn {
-    background-color: rgb(9, 85, 227);
-    color: #fff;
-    font-family: cambria;
-    font-size: 18px;
-    margin-left: 5px;
-    float: left;
-    margin-top: 20px;
-  }
-  
-  #contact_form_img {
-    width: 50%;
-    height: 100%;
-    float: left;
-  }
-  
-  #contact_form_img img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /***** why should choose us code start from here ******/
-  
-  #choose_us{
-    width: 100%;
-    height: auto;
-    background-color: rgb(250, 250, 250);
-    float: left;
-    margin-top: 10px;
-  }
-  
-  #choose_title{
-    width: 100%;
-    height: 50px;
-    float: left;
-    font-family: The Natures;
-    font-size: 30px;
-    padding: 10px;
+  .my_info{
     line-height: 40px;
-    letter-spacing: 2px;
   }
-  
-  #choose_content{
+
+}
+
+@media (min-width:420px) and (max-width:768px) {
+  #slider {
+    display: flex;
+    height: 770px;
+    flex-direction: column-reverse;
+  }
+
+  #slider_img {
     width: 100%;
-    height: auto;
+    height: 55%;
     float: left;
-    font-family: cambria;
+  }
+
+  #slider_content {
+    width: 100%;
+    height: 45%;
+    float: left;
+  }
+
+  #slider_content h2 {
+    margin-top: 1px;
+    margin-left: 18px;
+    font-size: 30px;
+  }
+
+  #slider_content p {
+    margin-left: 24px;
+  }
+
+  #choose_us {
+    height: 800px;
+    overflow: auto;
+    padding: 10px;
+  }
+
+  #choose_us strong {
     font-size: 20px;
-    padding: 15px;
-    line-height: 34px;
-    word-spacing: 5px;
-    text-align: justify;
   }
-  
-  #copyright {
+
+  #contact {
+    width: calc(100% - 20%);
+    height: 750px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 10%;
+    box-shadow: 2px 2px 10px gray;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact_form_img {
     width: 100%;
-    height: 50px;
+    height: 300px;
     float: left;
-    background-color: rgb(47, 54, 82);
-    color: white;
-    text-align: center;
-    line-height: 50px;
-    font-size: 18px;
-    font-family: cambria;
+    border-radius: 20px 20px 0px 0px;
+    background-color: rgb(251 251 251);
   }
-  
-  
-  /** Media query start from here ***/
-  @media(max-width:750px) and (min-width:500px){
-    #header{
-        height: 60px;
-    }
-    #logo{
-        width: calc(100% - 5%);
-        height: 100%;
-    }
-    #logo img{
-        width: 20%;
-        scale: 1.20;
-        margin-left: 10%;
-    }
-    .menu{
-        display: none;
-    }
-    #navigation_bar{
-        display: block;
-    }
-    #navigation_bar button{
-    width: auto;
-    height: auto;
-    margin-top: 5px;
+
+  .contact_form {
+    width: 100%;
+    height: calc(100% - 300px);
+    float: right;
+    padding: 10px 10px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: rgb(255, 255, 255);
   }
-  
-    #navigation_bar button mat-icon{
-    width: auto;
-    height: auto;
-    font-size: 35px;
-    position: relative;
-    right: 18px;
-    top: 12px;
+  .my_info{
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width:420px) {
+  #slider {
+    display: flex;
+    height: 770px;
+    flex-direction: column-reverse;
+  }
+
+  #slider_img {
+    width: 100%;
+    height: 55%;
     float: left;
-    cursor: pointer;
-    color: black;
   }
-    #slider_area{
-        width: 100%;
-        height: auto;
-        margin-top: 60px;
-    }
-    #for_text{
-        width: 100%;
-        height: 200px;
-        float: left;
-    }
-    #for_image{
-        width: 100%;
-        height: 400px;
-    }
-    #for_image img{
-        width: 90%;
-        height: 90%;
-    }
-    #text_1{
-        font-size: 35px;
-        margin-top: 50px;
-    }
-    #services{
-        height: auto;
-    }
-    .service_card{
-        width: 90%;
-        height: 300px;
-        margin-left: 8%;
-        margin-top: 8%;
-    }
-    .facilitie_card{
-        width: calc(100% - 10%);
-        height: 280px;
-        margin-left: 5px;
-        background-color: rebeccapurple;
-    }
-    .facility_content{
-        font-size: 17px;
-        padding: 8px;
-    }
-    #about_head{
-        height: 40px;
-    }
-    #about_content{
-        font-size: 17px;
-        word-spacing: 2px;
-        line-height: 28px;
-        padding: 8px;
-    }
-    #contact{
-        height: 250px;
-    
-    }   
-  } 
-  
-  @media(max-width:500px) and (min-width:100px) {
-    #header {
-        height: 80px;
-    }
-  
-    #logo {
-        width: 90%;
-    }
-  
-    #logo img {
-        margin-left: 10%;
-    }
-  
-    /* #menu {
-        display: none;
-    } */
-    #navigation_bar {
-        width: 10%;
-        height: 100%;
-        display: block;
-    }
-  
-    .nav{
-        width: 100%;
-        transition: 0.5s;
-        z-index: 5;
-      }
-      section{
-        background-color: rgb(40, 46, 49);
-        height: 400px;
-      }
-      .nav button{
-        width: calc(100% - 10%);
-        margin-left: 5%;
-        float: left;
-        padding: 0;
-        line-height: 10px;
-        padding: 15px;
-        margin-top: 12.5px;
-        letter-spacing: 1px;
-        /* color: #fff; */
-        font-family: cambria;
-        background-color: aliceblue;
-        font-size: 18px;
-        border: none;
-      }
-      .nav button:hover{
-        background-color: #fff;
-      }
-    
-      #bar{
-        display: block;
-        color: white;
-        font-size: 35px;
-        float: right;
-        position: fixed;
-        right: 10px;
-        top: 28px;
-        }
-    
-    #navigation_bar button {
-        width: auto;
-        height: auto;
-        position: relative;
-        right: 10px;
-        top: 25px;
-    }
-  
-    #navigation_bar button mat-icon {
-        width: auto;
-        height: auto;
-        font-size: 35px;
-        float: left;
-        cursor: pointer;
-        color: black;
-    }
-  
-    #slider{
-        width: 100%;
-        height: 450px;
-    }
-    #for_text {
-        width: 110%;
-        height: 200px;
-    }
-  
-    #for_image img{
-        scale: 1.2;
-        margin-left: 16%;
-    }
-  
-    #text_1 {
-        width: 100%;
-        font-size: 35px;
-        margin-top: 20px;
-        margin-left: 20px;
-    }
-  
-    #for_image {
-        width: 100%;
-        height: 250px;
-        float: left;
-    }
-    #facility_title {
-        width: 115%;
-    }
-    .facilitie_card{
-        width: calc(115% - 2%);
-        height: 400px;
-        margin-left: 5px;
-        margin-top: 10px;
-        background-color: rgb(250, 249, 251);
-    }
-    #facilities{
-        margin-top: -40px;
-    }
-    .facility_content{
-        width: 100%;
-        height: 200px;
-    }
-    .facility_image{
-        width: 100%;
-        height: 200px;
-    }
-    .facility_image img{
-        width: 100%;
-        height: 100%;
-    }
-    #about{
-        width: 119%;
-    }
-    #contact{
-        width: 104.5%;
-        height: auto;
-        margin-left: 8%;
-        margin-bottom: -225px;
-    }
-  
-    #contact_form{
-        width: 100%;
-        height: 380px;
-    }
-    #top_input{
-         margin-top: 10px;
-    }
-    #contact_form mat-form-field {
-        width: calc(100% - 10%);
-        margin-left: 5%;
-    }
-    #contact_form_img{
-        width: 100%;
-        height: 250px;
-    }
-    #reset_btn{
-        margin-left: 27%;
-    }
-    #copyright{
-        width: 119.3%;
-        position: relative;
-        bottom: -265px;
-    }
-    #whatshapp_chat{
-        width: 45px;
-        height: 45px;
-    }
-    #choose_us{
-        width: 119%;
-        /* background-color: #292c30; */
-        height: auto;
-        margin-top: 250px;
-        margin-bottom: -260px;
-    }
-    #choose_title{
-        height: 40px;
-        font-size: 22px;
-    }
-    #choose_content{
-        font-size: 20px;
-    }
+
+  #slider_content {
+    width: 100%;
+    height: 45%;
+    float: left;
   }
+
+  #slider_content h2 {
+    margin-top: 1px;
+    margin-left: 18px;
+    font-size: 30px;
+  }
+
+  #slider_content p {
+    margin-left: 24px;
+  }
+
+  #choose_us {
+    height: 800px;
+    overflow: auto;
+    padding: 10px;
+  }
+
+  #choose_us strong {
+    font-size: 20px;
+  }
+
+  #contact {
+    width: calc(100% - 20%);
+    height: 750px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 10%;
+    box-shadow: 2px 2px 10px gray;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact_form_img {
+    width: 100%;
+    height: 300px;
+    float: left;
+    border-radius: 20px 20px 0px 0px;
+    background-color: rgb(251 251 251);
+  }
+
+  .contact_form {
+    width: 100%;
+    height: calc(100% - 300px);
+    float: right;
+    padding: 10px 10px;
+    border-radius: 0px 0px 20px 20px;
+    background-color: rgb(255, 255, 255);
+  }
+  .my_info{
+    line-height: 40px;
+  }
+  .maticon{
+    line-height: 44px;
+  }
+}
