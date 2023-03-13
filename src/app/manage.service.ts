@@ -447,4 +447,9 @@ export class ManageService {
   get_ledger(){
     return this.http.get<[]>(this.baseUrl + 'ledger_view.php',)
   }
+  
+  // for admin enquiry 
+  post_admin_enquiry(data: any) {
+    return this.http.post<any>(this.baseUrl + 'admin_enquiry_insert.php', data)
+  }
 }

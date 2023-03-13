@@ -11,40 +11,32 @@
     <div id="slider_content">
       <h2>Integrated Digital Coaching Management System</h2>
       <p>Educator box – All-in-one paper less solution for your coaching.</p>
-      <button mat-button (click)="demo_func()">Try Demo</button>
+      <button mat-button (click)="demo_func()">Try Educator Box</button>
     </div>
     <div id="slider_img">
       <img src="assets/educatorboxhomeimg.png">
     </div>
   </div>
-  <div id="website_details">
-    <div class="info_box">
-      <img src="assets/quiz_img.png">
-    </div>
-    <div class="info_box">
-      <img src="assets/liveclass.png">
-    </div>
-    <div class="info_box">
-      <img src="assets/ronaldo.jpg">
-    </div>
-    <div class="info_box">
-      <img src="assets/quiz_img.png">
-    </div>
-    <div class="info_box">
-      <img src="assets/quiz_img.png">
-    </div>
-  </div>
+
   <div id="choose_us">
     <strong>Why Should Choose Educator Box?</strong>
     <div id="choose_content">
-      You should choose EducatorBox because we provide very good customer services according to
-      user. We provide you different types of features on this platform like Quiz Sessions,
-      Employe Management System, Salary Management System, Expence Management System, Coaching
-      Management System, E-Learning Management System, Study Material Management System, Test
-      Series System and so on. EducatorBox is easy to use for a normal and intelegent person.
-      EducatorBox is very big platfrom for managing somthing. The kind of academic curriculum, placement drives, quality
-      teaching, world-class infrastructure, global exposure, EducatorBox has it all under one gigantic roof. We are
-      peovide Hackthon events on this platform.
+      many good reasons to choose Educator Box.
+      Enquiry Management where students get in touch through mail or WhatsApp.
+      Student Management where you manage student data.
+      Staff Management where you access staff details and salary.
+      Fee management where you easily manage Fee payment as well as Dues.
+      Online Exam from where you take online examination, Quiz, Test series and many more. They features will help to
+      track student growth.
+      Study Material where student easily get study material which will be uploaded by you.
+      Expense Management where you easily track your revenue on a single click that will help you to growth of your
+      business.
+      Enhancing the brand name , they will give the students in the market a strong digital presence.
+      Course management, you can easily manage your different courses for different student.
+      Cost effective, the institutes can save money on paper work and other expenses because everything is automated and
+      computerized.
+      Time saving, this is automated software so they will help to minimize paper work
+      Like admission, question paper, study material and other complex duties.
     </div>
   </div>
   <div id="contact">
@@ -56,28 +48,32 @@
       <form [formGroup]="contactForm">
         <mat-form-field appearance="fill" id="top_input">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Enter Your Name">
+          <input matInput placeholder="Enter Your Name" formControlName="enq_name">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Email-ID</mat-label>
-          <input matInput placeholder="Enter Your E-Mail ID">
+          <input matInput placeholder="Enter Your E-Mail ID" formControlName="enq_email">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Phone</mat-label>
-          <input matInput type="number" placeholder="Enter Your Phone Number">
+          <input matInput type="number" placeholder="Enter Your Phone Number" formControlName="enq_phone"
+            onkeypress=" return this.value.length < 10">
         </mat-form-field>
-
 
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Message...</mat-label>
-          <textarea matInput type="Number" placeholder="Enter Your Message"></textarea>
+          <textarea matInput type="Number" placeholder="Enter Your Message" formControlName="enq_msg"></textarea>
         </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
       </form><br>
+
       <div class="submit">
         <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="sendmsg()">Submit</button>
+        <button mat-raised-button color="primary" [disabled]="!contactForm.valid" (click)="sendmsg()">Submit</button>
       </div>
     </div>
   </div>
@@ -98,8 +94,15 @@
         <mat-icon class="maticon">phone_in_talk</mat-icon>9470407608
       </div>
       <div class="my_info">
-        <mat-icon class="maticon">email</mat-icon>greensoft.hjp@gmail.com
+        <mat-icon class="maticon">email</mat-icon>tech@educatorbox.com
       </div>
+      <div class="my_info">
+        <mat-icon class="maticon">email</mat-icon>support@educatorbox.com
+      </div>
+      <div class="my_info">
+        <mat-icon class="maticon">email</mat-icon>enquiry@educatorbox.com
+      </div>
+
 
     </div>
   </div>

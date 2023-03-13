@@ -28,7 +28,7 @@ export class InstQuizComponent implements OnInit {
   inst_id_for_inst_login: any;
   inst_id: any;
   course_data: any;
-  sub_name: any;
+  sub_name: string="Quiz";
   course: any
   constructor(
     private dailog: MatDialog,
