@@ -114,7 +114,7 @@ export class BatchComponent implements OnInit {
     });
   }
   batch_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deletedata = new FormData();
         deletedata.append('batch_id', row.batch_id);
