@@ -69,7 +69,7 @@ export class InstNotificationComponent implements OnInit {
     });
   }
   notification_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deldata = new FormData();
         deldata.append('notification_id', row.notification_id);

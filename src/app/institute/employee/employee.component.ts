@@ -7,6 +7,8 @@ import { AddEditEmployeeComponent } from '../add-edit-employee/add-edit-employee
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 import { ManageService } from 'src/app/manage.service';
+import { NgConfirmService } from 'ng-confirm-box';
+
 
 @Component({
   selector: 'app-employee',
@@ -24,7 +26,10 @@ export class EmployeeComponent implements OnInit {
     private addemp: MatDialog,
     private popup: NgToastService,
     private router: Router,
-    private services: ManageService
+    private services: ManageService,
+    private confirmServices: NgConfirmService
+
+    
 
   ) { }
 
@@ -57,30 +62,23 @@ export class EmployeeComponent implements OnInit {
         this.ngOnInit();
       }
     })
-  }
-
-
-
-  del_emp(data: any) {
-    if (confirm("Are you sure to delete")) {
-      const deldata = new FormData();
-      deldata.append('emp_id', data.emp_id)
-      this.services.delete_employee(deldata).subscribe(
-        (res: any) => {
-          this.popup.success({ detail: 'Success', summary: 'Employee Deleted' })
-          this.router.navigate(['/institutehome/employee']);
-
-        },
-        (error: any) => {
-          console.log(['message']);
-          this.popup.error({ detail: 'message', summary: 'Employee Not Deleted' })
-        }
-      )
-
-    }
-    else {
-      this.popup.error({ detail: 'Error', summary: 'Employee Delete Not...' })
-    }
+  }  
+  del_emp(row: any){
+  this.confirmServices.showConfirm('Are You Sure To Delete',
+      () => {
+        const deldata = new FormData();
+        deldata.append('emp_id', row.emp_id);
+        this.services.delete_employee(deldata).subscribe(
+          (res: any) => {
+            console.log(res)
+            this.popup.success({ detail: 'Success', summary: 'Employee Deleted', })
+            this.router.navigate(['/institutehome/employee']);
+          }
+        )
+      },
+      () => {
+        this.popup.error({ detail: 'Unsuccess', summary: 'Employee Not Deleted', })
+      })
   }
 
 
