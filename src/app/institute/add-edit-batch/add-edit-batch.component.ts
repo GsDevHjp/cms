@@ -111,7 +111,13 @@ export class AddEditBatchComponent implements OnInit {
       }
     })
   }
-  batch_data_reset(){
-    this.batch_form.reset()
+  batch_data_reset() {
+    this.batch_form.controls['batch_name'].reset()
+    this.batch_form.controls['batch_status'].reset()
+    this.batch_form.controls['batch_date'].reset()
+    this.batch_form.controls['batch_arrival'].reset()
+    this.batch_form.controls['batch_departure'].reset()
+    this.batch_form.controls['batch_description'].reset()
+    this.batch_form.controls['course_id_fk'].reset()
   }
 }

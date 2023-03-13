@@ -8,13 +8,13 @@
             <input type="number" formControlName="emp_id" readonly hidden>
             <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
-                <input formControlName="emp_name" matInput>
+                <input formControlName="emp_name" matInput placeholder="Enter Your Name">
             </mat-form-field>
 
             <mat-form-field appearance="fill" id="mobil">
                 <mat-label>Mobile</mat-label>
                 <input type="number" formControlName="emp_whatsapp" matInput
-                    onkeypress="return this.value.length < 10;">
+                    onkeypress="return this.value.length < 10;" placeholder="Enter Mobile Number">
             </mat-form-field>
 
             <mat-form-field appearance="fill">

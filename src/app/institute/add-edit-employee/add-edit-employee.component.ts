@@ -160,4 +160,3 @@ export class AddEditEmployeeComponent implements OnInit {
   }
 
 }
-
