@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditWardComponent } from '../add-edit-ward/add-edit-ward.component';
+import { NgConfirmService } from 'ng-confirm-box';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-ward',
   templateUrl: './ward.component.html',
@@ -19,6 +22,9 @@ export class WardComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
+    private route:Router,
+    private ConfirmServices:NgConfirmService,
+    private popup:NgToastService
   ) { }
 
   ngOnInit(): void {
@@ -43,21 +49,24 @@ export class WardComponent implements OnInit {
     });
   }
 
-  delete_ward(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('ward_id', row.ward_id);
-      this.manageservice.delete_ward(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-        }
-      )
+  delete_ward(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append('ward_id',row.ward_id);
+    this.manageservice.delete_state(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:'Ward  Delete',})
+        this.route.navigate(['/institutehome/ward']);
 
-    }
-    else {
-      alert('data not delete')
-    }
-  }
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'Ward Not Deleted', })
+  })
+} 
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
