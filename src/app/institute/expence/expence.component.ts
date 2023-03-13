@@ -44,8 +44,11 @@ export class ExpenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get_expence().subscribe(
+    const fromdata = new FormData()
+      fromdata.append('inst_id', this.inst_id_for_inst_login)
+        this.service.get_expence_by_inst_id(fromdata).subscribe(
       (res: any) => {
+        console.log(res)
         this.dataSource.data = res.data
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from '../manage.service';
 import { DemopageComponent } from './demopage/demopage.component';
 import { NgToastService } from 'ng-angular-popup';
+import { AddEditRegistrationComponent } from '../institute/add-edit-registration/add-edit-registration.component';
 
 @Component({
   selector: 'app-homepage',
@@ -82,7 +83,7 @@ export class HomepageComponent implements OnInit {
   }
 
   demo_func() {
-    this.dailog.open(DemopageComponent, {
+    this.dailog.open(AddEditRegistrationComponent, {
       disableClose: true
     });
   }

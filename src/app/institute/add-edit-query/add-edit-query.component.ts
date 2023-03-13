@@ -42,11 +42,12 @@ export class AddEditQueryComponent implements OnInit {
       query_priority: [''],
       institute_id_fk: ['', Validators.required],
       admin_id_fk: ['', Validators.required],
+      status: ['1', Validators.required],
     })
     this.Query_Form.controls['institute_id_fk'].setValue(this.inst_id);
 
     if (this.edit_queary) {
-      this.actionBtn = "Update";
+      this.actionBtn = "Answer";
       this.Query_Form.controls['query_id'].setValue(this.edit_queary.query_id);
       this.Query_Form.controls['query_message'].setValue(this.edit_queary.query_message);
       this.Query_Form.controls['query_answer'].setValue(this.edit_queary.query_answer);

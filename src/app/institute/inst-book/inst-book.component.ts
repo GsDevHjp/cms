@@ -62,7 +62,7 @@ export class InstBookComponent implements OnInit {
     if (this.inst_id_for_std) {
       this.get_book_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
-      this.displayedColumns = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description', 'inst_book_img', 'action'];
+      this.displayedColumns = ['book_id', 'course_id_fk', 'inst_book_title', 'inst_book_description', 'inst_book_img'];
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_book_by_inst_id(instformdata).subscribe(

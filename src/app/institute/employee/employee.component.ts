@@ -21,6 +21,8 @@ export class EmployeeComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  login_deatils:any
+  login:any
   count_emp: Number = 0
   constructor(
     private addemp: MatDialog,
@@ -31,10 +33,15 @@ export class EmployeeComponent implements OnInit {
 
     
 
-  ) { }
+  ) {
+    this.login_deatils = localStorage.getItem('Token')
+    this.login = JSON.parse(this.login_deatils)
+   }
 
   ngOnInit(): void {
-    this.services.getEmployee().subscribe(
+    const formdata = new FormData()
+    formdata.append('inst_id',this.login.inst_id)
+    this.services.get_emp_by_inst_id(formdata).subscribe(
       (itemresult: any) => {
         console.log(itemresult)
         this.count_emp = itemresult.data.length

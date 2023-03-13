@@ -41,9 +41,9 @@ export class QueryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const fromdata = new FormData()
-    // fromdata.append('inst_id', this.std_id)
-    this.service.get_query_by_inst_id().subscribe(
+    const fromdata = new FormData()
+    fromdata.append('std_id', this.std_id)
+    this.service.get_query_by_std_id(fromdata).subscribe(
       (instdata: any) => {
         console.log(instdata)
         this.dataSource = new MatTableDataSource(instdata.data);

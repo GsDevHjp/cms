@@ -351,12 +351,12 @@ export class ManageService {
     return this.http.post<any>(this.baseUrl + 'ward_delete.php', data);
   }
   // for query module 
-  get_query_by_inst_id() {
-    return this.http.get<[]>(this.baseUrl + 'query_view.php')
+  get_query_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
   }
-  // get_query_by_inst_id(data: any) {
-  //   return this.http.post<any>(this.baseUrl + 'get_query_by_inst_id.php', data);
-  // }
+  get_query_by_std_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_query_by_std_id.php', data);
+  }
  
   post_std_query(data: any) {
     return this.http.post<any>(this.baseUrl + 'std_queary_insert.php', data)
@@ -365,8 +365,8 @@ export class ManageService {
     return this.http.put<any>(this.baseUrl + 'query_update.php', data);
   }
   //  For Employee Module
-  getEmployee() {
-    return this.http.get<[]>(this.baseUrl + 'employee_view.php')
+  get_emp_by_inst_id(data:any) {
+    return this.http.post<any>(this.baseUrl + 'get_emp_by_inst_id.php', data)
   }
   postEmployee(data: any) {
     return this.http.post<any>(this.baseUrl + 'employee_insert.php', data)
@@ -424,6 +424,9 @@ export class ManageService {
   }
   expence_delete(data: any) {
     return this.http.post<any>(this.baseUrl + 'expence_delete.php', data)
+  }
+  get_expence_by_inst_id(data: any) {
+    return this.http.post<any>(this.baseUrl + 'get_expense_by_inst.php', data)
   }
   // for otp verfication 
   inst_reg_otp(data: any) {

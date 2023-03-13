@@ -61,7 +61,7 @@ export class InstQuestionBankComponent implements OnInit {
     if (this.inst_id_for_std) {
       this.get_question_bank_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
-      this.displayedColumns = ['inst_question_bank_id', 'course_id_fk', 'inst_question_bank_title', 'inst_question_bank_description', 'inst_question_bank_img', 'action'];
+      this.displayedColumns = ['inst_question_bank_id', 'course_id_fk', 'inst_question_bank_title', 'inst_question_bank_description', 'inst_question_bank_img'];
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_question_bank_by_inst_id(instformdata).subscribe(

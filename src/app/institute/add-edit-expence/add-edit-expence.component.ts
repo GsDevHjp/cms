@@ -40,11 +40,15 @@ export class AddEditExpenceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.manageService.getEmployee().subscribe(
+    const formdata = new FormData()
+    formdata.append('inst_id',this.login.inst_id)
+    this.manageService.get_emp_by_inst_id(formdata).subscribe(
       (emp_res: any) => {
-        this.emp_data = emp_res.data
+               this.emp_data = emp_res.data
+
+
       }
-    ),
+    )
       this.expenseForm = this.fb.group({
         expense_id: [''],
         expense_type: ['', Validators.required],

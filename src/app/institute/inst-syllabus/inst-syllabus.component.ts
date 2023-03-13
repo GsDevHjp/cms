@@ -62,7 +62,7 @@ export class InstSyllabusComponent implements OnInit {
     if (this.inst_id_for_std) {
       this.get_syllabus_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
-      this.displayedColumns = ['inst_syllabus_id', 'course_id_fk', 'inst_syllabus_title', 'inst_syllabus_description', 'inst_syllabus_img', 'action'];
+      this.displayedColumns = ['inst_syllabus_id', 'course_id_fk', 'inst_syllabus_title', 'inst_syllabus_description', 'inst_syllabus_img'];
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_syllabus_by_inst_id(instformdata).subscribe(
