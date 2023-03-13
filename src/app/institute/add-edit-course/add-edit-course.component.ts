@@ -116,6 +116,10 @@ export class AddEditCourseComponent implements OnInit {
   }
   
 course_data_reset(){
-  this.course_form.reset()
+this.reset_from()
+}
+
+reset_from(){
+  this.course_form.controls['course_name'].reset()
 }
 }

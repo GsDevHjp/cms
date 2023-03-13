@@ -15,7 +15,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class QueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['query_id', 'query_priority', 'query_message', 'query_answer', 'query_date',];
+  displayedColumns: string[] = ['query_id', 'query_priority', 'query_message', 'query_answer', 'query_date','status'];
   dataSource = new MatTableDataSource();
   query_count: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

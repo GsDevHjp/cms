@@ -218,7 +218,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_img', this.student_form.get('std_img')?.value)
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
-    updatedata.append('status', this.student_form.get('status')?.value)
+    updatedata.append('status','1')
     updatedata.append('institute_id_fk', this.login.inst_id)
     updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     this.service.put_student(updatedata).subscribe(

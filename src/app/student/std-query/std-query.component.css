@@ -4,6 +4,9 @@
   color: #1d1f23;
   font-size: 18px;
 }
+mat-form-field{
+  width: 300px;
+}
 
 .material-icons {
   color: #1d1f23;
