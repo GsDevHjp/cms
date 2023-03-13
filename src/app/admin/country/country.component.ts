@@ -6,6 +6,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditCountryComponent } from '../add-edit-country/add-edit-country.component';
 import { Router } from '@angular/router';
+import { NgConfirmService } from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
+
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -21,6 +24,9 @@ export class CountryComponent implements OnInit {
     private dailog: MatDialog,
     private router: Router,
     private manageservice: ManageService,
+    private ConfirmServices :NgConfirmService,
+    private popup: NgToastService,
+
   ) { }
 
   ngOnInit(): void {
@@ -48,23 +54,25 @@ export class CountryComponent implements OnInit {
     });
   }
 
-  delete_country(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('country_id', row.country_id);
-      this.manageservice.delete_country(deletedata).subscribe(
-        (res: any) => {
-          this.router.navigate(['/adminhome/country'])
-          alert('data delete successfully')
-        }
-      )
+ 
+  delete_country(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append('country_id',row.country_id);
+    this.manageservice.delete_country(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:'Batch Delete',})
+        this.router.navigate(['/institutehome/batch']);
 
-    }
-    else {
-      alert('data not delete')
-    }
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'Batch Not Deleted', })
+  })
+} 
 
-  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
