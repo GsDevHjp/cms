@@ -114,12 +114,16 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form.controls['course_monthly_fee'].setValue((this.course_form.get('course_total_fee')?.value) / (this.course_form.get('course_duration')?.value))
     this.course_form.controls['course_admission_fee'].setValue(0)
   }
-  
-course_data_reset(){
-this.reset_from()
-}
 
-reset_from(){
-  this.course_form.controls['course_name'].reset()
-}
+  course_data_reset() {
+    this.course_form.controls['course_name'].reset()
+    this.course_form.controls['course_total_fee'].reset()
+    this.course_form.controls['course_half_fee'].reset()
+    this.course_form.controls['course_quarter_fee'].reset()
+    this.course_form.controls['course_monthly_fee'].reset()
+    this.course_form.controls['course_admission_fee'].reset()
+    this.course_form.controls['course_duration'].reset()
+    this.course_form.controls['course_description'].reset()
+    this.course_form.controls['course_date'].reset()
+  }  
 }

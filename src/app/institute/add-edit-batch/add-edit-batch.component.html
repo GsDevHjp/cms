@@ -16,7 +16,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="batch_name">
+            <input matInput formControlName="batch_name" placeholder="Enter Your Batch Name">
         </mat-form-field>
         <br>
 
@@ -50,7 +50,7 @@
         <br>
         <mat-form-field class="example-full-width" appearance="fill" id="description">
             <mat-label>Description</mat-label>
-            <input type="text" matInput formControlName="batch_description">
+            <input type="text" matInput formControlName="batch_description" placeholder="Enter Your Description">
         </mat-form-field>
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>

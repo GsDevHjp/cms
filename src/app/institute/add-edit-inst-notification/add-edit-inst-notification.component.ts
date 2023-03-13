@@ -95,6 +95,7 @@ export class AddEditInstNotificationComponent implements OnInit {
     })
   }
   notification_data_reset(){
-    this.notification_form.reset()
+    this.notification_form.controls['notification'].reset()
+    this.notification_form.controls['description'].reset()
   }
 }
