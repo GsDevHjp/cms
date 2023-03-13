@@ -8,6 +8,7 @@ export class ManageService {
   constructor(
     private http: HttpClient
   ) { }
+  
   baseUrl: string = 'https://educatorbox.com/api/';
 
   // dashboard  
@@ -108,6 +109,7 @@ export class ManageService {
   get_dues_by_reg_no(data: any) {
     return this.http.post<any>(this.baseUrl + 'get_dues_by_reg_no.php', data);
   }
+ 
   duplicate_addmission(data: any) {
     return this.http.post<any>(this.baseUrl + 'duplicate_addmission.php', data);
   }

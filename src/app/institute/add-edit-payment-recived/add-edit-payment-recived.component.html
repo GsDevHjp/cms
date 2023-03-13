@@ -11,7 +11,7 @@
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Registration</mat-label>
                         <input (keyup)="call_std_reg()" matInput type="text" placeholder="Registration"
-                            formControlName="std_reg" [readonly]="action">
+                            formControlName="std_reg" readonly>
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width" appearance="fill">
@@ -87,7 +87,7 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Roll No</mat-label>
-                    <input type="number" matInput formControlName="roll_no">
+                    <input type="number" matInput formControlName="roll_no" readonly>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">

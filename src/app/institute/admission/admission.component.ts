@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { faAllergies } from '@fortawesome/free-solid-svg-icons';
 import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-addmission/add-edit-take-addmission.component';
+import { AddEditPaymentRecivedComponent } from '../add-edit-payment-recived/add-edit-payment-recived.component';
 
 @Component({
   selector: 'app-admission',
@@ -19,7 +20,7 @@ import { AddEditTakeAddmissionComponent } from 'src/app/student/add-edit-take-ad
 export class AdmissionComponent implements OnInit {
   displayedColumns: string[] = ['admission_id', 'regist_no', 'std_name', 'roll_no', 'course_id_fk', 'batch_name', 'admission_date', 'std_whatsapp_no','std_photo', 'admission_status', 'action'];
   dataSource = new MatTableDataSource();
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'assets/';
 
   count_admission: number = 0;
   color: ThemePalette = 'primary'
@@ -109,6 +110,14 @@ get_admission_data(inst_id:any){
 
 add_addmission(){
   this.dailog.open(AddEditTakeAddmissionComponent)
+}
+
+onpaymet(row:any){
+  this.dailog.open(AddEditPaymentRecivedComponent,{
+    data: row,
+   
+  }
+  )
 }
 }
 

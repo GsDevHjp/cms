@@ -81,7 +81,7 @@ export class InstQuizComponent implements OnInit {
     });
   }
   course_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deldata = new FormData();
         deldata.append('quiz_id', row.quiz_id);

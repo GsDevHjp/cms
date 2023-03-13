@@ -16,6 +16,7 @@
   cursor: pointer;
 }
 
+
 mat-icon {
   width: 40px;
   height: 40px;
@@ -31,6 +32,8 @@ mat-icon {
   line-height: 35px;
   margin-left: 20px;
   color:whitesmoke;
+ 
+ 
 }
 
 #thumbnail span {

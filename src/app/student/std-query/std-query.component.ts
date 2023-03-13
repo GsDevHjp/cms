@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class StdQueryComponent implements OnInit {
   admin = 1
   Query_Form !: FormGroup
-  actionBtn: string = "Submit"
+  actionBtn: string = "Send"
   headbtn: string = "Query"
   login_deatils: any;
   login: any;

@@ -24,7 +24,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
   monthly_act: boolean =true;
   current_act: boolean =true;
   setvalue: any;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/profile.png';
+  imgUrl: string = 'assets/profile.png';
   login_deatils: any;
   login: any;
   inst_id: any;
@@ -132,7 +132,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     formadd.append('batch_id_fk', this.fee_form.get('batch_id_fk')?.value)
     formadd.append('institute_id_fk', this.inst_id)
     formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
-    formadd.append('roll_no', this.roll_no)
+    formadd.append('roll_no',this.fee_form.get('roll_no')?.value)
       if (this.fee_form.valid) {
         this.service.post_fee(formadd).subscribe(
           (res: any) => {
@@ -208,7 +208,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
         this.fee_form.controls['course_admission_fee'].setValue(res.data[0].course_admission_fee);
         this.fee_form.controls['fee_amount'].setValue(res.data[0].fee_amount);
         this.fee_form.controls['std_img'].setValue(res.data[0].std_img);
-        this.imgUrl = 'https://greensoft.net.in/gscms/assets/' + res.data[0].std_img;
+        this.imgUrl = 'assets/' + res.data[0].std_img;
         this.fee_form.controls['batch_id_fk'].setValue(res.data[0].batch_id);
         this.fee_form.controls['roll_no'].setValue(res.data[0].roll_no);
 

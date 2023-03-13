@@ -20,7 +20,7 @@ export class InstNotesComponent implements OnInit {
   count_inst_notes: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'assets/';
   login_deatils: any
   login: any
   inst_id: any
@@ -62,7 +62,7 @@ export class InstNotesComponent implements OnInit {
     if (this.inst_id_for_std) {
       this.get_notes_by_inst_id(this.inst_id_for_std)
       this.action_btn = true
-      this.displayedColumns = ['inst_notes_id', 'course_id_fk', 'inst_notes_title', 'inst_notes_description', 'inst_notes_img', 'action'];
+      this.displayedColumns = ['inst_notes_id', 'course_id_fk', 'inst_notes_title', 'inst_notes_description', 'inst_notes_img'];
       const instformdata = new FormData()
       instformdata.append('inst_id', this.inst_id)
       this.service.get_notes_by_inst_id(instformdata).subscribe(

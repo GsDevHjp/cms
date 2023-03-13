@@ -13,7 +13,7 @@ export class StudentProfileComponent implements OnInit {
   student_form!: FormGroup;
   admin = 1;
   hide = true
-  url: any = 'https://greensoft.net.in/gscms/assets/';
+  url: any = 'assets/';
   imgurl: any = 'profile.png';
   login_deatils: any
   login: any

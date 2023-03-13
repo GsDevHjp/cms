@@ -120,6 +120,7 @@ import { LedgerComponent } from './institute/ledger/ledger.component';
 import { AddEditLedgerComponent } from './institute/add-edit-ledger/add-edit-ledger.component';
 import { ProfitLossComponent } from './institute/profit-loss/profit-loss.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DemopageComponent } from './homepage/demopage/demopage.component';
 
 
 @NgModule({
@@ -221,6 +222,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AddEditLedgerComponent,
     ProfitLossComponent,
     PageNotFoundComponent,
+    DemopageComponent,
   ],
   imports: [
     BrowserModule,

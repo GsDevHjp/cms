@@ -125,28 +125,30 @@
 
 							<mat-form-field appearance="fill">
 								<mat-label>Block</mat-label>
-								<mat-select formControlName="std_block" (valueChange)="get_panchayat($event)">
+								<mat-select formControlName="std_block" >
 									<mat-option *ngFor="let block of block_data"
 										[value]="block.block_name">{{block.block_name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 
+							
 							<mat-form-field appearance="fill">
-								<mat-label>Panchayat</mat-label>
-								<mat-select formControlName="std_panchayat">
-									<mat-option *ngFor="let panchayat of panchayat_data"
-										[value]="panchayat.panchayat_name">{{panchayat.panchayat_name}}</mat-option>
-								</mat-select>
+								<mat-label>Panchayat / Ward</mat-label>
+								<input matInput formControlName="std_panchayat">
 							</mat-form-field>
-							<br>
 
+							<br>
 							<mat-form-field appearance="fill">
 								<mat-label>Area</mat-label>
-								<input matInput formControlName="std_area">
+								<mat-select formControlName="std_area">
+									<mat-option value="Rural">Rural</mat-option>
+									<mat-option value="Urban">Urban</mat-option>
+								</mat-select>
 							</mat-form-field>
+			
 
 							<mat-form-field appearance="fill">
-								<mat-label>Village/ City</mat-label>
+								<mat-label>Village / City</mat-label>
 								<input matInput formControlName="std_village">
 							</mat-form-field>
 

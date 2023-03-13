@@ -13,8 +13,11 @@ body {
 
 ::-webkit-scrollbar {
     width: 5px;
-    background-color: #f9f9f9;
+    background-color: #cac7c7;
     color: black;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(110, 110, 110);
 }
 
 .mat-menu-content:not(:empty) {

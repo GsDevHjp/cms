@@ -20,7 +20,7 @@ export class InstSyllabusComponent implements OnInit {
   count_inst_syllabus: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  imgUrl: string = 'assets/';
   login_deatils: any
   login: any
   inst_id: any

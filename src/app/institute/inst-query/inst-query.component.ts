@@ -15,7 +15,7 @@ import { AddEditQueryComponent } from '../add-edit-query/add-edit-query.componen
 
 export class InstQueryComponent implements OnInit {
 
-  displayedColumns: string[] = ['quiz_id', 'query_priority', 'query_message', 'query_answer', 'query_date', 'action'];
+  displayedColumns: string[] = ['quiz_id', 'query_priority', 'query_message', 'query_answer', 'query_date','status', 'action'];
   dataSource = new MatTableDataSource();
   count_query: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;

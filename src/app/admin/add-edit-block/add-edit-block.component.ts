@@ -121,6 +121,7 @@ export class AddEditBlockComponent implements OnInit {
       }
     )
   }
+  
   get_district(event: any) {
     console.log(event)
     const districtfromdata = new FormData();

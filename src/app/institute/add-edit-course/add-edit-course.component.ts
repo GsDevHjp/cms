@@ -125,12 +125,5 @@ export class AddEditCourseComponent implements OnInit {
     this.course_form.controls['course_duration'].reset()
     this.course_form.controls['course_description'].reset()
     this.course_form.controls['course_date'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-    this.course_form.controls['course_name'].reset()
-  }
+  }  
 }

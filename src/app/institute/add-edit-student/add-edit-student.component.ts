@@ -21,7 +21,7 @@ export class AddEditStudentComponent implements OnInit {
   heading_act: string = 'Add Student'
   admin = 1;
   institute_id: any;
-  selectedImage: any = 'https://greensoft.net.in/gscms/assets/profile.png';
+  selectedImage: any = 'assets/profile.png';
   status: any = 1
   login_deatils: any
   login: any
@@ -104,7 +104,7 @@ export class AddEditStudentComponent implements OnInit {
       this.student_form.controls['std_regist_date'].setValue(this.edit_std.std_regist_date);
       this.student_form.controls['std_regist_no'].setValue(this.edit_std.std_regist_no);
       this.student_form.controls['std_img'].setValue(this.edit_std.std_img);
-      this.selectedImage = 'https://greensoft.net.in/gscms/assets/' + this.edit_std.std_img;
+      this.selectedImage = 'assets/' + this.edit_std.std_img;
       this.student_form.controls['std_address'].setValue(this.edit_std.std_address);
       this.student_form.controls['std_password'].setValue(this.edit_std.std_password);
       this.student_form.controls['institute_id_fk'].setValue(this.edit_std.institute_id_fk);
@@ -218,7 +218,7 @@ export class AddEditStudentComponent implements OnInit {
     updatedata.append('std_img', this.student_form.get('std_img')?.value)
     updatedata.append('std_address', this.student_form.get('std_address')?.value)
     updatedata.append('std_password', this.student_form.get('std_password')?.value)
-    updatedata.append('status', this.student_form.get('status')?.value)
+    updatedata.append('status','1')
     updatedata.append('institute_id_fk', this.login.inst_id)
     updatedata.append('admin_id_fk', this.student_form.get('admin_id_fk')?.value)
     this.service.put_student(updatedata).subscribe(

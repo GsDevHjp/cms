@@ -141,6 +141,7 @@ export class AddEditPanchayatComponent implements OnInit {
     blockfromdata.append('district_id', event)
     this.service.get_block_by_district(blockfromdata).subscribe(
       (block_res: any) => {
+        console.log(block_res)
         this.block_data = block_res.data
       }
     )
