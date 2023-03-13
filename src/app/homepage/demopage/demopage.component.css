@@ -19,7 +19,7 @@ mat-toolbar {
     width: 40%;
     height: 100%;
     float: left;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(251 251 251);
 }
 
 .side_img img {
@@ -31,6 +31,7 @@ mat-toolbar {
     width: calc(100% - 40%);
     height: 100%;
     float: right;
+    padding-top: 8px;
 }
 
 mat-form-field {

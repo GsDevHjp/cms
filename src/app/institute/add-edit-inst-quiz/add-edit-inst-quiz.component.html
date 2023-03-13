@@ -30,12 +30,19 @@
         <input matInput formControlName="quiz_option_d" placeholder="Enter Option D">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Answer</mat-label>
-        <input matInput formControlName="quiz_answer" style="text-transform: uppercase;" placeholder="Enter Your Answer">
-    </mat-form-field><br>
 
-    <mat-form-field class="example-full-width" appearance="fill" id="cursedescription">
+    <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Answer</mat-label>
+        <mat-select formControlName="quiz_answer">
+            <mat-option value="A">A</mat-option>
+            <mat-option value="B">B</mat-option>
+            <mat-option value="C">C</mat-option>
+            <mat-option value="D">D</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+
+      <mat-form-field class="example-full-width" appearance="fill" id="cursedescription">
         <mat-label>Description</mat-label>
         <input type="text" matInput formControlName="quiz_description" placeholder="Enter Your Description">
     </mat-form-field>

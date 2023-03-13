@@ -88,6 +88,7 @@ export class AddEditInstQuizComponent implements OnInit {
   }
 
   quiz_btn() {
+    console.log(this.quiz_form.value)
     if (!this.edit_quiz.quiz_id) {
       if (this.quiz_form.valid)
         this.service.post_quiz(this.quiz_form.value).subscribe(

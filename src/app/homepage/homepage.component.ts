@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ManageService } from '../manage.service';
 import { DemopageComponent } from './demopage/demopage.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-homepage',
@@ -12,10 +14,13 @@ export class HomepageComponent implements OnInit {
   rohit: boolean = false;
   innerWidth: any;
   contactForm !: FormGroup;
-
+  admin = 1;
 
   constructor(
     private dailog: MatDialog,
+    private fb: FormBuilder,
+    private service: ManageService,
+    private popup: NgToastService,
   ) {
 
   }
@@ -25,6 +30,15 @@ export class HomepageComponent implements OnInit {
     if (this.innerWidth < 720) {
       this.rohit = true
     }
+
+    this.contactForm = this.fb.group({
+      enq_id: [''],
+      enq_name: ['', Validators.required],
+      enq_email: ['', Validators.required],
+      enq_phone: ['', Validators.required],
+      enq_msg: ['', Validators.required],
+      admin_id_fk: ['', Validators.required]
+    })
   }
 
   oncheckcon() {
@@ -46,7 +60,21 @@ export class HomepageComponent implements OnInit {
   }
 
   sendmsg() {
-    alert('Success')
+    console.log(this.contactForm.value)
+    if (this.contactForm.valid) {
+      this.service.post_admin_enquiry(this.contactForm.value).subscribe(
+        (res: any) => {
+          console.log(res)
+          this.contactForm.reset()
+          this.popup.success({ detail: 'Success', summary: 'Enquiry Saved', })
+
+        },
+        (error) => {
+          console.log(error)
+          this.popup.error({ detail: 'Unsuccess', summary: 'Enquiry Not Saved', })
+        }
+      )
+    }
   }
 
   reset() {

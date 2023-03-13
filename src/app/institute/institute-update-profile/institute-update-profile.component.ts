@@ -15,47 +15,47 @@ export class InstituteUpdateProfileComponent implements OnInit {
   hide = true;
   actionBtn: string = 'Update'
   instupdate: string = 'Profile Update'
-  imgUrl :string = 'https://greensoft.net.in/gscms/assets/';
-  institute_profile_data:any
-  institute_id:any;
-  login_deatils:any;
-  login:any; 
-  country_data:any; 
-  district_data:any; 
-  state_data:any; 
+  imgUrl: string = 'https://greensoft.net.in/gscms/assets/';
+  institute_profile_data: any
+  institute_id: any;
+  login_deatils: any;
+  login: any;
+  country_data: any;
+  district_data: any;
+  state_data: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public editinst: any,
     private matref: MatDialogRef<InstituteUpdateProfileComponent>,
     private FromBuilder: FormBuilder,
     private service: ManageService,
-    private popup:NgToastService,
-    private router:Router,
+    private popup: NgToastService,
+    private router: Router,
   ) {
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     console.log(this.login.inst_id)
     this.institute_id = this.login.inst_id
     this.imgUrl = 'assets/' + this.login.inst_logo
-   }
+  }
 
   ngOnInit(): void {
     this.InstForm = this.FromBuilder.group({
       inst_id: [''],
-      inst_name: ['',Validators.required],
-      inst_owner_name: ['',Validators.required],
-      inst_whatsapp_no: ['',Validators.required],
-      inst_email: ['',Validators.required],
-      inst_password: ['',Validators.required],
-      inst_country: ['',Validators.required],
-      inst_state: ['',Validators.required],
-      inst_district: ['',Validators.required],
-      inst_address: ['',Validators.required],
+      inst_name: ['', Validators.required],
+      inst_owner_name: ['', Validators.required],
+      inst_whatsapp_no: ['', Validators.required],
+      inst_email: ['', Validators.required],
+      inst_password: ['', Validators.required],
+      inst_country: ['', Validators.required],
+      inst_state: ['', Validators.required],
+      inst_district: ['', Validators.required],
+      inst_address: ['', Validators.required],
       account_no: [''],
       inst_ifsc: [''],
       account_holder: [''],
       inst_logo: [''],
-      inst_doct: ['',Validators.required],
-      inst_doct_number: ['',Validators.required],
+      inst_doct: ['', Validators.required],
+      inst_doct_number: ['', Validators.required],
       inst_doct_img: [''],
       admin_id_fk: ['', Validators.required]
     })
@@ -65,17 +65,8 @@ export class InstituteUpdateProfileComponent implements OnInit {
         this.country_data = state_res.data
       }
     )
-      this.service.get_state().subscribe(
-        (state: any) => {
-          this.state_data = state.data
-        }
-      )
-      this.service.get_district().subscribe(
-        (district_res: any) => {
-          this.district_data = district_res.data
-        }
-      )
-   
+    
+
     this.profile_set_data()
   }
   profile_set_data() {
@@ -132,12 +123,12 @@ export class InstituteUpdateProfileComponent implements OnInit {
         (result: any) => {
           console.log(result)
           this.matref.close();
-          this.popup.success({ detail: 'Success', summary: 'Profile Updated',})
+          this.popup.success({ detail: 'Success', summary: 'Profile Updated', })
           this.router.navigate(['/institutehome'])
         },
         (error: any) => {
           console.log(error)
-          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Updated',})
+          this.popup.error({ detail: 'Unsuccess', summary: 'Profile Not Updated', })
         }
       )
     }
@@ -177,4 +168,3 @@ export class InstituteUpdateProfileComponent implements OnInit {
     )
   }
 }
-  
