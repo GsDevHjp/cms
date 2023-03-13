@@ -65,7 +65,7 @@ export class ExpenceComponent implements OnInit {
     });
   }
   expence_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deldata = new FormData();
         deldata.append('expense_id', row.expense_id);

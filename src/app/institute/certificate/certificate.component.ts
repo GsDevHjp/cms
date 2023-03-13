@@ -62,7 +62,7 @@ export class CertificateComponent implements OnInit {
   }
 
   certificate_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deldata = new FormData();
         deldata.append('certificate_id', row.certificate_id);

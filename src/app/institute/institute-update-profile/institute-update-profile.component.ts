@@ -50,9 +50,9 @@ export class InstituteUpdateProfileComponent implements OnInit {
       inst_state: ['', Validators.required],
       inst_district: ['', Validators.required],
       inst_address: ['', Validators.required],
-      account_no: ['', Validators.required],
-      inst_ifsc: ['', Validators.required],
-      account_holder: ['', Validators.required],
+      account_no: [''],
+      inst_ifsc: [''],
+      account_holder: [''],
       inst_logo: [''],
       inst_doct: ['', Validators.required],
       inst_doct_number: ['', Validators.required],
@@ -65,7 +65,7 @@ export class InstituteUpdateProfileComponent implements OnInit {
         this.country_data = state_res.data
       }
     )
-
+    
 
     this.profile_set_data()
   }
