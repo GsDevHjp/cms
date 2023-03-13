@@ -126,7 +126,13 @@ export class AddEditInstQuizComponent implements OnInit {
     )
   }
   quiz_data_reset(){
-    this.quiz_form.reset()
+    this.quiz_form.controls['quiz_question'].reset()
+    this.quiz_form.controls['quiz_option_a'].reset()
+    this.quiz_form.controls['quiz_option_b'].reset()
+    this.quiz_form.controls['quiz_option_c'].reset()
+    this.quiz_form.controls['quiz_option_d'].reset()
+    this.quiz_form.controls['quiz_answer'].reset()
+    this.quiz_form.controls['quiz_description'].reset()
   }
 
   // onCourse(event:any){
