@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditDistrictComponent } from '../add-edit-district/add-edit-district.component';
 import { Router } from '@angular/router';
+import { NgConfirmService } from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-district',
   templateUrl: './district.component.html',
@@ -19,8 +21,10 @@ export class DistrictComponent implements OnInit {
   district_count = 0
   constructor(
     private dailog: MatDialog,
-    private router: Router,
+    private route: Router,
     private manageservice: ManageService,
+    private ConfirmServices:NgConfirmService,
+    private popup: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -44,23 +48,23 @@ export class DistrictComponent implements OnInit {
       data: row
     });
   }
+  delete_district(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append('district_id',row. district_id);
+    this.manageservice.delete_district(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:' District  Delete',})
+        this.route.navigate(['/institutehome/district']);
 
-  delete_district(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('district_id', row.district_id);
-      this.manageservice.delete_district(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-          this.router.navigate(['/adminhome/district'])
-        }
-      )
-
-    }
-    else {
-      alert('data not delete')
-    }
-  }
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'State Not Deleted', })
+  })
+} 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

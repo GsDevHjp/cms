@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditBlockComponent } from '../add-edit-block/add-edit-block.component';
+import { NgConfirmService } from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
@@ -19,6 +22,9 @@ export class BlockComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
+    private ConfirmServices:NgConfirmService,
+    private popup: NgToastService,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -43,21 +49,23 @@ export class BlockComponent implements OnInit {
     });
   }
 
-  delete_block(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('block_id', row.block_id);
-      this.manageservice.delete_block(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-        }
-      )
+  delete_block(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append('block_id',row.block_id);
+    this.manageservice.delete_block(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:' Block  Delete',})
+        this.route.navigate(['/institutehome/block']);
 
-    }
-    else {
-      alert('data not delete')
-    }
-  }
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'Block Not Deleted', })
+  })
+} 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

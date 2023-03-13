@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditStateComponent } from '../add-edit-state/add-edit-state.component';
+import { Router } from '@angular/router';
+import { NgConfirmService } from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-state',
   templateUrl: './state.component.html',
@@ -19,6 +22,9 @@ export class StateComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
+    private route :Router,
+    private ConfirmServices:NgConfirmService,   
+    private popup: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -43,21 +49,25 @@ export class StateComponent implements OnInit {
     });
   }
 
-  delete_state(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('state_id', row.state_id);
-      this.manageservice.delete_state(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-        }
-      )
 
-    }
-    else {
-      alert('data not delete')
-    }
-  }
+  delete_state(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append('state_id',row.state_id);
+    this.manageservice.delete_state(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:'State  Delete',})
+        this.route.navigate(['/institutehome/state']);
+
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'State Not Deleted', })
+  })
+} 
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

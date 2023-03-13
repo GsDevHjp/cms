@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ManageService } from 'src/app/manage.service';
 import { AddEditPanchayatComponent } from '../add-edit-panchayat/add-edit-panchayat.component';
+import { NgToastService } from 'ng-angular-popup';
+import { NgConfirmService } from 'ng-confirm-box';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-panchayat',
   templateUrl: './panchayat.component.html',
@@ -19,6 +22,10 @@ export class PanchayatComponent implements OnInit {
   constructor(
     private dailog: MatDialog,
     private manageservice: ManageService,
+    private popup:NgToastService,
+    private route :Router,
+    private ConfirmServices:NgConfirmService, 
+    
   ) { }
 
   ngOnInit(): void {
@@ -42,22 +49,26 @@ export class PanchayatComponent implements OnInit {
       data: row
     });
   }
+  delete_panchayat(row:any){
+    this.ConfirmServices.showConfirm('Are You Sure To Delete',  
+  () =>{
+    const deletedata = new FormData();
+    deletedata.append(' panchayat_id',row. panchayat_id);
+    this.manageservice.delete_panchayat(deletedata).subscribe(
+      (res:any) =>{
+        this.popup.success({detail:'Success',summary:'Panchayat  Delete',})
+        this.route.navigate(['/institutehome/panchayat']);
 
-  delete_panchayat(row: any) {
-    if (confirm("Are You Sure To Delete")) {
-      const deletedata = new FormData();
-      deletedata.append('panchayat_id', row.panchayat_id);
-      this.manageservice.delete_panchayat(deletedata).subscribe(
-        (res: any) => {
-          alert('data delete successfully')
-        }
-      )
+      }
+    )  
+  },
+  ( )=>{
+    this.popup.error({ detail: 'Unsuccess', summary: 'Panchayat Not Deleted', })
+  })
+} 
 
-    }
-    else {
-      alert('data not delete')
-    }
-  }
+
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

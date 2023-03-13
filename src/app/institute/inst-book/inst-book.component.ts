@@ -105,7 +105,7 @@ export class InstBookComponent implements OnInit {
   }
 
   inst_book_delete(row: any) {
-    this.confirmServices.showConfirm('Are you sure to delate',
+    this.confirmServices.showConfirm('Are You Sure To Delete',
       () => {
         const deldata = new FormData();
         deldata.append('inst_book_id', row.inst_book_id);
