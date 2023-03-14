@@ -53,12 +53,22 @@ mat-icon {
 .main {
     padding: 62px 2px 2px 2px;
 }
+.profile_icon{
+    width: 80px;
+    height: 100%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    float: right;
+    border: 2px solid green;
+}
 
 #dash_header_admin {
-    width: calc(100% - 500px);
+    width: calc(100% - 30px);
     height: 100%;
 }
 .name_text {
+    position: absolute;
     width: calc(100% - 330px);
     height: 100%;
     display: inline-block;

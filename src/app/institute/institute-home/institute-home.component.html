@@ -8,9 +8,12 @@
                 <mat-toolbar>
                     <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
                     <div id="dash_header_admin">
+                        
+
                         <div class="name_text">
                             <span  >Login as :&nbsp;&nbsp;{{name}}</span>
                         </div>
+                        <div class="s">
                         <button class="login_head" mat-button [matMenuTriggerFor]="menu">
                             <div id="admin_logo">
                                 <img src={{url}}{{img_url}}>
@@ -23,6 +26,7 @@
                                 Password</button>
                             <button mat-menu-item class="action_btn" [routerLink]="['/institutelogin']">LogOut</button>
                         </mat-menu>
+                        </div>
                     </div>
                 </mat-toolbar>
             </div>
