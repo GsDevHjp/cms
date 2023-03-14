@@ -79,7 +79,6 @@ export class AddEditEnquiryComponent implements OnInit {
     this.enquiry_form.controls['institute_id_fk'].setValue(this.login.inst_id);
   }
   enquiry_btn() {
-    console.log(this.enquiry_form.value)
     if (!this.edit_enq) {
       if (this.enquiry_form.valid) {
         this.service.post_enquiry(this.enquiry_form.value).subscribe(
@@ -104,7 +103,6 @@ export class AddEditEnquiryComponent implements OnInit {
   enquiryUpdate() {
     this.service.put_enquiry(this.enquiry_form.value).subscribe({
       next: (res) => {
-        console.log(res)
         this.matref.close()
         this.popup.success({ detail: 'Success', summary: 'Enquiry Updated',})
         this.router.navigate(['/institutehome/enquiry']);
@@ -117,5 +115,8 @@ export class AddEditEnquiryComponent implements OnInit {
   }
   enquiry_data_reset(){
     this.enquiry_form.reset()
+  }
+  reset_form(){
+    
   }
 }

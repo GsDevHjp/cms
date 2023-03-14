@@ -44,7 +44,7 @@ export class AddEditExpenceComponent implements OnInit {
     formdata.append('inst_id',this.login.inst_id)
     this.manageService.get_emp_by_inst_id(formdata).subscribe(
       (emp_res: any) => {
-               this.emp_data = emp_res.data
+    this.emp_data = emp_res.data
 
 
       }
@@ -81,11 +81,9 @@ export class AddEditExpenceComponent implements OnInit {
   /////////////////////////////////////////////// For The Post Expense Data ///////////////////////////////////////////////
 
   onSubmit() {
-    console.log(this.expenseForm.value)
     if (!this.edit_expense) {
       this.manageService.post_expense(this.expenseForm.value).subscribe(
         (result: any) => {
-          console.log(result)
           this.matref.close();
           this.popup.success({ detail: 'Success', summary: 'Expense Saved', })
           this.router.navigate(['/institutehome/expence'])
@@ -120,6 +118,5 @@ export class AddEditExpenceComponent implements OnInit {
     })
   }
   expence_data_reset() {
-    this.expenseForm.reset()
   }
 }

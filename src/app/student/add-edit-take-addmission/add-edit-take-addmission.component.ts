@@ -200,6 +200,7 @@ export class AddEditTakeAddmissionComponent implements OnInit {
     formdata.append('admission_date', this.addmission_form.get('admission_date')?.value)
     formdata.append('admin_id_fk', this.addmission_form.get('admin_id_fk')?.value)
     formdata.append('admissition_status', this.addmission_form.get('admissition_status')?.value)
+    formdata.append('discount', this.addmission_form.get('admissition_status')?.value)
     formdata.append('total_fee',this.addmission_form.get('course_total_fee')?.value)
 
       if(this.edit_addmission){

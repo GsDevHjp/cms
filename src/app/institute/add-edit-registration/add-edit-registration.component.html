@@ -7,28 +7,28 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Institute Name</mat-label>
-            <input matInput formControlName="inst_name">
+            <input matInput formControlName="inst_name" [readonly]="disable_box">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Owner Name</mat-label>
-            <input matInput formControlName="inst_owner_name">
+            <input matInput formControlName="inst_owner_name" [readonly]="disable_box">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>WhatsApp No</mat-label>
             <input type="number" matInput formControlName="inst_whatsapp_no"
-                onkeypress=" return this.value.length < 10">
+                onkeypress=" return this.value.length < 10" [readonly]="disable_box">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>E-mail</mat-label>
-            <input type="email" matInput formControlName="inst_email" placeholder="Please Enter a Valid Email">
+            <input type="email" matInput formControlName="inst_email" placeholder="Please Enter a Valid Email" [readonly]="disable_box">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill" id="password">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password" onkeypress=" return this.value.length < 20">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="inst_password" onkeypress=" return this.value.length < 20" [readonly]="disable_box">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -37,19 +37,19 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Date</mat-label>
-            <input type="date" matInput formControlName="inst_regist_date">
+            <input type="date" matInput formControlName="inst_regist_date" [readonly]="disable_box">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width" appearance="fill" id="address">
             <mat-label>Address</mat-label>
-            <textarea matInput formControlName="inst_address" ></textarea>
+            <textarea matInput formControlName="inst_address" [readonly]="disable_box" ></textarea>
         </mat-form-field><br>
 
         <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
 
         <div class="register">
          <button mat-raised-button color="primary" (click)="inst_regist()"
-        [disabled]="!inst_regist_from.valid">Register</button>
+        [disabled]="!inst_regist_from.valid" [disabled]="disable_box">Register</button>
         </div>
         <br>
         <div [hidden]="otp_hidden_area">

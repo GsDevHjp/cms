@@ -72,13 +72,11 @@ export class AddEditCourseComponent implements OnInit {
   }
 
   onAdd() {
-    console.log(this.course_form.value)
     if (!this.edit_course) {
       if (this.course_form.valid) {
         this.service.post_course(this.course_form.value).subscribe(
           (result: any) => {
-            console.log(result)
-            this.course_form.reset();
+            this.course_data_reset()
             this.matref.close();
             this.popup.success({ detail: 'Success', summary: 'Course Saved', })
             this.router.navigate(['/institutehome/course']);

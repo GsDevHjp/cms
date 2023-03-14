@@ -135,13 +135,14 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill" style="margin: 0;">
                     <mat-label>Amount</mat-label>
-                    <input type="number" matInput formControlName="fee_amount" (keyup)="amount_calc()" readonly>
+                    <input type="number" matInput formControlName="fee_amount"  readonly>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Discount</mat-label>
                     <input type="number" matInput (keyup)="amount_calc()" formControlName="dist_amt">
                 </mat-form-field>
+
                 <mat-form-field appearance="fill">
                     <mat-label>Net Amount</mat-label>
                     <input type="number" matInput formControlName="net_amt" readonly>

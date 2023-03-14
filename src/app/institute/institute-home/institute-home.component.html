@@ -1,4 +1,4 @@
-<mat-sidenav-container class="container-fluid">
+<mat-sidenav-container>
     <mat-sidenav #sidebar mode="side" opened>
         <app-institute-sidebar></app-institute-sidebar>
     </mat-sidenav>
@@ -7,27 +7,20 @@
             <div class="toolbar">
                 <mat-toolbar>
                     <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
-                    <div id="dash_header_admin">
-                        
-
+                    <span class="example-spacer"></span>
                         <div class="name_text">
-                            <span  >Login as :&nbsp;&nbsp;{{name}}</span>
+                            Login as : {{name | titlecase}}
                         </div>
-                        <div class="s">
-                        <button class="login_head" mat-button [matMenuTriggerFor]="menu">
-                            <div id="admin_logo">
-                                <img src={{url}}{{img_url}}>
-                            </div>
+                        <button mat-raised-button [matMenuTriggerFor]="menu">
+                            <img src={{url}}{{img_url}} width="50" height="50">
                         </button>
-                        <mat-menu #menu="matMenu" >
+                        <mat-menu #menu="matMenu">
                             <button mat-menu-item class="action_btn" (click)="profile_update()">Update Profile</button>
                             <button mat-menu-item class="action_btn" >I-Card</button>
                             <button mat-menu-item class="action_btn" (click)="inst_change_pwd()">Change
                                 Password</button>
                             <button mat-menu-item class="action_btn" [routerLink]="['/institutelogin']">LogOut</button>
                         </mat-menu>
-                        </div>
-                    </div>
                 </mat-toolbar>
             </div>
             <div class="main">

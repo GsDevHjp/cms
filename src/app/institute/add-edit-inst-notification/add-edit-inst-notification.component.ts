@@ -56,20 +56,16 @@ export class AddEditInstNotificationComponent implements OnInit {
   }
   
   notification_btn() {
-    console.log(this.notification_form.value)
     if (!this.edit_notification) {
       if (this.notification_form.valid) {
         this.service.post_notification(this.notification_form.value).subscribe(
           (result: any) => {
-            console.log(result)
             this.matref.close();
-            this.notification_form.reset();
+            this.notification_data_reset()
             this.popup.success({ detail: 'Success', summary: 'Notification Saved', })
             this.router.navigate(['/institutehome/instnotification'])
-
           },
           (error: any) => {
-            console.log(error)
             this.popup.error({ detail: 'Unsuccess', summary: 'Notification Not Saved', })
           }
         )

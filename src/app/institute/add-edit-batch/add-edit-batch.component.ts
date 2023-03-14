@@ -75,13 +75,13 @@ export class AddEditBatchComponent implements OnInit {
     }
   }
   batch_btn() {
-    console.log(this.batch_form.value)
     if (!this.edit_batch) {
       if (this.batch_form.valid) {
         this.service.post_batch(this.batch_form.value).subscribe(
           (res: any) => {
             console.log(res)
             this.matref.close();
+            this.batch_data_reset()
             this.router.navigate(['/institutehome/batch']);
             this.popup.success({ detail: 'Success', summary: 'Batch Insert Saved', })
           },

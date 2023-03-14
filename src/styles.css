@@ -1,16 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    cursor: default;
-}
-
+.example-spacer {
+    flex: 1 1 auto;
+  }
 ::-webkit-scrollbar {
     width: 5px;
     background-color: #cac7c7;
@@ -31,7 +21,7 @@ body {
 }
 
 /* for table  */
-.head {
+.head{
     height: 40px;
     width: 100%;
     background-color: #1d1f23;
@@ -41,7 +31,6 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
-
 .count_area {
     height: 40px;
     width: 100%;
@@ -64,93 +53,40 @@ body {
 #search_box:hover{
     border-bottom: 2px solid #1d1f23;
 }
+
 #search_box:hover::placeholder{
     color:#1d1f23;
 }
-
-table {
+table{
     width: 100%;
 }
-
 th.mat-header-cell {
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     background-color: #1d1f23;
+    font-size:13px;
 }
-
-
 tr:nth-child(even) {
     background-color: rgb(200, 200, 200);
-    height: 40px;
 }
-
-tr:nth-child(odd) {
-    height: 40px;
-}
-
 tr:hover {
     background-color: #494949;
-    color: aliceblue;
+    color: rgb(253, 253, 253);
 }
-
 .mat-row:hover>.mat-cell {
     color: white
 }
 #tbl_hight {
-    height: 40px;
+    height: 45px;
 }
-/* #manage_table_wrapper{
-    margin-top:65px;
-} */
-
-/* /////////////////////////////////////////////////Media Quary Starting Here//////////////////////////////////////////////// */
-@media(min-width:420px) and (max-width:1080px) {
-    .mat-elevation-z8 {
-        overflow-x: auto;
-    }
-
-    .course_text {
-        font-size: 14px;
-    }
-
-    .count_area .notice_text {
-        font-size: 14px;
-    }
-
-    table td {
-        font-size: 14px;
-        text-align: center;
-    }
-
-    mat-paginator {
-        position: absolute;
-        width: 100%;
-    }
+.action_btn {
+    color: #fff;
+}
+.action_btn:hover {
+    background-color: #5a74ad;
 }
 
-@media (max-width:420px) {
-    .mat-elevation-z8 {
-        overflow-x: auto;
-    }
-
-    .course_text {
-        font-size: 10px;
-    }
-
-    .count_area .notice_text {
-        font-size: 10px;
-    }
-
-    td {
-        font-size: 11px;
-        text-align: center;
-    }
-
-    mat-paginator {
-        position: absolute;
-        width: 100%;
-    }
+@media (max-width:768px) {
+    
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 

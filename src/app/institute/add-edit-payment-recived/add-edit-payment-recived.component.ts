@@ -133,6 +133,7 @@ export class AddEditPaymentRecivedComponent implements OnInit {
     formadd.append('institute_id_fk', this.inst_id)
     formadd.append('admin_id_fk', this.fee_form.get('admin_id_fk')?.value)
     formadd.append('roll_no',this.fee_form.get('roll_no')?.value)
+    formadd.append('discount',this.fee_form.get('dist_amt')?.value)
       if (this.fee_form.valid) {
         this.service.post_fee(formadd).subscribe(
           (res: any) => {
