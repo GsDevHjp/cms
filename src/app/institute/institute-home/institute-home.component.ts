@@ -18,6 +18,7 @@ export class InstituteHomeComponent implements OnInit {
   img_url:string='';
   login_deatils: any
   login: any
+  
   constructor(
     private observe: BreakpointObserver,
     private dailog: MatDialog,
