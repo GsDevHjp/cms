@@ -108,14 +108,14 @@ mat-icon {
   }
 }
 
-@media(max-width:420px) {
+@media(max-width:300px) {
   .main_area {
     padding-right: 4px;
   }
 
   #thumbnail {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 4px;
     margin-left: 2px;
 
   }

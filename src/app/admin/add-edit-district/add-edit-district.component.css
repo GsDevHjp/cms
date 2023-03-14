@@ -1,5 +1,6 @@
 #wrapper{
-    width: 300px;
+    width:200px;
+    height:270px;
 }
 mat-toolbar{
     width: 100%;
@@ -17,5 +18,5 @@ mat-form-field{
     justify-content: center;
 }
 .submit button{
-    margin-left: 10px;
+    margin-right: 10px;
 }
