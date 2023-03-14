@@ -19,11 +19,13 @@
     }
 }
 
-@media (max-width:420px) {
+@media (max-width:300px) {
    table th {
-        font-size:6px;
+       
+        font-size:10px;
     }
     table td{
+       
         font-size:10px;
     }
 } 
